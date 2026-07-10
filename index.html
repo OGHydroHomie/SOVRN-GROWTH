@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOVRN Growth — Revenue Recovery for Texas Roofers</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0E1A'/%3E%3Cpath d='M6 20 L16 9 L26 20' stroke='%23D97757' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="description" content="Stop leaking $30–80K a month to missed calls and unclaimed supplements. Revenue recovery systems for Texas roofing companies. Free Lost Revenue Audit.">
+<meta property="og:title" content="Your phone is leaking $30–80K a month.">
+<meta property="og:description" content="I only get paid when I catch it. Revenue recovery for Texas roofers. Free 45-minute audit.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0A0E1A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0E1A;
+    --bg-raise: #0E1424;
+    --ink: #FAFAF5;
+    --ink-dim: rgba(250,250,245,0.62);
+    --ink-faint: rgba(250,250,245,0.38);
+    --accent: #D97757;
+    --accent-soft: rgba(217,119,87,0.14);
+    --line: rgba(250,250,245,0.09);
+    --glass: rgba(250,250,245,0.03);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: #0A0E1A; }
+
+  /* ---------- ambient orbs ---------- */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb-1 { width: 520px; height: 520px; top: -180px; right: -140px; background: radial-gradient(circle, rgba(217,119,87,0.13), transparent 65%); }
+  .orb-2 { width: 640px; height: 640px; top: 48%; left: -280px; background: radial-gradient(circle, rgba(90,120,200,0.10), transparent 65%); }
+  .orb-3 { width: 460px; height: 460px; bottom: -160px; right: -100px; background: radial-gradient(circle, rgba(217,119,87,0.08), transparent 65%); }
+
+  .wrap { position: relative; z-index: 1; max-width: 1060px; margin: 0 auto; padding: 0 22px; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(10,14,26,0.72);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1060px; margin: 0 auto; padding: 16px 22px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .wordmark { display:flex; align-items:center; text-decoration:none; }
+  .wordmark svg { display:block; }
+  .nav-cta {
+    font-size: 13px; font-weight: 500; color: var(--accent);
+    text-decoration: none; padding: 8px 16px;
+    border: 1px solid rgba(217,119,87,0.35); border-radius: 8px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent-soft); border-color: var(--accent); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 96px 0 90px; text-align: left; }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(42px, 8.5vw, 78px);
+    line-height: 1.06;
+    letter-spacing: -0.015em;
+    max-width: 15ch;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero .sub {
+    margin-top: clamp(120px, 16vw, 160px);
+    max-width: 56ch;
+    font-size: 15.5px;
+    color: var(--ink-dim);
+  }
+  .cta-btn {
+    display: inline-block;
+    margin-top: 38px;
+    background: var(--accent);
+    color: #10131f;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 17px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 0 0 1px rgba(217,119,87,0.4), 0 8px 40px rgba(217,119,87,0.22);
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(217,119,87,0.55), 0 14px 52px rgba(217,119,87,0.32); }
+  .cta-note { margin-top: 14px; font-size: 12.5px; color: var(--ink-faint); }
+
+
+  /* ---------- hero cinematic background ---------- */
+  .hero { position: relative; }
+  .hero-bg {
+    position: absolute; top: -140px; left: 50%;
+    width: 100vw; margin-left: -50vw;
+    height: calc(100% + 220px);
+    overflow: hidden; z-index: -1;
+    pointer-events: none;
+  }
+  .hero-bg img {
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0.32;
+    transform-origin: center;
+    animation: heroDrift 45s ease-in-out infinite alternate;
+  }
+  @keyframes heroDrift {
+    from { transform: scale(1.04) translate(0, 0); }
+    to   { transform: scale(1.16) translate(-1.6%, -2.2%); }
+  }
+  .hero-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,14,26,0.55) 0%, rgba(10,14,26,0.35) 34%, rgba(10,14,26,0.72) 72%, #0A0E1A 100%),
+      linear-gradient(90deg, rgba(10,14,26,0.66) 0%, rgba(10,14,26,0.18) 60%, rgba(10,14,26,0.05) 100%);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bg img { animation: none; transform: scale(1.06); }
+  }
+
+  /* ---------- sections ---------- */
+  section { padding: 84px 0; border-top: 1px solid var(--line); }
+  .sec-head {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 34px;
+  }
+
+  /* ---------- pillars ---------- */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .card {
+    background: var(--glass);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px 24px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex; flex-direction: column;
+  }
+  .card .num { font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; }
+  .card h3 { margin-top: 16px; font-size: 17.5px; font-weight: 600; letter-spacing: -0.01em; }
+  .card p { margin-top: 0; font-size: 14px; color: var(--ink-dim); flex: 1; }
+  .card .stat {
+    margin-top: 20px; padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 14px; font-weight: 600; color: var(--accent);
+  }
+
+
+  /* ---------- pillar micro-previews + rules ---------- */
+  .card-top { display:flex; justify-content:space-between; align-items:flex-start; }
+  .preview {
+    width:72px; height:56px; border-radius:9px;
+    background:rgba(74,155,147,0.07);
+    border:1px solid rgba(74,155,147,0.28);
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    overflow:hidden; flex-shrink:0;
+  }
+  .preview svg { width:100%; height:100%; display:block; }
+  .pillar-rule { width:28px; height:2px; background:var(--accent); margin:10px 0; border:0; }
+
+  /* ---------- dashboard wow ---------- */
+  .dash-head {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(26px, 4.6vw, 38px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    max-width: 22ch;
+    margin-bottom: 44px;
+  }
+  .dash {
+    background: linear-gradient(180deg, rgba(250,250,245,0.045), rgba(250,250,245,0.015));
+    border: 1px solid rgba(250,250,245,0.12);
+    border-radius: 20px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 26px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+  }
+  .dash-bar {
+    display: flex; align-items: center; gap: 8px;
+    padding-bottom: 20px; margin-bottom: 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(250,250,245,0.15); }
+  .dash-bar .label { margin-left: auto; font-size: 11.5px; color: var(--ink-faint); display: flex; align-items: center; gap: 7px; }
+  .pulse { width: 7px; height: 7px; border-radius: 50%; background: #6BCB77; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .dash-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 26px; }
+  .metric-label { font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+  .metric-value {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(40px, 7vw, 58px);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-top: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .metric-value .cents { color: var(--accent); }
+  .metric-sub { margin-top: 6px; font-size: 12.5px; color: #6BCB77; font-weight: 500; }
+  .chart-wrap { margin-top: 26px; }
+  .chart-wrap svg { width: 100%; height: auto; display: block; }
+  .chart-line {
+    fill: none; stroke: var(--accent); stroke-width: 2.5;
+    stroke-linecap: round; stroke-linejoin: round;
+    stroke-dasharray: 600; stroke-dashoffset: 600;
+  }
+  .dash.play .chart-line { animation: draw 2.4s ease-out forwards 0.4s; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .chart-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 10.5px; color: var(--ink-faint); }
+
+  .feed-title { font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 14px; }
+  .feed-item {
+    background: rgba(250,250,245,0.03);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 13px 15px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  .dash.play .feed-item { opacity: 1; transform: none; }
+  .dash.play .feed-item:nth-child(2) { transition-delay: 0.7s; }
+  .dash.play .feed-item:nth-child(3) { transition-delay: 1.5s; }
+  .dash.play .feed-item:nth-child(4) { transition-delay: 2.3s; }
+  .feed-item .fi-top { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; font-weight: 500; }
+  .feed-item .fi-time { font-size: 11px; color: var(--ink-faint); font-weight: 400; }
+  .feed-item .fi-flow { margin-top: 6px; font-size: 11.5px; color: var(--ink-dim); line-height: 1.5; }
+  .tag {
+    display: inline-block; margin-top: 8px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid rgba(217,119,87,0.25);
+    padding: 3px 8px; border-radius: 20px;
+  }
+
+
+  /* ---------- toggle (see the difference) ---------- */
+  .tg-sub { font-family:'Fraunces',serif; font-weight:500; font-size:clamp(22px,3.8vw,30px); letter-spacing:-0.01em; margin-bottom:30px; }
+  .tg-switch {
+    display:inline-flex; position:relative; background:var(--glass);
+    border:1px solid rgba(250,250,245,0.14); border-radius:14px; padding:5px;
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); margin-bottom:24px;
+  }
+  .tg-switch .tg-ind {
+    position:absolute; top:5px; bottom:5px; left:5px; width:calc(50% - 5px);
+    background:var(--accent); border-radius:10px;
+    box-shadow:0 4px 22px rgba(217,119,87,0.35);
+    transition:transform 0.28s cubic-bezier(0.4,0,0.2,1);
+  }
+  .tg-switch.on .tg-ind { transform:translateX(100%); }
+  .tg-switch button {
+    position:relative; z-index:1; background:none; border:0; cursor:pointer;
+    font-family:'Inter',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em;
+    padding:11px 22px; color:var(--ink-dim); transition:color 0.25s; border-radius:10px;
+  }
+  .tg-switch button.active { color:#10131f; }
+  .tg-switch button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+  .tg-stack { display:grid; }
+  .tg-view {
+    grid-area:1/1; border-radius:20px; padding:24px;
+    border:1px solid var(--line);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    opacity:0; visibility:hidden; transform:translateY(6px);
+    transition:opacity 0.4s, transform 0.4s, visibility 0.4s;
+  }
+  .tg-view.show { opacity:1; visibility:visible; transform:none; }
+  .tg-view.bad { background:linear-gradient(180deg, rgba(229,100,92,0.055), rgba(229,100,92,0.015)); }
+  .tg-view.good { background:linear-gradient(180deg, rgba(107,203,119,0.05), rgba(107,203,119,0.012)); }
+  .tg-head { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding-bottom:18px; margin-bottom:18px; border-bottom:1px solid var(--line); }
+  .tg-rev { font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); }
+  .tg-rev b { display:block; font-family:'Fraunces',serif; font-weight:600; font-size:30px; color:var(--ink); letter-spacing:-0.01em; margin-top:4px; }
+  .tg-badge { font-size:13px; font-weight:600; padding:7px 14px; border-radius:10px; }
+  .tg-badge.leak { color:#F0857D; background:rgba(229,100,92,0.12); border:1px solid rgba(229,100,92,0.3); }
+  .tg-badge.gain { color:#8FDD97; background:rgba(107,203,119,0.1); border:1px solid rgba(107,203,119,0.28); }
+  .tg-row {
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    background:rgba(250,250,245,0.028); border:1px solid var(--line);
+    border-radius:11px; padding:11px 14px; margin-bottom:8px; font-size:12.5px;
+  }
+  .tg-row .tr-main { color:var(--ink-dim); line-height:1.45; }
+  .tg-row .tr-main b { color:var(--ink); font-weight:500; }
+  .tg-dot { flex-shrink:0; width:8px; height:8px; border-radius:50%; }
+  .tg-dot.r { background:#E5645C; box-shadow:0 0 10px rgba(229,100,92,0.5); }
+  .tg-dot.g { background:#6BCB77; box-shadow:0 0 10px rgba(107,203,119,0.45); }
+  .tg-crew { margin-top:16px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px; }
+  .tg-caption { margin-top:22px; font-size:15px; color:var(--ink-dim); font-style:italic; min-height:1.6em; }
+  .tg-caption b { color:var(--ink); font-weight:500; font-style:normal; }
+
+  /* ---------- timeline ---------- */
+  .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; position: relative; }
+  .t-node { position: relative; padding-top: 26px; }
+  .t-node::before {
+    content: ""; position: absolute; top: 0; left: 0; right: -18px; height: 1px;
+    background: var(--line);
+  }
+  .t-node:last-child::before { right: 0; }
+  .t-node::after {
+    content: ""; position: absolute; top: -4px; left: 0;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 14px rgba(217,119,87,0.6);
+  }
+  .t-node .t-day { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+  .t-node p { margin-top: 12px; font-size: 14px; color: var(--ink-dim); }
+  .t-node p b { color: var(--ink); font-weight: 500; }
+
+  /* ---------- guarantee ---------- */
+  .guarantee { padding: 150px 0; text-align: center; }
+  .guarantee h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(25px, 4.4vw, 40px);
+    line-height: 1.32;
+    letter-spacing: -0.01em;
+    max-width: 26ch;
+    margin: 0 auto;
+  }
+  .guarantee h2 em { font-style: normal; color: var(--accent); }
+  .guarantee .kicker-line {
+    margin-top: 42px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(17px, 2.6vw, 21px);
+    color: var(--ink-dim);
+  }
+
+  /* ---------- cohort ---------- */
+  .cohort p { max-width: 62ch; font-size: 15.5px; color: var(--ink-dim); }
+  .cohort p b { color: var(--ink); font-weight: 500; }
+  .cohort .truth { margin-top: 22px; font-size: 13px; color: var(--ink-faint); }
+
+  /* ---------- next step ---------- */
+  .next { text-align: center; padding: 110px 0; }
+  .next p { max-width: 54ch; margin: 0 auto; font-size: 15.5px; color: var(--ink-dim); }
+
+  /* ---------- footer ---------- */
+  footer { border-top: 1px solid var(--line); padding: 34px 0 44px; }
+  .foot-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--ink-faint); }
+  .foot-inner a { color: var(--ink-dim); text-decoration: none; }
+  .foot-inner a:hover { color: var(--accent); }
+
+  /* ---------- reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .dash.play .chart-line { animation: none; stroke-dashoffset: 0; }
+    .feed-item, .dash.play .feed-item { opacity: 1; transform: none; transition: none; }
+    .pulse { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- mobile ---------- */
+  @media (max-width: 760px) {
+    .hero { padding: 66px 0 70px; }
+    .cta-btn { display: block; text-align: center; font-size: 15.5px; padding: 17px 18px; }
+    section { padding: 64px 0; }
+    .pillars, .invest, .timeline { grid-template-columns: 1fr; }
+    .dash-grid { grid-template-columns: 1fr; }
+    .dash { padding: 20px 16px; }
+    .t-node { padding-top: 0; padding-left: 24px; }
+    .t-node::before { top: 0; bottom: -18px; left: 4px; right: auto; width: 1px; height: auto; }
+    .t-node:last-child::before { bottom: 0; }
+    .t-node::after { top: 4px; left: 0; }
+    .guarantee { padding: 100px 0; }
+    .next { padding: 80px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="wordmark" href="#" aria-label="SOVRN Growth">
+      <svg width="188" height="26" viewBox="0 0 188 26" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <path d="M2 17 L11 6 L20 17" stroke="#D97757" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M7 17 L11 12.2 L15 17" stroke="#FAFAF5" stroke-opacity="0.55" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <text x="30" y="18.5" font-family="Fraunces, serif" font-weight="600" font-size="16.5" letter-spacing="0.5" fill="#FAFAF5">SOVRN GROWTH</text>
+      </svg>
+    </a>
+    <a class="nav-cta" href="#book">Book the Audit</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- SECTION 1 — HERO -->
+  <header class="hero">
+    <div class="hero-bg" aria-hidden="true"><img src="assets/hero-roofs.jpg" alt="" loading="eager" onerror="this.parentNode.style.display='none'"></div>
+    <h1>Your phone is leaking <em>$30–80K</em> a month.</h1>
+    <p class="sub">Most Texas roofers your size lose $30–80K every month to missed calls, slow lead response, and insurance supplements nobody documented. You can't see it because nobody's measuring it. I install the system that catches it — and my fee comes out of money you're not seeing today.</p>
+    <a class="cta-btn" href="#book">Book Your Free Lost Revenue Audit</a>
+    <p class="cta-note">45 minutes. Your numbers, not industry averages. No obligation.</p>
+  </header>
+
+  <!-- SECTION 2 — WHAT GETS INSTALLED -->
+  <section class="reveal">
+    <div class="sec-head">What Gets Installed</div>
+    <div class="pillars">
+      <div class="card">
+        <div class="card-top"><div class="num">01</div><div class="preview" aria-hidden="true"><svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+<rect x="8" y="6" width="24" height="44" rx="4" fill="none" stroke="rgba(250,250,245,0.35)" stroke-width="1.2"/>
+<rect x="12" y="11" width="16" height="2.5" rx="1.25" fill="rgba(250,250,245,0.25)"/>
+<rect x="36" y="12" width="30" height="14" rx="4" fill="rgba(74,155,147,0.16)" stroke="#4A9B93" stroke-width="0.8"/>
+<text x="39" y="18" font-size="4.6" fill="rgba(250,250,245,0.85)">6:47 PM</text>
+<text x="39" y="23.5" font-size="4.2" fill="rgba(250,250,245,0.55)">New lead</text>
+<rect x="36" y="30" width="30" height="14" rx="4" fill="rgba(74,155,147,0.26)" stroke="#4A9B93" stroke-width="0.8"/>
+<text x="39" y="36" font-size="4.4" fill="rgba(250,250,245,0.9)">6:47:47</text>
+<text x="39" y="41.5" font-size="4" fill="rgba(250,250,245,0.6)">Response fired</text>
+<circle cx="63" cy="9" r="2.4" fill="#4A9B93"/>
+</svg></div></div>
+        <h3>Speed-to-Lead Capture</h3>
+        <hr class="pillar-rule">
+        <p>Every lead — calls, web, referrals, Facebook — hits one pipeline. Under 60 seconds to personalized response. Auto-qualified. Booked to your calendar.</p>
+        <div class="stat">Recovers $15–40K/month.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><div class="num">02</div><div class="preview" aria-hidden="true"><svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+<rect x="16" y="5" width="40" height="46" rx="3.5" fill="rgba(250,250,245,0.04)" stroke="rgba(250,250,245,0.3)" stroke-width="1"/>
+<text x="20" y="13" font-size="4.6" font-weight="600" fill="rgba(250,250,245,0.85)">Supplement</text>
+<text x="20" y="18.5" font-size="4.6" font-weight="600" fill="rgba(250,250,245,0.85)">Worksheet</text>
+<path d="M21 25.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+<text x="28" y="27.5" font-size="4.2" fill="rgba(250,250,245,0.6)">Code upgrade</text>
+<path d="M21 32.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+<text x="28" y="34.5" font-size="4.2" fill="rgba(250,250,245,0.6)">Ridge vent</text>
+<path d="M21 39.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+<text x="28" y="41.5" font-size="4.2" fill="rgba(250,250,245,0.6)">Ice &amp; water</text>
+<rect x="20" y="44.5" width="18" height="6" rx="3" fill="rgba(74,155,147,0.22)" stroke="#4A9B93" stroke-width="0.7"/>
+<text x="23" y="49" font-size="4.2" font-weight="600" fill="#4A9B93">+$3,200</text>
+</svg></div></div>
+        <h3>Insurance Supplement Automation</h3>
+        <hr class="pillar-rule">
+        <p>Every insurance job — full supplement documentation. Storm verification. Missed line items. Carrier letters. HB 2102 compliance.</p>
+        <div class="stat">Recovers $2–5K per job.</div>
+      </div>
+      <div class="card">
+        <div class="card-top"><div class="num">03</div><div class="preview" aria-hidden="true"><svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+<polyline points="8,44 20,40 30,34 42,28 52,18 62,12" fill="none" stroke="#4A9B93" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="8" cy="44" r="1.4" fill="rgba(250,250,245,0.4)"/>
+<circle cx="20" cy="40" r="1.4" fill="rgba(250,250,245,0.4)"/>
+<circle cx="30" cy="34" r="1.4" fill="rgba(250,250,245,0.4)"/>
+<circle cx="42" cy="28" r="1.4" fill="rgba(250,250,245,0.4)"/>
+<circle cx="52" cy="18" r="1.4" fill="rgba(250,250,245,0.4)"/>
+<circle cx="62" cy="12" r="2.6" fill="#D97757"/>
+<text x="10" y="12" font-size="5" font-weight="600" fill="rgba(250,250,245,0.85)">$44K attributed</text>
+</svg></div></div>
+        <h3>Attribution Dashboard</h3>
+        <hr class="pillar-rule">
+        <p>Every dollar tagged and tracked in real time. Weekly reports auto-generated. The dashboard is yours forever.</p>
+        <div class="stat">Proves every dollar. No trust required.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — WOW MOMENT -->
+  <section class="reveal">
+    <h2 class="dash-head">This is what your revenue looks like when it's being measured.</h2>
+    <div class="dash" id="dash">
+      <div class="dash-bar">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="label"><span class="pulse"></span> Live — Attribution Dashboard</div>
+      </div>
+      <div class="dash-grid">
+        <div>
+          <div class="metric-label">This Month — Attributable Revenue</div>
+          <div class="metric-value" id="counter">$0</div>
+          <div class="metric-sub">▲ 4 jobs attributed · updated 12 seconds ago</div>
+          <div class="chart-wrap">
+            <svg viewBox="0 0 460 150" aria-hidden="true">
+              <defs>
+                <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#D97757" stop-opacity="0.22"/>
+                  <stop offset="100%" stop-color="#D97757" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,132 C40,128 70,120 105,112 C140,104 165,96 205,84 C245,72 275,64 315,48 C355,32 400,24 460,12 L460,150 L0,150 Z" fill="url(#fade)"/>
+              <path class="chart-line" d="M0,132 C40,128 70,120 105,112 C140,104 165,96 205,84 C245,72 275,64 315,48 C355,32 400,24 460,12"/>
+            </svg>
+            <div class="chart-labels"><span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span><span>Week 5</span><span>Week 6</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="feed-title">Live Capture Feed</div>
+          <div class="feed-item">
+            <div class="fi-top"><span>Inbound call — Round Rock</span><span class="fi-time">6:47 PM</span></div>
+            <div class="fi-flow">Lead captured 6:47 PM → Response fired 6:47:53 PM → Booked 6:52 PM</div>
+            <span class="tag">ATTRIBUTABLE REVENUE · $16,400</span>
+          </div>
+          <div class="feed-item">
+            <div class="fi-top"><span>Web form — Pflugerville</span><span class="fi-time">7:12 PM</span></div>
+            <div class="fi-flow">Lead captured 7:12 PM → Response fired 7:12:41 PM → Qualified: insurance</div>
+            <span class="tag">SUPPLEMENT FLAGGED · +$3,200</span>
+          </div>
+          <div class="feed-item">
+            <div class="fi-top"><span>Missed call recovered — Cedar Park</span><span class="fi-time">8:03 PM</span></div>
+            <div class="fi-flow">After-hours call → SMS fired 8:03:22 PM → Inspection booked 8:09 PM</div>
+            <span class="tag">ATTRIBUTABLE REVENUE · $14,900</span>
+          </div>
+          <div class="feed-item">
+            <div class="fi-top"><span>Facebook lead — Georgetown</span><span class="fi-time">8:31 PM</span></div>
+            <div class="fi-flow">Lead captured 8:31 PM → Response fired 8:31:47 PM → Urgency: storm, 72-hr window</div>
+            <span class="tag">QUALIFIED · PIPELINE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECTION 4 — THE TOGGLE -->
+  <section class="reveal">
+    <div class="sec-head">See the difference.</div>
+    <h2 class="tg-sub">Same firm. Same leads. Two realities.</h2>
+    <div class="tg-switch" id="tgSwitch" role="tablist" aria-label="Compare with and without SOVRN">
+      <div class="tg-ind" aria-hidden="true"></div>
+      <button id="tgBad" class="active" role="tab" aria-selected="true">WITHOUT SOVRN</button>
+      <button id="tgGood" role="tab" aria-selected="false">WITH SOVRN</button>
+    </div>
+    <div class="tg-stack">
+      <div class="tg-view bad show" id="viewBad">
+        <div class="tg-head">
+          <div class="tg-rev">This Month<b>$120,000</b></div>
+          <div class="tg-badge leak">−$47,000 leaked</div>
+        </div>
+        <div class="tg-row"><span class="tr-main"><b>Voicemail from 6:47 PM</b> — no callback</span><span class="tg-dot r"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Voicemail from 8:03 PM</b> — no callback</span><span class="tg-dot r"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Missed call, 12:22 PM</b> — rang out during lunch</span><span class="tg-dot r"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Facebook message from 3 days ago</b> — unread</span><span class="tg-dot r"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Web form, Sunday 9:14 AM</b> — first reply Monday afternoon</span><span class="tg-dot r"></span></div>
+        <div class="tg-crew">Crew Status</div>
+        <div class="tg-row"><span class="tr-main">Mike — <b>6 callbacks overdue</b></span><span class="tg-dot r"></span></div>
+        <div class="tg-row"><span class="tr-main">Danny — <b>4 estimates behind</b></span><span class="tg-dot r"></span></div>
+      </div>
+      <div class="tg-view good" id="viewGood">
+        <div class="tg-head">
+          <div class="tg-rev">This Month<b>$167,000</b></div>
+          <div class="tg-badge gain">+$47,000 recovered</div>
+        </div>
+        <div class="tg-row"><span class="tr-main"><b>6:47 PM lead</b> → response fired in 47 sec → inspection booked</span><span class="tg-dot g"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>8:03 PM lead</b> → response fired in 31 sec → qualified insurance</span><span class="tg-dot g"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>12:22 PM call</b> → answered by system → estimate scheduled</span><span class="tg-dot g"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Facebook lead</b> → responded in 52 sec → in pipeline</span><span class="tg-dot g"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Sunday web form</b> → responded in 38 sec → Monday 8 AM inspection</span><span class="tg-dot g"></span></div>
+        <div class="tg-crew">Crew Status</div>
+        <div class="tg-row"><span class="tr-main">Mike — <b>on schedule</b></span><span class="tg-dot g"></span></div>
+        <div class="tg-row"><span class="tr-main">Danny — <b>on schedule</b></span><span class="tg-dot g"></span></div>
+      </div>
+    </div>
+    <p class="tg-caption" id="tgCaption">This is happening at your firm right now. <b>You just can't see it.</b></p>
+  </section>
+
+  <!-- SECTION 4 — HOW IT WORKS -->
+  <section class="reveal">
+    <div class="sec-head">How It Works</div>
+    <div class="timeline">
+      <div class="t-node">
+        <div class="t-day">Day 1–14</div>
+        <p><b>Speed-to-Lead system + Attribution Dashboard go live.</b> You see leads captured and responded to in real time.</p>
+      </div>
+      <div class="t-node">
+        <div class="t-day">Day 7</div>
+        <p><b>Sales team enablement kit sent to your reps.</b> Every rep gets a personal commission calculator, a one-page cheat sheet for their truck, and a direct text line to me for questions. Zero live meetings required. Reps see their own upside and adopt on their own.</p>
+      </div>
+      <div class="t-node">
+        <div class="t-day">Day 15–30</div>
+        <p><b>Insurance Supplement Automation activates</b> on your next insurance jobs.</p>
+      </div>
+      <div class="t-node">
+        <div class="t-day">Day 60</div>
+        <p><b>We meet. Review actual results together.</b> If the system hasn't put at least one extra roof on your books, you get every dollar of setup back and keep the entire system.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 — GUARANTEE -->
+  <section class="guarantee reveal">
+    <h2>If the system doesn't put at least one extra roof — <em>$15,000 in attributable revenue</em> — on your books within 60 days, I refund the entire setup fee and you keep the dashboard, the code, everything.</h2>
+    <p class="kicker-line">Risk-free by design.</p>
+  </section>
+
+
+
+  <!-- SECTION 7 — FOUNDING COHORT -->
+  <section class="reveal cohort">
+    <div class="sec-head">Founding Cohort — 3 Texas Clients</div>
+    <p>I build every install myself and I physically can't do more than three at once and do it right. Founding clients get <b>preferred terms</b> and <b>lifetime access to future modules I build</b>. In exchange, I get a case study with your name on it. Details discussed on the audit call.</p>
+    <p class="truth">No countdown timers. No "spots filling fast." Just the truth.</p>
+  </section>
+
+  <!-- SECTION 8 — NEXT STEP -->
+  <section class="next reveal" id="book">
+    <div class="sec-head">Next Step</div>
+    <p>Book a free 45-minute Lost Revenue Audit. I'll pull your actual call and lead data and we'll count the leak together — with your numbers, not industry averages. If it doesn't make sense, we shake hands and move on.</p>
+    <a class="cta-btn" id="calendly-cta" href="#">Book Your Free Lost Revenue Audit</a>
+    <p class="cta-note">Or call/text 925-818-5264</p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>Elijah Pitts &nbsp;|&nbsp; SOVRN Growth</div>
+    <div><a href="tel:9258185264">925-818-5264</a> &nbsp;|&nbsp; <a href="mailto:elijah@sovrngrowth.com">elijah@sovrngrowth.com</a></div>
+  </div>
+</footer>
+
+<script>
+  // ======= CONFIG: paste your Calendly URL here =======
+  const CALENDLY_URL = "https://calendly.com/elijah-sovrngrowth/30min";
+  // ====================================================
+  (function(){
+    const cta = document.getElementById('calendly-cta');
+    const navCta = document.querySelector('.nav-cta');
+    const heroCta = document.querySelector('.hero .cta-btn');
+    if (CALENDLY_URL) {
+      [cta, navCta, heroCta].forEach(a => { a.href = CALENDLY_URL; a.target = "_blank"; a.rel = "noopener"; });
+    }
+  })();
+
+  // Scroll reveals
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Dashboard animation
+  const dash = document.getElementById('dash');
+  const counter = document.getElementById('counter');
+  const TARGET = 44500;
+  let played = false;
+
+  function fmt(n) {
+    return '$' + Math.floor(n).toLocaleString('en-US');
+  }
+  function runCounter() {
+    if (reduce) { counter.textContent = fmt(TARGET); return; }
+    const dur = 3000, start = performance.now();
+    function tick(now) {
+      const t = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      counter.textContent = fmt(TARGET * eased);
+      if (t < 1) requestAnimationFrame(tick);
+      else counter.textContent = fmt(TARGET);
+    }
+    requestAnimationFrame(tick);
+  }
+  const dashIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !played) {
+        played = true;
+        dash.classList.add('play');
+        runCounter();
+        if (!reduce) setTimeout(liveBump, 7000);
+        dashIO.unobserve(dash);
+      }
+    });
+  }, { threshold: 0.35 });
+  dashIO.observe(dash);
+
+  // A new lead lands while they're watching — the dashboard is alive.
+  function liveBump() {
+    const feed = document.querySelector('.dash-grid > div:last-child');
+    const item = document.createElement('div');
+    item.className = 'feed-item';
+    item.innerHTML = '<div class="fi-top"><span>Inbound call — Hutto</span><span class="fi-time">just now</span></div>' +
+      '<div class="fi-flow">Lead captured → Response fired in 41s → Inspection booked</div>' +
+      '<span class="tag">ATTRIBUTABLE REVENUE · $12,400</span>';
+    feed.insertBefore(item, feed.children[1]);
+    requestAnimationFrame(() => requestAnimationFrame(() => { item.style.opacity = 1; item.style.transform = 'none'; }));
+    // counter ticks up with the new job
+    const from = 44500, to = 56900, dur = 1400, start = performance.now();
+    function tick(now) {
+      const t = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      counter.textContent = fmt(from + (to - from) * eased);
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    const sub = document.querySelector('.metric-sub');
+    if (sub) sub.textContent = '▲ 5 jobs attributed · updated just now';
+  }
+
+  // Toggle: two realities
+  (function(){
+    const sw = document.getElementById('tgSwitch');
+    const bad = document.getElementById('tgBad'), good = document.getElementById('tgGood');
+    const vb = document.getElementById('viewBad'), vg = document.getElementById('viewGood');
+    const cap = document.getElementById('tgCaption');
+    function setState(withSovrn) {
+      sw.classList.toggle('on', withSovrn);
+      bad.classList.toggle('active', !withSovrn);
+      good.classList.toggle('active', withSovrn);
+      bad.setAttribute('aria-selected', String(!withSovrn));
+      good.setAttribute('aria-selected', String(withSovrn));
+      vb.classList.toggle('show', !withSovrn);
+      vg.classList.toggle('show', withSovrn);
+      cap.innerHTML = withSovrn
+        ? 'This is what your firm looks like <b>30 days after install.</b>'
+        : 'This is happening at your firm right now. <b>You just can\'t see it.</b>';
+    }
+    bad.addEventListener('click', () => setState(false));
+    good.addEventListener('click', () => setState(true));
+  })();
+</script>
+</body>
+</html>
