@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SOVRN Growth — Revenue Recovery for Texas Roofers</title>
+<title>SOVRN Growth — Recover the Bids You Quoted and Never Collected</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0E1A'/%3E%3Cpath d='M6 20 L16 9 L26 20' stroke='%23D97757' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<meta name="description" content="Stop leaking $30–80K a month to missed calls that die in voicemail. Sub-60-second AI response and real-time attribution for Texas roofing companies. Free 15-minute fit call.">
-<meta property="og:title" content="Your phone is leaking $30–80K a month.">
-<meta property="og:description" content="I only get paid when I catch it. Revenue recovery for Texas roofers. Free 15-minute fit call.">
+<meta name="description" content="You climbed the roof. You wrote the number. Then nothing. I recover the bids Texas roofers quoted and never collected — paid only on what I bring back. Free one-pager in 24 hours.">
+<meta property="og:title" content="How many bids did you quote last year that just went quiet?">
+<meta property="og:description" content="That quoted work is still sitting in your system — and I only get paid on what I bring back. Free one-pager in 24 hours.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0A0E1A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -276,6 +276,54 @@
   }
 
 
+
+  /* ---------- audit one-pager showcase ---------- */
+  .cards-freebie { margin-top: 22px; font-size: 13px; color: var(--ink-faint); }
+  .sample-chip {
+    display: inline-block; font-size: 9.5px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-faint);
+    border: 1px solid var(--line); border-radius: 20px; padding: 3px 10px;
+  }
+  .audit-wrap { margin-top: 40px; perspective: 1400px; }
+  .audit-doc {
+    background: #FAFAF7; color: #10182B; border-radius: 12px;
+    padding: 26px 26px 20px; max-width: 640px; margin: 0 auto;
+    transform: rotate(-1.6deg);
+    box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 0 60px rgba(217,119,87,0.14);
+  }
+  .ad-brand { display: flex; justify-content: space-between; align-items: center; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8878; }
+  .ad-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; margin-top: 10px; color: #10182B; }
+  .ad-sub { font-size: 10.5px; color: #6B7280; margin-top: 3px; }
+  .ad-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 18px; }
+  .ad-stat { border-top: 2.5px solid #0A1628; padding-top: 8px; }
+  .ad-stat b { display: block; font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px; color: #C4552F; line-height: 1.15; }
+  .ad-stat span { display: block; font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B7280; margin-top: 3px; line-height: 1.4; }
+  .ad-table { margin-top: 18px; position: relative; }
+  .ad-table .adt-head { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #10182B; padding-bottom: 6px; border-bottom: 1.5px solid #10182B; }
+  .adt-row { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid #E4E2DA; font-size: 10px; color: #374151; }
+  .adt-row .r-cust { font-weight: 600; color: #10182B; flex: 0 0 92px; }
+  .adt-row .r-amt { font-weight: 700; color: #10182B; flex: 0 0 56px; }
+  .adt-row .r-why { flex: 1; font-style: italic; color: #6B7280; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .adt-row .r-score { flex: 0 0 24px; text-align: right; font-weight: 700; color: #C4552F; }
+  .adt-fade { position: absolute; left: 0; right: 0; bottom: 0; height: 54px; background: linear-gradient(180deg, rgba(250,250,247,0), #FAFAF7); }
+  .adt-more { font-size: 9.5px; color: #8B8878; padding-top: 8px; font-style: italic; }
+  .audit-callouts { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 26px; }
+  .audit-callouts .co {
+    font-size: 12px; color: var(--ink-dim); background: var(--glass);
+    border: 1px solid rgba(217,119,87,0.3); border-radius: 12px; padding: 9px 14px;
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+  .audit-callouts .co b { color: var(--accent); font-weight: 600; }
+  .subtraction { max-width: 62ch; margin: 44px auto 0; }
+  .subtraction p { font-size: 15px; line-height: 1.7; color: var(--ink-dim); }
+  .subtraction p b { color: var(--ink); font-weight: 600; }
+  .subtraction .kill-line { margin-top: 18px; font-family: 'Fraunces', serif; font-style: italic; font-size: 16.5px; color: var(--ink); }
+  @media (max-width: 760px) {
+    .ad-stats { grid-template-columns: repeat(2, 1fr); }
+    .audit-doc { transform: rotate(-1deg); padding: 20px 16px 16px; }
+    .adt-row .r-cust { flex-basis: 76px; }
+  }
+
   /* ---------- toggle (see the difference) ---------- */
   .tg-sub { font-family:'Fraunces',serif; font-weight:500; font-size:clamp(22px,3.8vw,30px); letter-spacing:-0.01em; margin-bottom:30px; }
   .tg-switch {
@@ -329,7 +377,7 @@
   .tg-caption b { color:var(--ink); font-weight:500; font-style:normal; }
 
   /* ---------- timeline ---------- */
-  .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; position: relative; }
+  .timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; position: relative; }
   .t-node { position: relative; padding-top: 26px; }
   .t-node::before {
     content: ""; position: absolute; top: 0; left: 0; right: -18px; height: 1px;
@@ -442,15 +490,14 @@
   <!-- SECTION 1 — HERO -->
   <header class="hero">
     <div class="hero-bg" aria-hidden="true"><img src="assets/hero-roofs.jpg" alt="" loading="eager" onerror="this.parentNode.style.display='none'"></div>
-    <h1>Your phone is leaking <em>$30–80K</em> a month.</h1>
-    <p class="sub">Most Texas roofers your size lose $30–80K every month to missed calls that die in voicemail — and have no dashboard that proves what the phone leaked. I install the sub-60-second AI response and the real-time attribution dashboard that catches both. You see every dollar the system produces, tagged and tracked, forever.</p>
+    <h1>How many bids did you quote last year that just <em>went quiet?</em></h1>
+    <p class="sub">You climbed the roof. You wrote the number. Then nothing. That quoted work is still sitting in your system — and I only get paid on what I bring back.</p>
     <ul class="hero-points">
-      <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><b>Paid on results.</b> My fee comes out of money you're not seeing today — never your baseline.</li>
-      <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><b>One operator, no account team.</b> You text me. I answer.</li>
+      <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></span><b>Your bids, your data.</b> I work money you already paid to earn.</li>
       <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></span><b>You keep everything.</b> The dashboard, the code, the system — forever, even if you walk.</li>
     </ul>
-    <a class="cta-btn" href="#book">Book Your 15-Min Fit Call</a>
-    <p class="cta-note">15 minutes. Fit call, not a pitch. If we're not right for you, I'll say so.</p>
+    <a class="cta-btn" href="#book">Show me what I quoted and never collected</a>
+    <p class="cta-note">Free. One page. 24 hours. Send your bids however you've got them.</p>
   </header>
 
   <!-- SECTION 2 — WHAT GETS INSTALLED -->
@@ -459,39 +506,39 @@
     <div class="pillars">
       <div class="card">
         <div class="card-top"><div class="num">01</div><div class="preview" aria-hidden="true"><svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
-<rect x="8" y="6" width="24" height="44" rx="4" fill="none" stroke="rgba(250,250,245,0.35)" stroke-width="1.2"/>
-<rect x="12" y="11" width="16" height="2.5" rx="1.25" fill="rgba(250,250,245,0.25)"/>
-<rect x="36" y="12" width="30" height="14" rx="4" fill="rgba(74,155,147,0.16)" stroke="#4A9B93" stroke-width="0.8"/>
-<text x="39" y="18" font-size="4.6" fill="rgba(250,250,245,0.85)">6:47 PM</text>
-<text x="39" y="23.5" font-size="4.2" fill="rgba(250,250,245,0.55)">New lead</text>
-<rect x="36" y="30" width="30" height="14" rx="4" fill="rgba(74,155,147,0.26)" stroke="#4A9B93" stroke-width="0.8"/>
-<text x="39" y="36" font-size="4.4" fill="rgba(250,250,245,0.9)">6:47:47</text>
-<text x="39" y="41.5" font-size="4" fill="rgba(250,250,245,0.6)">Response fired</text>
-<circle cx="63" cy="9" r="2.4" fill="#4A9B93"/>
+<rect x="16" y="5" width="40" height="46" rx="3.5" fill="rgba(250,250,245,0.04)" stroke="rgba(250,250,245,0.3)" stroke-width="1"/>
+<text x="20" y="13" font-size="4.6" font-weight="600" fill="rgba(250,250,245,0.85)">Your Bids —</text>
+<text x="20" y="18.5" font-size="4.6" font-weight="600" fill="rgba(250,250,245,0.85)">One Page</text>
+<path d="M21 25.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+<text x="28" y="27.5" font-size="4.2" fill="rgba(250,250,245,0.6)">255 dead bids</text>
+<path d="M21 32.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+<text x="28" y="34.5" font-size="4.2" fill="rgba(250,250,245,0.6)">$4.15M quoted</text>
+<path d="M21 39.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+<text x="28" y="41.5" font-size="4.2" fill="rgba(250,250,245,0.6)">Top 20 ranked</text>
+<rect x="20" y="44.5" width="18" height="6" rx="3" fill="rgba(74,155,147,0.22)" stroke="#4A9B93" stroke-width="0.7"/>
+<text x="23" y="49" font-size="4.2" font-weight="600" fill="#4A9B93">FREE · 24H</text>
 </svg></div></div>
-        <h3>Speed-to-Lead Capture</h3>
+        <h3>I find the money first.</h3>
         <hr class="pillar-rule">
-        <p>Every lead — calls, web, referrals, Facebook — hits one pipeline. Under 60 seconds to personalized response. Auto-qualified. Booked to your calendar.</p>
-        <div class="stat">Recovers $15–40K/month.</div>
+        <p>Send me your bids from the last year — CRM export, spreadsheet, or just photos of the pile on your desk. Whatever you've got, however it comes. In 24 hours I send back one page: the total dollar amount you quoted and never collected, and the 20 jobs most likely to still come back.</p>
+        <div class="stat">Free. One page. 24 hours.</div>
       </div>
       <div class="card">
         <div class="card-top"><div class="num">02</div><div class="preview" aria-hidden="true"><svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
-<rect x="16" y="5" width="40" height="46" rx="3.5" fill="rgba(250,250,245,0.04)" stroke="rgba(250,250,245,0.3)" stroke-width="1"/>
-<text x="20" y="13" font-size="4.6" font-weight="600" fill="rgba(250,250,245,0.85)">Supplement</text>
-<text x="20" y="18.5" font-size="4.6" font-weight="600" fill="rgba(250,250,245,0.85)">Worksheet</text>
-<path d="M21 25.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
-<text x="28" y="27.5" font-size="4.2" fill="rgba(250,250,245,0.6)">Code upgrade</text>
-<path d="M21 32.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
-<text x="28" y="34.5" font-size="4.2" fill="rgba(250,250,245,0.6)">Ridge vent</text>
-<path d="M21 39.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
-<text x="28" y="41.5" font-size="4.2" fill="rgba(250,250,245,0.6)">Ice &amp; water</text>
-<rect x="20" y="44.5" width="18" height="6" rx="3" fill="rgba(74,155,147,0.22)" stroke="#4A9B93" stroke-width="0.7"/>
-<text x="23" y="49" font-size="4.2" font-weight="600" fill="#4A9B93">+$3,200</text>
+<rect x="8" y="6" width="24" height="44" rx="4" fill="none" stroke="rgba(250,250,245,0.35)" stroke-width="1.2"/>
+<rect x="12" y="11" width="16" height="2.5" rx="1.25" fill="rgba(250,250,245,0.25)"/>
+<rect x="36" y="12" width="30" height="14" rx="4" fill="rgba(74,155,147,0.16)" stroke="#4A9B93" stroke-width="0.8"/>
+<text x="39" y="18" font-size="4.6" fill="rgba(250,250,245,0.85)">Bid #217</text>
+<text x="39" y="23.5" font-size="4.2" fill="rgba(250,250,245,0.55)">47 days cold</text>
+<rect x="36" y="30" width="30" height="14" rx="4" fill="rgba(74,155,147,0.26)" stroke="#4A9B93" stroke-width="0.8"/>
+<text x="39" y="36" font-size="4.4" fill="rgba(250,250,245,0.9)">Re-engaged</text>
+<text x="39" y="41.5" font-size="4" fill="rgba(250,250,245,0.6)">Reply: 7:02 PM</text>
+<circle cx="63" cy="9" r="2.4" fill="#4A9B93"/>
 </svg></div></div>
-        <h3>Insurance Supplement Automation</h3>
+        <h3>I chase the ones that are still alive.</h3>
         <hr class="pillar-rule">
-        <p>Every insurance job — full supplement documentation. Storm verification. Missed line items. Carrier letters. HB 2102 compliance.</p>
-        <div class="stat">Recovers $2–5K per job.</div>
+        <p>Every dead bid ranked by what the notes actually say, job size, how cold it's gone, and whether we can still reach them. The corpses get thrown out. The living get worked — multi-channel, human-reviewed. Not a blast.</p>
+        <div class="stat">Recovers work you already paid to earn.</div>
       </div>
       <div class="card">
         <div class="card-top"><div class="num">03</div><div class="preview" aria-hidden="true"><svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
@@ -502,29 +549,72 @@
 <circle cx="42" cy="28" r="1.4" fill="rgba(250,250,245,0.4)"/>
 <circle cx="52" cy="18" r="1.4" fill="rgba(250,250,245,0.4)"/>
 <circle cx="62" cy="12" r="2.6" fill="#D97757"/>
-<text x="10" y="12" font-size="5" font-weight="600" fill="rgba(250,250,245,0.85)">$44K attributed</text>
+<text x="10" y="12" font-size="5" font-weight="600" fill="rgba(250,250,245,0.85)">$38K recovered</text>
 </svg></div></div>
-        <h3>Attribution Dashboard</h3>
+        <h3>Every recovered dollar, tagged to the bid it came from.</h3>
         <hr class="pillar-rule">
-        <p>Every dollar tagged and tracked in real time. Weekly reports auto-generated. The dashboard is yours forever.</p>
+        <p>Real-time dashboard. You see which dead bid came back, what it closed for, and exactly what you owe me. The dashboard is yours forever.</p>
         <div class="stat">Proves every dollar. No trust required.</div>
       </div>
+    </div>
+    <p class="cards-freebie">Included free: the capture system that stops new bids from going cold.</p>
+  </section>
+
+
+  <!-- SECTION — THE AUDIT DELIVERABLE -->
+  <section class="reveal">
+    <div class="sec-head">The One-Pager</div>
+    <h2 class="dash-head">Here's what lands in your inbox in 24 hours.</h2>
+    <div class="audit-wrap">
+      <div class="audit-doc">
+        <div class="ad-brand"><span>SOVRN GROWTH — REVENUE RECOVERY</span><span class="sample-chip" style="border-color:#D9D6CC;color:#8B8878;">Illustrative — sample data</span></div>
+        <div class="ad-title">The Estimate Graveyard: Hill Country Roofing Co.</div>
+        <div class="ad-sub">Quoted work sitting unclosed in your system. Built from your own records — 349 rows, 9 duplicates removed.</div>
+        <div class="ad-stats">
+          <div class="ad-stat"><b>255</b><span>Dead bids — quoted, 14+ days cold</span></div>
+          <div class="ad-stat"><b>$4,152,900</b><span>Quoted &amp; uncollected</span></div>
+          <div class="ad-stat"><b>$86K–$143K</b><span>Recovery projection (3–5%)</span></div>
+          <div class="ad-stat"><b>ELIGIBLE</b><span>Guarantee status — $2.87M chaseable</span></div>
+        </div>
+        <div class="ad-table">
+          <div class="adt-head">Top 20 Chase List — ranked by recoverability</div>
+          <div class="adt-row"><span class="r-cust">Monica V.</span><span class="r-amt">$25,100</span><span class="r-why">"check back after the holidays"</span><span class="r-score">91</span></div>
+          <div class="adt-row"><span class="r-cust">Mike N.</span><span class="r-amt">$65,400</span><span class="r-why">"said call me back in a few weeks"</span><span class="r-score">90</span></div>
+          <div class="adt-row"><span class="r-cust">Dana N.</span><span class="r-amt">$36,200</span><span class="r-why">"very interested, timing is off"</span><span class="r-score">89</span></div>
+          <div class="adt-row"><span class="r-cust">Luis A.</span><span class="r-amt">$24,300</span><span class="r-why">"supplement pending w/ carrier"</span><span class="r-score">89</span></div>
+          <div class="adt-row"><span class="r-cust">Beth M.</span><span class="r-amt">$20,600</span><span class="r-why">"wants to do it before summer"</span><span class="r-score">88</span></div>
+          <div class="adt-row"><span class="r-cust">Priya H.</span><span class="r-amt">$27,300</span><span class="r-why">"asked about financing"</span><span class="r-score">84</span></div>
+          <div class="adt-fade"></div>
+        </div>
+        <div class="adt-more">…14 more rows, ranked and ready to work.</div>
+      </div>
+      <div class="audit-callouts">
+        <div class="co"><b>255 dead bids</b> — quoted, 14+ days cold</div>
+        <div class="co"><b>$4.15M</b> quoted and never collected</div>
+        <div class="co">Ranked by what the notes actually say — <b>"call me back in a few weeks"</b></div>
+      </div>
+    </div>
+    <div class="subtraction">
+      <p>Your bids came in as a mess. <b>349 rows.</b> Here's what I did with them.</p>
+      <p><b>85</b> were already won or lost — gone. <b>73</b> were confirmed dead in your own notes: "went with another company," "selling the house." I threw those out. <b>4</b> had no phone and no email on file. Can't chase a ghost. Gone.</p>
+      <p>What's left is <b>178 bids worth $2.87 million</b> that are genuinely still alive — and I'll show you the 20 most likely to come back.</p>
+      <p class="kill-line">That's the difference between me and a guy selling you an automated text blast. He'd have messaged all 349. I threw out 162 before I made a single call.</p>
     </div>
   </section>
 
   <!-- SECTION 3 — WOW MOMENT -->
   <section class="reveal">
-    <h2 class="dash-head">This is what your revenue looks like when it's being measured.</h2>
+    <h2 class="dash-head">Every recovered dollar, tagged to the bid it came from.</h2>
     <div class="dash" id="dash">
       <div class="dash-bar">
         <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        <div class="label"><span class="pulse"></span> Live — Attribution Dashboard</div>
+        <div class="label"><span class="pulse"></span> Recovery Dashboard &nbsp;<span class="sample-chip">Illustrative — sample data</span></div>
       </div>
       <div class="dash-grid">
         <div>
-          <div class="metric-label">This Month — Attributable Revenue</div>
+          <div class="metric-label">This Month — Recovered Revenue</div>
           <div class="metric-value" id="counter">$0</div>
-          <div class="metric-sub">▲ 4 jobs attributed · updated 12 seconds ago</div>
+          <div class="metric-sub">▲ 4 dead bids recovered · updated just now</div>
           <div class="chart-wrap">
             <svg viewBox="0 0 460 150" aria-hidden="true">
               <defs>
@@ -540,26 +630,26 @@
           </div>
         </div>
         <div>
-          <div class="feed-title">Live Capture Feed</div>
+          <div class="feed-title">Live Recovery Feed</div>
           <div class="feed-item">
-            <div class="fi-top"><span>Inbound call — Round Rock</span><span class="fi-time">6:47 PM</span></div>
-            <div class="fi-flow">Lead captured 6:47 PM → Response fired 6:47:53 PM → Booked 6:52 PM</div>
-            <span class="tag money">ATTRIBUTABLE REVENUE · $16,400</span>
+            <div class="fi-top"><span>Bid #217 — Round Rock · quoted 47 days ago</span><span class="fi-time">6:47 PM</span></div>
+            <div class="fi-flow">Re-engaged 6:47 PM → Homeowner replied 7:02 PM → Inspection booked</div>
+            <span class="tag money">RECOVERED · $16,400</span>
           </div>
           <div class="feed-item">
-            <div class="fi-top"><span>Web form — Pflugerville</span><span class="fi-time">7:12 PM</span></div>
-            <div class="fi-flow">Lead captured 7:12 PM → Response fired 7:12:41 PM → Qualified: insurance</div>
-            <span class="tag money">SUPPLEMENT FLAGGED · +$3,200</span>
+            <div class="fi-top"><span>Bid #189 — Pflugerville · quoted 61 days ago</span><span class="fi-time">7:12 PM</span></div>
+            <div class="fi-flow">"Call me back in a few weeks" → Re-engaged → Estimate re-sent → Signed</div>
+            <span class="tag money">RECOVERED · $23,900</span>
           </div>
           <div class="feed-item">
-            <div class="fi-top"><span>Missed call recovered — Cedar Park</span><span class="fi-time">8:03 PM</span></div>
-            <div class="fi-flow">After-hours call → SMS fired 8:03:22 PM → Inspection booked 8:09 PM</div>
-            <span class="tag money">ATTRIBUTABLE REVENUE · $14,900</span>
+            <div class="fi-top"><span>Bid #244 — Cedar Park · quoted 38 days ago</span><span class="fi-time">8:03 PM</span></div>
+            <div class="fi-flow">"Waiting on adjuster" → Adjuster chased → Supplement approved</div>
+            <span class="tag money">RECOVERED · $11,200</span>
           </div>
           <div class="feed-item">
-            <div class="fi-top"><span>Facebook lead — Georgetown</span><span class="fi-time">8:31 PM</span></div>
-            <div class="fi-flow">Lead captured 8:31 PM → Response fired 8:31:47 PM → Urgency: storm, 72-hr window</div>
-            <span class="tag">QUALIFIED · PIPELINE</span>
+            <div class="fi-top"><span>Bid #301 — Georgetown · quoted 82 days ago</span><span class="fi-time">8:31 PM</span></div>
+            <div class="fi-flow">"Budget opens next quarter" → Timed re-engage → Inspection scheduled</div>
+            <span class="tag">IN PIPELINE</span>
           </div>
         </div>
       </div>
@@ -570,7 +660,7 @@
   <!-- SECTION 4 — THE TOGGLE -->
   <section class="reveal">
     <div class="sec-head">See the difference.</div>
-    <h2 class="tg-sub">Same business. Same leads. Two realities.</h2>
+    <h2 class="tg-sub">Same business. Same bids. Two realities. <span class="sample-chip">Illustrative — sample data</span></h2>
     <div class="tg-switch" id="tgSwitch" role="tablist" aria-label="Compare with and without SOVRN">
       <div class="tg-ind" aria-hidden="true"></div>
       <button id="tgBad" class="active" role="tab" aria-selected="true">WITHOUT SOVRN</button>
@@ -579,31 +669,31 @@
     <div class="tg-stack">
       <div class="tg-view bad show" id="viewBad">
         <div class="tg-head">
-          <div class="tg-rev">This Month<b>$120,000</b></div>
-          <div class="tg-badge leak">−$47,000 leaked</div>
+          <div class="tg-rev">Quoted, Never Collected<b>$412,000</b></div>
+          <div class="tg-badge leak">sitting dead in your system</div>
         </div>
-        <div class="tg-row"><span class="tr-main"><b>Voicemail from 6:47 PM</b> — no callback</span><span class="tg-dot r"></span></div>
-        <div class="tg-row"><span class="tr-main"><b>Voicemail from 8:03 PM</b> — no callback</span><span class="tg-dot r"></span></div>
-        <div class="tg-row"><span class="tr-main"><b>Missed call, 12:22 PM</b> — rang out during lunch</span><span class="tg-dot r"></span></div>
-        <div class="tg-row"><span class="tr-main"><b>Facebook message from 3 days ago</b> — unread</span><span class="tg-dot r"></span></div>
-        <div class="tg-row"><span class="tr-main"><b>Web form, Sunday 9:14 AM</b> — first reply Monday afternoon</span><span class="tg-dot r"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Bid #217 — $16,400</b> — quoted 47 days ago, no contact since</span><span class="tg-dot r"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Bid #189 — $23,900</b> — "call me back in a few weeks," 61 days cold</span><span class="tg-dot r"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Bid #244 — $11,200</b> — "waiting on adjuster," never followed up</span><span class="tg-dot r"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Bid #301 — $9,700</b> — "budget opens next quarter," 82 days cold</span><span class="tg-dot r"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Bid #338 — $27,300</b> — asked about financing, never called back</span><span class="tg-dot r"></span></div>
         <div class="tg-crew">Crew Status</div>
-        <div class="tg-row"><span class="tr-main">Mike — <b>6 callbacks overdue</b></span><span class="tg-dot r"></span></div>
-        <div class="tg-row"><span class="tr-main">Danny — <b>4 estimates behind</b></span><span class="tg-dot r"></span></div>
+        <div class="tg-row"><span class="tr-main">Mike — <b>31 bids never followed up</b></span><span class="tg-dot r"></span></div>
+        <div class="tg-row"><span class="tr-main">Danny — <b>$212,000 quoted, no contact in 60 days</b></span><span class="tg-dot r"></span></div>
       </div>
       <div class="tg-view good" id="viewGood">
         <div class="tg-head">
-          <div class="tg-rev">This Month<b>$167,000</b></div>
-          <div class="tg-badge gain">+$47,000 recovered</div>
+          <div class="tg-rev">Same Bids, Worked<b>$450,400</b></div>
+          <div class="tg-badge gain">+$38,400 recovered</div>
         </div>
-        <div class="tg-row"><span class="tr-main"><b>6:47 PM lead</b> → response fired in 47 sec → inspection booked</span><span class="tg-dot g"></span></div>
-        <div class="tg-row"><span class="tr-main"><b>8:03 PM lead</b> → response fired in 31 sec → qualified insurance</span><span class="tg-dot g"></span></div>
-        <div class="tg-row"><span class="tr-main"><b>12:22 PM call</b> → answered by system → estimate scheduled</span><span class="tg-dot g"></span></div>
-        <div class="tg-row"><span class="tr-main"><b>Facebook lead</b> → responded in 52 sec → in pipeline</span><span class="tg-dot g"></span></div>
-        <div class="tg-row"><span class="tr-main"><b>Sunday web form</b> → responded in 38 sec → Monday 8 AM inspection</span><span class="tg-dot g"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Bid #217</b> → re-engaged day 12 → signed, $16,400</span><span class="tg-dot g"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Bid #189</b> → estimate re-sent → inspection booked</span><span class="tg-dot g"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Bid #244</b> → adjuster chased → supplement approved</span><span class="tg-dot g"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Bid #301</b> → timed re-engage → in pipeline</span><span class="tg-dot g"></span></div>
+        <div class="tg-row"><span class="tr-main"><b>Bid #338</b> → financing options sent → signed, $27,300</span><span class="tg-dot g"></span></div>
         <div class="tg-crew">Crew Status</div>
-        <div class="tg-row"><span class="tr-main">Mike — <b>on schedule</b></span><span class="tg-dot g"></span></div>
-        <div class="tg-row"><span class="tr-main">Danny — <b>on schedule</b></span><span class="tg-dot g"></span></div>
+        <div class="tg-row"><span class="tr-main">Mike — <b>every bid worked</b></span><span class="tg-dot g"></span></div>
+        <div class="tg-row"><span class="tr-main">Danny — <b>0 bids untouched</b></span><span class="tg-dot g"></span></div>
       </div>
     </div>
     <p class="tg-caption" id="tgCaption">This is happening at your business right now. <b>You just can't see it.</b></p>
@@ -615,26 +705,22 @@
     <div class="timeline">
       <div class="t-node">
         <div class="t-day">Day 1–14</div>
-        <p><b>Speed-to-Lead system + Attribution Dashboard go live.</b> You see leads captured and responded to in real time.</p>
-      </div>
-      <div class="t-node">
-        <div class="t-day">Day 7</div>
-        <p><b>Sales team enablement kit sent to your reps.</b> Every rep gets a personal commission calculator, a one-page cheat sheet for their truck, and a direct text line to me for questions. Zero live meetings required. Reps see their own upside and adopt on their own.</p>
+        <p><b>Recovery engine + dashboard go live.</b> Your graveyard is ranked, the first re-engagements fire, and your crew gets a one-page cheat sheet — no meetings required.</p>
       </div>
       <div class="t-node">
         <div class="t-day">Day 15–30</div>
-        <p><b>Insurance Supplement Automation activates</b> on your next insurance jobs.</p>
+        <p><b>The free capture system goes live</b> — so new bids stop going cold in the first place.</p>
       </div>
       <div class="t-node">
         <div class="t-day">Day 60</div>
-        <p><b>We meet. Review actual results together.</b> If the system hasn't put at least one extra roof on your books, you get every dollar of setup back and keep the entire system.</p>
+        <p><b>We meet. Review actual recoveries together.</b> If I haven't brought back at least one dead bid, you get every dollar of setup back and keep the entire system.</p>
       </div>
     </div>
   </section>
 
   <!-- SECTION 5 — GUARANTEE -->
   <section class="guarantee reveal">
-    <h2>If the system doesn't put at least one extra roof — <em>$15,000 in attributable revenue</em> — on your books within 60 days, I refund the entire setup fee and you keep the dashboard, the code, everything.</h2>
+    <h2>If the system doesn't put at least one extra roof — <em>$15,000 in recovered quoted work</em> — on your books within 60 days, I refund the entire setup fee and you keep the dashboard, the code, everything.</h2>
     <p class="kicker-line">Risk-free by design.</p>
   </section>
 
@@ -645,8 +731,9 @@
   <!-- SECTION 8 — NEXT STEP -->
   <section class="next reveal" id="book">
     <div class="sec-head">Next Step</div>
-    <p>Book a free 15-minute call. I'll pull your actual call and lead data and we'll pinpoint the exact revenue being leaked, how we'll recover it — and move forward if the numbers make sense.</p>
-    <a class="cta-btn" id="calendly-cta" href="#">Book Your 15-Min Fit Call</a>
+    <p>Send me your bids from the last year — however you've got them. In 24 hours you get one page back: what you quoted and never collected, and the 20 jobs most likely to come back. If the number's small, I'll tell you and we part friends.</p>
+    <p style="margin-top:14px;font-size:13.5px;color:var(--ink-faint);">One operator, no account team. You text me. I answer.</p>
+    <a class="cta-btn" id="calendly-cta" href="#">Show me what I quoted and never collected</a>
   </section>
 
 </div>
@@ -717,9 +804,9 @@
     const feed = document.querySelector('.dash-grid > div:last-child');
     const item = document.createElement('div');
     item.className = 'feed-item';
-    item.innerHTML = '<div class="fi-top"><span>Inbound call — Hutto</span><span class="fi-time">just now</span></div>' +
-      '<div class="fi-flow">Lead captured → Response fired in 41s → Inspection booked</div>' +
-      '<span class="tag money">ATTRIBUTABLE REVENUE · $12,400</span>';
+    item.innerHTML = '<div class="fi-top"><span>Bid #163 — Hutto · quoted 29 days ago</span><span class="fi-time">just now</span></div>' +
+      '<div class="fi-flow">Re-engaged → Homeowner replied in 14 min → Signed</div>' +
+      '<span class="tag money">RECOVERED · $12,400</span>';
     feed.insertBefore(item, feed.children[1]);
     requestAnimationFrame(() => requestAnimationFrame(() => { item.style.opacity = 1; item.style.transform = 'none'; }));
     // counter ticks up with the new job
@@ -732,7 +819,7 @@
     }
     requestAnimationFrame(tick);
     const sub = document.querySelector('.metric-sub');
-    if (sub) sub.textContent = '▲ 5 jobs attributed · updated just now';
+    if (sub) sub.textContent = '▲ 5 dead bids recovered · updated just now';
   }
 
   // Toggle: two realities
