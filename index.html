@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- SOVRN build v11 — canonical. Replace wholesale; do not hand-edit. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SOVRN Growth — Recover the Bids You Quoted and Never Collected</title>
@@ -26,6 +27,7 @@
     --glass: rgba(250,250,245,0.03);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
+  p, li, h1, h2, h3 { text-wrap: pretty; }
   html { scroll-behavior:smooth; }
   body {
     background: var(--bg);
@@ -309,11 +311,16 @@
   .adt-more { font-size: 9.5px; color: #8B8878; padding-top: 8px; font-style: italic; }
   .audit-callouts { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 26px; }
   .audit-callouts .co {
-    font-size: 12px; color: var(--ink-dim); background: var(--glass);
-    border: 1px solid rgba(217,119,87,0.3); border-radius: 12px; padding: 9px 14px;
+    font-size: 12.5px; color: var(--ink-dim); background: var(--glass);
+    border: 1px solid rgba(217,119,87,0.3); border-radius: 12px; padding: 10px 16px;
     backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    line-height: 1.5;
   }
   .audit-callouts .co b { color: var(--accent); font-weight: 600; }
+  @media (max-width: 760px) {
+    .audit-callouts { flex-direction: column; gap: 8px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .audit-callouts .co { width: 100%; text-align: left; padding: 12px 16px; }
+  }
   .subtraction { max-width: 62ch; margin: 44px auto 0; }
   .subtraction p { font-size: 15px; line-height: 1.7; color: var(--ink-dim); }
   .subtraction p b { color: var(--ink); font-weight: 600; }
@@ -491,10 +498,10 @@
   <header class="hero">
     <div class="hero-bg" aria-hidden="true"><img src="assets/hero-roofs.jpg" alt="" loading="eager" onerror="this.parentNode.style.display='none'"></div>
     <h1>How many bids did you quote last year that just <em>went quiet?</em></h1>
-    <p class="sub">You climbed the roof. You wrote the number. Then nothing. That quoted work is still sitting in your system — and I only get paid on what I bring back.</p>
+    <p class="sub">You climbed the roof. You wrote the number. Then nothing. That quoted work is still sitting in your system — and I only get paid on what I&nbsp;bring&nbsp;back.</p>
     <ul class="hero-points">
       <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></span><b>Your bids, your data.</b> I work money you already paid to earn.</li>
-      <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></span><b>You keep everything.</b> The dashboard, the code, the system — forever, even if you walk.</li>
+      <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></span><b>You keep everything.</b> The dashboard, the code, the system — forever, even if&nbsp;you&nbsp;walk.</li>
     </ul>
     <a class="cta-btn" href="#book">Show me what I quoted and never collected</a>
     <p class="cta-note">Free. One page. 24 hours. Send your bids however you've got them.</p>
@@ -520,7 +527,7 @@
 </svg></div></div>
         <h3>I find the money first.</h3>
         <hr class="pillar-rule">
-        <p>Send me your bids from the last year — CRM export, spreadsheet, or just photos of the pile on your desk. Whatever you've got, however it comes. In 24 hours I send back one page: the total dollar amount you quoted and never collected, and the 20 jobs most likely to still come back.</p>
+        <p>Send me your bids from the last year — CRM export, spreadsheet, or just photos of the pile on your desk. Whatever you've got, however it comes. In 24 hours I send back one page: the total dollar amount you quoted and never collected, and the 20 jobs most likely to still come&nbsp;back.</p>
         <div class="stat">Free. One page. 24 hours.</div>
       </div>
       <div class="card">
@@ -591,14 +598,14 @@
       <div class="audit-callouts">
         <div class="co"><b>255 dead bids</b> — quoted, 14+ days cold</div>
         <div class="co"><b>$4.15M</b> quoted and never collected</div>
-        <div class="co">Ranked by what the notes actually say — <b>"call me back in a few weeks"</b></div>
+        <div class="co">Ranked by what the notes say — <b>"call me back in a few weeks"</b></div>
       </div>
     </div>
     <div class="subtraction">
       <p>Your bids came in as a mess. <b>349 rows.</b> Here's what I did with them.</p>
       <p><b>85</b> were already won or lost — gone. <b>73</b> were confirmed dead in your own notes: "went with another company," "selling the house." I threw those out. <b>4</b> had no phone and no email on file. Can't chase a ghost. Gone.</p>
-      <p>What's left is <b>178 bids worth $2.87 million</b> that are genuinely still alive — and I'll show you the 20 most likely to come back.</p>
-      <p class="kill-line">That's the difference between me and a guy selling you an automated text blast. He'd have messaged all 349. I threw out 162 before I made a single call.</p>
+      <p>What's left is <b>178 bids worth $2.87 million</b> that are genuinely still alive — and I'll show you the 20 most likely to come&nbsp;back.</p>
+      <p class="kill-line">That's the difference between me and a guy selling you an automated text blast. He'd have messaged all 349. I threw out 162 before I made a single&nbsp;call.</p>
     </div>
   </section>
 
