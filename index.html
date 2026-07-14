@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- SOVRN build v11 — canonical. Replace wholesale; do not hand-edit. -->
+<!-- SOVRN build v12 — canonical. Replace wholesale; do not hand-edit. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SOVRN Growth — Recover the Bids You Quoted and Never Collected</title>
@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#0A0E1A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0A0E1A;
@@ -73,11 +73,12 @@
     text-decoration: none; padding: 8px 16px;
     border: 1px solid rgba(217,119,87,0.35); border-radius: 8px;
     transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
   }
   .nav-cta:hover { background: var(--accent-soft); border-color: var(--accent); }
 
   /* ---------- hero ---------- */
-  .hero { padding: 96px 0 90px; text-align: left; }
+  .hero { padding: 96px 0 90px; text-align: left; position: relative; }
   .hero h1 {
     font-family: 'Fraunces', serif;
     font-weight: 600;
@@ -88,13 +89,13 @@
   }
   .hero h1 em { font-style: normal; color: var(--accent); }
   .hero .sub {
-    margin-top: clamp(48px, 7vw, 68px);
+    margin-top: clamp(40px, 6vw, 58px);
     max-width: 56ch;
     font-size: 15.5px;
     color: var(--ink-dim);
   }
 
-  .hero-points { list-style: none; margin-top: 26px; max-width: 58ch; }
+  .hero-points { list-style: none; margin-top: 30px; max-width: 60ch; }
   .hero-points li {
     position: relative; padding: 9px 0 9px 32px;
     font-size: 15px; line-height: 1.55; color: var(--ink-dim);
@@ -122,9 +123,7 @@
   .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(217,119,87,0.55), 0 14px 52px rgba(217,119,87,0.32); }
   .cta-note { margin-top: 14px; font-size: 12.5px; color: var(--ink-faint); }
 
-
   /* ---------- hero cinematic background ---------- */
-  .hero { position: relative; }
   .hero-bg {
     position: absolute; top: -140px; left: 50%;
     width: 100vw; margin-left: -50vw;
@@ -171,17 +170,14 @@
     display: flex; flex-direction: column;
   }
   .card .num { font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; }
-  .card h3 { margin-top: 16px; font-size: 17.5px; font-weight: 600; letter-spacing: -0.01em; }
+  .card h3 { margin-top: 16px; font-size: 17.5px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
   .card p { margin-top: 0; font-size: 14px; color: var(--ink-dim); flex: 1; }
   .card .stat {
     margin-top: 20px; padding-top: 16px;
     border-top: 1px solid var(--line);
     font-size: 14px; font-weight: 600; color: var(--accent);
   }
-
-
-  /* ---------- pillar micro-previews + rules ---------- */
-  .card-top { display:flex; justify-content:space-between; align-items:flex-start; }
+  .card-top { display:flex; justify-content:space-between; align-items:flex-start; gap: 12px; }
   .preview {
     width:72px; height:56px; border-radius:9px;
     background:rgba(74,155,147,0.07);
@@ -191,8 +187,17 @@
   }
   .preview svg { width:100%; height:100%; display:block; }
   .pillar-rule { width:28px; height:2px; background:var(--accent); margin:10px 0; border:0; }
+  .cards-freebie { margin-top: 24px; font-size: 13px; color: var(--ink-faint); }
 
-  /* ---------- dashboard wow ---------- */
+  /* ---------- shared sample chip ---------- */
+  .sample-chip {
+    display: inline-block; font-size: 9.5px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-faint);
+    border: 1px solid var(--line); border-radius: 20px; padding: 3px 10px;
+    white-space: nowrap;
+  }
+
+  /* ---------- section headline ---------- */
   .dash-head {
     font-family: 'Fraunces', serif;
     font-weight: 500;
@@ -202,6 +207,112 @@
     max-width: 22ch;
     margin-bottom: 44px;
   }
+
+  /* ================================================
+     AUDIT ONE-PAGER SHOWCASE  — FIXED
+     - fade gradient REMOVED (was clipping the table)
+     - doc widened on desktop (640 -> 800)
+     - note column allowed to breathe, no ellipsis truncation
+     ================================================ */
+  .audit-wrap { margin-top: 40px; perspective: 1600px; }
+  .audit-doc {
+    background: #FAFAF7; color: #10182B; border-radius: 12px;
+    padding: 32px 34px 26px;
+    max-width: 800px; margin: 0 auto;
+    transform: rotate(-1.2deg);
+    box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 0 60px rgba(217,119,87,0.14);
+    transition: transform 0.6s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .audit-doc:hover { transform: rotate(0deg) translateY(-6px); }
+  .ad-brand {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8878;
+  }
+  .ad-rule { height: 2px; background: #C4552F; margin-top: 12px; border: 0; }
+  .ad-title {
+    font-family: 'Fraunces', serif; font-weight: 700;
+    font-size: 23px; margin-top: 14px; color: #10182B; letter-spacing: -0.01em;
+  }
+  .ad-sub { font-size: 11px; color: #6B7280; margin-top: 4px; line-height: 1.5; }
+  .ad-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    margin-top: 22px;
+  }
+  .ad-stat { border: 1px solid #E4E2DA; border-radius: 6px; padding: 11px 12px; }
+  .ad-stat b {
+    display: block; font-family: 'Fraunces', serif; font-weight: 700;
+    font-size: 20px; color: #10182B; line-height: 1.15;
+    letter-spacing: -0.02em; white-space: nowrap;
+  }
+  .ad-stat.hot b { color: #C4552F; }
+  .ad-stat.gold b { color: #B8912F; font-size: 17px; }
+  .ad-stat span {
+    display: block; font-size: 8px; letter-spacing: 0.07em; text-transform: uppercase;
+    color: #6B7280; margin-top: 5px; line-height: 1.45;
+  }
+
+  .ad-table { margin-top: 24px; }
+  .ad-table .adt-head {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #FAFAF7; background: #10182B; padding: 7px 10px; border-radius: 4px 4px 0 0;
+    display: flex; justify-content: space-between;
+  }
+  .adt-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 9px 10px; border-bottom: 1px solid #E4E2DA;
+    font-size: 11px; color: #374151;
+  }
+  .adt-row:nth-child(odd) { background: #F4F3EF; }
+  .adt-row .r-cust { font-weight: 600; color: #10182B; flex: 0 0 104px; }
+  .adt-row .r-amt {
+    font-weight: 700; color: #10182B; flex: 0 0 68px;
+    text-align: right; font-variant-numeric: tabular-nums;
+  }
+  .adt-row .r-days {
+    flex: 0 0 62px; text-align: right; color: #6B7280;
+    font-variant-numeric: tabular-nums;
+  }
+  .adt-row .r-why {
+    flex: 1; font-style: italic; color: #4B5563;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .adt-row .r-score {
+    flex: 0 0 30px; text-align: right; font-weight: 700; color: #C4552F;
+    font-variant-numeric: tabular-nums;
+  }
+  .adt-more {
+    font-size: 10px; color: #8B8878; padding-top: 12px; font-style: italic;
+    text-align: center;
+  }
+  .ad-foot {
+    margin-top: 18px; padding-top: 14px; border-top: 2px solid #C4552F;
+    font-size: 10.5px; color: #374151; line-height: 1.6;
+  }
+  .ad-foot b { color: #10182B; }
+
+  .audit-callouts {
+    display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 30px;
+  }
+  .audit-callouts .co {
+    font-size: 12.5px; color: var(--ink-dim); background: var(--glass);
+    border: 1px solid rgba(217,119,87,0.3); border-radius: 12px; padding: 10px 16px;
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    line-height: 1.5;
+  }
+  .audit-callouts .co b { color: var(--accent); font-weight: 600; }
+
+  .subtraction { max-width: 64ch; margin: 48px auto 0; }
+  .subtraction p { font-size: 15px; line-height: 1.75; color: var(--ink-dim); }
+  .subtraction p + p { margin-top: 14px; }
+  .subtraction p b { color: var(--ink); font-weight: 600; }
+  .subtraction .kill-line {
+    margin-top: 24px; padding-left: 18px;
+    border-left: 2px solid var(--accent);
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 17px; color: var(--ink); line-height: 1.6;
+  }
+
+  /* ---------- dashboard ---------- */
   .dash {
     background: linear-gradient(180deg, rgba(250,250,245,0.045), rgba(250,250,245,0.015));
     border: 1px solid rgba(250,250,245,0.12);
@@ -217,7 +328,10 @@
     border-bottom: 1px solid var(--line);
   }
   .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(250,250,245,0.15); }
-  .dash-bar .label { margin-left: auto; font-size: 11.5px; color: var(--ink-faint); display: flex; align-items: center; gap: 7px; }
+  .dash-bar .label {
+    margin-left: auto; font-size: 11.5px; color: var(--ink-faint);
+    display: flex; align-items: center; gap: 9px; flex-wrap: wrap; justify-content: flex-end;
+  }
   .pulse { width: 7px; height: 7px; border-radius: 50%; background: #6BCB77; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
   .dash-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 26px; }
@@ -232,7 +346,6 @@
     margin-top: 8px;
     font-variant-numeric: tabular-nums;
   }
-  .metric-value .cents { color: var(--accent); }
   .metric-sub { margin-top: 6px; font-size: 12.5px; color: #6BCB77; font-weight: 500; }
   .chart-wrap { margin-top: 26px; }
   .chart-wrap svg { width: 100%; height: auto; display: block; }
@@ -260,8 +373,8 @@
   .dash.play .feed-item:nth-child(2) { transition-delay: 0.7s; }
   .dash.play .feed-item:nth-child(3) { transition-delay: 1.5s; }
   .dash.play .feed-item:nth-child(4) { transition-delay: 2.3s; }
-  .feed-item .fi-top { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; font-weight: 500; }
-  .feed-item .fi-time { font-size: 11px; color: var(--ink-faint); font-weight: 400; }
+  .feed-item .fi-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 12.5px; font-weight: 500; }
+  .feed-item .fi-time { font-size: 11px; color: var(--ink-faint); font-weight: 400; flex-shrink: 0; }
   .feed-item .fi-flow { margin-top: 6px; font-size: 11.5px; color: var(--ink-dim); line-height: 1.5; }
   .tag {
     display: inline-block; margin-top: 8px;
@@ -277,62 +390,12 @@
     border-color: rgba(107,203,119,0.3);
   }
 
-
-
-  /* ---------- audit one-pager showcase ---------- */
-  .cards-freebie { margin-top: 22px; font-size: 13px; color: var(--ink-faint); }
-  .sample-chip {
-    display: inline-block; font-size: 9.5px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--ink-faint);
-    border: 1px solid var(--line); border-radius: 20px; padding: 3px 10px;
+  /* ---------- toggle ---------- */
+  .tg-sub {
+    font-family:'Fraunces',serif; font-weight:500;
+    font-size:clamp(22px,3.8vw,30px); letter-spacing:-0.01em;
+    margin-bottom:30px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
   }
-  .audit-wrap { margin-top: 40px; perspective: 1400px; }
-  .audit-doc {
-    background: #FAFAF7; color: #10182B; border-radius: 12px;
-    padding: 26px 26px 20px; max-width: 640px; margin: 0 auto;
-    transform: rotate(-1.6deg);
-    box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 0 60px rgba(217,119,87,0.14);
-  }
-  .ad-brand { display: flex; justify-content: space-between; align-items: center; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8878; }
-  .ad-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; margin-top: 10px; color: #10182B; }
-  .ad-sub { font-size: 10.5px; color: #6B7280; margin-top: 3px; }
-  .ad-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 18px; }
-  .ad-stat { border-top: 2.5px solid #0A1628; padding-top: 8px; }
-  .ad-stat b { display: block; font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px; color: #C4552F; line-height: 1.15; }
-  .ad-stat span { display: block; font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B7280; margin-top: 3px; line-height: 1.4; }
-  .ad-table { margin-top: 18px; position: relative; }
-  .ad-table .adt-head { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #10182B; padding-bottom: 6px; border-bottom: 1.5px solid #10182B; }
-  .adt-row { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid #E4E2DA; font-size: 10px; color: #374151; }
-  .adt-row .r-cust { font-weight: 600; color: #10182B; flex: 0 0 92px; }
-  .adt-row .r-amt { font-weight: 700; color: #10182B; flex: 0 0 56px; }
-  .adt-row .r-why { flex: 1; font-style: italic; color: #6B7280; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .adt-row .r-score { flex: 0 0 24px; text-align: right; font-weight: 700; color: #C4552F; }
-  .adt-fade { position: absolute; left: 0; right: 0; bottom: 0; height: 54px; background: linear-gradient(180deg, rgba(250,250,247,0), #FAFAF7); }
-  .adt-more { font-size: 9.5px; color: #8B8878; padding-top: 8px; font-style: italic; }
-  .audit-callouts { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 26px; }
-  .audit-callouts .co {
-    font-size: 12.5px; color: var(--ink-dim); background: var(--glass);
-    border: 1px solid rgba(217,119,87,0.3); border-radius: 12px; padding: 10px 16px;
-    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    line-height: 1.5;
-  }
-  .audit-callouts .co b { color: var(--accent); font-weight: 600; }
-  @media (max-width: 760px) {
-    .audit-callouts { flex-direction: column; gap: 8px; max-width: 480px; margin-left: auto; margin-right: auto; }
-    .audit-callouts .co { width: 100%; text-align: left; padding: 12px 16px; }
-  }
-  .subtraction { max-width: 62ch; margin: 44px auto 0; }
-  .subtraction p { font-size: 15px; line-height: 1.7; color: var(--ink-dim); }
-  .subtraction p b { color: var(--ink); font-weight: 600; }
-  .subtraction .kill-line { margin-top: 18px; font-family: 'Fraunces', serif; font-style: italic; font-size: 16.5px; color: var(--ink); }
-  @media (max-width: 760px) {
-    .ad-stats { grid-template-columns: repeat(2, 1fr); }
-    .audit-doc { transform: rotate(-1deg); padding: 20px 16px 16px; }
-    .adt-row .r-cust { flex-basis: 76px; }
-  }
-
-  /* ---------- toggle (see the difference) ---------- */
-  .tg-sub { font-family:'Fraunces',serif; font-weight:500; font-size:clamp(22px,3.8vw,30px); letter-spacing:-0.01em; margin-bottom:30px; }
   .tg-switch {
     display:inline-flex; position:relative; background:var(--glass);
     border:1px solid rgba(250,250,245,0.14); border-radius:14px; padding:5px;
@@ -348,7 +411,8 @@
   .tg-switch button {
     position:relative; z-index:1; background:none; border:0; cursor:pointer;
     font-family:'Inter',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em;
-    padding:11px 0; width:132px; text-align:center; color:var(--ink-dim); transition:color 0.25s; border-radius:10px;
+    padding:11px 0; width:132px; text-align:center; color:var(--ink-dim);
+    transition:color 0.25s; border-radius:10px;
   }
   .tg-switch button.active { color:#10131f; }
   .tg-switch button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
@@ -363,9 +427,15 @@
   .tg-view.show { opacity:1; visibility:visible; transform:none; }
   .tg-view.bad { background:linear-gradient(180deg, rgba(229,100,92,0.055), rgba(229,100,92,0.015)); }
   .tg-view.good { background:linear-gradient(180deg, rgba(107,203,119,0.05), rgba(107,203,119,0.012)); }
-  .tg-head { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding-bottom:18px; margin-bottom:18px; border-bottom:1px solid var(--line); }
+  .tg-head {
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+    padding-bottom:18px; margin-bottom:18px; border-bottom:1px solid var(--line);
+  }
   .tg-rev { font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); }
-  .tg-rev b { display:block; font-family:'Fraunces',serif; font-weight:600; font-size:30px; color:var(--ink); letter-spacing:-0.01em; margin-top:4px; }
+  .tg-rev b {
+    display:block; font-family:'Fraunces',serif; font-weight:600; font-size:30px;
+    color:var(--ink); letter-spacing:-0.01em; margin-top:4px; font-variant-numeric: tabular-nums;
+  }
   .tg-badge { font-size:13px; font-weight:600; padding:7px 14px; border-radius:10px; }
   .tg-badge.leak { color:#F0857D; background:rgba(229,100,92,0.12); border:1px solid rgba(229,100,92,0.3); }
   .tg-badge.gain { color:#8FDD97; background:rgba(107,203,119,0.1); border:1px solid rgba(107,203,119,0.28); }
@@ -420,6 +490,10 @@
     font-size: clamp(17px, 2.6vw, 21px);
     color: var(--ink-dim);
   }
+  .guarantee .fine {
+    margin-top: 22px; font-size: 12px; color: var(--ink-faint);
+    max-width: 52ch; margin-left: auto; margin-right: auto; line-height: 1.6;
+  }
 
   /* ---------- next step ---------- */
   .next { text-align: center; padding: 110px 0; }
@@ -440,30 +514,36 @@
     .dash.play .chart-line { animation: none; stroke-dashoffset: 0; }
     .feed-item, .dash.play .feed-item { opacity: 1; transform: none; transition: none; }
     .pulse { animation: none; }
+    .audit-doc { transition: none; }
     html { scroll-behavior: auto; }
+  }
+
+  /* ---------- tablet ---------- */
+  @media (max-width: 960px) {
+    .audit-doc { max-width: 100%; padding: 24px 20px 20px; }
+    .ad-stats { grid-template-columns: repeat(2, 1fr); }
+    .adt-row .r-days { display: none; }
   }
 
   /* ---------- mobile ---------- */
   @media (max-width: 760px) {
     .hero { padding: 66px 0 70px; }
-  
-  .hero-points { list-style: none; margin-top: 26px; max-width: 58ch; }
-  .hero-points li {
-    position: relative; padding: 9px 0 9px 32px;
-    font-size: 15px; line-height: 1.55; color: var(--ink-dim);
-  }
-  .hero-points li b { color: var(--ink); font-weight: 600; }
-  .hp-icon {
-    position: absolute; left: 0; top: 11px;
-    width: 19px; height: 19px; color: var(--accent);
-  }
-  .hp-icon svg { width: 100%; height: 100%; display: block; }
-
-  .cta-btn { display: block; text-align: center; font-size: 15.5px; padding: 17px 18px; }
+    .cta-btn { display: block; text-align: center; font-size: 15.5px; padding: 17px 18px; }
     section { padding: 64px 0; }
-    .pillars, .invest, .timeline { grid-template-columns: 1fr; }
+    .pillars, .timeline { grid-template-columns: 1fr; }
     .dash-grid { grid-template-columns: 1fr; }
     .dash { padding: 20px 16px; }
+    .audit-doc { transform: rotate(-0.6deg); border-radius: 9px; }
+    .audit-doc:hover { transform: rotate(-0.6deg); }
+    .ad-title { font-size: 18px; }
+    .ad-stat b { font-size: 17px; }
+    .ad-stat.gold b { font-size: 14px; }
+    .adt-row { font-size: 10px; gap: 8px; padding: 8px 6px; }
+    .adt-row .r-cust { flex-basis: 70px; }
+    .adt-row .r-amt { flex-basis: 56px; }
+    .adt-row .r-why { display: none; }
+    .audit-callouts { flex-direction: column; gap: 8px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .audit-callouts .co { width: 100%; text-align: left; padding: 12px 16px; }
     .t-node { padding-top: 0; padding-left: 24px; }
     .t-node::before { top: 0; bottom: -18px; left: 4px; right: auto; width: 1px; height: auto; }
     .t-node:last-child::before { bottom: 0; }
@@ -488,7 +568,7 @@
         <text x="30" y="18.5" font-family="Fraunces, serif" font-weight="600" font-size="16.5" letter-spacing="0.5" fill="#FAFAF5">SOVRN GROWTH</text>
       </svg>
     </a>
-    <a class="nav-cta" href="#book">Book Intro Call</a>
+    <a class="nav-cta" href="#book">Get My Free One-Pager</a>
   </div>
 </nav>
 
@@ -500,6 +580,7 @@
     <h1>How many bids did you quote last year that just <em>went quiet?</em></h1>
     <p class="sub">You climbed the roof. You wrote the number. Then nothing. That quoted work is still sitting in your system — and I only get paid on what I&nbsp;bring&nbsp;back.</p>
     <ul class="hero-points">
+      <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><b>$3,500 to install. Then 25% of what I actually recover.</b> Nothing monthly, ever.</li>
       <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></span><b>Your bids, your data.</b> I work money you already paid to earn.</li>
       <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></span><b>You keep everything.</b> The dashboard, the code, the system — forever, even if&nbsp;you&nbsp;walk.</li>
     </ul>
@@ -567,40 +648,55 @@
     <p class="cards-freebie">Included free: the capture system that stops new bids from going cold.</p>
   </section>
 
-
-  <!-- SECTION — THE AUDIT DELIVERABLE -->
+  <!-- SECTION 3 — THE ONE-PAGER -->
   <section class="reveal">
     <div class="sec-head">The One-Pager</div>
     <h2 class="dash-head">Here's what lands in your inbox in 24 hours.</h2>
     <div class="audit-wrap">
       <div class="audit-doc">
-        <div class="ad-brand"><span>SOVRN GROWTH — REVENUE RECOVERY</span><span class="sample-chip" style="border-color:#D9D6CC;color:#8B8878;">Illustrative — sample data</span></div>
+        <div class="ad-brand">
+          <span>SOVRN Growth — Revenue Recovery Operations</span>
+          <span class="sample-chip" style="border-color:#D9D6CC;color:#8B8878;">Illustrative — sample data</span>
+        </div>
+        <hr class="ad-rule">
         <div class="ad-title">The Estimate Graveyard: Hill Country Roofing Co.</div>
-        <div class="ad-sub">Quoted work sitting unclosed in your system. Built from your own records — 349 rows, 9 duplicates removed.</div>
+        <div class="ad-sub">Quoted work sitting unclosed in your system as of July 13, 2026. Built from your own records — 349 rows, 9 duplicates removed.</div>
+
         <div class="ad-stats">
           <div class="ad-stat"><b>255</b><span>Dead bids — quoted, 14+ days cold</span></div>
-          <div class="ad-stat"><b>$4,152,900</b><span>Quoted &amp; uncollected</span></div>
+          <div class="ad-stat hot"><b>$4,152,900</b><span>Quoted &amp; uncollected</span></div>
           <div class="ad-stat"><b>$86K–$143K</b><span>Recovery projection (3–5%)</span></div>
-          <div class="ad-stat"><b>ELIGIBLE</b><span>Guarantee status — $2.87M chaseable</span></div>
+          <div class="ad-stat gold"><b>ELIGIBLE</b><span>Guarantee status — $2.87M chaseable</span></div>
         </div>
+
         <div class="ad-table">
-          <div class="adt-head">Top 20 Chase List — ranked by recoverability</div>
-          <div class="adt-row"><span class="r-cust">Monica V.</span><span class="r-amt">$25,100</span><span class="r-why">"check back after the holidays"</span><span class="r-score">91</span></div>
-          <div class="adt-row"><span class="r-cust">Mike N.</span><span class="r-amt">$65,400</span><span class="r-why">"said call me back in a few weeks"</span><span class="r-score">90</span></div>
-          <div class="adt-row"><span class="r-cust">Dana N.</span><span class="r-amt">$36,200</span><span class="r-why">"very interested, timing is off"</span><span class="r-score">89</span></div>
-          <div class="adt-row"><span class="r-cust">Luis A.</span><span class="r-amt">$24,300</span><span class="r-why">"supplement pending w/ carrier"</span><span class="r-score">89</span></div>
-          <div class="adt-row"><span class="r-cust">Beth M.</span><span class="r-amt">$20,600</span><span class="r-why">"wants to do it before summer"</span><span class="r-score">88</span></div>
-          <div class="adt-row"><span class="r-cust">Priya H.</span><span class="r-amt">$27,300</span><span class="r-why">"asked about financing"</span><span class="r-score">84</span></div>
-          <div class="adt-fade"></div>
+          <div class="adt-head">
+            <span>Top 20 Chase List — ranked by recoverability</span>
+            <span>Score</span>
+          </div>
+          <div class="adt-row"><span class="r-cust">Monica V.</span><span class="r-amt">$25,100</span><span class="r-days">33 days</span><span class="r-why">"check back after the holidays"</span><span class="r-score">91</span></div>
+          <div class="adt-row"><span class="r-cust">Mike N.</span><span class="r-amt">$65,400</span><span class="r-days">55 days</span><span class="r-why">"said call me back in a few weeks"</span><span class="r-score">90</span></div>
+          <div class="adt-row"><span class="r-cust">Dana N.</span><span class="r-amt">$36,200</span><span class="r-days">107 days</span><span class="r-why">"very interested, timing is off"</span><span class="r-score">89</span></div>
+          <div class="adt-row"><span class="r-cust">Luis A.</span><span class="r-amt">$24,300</span><span class="r-days">70 days</span><span class="r-why">"supplement pending w/ carrier"</span><span class="r-score">89</span></div>
+          <div class="adt-row"><span class="r-cust">Beth M.</span><span class="r-amt">$20,600</span><span class="r-days">104 days</span><span class="r-why">"wants to do it before summer"</span><span class="r-score">88</span></div>
+          <div class="adt-row"><span class="r-cust">Dwight R.</span><span class="r-amt">$20,000</span><span class="r-days">57 days</span><span class="r-why">"very interested, timing is off"</span><span class="r-score">87</span></div>
+          <div class="adt-row"><span class="r-cust">Tom S.</span><span class="r-amt">$23,900</span><span class="r-days">34 days</span><span class="r-why">"said call me back in a few weeks"</span><span class="r-score">86</span></div>
+          <div class="adt-row"><span class="r-cust">Priya H.</span><span class="r-amt">$27,300</span><span class="r-days">203 days</span><span class="r-why">"asked about financing"</span><span class="r-score">84</span></div>
+          <div class="adt-more">…12 more rows, ranked and ready to work.</div>
         </div>
-        <div class="adt-more">…14 more rows, ranked and ready to work.</div>
+
+        <div class="ad-foot">
+          <b>I recover these on performance.</b> $3,500 setup, then 25% of what I actually bring back — nothing monthly. A bid only counts if it was 14+ days cold when I engaged it, and every recovered dollar is tagged to the bid it came from, in a dashboard you keep forever.
+        </div>
       </div>
+
       <div class="audit-callouts">
         <div class="co"><b>255 dead bids</b> — quoted, 14+ days cold</div>
         <div class="co"><b>$4.15M</b> quoted and never collected</div>
         <div class="co">Ranked by what the notes say — <b>"call me back in a few weeks"</b></div>
       </div>
     </div>
+
     <div class="subtraction">
       <p>Your bids came in as a mess. <b>349 rows.</b> Here's what I did with them.</p>
       <p><b>85</b> were already won or lost — gone. <b>73</b> were confirmed dead in your own notes: "went with another company," "selling the house." I threw those out. <b>4</b> had no phone and no email on file. Can't chase a ghost. Gone.</p>
@@ -609,13 +705,13 @@
     </div>
   </section>
 
-  <!-- SECTION 3 — WOW MOMENT -->
+  <!-- SECTION 4 — DASHBOARD -->
   <section class="reveal">
     <h2 class="dash-head">Every recovered dollar, tagged to the bid it came from.</h2>
     <div class="dash" id="dash">
       <div class="dash-bar">
         <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        <div class="label"><span class="pulse"></span> Recovery Dashboard &nbsp;<span class="sample-chip">Illustrative — sample data</span></div>
+        <div class="label"><span class="pulse"></span> Recovery Dashboard <span class="sample-chip">Illustrative — sample data</span></div>
       </div>
       <div class="dash-grid">
         <div>
@@ -663,8 +759,7 @@
     </div>
   </section>
 
-
-  <!-- SECTION 4 — THE TOGGLE -->
+  <!-- SECTION 5 — THE TOGGLE -->
   <section class="reveal">
     <div class="sec-head">See the difference.</div>
     <h2 class="tg-sub">Same business. Same bids. Two realities. <span class="sample-chip">Illustrative — sample data</span></h2>
@@ -706,7 +801,7 @@
     <p class="tg-caption" id="tgCaption">This is happening at your business right now. <b>You just can't see it.</b></p>
   </section>
 
-  <!-- SECTION 4 — HOW IT WORKS -->
+  <!-- SECTION 6 — HOW IT WORKS -->
   <section class="reveal">
     <div class="sec-head">How It Works</div>
     <div class="timeline">
@@ -725,22 +820,20 @@
     </div>
   </section>
 
-  <!-- SECTION 5 — GUARANTEE -->
+  <!-- SECTION 7 — GUARANTEE -->
   <section class="guarantee reveal">
-    <h2>If the system doesn't put at least one extra roof — <em>$15,000 in recovered quoted work</em> — on your books within 60 days, I refund the entire setup fee and you keep the dashboard, the code, everything.</h2>
+    <h2>If I don't recover at least one roof — <em>$15,000 in quoted work that was already dead</em> — within 60 days, I refund the entire setup fee and you keep the dashboard, the code, everything.</h2>
     <p class="kicker-line">Risk-free by design.</p>
+    <p class="fine">Guarantee applies where the free one-pager shows at least $250,000 in quoted dead volume. Below that, the guarantee scales to the size of your graveyard — and I'll tell you straight if it isn't worth doing.</p>
   </section>
-
-
-
-
 
   <!-- SECTION 8 — NEXT STEP -->
   <section class="next reveal" id="book">
     <div class="sec-head">Next Step</div>
     <p>Send me your bids from the last year — however you've got them. In 24 hours you get one page back: what you quoted and never collected, and the 20 jobs most likely to come back. If the number's small, I'll tell you and we part friends.</p>
     <p style="margin-top:14px;font-size:13.5px;color:var(--ink-faint);">One operator, no account team. You text me. I answer.</p>
-    <a class="cta-btn" id="calendly-cta" href="#">Show me what I quoted and never collected</a>
+    <a class="cta-btn" id="mainCta" href="#">Show me what I quoted and never collected</a>
+    <p class="cta-note">Or just text me: <a href="tel:9258185264" style="color:var(--ink-dim);">925-818-5264</a></p>
   </section>
 
 </div>
@@ -748,21 +841,37 @@
 <footer>
   <div class="wrap foot-inner">
     <div>Elijah Pitts &nbsp;|&nbsp; SOVRN Growth</div>
-    <div><a href="tel:9258185264">925-818-5264</a> &nbsp;|&nbsp; <a href="#" id="emailBtn" rel="nofollow">Email Me</a></div>
+    <div><a href="tel:9258185264">925-818-5264</a> &nbsp;|&nbsp; <a href="#" class="emailBtn" rel="nofollow">Email Me</a></div>
   </div>
 </footer>
 
 <script>
-  // ======= CONFIG: paste your Calendly URL here =======
-  const CALENDLY_URL = "https://calendly.com/elijah-sovrngrowth/30min";
-  // ====================================================
+  /* ============================================================
+     CTA now routes to EMAIL, not a calendar.
+     The whole offer is "send me your bids" — a booking link
+     breaks that promise and adds friction at the exact moment
+     the prospect is ready to hand over the thing we want.
+     ============================================================ */
+  const EMAIL_USER = "elijah";
+  const EMAIL_DOM  = "sovrngrowth";
+  const EMAIL_TLD  = "com";
+  const SUBJECT    = "My bids — send me the one-pager";
+  const BODY       = "Attach your estimates/bids however you've got them — CRM export, spreadsheet, or photos of the pile on your desk.\n\nCompany:\nRough number of bids:\nBest number to reach you:\n";
+
+  function mailHref() {
+    return "mail" + "to:" + EMAIL_USER + "@" + EMAIL_DOM + "." + EMAIL_TLD
+      + "?subject=" + encodeURIComponent(SUBJECT)
+      + "&body=" + encodeURIComponent(BODY);
+  }
+
   (function(){
-    const cta = document.getElementById('calendly-cta');
-    const navCta = document.querySelector('.nav-cta');
-    const heroCta = document.querySelector('.hero .cta-btn');
-    if (CALENDLY_URL) {
-      [cta, navCta, heroCta].forEach(a => { a.href = CALENDLY_URL; a.target = "_blank"; a.rel = "noopener"; });
-    }
+    // hero + nav CTAs scroll to #book; the #book CTA and footer open mail
+    document.querySelectorAll('#mainCta, .emailBtn').forEach(function(a){
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        window.location.href = mailHref();
+      });
+    });
   })();
 
   // Scroll reveals
@@ -778,9 +887,8 @@
   const TARGET = 44500;
   let played = false;
 
-  function fmt(n) {
-    return '$' + Math.floor(n).toLocaleString('en-US');
-  }
+  function fmt(n) { return '$' + Math.floor(n).toLocaleString('en-US'); }
+
   function runCounter() {
     if (reduce) { counter.textContent = fmt(TARGET); return; }
     const dur = 3000, start = performance.now();
@@ -793,6 +901,7 @@
     }
     requestAnimationFrame(tick);
   }
+
   const dashIO = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting && !played) {
@@ -806,7 +915,7 @@
   }, { threshold: 0.35 });
   dashIO.observe(dash);
 
-  // A new lead lands while they're watching — the dashboard is alive.
+  // A dead bid comes back while they're watching.
   function liveBump() {
     const feed = document.querySelector('.dash-grid > div:last-child');
     const item = document.createElement('div');
@@ -815,8 +924,9 @@
       '<div class="fi-flow">Re-engaged → Homeowner replied in 14 min → Signed</div>' +
       '<span class="tag money">RECOVERED · $12,400</span>';
     feed.insertBefore(item, feed.children[1]);
-    requestAnimationFrame(() => requestAnimationFrame(() => { item.style.opacity = 1; item.style.transform = 'none'; }));
-    // counter ticks up with the new job
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      item.style.opacity = 1; item.style.transform = 'none';
+    }));
     const from = 44500, to = 56900, dur = 1400, start = performance.now();
     function tick(now) {
       const t = Math.min((now - start) / dur, 1);
@@ -849,16 +959,6 @@
     }
     bad.addEventListener('click', () => setState(false));
     good.addEventListener('click', () => setState(true));
-  })();
-
-  // Contact without exposing the address to scrapers (assembled at click time)
-  (function(){
-    const btn = document.getElementById('emailBtn');
-    if (btn) btn.addEventListener('click', function(e){
-      e.preventDefault();
-      const u = 'elijah', d = 'sovrngrowth', t = 'com';
-      window.location.href = 'mail' + 'to:' + u + '@' + d + '.' + t;
-    });
   })();
 </script>
 </body>
