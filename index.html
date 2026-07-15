@@ -1,637 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- SOVRN build v12 — canonical. Replace wholesale; do not hand-edit. -->
+<!-- SOVRN build v13 — canonical. Replace index.html wholesale. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SOVRN Growth — Recover the Bids You Quoted and Never Collected</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0E1A'/%3E%3Cpath d='M6 20 L16 9 L26 20' stroke='%23D97757' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<meta name="description" content="You climbed the roof. You wrote the number. Then nothing. I recover the bids Texas roofers quoted and never collected — paid only on what I bring back. Free one-pager in 24 hours.">
+<meta name="description" content="You climbed the roof. You wrote the number. Then nothing. I recover the bids Texas roofers quoted and never collected.">
 <meta property="og:title" content="How many bids did you quote last year that just went quiet?">
-<meta property="og:description" content="That quoted work is still sitting in your system — and I only get paid on what I bring back. Free one-pager in 24 hours.">
-<meta property="og:type" content="website">
+<meta property="og:description" content="That quoted work is still sitting in your system — and I only get paid on what I bring back.">
 <meta name="theme-color" content="#0A0E1A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0A0E1A;
-    --bg-raise: #0E1424;
-    --ink: #FAFAF5;
-    --ink-dim: rgba(250,250,245,0.62);
-    --ink-faint: rgba(250,250,245,0.38);
-    --accent: #D97757;
-    --accent-soft: rgba(217,119,87,0.14);
-    --line: rgba(250,250,245,0.09);
-    --glass: rgba(250,250,245,0.03);
+  :root{
+    --bg:#0A0E1A; --ink:#FAFAF5;
+    --ink-dim:rgba(250,250,245,0.62);
+    --ink-faint:rgba(250,250,245,0.38);
+    --accent:#D97757; --accent-soft:rgba(217,119,87,0.14);
+    --line:rgba(250,250,245,0.09); --glass:rgba(250,250,245,0.03);
   }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  p, li, h1, h2, h3 { text-wrap: pretty; }
-  html { scroll-behavior:smooth; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Inter', system-ui, sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-  ::selection { background: var(--accent); color: #0A0E1A; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  p,li,h1,h2,h3{text-wrap:pretty;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;
+       line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  ::selection{background:var(--accent);color:#0A0E1A;}
 
-  /* ---------- ambient orbs ---------- */
-  .orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(90px);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .orb-1 { width: 520px; height: 520px; top: -180px; right: -140px; background: radial-gradient(circle, rgba(217,119,87,0.13), transparent 65%); }
-  .orb-2 { width: 640px; height: 640px; top: 48%; left: -280px; background: radial-gradient(circle, rgba(90,120,200,0.10), transparent 65%); }
-  .orb-3 { width: 460px; height: 460px; bottom: -160px; right: -100px; background: radial-gradient(circle, rgba(217,119,87,0.08), transparent 65%); }
+  .orb{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;}
+  .orb-1{width:520px;height:520px;top:-180px;right:-140px;background:radial-gradient(circle,rgba(217,119,87,0.13),transparent 65%);}
+  .orb-2{width:640px;height:640px;top:48%;left:-280px;background:radial-gradient(circle,rgba(90,120,200,0.10),transparent 65%);}
+  .orb-3{width:460px;height:460px;bottom:-160px;right:-100px;background:radial-gradient(circle,rgba(217,119,87,0.08),transparent 65%);}
 
-  .wrap { position: relative; z-index: 1; max-width: 1060px; margin: 0 auto; padding: 0 22px; }
+  .wrap{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:0 22px;}
 
-  /* ---------- nav ---------- */
-  nav {
-    position: sticky; top: 0; z-index: 50;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    background: rgba(10,14,26,0.72);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-inner {
-    max-width: 1060px; margin: 0 auto; padding: 16px 22px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .wordmark { display:flex; align-items:center; text-decoration:none; }
-  .wordmark svg { display:block; }
-  .nav-cta {
-    font-size: 13px; font-weight: 500; color: var(--accent);
-    text-decoration: none; padding: 8px 16px;
-    border: 1px solid rgba(217,119,87,0.35); border-radius: 8px;
-    transition: background 0.2s, border-color 0.2s;
-    white-space: nowrap;
-  }
-  .nav-cta:hover { background: var(--accent-soft); border-color: var(--accent); }
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+      background:rgba(10,14,26,0.72);border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1060px;margin:0 auto;padding:16px 22px;display:flex;
+             justify-content:space-between;align-items:center;}
+  .wordmark{display:flex;align-items:center;text-decoration:none;}
+  .nav-cta{font-size:13px;font-weight:500;color:var(--accent);text-decoration:none;
+           padding:8px 16px;border:1px solid rgba(217,119,87,0.35);border-radius:8px;
+           white-space:nowrap;transition:background .2s,border-color .2s;}
+  .nav-cta:hover{background:var(--accent-soft);border-color:var(--accent);}
 
-  /* ---------- hero ---------- */
-  .hero { padding: 96px 0 90px; text-align: left; position: relative; }
-  .hero h1 {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: clamp(42px, 8.5vw, 78px);
-    line-height: 1.06;
-    letter-spacing: -0.015em;
-    max-width: 15ch;
-  }
-  .hero h1 em { font-style: normal; color: var(--accent); }
-  .hero .sub {
-    margin-top: clamp(40px, 6vw, 58px);
-    max-width: 56ch;
-    font-size: 15.5px;
-    color: var(--ink-dim);
-  }
+  .hero{padding:96px 0 90px;position:relative;}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(42px,8.5vw,78px);
+           line-height:1.06;letter-spacing:-.015em;max-width:15ch;}
+  .hero h1 em{font-style:normal;color:var(--accent);}
+  .hero .sub{margin-top:clamp(40px,6vw,56px);max-width:54ch;font-size:16px;color:var(--ink-dim);}
+  .hero-points{list-style:none;margin-top:34px;max-width:58ch;}
+  .hero-points li{position:relative;padding:10px 0 10px 32px;font-size:15px;
+                  line-height:1.55;color:var(--ink-dim);}
+  .hero-points li b{color:var(--ink);font-weight:600;}
+  .hp-icon{position:absolute;left:0;top:12px;width:19px;height:19px;color:var(--accent);}
+  .hp-icon svg{width:100%;height:100%;display:block;}
+  .cta-btn{display:inline-block;margin-top:40px;background:var(--accent);color:#10131f;
+    font-weight:600;font-size:16px;padding:17px 32px;border-radius:12px;text-decoration:none;
+    box-shadow:0 0 0 1px rgba(217,119,87,0.4),0 8px 40px rgba(217,119,87,0.22);
+    transition:transform .18s,box-shadow .18s;}
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(217,119,87,0.55),0 14px 52px rgba(217,119,87,0.32);}
+  .cta-note{margin-top:14px;font-size:12.5px;color:var(--ink-faint);}
+  .cta-note a{color:var(--ink-dim);text-decoration:none;}
+  .cta-note a:hover{color:var(--accent);}
 
-  .hero-points { list-style: none; margin-top: 30px; max-width: 60ch; }
-  .hero-points li {
-    position: relative; padding: 9px 0 9px 32px;
-    font-size: 15px; line-height: 1.55; color: var(--ink-dim);
-  }
-  .hero-points li b { color: var(--ink); font-weight: 600; }
-  .hp-icon {
-    position: absolute; left: 0; top: 11px;
-    width: 19px; height: 19px; color: var(--accent);
-  }
-  .hp-icon svg { width: 100%; height: 100%; display: block; }
+  .hero-bg{position:absolute;top:-140px;left:50%;width:100vw;margin-left:-50vw;
+           height:calc(100% + 220px);overflow:hidden;z-index:-1;pointer-events:none;}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.32;
+               animation:heroDrift 45s ease-in-out infinite alternate;}
+  @keyframes heroDrift{from{transform:scale(1.04)}to{transform:scale(1.16) translate(-1.6%,-2.2%)}}
+  .hero-bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,14,26,0.55),rgba(10,14,26,0.35) 34%,rgba(10,14,26,0.72) 72%,#0A0E1A),
+               linear-gradient(90deg,rgba(10,14,26,0.66),rgba(10,14,26,0.18) 60%,rgba(10,14,26,0.05));}
 
-  .cta-btn {
-    display: inline-block;
-    margin-top: 38px;
-    background: var(--accent);
-    color: #10131f;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 17px 32px;
-    border-radius: 12px;
-    text-decoration: none;
-    box-shadow: 0 0 0 1px rgba(217,119,87,0.4), 0 8px 40px rgba(217,119,87,0.22);
-    transition: transform 0.18s, box-shadow 0.18s;
-  }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(217,119,87,0.55), 0 14px 52px rgba(217,119,87,0.32); }
-  .cta-note { margin-top: 14px; font-size: 12.5px; color: var(--ink-faint); }
+  section{padding:88px 0;border-top:1px solid var(--line);}
+  .sec-head{font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+            color:var(--accent);margin-bottom:34px;}
 
-  /* ---------- hero cinematic background ---------- */
-  .hero-bg {
-    position: absolute; top: -140px; left: 50%;
-    width: 100vw; margin-left: -50vw;
-    height: calc(100% + 220px);
-    overflow: hidden; z-index: -1;
-    pointer-events: none;
-  }
-  .hero-bg img {
-    width: 100%; height: 100%; object-fit: cover;
-    opacity: 0.32;
-    transform-origin: center;
-    animation: heroDrift 45s ease-in-out infinite alternate;
-  }
-  @keyframes heroDrift {
-    from { transform: scale(1.04) translate(0, 0); }
-    to   { transform: scale(1.16) translate(-1.6%, -2.2%); }
-  }
-  .hero-bg::after {
-    content: ""; position: absolute; inset: 0;
-    background:
-      linear-gradient(180deg, rgba(10,14,26,0.55) 0%, rgba(10,14,26,0.35) 34%, rgba(10,14,26,0.72) 72%, #0A0E1A 100%),
-      linear-gradient(90deg, rgba(10,14,26,0.66) 0%, rgba(10,14,26,0.18) 60%, rgba(10,14,26,0.05) 100%);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-bg img { animation: none; transform: scale(1.06); }
-  }
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .card{background:var(--glass);border:1px solid var(--line);border-radius:16px;
+        padding:28px 24px;display:flex;flex-direction:column;}
+  .card .num{font-size:13px;font-weight:600;color:var(--accent);letter-spacing:.08em;}
+  .card h3{margin-top:16px;font-size:17.5px;font-weight:600;line-height:1.3;letter-spacing:-.01em;}
+  .card p{font-size:14px;color:var(--ink-dim);flex:1;}
+  .card .stat{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);
+              font-size:14px;font-weight:600;color:var(--accent);}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+  .preview{width:72px;height:56px;border-radius:9px;background:rgba(74,155,147,0.07);
+           border:1px solid rgba(74,155,147,0.28);overflow:hidden;flex-shrink:0;}
+  .preview svg{width:100%;height:100%;display:block;}
+  .pillar-rule{width:28px;height:2px;background:var(--accent);margin:12px 0;border:0;}
+  .cards-freebie{margin-top:26px;font-size:13px;color:var(--ink-faint);}
 
-  /* ---------- sections ---------- */
-  section { padding: 84px 0; border-top: 1px solid var(--line); }
-  .sec-head {
-    font-size: 13px; font-weight: 500; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--accent); margin-bottom: 34px;
-  }
+  .sample-chip{display:inline-block;font-size:9.5px;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line);
+    border-radius:20px;padding:3px 10px;white-space:nowrap;}
 
-  /* ---------- pillars ---------- */
-  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .card {
-    background: var(--glass);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 28px 24px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    display: flex; flex-direction: column;
-  }
-  .card .num { font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; }
-  .card h3 { margin-top: 16px; font-size: 17.5px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
-  .card p { margin-top: 0; font-size: 14px; color: var(--ink-dim); flex: 1; }
-  .card .stat {
-    margin-top: 20px; padding-top: 16px;
-    border-top: 1px solid var(--line);
-    font-size: 14px; font-weight: 600; color: var(--accent);
-  }
-  .card-top { display:flex; justify-content:space-between; align-items:flex-start; gap: 12px; }
-  .preview {
-    width:72px; height:56px; border-radius:9px;
-    background:rgba(74,155,147,0.07);
-    border:1px solid rgba(74,155,147,0.28);
-    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
-    overflow:hidden; flex-shrink:0;
-  }
-  .preview svg { width:100%; height:100%; display:block; }
-  .pillar-rule { width:28px; height:2px; background:var(--accent); margin:10px 0; border:0; }
-  .cards-freebie { margin-top: 24px; font-size: 13px; color: var(--ink-faint); }
+  .dash-head{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(26px,4.6vw,38px);
+             line-height:1.2;letter-spacing:-.01em;max-width:22ch;margin-bottom:44px;}
 
-  /* ---------- shared sample chip ---------- */
-  .sample-chip {
-    display: inline-block; font-size: 9.5px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--ink-faint);
-    border: 1px solid var(--line); border-radius: 20px; padding: 3px 10px;
-    white-space: nowrap;
-  }
+  /* ===== THE ONE-PAGER — grid table, no clipping ===== */
+  .audit-wrap{margin-top:44px;}
+  .audit-doc{background:#FBFAF7;color:#10182B;border-radius:10px;padding:34px 36px 28px;
+    max-width:880px;margin:0 auto;
+    box-shadow:0 40px 90px rgba(0,0,0,0.6),0 0 70px rgba(217,119,87,0.12);}
+  .ad-brand{display:flex;justify-content:space-between;align-items:center;gap:16px;
+    font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#9A9789;font-weight:600;}
+  .ad-title{font-family:'Fraunces',serif;font-weight:700;font-size:26px;margin-top:18px;
+            color:#0F1626;letter-spacing:-.015em;line-height:1.2;}
+  .ad-sub{font-size:11.5px;color:#767F8C;margin-top:6px;line-height:1.5;}
+  .ad-rule{height:2px;background:#C4552F;margin-top:20px;border:0;}
 
-  /* ---------- section headline ---------- */
-  .dash-head {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: clamp(26px, 4.6vw, 38px);
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    max-width: 22ch;
-    margin-bottom: 44px;
-  }
+  .ad-stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:24px;
+            border:1px solid #E6E3DA;border-radius:6px;overflow:hidden;}
+  .ad-stat{padding:16px 14px;border-right:1px solid #E6E3DA;}
+  .ad-stat:last-child{border-right:0;}
+  .ad-stat b{display:block;font-family:'Fraunces',serif;font-weight:700;font-size:22px;
+    color:#0F1626;line-height:1.1;letter-spacing:-.02em;white-space:nowrap;}
+  .ad-stat.hot b{color:#C4552F;}
+  .ad-stat.gold b{color:#B08A2E;font-size:18px;letter-spacing:.02em;}
+  .ad-stat span{display:block;font-size:8px;letter-spacing:.09em;text-transform:uppercase;
+    color:#8A9199;margin-top:7px;line-height:1.5;font-weight:600;}
 
-  /* ================================================
-     AUDIT ONE-PAGER SHOWCASE  — FIXED
-     - fade gradient REMOVED (was clipping the table)
-     - doc widened on desktop (640 -> 800)
-     - note column allowed to breathe, no ellipsis truncation
-     ================================================ */
-  .audit-wrap { margin-top: 40px; perspective: 1600px; }
-  .audit-doc {
-    background: #FAFAF7; color: #10182B; border-radius: 12px;
-    padding: 32px 34px 26px;
-    max-width: 800px; margin: 0 auto;
-    transform: rotate(-1.2deg);
-    box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 0 60px rgba(217,119,87,0.14);
-    transition: transform 0.6s cubic-bezier(0.2,0.8,0.2,1);
-  }
-  .audit-doc:hover { transform: rotate(0deg) translateY(-6px); }
-  .ad-brand {
-    display: flex; justify-content: space-between; align-items: center; gap: 12px;
-    font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8878;
-  }
-  .ad-rule { height: 2px; background: #C4552F; margin-top: 12px; border: 0; }
-  .ad-title {
-    font-family: 'Fraunces', serif; font-weight: 700;
-    font-size: 23px; margin-top: 14px; color: #10182B; letter-spacing: -0.01em;
-  }
-  .ad-sub { font-size: 11px; color: #6B7280; margin-top: 4px; line-height: 1.5; }
-  .ad-stats {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
-    margin-top: 22px;
-  }
-  .ad-stat { border: 1px solid #E4E2DA; border-radius: 6px; padding: 11px 12px; }
-  .ad-stat b {
-    display: block; font-family: 'Fraunces', serif; font-weight: 700;
-    font-size: 20px; color: #10182B; line-height: 1.15;
-    letter-spacing: -0.02em; white-space: nowrap;
-  }
-  .ad-stat.hot b { color: #C4552F; }
-  .ad-stat.gold b { color: #B8912F; font-size: 17px; }
-  .ad-stat span {
-    display: block; font-size: 8px; letter-spacing: 0.07em; text-transform: uppercase;
-    color: #6B7280; margin-top: 5px; line-height: 1.45;
-  }
+  .ad-table{margin-top:26px;}
+  .adt-cap{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+           color:#0F1626;margin-bottom:9px;}
+  .adt-grid{display:grid;grid-template-columns:1.05fr .72fr .55fr 2.5fr .44fr;
+            border-top:1.5px solid #0F1626;}
+  .adt-grid > span{padding:9px 10px;font-size:11px;color:#4C545E;
+    border-bottom:1px solid #E9E6DE;display:flex;align-items:center;}
+  .adt-grid > span.h{font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:#8A9199;background:#F3F1EB;}
+  .adt-grid > span.cust{font-weight:600;color:#0F1626;}
+  .adt-grid > span.amt{font-weight:700;color:#0F1626;justify-content:flex-end;font-variant-numeric:tabular-nums;}
+  .adt-grid > span.days{justify-content:flex-end;color:#8A9199;font-variant-numeric:tabular-nums;}
+  .adt-grid > span.why{font-style:italic;color:#5B636D;}
+  .adt-grid > span.score{justify-content:flex-end;font-weight:700;color:#C4552F;font-variant-numeric:tabular-nums;}
+  .adt-more{font-size:10px;color:#9A9789;padding-top:14px;font-style:italic;text-align:center;}
+  .ad-foot{margin-top:22px;padding-top:16px;border-top:2px solid #C4552F;
+           font-size:11px;color:#4C545E;line-height:1.7;}
+  .ad-foot b{color:#0F1626;font-weight:700;}
 
-  .ad-table { margin-top: 24px; }
-  .ad-table .adt-head {
-    font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-    color: #FAFAF7; background: #10182B; padding: 7px 10px; border-radius: 4px 4px 0 0;
-    display: flex; justify-content: space-between;
-  }
-  .adt-row {
-    display: flex; align-items: center; gap: 12px;
-    padding: 9px 10px; border-bottom: 1px solid #E4E2DA;
-    font-size: 11px; color: #374151;
-  }
-  .adt-row:nth-child(odd) { background: #F4F3EF; }
-  .adt-row .r-cust { font-weight: 600; color: #10182B; flex: 0 0 104px; }
-  .adt-row .r-amt {
-    font-weight: 700; color: #10182B; flex: 0 0 68px;
-    text-align: right; font-variant-numeric: tabular-nums;
-  }
-  .adt-row .r-days {
-    flex: 0 0 62px; text-align: right; color: #6B7280;
-    font-variant-numeric: tabular-nums;
-  }
-  .adt-row .r-why {
-    flex: 1; font-style: italic; color: #4B5563;
-    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-  }
-  .adt-row .r-score {
-    flex: 0 0 30px; text-align: right; font-weight: 700; color: #C4552F;
-    font-variant-numeric: tabular-nums;
-  }
-  .adt-more {
-    font-size: 10px; color: #8B8878; padding-top: 12px; font-style: italic;
-    text-align: center;
-  }
-  .ad-foot {
-    margin-top: 18px; padding-top: 14px; border-top: 2px solid #C4552F;
-    font-size: 10.5px; color: #374151; line-height: 1.6;
-  }
-  .ad-foot b { color: #10182B; }
+  .audit-callouts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px;}
+  .audit-callouts .co{font-size:13px;color:var(--ink-dim);background:var(--glass);
+    border:1px solid rgba(217,119,87,0.26);border-radius:12px;padding:16px 18px;line-height:1.5;}
+  .audit-callouts .co b{display:block;color:var(--accent);font-weight:600;font-size:15px;margin-bottom:5px;}
 
-  .audit-callouts {
-    display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 30px;
-  }
-  .audit-callouts .co {
-    font-size: 12.5px; color: var(--ink-dim); background: var(--glass);
-    border: 1px solid rgba(217,119,87,0.3); border-radius: 12px; padding: 10px 16px;
-    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    line-height: 1.5;
-  }
-  .audit-callouts .co b { color: var(--accent); font-weight: 600; }
+  .subtraction{max-width:60ch;margin:56px auto 0;}
+  .sub-lead{font-family:'Fraunces',serif;font-weight:500;font-size:20px;color:var(--ink);
+            line-height:1.45;letter-spacing:-.01em;}
+  .sub-ledger{list-style:none;margin-top:26px;border-top:1px solid var(--line);}
+  .sub-ledger li{display:flex;gap:18px;align-items:baseline;padding:15px 0;
+    border-bottom:1px solid var(--line);font-size:15px;color:var(--ink-dim);}
+  .sub-ledger .n{font-family:'Fraunces',serif;font-weight:700;font-size:22px;color:var(--accent);
+    flex:0 0 52px;text-align:right;font-variant-numeric:tabular-nums;line-height:1.2;}
+  .sub-ledger .t{flex:1;line-height:1.5;}
+  .sub-ledger .t em{font-style:italic;color:var(--ink-faint);}
+  .sub-ledger li.keep{border-bottom:0;padding-top:19px;}
+  .sub-ledger li.keep .n{color:#7ED688;}
+  .sub-ledger li.keep .t{color:var(--ink);font-weight:500;}
+  .kill-line{margin-top:32px;padding-left:20px;border-left:2px solid var(--accent);
+    font-family:'Fraunces',serif;font-style:italic;font-size:18px;color:var(--ink);line-height:1.6;}
 
-  .subtraction { max-width: 64ch; margin: 48px auto 0; }
-  .subtraction p { font-size: 15px; line-height: 1.75; color: var(--ink-dim); }
-  .subtraction p + p { margin-top: 14px; }
-  .subtraction p b { color: var(--ink); font-weight: 600; }
-  .subtraction .kill-line {
-    margin-top: 24px; padding-left: 18px;
-    border-left: 2px solid var(--accent);
-    font-family: 'Fraunces', serif; font-style: italic;
-    font-size: 17px; color: var(--ink); line-height: 1.6;
+  .dash{background:linear-gradient(180deg,rgba(250,250,245,0.045),rgba(250,250,245,0.015));
+    border:1px solid rgba(250,250,245,0.12);border-radius:20px;padding:26px;
+    box-shadow:0 30px 80px rgba(0,0,0,0.45);}
+  .dash-bar{display:flex;align-items:center;gap:8px;padding-bottom:20px;margin-bottom:22px;
+            border-bottom:1px solid var(--line);}
+  .dot{width:9px;height:9px;border-radius:50%;background:rgba(250,250,245,0.15);}
+  .dash-bar .label{margin-left:auto;font-size:11.5px;color:var(--ink-faint);
+    display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end;}
+  .pulse{width:7px;height:7px;border-radius:50%;background:#6BCB77;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .dash-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:26px;}
+  .metric-label{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);}
+  .metric-value{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(40px,7vw,58px);
+    letter-spacing:-.01em;line-height:1.1;margin-top:8px;font-variant-numeric:tabular-nums;}
+  .metric-sub{margin-top:6px;font-size:12.5px;color:#6BCB77;font-weight:500;}
+  .chart-wrap{margin-top:26px;}
+  .chart-wrap svg{width:100%;height:auto;display:block;}
+  .chart-line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linecap:round;
+    stroke-dasharray:600;stroke-dashoffset:600;}
+  .dash.play .chart-line{animation:draw 2.4s ease-out forwards .4s;}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .chart-labels{display:flex;justify-content:space-between;margin-top:8px;
+                font-size:10.5px;color:var(--ink-faint);}
+  .feed-title{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+              color:var(--ink-faint);margin-bottom:14px;}
+  .feed-item{background:rgba(250,250,245,0.03);border:1px solid var(--line);border-radius:12px;
+    padding:13px 15px;margin-bottom:10px;opacity:0;transform:translateY(8px);
+    transition:opacity .5s,transform .5s;}
+  .dash.play .feed-item{opacity:1;transform:none;}
+  .dash.play .feed-item:nth-child(2){transition-delay:.7s;}
+  .dash.play .feed-item:nth-child(3){transition-delay:1.5s;}
+  .dash.play .feed-item:nth-child(4){transition-delay:2.3s;}
+  .fi-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;
+          font-size:12.5px;font-weight:500;}
+  .fi-time{font-size:11px;color:var(--ink-faint);font-weight:400;flex-shrink:0;}
+  .fi-flow{margin-top:6px;font-size:11.5px;color:var(--ink-dim);line-height:1.5;}
+  .tag{display:inline-block;margin-top:8px;font-size:10px;font-weight:600;letter-spacing:.06em;
+    color:var(--accent);background:var(--accent-soft);border:1px solid rgba(217,119,87,0.25);
+    padding:3px 8px;border-radius:20px;}
+  .tag.money{color:#7ED688;background:rgba(107,203,119,0.1);border-color:rgba(107,203,119,0.3);}
+
+  .tg-sub{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(22px,3.8vw,30px);
+    letter-spacing:-.01em;margin-bottom:30px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .tg-switch{display:inline-flex;position:relative;background:var(--glass);
+    border:1px solid rgba(250,250,245,0.14);border-radius:14px;padding:5px;margin-bottom:24px;}
+  .tg-switch .tg-ind{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);
+    background:var(--accent);border-radius:10px;box-shadow:0 4px 22px rgba(217,119,87,0.35);
+    transition:transform .28s cubic-bezier(.4,0,.2,1);}
+  .tg-switch.on .tg-ind{transform:translateX(100%);}
+  .tg-switch button{position:relative;z-index:1;background:none;border:0;cursor:pointer;
+    font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;
+    padding:11px 0;width:132px;color:var(--ink-dim);transition:color .25s;border-radius:10px;}
+  .tg-switch button.active{color:#10131f;}
+  .tg-stack{display:grid;}
+  .tg-view{grid-area:1/1;border-radius:20px;padding:24px;border:1px solid var(--line);
+    opacity:0;visibility:hidden;transform:translateY(6px);
+    transition:opacity .4s,transform .4s,visibility .4s;}
+  .tg-view.show{opacity:1;visibility:visible;transform:none;}
+  .tg-view.bad{background:linear-gradient(180deg,rgba(229,100,92,0.055),rgba(229,100,92,0.015));}
+  .tg-view.good{background:linear-gradient(180deg,rgba(107,203,119,0.05),rgba(107,203,119,0.012));}
+  .tg-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+    padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--line);}
+  .tg-rev{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);}
+  .tg-rev b{display:block;font-family:'Fraunces',serif;font-weight:600;font-size:30px;
+    color:var(--ink);letter-spacing:-.01em;margin-top:4px;font-variant-numeric:tabular-nums;}
+  .tg-badge{font-size:13px;font-weight:600;padding:7px 14px;border-radius:10px;}
+  .tg-badge.leak{color:#F0857D;background:rgba(229,100,92,0.12);border:1px solid rgba(229,100,92,0.3);}
+  .tg-badge.gain{color:#8FDD97;background:rgba(107,203,119,0.1);border:1px solid rgba(107,203,119,0.28);}
+  .tg-row{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    background:rgba(250,250,245,0.028);border:1px solid var(--line);border-radius:11px;
+    padding:12px 15px;margin-bottom:8px;font-size:12.5px;}
+  .tr-main{color:var(--ink-dim);line-height:1.45;}
+  .tr-main b{color:var(--ink);font-weight:500;}
+  .tg-dot{flex-shrink:0;width:8px;height:8px;border-radius:50%;}
+  .tg-dot.r{background:#E5645C;box-shadow:0 0 10px rgba(229,100,92,0.5);}
+  .tg-dot.g{background:#6BCB77;box-shadow:0 0 10px rgba(107,203,119,0.45);}
+  .tg-crew{margin-top:18px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:10px;}
+  .tg-caption{margin-top:24px;font-size:15px;color:var(--ink-dim);font-style:italic;min-height:1.6em;}
+  .tg-caption b{color:var(--ink);font-weight:500;font-style:normal;}
+
+  .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .t-node{position:relative;padding-top:26px;}
+  .t-node::before{content:"";position:absolute;top:0;left:0;right:-18px;height:1px;background:var(--line);}
+  .t-node:last-child::before{right:0;}
+  .t-node::after{content:"";position:absolute;top:-4px;left:0;width:9px;height:9px;
+    border-radius:50%;background:var(--accent);box-shadow:0 0 14px rgba(217,119,87,0.6);}
+  .t-day{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .t-node p{margin-top:12px;font-size:14px;color:var(--ink-dim);}
+  .t-node p b{color:var(--ink);font-weight:500;}
+
+  .guarantee{padding:150px 0;text-align:center;}
+  .guarantee h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(25px,4.4vw,40px);
+    line-height:1.32;letter-spacing:-.01em;max-width:26ch;margin:0 auto;}
+  .guarantee h2 em{font-style:normal;color:var(--accent);}
+  .kicker-line{margin-top:42px;font-family:'Fraunces',serif;font-style:italic;
+    font-size:clamp(17px,2.6vw,21px);color:var(--ink-dim);}
+
+  .next{text-align:center;padding:110px 0;}
+  .next p{max-width:52ch;margin:0 auto;font-size:16px;color:var(--ink-dim);}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 44px;}
+  .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:13px;color:var(--ink-faint);}
+  .foot-inner a{color:var(--ink-dim);text-decoration:none;}
+  .foot-inner a:hover{color:var(--accent);}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .dash.play .chart-line{animation:none;stroke-dashoffset:0;}
+    .feed-item,.dash.play .feed-item{opacity:1;transform:none;transition:none;}
+    .pulse{animation:none;} .hero-bg img{animation:none;} html{scroll-behavior:auto;}
   }
 
-  /* ---------- dashboard ---------- */
-  .dash {
-    background: linear-gradient(180deg, rgba(250,250,245,0.045), rgba(250,250,245,0.015));
-    border: 1px solid rgba(250,250,245,0.12);
-    border-radius: 20px;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    padding: 26px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
-  }
-  .dash-bar {
-    display: flex; align-items: center; gap: 8px;
-    padding-bottom: 20px; margin-bottom: 22px;
-    border-bottom: 1px solid var(--line);
-  }
-  .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(250,250,245,0.15); }
-  .dash-bar .label {
-    margin-left: auto; font-size: 11.5px; color: var(--ink-faint);
-    display: flex; align-items: center; gap: 9px; flex-wrap: wrap; justify-content: flex-end;
-  }
-  .pulse { width: 7px; height: 7px; border-radius: 50%; background: #6BCB77; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
-  .dash-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 26px; }
-  .metric-label { font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
-  .metric-value {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: clamp(40px, 7vw, 58px);
-    color: var(--ink);
-    letter-spacing: -0.01em;
-    line-height: 1.1;
-    margin-top: 8px;
-    font-variant-numeric: tabular-nums;
-  }
-  .metric-sub { margin-top: 6px; font-size: 12.5px; color: #6BCB77; font-weight: 500; }
-  .chart-wrap { margin-top: 26px; }
-  .chart-wrap svg { width: 100%; height: auto; display: block; }
-  .chart-line {
-    fill: none; stroke: var(--accent); stroke-width: 2.5;
-    stroke-linecap: round; stroke-linejoin: round;
-    stroke-dasharray: 600; stroke-dashoffset: 600;
-  }
-  .dash.play .chart-line { animation: draw 2.4s ease-out forwards 0.4s; }
-  @keyframes draw { to { stroke-dashoffset: 0; } }
-  .chart-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 10.5px; color: var(--ink-faint); }
-
-  .feed-title { font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 14px; }
-  .feed-item {
-    background: rgba(250,250,245,0.03);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 13px 15px;
-    margin-bottom: 10px;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.5s, transform 0.5s;
-  }
-  .dash.play .feed-item { opacity: 1; transform: none; }
-  .dash.play .feed-item:nth-child(2) { transition-delay: 0.7s; }
-  .dash.play .feed-item:nth-child(3) { transition-delay: 1.5s; }
-  .dash.play .feed-item:nth-child(4) { transition-delay: 2.3s; }
-  .feed-item .fi-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 12.5px; font-weight: 500; }
-  .feed-item .fi-time { font-size: 11px; color: var(--ink-faint); font-weight: 400; flex-shrink: 0; }
-  .feed-item .fi-flow { margin-top: 6px; font-size: 11.5px; color: var(--ink-dim); line-height: 1.5; }
-  .tag {
-    display: inline-block; margin-top: 8px;
-    font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
-    color: var(--accent);
-    background: var(--accent-soft);
-    border: 1px solid rgba(217,119,87,0.25);
-    padding: 3px 8px; border-radius: 20px;
-  }
-  .tag.money {
-    color: #7ED688;
-    background: rgba(107,203,119,0.1);
-    border-color: rgba(107,203,119,0.3);
+  @media (max-width:980px){
+    .audit-doc{max-width:100%;padding:26px 22px 22px;}
+    .ad-stats{grid-template-columns:repeat(2,1fr);}
+    .ad-stat{border-bottom:1px solid #E6E3DA;}
+    .ad-stat:nth-child(2){border-right:0;}
+    .ad-stat:nth-child(3),.ad-stat:nth-child(4){border-bottom:0;}
+    .adt-grid{grid-template-columns:1fr .75fr .55fr .45fr;}
+    .adt-grid > span.why{display:none;}
+    .audit-callouts{grid-template-columns:1fr;}
   }
 
-  /* ---------- toggle ---------- */
-  .tg-sub {
-    font-family:'Fraunces',serif; font-weight:500;
-    font-size:clamp(22px,3.8vw,30px); letter-spacing:-0.01em;
-    margin-bottom:30px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-  }
-  .tg-switch {
-    display:inline-flex; position:relative; background:var(--glass);
-    border:1px solid rgba(250,250,245,0.14); border-radius:14px; padding:5px;
-    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); margin-bottom:24px;
-  }
-  .tg-switch .tg-ind {
-    position:absolute; top:5px; bottom:5px; left:5px; width:calc(50% - 5px);
-    background:var(--accent); border-radius:10px;
-    box-shadow:0 4px 22px rgba(217,119,87,0.35);
-    transition:transform 0.28s cubic-bezier(0.4,0,0.2,1);
-  }
-  .tg-switch.on .tg-ind { transform:translateX(100%); }
-  .tg-switch button {
-    position:relative; z-index:1; background:none; border:0; cursor:pointer;
-    font-family:'Inter',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em;
-    padding:11px 0; width:132px; text-align:center; color:var(--ink-dim);
-    transition:color 0.25s; border-radius:10px;
-  }
-  .tg-switch button.active { color:#10131f; }
-  .tg-switch button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
-  .tg-stack { display:grid; }
-  .tg-view {
-    grid-area:1/1; border-radius:20px; padding:24px;
-    border:1px solid var(--line);
-    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-    opacity:0; visibility:hidden; transform:translateY(6px);
-    transition:opacity 0.4s, transform 0.4s, visibility 0.4s;
-  }
-  .tg-view.show { opacity:1; visibility:visible; transform:none; }
-  .tg-view.bad { background:linear-gradient(180deg, rgba(229,100,92,0.055), rgba(229,100,92,0.015)); }
-  .tg-view.good { background:linear-gradient(180deg, rgba(107,203,119,0.05), rgba(107,203,119,0.012)); }
-  .tg-head {
-    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
-    padding-bottom:18px; margin-bottom:18px; border-bottom:1px solid var(--line);
-  }
-  .tg-rev { font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); }
-  .tg-rev b {
-    display:block; font-family:'Fraunces',serif; font-weight:600; font-size:30px;
-    color:var(--ink); letter-spacing:-0.01em; margin-top:4px; font-variant-numeric: tabular-nums;
-  }
-  .tg-badge { font-size:13px; font-weight:600; padding:7px 14px; border-radius:10px; }
-  .tg-badge.leak { color:#F0857D; background:rgba(229,100,92,0.12); border:1px solid rgba(229,100,92,0.3); }
-  .tg-badge.gain { color:#8FDD97; background:rgba(107,203,119,0.1); border:1px solid rgba(107,203,119,0.28); }
-  .tg-row {
-    display:flex; justify-content:space-between; align-items:center; gap:12px;
-    background:rgba(250,250,245,0.028); border:1px solid var(--line);
-    border-radius:11px; padding:11px 14px; margin-bottom:8px; font-size:12.5px;
-  }
-  .tg-row .tr-main { color:var(--ink-dim); line-height:1.45; }
-  .tg-row .tr-main b { color:var(--ink); font-weight:500; }
-  .tg-dot { flex-shrink:0; width:8px; height:8px; border-radius:50%; }
-  .tg-dot.r { background:#E5645C; box-shadow:0 0 10px rgba(229,100,92,0.5); }
-  .tg-dot.g { background:#6BCB77; box-shadow:0 0 10px rgba(107,203,119,0.45); }
-  .tg-crew { margin-top:16px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px; }
-  .tg-caption { margin-top:22px; font-size:15px; color:var(--ink-dim); font-style:italic; min-height:1.6em; }
-  .tg-caption b { color:var(--ink); font-weight:500; font-style:normal; }
-
-  /* ---------- timeline ---------- */
-  .timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; position: relative; }
-  .t-node { position: relative; padding-top: 26px; }
-  .t-node::before {
-    content: ""; position: absolute; top: 0; left: 0; right: -18px; height: 1px;
-    background: var(--line);
-  }
-  .t-node:last-child::before { right: 0; }
-  .t-node::after {
-    content: ""; position: absolute; top: -4px; left: 0;
-    width: 9px; height: 9px; border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 14px rgba(217,119,87,0.6);
-  }
-  .t-node .t-day { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
-  .t-node p { margin-top: 12px; font-size: 14px; color: var(--ink-dim); }
-  .t-node p b { color: var(--ink); font-weight: 500; }
-
-  /* ---------- guarantee ---------- */
-  .guarantee { padding: 150px 0; text-align: center; }
-  .guarantee h2 {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: clamp(25px, 4.4vw, 40px);
-    line-height: 1.32;
-    letter-spacing: -0.01em;
-    max-width: 26ch;
-    margin: 0 auto;
-  }
-  .guarantee h2 em { font-style: normal; color: var(--accent); }
-  .guarantee .kicker-line {
-    margin-top: 42px;
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: clamp(17px, 2.6vw, 21px);
-    color: var(--ink-dim);
-  }
-  .guarantee .fine {
-    margin-top: 22px; font-size: 12px; color: var(--ink-faint);
-    max-width: 52ch; margin-left: auto; margin-right: auto; line-height: 1.6;
-  }
-
-  /* ---------- next step ---------- */
-  .next { text-align: center; padding: 110px 0; }
-  .next p { max-width: 54ch; margin: 0 auto; font-size: 15.5px; color: var(--ink-dim); }
-
-  /* ---------- footer ---------- */
-  footer { border-top: 1px solid var(--line); padding: 34px 0 44px; }
-  .foot-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--ink-faint); }
-  .foot-inner a { color: var(--ink-dim); text-decoration: none; }
-  .foot-inner a:hover { color: var(--accent); }
-
-  /* ---------- reveal ---------- */
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.in { opacity: 1; transform: none; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
-    .dash.play .chart-line { animation: none; stroke-dashoffset: 0; }
-    .feed-item, .dash.play .feed-item { opacity: 1; transform: none; transition: none; }
-    .pulse { animation: none; }
-    .audit-doc { transition: none; }
-    html { scroll-behavior: auto; }
-  }
-
-  /* ---------- tablet ---------- */
-  @media (max-width: 960px) {
-    .audit-doc { max-width: 100%; padding: 24px 20px 20px; }
-    .ad-stats { grid-template-columns: repeat(2, 1fr); }
-    .adt-row .r-days { display: none; }
-  }
-
-  /* ---------- mobile ---------- */
-  @media (max-width: 760px) {
-    .hero { padding: 66px 0 70px; }
-    .cta-btn { display: block; text-align: center; font-size: 15.5px; padding: 17px 18px; }
-    section { padding: 64px 0; }
-    .pillars, .timeline { grid-template-columns: 1fr; }
-    .dash-grid { grid-template-columns: 1fr; }
-    .dash { padding: 20px 16px; }
-    .audit-doc { transform: rotate(-0.6deg); border-radius: 9px; }
-    .audit-doc:hover { transform: rotate(-0.6deg); }
-    .ad-title { font-size: 18px; }
-    .ad-stat b { font-size: 17px; }
-    .ad-stat.gold b { font-size: 14px; }
-    .adt-row { font-size: 10px; gap: 8px; padding: 8px 6px; }
-    .adt-row .r-cust { flex-basis: 70px; }
-    .adt-row .r-amt { flex-basis: 56px; }
-    .adt-row .r-why { display: none; }
-    .audit-callouts { flex-direction: column; gap: 8px; max-width: 480px; margin-left: auto; margin-right: auto; }
-    .audit-callouts .co { width: 100%; text-align: left; padding: 12px 16px; }
-    .t-node { padding-top: 0; padding-left: 24px; }
-    .t-node::before { top: 0; bottom: -18px; left: 4px; right: auto; width: 1px; height: auto; }
-    .t-node:last-child::before { bottom: 0; }
-    .t-node::after { top: 4px; left: 0; }
-    .guarantee { padding: 100px 0; }
-    .next { padding: 80px 0; }
+  @media (max-width:760px){
+    .hero{padding:66px 0 70px;}
+    .cta-btn{display:block;text-align:center;padding:17px 18px;}
+    section{padding:66px 0;}
+    .pillars,.timeline,.dash-grid{grid-template-columns:1fr;}
+    .dash{padding:20px 16px;}
+    .ad-title{font-size:19px;}
+    .ad-stat b{font-size:18px;}
+    .ad-stat.gold b{font-size:15px;}
+    .adt-grid{grid-template-columns:1fr .8fr .5fr;}
+    .adt-grid > span.days{display:none;}
+    .adt-grid > span{padding:8px 6px;font-size:10.5px;}
+    .sub-lead{font-size:18px;}
+    .sub-ledger .n{flex-basis:40px;font-size:19px;}
+    .sub-ledger li{font-size:14px;gap:14px;}
+    .kill-line{font-size:16px;}
+    .t-node{padding-top:0;padding-left:24px;}
+    .t-node::before{top:0;bottom:-18px;left:4px;right:auto;width:1px;height:auto;}
+    .t-node:last-child::before{bottom:0;}
+    .t-node::after{top:4px;left:0;}
+    .guarantee{padding:100px 0;} .next{padding:80px 0;}
   }
 </style>
 </head>
 <body>
 
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
+<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
 
 <nav>
   <div class="nav-inner">
     <a class="wordmark" href="#" aria-label="SOVRN Growth">
-      <svg width="188" height="26" viewBox="0 0 188 26" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+      <svg width="188" height="26" viewBox="0 0 188 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M2 17 L11 6 L20 17" stroke="#D97757" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         <path d="M7 17 L11 12.2 L15 17" stroke="#FAFAF5" stroke-opacity="0.55" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         <text x="30" y="18.5" font-family="Fraunces, serif" font-weight="600" font-size="16.5" letter-spacing="0.5" fill="#FAFAF5">SOVRN GROWTH</text>
       </svg>
     </a>
-    <a class="nav-cta" href="#book">Get My Free One-Pager</a>
+    <a class="nav-cta" href="#book">Book a 15-Min Call</a>
   </div>
 </nav>
 
 <div class="wrap">
 
-  <!-- SECTION 1 — HERO -->
   <header class="hero">
     <div class="hero-bg" aria-hidden="true"><img src="assets/hero-roofs.jpg" alt="" loading="eager" onerror="this.parentNode.style.display='none'"></div>
     <h1>How many bids did you quote last year that just <em>went quiet?</em></h1>
     <p class="sub">You climbed the roof. You wrote the number. Then nothing. That quoted work is still sitting in your system — and I only get paid on what I&nbsp;bring&nbsp;back.</p>
     <ul class="hero-points">
-      <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><b>$3,500 to install. Then 25% of what I actually recover.</b> Nothing monthly, ever.</li>
-      <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></span><b>Your bids, your data.</b> I work money you already paid to earn.</li>
-      <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></span><b>You keep everything.</b> The dashboard, the code, the system — forever, even if&nbsp;you&nbsp;walk.</li>
+      <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg></span><b>You drove out there. You climbed it. You wrote the number. Then nothing.</b> Multiply that by two hundred. That's what's sitting in your system right&nbsp;now.</li>
+      <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><b>I don't make money unless a roof signs.</b> Not for trying. Not monthly. And if I don't bring back at least one roof in 60 days, you get everything back and keep the&nbsp;system.</li>
+      <li><span class="hp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><b>Find out for free, before you spend a dime.</b> Send me your bids. In 24 hours I'll tell you the exact dollar figure rotting in your system. If it's not worth doing, I'll say so and we're&nbsp;done.</li>
     </ul>
-    <a class="cta-btn" href="#book">Show me what I quoted and never collected</a>
-    <p class="cta-note">Free. One page. 24 hours. Send your bids however you've got them.</p>
+    <a class="cta-btn" href="#book">Book a 15-Minute Call</a>
+    <p class="cta-note">Or text me straight: <a href="tel:9258185264">925-818-5264</a></p>
   </header>
 
-  <!-- SECTION 2 — WHAT GETS INSTALLED -->
   <section class="reveal">
     <div class="sec-head">What Gets Installed</div>
     <div class="pillars">
       <div class="card">
         <div class="card-top"><div class="num">01</div><div class="preview" aria-hidden="true"><svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
-<rect x="16" y="5" width="40" height="46" rx="3.5" fill="rgba(250,250,245,0.04)" stroke="rgba(250,250,245,0.3)" stroke-width="1"/>
-<text x="20" y="13" font-size="4.6" font-weight="600" fill="rgba(250,250,245,0.85)">Your Bids —</text>
-<text x="20" y="18.5" font-size="4.6" font-weight="600" fill="rgba(250,250,245,0.85)">One Page</text>
-<path d="M21 25.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
-<text x="28" y="27.5" font-size="4.2" fill="rgba(250,250,245,0.6)">255 dead bids</text>
-<path d="M21 32.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
-<text x="28" y="34.5" font-size="4.2" fill="rgba(250,250,245,0.6)">$4.15M quoted</text>
-<path d="M21 39.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
-<text x="28" y="41.5" font-size="4.2" fill="rgba(250,250,245,0.6)">Top 20 ranked</text>
-<rect x="20" y="44.5" width="18" height="6" rx="3" fill="rgba(74,155,147,0.22)" stroke="#4A9B93" stroke-width="0.7"/>
-<text x="23" y="49" font-size="4.2" font-weight="600" fill="#4A9B93">FREE · 24H</text>
+<rect x="16" y="5" width="40" height="46" rx="3.5" fill="rgba(250,250,245,0.04)" stroke="rgba(250,250,245,0.3)"/>
+<text x="20" y="14" font-size="4.8" font-weight="600" fill="rgba(250,250,245,0.85)">Your Bids —</text>
+<text x="20" y="19.5" font-size="4.8" font-weight="600" fill="rgba(250,250,245,0.85)">One Page</text>
+<path d="M21 26.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+<text x="28" y="28.5" font-size="4.2" fill="rgba(250,250,245,0.6)">255 dead bids</text>
+<path d="M21 33.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+<text x="28" y="35.5" font-size="4.2" fill="rgba(250,250,245,0.6)">$4.15M quoted</text>
+<path d="M21 40.5 l1.6 1.6 l2.8-3" stroke="#4A9B93" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+<text x="28" y="42.5" font-size="4.2" fill="rgba(250,250,245,0.6)">Top 20 ranked</text>
 </svg></div></div>
         <h3>I find the money first.</h3>
         <hr class="pillar-rule">
-        <p>Send me your bids from the last year — CRM export, spreadsheet, or just photos of the pile on your desk. Whatever you've got, however it comes. In 24 hours I send back one page: the total dollar amount you quoted and never collected, and the 20 jobs most likely to still come&nbsp;back.</p>
+        <p>Send me your bids from the last year — export, spreadsheet, or photos of the pile on your desk. I hand you back one page: what you quoted and never collected, and the 20 jobs most likely to still come&nbsp;back.</p>
         <div class="stat">Free. One page. 24 hours.</div>
       </div>
       <div class="card">
         <div class="card-top"><div class="num">02</div><div class="preview" aria-hidden="true"><svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
-<rect x="8" y="6" width="24" height="44" rx="4" fill="none" stroke="rgba(250,250,245,0.35)" stroke-width="1.2"/>
-<rect x="12" y="11" width="16" height="2.5" rx="1.25" fill="rgba(250,250,245,0.25)"/>
-<rect x="36" y="12" width="30" height="14" rx="4" fill="rgba(74,155,147,0.16)" stroke="#4A9B93" stroke-width="0.8"/>
-<text x="39" y="18" font-size="4.6" fill="rgba(250,250,245,0.85)">Bid #217</text>
-<text x="39" y="23.5" font-size="4.2" fill="rgba(250,250,245,0.55)">47 days cold</text>
-<rect x="36" y="30" width="30" height="14" rx="4" fill="rgba(74,155,147,0.26)" stroke="#4A9B93" stroke-width="0.8"/>
-<text x="39" y="36" font-size="4.4" fill="rgba(250,250,245,0.9)">Re-engaged</text>
-<text x="39" y="41.5" font-size="4" fill="rgba(250,250,245,0.6)">Reply: 7:02 PM</text>
-<circle cx="63" cy="9" r="2.4" fill="#4A9B93"/>
+<rect x="5" y="13" width="27" height="13" rx="3" fill="rgba(229,100,92,0.12)" stroke="rgba(229,100,92,0.5)" stroke-width="0.8"/>
+<text x="8" y="18.5" font-size="4.2" fill="rgba(250,250,245,0.55)">Bid #217</text>
+<text x="8" y="23.5" font-size="3.8" fill="rgba(250,250,245,0.35)">47 days cold</text>
+<path d="M34 19.5 L40 19.5" stroke="#4A9B93" stroke-width="1" stroke-linecap="round"/>
+<path d="M38 17.5 L40 19.5 L38 21.5" stroke="#4A9B93" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="42" y="13" width="26" height="13" rx="3" fill="rgba(74,155,147,0.24)" stroke="#4A9B93" stroke-width="0.8"/>
+<text x="45" y="18.5" font-size="4.2" fill="rgba(250,250,245,0.9)">Re-engaged</text>
+<text x="45" y="23.5" font-size="3.8" fill="rgba(250,250,245,0.6)">Replied 7:02</text>
+<rect x="5" y="34" width="27" height="13" rx="3" fill="rgba(229,100,92,0.05)" stroke="rgba(229,100,92,0.25)" stroke-width="0.8" stroke-dasharray="2 1.5"/>
+<text x="8" y="42" font-size="3.8" fill="rgba(250,250,245,0.3)">thrown out</text>
 </svg></div></div>
-        <h3>I chase the ones that are still alive.</h3>
+        <h3>I chase the ones still alive.</h3>
         <hr class="pillar-rule">
-        <p>Every dead bid ranked by what the notes actually say, job size, how cold it's gone, and whether we can still reach them. The corpses get thrown out. The living get worked — multi-channel, human-reviewed. Not a blast.</p>
+        <p>Ranked by what your notes actually say, job size, how cold it's gone, and whether we can still reach them. The corpses get thrown out. The living get worked — human-reviewed, not a blast.</p>
         <div class="stat">Recovers work you already paid to earn.</div>
       </div>
       <div class="card">
         <div class="card-top"><div class="num">03</div><div class="preview" aria-hidden="true"><svg viewBox="0 0 72 56" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
 <polyline points="8,44 20,40 30,34 42,28 52,18 62,12" fill="none" stroke="#4A9B93" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="8" cy="44" r="1.4" fill="rgba(250,250,245,0.4)"/>
 <circle cx="20" cy="40" r="1.4" fill="rgba(250,250,245,0.4)"/>
 <circle cx="30" cy="34" r="1.4" fill="rgba(250,250,245,0.4)"/>
 <circle cx="42" cy="28" r="1.4" fill="rgba(250,250,245,0.4)"/>
@@ -639,73 +395,77 @@
 <circle cx="62" cy="12" r="2.6" fill="#D97757"/>
 <text x="10" y="12" font-size="5" font-weight="600" fill="rgba(250,250,245,0.85)">$38K recovered</text>
 </svg></div></div>
-        <h3>Every recovered dollar, tagged to the bid it came from.</h3>
+        <h3>Every dollar tagged to the bid it came from.</h3>
         <hr class="pillar-rule">
-        <p>Real-time dashboard. You see which dead bid came back, what it closed for, and exactly what you owe me. The dashboard is yours forever.</p>
+        <p>You see which dead bid came back, what it closed for, and exactly what you owe me. Real time. The dashboard is yours forever.</p>
         <div class="stat">Proves every dollar. No trust required.</div>
       </div>
     </div>
     <p class="cards-freebie">Included free: the capture system that stops new bids from going cold.</p>
   </section>
 
-  <!-- SECTION 3 — THE ONE-PAGER -->
   <section class="reveal">
     <div class="sec-head">The One-Pager</div>
     <h2 class="dash-head">Here's what lands in your inbox in 24 hours.</h2>
+
     <div class="audit-wrap">
       <div class="audit-doc">
         <div class="ad-brand">
           <span>SOVRN Growth — Revenue Recovery Operations</span>
-          <span class="sample-chip" style="border-color:#D9D6CC;color:#8B8878;">Illustrative — sample data</span>
+          <span class="sample-chip" style="border-color:#DCD8CC;color:#9A9789;">Illustrative — sample data</span>
         </div>
-        <hr class="ad-rule">
+
         <div class="ad-title">The Estimate Graveyard: Hill Country Roofing Co.</div>
-        <div class="ad-sub">Quoted work sitting unclosed in your system as of July 13, 2026. Built from your own records — 349 rows, 9 duplicates removed.</div>
+        <div class="ad-sub">Quoted work sitting unclosed in your system. Built from your own records — 349 rows, 9 duplicates removed.</div>
+        <hr class="ad-rule">
 
         <div class="ad-stats">
-          <div class="ad-stat"><b>255</b><span>Dead bids — quoted, 14+ days cold</span></div>
-          <div class="ad-stat hot"><b>$4,152,900</b><span>Quoted &amp; uncollected</span></div>
-          <div class="ad-stat"><b>$86K–$143K</b><span>Recovery projection (3–5%)</span></div>
-          <div class="ad-stat gold"><b>ELIGIBLE</b><span>Guarantee status — $2.87M chaseable</span></div>
+          <div class="ad-stat"><b>255</b><span>Dead bids<br>14+ days cold</span></div>
+          <div class="ad-stat hot"><b>$4,152,900</b><span>Quoted &amp;<br>uncollected</span></div>
+          <div class="ad-stat"><b>$86K–$143K</b><span>Recovery<br>projection</span></div>
+          <div class="ad-stat gold"><b>ELIGIBLE</b><span>Guarantee<br>status</span></div>
         </div>
 
         <div class="ad-table">
-          <div class="adt-head">
-            <span>Top 20 Chase List — ranked by recoverability</span>
-            <span>Score</span>
+          <div class="adt-cap">Top 20 Chase List — ranked by recoverability</div>
+          <div class="adt-grid">
+            <span class="h">Customer</span><span class="h amt">Amount</span><span class="h days">Cold</span><span class="h why">Why it's still alive</span><span class="h score">Score</span>
+            <span class="cust">Monica V.</span><span class="amt">$25,100</span><span class="days">33d</span><span class="why">"check back after the holidays"</span><span class="score">91</span>
+            <span class="cust">Mike N.</span><span class="amt">$65,400</span><span class="days">55d</span><span class="why">"said call me back in a few weeks"</span><span class="score">90</span>
+            <span class="cust">Dana N.</span><span class="amt">$36,200</span><span class="days">107d</span><span class="why">"very interested, timing is off"</span><span class="score">89</span>
+            <span class="cust">Luis A.</span><span class="amt">$24,300</span><span class="days">70d</span><span class="why">"supplement pending w/ carrier"</span><span class="score">89</span>
+            <span class="cust">Beth M.</span><span class="amt">$20,600</span><span class="days">104d</span><span class="why">"wants to do it before summer"</span><span class="score">88</span>
+            <span class="cust">Dwight R.</span><span class="amt">$20,000</span><span class="days">57d</span><span class="why">"very interested, timing is off"</span><span class="score">87</span>
+            <span class="cust">Tom S.</span><span class="amt">$23,900</span><span class="days">34d</span><span class="why">"said call me back in a few weeks"</span><span class="score">86</span>
+            <span class="cust">Priya H.</span><span class="amt">$27,300</span><span class="days">203d</span><span class="why">"asked about financing"</span><span class="score">84</span>
           </div>
-          <div class="adt-row"><span class="r-cust">Monica V.</span><span class="r-amt">$25,100</span><span class="r-days">33 days</span><span class="r-why">"check back after the holidays"</span><span class="r-score">91</span></div>
-          <div class="adt-row"><span class="r-cust">Mike N.</span><span class="r-amt">$65,400</span><span class="r-days">55 days</span><span class="r-why">"said call me back in a few weeks"</span><span class="r-score">90</span></div>
-          <div class="adt-row"><span class="r-cust">Dana N.</span><span class="r-amt">$36,200</span><span class="r-days">107 days</span><span class="r-why">"very interested, timing is off"</span><span class="r-score">89</span></div>
-          <div class="adt-row"><span class="r-cust">Luis A.</span><span class="r-amt">$24,300</span><span class="r-days">70 days</span><span class="r-why">"supplement pending w/ carrier"</span><span class="r-score">89</span></div>
-          <div class="adt-row"><span class="r-cust">Beth M.</span><span class="r-amt">$20,600</span><span class="r-days">104 days</span><span class="r-why">"wants to do it before summer"</span><span class="r-score">88</span></div>
-          <div class="adt-row"><span class="r-cust">Dwight R.</span><span class="r-amt">$20,000</span><span class="r-days">57 days</span><span class="r-why">"very interested, timing is off"</span><span class="r-score">87</span></div>
-          <div class="adt-row"><span class="r-cust">Tom S.</span><span class="r-amt">$23,900</span><span class="r-days">34 days</span><span class="r-why">"said call me back in a few weeks"</span><span class="r-score">86</span></div>
-          <div class="adt-row"><span class="r-cust">Priya H.</span><span class="r-amt">$27,300</span><span class="r-days">203 days</span><span class="r-why">"asked about financing"</span><span class="r-score">84</span></div>
           <div class="adt-more">…12 more rows, ranked and ready to work.</div>
         </div>
 
         <div class="ad-foot">
-          <b>I recover these on performance.</b> $3,500 setup, then 25% of what I actually bring back — nothing monthly. A bid only counts if it was 14+ days cold when I engaged it, and every recovered dollar is tagged to the bid it came from, in a dashboard you keep forever.
+          <b>I recover these on performance.</b> A bid only counts if it was 14+ days cold when I engaged it. Every recovered dollar is tagged to the bid it came from, in a dashboard you keep forever. If I don't bring back at least one roof in 60 days, you get every dollar back and keep the system.
         </div>
       </div>
 
       <div class="audit-callouts">
-        <div class="co"><b>255 dead bids</b> — quoted, 14+ days cold</div>
-        <div class="co"><b>$4.15M</b> quoted and never collected</div>
-        <div class="co">Ranked by what the notes say — <b>"call me back in a few weeks"</b></div>
+        <div class="co"><b>255 dead bids</b>Quoted, never resolved, 14+ days cold.</div>
+        <div class="co"><b>$4.15M</b>Quoted work you already paid to earn.</div>
+        <div class="co"><b>Ranked by your own notes</b>"Call me back in a few weeks" is a live bid.</div>
       </div>
     </div>
 
     <div class="subtraction">
-      <p>Your bids came in as a mess. <b>349 rows.</b> Here's what I did with them.</p>
-      <p><b>85</b> were already won or lost — gone. <b>73</b> were confirmed dead in your own notes: "went with another company," "selling the house." I threw those out. <b>4</b> had no phone and no email on file. Can't chase a ghost. Gone.</p>
-      <p>What's left is <b>178 bids worth $2.87 million</b> that are genuinely still alive — and I'll show you the 20 most likely to come&nbsp;back.</p>
-      <p class="kill-line">That's the difference between me and a guy selling you an automated text blast. He'd have messaged all 349. I threw out 162 before I made a single&nbsp;call.</p>
+      <p class="sub-lead">Your bids came in as a mess. 349 rows. Here's what I did with them.</p>
+      <ul class="sub-ledger">
+        <li><span class="n">85</span><span class="t">Already won or lost. <em>Gone.</em></span></li>
+        <li><span class="n">73</span><span class="t">Confirmed dead in your own notes — <em>"went with another company," "selling the house."</em> Thrown out.</span></li>
+        <li><span class="n">4</span><span class="t">No phone. No email. <em>Can't chase a ghost.</em></span></li>
+        <li class="keep"><span class="n">178</span><span class="t">Bids worth $2.87 million that are genuinely still alive.</span></li>
+      </ul>
+      <p class="kill-line">A guy selling you a text blast would have messaged all 349. I threw out 162 before I made a single call.</p>
     </div>
   </section>
 
-  <!-- SECTION 4 — DASHBOARD -->
   <section class="reveal">
     <h2 class="dash-head">Every recovered dollar, tagged to the bid it came from.</h2>
     <div class="dash" id="dash">
@@ -720,12 +480,10 @@
           <div class="metric-sub">▲ 4 dead bids recovered · updated just now</div>
           <div class="chart-wrap">
             <svg viewBox="0 0 460 150" aria-hidden="true">
-              <defs>
-                <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#D97757" stop-opacity="0.22"/>
-                  <stop offset="100%" stop-color="#D97757" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
+              <defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#D97757" stop-opacity="0.22"/>
+                <stop offset="100%" stop-color="#D97757" stop-opacity="0"/>
+              </linearGradient></defs>
               <path d="M0,132 C40,128 70,120 105,112 C140,104 165,96 205,84 C245,72 275,64 315,48 C355,32 400,24 460,12 L460,150 L0,150 Z" fill="url(#fade)"/>
               <path class="chart-line" d="M0,132 C40,128 70,120 105,112 C140,104 165,96 205,84 C245,72 275,64 315,48 C355,32 400,24 460,12"/>
             </svg>
@@ -735,22 +493,22 @@
         <div>
           <div class="feed-title">Live Recovery Feed</div>
           <div class="feed-item">
-            <div class="fi-top"><span>Bid #217 — Round Rock · quoted 47 days ago</span><span class="fi-time">6:47 PM</span></div>
-            <div class="fi-flow">Re-engaged 6:47 PM → Homeowner replied 7:02 PM → Inspection booked</div>
+            <div class="fi-top"><span>Bid #217 — Round Rock</span><span class="fi-time">6:47 PM</span></div>
+            <div class="fi-flow">Quoted 47 days ago → Re-engaged → Homeowner replied → Inspection booked</div>
             <span class="tag money">RECOVERED · $16,400</span>
           </div>
           <div class="feed-item">
-            <div class="fi-top"><span>Bid #189 — Pflugerville · quoted 61 days ago</span><span class="fi-time">7:12 PM</span></div>
-            <div class="fi-flow">"Call me back in a few weeks" → Re-engaged → Estimate re-sent → Signed</div>
+            <div class="fi-top"><span>Bid #189 — Pflugerville</span><span class="fi-time">7:12 PM</span></div>
+            <div class="fi-flow">"Call me back in a few weeks" → Estimate re-sent → Signed</div>
             <span class="tag money">RECOVERED · $23,900</span>
           </div>
           <div class="feed-item">
-            <div class="fi-top"><span>Bid #244 — Cedar Park · quoted 38 days ago</span><span class="fi-time">8:03 PM</span></div>
+            <div class="fi-top"><span>Bid #244 — Cedar Park</span><span class="fi-time">8:03 PM</span></div>
             <div class="fi-flow">"Waiting on adjuster" → Adjuster chased → Supplement approved</div>
             <span class="tag money">RECOVERED · $11,200</span>
           </div>
           <div class="feed-item">
-            <div class="fi-top"><span>Bid #301 — Georgetown · quoted 82 days ago</span><span class="fi-time">8:31 PM</span></div>
+            <div class="fi-top"><span>Bid #301 — Georgetown</span><span class="fi-time">8:31 PM</span></div>
             <div class="fi-flow">"Budget opens next quarter" → Timed re-engage → Inspection scheduled</div>
             <span class="tag">IN PIPELINE</span>
           </div>
@@ -759,7 +517,6 @@
     </div>
   </section>
 
-  <!-- SECTION 5 — THE TOGGLE -->
   <section class="reveal">
     <div class="sec-head">See the difference.</div>
     <h2 class="tg-sub">Same business. Same bids. Two realities. <span class="sample-chip">Illustrative — sample data</span></h2>
@@ -801,39 +558,35 @@
     <p class="tg-caption" id="tgCaption">This is happening at your business right now. <b>You just can't see it.</b></p>
   </section>
 
-  <!-- SECTION 6 — HOW IT WORKS -->
   <section class="reveal">
     <div class="sec-head">How It Works</div>
     <div class="timeline">
       <div class="t-node">
         <div class="t-day">Day 1–14</div>
-        <p><b>Recovery engine + dashboard go live.</b> Your graveyard is ranked, the first re-engagements fire, and your crew gets a one-page cheat sheet — no meetings required.</p>
+        <p><b>Recovery engine and dashboard go live.</b> Your graveyard gets ranked. The first re-engagements fire. No meetings required.</p>
       </div>
       <div class="t-node">
         <div class="t-day">Day 15–30</div>
-        <p><b>The free capture system goes live</b> — so new bids stop going cold in the first place.</p>
+        <p><b>The free capture system goes live.</b> New bids stop going cold in the first place.</p>
       </div>
       <div class="t-node">
         <div class="t-day">Day 60</div>
-        <p><b>We meet. Review actual recoveries together.</b> If I haven't brought back at least one dead bid, you get every dollar of setup back and keep the entire system.</p>
+        <p><b>We review actual recoveries together.</b> If I haven't brought back at least one dead bid, you get every dollar back and keep the system.</p>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 7 — GUARANTEE -->
   <section class="guarantee reveal">
-    <h2>If I don't recover at least one roof — <em>$15,000 in quoted work that was already dead</em> — within 60 days, I refund the entire setup fee and you keep the dashboard, the code, everything.</h2>
-    <p class="kicker-line">Risk-free by design.</p>
-    <p class="fine">Guarantee applies where the free one-pager shows at least $250,000 in quoted dead volume. Below that, the guarantee scales to the size of your graveyard — and I'll tell you straight if it isn't worth doing.</p>
+    <h2>If I don't recover at least one roof — <em>$15,000 in quoted work that was already dead</em> — within 60 days, I refund every dollar and you keep the dashboard, the code, everything.</h2>
+    <p class="kicker-line">And my cut is capped in year one. Past the cap, every roof I bring back is yours free and clear.</p>
   </section>
 
-  <!-- SECTION 8 — NEXT STEP -->
   <section class="next reveal" id="book">
     <div class="sec-head">Next Step</div>
-    <p>Send me your bids from the last year — however you've got them. In 24 hours you get one page back: what you quoted and never collected, and the 20 jobs most likely to come back. If the number's small, I'll tell you and we part friends.</p>
-    <p style="margin-top:14px;font-size:13.5px;color:var(--ink-faint);">One operator, no account team. You text me. I answer.</p>
-    <a class="cta-btn" id="mainCta" href="#">Show me what I quoted and never collected</a>
-    <p class="cta-note">Or just text me: <a href="tel:9258185264" style="color:var(--ink-dim);">925-818-5264</a></p>
+    <p>Fifteen minutes. I'll ask what's sitting in your system and tell you straight whether there's enough there to be worth doing. If there isn't, I'll say so and we part friends.</p>
+    <p style="margin-top:16px;font-size:13.5px;color:var(--ink-faint);">One operator, no account team. You text me. I answer.</p>
+    <a class="cta-btn" id="mainCta" href="#">Book a 15-Minute Call</a>
+    <p class="cta-note">Or text me straight: <a href="tel:9258185264">925-818-5264</a></p>
   </section>
 
 </div>
@@ -846,119 +599,106 @@
 </footer>
 
 <script>
-  /* ============================================================
-     CTA now routes to EMAIL, not a calendar.
-     The whole offer is "send me your bids" — a booking link
-     breaks that promise and adds friction at the exact moment
-     the prospect is ready to hand over the thing we want.
-     ============================================================ */
-  const EMAIL_USER = "elijah";
-  const EMAIL_DOM  = "sovrngrowth";
-  const EMAIL_TLD  = "com";
-  const SUBJECT    = "My bids — send me the one-pager";
-  const BODY       = "Attach your estimates/bids however you've got them — CRM export, spreadsheet, or photos of the pile on your desk.\n\nCompany:\nRough number of bids:\nBest number to reach you:\n";
-
-  function mailHref() {
-    return "mail" + "to:" + EMAIL_USER + "@" + EMAIL_DOM + "." + EMAIL_TLD
-      + "?subject=" + encodeURIComponent(SUBJECT)
-      + "&body=" + encodeURIComponent(BODY);
-  }
+  /* ===== PASTE YOUR 15-MIN CALENDLY URL HERE ===== */
+  const CALENDLY_URL = "https://calendly.com/elijah-sovrngrowth/30min";
+  /* =============================================== */
 
   (function(){
-    // hero + nav CTAs scroll to #book; the #book CTA and footer open mail
-    document.querySelectorAll('#mainCta, .emailBtn').forEach(function(a){
+    [document.getElementById('mainCta'),
+     document.querySelector('.nav-cta'),
+     document.querySelector('.hero .cta-btn')].forEach(function(a){
+      if(a && CALENDLY_URL){ a.href = CALENDLY_URL; a.target = "_blank"; a.rel = "noopener"; }
+    });
+  })();
+
+  (function(){
+    document.querySelectorAll('.emailBtn').forEach(function(a){
       a.addEventListener('click', function(e){
         e.preventDefault();
-        window.location.href = mailHref();
+        window.location.href = 'mail' + 'to:' + 'elijah' + '@' + 'sovrngrowth' + '.' + 'com';
       });
     });
   })();
 
-  // Scroll reveals
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 
-  // Dashboard animation
-  const dash = document.getElementById('dash');
-  const counter = document.getElementById('counter');
-  const TARGET = 44500;
-  let played = false;
+  var dash = document.getElementById('dash');
+  var counter = document.getElementById('counter');
+  var TARGET = 44500;
+  var played = false;
+  function fmt(n){ return '$' + Math.floor(n).toLocaleString('en-US'); }
 
-  function fmt(n) { return '$' + Math.floor(n).toLocaleString('en-US'); }
-
-  function runCounter() {
-    if (reduce) { counter.textContent = fmt(TARGET); return; }
-    const dur = 3000, start = performance.now();
-    function tick(now) {
-      const t = Math.min((now - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
-      counter.textContent = fmt(TARGET * eased);
-      if (t < 1) requestAnimationFrame(tick);
-      else counter.textContent = fmt(TARGET);
+  function runCounter(){
+    if(reduce){ counter.textContent = fmt(TARGET); return; }
+    var dur = 3000, start = performance.now();
+    function tick(now){
+      var t = Math.min((now - start)/dur, 1);
+      var e = 1 - Math.pow(1 - t, 3);
+      counter.textContent = fmt(TARGET * e);
+      if(t < 1) requestAnimationFrame(tick); else counter.textContent = fmt(TARGET);
     }
     requestAnimationFrame(tick);
   }
 
-  const dashIO = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting && !played) {
+  var dashIO = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting && !played){
         played = true;
         dash.classList.add('play');
         runCounter();
-        if (!reduce) setTimeout(liveBump, 7000);
+        if(!reduce) setTimeout(liveBump, 7000);
         dashIO.unobserve(dash);
       }
     });
-  }, { threshold: 0.35 });
+  },{threshold:0.35});
   dashIO.observe(dash);
 
-  // A dead bid comes back while they're watching.
-  function liveBump() {
-    const feed = document.querySelector('.dash-grid > div:last-child');
-    const item = document.createElement('div');
+  function liveBump(){
+    var feed = document.querySelector('.dash-grid > div:last-child');
+    var item = document.createElement('div');
     item.className = 'feed-item';
-    item.innerHTML = '<div class="fi-top"><span>Bid #163 — Hutto · quoted 29 days ago</span><span class="fi-time">just now</span></div>' +
-      '<div class="fi-flow">Re-engaged → Homeowner replied in 14 min → Signed</div>' +
-      '<span class="tag money">RECOVERED · $12,400</span>';
+    item.innerHTML = '<div class="fi-top"><span>Bid #163 — Hutto</span><span class="fi-time">just now</span></div>'
+      + '<div class="fi-flow">Quoted 29 days ago → Re-engaged → Replied in 14 min → Signed</div>'
+      + '<span class="tag money">RECOVERED · $12,400</span>';
     feed.insertBefore(item, feed.children[1]);
-    requestAnimationFrame(() => requestAnimationFrame(() => {
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
       item.style.opacity = 1; item.style.transform = 'none';
-    }));
-    const from = 44500, to = 56900, dur = 1400, start = performance.now();
-    function tick(now) {
-      const t = Math.min((now - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
-      counter.textContent = fmt(from + (to - from) * eased);
-      if (t < 1) requestAnimationFrame(tick);
+    });});
+    var from = 44500, to = 56900, dur = 1400, start = performance.now();
+    function tick(now){
+      var t = Math.min((now - start)/dur, 1);
+      var e = 1 - Math.pow(1 - t, 3);
+      counter.textContent = fmt(from + (to - from) * e);
+      if(t < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
-    const sub = document.querySelector('.metric-sub');
-    if (sub) sub.textContent = '▲ 5 dead bids recovered · updated just now';
+    var sub = document.querySelector('.metric-sub');
+    if(sub) sub.textContent = '▲ 5 dead bids recovered · updated just now';
   }
 
-  // Toggle: two realities
   (function(){
-    const sw = document.getElementById('tgSwitch');
-    const bad = document.getElementById('tgBad'), good = document.getElementById('tgGood');
-    const vb = document.getElementById('viewBad'), vg = document.getElementById('viewGood');
-    const cap = document.getElementById('tgCaption');
-    function setState(withSovrn) {
-      sw.classList.toggle('on', withSovrn);
-      bad.classList.toggle('active', !withSovrn);
-      good.classList.toggle('active', withSovrn);
-      bad.setAttribute('aria-selected', String(!withSovrn));
-      good.setAttribute('aria-selected', String(withSovrn));
-      vb.classList.toggle('show', !withSovrn);
-      vg.classList.toggle('show', withSovrn);
-      cap.innerHTML = withSovrn
+    var sw = document.getElementById('tgSwitch');
+    var bad = document.getElementById('tgBad'), good = document.getElementById('tgGood');
+    var vb = document.getElementById('viewBad'), vg = document.getElementById('viewGood');
+    var cap = document.getElementById('tgCaption');
+    function setState(on){
+      sw.classList.toggle('on', on);
+      bad.classList.toggle('active', !on);
+      good.classList.toggle('active', on);
+      bad.setAttribute('aria-selected', String(!on));
+      good.setAttribute('aria-selected', String(on));
+      vb.classList.toggle('show', !on);
+      vg.classList.toggle('show', on);
+      cap.innerHTML = on
         ? 'This is what your business looks like <b>30 days after install.</b>'
         : 'This is happening at your business right now. <b>You just can\'t see it.</b>';
     }
-    bad.addEventListener('click', () => setState(false));
-    good.addEventListener('click', () => setState(true));
+    bad.addEventListener('click', function(){ setState(false); });
+    good.addEventListener('click', function(){ setState(true); });
   })();
 </script>
 </body>
