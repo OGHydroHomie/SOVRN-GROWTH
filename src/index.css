@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #faf8f4;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #d93a2b;
+  color: #faf8f4;
+}
+
+/* Everything structural derives from the current text color, so the
+   whole site re-themes as the night passes with zero extra logic. */
+.hairline {
+  border-color: color-mix(in srgb, currentColor 16%, transparent);
+}
+.hairline-soft {
+  border-color: color-mix(in srgb, currentColor 9%, transparent);
+}
+.tint {
+  background: color-mix(in srgb, currentColor 5%, transparent);
+}
+.tint-strong {
+  background: color-mix(in srgb, currentColor 9%, transparent);
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #d93a2b;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
