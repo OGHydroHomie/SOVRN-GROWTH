@@ -668,7 +668,7 @@ button:focus-visible {
 .missed-record-copy p {
   max-width: 1240px;
   margin: 0 auto;
-  font-size: clamp(3rem, 6.1vw, 5.5rem);
+  font-size: 88px;
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.02;
@@ -697,7 +697,7 @@ button:focus-visible {
 
 .archive-number {
   margin: 72px 0 0;
-  font-size: clamp(7.5rem, 18vw, 16.25rem);
+  font-size: 260px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.04em;
