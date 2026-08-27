@@ -4,14 +4,15 @@ import IPhoneFrame from './IPhoneFrame';
 import { PHONE } from '../theme';
 
 /* ─────────────────────────────────────────────────────────────
-   9:14 PM. The phone rings four times, full-screen incoming
-   call. Nobody answers. The screen darkens. "Missed Call."
+   9:14 PM. The phone rings for 1.5 seconds, full-screen incoming
+   call. A 0.3 second beat, then "Missed Call."
    The ONLY ember on the entire site is the decline button —
    the missed call itself.
    ───────────────────────────────────────────────────────────── */
 
-const RING = 1.35; // seconds per ring
-const RINGS = 4;
+const RING_MS = 1500;
+const BEAT_MS = 300;
+const PULSE_SECONDS = 0.75;
 
 function PhoneIcon({ down = false }) {
   return (
@@ -35,7 +36,7 @@ function CallButton({ color, pulsing, down = false, label }) {
         animate={pulsing ? { scale: [1, 1.09, 1] } : { scale: 1 }}
         transition={
           pulsing
-            ? { duration: RING, repeat: Infinity, ease: 'easeInOut' }
+            ? { duration: PULSE_SECONDS, repeat: Infinity, ease: 'easeInOut' }
             : { duration: 0.3 }
         }
         className="flex h-16 w-16 items-center justify-center rounded-full"
@@ -52,13 +53,13 @@ export default function NightCall() {
   const ref = useRef(null);
   const inView = useInView(ref, { amount: 0.45 });
   const reduce = useReducedMotion();
-  // 0 ringing · 1 darkened · 2 missed-call label · 3 follow line
+  // 0 ringing · 1 beat · 2 missed-call label and follow line
   const [phase, setPhase] = useState(0);
   const [runId, setRunId] = useState(0);
 
   useEffect(() => {
     if (reduce) {
-      setPhase(3);
+      setPhase(2);
       return;
     }
     if (!inView) {
@@ -66,14 +67,11 @@ export default function NightCall() {
       return;
     }
     setRunId((n) => n + 1);
-    const ringMs = RING * RINGS * 1000;
-    const t1 = setTimeout(() => setPhase(1), ringMs);
-    const t2 = setTimeout(() => setPhase(2), ringMs + 700);
-    const t3 = setTimeout(() => setPhase(3), ringMs + 2900); // a long beat of nothing first
+    const t1 = setTimeout(() => setPhase(1), RING_MS);
+    const t2 = setTimeout(() => setPhase(2), RING_MS + BEAT_MS);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
-      clearTimeout(t3);
     };
   }, [inView, reduce]);
 
@@ -81,8 +79,8 @@ export default function NightCall() {
   const dark = reduce || phase >= 1;
 
   return (
-    <section ref={ref} className="relative">
-      <div className="flex min-h-[100svh] flex-col items-center justify-center px-6 py-[60px]">
+    <section ref={ref} className="relative px-6">
+      <div className="flex min-h-[100svh] flex-col items-center justify-center py-[60px]">
         {/* the phone is the only light source in this section */}
         <IPhoneFrame
           key={runId}
@@ -100,7 +98,7 @@ export default function NightCall() {
             {/* caller */}
             <motion.div
               animate={{ opacity: dark ? 0.14 : 1 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
               className="flex flex-col items-center text-center"
             >
               <p className="tnum text-[27px] font-medium leading-tight text-white">
@@ -113,7 +111,11 @@ export default function NightCall() {
                 }
                 transition={
                   ringing
-                    ? { duration: RING, repeat: Infinity, ease: 'easeInOut' }
+                    ? {
+                        duration: PULSE_SECONDS,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      }
                     : { duration: 0.3 }
                 }
                 className="mt-7 text-[13px] tracking-[0.06em] text-white/70"
@@ -126,7 +128,7 @@ export default function NightCall() {
             <motion.p
               initial={false}
               animate={{ opacity: reduce || phase >= 2 ? 1 : 0 }}
-              transition={{ duration: 0.9 }}
+              transition={{ duration: 0.15, ease: 'easeOut' }}
               className="tnum absolute left-0 right-0 top-1/2 -translate-y-1/2 text-center text-[17px] text-muted"
             >
               Missed Call &mdash; 9:14 PM
@@ -135,7 +137,7 @@ export default function NightCall() {
             {/* decline / answer */}
             <motion.div
               animate={{ opacity: dark ? 0.1 : 1 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
               className="flex w-full items-end justify-between px-4"
             >
               <CallButton
@@ -151,7 +153,7 @@ export default function NightCall() {
             <motion.div
               initial={false}
               animate={{ opacity: dark ? 0.72 : 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
               className="pointer-events-none absolute inset-0 bg-black"
             />
           </div>
@@ -159,8 +161,8 @@ export default function NightCall() {
 
         <motion.p
           initial={false}
-          animate={{ opacity: phase >= 3 ? 0.55 : 0 }}
-          transition={{ duration: 1.1 }}
+          animate={{ opacity: phase >= 2 ? 0.55 : 0 }}
+          transition={{ duration: 0.15, ease: 'easeOut' }}
           className="mt-16 text-center text-[17px] md:text-[19px]"
         >
           She&rsquo;s already dialing the next shop.

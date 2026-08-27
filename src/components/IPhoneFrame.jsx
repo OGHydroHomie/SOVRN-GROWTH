@@ -94,7 +94,7 @@ export default function IPhoneFrame({
             ? undefined
             : { rotateY, rotateX, transformPerspective: 1200 }
         }
-        className="relative w-[300px] md:w-[330px]"
+        className="relative w-full max-w-[300px] md:w-[330px] md:max-w-none"
       >
         {/* titanium edge — a specular sweep, not a flat stroke */}
         <div

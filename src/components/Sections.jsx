@@ -20,8 +20,8 @@ function Eyebrow({ children }) {
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] items-center">
-      <div className="mx-auto w-full max-w-5xl px-6">
+    <section className="relative flex min-h-[100svh] items-center px-6 pt-24">
+      <div className="mx-auto w-full max-w-5xl">
         <h1 className="text-[52px] leading-[1.02] tracking-[-0.035em] md:text-[96px] md:leading-[0.98]">
           <Reveal as="span" className="block font-semibold">
             At 9:14 last night, somebody&rsquo;s AC died.
@@ -242,7 +242,7 @@ export function Close() {
           </p>
         </Reveal>
 
-        <Reveal className="mt-16">
+        <Reveal className="mt-16 flex justify-end">
           <a
             href={BOOKING_URL}
             className="inline-block rounded-[10px] bg-green px-8 py-[18px] text-[16px] font-medium text-white transition hover:brightness-110"

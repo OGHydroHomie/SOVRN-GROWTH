@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import {
-  AnimatePresence,
   motion,
   useInView,
   useReducedMotion,
 } from 'framer-motion';
 import Reveal from './Reveal';
 import IPhoneFrame from './IPhoneFrame';
-import { EASE } from '../theme';
 
 /* ─────────────────────────────────────────────────────────────
    9:15 PM. The conversation types itself out on a real screen.
@@ -45,14 +43,18 @@ function Bubble({ msg, gapClass }) {
   const us = msg.from === 'us';
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: EASE }}
+      layout="position"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        opacity: { duration: 0.2, ease: 'linear' },
+        layout: { duration: 0.3, ease: 'easeOut' },
+      }}
       className={`flex ${gapClass} ${us ? 'justify-end' : 'justify-start'}`}
     >
       <div
         className={`bubble max-w-[75%] px-[14px] py-[8px] text-[15px] leading-[1.35] ${
-          us ? 'bubble-us bg-green text-white' : 'bubble-them bg-bubble text-ink'
+          us ? 'bubble-us bg-[#34C759] text-white' : 'bubble-them bg-bubble text-ink'
         }`}
       >
         {msg.text}
@@ -65,15 +67,18 @@ function Typing({ side }) {
   const us = side === 'us';
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.25 }}
+      layout="position"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        opacity: { duration: 0.2, ease: 'linear' },
+        layout: { duration: 0.3, ease: 'easeOut' },
+      }}
       className={`mt-[16px] flex ${us ? 'justify-end' : 'justify-start'}`}
     >
       <div
         className={`bubble flex items-center gap-[5px] px-[15px] py-[12px] ${
-          us ? 'bubble-us bg-green' : 'bubble-them bg-bubble'
+          us ? 'bubble-us bg-[#34C759]' : 'bubble-them bg-bubble'
         }`}
       >
         {[0, 1, 2].map((i) => (
@@ -172,13 +177,13 @@ export default function PhoneDemo() {
               <span className="mt-1 text-[11.5px] text-ink">{SHOP_NAME}</span>
             </div>
             {/* messages */}
-            <div className="flex flex-1 flex-col justify-end overflow-hidden px-3.5 pb-5 pt-3">
-              {visible.map(({ m, gapClass }, i) => (
-                <Bubble key={i} msg={m} gapClass={gapClass} />
-              ))}
-              <AnimatePresence>
+            <div className="flex flex-1 overflow-hidden px-3.5 pb-5 pt-3">
+              <div className="mt-auto w-full">
+                {visible.map(({ m, gapClass }, i) => (
+                  <Bubble key={i} msg={m} gapClass={gapClass} />
+                ))}
                 {typing && <Typing key="typing" side={typing} />}
-              </AnimatePresence>
+              </div>
             </div>
           </div>
         </IPhoneFrame>
