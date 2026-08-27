@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {
   motion,
+  useMotionValue,
   useMotionValueEvent,
   useReducedMotion,
   useScroll,
@@ -24,19 +25,22 @@ import {
   Unchanged,
   WhoIAm,
 } from './components/Sections';
+import Logo from './components/Logo';
 import NightCall from './components/NightCall';
 import Fork from './components/Fork';
 import PhoneDemo from './components/PhoneDemo';
+import Database from './components/Database';
 import Benchmark from './components/Bars';
+import WhoAnswers from './components/WhoAnswers';
 
-/* The clock. Always visible, top left. It sweeps 6 PM to 7 AM
-   as the page scrolls through the night. */
+/* The clock. Fixed top-right, opposite the logo. Sweeps 6 PM
+   to 7 AM as the page scrolls through the night. */
 function Clock({ progress }) {
   const [label, setLabel] = useState('6:00 PM');
   useMotionValueEvent(progress, 'change', (v) => setLabel(clockLabel(v)));
   return (
     <div
-      className="tnum pointer-events-none fixed left-5 top-5 z-50 select-none text-[13px] font-medium tracking-[0.1em] opacity-70 md:left-8 md:top-7"
+      className="tnum pointer-events-none fixed right-6 top-[30px] z-50 select-none text-[13px] font-medium tracking-[0.1em] opacity-70"
       aria-hidden="true"
     >
       {label}
@@ -52,13 +56,16 @@ export default function App() {
      the night as you scroll. See src/theme.js to tune the stops. */
   const bg = useTransform(scrollYProgress, BG_STOPS, BG_COLORS);
   const fg = useTransform(scrollYProgress, FG_STOPS, FG_COLORS);
+  const bgStatic = useMotionValue(COLORS.ground);
+  const fgStatic = useMotionValue(COLORS.ink);
 
   const style = reduce
-    ? { backgroundColor: COLORS.day, color: COLORS.ink }
+    ? { backgroundColor: COLORS.ground, color: COLORS.ink }
     : { backgroundColor: bg, color: fg };
 
   return (
     <motion.div style={style} className="min-h-screen font-sans">
+      <Logo fg={reduce ? fgStatic : fg} bg={reduce ? bgStatic : bg} />
       <Clock progress={scrollYProgress} />
       <main>
         {/* 6:00 PM — closing time */}
@@ -73,17 +80,18 @@ export default function App() {
         {/* 9:15 PM — the fork */}
         <Fork />
 
-        <Spacer h="18vh" />
+        <Spacer h="14vh" />
 
         {/* 9:15 PM — sixty seconds */}
         <PhoneDemo />
 
-        <Spacer h="14vh" />
+        <Spacer h="12vh" />
 
         {/* 11:00 PM — the other leaks */}
         <Leaks />
 
-        <Spacer h="10vh" />
+        {/* deep night — the 8,000 */}
+        <Database />
 
         {/* 6:00 AM — the number */}
         <Benchmark />
@@ -95,6 +103,9 @@ export default function App() {
         <HowItGoes />
         <Cost />
         <WhoIAm />
+
+        {/* who's answering at 9pm */}
+        <WhoAnswers />
 
         {/* full daylight — the close */}
         <Close />

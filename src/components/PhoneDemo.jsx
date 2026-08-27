@@ -1,11 +1,26 @@
 import { useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion, useInView, useReducedMotion } from 'framer-motion';
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  useReducedMotion,
+} from 'framer-motion';
 import Reveal from './Reveal';
+import IPhoneFrame from './IPhoneFrame';
 import { EASE } from '../theme';
 
+/* ─────────────────────────────────────────────────────────────
+   9:15 PM. The conversation types itself out on a real screen.
+   Incoming grey left, outgoing green right, tails, typing dots.
+   Timestamps live BESIDE the phone, never on it. Loops on
+   re-entry. Sixty seconds, start to booked.
+   ───────────────────────────────────────────────────────────── */
+
+const SHOP_NAME = 'Ridgeline Air';
+const SHOP_INITIALS = 'RA';
+
 const SCRIPT = [
-  { type: 'sys', text: '9:14 PM \u00B7 Missed call' },
-  { from: 'us', text: 'Hey, this is Arctic Air. Sorry we missed you. What\u2019s the system doing?' },
+  { from: 'us', text: `Hey, this is ${SHOP_NAME}. Sorry we missed you. What\u2019s the system doing?` },
   { from: 'them', text: 'Not cooling at all. House is 86.' },
   { from: 'us', text: 'Anybody home right now without air?' },
   { from: 'them', text: 'Yeah, me and two kids.' },
@@ -19,49 +34,26 @@ const SCRIPT = [
 
 const GAP = 900; // ms between sends, per the doctrine
 const TYPE = 650; // typing indicator before each message
+const SECS_FROM = 4;
+const SECS_TO = 58;
 
 function fmt(s) {
   return `0:${String(s).padStart(2, '0')}`;
 }
 
-function Bubble({ msg, showLabel }) {
-  if (msg.type === 'sys') {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, ease: EASE }}
-        className="tnum self-center py-1 text-center text-[12px] tracking-[0.1em] opacity-50"
-      >
-        {msg.text}
-      </motion.div>
-    );
-  }
+function Bubble({ msg, gapClass }) {
   const us = msg.from === 'us';
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: EASE }}
-      className={`flex flex-col ${us ? 'items-end' : 'items-start'}`}
+      className={`flex ${gapClass} ${us ? 'justify-end' : 'justify-start'}`}
     >
-      {showLabel && (
-        <span className="mb-1 px-1 text-[10px] uppercase tracking-[0.14em] opacity-40">
-          {us ? 'us' : 'them'}
-        </span>
-      )}
       <div
-        className={`max-w-[84%] rounded-2xl border px-3.5 py-2.5 text-[15px] leading-snug ${
-          us ? 'tint rounded-br-md border-transparent' : 'hairline rounded-bl-md'
+        className={`bubble max-w-[75%] px-[14px] py-[8px] text-[15px] leading-[1.35] ${
+          us ? 'bubble-us bg-green text-white' : 'bubble-them bg-bubble text-ink'
         }`}
-        style={
-          msg.booked
-            ? {
-                borderColor: 'rgba(217,58,43,0.75)',
-                boxShadow: '0 0 28px rgba(217,58,43,0.22)',
-              }
-            : undefined
-        }
       >
         {msg.text}
       </div>
@@ -70,24 +62,27 @@ function Bubble({ msg, showLabel }) {
 }
 
 function Typing({ side }) {
+  const us = side === 'us';
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.25 }}
-      className={`flex ${side === 'us' ? 'justify-end' : 'justify-start'}`}
+      className={`mt-[16px] flex ${us ? 'justify-end' : 'justify-start'}`}
     >
       <div
-        className={`flex items-center gap-1.5 rounded-2xl border px-3.5 py-3 ${
-          side === 'us' ? 'tint border-transparent rounded-br-md' : 'hairline rounded-bl-md'
+        className={`bubble flex items-center gap-[5px] px-[15px] py-[12px] ${
+          us ? 'bubble-us bg-green' : 'bubble-them bg-bubble'
         }`}
       >
         {[0, 1, 2].map((i) => (
           <motion.span
             key={i}
-            className="h-1.5 w-1.5 rounded-full bg-current"
-            animate={{ opacity: [0.25, 0.9, 0.25] }}
+            className={`h-[7px] w-[7px] rounded-full ${
+              us ? 'bg-white/80' : 'bg-[#909096]'
+            }`}
+            animate={{ opacity: [0.3, 1, 0.3] }}
             transition={{ duration: 1, repeat: Infinity, delay: i * 0.16 }}
           />
         ))}
@@ -102,19 +97,19 @@ export default function PhoneDemo() {
   const reduce = useReducedMotion();
   const [count, setCount] = useState(0);
   const [typing, setTyping] = useState(null);
-  const [secs, setSecs] = useState(0);
+  const [secs, setSecs] = useState(SECS_FROM);
 
   // Types itself out with real timing. Loops when scrolled back into view.
   useEffect(() => {
     if (reduce) {
       setCount(SCRIPT.length);
-      setSecs(58);
+      setSecs(SECS_TO);
       return;
     }
     if (!inView) {
       setCount(0);
       setTyping(null);
-      setSecs(0);
+      setSecs(SECS_FROM);
       return;
     }
     let dead = false;
@@ -126,12 +121,11 @@ export default function PhoneDemo() {
         }, ms)
       );
 
-    let t = 400;
-    at(t, () => setCount(1));
-    for (let i = 1; i < SCRIPT.length; i++) {
+    let t = 500;
+    for (let i = 0; i < SCRIPT.length; i++) {
       const from = SCRIPT[i].from;
       const n = i + 1;
-      t += GAP;
+      if (i > 0) t += GAP;
       at(t, () => setTyping(from));
       t += TYPE;
       at(t, () => {
@@ -144,7 +138,12 @@ export default function PhoneDemo() {
     const start = performance.now();
     const iv = setInterval(() => {
       const el = performance.now() - start;
-      setSecs(Math.min(58, Math.round((el / total) * 58)));
+      setSecs(
+        Math.min(
+          SECS_TO,
+          SECS_FROM + Math.round((el / total) * (SECS_TO - SECS_FROM))
+        )
+      );
       if (el >= total) clearInterval(iv);
     }, 140);
 
@@ -155,44 +154,51 @@ export default function PhoneDemo() {
     };
   }, [inView, reduce]);
 
-  // A tiny label the first time each side speaks.
-  let lastFrom = null;
-  const visible = SCRIPT.slice(0, count).map((m) => {
-    const showLabel = m.type !== 'sys' && m.from !== lastFrom;
-    if (m.type !== 'sys') lastFrom = m.from;
-    return { m, showLabel };
-  });
+  const visible = SCRIPT.slice(0, count).map((m, i) => ({
+    m,
+    gapClass: i === 0 ? '' : SCRIPT[i - 1].from === m.from ? 'mt-[6px]' : 'mt-[16px]',
+  }));
 
   return (
-    <section ref={ref} className="px-6 py-[8vh]">
-      <div className="mx-auto flex max-w-4xl flex-col items-center gap-12 md:flex-row md:justify-center md:gap-16">
-        {/* The phone. Not a glossy mockup. A quiet rectangle. */}
-        <div className="w-full max-w-[340px] shrink-0">
-          <div className="hairline tint rounded-[2rem] border p-3">
-            <div className="flex h-[560px] flex-col justify-end gap-2.5 overflow-hidden rounded-[1.4rem] p-4">
-              {visible.map(({ m, showLabel }, i) => (
-                <Bubble key={i} msg={m} showLabel={showLabel} />
+    <section ref={ref} className="px-6 py-[60px]">
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-14 md:flex-row md:justify-center md:gap-20">
+        <IPhoneFrame statusTheme="light" time="9:15" screenClassName="bg-white">
+          <div className="flex h-full flex-col bg-white">
+            {/* conversation header */}
+            <div className="flex shrink-0 flex-col items-center border-b border-[#e5e5e7] bg-[#f7f7f9] pb-2.5 pt-[54px]">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#c8c8cd] text-[13px] font-medium text-white">
+                {SHOP_INITIALS}
+              </div>
+              <span className="mt-1 text-[11.5px] text-ink">{SHOP_NAME}</span>
+            </div>
+            {/* messages */}
+            <div className="flex flex-1 flex-col justify-end overflow-hidden px-3.5 pb-5 pt-3">
+              {visible.map(({ m, gapClass }, i) => (
+                <Bubble key={i} msg={m} gapClass={gapClass} />
               ))}
               <AnimatePresence>
                 {typing && <Typing key="typing" side={typing} />}
               </AnimatePresence>
             </div>
           </div>
-        </div>
+        </IPhoneFrame>
 
-        {/* The clock running alongside. */}
-        <div className="text-center md:w-44 md:text-left">
-          <div className="tnum text-5xl font-semibold text-amberx md:text-6xl">
+        {/* the timestamps, beside the phone */}
+        <div className="text-center md:w-48 md:text-left">
+          <p className="tnum text-[13px] font-medium tracking-[0.1em] opacity-50">
+            9:14 PM &middot; MISSED CALL
+          </p>
+          <div className="tnum mt-6 text-[64px] font-semibold leading-none tracking-[-0.02em] md:text-[80px]">
             {fmt(secs)}
           </div>
-          <div className="mt-3 text-[13px] uppercase tracking-[0.14em] opacity-50">
+          <p className="mt-3 text-[12px] uppercase tracking-[0.14em] opacity-50">
             elapsed
-          </div>
+          </p>
         </div>
       </div>
 
-      <Reveal className="mt-16">
-        <p className="mx-auto max-w-[52ch] text-center text-[15px] md:text-[17px] leading-[1.6] opacity-55">
+      <Reveal className="mt-20">
+        <p className="mx-auto max-w-[46ch] text-center text-[17px] leading-[1.55] opacity-[0.72] md:text-[19px]">
           Fifty-eight seconds. Nobody on your team touched it.
         </p>
       </Reveal>

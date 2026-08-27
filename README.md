@@ -1,52 +1,59 @@
 # SOVRN Growth — one night, one page
 
-A single-page site that walks an HVAC owner through one 8pm emergency call,
-from the missed ring to the tech at the door. The background moves through
-dusk, deep night, and dawn as you scroll. React + Tailwind + framer-motion,
-Geist Sans self-hosted, no UI libraries, no images.
+A single-page site that plays out one missed 9:14 PM call, from dusk
+to the 7 AM arrival. Background, text color, and the clock in the
+corner all follow scroll. React 18 + Tailwind + framer-motion,
+Geist self-hosted, no UI libraries, no images.
 
 ## Run it
 
-    npm install
-    npm run dev        # local, http://localhost:5173
-    npm run build      # production build to dist/
+    npm install && npm run dev
 
-## Primary call to action
+`npm run build` outputs `dist/` (client build + prerendered HTML).
+Deploy `dist/` to Vercel or Netlify as a static site.
 
-`src/theme.js` contains `BOOKING_URL`, which points both primary CTAs to the
-SOVRN Growth 15-minute intro-call calendar. The direct call and text links are
-kept separately in the same file.
+## The knobs
 
-## Where things live
+Everything tunable lives in `src/theme.js`: booking link, phone,
+palette, the light-system stops, and the clock sweep. If you add or
+resize sections, retune `BG_STOPS` / `FG_STOPS` / `CLOCK_STOPS` —
+the text-color flips are deliberately placed over empty zones.
 
-- `src/theme.js` — every knob: palette, the night timeline stops, the clock
-  anchors, phone, email, booking link.
-- `src/App.jsx` — the light system and section order.
-- `src/components/` — one file per major moment (NightCall, Fork, PhoneDemo,
-  Bars) plus the simpler sections in `Sections.jsx`.
-- `public/privacy/` and `public/terms/` — plain static HTML on purpose.
-  Carrier compliance reviewers for A2P texting crawl these without running
-  JavaScript, and the required SMS consent clause sits verbatim near the top
-  of the privacy page. Don't convert these to React routes.
-- `public/robots.txt`, `public/sitemap.xml`, `public/favicon.svg`.
+Color semantics: green `#1F6F4A` means go, booked, working. In the
+dark sections it swaps to `greenlite #4FAF7E` because the brand
+green is illegible on the deep-night background. Ember `#D93A2B`
+appears exactly once on the whole site: the decline button on the
+9:14 call. Muted `#8A857E` is the dead state.
 
-## Tuning the night
+## When the 512 number lands
 
-The background color is interpolated against total page scroll. If you add,
-remove, or resize sections, the stops in `BG_STOPS` / `FG_STOPS` /
-`CLOCK_STOPS` (all in `src/theme.js`) may need a nudge so full dark still
-lands on the 9:14 call. The two text-color flips are deliberately parked
-inside empty spacer zones so the low-contrast crossover happens over nothing.
+Change it in three places or the old number keeps showing:
 
-`prefers-reduced-motion` is respected: the page stays light throughout, all
-content renders immediately, nothing animates.
+1. `src/theme.js` (PHONE / PHONE_TEL)
+2. `public/privacy/index.html`
+3. `public/terms/index.html`
 
-## Deploy
+Then rebuild. Reminder: get the number BEFORE A2P registration —
+changing it later restarts the carrier clock.
 
-Any static host. On Vercel: framework Vite, build `npm run build`, output
-`dist`. `/privacy/` and `/terms/` work as plain directories on every host, no
-rewrite rules needed.
+## Assets
 
-Legal note: the terms and privacy pages follow the outline you specified, but
-have a lawyer glance at them before you're taking real client money through
-this funnel.
+`npm run assets` regenerates the favicon set and `public/og.png`
+from `scripts/generate-assets.mjs` (satori + sharp, real Geist).
+They're committed; the build doesn't regenerate them.
+
+## Prerender
+
+`npm run build` also renders the full page to static HTML and
+injects it into `dist/index.html`, so the homepage serves real
+content without JavaScript (search, unfurlers, carrier review).
+A `noscript` style in `index.html` makes it readable with JS off.
+`/privacy/` and `/terms/` stay plain static HTML on purpose —
+don't convert them to React routes. Have a lawyer read both.
+
+## Voice rules
+
+Sixth-grade words. No em dashes, no exclamation points (the one
+em dash on the missed-call screen is simulated phone UI, not copy).
+Banned: solution, platform, leverage, seamless, and the rest of the
+list. Sweep before shipping copy changes.

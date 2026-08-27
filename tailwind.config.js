@@ -3,15 +3,19 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      screens: { xs: '480px' },
       colors: {
+        ground: '#FAF8F4',
+        ink: '#111111',
+        green: '#1F6F4A',
+        greenlite: '#4FAF7E',
         ember: '#D93A2B',
-        amberx: '#E8B04B',
-        day: '#FAF8F4',
+        muted: '#8A857E',
+        bubble: '#E9E9EB',
         dusk: '#F0EDE6',
         night: '#2A2724',
         deepnight: '#1A1816',
         dawn: '#3A3530',
-        ink: '#211D19',
         paper: '#F4F1EA',
       },
       fontFamily: {

@@ -13,11 +13,11 @@ body {
 }
 
 ::selection {
-  background: #d93a2b;
+  background: #1f6f4a;
   color: #faf8f4;
 }
 
-/* Everything structural derives from the current text color, so the
+/* Structural tints derive from the current text color, so the
    whole site re-themes as the night passes with zero extra logic. */
 .hairline {
   border-color: color-mix(in srgb, currentColor 16%, transparent);
@@ -29,7 +29,7 @@ body {
   background: color-mix(in srgb, currentColor 5%, transparent);
 }
 .tint-strong {
-  background: color-mix(in srgb, currentColor 9%, transparent);
+  background: color-mix(in srgb, currentColor 12%, transparent);
 }
 
 .tnum {
@@ -38,9 +38,57 @@ body {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #d93a2b;
+  outline: 2px solid #1f6f4a;
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+/* ── iMessage bubble tails ─────────────────────────────────
+   The classic two-pseudo-element curve. Screen is always white,
+   so the mask color is fixed. */
+.bubble {
+  position: relative;
+  border-radius: 20px;
+}
+.bubble-them::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  background: #e9e9eb;
+  border-bottom-right-radius: 15px;
+}
+.bubble-them::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  bottom: 0;
+  width: 10px;
+  height: 20px;
+  background: #ffffff;
+  border-bottom-right-radius: 10px;
+}
+.bubble-us::before {
+  content: '';
+  position: absolute;
+  right: -7px;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  background: #1f6f4a;
+  border-bottom-left-radius: 15px;
+}
+.bubble-us::after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  width: 10px;
+  height: 20px;
+  background: #ffffff;
+  border-bottom-left-radius: 10px;
 }
 
 @media (prefers-reduced-motion: reduce) {

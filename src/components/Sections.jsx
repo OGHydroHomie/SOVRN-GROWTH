@@ -1,5 +1,4 @@
 import Reveal from './Reveal';
-import Waveform from './Waveform';
 import { BOOKING_URL, PHONE, PHONE_TEL } from '../theme';
 
 export function Spacer({ h }) {
@@ -8,44 +7,42 @@ export function Spacer({ h }) {
 
 function Eyebrow({ children }) {
   return (
-    <p className="text-[13px] font-medium uppercase tracking-[0.14em] opacity-50">
+    <p className="text-[12px] font-medium uppercase tracking-[0.14em] opacity-50">
       {children}
     </p>
   );
 }
 
-/* ── 6:00 PM · closing time ───────────────────────────────── */
+/* ── 6:00 PM · the hero ───────────────────────────────────────
+   Three lines, decreasing weight, generous leading. Extra space
+   above line three. Content holds the middle third; the
+   emptiness above and below is deliberate. */
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] items-center overflow-hidden">
-      <div
-        className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 opacity-[0.16]"
-        aria-hidden="true"
-      >
-        <Waveform />
-      </div>
+    <section className="relative flex min-h-[100svh] items-center">
+      <div className="mx-auto w-full max-w-5xl px-6">
+        <h1 className="text-[52px] leading-[1.02] tracking-[-0.035em] md:text-[96px] md:leading-[0.98]">
+          <Reveal as="span" className="block font-semibold">
+            At 9:14 last night, somebody&rsquo;s AC died.
+          </Reveal>
+          <Reveal as="span" delay={0.1} className="mt-3 block font-medium md:mt-4">
+            They called you. Nobody picked up.
+          </Reveal>
+          <Reveal as="span" delay={0.22} className="mt-8 block font-normal md:mt-12">
+            By 9:16 they were calling the next shop.
+          </Reveal>
+        </h1>
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-6">
-        <Reveal>
-          <h1 className="text-[44px] font-semibold leading-[1.05] tracking-[-0.03em] md:text-[88px]">
-            Your team shouldn&rsquo;t wake up
-            <br className="hidden md:block" /> to a callback list.
-          </h1>
-        </Reveal>
-        <Reveal delay={0.08}>
-          <p className="mt-8 max-w-[62ch] text-[17px] leading-[1.6] opacity-75 md:text-[19px]">
+        <Reveal delay={0.34} className="mt-12">
+          <p className="max-w-[46ch] text-[17px] leading-[1.55] opacity-[0.72] md:text-[19px]">
             It&rsquo;s 103 out. Your last truck just got back. Phones roll to
             voicemail at six.
           </p>
         </Reveal>
-        <Reveal delay={0.16}>
-          <p className="mt-12 text-[13px] uppercase tracking-[0.14em] opacity-40">
-            Scroll
-          </p>
-        </Reveal>
-        <Reveal delay={0.24}>
-          <p className="mt-16 text-[15px] md:text-[17px]">
+
+        <Reveal delay={0.44} className="mt-16">
+          <p className="text-[15px] md:text-[17px]">
             <a
               href={BOOKING_URL}
               className="underline decoration-[1.5px] underline-offset-4 transition-opacity hover:opacity-70"
@@ -55,7 +52,7 @@ export function Hero() {
             <span className="mx-3 opacity-40">&middot;</span>
             <a
               href={`sms:${PHONE_TEL}`}
-              className="transition-opacity hover:opacity-70"
+              className="opacity-[0.72] transition-opacity hover:opacity-100"
             >
               Or text me: <span className="tnum">{PHONE}</span>
             </a>
@@ -66,34 +63,35 @@ export function Hero() {
   );
 }
 
-/* ── 11:00 PM · the other leaks ───────────────────────────── */
+/* ── 11:00 PM · the other leaks ───────────────────────────────
+   Two rows here. The third leak — the customer from 2019 —
+   became the 8,000 section that follows. */
 
 const LEAKS = [
   [
     'The form at 2 PM',
-    'Somebody fills out your website while every truck is out. Same sixty seconds. Same questions. Same booked slot. Saturday included.',
+    'Somebody fills out your website while every truck is out.',
+    'Same sixty seconds. Same questions. Same booked slot. Saturday included.',
   ],
   [
     'The estimate from Tuesday',
-    'You drove out. You wrote the number. Then nothing. It gets followed up on day 1, 3, 7, 14, and 30. It stops the second they reply.',
-  ],
-  [
-    'The customer from 2019',
-    'Forty years of names in there. Most haven\u2019t heard from you since the last service call. They get a reason to.',
+    'You drove out. You wrote the number. Then nothing.',
+    'It gets followed up on day 1, 3, 7, 14, and 30. It stops the second they reply.',
   ],
 ];
 
 export function Leaks() {
   return (
-    <section className="px-6 py-[14vh]">
-      <div className="mx-auto max-w-3xl space-y-44 md:space-y-56">
-        {LEAKS.map(([title, body]) => (
+    <section className="px-6 py-[120px] md:py-[200px]">
+      <div className="mx-auto max-w-3xl space-y-48 md:space-y-64">
+        {LEAKS.map(([title, big, rest]) => (
           <Reveal key={title} amount={0.5}>
-            <p className="text-[13px] font-medium uppercase tracking-[0.14em] opacity-50">
-              {title}
+            <Eyebrow>{title}</Eyebrow>
+            <p className="mt-7 max-w-[30ch] text-[26px] font-medium leading-[1.25] tracking-[-0.01em] md:text-[36px]">
+              {big}
             </p>
-            <p className="mt-6 max-w-[54ch] text-[19px] leading-[1.6] md:text-[22px]">
-              {body}
+            <p className="mt-6 max-w-[52ch] text-[17px] leading-[1.55] opacity-[0.72] md:text-[19px]">
+              {rest}
             </p>
           </Reveal>
         ))}
@@ -113,19 +111,19 @@ const UNCHANGED = [
 
 export function Unchanged() {
   return (
-    <section className="px-6 pb-[16vh] pt-[45vh]">
-      <div className="mx-auto max-w-3xl">
+    <section className="px-6 pb-[120px] pt-[45vh] md:pb-[200px]">
+      <div className="mx-auto max-w-4xl">
         <div className="space-y-20 md:space-y-28">
           {UNCHANGED.map((line) => (
             <Reveal key={line} amount={0.7}>
-              <p className="text-[26px] font-semibold leading-[1.2] tracking-[-0.02em] md:text-[40px]">
+              <p className="text-[32px] font-semibold leading-[1.08] tracking-[-0.02em] md:text-[56px]">
                 {line}
               </p>
             </Reveal>
           ))}
         </div>
-        <Reveal className="mt-24">
-          <p className="max-w-[62ch] text-[17px] leading-[1.6] opacity-70 md:text-[19px]">
+        <Reveal className="mt-28">
+          <p className="max-w-[46ch] text-[17px] leading-[1.55] opacity-[0.72] md:text-[19px]">
             It sits on top of ServiceTitan or Housecall Pro. Nothing gets
             moved. Nothing gets migrated.
           </p>
@@ -151,18 +149,18 @@ const STEPS = [
 
 export function HowItGoes() {
   return (
-    <section className="px-6 py-[10vh]">
+    <section className="px-6 py-[80px] md:py-[120px]">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <Eyebrow>How it goes</Eyebrow>
         </Reveal>
-        <div className="mt-12 space-y-14">
+        <div className="mt-14 space-y-14">
           {STEPS.map(([day, body]) => (
             <Reveal key={day} className="flex flex-col gap-3 md:flex-row md:gap-10">
-              <span className="tnum shrink-0 text-[13px] font-medium tracking-[0.1em] opacity-60 md:w-24 md:pt-1">
+              <span className="tnum shrink-0 text-[13px] font-medium tracking-[0.1em] text-green md:w-24 md:pt-1">
                 {day}
               </span>
-              <p className="max-w-[58ch] text-[17px] leading-[1.6] md:text-[19px]">
+              <p className="max-w-[58ch] text-[17px] leading-[1.55] opacity-[0.72] md:text-[19px]">
                 {body}
               </p>
             </Reveal>
@@ -177,21 +175,21 @@ export function HowItGoes() {
 
 export function Cost() {
   return (
-    <section className="px-6 py-[10vh]">
+    <section className="px-6 py-[80px] md:py-[120px]">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <Eyebrow>What it costs</Eyebrow>
         </Reveal>
         <Reveal className="mt-10">
-          <p className="max-w-[58ch] text-[17px] leading-[1.6] md:text-[19px]">
+          <p className="max-w-[52ch] text-[17px] leading-[1.55] opacity-[0.72] md:text-[19px]">
             I&rsquo;ll tell you on the call, once I know what&rsquo;s actually
             leaking. Setup runs between $6,500 and $10,000 depending on how
             much of it you need, plus a monthly. Most shops land in the
             middle.
           </p>
         </Reveal>
-        <Reveal className="mt-8">
-          <p className="max-w-[58ch] text-[17px] leading-[1.6] md:text-[19px]">
+        <Reveal className="mt-7">
+          <p className="max-w-[52ch] text-[17px] leading-[1.55] opacity-[0.72] md:text-[19px]">
             I won&rsquo;t tell you to buy any of it until I know there&rsquo;s
             something worth fixing.
           </p>
@@ -205,19 +203,19 @@ export function Cost() {
 
 export function WhoIAm() {
   return (
-    <section className="px-6 py-[10vh]">
+    <section className="px-6 py-[80px] md:py-[120px]">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <Eyebrow>Who I am</Eyebrow>
         </Reveal>
         <Reveal className="mt-10">
-          <p className="max-w-[58ch] text-[19px] font-medium leading-[1.5] md:text-[24px]">
+          <p className="max-w-[40ch] text-[26px] font-medium leading-[1.25] tracking-[-0.01em] md:text-[36px]">
             Elijah Pitts. Four years selling infrastructure software to
             companies with a thousand employees. Left it.
           </p>
         </Reveal>
         <Reveal className="mt-8">
-          <p className="max-w-[58ch] text-[17px] leading-[1.6] md:text-[19px]">
+          <p className="max-w-[52ch] text-[17px] leading-[1.55] opacity-[0.72] md:text-[19px]">
             Now I work with heating and air companies, and only heating and
             air companies. One operator, no account team. You text me, I
             answer.
@@ -228,14 +226,15 @@ export function WhoIAm() {
   );
 }
 
-/* ── close · full daylight ────────────────────────────────── */
+/* ── close · full daylight ────────────────────────────────────
+   The only real button on the entire site. */
 
 export function Close() {
   return (
-    <section id="book" className="px-6 pb-16 pt-[14vh]">
+    <section id="book" className="px-6 pb-16 pt-[120px] md:pt-[200px]">
       <div className="mx-auto max-w-3xl">
         <Reveal>
-          <p className="max-w-[58ch] text-[19px] leading-[1.6] md:text-[24px] md:leading-[1.5]">
+          <p className="max-w-[44ch] text-[26px] font-medium leading-[1.3] tracking-[-0.01em] md:text-[32px]">
             Fifteen minutes. I&rsquo;ll ask how it actually runs at your shop
             and tell you straight whether there&rsquo;s enough there to be
             worth doing. If there isn&rsquo;t, I&rsquo;ll say so and we part
@@ -243,25 +242,27 @@ export function Close() {
           </p>
         </Reveal>
 
-        <Reveal className="mt-14">
+        <Reveal className="mt-16">
           <a
             href={BOOKING_URL}
-            className="inline-block rounded-[6px] bg-ember px-8 py-4 text-[17px] font-medium text-day transition hover:brightness-110"
-            style={{ boxShadow: '0 12px 40px rgba(217,58,43,0.25)' }}
+            className="inline-block rounded-[10px] bg-green px-8 py-[18px] text-[16px] font-medium text-white transition hover:brightness-110"
           >
             Book a 15-Minute Call
           </a>
         </Reveal>
-        <Reveal className="mt-7">
-          <p className="text-[15px] md:text-[17px] opacity-80">
+        <Reveal className="mt-8">
+          <p className="text-[15px] opacity-[0.72] md:text-[17px]">
             Or text me straight:{' '}
-            <a href={`sms:${PHONE_TEL}`} className="tnum underline decoration-[1.5px] underline-offset-4">
+            <a
+              href={`sms:${PHONE_TEL}`}
+              className="tnum underline decoration-[1.5px] underline-offset-4"
+            >
               {PHONE}
             </a>
           </p>
         </Reveal>
 
-        <footer className="hairline-soft mt-[16vh] border-t pt-10 text-[13px] leading-[1.9] tracking-[0.02em] opacity-60">
+        <footer className="hairline-soft mt-[18vh] border-t pt-10 text-[13px] leading-[1.9] tracking-[0.02em] opacity-60">
           <p>
             Elijah Pitts <span className="mx-1">|</span> SOVRN Growth{' '}
             <span className="mx-1">|</span> Pflugerville, TX{' '}

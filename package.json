@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview",
+    "assets": "node scripts/generate-assets.mjs"
   },
   "dependencies": {
     "@fontsource/geist-sans": "^5.1.0",
@@ -17,7 +18,10 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.2",
     "autoprefixer": "^10.4.20",
+    "png-to-ico": "^3.0.2",
     "postcss": "^8.4.47",
+    "satori": "^0.33.4",
+    "sharp": "^0.35.4",
     "tailwindcss": "^3.4.13",
     "vite": "^5.4.8"
   }

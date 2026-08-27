@@ -1,7 +1,11 @@
 import Reveal from './Reveal';
 
+/* Color semantics: the left timeline is the dead state — muted,
+   desaturated, low contrast. The right runs green. Ember never
+   appears here; its one moment already happened at 9:14. */
+
 const LEFT = {
-  title: 'Tonight, at most shops',
+  title: 'What probably happens now',
   rows: [
     ['9:14 PM', 'Rings out. Voicemail.'],
     ['9:16 PM', 'She calls the next shop on Google.'],
@@ -24,36 +28,36 @@ const RIGHT = {
   footer: '\u2192 Your morning starts with a booked job.',
 };
 
-function Timeline({ data, ember = false }) {
+function Timeline({ data, live = false }) {
   return (
-    <div className={ember ? '' : 'opacity-[0.55]'}>
+    <div style={live ? undefined : { color: '#8A857E' }}>
       <Reveal>
-        <h3 className="text-[13px] uppercase tracking-[0.14em] font-medium opacity-80">
+        <h3 className="text-[12px] font-medium uppercase tracking-[0.14em] opacity-80">
           {data.title}
         </h3>
       </Reveal>
-      <ul className="mt-9 space-y-7">
-        {data.rows.map(([t, text], i) => (
+      <ul className="mt-10 space-y-7">
+        {data.rows.map(([t, text]) => (
           <Reveal
             as="li"
             key={t + text}
-            delay={ember ? 0.08 : 0}
+            delay={live ? 0.08 : 0}
             amount={0.6}
             className="flex items-baseline gap-5"
           >
             <span
-              className={`tnum shrink-0 w-[4.8rem] text-[13px] font-medium tracking-[0.1em] ${
-                ember ? 'text-ember' : 'opacity-60'
+              className={`tnum w-[4.8rem] shrink-0 text-[13px] font-medium tracking-[0.1em] ${
+                live ? 'text-greenlite' : 'opacity-70'
               }`}
             >
               {t}
             </span>
-            <span className="text-[17px] leading-[1.6]">{text}</span>
+            <span className="text-[17px] leading-[1.55]">{text}</span>
           </Reveal>
         ))}
       </ul>
-      <Reveal delay={ember ? 0.08 : 0} className="mt-10">
-        <p className="text-[17px] leading-[1.6] font-medium">{data.footer}</p>
+      <Reveal delay={live ? 0.08 : 0} className="mt-10">
+        <p className="text-[17px] font-medium leading-[1.55]">{data.footer}</p>
       </Reveal>
     </div>
   );
@@ -61,21 +65,21 @@ function Timeline({ data, ember = false }) {
 
 export default function Fork() {
   return (
-    <section className="px-6 py-[10vh]">
+    <section className="px-6 py-[120px] md:py-[200px]">
       <div className="mx-auto max-w-5xl">
         <Reveal>
-          <h2 className="text-[28px] md:text-[40px] font-semibold tracking-[-0.02em] leading-[1.15]">
+          <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.02em] md:text-[56px]">
             Same call. Two different mornings.
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid gap-16 md:mt-20 md:grid-cols-2 md:gap-14">
+        <div className="mt-16 grid gap-16 md:mt-24 md:grid-cols-2 md:gap-14">
           <Timeline data={LEFT} />
-          <Timeline data={RIGHT} ember />
+          <Timeline data={RIGHT} live />
         </div>
 
-        <Reveal className="mt-24">
-          <p className="mx-auto max-w-[52ch] text-center text-[15px] md:text-[17px] leading-[1.6] opacity-55">
+        <Reveal className="mt-28">
+          <p className="mx-auto max-w-[46ch] text-center text-[15px] leading-[1.55] opacity-[0.55] md:text-[17px]">
             This is happening at your shop right now. You just can&rsquo;t see
             it, because a missed call doesn&rsquo;t leave a record.
           </p>
