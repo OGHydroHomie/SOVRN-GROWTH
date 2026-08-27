@@ -166,7 +166,12 @@ function ArchiveNumber() {
   }, []);
 
   return (
-    <section className="section-archive" ref={root} aria-label="Forty years of customers">
+    <section
+      className="section-archive"
+      id="customers"
+      ref={root}
+      aria-label="Forty years of customers"
+    >
       <div className="shell archive-inner">
         <p className="archive-label">Forty years of customers</p>
         <p className="archive-number" aria-label="8,000">
