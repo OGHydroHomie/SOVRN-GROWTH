@@ -175,11 +175,14 @@ button:focus-visible {
   gap: 4px 8px;
   margin: 24px 0 0;
   color: var(--ink);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 560;
 }
 
 .hero-contact a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
@@ -244,7 +247,7 @@ button:focus-visible {
 
 .fork-card-muted {
   background: #f0ede8;
-  color: var(--muted);
+  color: #6f6a64;
 }
 
 .fork-card-positive {
@@ -469,7 +472,7 @@ button:focus-visible {
 
 .sms-event {
   margin: 0 0 14px;
-  color: #8e8e93;
+  color: #6e6e73;
   font-size: 10px;
   font-weight: 550;
   letter-spacing: 0.05em;
@@ -656,8 +659,8 @@ button:focus-visible {
 
 .fine-print {
   margin: 24px 0 0;
-  color: rgba(17, 17, 17, 0.48);
-  font-size: 13px;
+  color: rgba(17, 17, 17, 0.68);
+  font-size: 14px;
 }
 
 .benchmark {
@@ -913,11 +916,14 @@ button:focus-visible {
 
 .close-actions p {
   margin: 0;
-  color: rgba(17, 17, 17, 0.55);
-  font-size: 15px;
+  color: var(--body);
+  font-size: 16px;
 }
 
 .phone-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   color: var(--ink);
   font-weight: 600;
   text-underline-offset: 4px;
@@ -933,8 +939,8 @@ button:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  color: rgba(17, 17, 17, 0.55);
-  font-size: 13px;
+  color: rgba(17, 17, 17, 0.68);
+  font-size: 14px;
 }
 
 .footer-grid p {
@@ -947,6 +953,11 @@ button:focus-visible {
 }
 
 .footer-grid a {
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
   text-underline-offset: 3px;
 }
 
@@ -1164,14 +1175,14 @@ button:focus-visible {
   }
 
   .hero-subcopy {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.45;
   }
 
   .hero-contact {
     gap: 3px 7px;
     margin-top: 18px;
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .fork-card {
@@ -1180,7 +1191,7 @@ button:focus-visible {
   }
 
   .fork-list li {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .phone {

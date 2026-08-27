@@ -68,10 +68,17 @@ writeFileSync(pub('favicon.svg'), monoSvgSmall);
 
 /* ── OG image: 1200x630, the three lines, nothing else ───── */
 
-const line = (text, weight, extraTop = 0) => ({
+const line = (text, extraTop = 0) => ({
   type: 'div',
   props: {
-    style: { display: 'flex', fontWeight: weight, marginTop: extraTop },
+    style: {
+      display: 'flex',
+      width: 1100,
+      justifyContent: 'center',
+      fontWeight: 600,
+      marginTop: extraTop,
+      textAlign: 'center',
+    },
     children: text,
   },
 });
@@ -89,17 +96,16 @@ const og = {
       backgroundColor: '#FAF8F4',
       color: '#111111',
       fontFamily: 'Geist',
-      fontSize: 64,
+      fontSize: 72,
       letterSpacing: '-0.035em',
-      lineHeight: 1.12,
+      lineHeight: 1,
       position: 'relative',
       textAlign: 'center',
     },
     children: [
-      line('At 9:14 last night,', 600),
-      line('somebody\u2019s AC died.', 600),
-      line('They called you. Nobody picked up.', 500, 26),
-      line('By 9:16 they were calling the next shop.', 400, 26),
+      line('At 9:14 last night, somebody\u2019s AC died.'),
+      line('They called you. Nobody picked up.', 18),
+      line('By 9:16 they were calling the next shop.', 18),
       {
         type: 'div',
         props: {
