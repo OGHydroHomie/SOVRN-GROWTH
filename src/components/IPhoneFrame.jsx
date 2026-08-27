@@ -87,14 +87,17 @@ export default function IPhoneFrame({
   const rotateX = useTransform(scrollYProgress, [0, 1], [2, 0]);
 
   return (
-    <div ref={ref} className={`relative ${className}`}>
+    <div
+      ref={ref}
+      className={`relative w-full max-w-[300px] md:w-[330px] md:max-w-none ${className}`}
+    >
       <motion.div
         style={
           reduce
             ? undefined
             : { rotateY, rotateX, transformPerspective: 1200 }
         }
-        className="relative w-full max-w-[300px] md:w-[330px] md:max-w-none"
+        className="relative w-full"
       >
         {/* titanium edge — a specular sweep, not a flat stroke */}
         <div
