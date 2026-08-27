@@ -41,7 +41,7 @@ const unchanged = [
 
 const timeline = [
   {
-    day: 'Day 1–3',
+    day: 'Day 1-3',
     text: 'Everything gets staged on top of what you already run.',
   },
   {
@@ -134,14 +134,15 @@ export default function App() {
               <span>By 9:16 they were calling the next shop.</span>
             </h1>
             <div className="hero-foot">
-              <p>
+              <p className="hero-subcopy">
                 It&rsquo;s 103 out. Your last truck just got back. Phones roll to
                 voicemail at six.
               </p>
-              <div className="hero-rule" aria-hidden="true">
-                <span />
-              </div>
-              <p className="hero-note">Every call. Every lead. Every estimate.</p>
+              <p className="hero-contact">
+                <a href={BOOKING_URL}>Book a 15-minute call</a>
+                <span aria-hidden="true">·</span>
+                <a href={`tel:${PHONE_TEL}`}>Or text me: {PHONE}</a>
+              </p>
             </div>
           </div>
         </section>
@@ -333,7 +334,7 @@ export default function App() {
 
       <footer className="site-footer">
         <div className="shell footer-grid">
-          <p>Elijah Pitts <span>|</span> SOVRN Growth <span>|</span> Pflugerville, TX <span>|</span> <a href={`tel:${PHONE_TEL}`}>{PHONE}</a></p>
+          <p>Elijah Pitts <span>·</span> SOVRN Growth <span>·</span> Pflugerville, TX <span>·</span> <a href={`tel:${PHONE_TEL}`}>{PHONE}</a></p>
           <nav aria-label="Legal">
             <a href="/privacy/">Privacy</a>
             <a href="/terms/">Terms</a>
