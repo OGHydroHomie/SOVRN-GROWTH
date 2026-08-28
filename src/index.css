@@ -741,6 +741,10 @@ button:focus-visible {
   letter-spacing: 0.08em;
 }
 
+.comparison-positive .comparison-list time {
+  color: var(--green);
+}
+
 .comparison-muted .comparison-list span {
   color: rgba(17, 17, 17, 0.62);
 }
@@ -964,7 +968,9 @@ button:focus-visible {
 
 .footer-inner a {
   display: inline-flex;
+  min-width: 44px;
   align-items: center;
+  justify-content: center;
 }
 
 .footer-inner nav {
