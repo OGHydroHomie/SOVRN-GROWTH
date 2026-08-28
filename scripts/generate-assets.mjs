@@ -1,6 +1,5 @@
 // Generates the SV monogram favicon set and the OG image.
-// Outputs land in public/ and are committed. Production builds
-// regenerate them so metadata and assets cannot drift apart.
+// Outputs land in public/ and are committed. Production builds regenerate them.
 import { readFileSync, writeFileSync } from 'node:fs';
 import satori from 'satori';
 import sharp from 'sharp';
@@ -22,7 +21,7 @@ const fonts = [
 
 const pub = (f) => new URL(`../public/${f}`, import.meta.url);
 
-/* ── favicon: ivory SV on #111111, 12% inset ─────────────── */
+/* ── favicon ─────────────────────────────────────────────── */
 
 const mono = {
   type: 'div',
@@ -33,8 +32,8 @@ const mono = {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#111111',
-      color: '#FAF8F4',
+      backgroundColor: '#11110f',
+      color: '#f1eee6',
       fontFamily: 'Geist',
       fontWeight: 600,
       fontSize: 430,
@@ -62,26 +61,10 @@ writeFileSync(
   pub('favicon.ico'),
   await pngToIco([pub('favicon-32.png').pathname, pub('favicon-16.png').pathname])
 );
-// Satori emits text as paths, so the SVG favicon needs no font.
-const monoSvgSmall = await satori(mono, { width: 64, height: 64, fonts: fonts });
+const monoSvgSmall = await satori(mono, { width: 64, height: 64, fonts });
 writeFileSync(pub('favicon.svg'), monoSvgSmall);
 
-/* ── OG image: 1200x630, the three lines, nothing else ───── */
-
-const line = (text, extraTop = 0) => ({
-  type: 'div',
-  props: {
-    style: {
-      display: 'flex',
-      width: 1100,
-      justifyContent: 'center',
-      fontWeight: 600,
-      marginTop: extraTop,
-      textAlign: 'center',
-    },
-    children: text,
-  },
-});
+/* ── OG image ────────────────────────────────────────────── */
 
 const og = {
   type: 'div',
@@ -91,34 +74,140 @@ const og = {
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#FAF8F4',
-      color: '#111111',
+      justifyContent: 'space-between',
+      backgroundColor: '#f1eee6',
+      color: '#11110f',
       fontFamily: 'Geist',
-      fontSize: 72,
-      letterSpacing: '-0.035em',
-      lineHeight: 1,
+      padding: '62px 72px 54px',
       position: 'relative',
-      textAlign: 'center',
     },
     children: [
-      line('At 9:14 last night, somebody\u2019s AC died.'),
-      line('They called you. Nobody picked up.', 18),
-      line('By 9:16 they were calling the next shop.', 18),
       {
         type: 'div',
         props: {
           style: {
             display: 'flex',
-            position: 'absolute',
-            bottom: 44,
-            fontSize: 20,
-            fontWeight: 500,
-            letterSpacing: '0.12em',
-            color: 'rgba(17,17,17,0.4)',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            borderBottom: '1px solid rgba(17,17,15,.22)',
+            paddingBottom: 24,
           },
-          children: 'SOVRN GROWTH',
+          children: [
+            {
+              type: 'div',
+              props: {
+                style: {
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 14,
+                  fontSize: 20,
+                  fontWeight: 600,
+                  letterSpacing: '0.12em',
+                },
+                children: [
+                  {
+                    type: 'div',
+                    props: {
+                      style: {
+                        width: 42,
+                        height: 42,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: '#11110f',
+                        color: '#f1eee6',
+                        borderRadius: 5,
+                        fontSize: 15,
+                        letterSpacing: '-0.03em',
+                      },
+                      children: 'SV',
+                    },
+                  },
+                  'SOVRN GROWTH',
+                ],
+              },
+            },
+            {
+              type: 'div',
+              props: {
+                style: {
+                  display: 'flex',
+                  fontSize: 16,
+                  fontWeight: 500,
+                  letterSpacing: '0.12em',
+                  color: '#77736a',
+                },
+                children: 'RESIDENTIAL HVAC',
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: 'div',
+        props: {
+          style: {
+            display: 'flex',
+            flexDirection: 'column',
+            width: 900,
+          },
+          children: [
+            {
+              type: 'div',
+              props: {
+                style: {
+                  display: 'flex',
+                  fontSize: 24,
+                  fontWeight: 600,
+                  letterSpacing: '0.13em',
+                  color: '#9a784a',
+                  marginBottom: 20,
+                },
+                children: 'THE RESPONSE LAYER',
+              },
+            },
+            {
+              type: 'div',
+              props: {
+                style: {
+                  display: 'flex',
+                  fontSize: 72,
+                  lineHeight: 0.98,
+                  letterSpacing: '-0.05em',
+                  fontWeight: 600,
+                },
+                children: 'Every lead gets a response. Before they disappear.',
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: 'div',
+        props: {
+          style: {
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            borderTop: '1px solid rgba(17,17,15,.22)',
+            paddingTop: 22,
+            fontSize: 17,
+            color: '#4f4d47',
+          },
+          children: [
+            'Missed calls · web leads · open estimates · past customers',
+            {
+              type: 'div',
+              props: {
+                style: {
+                  display: 'flex',
+                  color: '#2f6a4e',
+                  fontWeight: 600,
+                },
+                children: '$6,500 INSTALLATION',
+              },
+            },
+          ],
         },
       },
     ],
