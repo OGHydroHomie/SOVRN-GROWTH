@@ -211,37 +211,154 @@
 
 .gap-close {
   margin-top: 54px;
-  padding-top: 34px;
+  padding-top: 38px;
   border-top: 1px solid var(--line-strong);
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
-  gap: 72px;
+  grid-template-columns: minmax(0, 1.08fr) minmax(390px, 0.92fr);
+  gap: clamp(52px, 7vw, 104px);
   align-items: end;
 }
 
+/* The resting line stays brutally simple. “FOR GOOD” is a small visual reward, not the headline. */
 .gap-close > p {
-  max-width: 760px;
-  font-size: clamp(38px, 4.5vw, 62px);
-  line-height: 0.98;
-  letter-spacing: -0.05em;
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 0 28px;
+  font-size: 0;
+  line-height: 1;
+  cursor: default;
+}
+
+.gap-close > p::before {
+  content: 'CLOSE THE GAP';
+  display: block;
+  color: var(--ink);
+  font-size: clamp(54px, 6.4vw, 92px);
+  line-height: 0.9;
+  letter-spacing: -0.065em;
   font-weight: 600;
+  white-space: nowrap;
+}
+
+.gap-close > p::after {
+  content: 'FOR GOOD';
+  position: absolute;
+  left: 9%;
+  bottom: 0;
+  color: var(--brass);
+  font-size: clamp(17px, 1.45vw, 24px);
+  line-height: 1;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  opacity: 0;
+  transform: translate(18px, 7px) rotate(-2deg);
+  filter: blur(1.5px);
+  text-shadow: 0 8px 22px rgba(154, 120, 74, 0.18);
+  transition: opacity 220ms ease, transform 320ms cubic-bezier(0.16, 1, 0.3, 1), filter 320ms ease;
+  pointer-events: none;
+}
+
+.gap-close > p:hover::after {
+  opacity: 0.92;
+  transform: translate(0, 0) rotate(-2deg);
+  filter: blur(0);
 }
 
 .gap-close > div {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.gap-close > div::before {
+  content: 'Make sure the next lead becomes your job, not theirs.';
+  display: block;
+  margin-bottom: 24px;
+  color: var(--ink);
+  font-size: clamp(24px, 2.25vw, 34px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 600;
 }
 
 .gap-close > div > span {
-  max-width: 390px;
-  color: var(--ink-soft);
-  font-size: 14px;
-  line-height: 1.5;
+  order: 2;
+  display: block;
+  margin-top: 18px;
+  max-width: 500px;
+  color: transparent;
+  font-size: 0;
+  line-height: 1.45;
+}
+
+.gap-close > div > span::before {
+  content: 'If there isn’t enough economic upside to justify fixing it, I’ll tell you.';
+  display: block;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.45;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 .gap-close .primary-cta-large {
-  margin-top: 22px;
+  order: 1;
+  position: relative;
+  width: 100%;
+  min-height: 66px;
+  margin-top: 0;
+  padding: 0 30px;
+  overflow: hidden;
+  font-size: 0;
+  border-radius: 7px;
+  background: #2f7655;
+  border-color: #2f7655;
+  box-shadow:
+    0 14px 34px rgba(47, 118, 85, 0.24),
+    0 0 0 1px rgba(255, 255, 255, 0.07) inset,
+    0 0 42px rgba(47, 118, 85, 0.14);
+  transition: transform 180ms ease, background 180ms ease, box-shadow 220ms ease;
+}
+
+.gap-close .primary-cta-large::before {
+  content: 'Book a 15-minute diagnostic';
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.gap-close .primary-cta-large::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(105deg, transparent 0 38%, rgba(255,255,255,0.14) 49%, transparent 60% 100%);
+  transform: translateX(-120%);
+  transition: transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.gap-close .primary-cta-large:hover {
+  background: #347f5d;
+  transform: translateY(-2px);
+  box-shadow:
+    0 18px 42px rgba(47, 118, 85, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.09) inset,
+    0 0 58px rgba(47, 118, 85, 0.2);
+}
+
+.gap-close .primary-cta-large:hover::after {
+  transform: translateX(120%);
+}
+
+.gap-close .primary-cta-large:active {
+  transform: translateY(0);
 }
 
 @media (max-width: 1100px) {
@@ -267,7 +384,11 @@
 
   .gap-close {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 34px;
+  }
+
+  .gap-close > div {
+    max-width: 720px;
   }
 }
 
@@ -346,15 +467,40 @@
 
   .gap-close {
     margin-top: 42px;
-    padding-top: 28px;
+    padding-top: 30px;
   }
 
   .gap-close > p {
-    font-size: 40px;
+    width: 100%;
+    padding-bottom: 18px;
+  }
+
+  .gap-close > p::before {
+    font-size: clamp(48px, 14vw, 68px);
+    white-space: normal;
+  }
+
+  /* Hover is not a dependable gesture on touch; keep the wink desktop-only. */
+  .gap-close > p::after {
+    display: none;
+  }
+
+  .gap-close > div::before {
+    margin-bottom: 20px;
+    font-size: 28px;
   }
 
   .gap-close .primary-cta-large {
     width: 100%;
+    min-height: 64px;
+  }
+
+  .gap-close .primary-cta-large::before {
+    font-size: 16px;
+  }
+
+  .gap-close > div > span::before {
+    font-size: 17px;
   }
 }
 
@@ -363,7 +509,14 @@
   .silence-marker,
   .silence-status,
   .silence-tick,
-  .silence-foot span {
+  .silence-foot span,
+  .gap-close > p::after,
+  .gap-close .primary-cta-large,
+  .gap-close .primary-cta-large::after {
     transition: none !important;
+  }
+
+  .gap-close .primary-cta-large::after {
+    display: none;
   }
 }
