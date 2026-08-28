@@ -21,8 +21,6 @@ const fonts = [
 
 const pub = (f) => new URL(`../public/${f}`, import.meta.url);
 
-/* ── favicon ─────────────────────────────────────────────── */
-
 const mono = {
   type: 'div',
   props: {
@@ -63,8 +61,6 @@ writeFileSync(
 );
 const monoSvgSmall = await satori(mono, { width: 64, height: 64, fonts });
 writeFileSync(pub('favicon.svg'), monoSvgSmall);
-
-/* ── OG image ────────────────────────────────────────────── */
 
 const og = {
   type: 'div',
@@ -204,7 +200,7 @@ const og = {
                   color: '#2f6a4e',
                   fontWeight: 600,
                 },
-                children: '$6,500 INSTALLATION',
+                children: 'DONE-FOR-YOU RESPONSE LAYER',
               },
             },
           ],
