@@ -5,14 +5,14 @@ import sharp from 'sharp';
 const dist = new URL('../dist/index.html', import.meta.url);
 const html = readFileSync(dist, 'utf8');
 const description =
-  "At 9:14 last night somebody's AC died. They called you, nobody picked up, and by 9:16 they were calling the next shop. Heating and air companies only.";
+  'SOVRN responds to missed calls, web leads, open estimates, and past customers so paid HVAC opportunities keep moving toward a booking or human handoff.';
 
 assert.ok(
-  html.includes('At 9:14 last night, somebody’s AC died.'),
+  html.includes('Every lead gets a response. Before they disappear.'),
   'verify-build: prerendered hero copy is missing from dist/index.html'
 );
 assert.ok(
-  html.includes('<title>SOVRN Growth — Every call answered, qualified, and booked</title>'),
+  html.includes('<title>SOVRN Growth — The Response Layer for Residential HVAC</title>'),
   'verify-build: production title is missing'
 );
 assert.ok(html.includes(`name="description"\n      content="${description}"`));
