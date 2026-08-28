@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Logo from './components/Logo';
 import { BOOKING_URL } from './theme';
+import './v21.css';
 
 const scenarios = {
   missed: {
@@ -10,13 +11,13 @@ const scenarios = {
     note: 'Simulated example · office closed at 9:14 PM',
     steps: ['Call missed', 'Text sent', 'Need qualified', 'Booked / handoff'],
     messages: [
-      ['biz', 'Hey, this is Ridgeline Air. Sorry we missed you. What is the system doing?'],
-      ['lead', 'Not cooling at all. House is 86°.'],
-      ['biz', 'Got it. Are you looking for help tonight, or would first thing tomorrow work?'],
-      ['lead', 'Tomorrow morning works.'],
-      ['biz', 'I have 7:00 or 9:00 AM. Which is better?'],
-      ['lead', '7 works.'],
-      ['biz', 'Booked. Confirmation is on the way.'],
+      ['biz', 'Hey, this is Ridgeline Air. Sorry we missed you. What is the system doing?', '9:14 PM'],
+      ['lead', 'Not cooling at all. House is 86°.', '9:14 PM'],
+      ['biz', 'Got it. Are you looking for help tonight, or would first thing tomorrow work?', '9:15 PM'],
+      ['lead', 'Tomorrow morning works.', '9:15 PM'],
+      ['biz', 'I have 7:00 or 9:00 AM. Which is better?', '9:15 PM'],
+      ['lead', '7 works.', '9:16 PM'],
+      ['biz', 'Booked. Confirmation is on the way.', '9:16 PM'],
     ],
     outcome: '7:00 AM · BOOKED',
   },
@@ -26,11 +27,11 @@ const scenarios = {
     note: 'Simulated example · inbound web lead',
     steps: ['Lead arrives', 'Respond', 'Qualify', 'Booked / handoff'],
     messages: [
-      ['biz', 'Hi Jordan, this is Ridgeline Air. I saw your request about the AC not cooling. Are you looking for help today or tomorrow?'],
-      ['lead', 'Tomorrow works. It is running but the house keeps getting warmer.'],
-      ['biz', 'Understood. I have 10:00 AM or 2:30 PM tomorrow. Which is better?'],
-      ['lead', '10 works.'],
-      ['biz', 'Perfect. You are down for 10:00 AM. Confirmation is on the way.'],
+      ['biz', 'Hi Jordan, this is Ridgeline Air. I saw your request about the AC not cooling. Are you looking for help today or tomorrow?', '2:03 PM'],
+      ['lead', 'Tomorrow works. It is running but the house keeps getting warmer.', '2:04 PM'],
+      ['biz', 'Understood. I have 10:00 AM or 2:30 PM tomorrow. Which is better?', '2:04 PM'],
+      ['lead', '10 works.', '2:05 PM'],
+      ['biz', 'Perfect. You are down for 10:00 AM. Confirmation is on the way.', '2:05 PM'],
     ],
     outcome: '10:00 AM · BOOKED',
   },
@@ -40,11 +41,11 @@ const scenarios = {
     note: 'Simulated example · replacement estimate',
     steps: ['Estimate ages', 'Follow up', 'Objection surfaces', 'Sales handoff'],
     messages: [
-      ['biz', 'Hi Morgan, you had us out about replacing your HVAC system. Did you get that handled, or is it still on your list?'],
-      ['lead', 'Still on the list. We held off because of the upfront cost.'],
-      ['biz', 'That makes sense. I can have someone walk you through the estimate and current financing options. Want me to set that up?'],
-      ['lead', 'Yes, that would help.'],
-      ['biz', 'Done. The team will follow up with you tomorrow morning.'],
+      ['biz', 'Hi Morgan, you had us out about replacing your HVAC system. Did you get that handled, or is it still on your list?', '10:02 AM'],
+      ['lead', 'Still on the list. We held off because of the upfront cost.', '10:18 AM'],
+      ['biz', 'That makes sense. I can have someone walk you through the estimate and current financing options. Want me to set that up?', '10:19 AM'],
+      ['lead', 'Yes, that would help.', '10:24 AM'],
+      ['biz', 'Done. The team will follow up with you tomorrow morning.', '10:24 AM'],
     ],
     outcome: 'SALES CONVERSATION REOPENED',
   },
@@ -78,6 +79,13 @@ const reveal = {
   visible: { opacity: 1, y: 0 },
 };
 
+const money = (value) =>
+  new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  }).format(Math.max(0, Number.isFinite(value) ? value : 0));
+
 function Reveal({ children, className = '', delay = 0 }) {
   return (
     <motion.div
@@ -102,37 +110,25 @@ function HeroFlow() {
       </div>
       <div className="flow-event flow-event-muted">
         <span className="flow-time">9:14 PM</span>
-        <div>
-          <strong>Missed call</strong>
-          <p>Office is closed.</p>
-        </div>
+        <div><strong>Missed call</strong><p>Office is closed.</p></div>
         <span className="flow-state">INBOUND</span>
       </div>
       <div className="flow-line" />
       <div className="flow-event">
         <span className="flow-time">+00:08</span>
-        <div>
-          <strong>Response sent</strong>
-          <p>Conversation reopened by text.</p>
-        </div>
+        <div><strong>Response sent</strong><p>Conversation reopened by text.</p></div>
         <span className="flow-state flow-state-good">WORKING</span>
       </div>
       <div className="flow-line" />
       <div className="flow-event">
         <span className="flow-time">+00:41</span>
-        <div>
-          <strong>Need captured</strong>
-          <p>AC not cooling · 86° inside.</p>
-        </div>
+        <div><strong>Need captured</strong><p>AC not cooling · 86° inside.</p></div>
         <span className="flow-state flow-state-good">QUALIFIED</span>
       </div>
       <div className="flow-line" />
       <div className="flow-event flow-event-final">
         <span className="flow-time">+01:26</span>
-        <div>
-          <strong>7:00 AM booked</strong>
-          <p>Confirmation ready.</p>
-        </div>
+        <div><strong>7:00 AM booked</strong><p>Confirmation ready.</p></div>
         <span className="flow-state flow-state-good">BOOKED</span>
       </div>
       <p className="hero-flow-disclosure">Simulated product behavior. Not a client performance claim.</p>
@@ -259,17 +255,18 @@ function ResponseDemo() {
               <div className="thread-frame">
                 <div className="thread-head">
                   <div>
-                    <span className="thread-mark">SV</span>
+                    <span className="thread-mark">RA</span>
                     <div>
                       <strong>Ridgeline Air</strong>
-                      <small>SOVRN response layer · simulated</small>
+                      <small>SMS · customer conversation · simulated</small>
                     </div>
                   </div>
-                  <span className="thread-status">{playing ? 'WORKING' : 'READY'}</span>
+                  <span className="thread-status">{playing ? 'TEXTING' : 'READY'}</span>
                 </div>
                 <div className="thread-body" aria-live="polite">
+                  <div className="sms-date"><span>TEXT MESSAGE</span></div>
                   <AnimatePresence initial={false}>
-                    {current.messages.slice(0, visible).map(([from, text], index) => (
+                    {current.messages.slice(0, visible).map(([from, text, time], index) => (
                       <motion.div
                         key={`${activeKey}-${index}-${text}`}
                         initial={{ opacity: 0, y: 8 }}
@@ -278,7 +275,10 @@ function ResponseDemo() {
                         transition={{ duration: 0.28 }}
                         className={`message-row ${from === 'biz' ? 'message-business' : 'message-lead'}`}
                       >
-                        <div className="message-bubble">{text}</div>
+                        <div className="message-stack">
+                          <div className="message-bubble">{text}</div>
+                          <span className="message-time">{time}</span>
+                        </div>
                       </motion.div>
                     ))}
                   </AnimatePresence>
@@ -331,7 +331,7 @@ function ResponseMap() {
       <div className="shell">
         <Reveal className="map-copy">
           <p className="eyebrow">THE RESPONSE LAYER</p>
-          <h2>It sits between demand and your calendar.</h2>
+          <h2>Between paid demand and your calendar is where revenue goes quiet.</h2>
           <p>
             Your team keeps running the shop. SOVRN handles the repetitive response and follow-up
             around the moments your office cannot watch every minute of the day.
@@ -368,7 +368,7 @@ function Coverage() {
       <div className="shell coverage-shell">
         <Reveal className="coverage-heading">
           <p className="eyebrow">WHAT GETS WORKED</p>
-          <h2>Every place a paid opportunity can go quiet.</h2>
+          <h2><span>Every place a paid</span><span>opportunity can go quiet.</span></h2>
         </Reveal>
         <div className="coverage-list">
           {coverageRows.map((row, index) => (
@@ -388,25 +388,156 @@ function Coverage() {
   );
 }
 
+function RevenueGap() {
+  const [mode, setMode] = useState('inbound');
+  const [leads, setLeads] = useState(40);
+  const [rate, setRate] = useState(60);
+  const [target, setTarget] = useState(85);
+  const [ticket, setTicket] = useState(650);
+  const [db, setDb] = useState(8000);
+  const [reach, setReach] = useState(15);
+  const [book, setBook] = useState(8);
+  const [tune, setTune] = useState(180);
+  const [replacement, setReplacement] = useState(1);
+  const [replacementTicket, setReplacementTicket] = useState(11000);
+
+  const monthlyLeads = leads * 4.33;
+  const currentRevenue = monthlyLeads * (rate / 100) * ticket;
+  const targetRevenue = monthlyLeads * (target / 100) * ticket;
+  const monthlyGap = Math.max(0, targetRevenue - currentRevenue);
+  const annualGap = monthlyGap * 12;
+
+  const reached = db * (reach / 100);
+  const tuneups = reached * (book / 100);
+  const tuneupRevenue = tuneups * tune;
+  const replacements = reached * (replacement / 100);
+  const replacementRevenue = replacements * replacementTicket;
+  const reactivationTotal = tuneupRevenue + replacementRevenue;
+
+  return (
+    <section className="gap-section" id="numbers">
+      <div className="shell">
+        <Reveal className="gap-intro">
+          <p className="eyebrow">RUN THE GAP</p>
+          <h2>Put your own numbers into the response layer.</h2>
+          <p>
+            This is the same math we use on a diagnostic call. Change the assumptions and watch the gap move.
+            Nothing below is a performance claim or guarantee.
+          </p>
+        </Reveal>
+
+        <Reveal className="gap-machine" delay={0.08}>
+          <div className="gap-tabs" role="tablist" aria-label="Revenue model">
+            <button type="button" className={mode === 'inbound' ? 'active' : ''} onClick={() => setMode('inbound')}>Inbound conversion</button>
+            <button type="button" className={mode === 'reactivation' ? 'active' : ''} onClick={() => setMode('reactivation')}>Database reactivation</button>
+          </div>
+
+          {mode === 'inbound' ? (
+            <div className="gap-grid">
+              <div className="gap-controls">
+                <NumberField label="New leads per week" value={leads} onChange={setLeads} />
+                <RangeField label="Current booking rate" value={rate} onChange={setRate} min={0} max={100} suffix="%" />
+                <RangeField label="Modeled target rate" value={target} onChange={setTarget} min={0} max={100} suffix="%" />
+                <NumberField label="Average ticket" value={ticket} onChange={setTicket} prefix="$" />
+              </div>
+              <div className="gap-output">
+                <div className="gap-compare">
+                  <Metric label="At your current rate" value={money(currentRevenue)} muted />
+                  <Metric label={`At ${target}% modeled`} value={money(targetRevenue)} good />
+                </div>
+                <div className="gap-divider" />
+                <div className="gap-primary">
+                  <span>MODELED MONTHLY GAP</span>
+                  <strong>{money(monthlyGap)}</strong>
+                  <p>{money(annualGap)} across twelve months if every other assumption stayed the same.</p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="gap-grid">
+              <div className="gap-controls">
+                <NumberField label="Customers in database" value={db} onChange={setDb} />
+                <RangeField label="Percent you could reach" value={reach} onChange={setReach} min={0} max={100} suffix="%" />
+                <RangeField label="Percent that book a tune-up" value={book} onChange={setBook} min={0} max={100} suffix="%" />
+                <NumberField label="Tune-up ticket" value={tune} onChange={setTune} prefix="$" />
+                <RangeField label="Percent that become a replacement" value={replacement} onChange={setReplacement} min={0} max={20} suffix="%" />
+                <NumberField label="Replacement ticket" value={replacementTicket} onChange={setReplacementTicket} prefix="$" />
+              </div>
+              <div className="gap-output">
+                <div className="gap-compare gap-compare-stack">
+                  <Metric label="Modeled tune-up revenue" value={money(tuneupRevenue)} good />
+                  <Metric label="Modeled replacement revenue" value={money(replacementRevenue)} good />
+                </div>
+                <div className="gap-divider" />
+                <div className="gap-primary">
+                  <span>MODELED CAMPAIGN VALUE</span>
+                  <strong>{money(reactivationTotal)}</strong>
+                  <p>Based only on the editable reach, booking, and ticket assumptions you entered.</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div className="gap-disclosure">
+            <span>ILLUSTRATIVE MODEL</span>
+            <p>Outputs are arithmetic scenarios based on user-entered assumptions. They are not forecasts, benchmarks, guarantees, or client results.</p>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function NumberField({ label, value, onChange, prefix = '' }) {
+  return (
+    <label className="calc-field">
+      <span>{label}</span>
+      <div className="calc-number">{prefix && <i>{prefix}</i>}<input type="number" min="0" value={value} onChange={(event) => onChange(Math.max(0, Number(event.target.value) || 0))} /></div>
+    </label>
+  );
+}
+
+function RangeField({ label, value, onChange, min, max, suffix }) {
+  return (
+    <label className="calc-field">
+      <span>{label}</span>
+      <div className="calc-range">
+        <input type="range" min={min} max={max} step="1" value={value} onChange={(event) => onChange(Number(event.target.value))} />
+        <strong>{value}{suffix}</strong>
+      </div>
+    </label>
+  );
+}
+
+function Metric({ label, value, muted = false, good = false }) {
+  return (
+    <div className={`gap-metric ${muted ? 'muted' : ''} ${good ? 'good' : ''}`}>
+      <span>{label}</span>
+      <strong>{value}</strong>
+      <small>per month</small>
+    </div>
+  );
+}
+
 function Offer() {
   return (
     <section className="offer-section" id="offer">
       <div className="shell offer-grid">
         <Reveal className="offer-copy">
-          <p className="eyebrow">THE INSTALLATION</p>
-          <h2>$6,500 to put the response layer around your HVAC business.</h2>
+          <p className="eyebrow">THE DIAGNOSTIC</p>
+          <h2>First, we map what is actually leaking.</h2>
           <p>
-            We map how demand enters, stage the workflows, connect the approved channels and routing,
-            then launch under supervision. The goal is simple: no paid opportunity sits untouched
-            because somebody was busy, off the clock, or forgot to follow up.
+            We look at how leads enter, how quickly they are worked, what happens to open estimates,
+            and what your current booking rate leaves on the table.
           </p>
+          <p className="offer-trust">If there is not enough economic upside to justify installing the response layer, I will tell you.</p>
           <a className="primary-cta primary-cta-large" href={BOOKING_URL}>Book a 15-minute call</a>
         </Reveal>
 
         <Reveal className="install-spec" delay={0.08}>
           <div className="spec-head">
             <span>SOVRN RESPONSE LAYER</span>
-            <strong>INSTALLATION · $6,500</strong>
+            <strong>INSTALLATION PLAN</strong>
           </div>
           <div className="spec-row">
             <span>01</span>
@@ -457,7 +588,7 @@ export default function App() {
                 <a className="primary-cta" href={BOOKING_URL}>Book a 15-minute call</a>
                 <a className="secondary-cta" href="#demo">See it work <span>↓</span></a>
               </div>
-              <p className="hero-fine">HVAC only · $6,500 installation · no voice AI</p>
+              <p className="hero-fine">HVAC only · missed-call recovery · lead response · reactivation · no voice AI</p>
             </Reveal>
 
             <Reveal className="hero-visual" delay={0.08}>
@@ -477,6 +608,7 @@ export default function App() {
         </section>
 
         <Coverage />
+        <RevenueGap />
         <Offer />
       </main>
 
