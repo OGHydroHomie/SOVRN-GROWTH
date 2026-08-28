@@ -209,62 +209,17 @@
   max-width: 760px;
 }
 
+/* Final conversion: one emotional line, one unmistakable action. */
 .gap-close {
-  margin-top: 54px;
-  padding-top: 38px;
+  margin-top: 58px;
+  padding-top: 46px;
   border-top: 1px solid var(--line-strong);
-  display: grid;
-  grid-template-columns: minmax(340px, 0.82fr) minmax(520px, 1.18fr);
-  gap: clamp(48px, 5.5vw, 86px);
-  align-items: center;
-}
-
-/* The command is strong, but the emotional close remains the hero. */
-.gap-close > p {
-  position: relative;
-  width: max-content;
-  max-width: 100%;
-  margin: 0;
-  padding: 0 0 34px;
-  font-size: 0;
-  line-height: 1;
-  cursor: default;
-}
-
-.gap-close > p::before {
-  content: 'CLOSE THE GAP';
   display: block;
-  color: var(--ink);
-  font-size: clamp(48px, 4.6vw, 70px);
-  line-height: 0.94;
-  letter-spacing: -0.055em;
-  font-weight: 600;
-  white-space: nowrap;
 }
 
-.gap-close > p::after {
-  content: 'FOR GOOD';
-  position: absolute;
-  left: 58%;
-  bottom: 0;
-  color: var(--brass);
-  font-size: clamp(24px, 2vw, 32px);
-  line-height: 1;
-  font-style: italic;
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  opacity: 0;
-  transform: translate(12px, 7px) rotate(-2deg);
-  filter: blur(1.2px);
-  text-shadow: 0 9px 24px rgba(154, 120, 74, 0.2);
-  transition: opacity 220ms ease, transform 320ms cubic-bezier(0.16, 1, 0.3, 1), filter 320ms ease;
-  pointer-events: none;
-}
-
-.gap-close > p:hover::after {
-  opacity: 1;
-  transform: translate(0, 0) rotate(-2deg);
-  filter: blur(0);
+/* Retire the extra CLOSE THE GAP / FOR GOOD command entirely. */
+.gap-close > p {
+  display: none;
 }
 
 .gap-close > div {
@@ -272,24 +227,23 @@
   flex-direction: column;
   align-items: stretch;
   width: 100%;
-  max-width: 660px;
+  max-width: 760px;
+  margin: 0 auto;
   min-width: 0;
-  justify-self: start;
 }
 
 .gap-close > div::before {
   content: 'Make sure the next lead becomes your job, not theirs.';
   display: block;
-  max-width: 660px;
-  margin-bottom: 22px;
+  max-width: 760px;
+  margin-bottom: 28px;
   color: var(--ink);
-  font-size: clamp(28px, 2.35vw, 38px);
-  line-height: 1.03;
-  letter-spacing: -0.035em;
+  font-size: clamp(40px, 4vw, 56px);
+  line-height: 0.99;
+  letter-spacing: -0.045em;
   font-weight: 600;
 }
 
-/* The calculator and page already establish trust; end on conviction, not a new objection. */
 .gap-close > div > span {
   display: none;
 }
@@ -298,19 +252,19 @@
   order: 1;
   position: relative;
   width: 100%;
-  max-width: 660px;
-  min-height: 70px;
+  max-width: 760px;
+  min-height: 74px;
   margin-top: 0;
-  padding: 0 30px;
+  padding: 0 32px;
   overflow: hidden;
   font-size: 0;
   border-radius: 7px;
   background: #2f7655;
   border-color: #2f7655;
   box-shadow:
-    0 15px 36px rgba(47, 118, 85, 0.25),
+    0 16px 38px rgba(47, 118, 85, 0.27),
     0 0 0 1px rgba(255, 255, 255, 0.07) inset,
-    0 0 46px rgba(47, 118, 85, 0.16);
+    0 0 52px rgba(47, 118, 85, 0.18);
   transition: transform 180ms ease, background 180ms ease, box-shadow 220ms ease;
 }
 
@@ -319,9 +273,9 @@
   position: relative;
   z-index: 1;
   color: #fff;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.012em;
 }
 
 .gap-close .primary-cta-large::after {
@@ -338,9 +292,9 @@
   background: #347f5d;
   transform: translateY(-2px);
   box-shadow:
-    0 18px 42px rgba(47, 118, 85, 0.3),
+    0 20px 46px rgba(47, 118, 85, 0.32),
     0 0 0 1px rgba(255, 255, 255, 0.09) inset,
-    0 0 58px rgba(47, 118, 85, 0.2);
+    0 0 64px rgba(47, 118, 85, 0.22);
 }
 
 .gap-close .primary-cta-large:hover::after {
@@ -372,13 +326,8 @@
     white-space: normal;
   }
 
-  .gap-close {
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-
   .gap-close > div {
-    max-width: 680px;
+    max-width: 720px;
   }
 }
 
@@ -457,37 +406,23 @@
 
   .gap-close {
     margin-top: 42px;
-    padding-top: 30px;
-  }
-
-  .gap-close > p {
-    width: 100%;
-    padding-bottom: 18px;
-  }
-
-  .gap-close > p::before {
-    font-size: clamp(40px, 12vw, 56px);
-    white-space: normal;
-  }
-
-  /* Hover is not a dependable gesture on touch; keep the wink desktop-only. */
-  .gap-close > p::after {
-    display: none;
+    padding-top: 32px;
   }
 
   .gap-close > div::before {
-    margin-bottom: 20px;
-    font-size: 30px;
+    margin-bottom: 22px;
+    font-size: clamp(34px, 9.8vw, 44px);
+    line-height: 1;
   }
 
   .gap-close .primary-cta-large {
     width: 100%;
     max-width: none;
-    min-height: 64px;
+    min-height: 66px;
   }
 
   .gap-close .primary-cta-large::before {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 
@@ -497,7 +432,6 @@
   .silence-status,
   .silence-tick,
   .silence-foot span,
-  .gap-close > p::after,
   .gap-close .primary-cta-large,
   .gap-close .primary-cta-large::after {
     transition: none !important;
