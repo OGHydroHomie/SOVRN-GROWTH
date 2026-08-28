@@ -139,7 +139,7 @@ export default function App() {
           </Reveal>
         </section>
 
-        <section className="night" aria-label="A missed call followed by a text conversation">
+        <section id="night" className="night" aria-label="A missed call followed by a text conversation">
           <div className="night-panel">
             <Reveal className="night-inner" amount={0.1}>
               <PhoneDemo />
