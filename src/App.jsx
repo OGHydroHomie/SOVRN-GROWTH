@@ -3,11 +3,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Logo from './components/Logo';
 import { BOOKING_URL } from './theme';
 import './v21.css';
+import './v22.css';
 
 const scenarios = {
   missed: {
     label: 'Missed call',
-    headline: 'The call gets missed. The opportunity does not have to.',
+    headline: 'The call gets missed. The opportunity doesn’t.',
     note: 'Simulated example · office closed at 9:14 PM',
     steps: ['Call missed', 'Text sent', 'Need qualified', 'Booked / handoff'],
     messages: [
@@ -362,6 +363,90 @@ function ResponseMap() {
   );
 }
 
+function UnansweredLeadMoment() {
+  const root = useRef(null);
+  const timers = useRef([]);
+  const [phase, setPhase] = useState(0);
+
+  useEffect(() => {
+    const node = root.current;
+    if (!node || typeof window === 'undefined') return undefined;
+
+    const clear = () => {
+      timers.current.forEach(window.clearTimeout);
+      timers.current = [];
+    };
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setPhase(4);
+      return clear;
+    }
+
+    let played = false;
+    const play = () => {
+      if (played) return;
+      played = true;
+      [1, 2, 3, 4].forEach((next, index) => {
+        const id = window.setTimeout(() => setPhase(next), 700 + index * 850);
+        timers.current.push(id);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        play();
+        observer.disconnect();
+      },
+      { threshold: 0.45 }
+    );
+
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      clear();
+    };
+  }, []);
+
+  const ticks = ['00:08', '00:47', '03:12', '11:46'];
+  const positions = [4, 24, 48, 73, 96];
+
+  return (
+    <div className={`silence-visual silence-phase-${phase}`} ref={root} aria-label="Illustration of an unanswered lead sitting without a response until it books elsewhere">
+      <div className="silence-head">
+        <div>
+          <span className="silence-time">2:14 PM</span>
+          <strong>NEW LEAD</strong>
+        </div>
+        <span className={phase === 4 ? 'silence-status lost' : 'silence-status'}>
+          {phase === 4 ? 'BOOKED ELSEWHERE' : 'UNANSWERED'}
+        </span>
+      </div>
+      <div className="silence-track-wrap">
+        <div className="silence-track" aria-hidden="true">
+          <span className="silence-origin" />
+          <span className="silence-progress" style={{ width: `${positions[phase]}%` }} />
+          <span className="silence-marker" style={{ left: `${positions[phase]}%` }} />
+          {ticks.map((tick, index) => (
+            <span
+              className={`silence-tick ${phase > index ? 'active' : ''}`}
+              key={tick}
+              style={{ left: `${positions[index + 1]}%` }}
+            >
+              {tick}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="silence-foot">
+        <span>NO RESPONSE</span>
+        <span className={phase >= 2 ? 'awake' : ''}>STILL WAITING</span>
+        <span className={phase === 4 ? 'awake final' : ''}>SOMEBODY ELSE GOT THE JOB</span>
+      </div>
+    </div>
+  );
+}
+
 function Coverage() {
   return (
     <section className="coverage-section" id="coverage">
@@ -417,12 +502,12 @@ function RevenueGap() {
   return (
     <section className="gap-section" id="numbers">
       <div className="shell">
-        <Reveal className="gap-intro">
-          <p className="eyebrow">RUN THE GAP</p>
-          <h2>Put your own numbers into the response layer.</h2>
+        <Reveal className="gap-intro gap-intro-final">
+          <p className="eyebrow">FIRST, WE MAP WHAT’S ACTUALLY LEAKING</p>
+          <h2>See how much more of the demand you already have could make it back to the calendar.</h2>
           <p>
-            This is the same math we use on a diagnostic call. Change the assumptions and watch the gap move.
-            Nothing below is a performance claim or guarantee.
+            We look at how leads enter, how quickly they’re worked, what happens to open estimates,
+            and where your current booking rate is leaving money behind.
           </p>
         </Reveal>
 
@@ -465,8 +550,8 @@ function RevenueGap() {
               </div>
               <div className="gap-output">
                 <div className="gap-compare gap-compare-stack">
-                  <Metric label="Modeled tune-up revenue" value={money(tuneupRevenue)} good />
-                  <Metric label="Modeled replacement revenue" value={money(replacementRevenue)} good />
+                  <Metric label="Modeled tune-up revenue" value={money(tuneupRevenue)} good caption="campaign value" />
+                  <Metric label="Modeled replacement revenue" value={money(replacementRevenue)} good caption="campaign value" />
                 </div>
                 <div className="gap-divider" />
                 <div className="gap-primary">
@@ -481,6 +566,14 @@ function RevenueGap() {
           <div className="gap-disclosure">
             <span>ILLUSTRATIVE MODEL</span>
             <p>Outputs are arithmetic scenarios based on user-entered assumptions. They are not forecasts, benchmarks, guarantees, or client results.</p>
+          </div>
+        </Reveal>
+
+        <Reveal className="gap-close" delay={0.08}>
+          <p>That gap is what the response layer is built to close.</p>
+          <div>
+            <span>If there is not enough economic upside to justify fixing it, I’ll tell you.</span>
+            <a className="primary-cta primary-cta-large" href={BOOKING_URL}>Book a 15-minute call</a>
           </div>
         </Reveal>
       </div>
@@ -509,55 +602,13 @@ function RangeField({ label, value, onChange, min, max, suffix }) {
   );
 }
 
-function Metric({ label, value, muted = false, good = false }) {
+function Metric({ label, value, muted = false, good = false, caption = 'per month' }) {
   return (
     <div className={`gap-metric ${muted ? 'muted' : ''} ${good ? 'good' : ''}`}>
       <span>{label}</span>
       <strong>{value}</strong>
-      <small>per month</small>
+      <small>{caption}</small>
     </div>
-  );
-}
-
-function Offer() {
-  return (
-    <section className="offer-section" id="offer">
-      <div className="shell offer-grid">
-        <Reveal className="offer-copy">
-          <p className="eyebrow">THE DIAGNOSTIC</p>
-          <h2>First, we map what is actually leaking.</h2>
-          <p>
-            We look at how leads enter, how quickly they are worked, what happens to open estimates,
-            and what your current booking rate leaves on the table.
-          </p>
-          <p className="offer-trust">If there is not enough economic upside to justify installing the response layer, I will tell you.</p>
-          <a className="primary-cta primary-cta-large" href={BOOKING_URL}>Book a 15-minute call</a>
-        </Reveal>
-
-        <Reveal className="install-spec" delay={0.08}>
-          <div className="spec-head">
-            <span>SOVRN RESPONSE LAYER</span>
-            <strong>INSTALLATION PLAN</strong>
-          </div>
-          <div className="spec-row">
-            <span>01</span>
-            <div><strong>Map the lead path</strong><p>Calls, forms, estimates, customer records, routing, calendar, and current follow-up.</p></div>
-          </div>
-          <div className="spec-row">
-            <span>02</span>
-            <div><strong>Stage the workflows</strong><p>Response, qualification, missed-call recovery, estimate follow-up, and reactivation.</p></div>
-          </div>
-          <div className="spec-row">
-            <span>03</span>
-            <div><strong>Launch under supervision</strong><p>Core workflows can be staged quickly once access is available. SMS activation follows carrier approval.</p></div>
-          </div>
-          <div className="spec-row">
-            <span>04</span>
-            <div><strong>Keep your operating stack</strong><p>Built around ServiceTitan or Housecall Pro workflows. No rip-and-replace. No voice AI required.</p></div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
   );
 }
 
@@ -600,16 +651,21 @@ export default function App() {
         <ResponseDemo />
         <ResponseMap />
 
-        <section className="statement-section" aria-label="The core problem">
-          <Reveal className="shell statement-copy">
-            <p>Most leads do not disappear.</p>
-            <p>They are left alone.</p>
-          </Reveal>
+        <section className="statement-section statement-section-v22" aria-label="The core problem">
+          <div className="shell statement-copy statement-copy-v22">
+            <Reveal>
+              <p className="statement-line statement-line-one">Leads don’t disappear all at once.</p>
+              <p className="statement-line statement-line-two">
+                <span>They’re left alone long enough</span>
+                <span>to become somebody else’s job.</span>
+              </p>
+            </Reveal>
+            <UnansweredLeadMoment />
+          </div>
         </section>
 
         <Coverage />
         <RevenueGap />
-        <Offer />
       </main>
 
       <footer className="site-footer">
