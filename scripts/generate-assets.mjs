@@ -1,6 +1,6 @@
 // Generates the SV monogram favicon set and the OG image.
-// Run once (npm run assets); outputs land in public/ and are
-// committed, not rebuilt on every build.
+// Outputs land in public/ and are committed. Production builds
+// regenerate them so metadata and assets cannot drift apart.
 import { readFileSync, writeFileSync } from 'node:fs';
 import satori from 'satori';
 import sharp from 'sharp';
@@ -22,7 +22,7 @@ const fonts = [
 
 const pub = (f) => new URL(`../public/${f}`, import.meta.url);
 
-/* ── favicon: white SV on #111111, 12% inset ─────────────── */
+/* ── favicon: ivory SV on #111111, 12% inset ─────────────── */
 
 const mono = {
   type: 'div',
@@ -34,12 +34,13 @@ const mono = {
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: '#111111',
-      color: '#ffffff',
+      color: '#FAF8F4',
       fontFamily: 'Geist',
       fontWeight: 600,
-      fontSize: 560,
-      letterSpacing: '-0.06em',
-      paddingBottom: 36, // optical centering — Geist caps sit low
+      fontSize: 430,
+      letterSpacing: '-0.04em',
+      padding: 123,
+      paddingBottom: 142,
     },
     children: 'SV',
   },
@@ -49,7 +50,6 @@ const monoSvg = await satori(mono, { width: 1024, height: 1024, fonts });
 const mono1024 = await sharp(Buffer.from(monoSvg)).png().toBuffer();
 
 const sizes = [
-  [1024, 'icon-1024.png'],
   [512, 'icon-512.png'],
   [180, 'apple-touch-icon.png'],
   [32, 'favicon-32.png'],

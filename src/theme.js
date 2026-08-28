@@ -3,4 +3,5 @@ export const BOOKING_URL =
 
 export const PHONE = '925.818.5264';
 export const PHONE_TEL = '9258185264';
+export const PHONE_SMS = '9258185264';
 export const EMAIL = 'elijah@sovrngrowth.com';

@@ -7,16 +7,11 @@ export default {
       colors: {
         ground: '#FAF8F4',
         ink: '#111111',
+        charcoal: '#1C1A18',
         green: '#1F6F4A',
-        greenlite: '#4FAF7E',
-        ember: '#D93A2B',
+        sms: '#34C759',
         muted: '#8A857E',
         bubble: '#E9E9EB',
-        dusk: '#F0EDE6',
-        night: '#2A2724',
-        deepnight: '#1A1816',
-        dawn: '#3A3530',
-        paper: '#F4F1EA',
       },
       fontFamily: {
         sans: [
