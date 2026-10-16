@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SOVRN Growth books implant consults for Texas practices: 30 booked consults in 90 days, or our fee stops until we get there.">
+<meta property="og:title" content="SOVRN Growth">
+<meta property="og:description" content="SOVRN Growth books implant consults for Texas practices: 30 booked consults in 90 days, or our fee stops until we get there.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b6e62">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b6e62'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='16' font-weight='700' fill='%23f5f7f6' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<title>SOVRN Growth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a practice intake chart. Left-set editorial column, one numeric lockup in the hero,
+   a dated four-step plan, the guarantee set like a treatment plan, and an intake form that routes owners to booking. */
+:root {
+  --paper: #f5f7f6;
+  --panel: #ffffff;
+  --ink: #0e1412;
+  --muted: #55625d;
+  --line: #d4dcd9;
+  --accent: #0b6e62;
+  --accent-soft: #e4efeb;
+  --on-ink: #f5f7f6;
+  --warn: #8a4b12;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --measure: 62ch;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0b100f;
+    --panel: #111816;
+    --ink: #e7edeb;
+    --muted: #9aa8a3;
+    --line: #25312d;
+    --accent: #52b9a8;
+    --accent-soft: #14241f;
+    --on-ink: #0b100f;
+    --warn: #e0a46a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0b100f;
+  --panel: #111816;
+  --ink: #e7edeb;
+  --muted: #9aa8a3;
+  --line: #25312d;
+  --accent: #52b9a8;
+  --accent-soft: #14241f;
+  --on-ink: #0b100f;
+  --warn: #e0a46a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+}
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-stretch: 112%;
+  line-height: 1.08;
+  margin: 0;
+  text-wrap: balance;
+}
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* Header */
+.top {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { font-family: var(--font-display); font-weight: 800; font-stretch: 118%; letter-spacing: 0.02em; font-size: 18px; text-decoration: none; }
+.brand span { color: var(--accent); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font-display); font-weight: 700; font-stretch: 108%;
+  font-size: 16px; line-height: 1;
+  padding: 14px 20px; border-radius: 999px; border: 1px solid var(--ink);
+  background: var(--ink); color: var(--on-ink); text-decoration: none; cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.small { padding: 10px 16px; font-size: 14px; }
+
+/* Hero */
+.hero { padding-block: 56px 48px; }
+.eyebrow {
+  font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 20px;
+}
+.hero h1 { font-size: clamp(40px, 7.2vw, 84px); font-weight: 800; max-width: 15ch; }
+.hero h1 .num { color: var(--accent); font-stretch: 100%; }
+.hero .promise {
+  font-family: var(--font-display); font-stretch: 100%; font-weight: 500;
+  font-size: clamp(22px, 3vw, 30px); margin-top: 16px; color: var(--ink);
+}
+.hero .lede { max-width: var(--measure); margin-top: 22px; color: var(--muted); font-size: 19px; }
+.hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.facts {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0;
+  margin-top: 44px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.fact { padding: 18px 18px 18px 0; min-width: 0; }
+.fact + .fact { padding-left: 18px; border-left: 1px solid var(--line); }
+.fact b { display: block; font-family: var(--font-mono); font-weight: 500; font-size: 26px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.fact span { color: var(--muted); font-size: 15px; }
+
+/* Sections */
+section.block { padding-block: 64px; border-top: 1px solid var(--line); }
+.block h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 750; max-width: 22ch; }
+.block .intro { margin-top: 14px; color: var(--muted); max-width: var(--measure); }
+.label {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+
+.leaks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 36px; }
+.leak { min-width: 0; padding-top: 18px; border-top: 2px solid var(--ink); }
+.leak h3 { font-size: 22px; font-weight: 700; }
+.leak p { margin-top: 10px; color: var(--muted); }
+
+.plan { list-style: none; padding: 0; margin: 36px 0 0; display: grid; gap: 0; }
+.step { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 24px; padding-block: 22px; border-top: 1px solid var(--line); }
+.step:last-child { border-bottom: 1px solid var(--line); }
+.when { font-family: var(--font-mono); font-size: 14px; color: var(--accent); padding-top: 4px; }
+.step h3 { font-size: 22px; font-weight: 700; }
+.step p { margin-top: 6px; color: var(--muted); max-width: var(--measure); }
+
+/* Guarantee, set like a treatment plan */
+.plan-card {
+  margin-top: 8px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: clamp(22px, 4vw, 40px);
+}
+.plan-card .head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-bottom: 18px; border-bottom: 1px dashed var(--line); }
+.plan-card h2 { margin-top: 18px; max-width: 20ch; }
+.plan-card .lead { margin-top: 14px; font-size: 19px; max-width: var(--measure); }
+.terms { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 14px 24px; margin: 26px 0 0; }
+.terms dt { font-family: var(--font-display); font-weight: 700; font-stretch: 105%; }
+.terms dd { margin: 0; color: var(--muted); min-width: 0; }
+
+.why { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; margin-top: 36px; }
+.why div { min-width: 0; }
+.why h3 { font-size: 21px; font-weight: 700; }
+.why p { margin-top: 8px; color: var(--muted); }
+
+.math { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 32px; align-items: end; }
+.math h2 { max-width: 18ch; }
+.fee { border-left: 3px solid var(--accent); padding-left: 20px; }
+.fee b { display: block; font-family: var(--font-mono); font-weight: 500; font-size: clamp(34px, 5vw, 52px); font-variant-numeric: tabular-nums; }
+.fee span { color: var(--muted); font-size: 15px; }
+
+/* Intake */
+.intake-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(22px, 4vw, 40px); margin-top: 28px; max-width: 760px; }
+fieldset { border: 0; margin: 0 0 22px; padding: 0; min-width: 0; }
+legend { font-family: var(--font-display); font-weight: 700; font-stretch: 105%; font-size: 18px; margin-bottom: 10px; padding: 0; }
+.choices { display: flex; flex-wrap: wrap; gap: 10px; }
+.choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.choice span {
+  display: inline-block; padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px;
+  cursor: pointer; font-size: 16px; background: var(--paper); transition: border-color 0.15s ease;
+}
+.choice input:checked + span { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.choice input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+.form-error { color: var(--warn); margin: 0 0 14px; font-weight: 600; }
+.result { margin-top: 24px; padding-top: 24px; border-top: 1px dashed var(--line); }
+.result h3 { font-size: 24px; font-weight: 750; }
+.result p { margin-top: 8px; color: var(--muted); max-width: var(--measure); }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+.fields label { display: grid; gap: 6px; font-size: 15px; font-weight: 600; min-width: 0; }
+.fields input {
+  font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--paper); color: var(--ink); min-width: 0; width: 100%;
+}
+.result .btn { margin-top: 18px; }
+.email { font-family: var(--font-mono); font-size: 15px; user-select: all; }
+
+/* FAQ */
+.faq { margin-top: 28px; max-width: 820px; }
+.faq details { border-top: 1px solid var(--line); padding-block: 18px; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; font-family: var(--font-display); font-weight: 700; font-stretch: 105%; font-size: 19px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--accent); }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin-top: 10px; color: var(--muted); max-width: var(--measure); }
+
+footer { border-top: 1px solid var(--line); }
+footer .wrap { padding-block: 32px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 760px) {
+  .facts { grid-template-columns: minmax(0, 1fr); }
+  .fact, .fact + .fact { padding: 14px 0; border-left: 0; }
+  .fact + .fact { border-top: 1px solid var(--line); }
+  .leaks, .why, .math { grid-template-columns: minmax(0, 1fr); }
+  .step { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .terms { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .terms dd { margin-bottom: 12px; }
+  .fields { grid-template-columns: minmax(0, 1fr); }
+  .top .btn { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+html { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">SOVRN <span>Growth</span></a>
+    <a class="btn small" href="#intake">Check your area</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">For implant and full-arch practices in Texas</p>
+      <h1><span class="num">30</span> booked implant consults in <span class="num">90</span> days.</h1>
+      <p class="promise">Or our fee stops until we get there.</p>
+      <p class="lede">We book consults from the patients already in your system, answer every new lead in under 60 seconds, and run the ads that bring in more. You get consults on your calendar, not a spreadsheet of leads.</p>
+      <div class="actions">
+        <a class="btn" href="#intake">See if your area is open</a>
+        <a class="btn ghost" href="#guarantee">Read the guarantee</a>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>72 hrs</b><span>from kickoff to your first outreach</span></div>
+        <div class="fact"><b>&lt;60 sec</b><span>to answer every new lead, day or night</span></div>
+        <div class="fact"><b>1</b><span>implant practice per area, so never your competitor</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>Where implant consults get lost</h2>
+      <div class="leaks">
+        <div class="leak">
+          <h3>The lead waits.</h3>
+          <p>A form comes in at 9 PM. The callback happens the next afternoon, if it happens at all. Patients researching implants often contact more than one office.</p>
+        </div>
+        <div class="leak">
+          <h3>Old inquiries go quiet.</h3>
+          <p>Every practice has people who asked about implants and never booked, or got a treatment plan and never scheduled. After a call or two, nobody follows up again.</p>
+        </div>
+        <div class="leak">
+          <h3>The ads take the blame.</h3>
+          <p>The ad did its job. The consult was lost somewhere between the lead and the calendar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>How the 90 days run</h2>
+      <p class="intro">Your existing list comes first, because it books consults fastest. The ads build on top of it.</p>
+      <ol class="plan">
+        <li class="step">
+          <span class="when">Days 1–3</span>
+          <div><h3>Your existing list</h3><p>We sign a BAA, pull the patients who never booked or never scheduled treatment, and start booking them through your own systems.</p></div>
+        </li>
+        <li class="step">
+          <span class="when">Week 1</span>
+          <div><h3>Every lead answered in 60 seconds</h3><p>New forms, calls and missed calls get a reply in under a minute, day or night, with a simple way to book.</p></div>
+        </li>
+        <li class="step">
+          <span class="when">Weeks 2–3</span>
+          <div><h3>Ads built to book consults</h3><p>Implant offers modeled on what already works in Texas, sent to a page with one job: booking the consult. Your ad budget is paid straight to Meta.</p></div>
+        </li>
+        <li class="step">
+          <span class="when">Every Monday</span>
+          <div><h3>The scoreboard</h3><p>Booked, showed and started, in one short report. You always know what you're paying for.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="guarantee">
+    <div class="wrap">
+      <div class="plan-card">
+        <div class="head">
+          <span class="label">The guarantee</span>
+          <span class="label">Term: 90 days, then month to month</span>
+        </div>
+        <h2>30 booked consults in 90 days, or our fee stops.</h2>
+        <p class="lead">If we haven't booked 30 consults by day 90, you stop paying us and we keep working until we have.</p>
+        <dl class="terms">
+          <dt>What counts</dt>
+          <dd>A real patient in your area, booked on your calendar for implant treatment. New ads, old inquiries and patients who never scheduled all count.</dd>
+          <dt>What we need from you</dt>
+          <dd>Your patient list and calendar access in the first week, a same-day confirmation on every booked consult, and an ad budget that keeps running.</dd>
+          <dt>What you can check</dt>
+          <dd>Every booked consult, by name and date, in your Monday scoreboard.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>Why practices work with us</h2>
+      <div class="why">
+        <div><h3>Booked consults, not leads.</h3><p>We own the path from the ad to your calendar, so nothing waits on a busy front desk.</p></div>
+        <div><h3>One practice per area.</h3><p>We won't take on the implant practice down the street.</p></div>
+        <div><h3>90 days, not a year.</h3><p>We ask for 90 days and earn every month after that.</p></div>
+        <div><h3>The founder on your account.</h3><p>You work with Elijah Pitts directly, here in Austin.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap math">
+      <h2>The full 90 days cost less than one full-arch case.</h2>
+      <div class="fee">
+        <b>$22,590</b>
+        <span>National average fee for a full-arch implant prosthesis, CDT D6114.<sup>1</sup></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="intake">
+    <div class="wrap">
+      <h2>See if your area is open</h2>
+      <p class="intro">Three questions. It takes about 20 seconds.</p>
+      <div class="intake-card">
+        <form id="intake-form" novalidate>
+          <fieldset>
+            <legend>Do you own the practice?</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="owner" id="owner-yes" value="yes"><span>Yes</span></label>
+              <label class="choice"><input type="radio" name="owner" id="owner-no" value="no"><span>No</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Do you offer implants or full-arch treatment?</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="implants" id="implants-yes" value="yes"><span>Yes</span></label>
+              <label class="choice"><input type="radio" name="implants" id="implants-no" value="no"><span>Not yet</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Collections in the last 12 months</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="collections" id="col-under1" value="under1"><span>Under $1M</span></label>
+              <label class="choice"><input type="radio" name="collections" id="col-1to2" value="1to2"><span>$1M to $2M</span></label>
+              <label class="choice"><input type="radio" name="collections" id="col-2to5" value="2to5"><span>$2M to $5M</span></label>
+              <label class="choice"><input type="radio" name="collections" id="col-over5" value="over5"><span>Over $5M</span></label>
+            </div>
+          </fieldset>
+          <p class="form-error" id="form-error" hidden>Answer all three questions to check your area.</p>
+          <button class="btn" type="submit" id="check-btn">Check my area</button>
+        </form>
+
+        <div class="result" id="result-open" hidden>
+          <h3>Your area is open.</h3>
+          <p>Add your name and email, then pick a time for a short call with Elijah. We'll walk through your numbers and what the first 90 days would look like for your practice.</p>
+          <div class="fields">
+            <label for="lead-name">Your name<input id="lead-name" type="text" autocomplete="name" placeholder="Dr. Jane Smith"></label>
+            <label for="lead-email">Email<input id="lead-email" type="email" autocomplete="email" placeholder="you@yourpractice.com"></label>
+          </div>
+          <a class="btn" id="book-link" href="https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1" target="_blank" rel="noopener">Pick a time</a>
+        </div>
+
+        <div class="result" id="result-closed" hidden>
+          <h3>Thanks for checking.</h3>
+          <p>Right now we only work with owners of practices that offer implants and collect at least $1M a year. If that changes, write to <span class="email">elijah@sovrngrowth.com</span>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>Questions owners ask</h2>
+      <div class="faq">
+        <details>
+          <summary>We already work with a marketing agency.</summary>
+          <p>Keep them. We can start by booking the leads they already send you, and take over the ads only if that's what you want.</p>
+        </details>
+        <details>
+          <summary>Do you need access to patient data?</summary>
+          <p>Yes, for your existing list. We sign a BAA before we touch anything, and messages go out through your own systems.</p>
+        </details>
+        <details>
+          <summary>What does it cost?</summary>
+          <p>We walk through it on the call, using your numbers. The full 90 days cost less than one full-arch case at the national average fee.</p>
+        </details>
+        <details>
+          <summary>Why 90 days?</summary>
+          <p>Ads need about two months to settle, and we spend the first weeks learning your practice. After 90 days you're month to month.</p>
+        </details>
+        <details>
+          <summary>What if you don't hit 30?</summary>
+          <p>Our fee stops, and we keep working until we do.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>SOVRN Growth · Austin, Texas · <span class="email">elijah@sovrngrowth.com</span></span>
+    <span><sup>1</sup> ADA fee survey data, as published by Pearl, updated May 2026.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('intake-form');
+  var error = document.getElementById('form-error');
+  var open = document.getElementById('result-open');
+  var closed = document.getElementById('result-closed');
+  var nameInput = document.getElementById('lead-name');
+  var emailInput = document.getElementById('lead-email');
+  var book = document.getElementById('book-link');
+  var base = 'https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1';
+
+  function updateLink() {
+    var params = [];
+    if (nameInput.value.trim()) params.push('name=' + encodeURIComponent(nameInput.value.trim()));
+    if (emailInput.value.trim()) params.push('email=' + encodeURIComponent(emailInput.value.trim()));
+    book.href = params.length ? base + '?' + params.join('&') : base;
+  }
+  nameInput.addEventListener('input', updateLink);
+  emailInput.addEventListener('input', updateLink);
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var owner = form.elements.owner.value;
+    var implants = form.elements.implants.value;
+    var collections = form.elements.collections.value;
+    if (!owner || !implants || !collections) {
+      error.hidden = false;
+      open.hidden = true;
+      closed.hidden = true;
+      return;
+    }
+    error.hidden = true;
+    var qualified = owner === 'yes' && implants === 'yes' && collections !== 'under1';
+    open.hidden = !qualified;
+    closed.hidden = qualified;
+    (qualified ? open : closed).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (qualified) nameInput.focus({ preventScroll: true });
+  });
+})();
+</script>
+</body>
+</html>

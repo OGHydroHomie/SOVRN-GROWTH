@@ -673,8 +673,8 @@ export default function App() {
           <Logo />
           <p>SOVRN Growth · Pflugerville, TX</p>
           <nav aria-label="Legal">
-            <a href="/privacy/">Privacy</a>
-            <a href="/terms/">Terms</a>
+            <a href={`${import.meta.env.BASE_URL}privacy/`}>Privacy</a>
+            <a href={`${import.meta.env.BASE_URL}terms/`}>Terms</a>
           </nav>
         </div>
       </footer>
