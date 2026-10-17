@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /hvac/
+Disallow: /demo/
 Sitemap: https://www.sovrngrowth.com/sitemap.xml

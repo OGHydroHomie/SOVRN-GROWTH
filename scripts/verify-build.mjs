@@ -22,6 +22,12 @@ assert.ok(
   readFileSync(new URL('../dist/terms/index.html', import.meta.url), 'utf8').includes('Terms of Service'),
   'verify-build: terms page is missing'
 );
+// Sales demo pages: present, and kept out of search.
+for (const page of ['demo/book', 'demo/booked']) {
+  const demo = readFileSync(new URL(`../dist/${page}/index.html`, import.meta.url), 'utf8');
+  assert.ok(demo.includes('<meta name="robots" content="noindex, nofollow">'), `verify-build: ${page} must be noindex`);
+  assert.ok(demo.includes('This is a demo built by SOVRN Growth.'), `verify-build: ${page} must carry the demo label`);
+}
 
 // HVAC archive: the original site, served under /hvac/.
 const dist = new URL('../dist/hvac/index.html', import.meta.url);
