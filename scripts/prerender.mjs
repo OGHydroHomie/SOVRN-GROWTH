@@ -1,4 +1,4 @@
-// Injects the server-rendered page into dist/index.html so the
+// Injects the server-rendered HVAC page into dist/hvac/index.html so the
 // full content exists in the served HTML — for carrier review,
 // search indexing, and link unfurlers. The client bundle takes
 // over on load.
@@ -8,7 +8,7 @@ const mod = await import('../dist-ssr/entry-server.js');
 const render = mod.render || mod.default?.render;
 const html = render();
 
-const file = new URL('../dist/index.html', import.meta.url);
+const file = new URL('../dist/hvac/index.html', import.meta.url);
 let doc = readFileSync(file, 'utf8');
 if (!doc.includes('<div id="root"></div>')) {
   throw new Error('prerender: #root mount point not found');
