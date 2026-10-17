@@ -12,6 +12,16 @@ assert.ok(
   readFileSync(new URL('../dist/robots.txt', import.meta.url), 'utf8').includes('Disallow: /hvac/'),
   'verify-build: robots.txt should keep the HVAC archive out of search'
 );
+// Texting registration (A2P) reviewers check for a privacy policy with SMS terms.
+assert.ok(home.includes('href="/privacy/"'), 'verify-build: home footer must link the privacy policy');
+assert.ok(
+  readFileSync(new URL('../dist/privacy/index.html', import.meta.url), 'utf8').includes('Reply STOP to opt out'),
+  'verify-build: privacy policy must include the SMS consent terms'
+);
+assert.ok(
+  readFileSync(new URL('../dist/terms/index.html', import.meta.url), 'utf8').includes('Terms of Service'),
+  'verify-build: terms page is missing'
+);
 
 // HVAC archive: the original site, served under /hvac/.
 const dist = new URL('../dist/hvac/index.html', import.meta.url);
