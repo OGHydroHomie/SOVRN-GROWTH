@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're booked</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f6f7f5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+/* Demo of the page a patient lands on after booking (the show-up kit).
+   The memorable element is the appointment card, set like a printed card from a fine practice. */
+:root {
+  --porcelain: #f6f7f5;
+  --enamel: #ffffff;
+  --graphite: #22262a;
+  --titanium: #646b72;
+  --hairline: #dee1dd;
+  --gold: #9a7a3a;
+  --gold-ink: #7a5e2c;
+  --gold-wash: #f4efe4;
+  --serif: "Libre Caslon Display", "Iowan Old Style", Georgia, serif;
+  --sans: "Hanken Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--porcelain);
+  color: var(--graphite);
+  font: 400 17px/1.55 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.demo-bar {
+  background: var(--graphite);
+  color: #eef0ee;
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 9px 16px;
+  text-align: center;
+}
+.practice {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 22px 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mark {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: var(--enamel);
+  color: var(--gold-ink);
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 17px;
+}
+.practice-name { font-weight: 600; font-size: 16px; line-height: 1.25; }
+.practice-sub { color: var(--titanium); font-size: 14px; line-height: 1.3; }
+
+main { max-width: 36rem; margin: 0 auto; padding: 30px 16px 48px; }
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(34px, 8.5vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.lede { color: var(--titanium); margin: 12px 0 0; }
+
+/* The appointment card */
+.appt {
+  position: relative;
+  margin-top: 28px;
+  padding: 30px 26px 26px;
+  background: var(--enamel);
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+}
+.appt::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid var(--gold);
+  border-radius: 9px;
+  pointer-events: none;
+  opacity: 0.55;
+}
+.appt-day { margin: 0; color: var(--gold-ink); font-weight: 600; font-size: 16px; }
+.appt-date {
+  margin: 4px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(44px, 12vw, 60px);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  font-variant-numeric: lining-nums;
+}
+.appt-time { margin: 12px 0 0; font-size: 19px; font-weight: 500; }
+.appt-place { margin: 16px 0 0; padding-top: 16px; border-top: 1px solid var(--hairline); color: var(--titanium); }
+.appt-place strong { color: var(--graphite); font-weight: 600; }
+.appt-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; position: relative; }
+.btn {
+  display: inline-block;
+  padding: 13px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--graphite);
+  background: var(--graphite);
+  color: #fff;
+  font: 600 16px/1.2 var(--sans);
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn.quiet { background: transparent; color: var(--graphite); border-color: var(--hairline); }
+
+section.part { margin-top: 44px; }
+h2 { font-size: 21px; font-weight: 600; line-height: 1.3; margin: 0; }
+.part > p { color: var(--titanium); margin: 6px 0 0; }
+
+/* Welcome video */
+.video {
+  position: relative;
+  margin-top: 16px;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #2c3136, #1b1e21);
+  display: grid;
+  place-items: center;
+}
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.play {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: rgba(255, 255, 255, 0.06);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: #fff;
+}
+.play svg { width: 22px; height: 22px; margin-left: 4px; }
+.video-caption {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+  color: #d9dcd9;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+/* Answers */
+.answers { margin-top: 12px; border-top: 1px solid var(--hairline); }
+details { border-bottom: 1px solid var(--hairline); }
+summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 30px 16px 0;
+  position: relative;
+  font-weight: 500;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-right: 1.5px solid var(--gold-ink);
+  border-bottom: 1.5px solid var(--gold-ink);
+  transform: translateY(-70%) rotate(45deg);
+}
+details[open] summary::after { transform: translateY(-30%) rotate(225deg); }
+details p { margin: 0 0 16px; color: var(--titanium); max-width: 32rem; }
+
+/* Bring someone */
+.guest { margin-top: 16px; display: grid; gap: 10px; }
+.guest label { font-size: 15px; font-weight: 600; }
+.guest input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  background: var(--enamel);
+  font: 400 17px/1.2 var(--sans);
+  color: var(--graphite);
+}
+.guest-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.guest-done { margin: 12px 0 0; color: var(--gold-ink); font-weight: 600; }
+
+.fine { color: var(--titanium); font-size: 15px; margin-top: 40px; }
+footer { max-width: 36rem; margin: 0 auto; padding: 0 16px 40px; color: var(--titanium); font-size: 14px; }
+
+@media (min-width: 560px) {
+  .guest-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="demo-bar">This is a demo built by SOVRN Growth. Your logo, doctor and calendar go here.</div>
+
+<header class="practice">
+  <div class="mark" id="mark" aria-hidden="true">YP</div>
+  <div>
+    <div class="practice-name" id="practice-name">Your Practice</div>
+    <div class="practice-sub" id="practice-sub">Implant consults with your doctor</div>
+  </div>
+</header>
+
+<main>
+  <h1 id="headline">You're booked.</h1>
+  <p class="lede">We just texted you the details. Everything you need before your visit is on this page.</p>
+
+  <section class="appt" aria-label="Your appointment">
+    <p class="appt-day" id="appt-day">Tuesday</p>
+    <p class="appt-date" id="appt-date">October 20</p>
+    <p class="appt-time" id="appt-time">12:30 PM, about 45 minutes</p>
+    <p class="appt-place"><strong id="appt-practice">Your Practice</strong><br><span id="appt-address">Your address, suite and parking notes go here</span></p>
+    <div class="appt-actions">
+      <a class="btn" id="add-cal" href="#" download="implant-consult.ics">Add to my calendar</a>
+      <a class="btn quiet" id="change" href="../book/">Change the time</a>
+    </div>
+  </section>
+
+  <section class="part" aria-labelledby="video-title">
+    <h2 id="video-title">A 60-second hello from your doctor</h2>
+    <p>So you know who you're meeting, and what the visit looks like.</p>
+    <div class="video" id="video">
+      <button class="play" id="play" type="button" aria-label="Play the welcome video">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>
+      </button>
+      <p class="video-caption" id="video-caption">Filmed with your doctor in the first week.</p>
+    </div>
+  </section>
+
+  <section class="part" aria-labelledby="answers-title">
+    <h2 id="answers-title">Before your visit</h2>
+    <p>The questions most people ask first.</p>
+    <div class="answers">
+      <details>
+        <summary>What will it cost, and can I spread it out?</summary>
+        <p>Your doctor will give you an exact price at your visit, after looking at your scans. Many people spread the cost with monthly payments, and you can see your options before you come in.</p>
+      </details>
+      <details>
+        <summary>What happens at the consult?</summary>
+        <p>You'll meet the doctor, get any scans you need, talk through your options and leave with a written plan and price. Plan on about 45 minutes.</p>
+      </details>
+      <details>
+        <summary>How long does treatment take?</summary>
+        <p>It depends on your plan. Your doctor will walk you through each step and the timeline at your visit.</p>
+      </details>
+      <details>
+        <summary>What should I bring?</summary>
+        <p>Your ID, your insurance card if you have one, a list of your medications, and anyone who helps you make decisions.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="part" aria-labelledby="guest-title">
+    <h2 id="guest-title">Bringing someone?</h2>
+    <p>Many people bring a spouse or family member. Add their number and we'll text them the time and address too.</p>
+    <form class="guest" id="guest-form" novalidate>
+      <div class="guest-row">
+        <div>
+          <label for="guest-name">Their first name</label>
+          <input id="guest-name" name="guest-name" type="text" autocomplete="off">
+        </div>
+        <div>
+          <label for="guest-phone">Their mobile number</label>
+          <input id="guest-phone" name="guest-phone" type="tel" inputmode="tel" autocomplete="off">
+        </div>
+      </div>
+      <div><button class="btn" type="submit">Text them the details</button></div>
+      <p class="guest-done" id="guest-done" hidden aria-live="polite"></p>
+    </form>
+  </section>
+
+  <p class="fine">Running late or need to change something? Reply to our text and someone from the office will answer.</p>
+</main>
+
+<footer><a href="/privacy/">Privacy</a></footer>
+
+<script>
+(function () {
+  // Fill these in when a real practice goes live:
+  // VIDEO_URL: an embed link for the doctor's welcome video (YouTube unlisted, Vimeo or Wistia).
+  // ADDRESS: the practice's address, suite and a parking note.
+  var VIDEO_URL = '';
+  var ADDRESS = '';
+
+  var params = new URLSearchParams(location.search);
+  var name = (params.get('name') || '').trim();
+  var practice = (params.get('practice') || '').trim();
+  var doctor = (params.get('doctor') || '').trim();
+  var time = (params.get('time') || '12:30 PM').trim();
+  var dayParam = (params.get('day') || '').trim();
+
+  var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  var date;
+  var m = dayParam.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (m) {
+    date = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]), 12);
+  } else {
+    date = new Date();
+    date.setHours(12, 0, 0, 0);
+    do { date.setDate(date.getDate() + 1); } while (date.getDay() === 0 || date.getDay() === 6);
+  }
+
+  if (practice) {
+    document.getElementById('practice-name').textContent = practice;
+    document.getElementById('appt-practice').textContent = practice;
+    document.title = "You're booked | " + practice;
+    var initials = practice.split(/\s+/).filter(function (w) { return /^[A-Za-z]/.test(w); }).slice(0, 2).map(function (w) { return w[0].toUpperCase(); }).join('');
+    if (initials) document.getElementById('mark').textContent = initials;
+  }
+  if (doctor) {
+    document.getElementById('practice-sub').textContent = 'Implant consults with ' + doctor;
+    document.getElementById('video-title').textContent = 'A 60-second hello from ' + doctor;
+  }
+  if (name) document.getElementById('headline').textContent = "You're booked, " + name + '.';
+  if (ADDRESS) document.getElementById('appt-address').textContent = ADDRESS;
+
+  document.getElementById('appt-day').textContent = dayNames[date.getDay()];
+  document.getElementById('appt-date').textContent = monthNames[date.getMonth()] + ' ' + date.getDate();
+  document.getElementById('appt-time').textContent = time + ', about 45 minutes';
+
+  // "Change the time" goes back to the booking step with the same details.
+  var back = new URLSearchParams();
+  if (name) back.set('name', name);
+  if (practice) back.set('practice', practice);
+  if (doctor) back.set('doctor', doctor);
+  document.getElementById('change').href = '../book/' + (back.toString() ? '?' + back.toString() : '');
+
+  // Calendar file for "Add to my calendar".
+  var t = time.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+  var hours = 12, minutes = 30;
+  if (t) {
+    hours = Number(t[1]) % 12 + (t[3].toUpperCase() === 'PM' ? 12 : 0);
+    minutes = Number(t[2]);
+  }
+  function pad(n) { return String(n).padStart(2, '0'); }
+  var stamp = date.getFullYear() + pad(date.getMonth() + 1) + pad(date.getDate()) + 'T' + pad(hours) + pad(minutes) + '00';
+  var title = 'Implant consult at ' + (practice || 'Your Practice');
+  var ics = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//SOVRN Growth//Demo//EN', 'BEGIN:VEVENT',
+    'UID:' + stamp + '-demo@sovrngrowth.com', 'DTSTAMP:' + stamp, 'DTSTART:' + stamp, 'DURATION:PT45M',
+    'SUMMARY:' + title, 'LOCATION:' + (ADDRESS || (practice || 'Your Practice')), 'END:VEVENT', 'END:VCALENDAR'
+  ].join('\r\n');
+  document.getElementById('add-cal').href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+
+  // Welcome video.
+  var video = document.getElementById('video');
+  document.getElementById('play').addEventListener('click', function () {
+    if (VIDEO_URL) {
+      video.innerHTML = '<iframe src="' + VIDEO_URL + '" title="Welcome video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+    } else {
+      document.getElementById('video-caption').textContent = "In the live version, your doctor's 60-second welcome plays here.";
+    }
+  });
+
+  // Bring someone (demo: confirms on the page; live, it goes to the practice's system).
+  document.getElementById('guest-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var guestName = document.getElementById('guest-name').value.trim();
+    var phone = document.getElementById('guest-phone').value.replace(/\D/g, '');
+    var done = document.getElementById('guest-done');
+    done.hidden = false;
+    if (phone.length < 10) {
+      done.textContent = 'Enter a 10-digit mobile number so we can text them.';
+      return;
+    }
+    done.textContent = "Done. We'll text " + (guestName || 'them') + ' the time and address.';
+  });
+})();
+</script>
+</body>
+</html>

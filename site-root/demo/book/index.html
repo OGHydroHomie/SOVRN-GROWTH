@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pick your consult time</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f6f7f5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+/* Demo of a practice's booking step: porcelain ground, graphite type, anodized-gold marks.
+   The memorable element is the time picker; everything around it stays quiet. */
+:root {
+  --porcelain: #f6f7f5;
+  --enamel: #ffffff;
+  --graphite: #22262a;
+  --titanium: #646b72;
+  --hairline: #dee1dd;
+  --gold: #9a7a3a;
+  --gold-ink: #7a5e2c;
+  --gold-wash: #f4efe4;
+  --serif: "Libre Caslon Display", "Iowan Old Style", Georgia, serif;
+  --sans: "Hanken Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--porcelain);
+  color: var(--graphite);
+  font: 400 17px/1.55 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.demo-bar {
+  background: var(--graphite);
+  color: #eef0ee;
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 9px 16px;
+  text-align: center;
+}
+
+.practice {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 22px 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mark {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: var(--enamel);
+  color: var(--gold-ink);
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 17px;
+}
+.practice-name { font-weight: 600; font-size: 16px; line-height: 1.25; }
+.practice-sub { color: var(--titanium); font-size: 14px; line-height: 1.3; }
+
+main { max-width: 36rem; margin: 0 auto; padding: 30px 16px 56px; }
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(34px, 8.5vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.lede { color: var(--titanium); margin: 14px 0 0; max-width: 31rem; }
+
+.steps { list-style: none; margin: 34px 0 0; padding: 0; }
+.step {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  padding: 24px 0 26px;
+  border-top: 1px solid var(--hairline);
+}
+.step-num { font-family: var(--serif); font-size: 22px; line-height: 1.1; color: var(--gold-ink); }
+.step-body { min-width: 0; }
+fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+legend, .step-title { font-size: 19px; font-weight: 600; line-height: 1.3; padding: 0; margin: 0; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chip span {
+  display: inline-block;
+  padding: 11px 16px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--enamel);
+  font-size: 16px;
+  line-height: 1.2;
+  cursor: pointer;
+}
+.chip input:checked + span { border-color: var(--gold); background: var(--gold-wash); box-shadow: inset 0 0 0 1px var(--gold); }
+.chip input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.note {
+  margin-top: 16px;
+  padding: 16px 18px;
+  background: var(--enamel);
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+}
+.note p { margin: 0; }
+.note .note-title { font-weight: 600; }
+.note .note-body { color: var(--titanium); margin-top: 4px; }
+.note .text-link { display: inline-block; margin-top: 10px; font-weight: 600; color: var(--gold-ink); }
+
+/* Time picker */
+.days { display: flex; gap: 8px; margin-top: 14px; overflow-x: auto; padding-bottom: 2px; }
+.day input, .slot input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.day { position: relative; flex: 1 0 auto; }
+.day span {
+  display: block;
+  min-width: 92px;
+  padding: 10px 12px;
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  background: var(--enamel);
+  text-align: center;
+  cursor: pointer;
+  line-height: 1.2;
+}
+.day b { display: block; font-weight: 600; font-size: 15px; }
+.day small { display: block; color: var(--titanium); font-size: 14px; margin-top: 2px; }
+.day input:checked + span { border-color: var(--graphite); box-shadow: inset 0 0 0 1px var(--graphite); }
+.day input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+.slot { position: relative; }
+.slot span {
+  display: block;
+  padding: 14px 6px;
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  background: var(--enamel);
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.slot span small { font-family: var(--sans); font-size: 12px; color: var(--titanium); margin-left: 2px; }
+.slot input:checked + span { border-color: var(--gold); background: var(--gold-wash); box-shadow: inset 0 0 0 1px var(--gold); }
+.slot input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
+.slot input:disabled + span { color: #b5b9b6; background: transparent; border-style: dashed; cursor: not-allowed; text-decoration: line-through; }
+.slot input:disabled + span small { color: #b5b9b6; }
+
+.book {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 17px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--graphite);
+  color: #fff;
+  font: 600 17px/1.2 var(--sans);
+  cursor: pointer;
+}
+.book:disabled { background: #c9ccc9; color: #f6f7f5; cursor: not-allowed; }
+.book:not(:disabled):hover { background: #000; }
+.calendar-frame { width: 100%; min-height: 720px; border: 0; margin-top: 14px; background: var(--enamel); border-radius: 10px; }
+
+.fine { color: var(--titanium); font-size: 15px; margin-top: 18px; }
+footer { max-width: 36rem; margin: 0 auto; padding: 0 16px 40px; color: var(--titanium); font-size: 14px; }
+
+@media (min-width: 640px) {
+  .slots { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="demo-bar">This is a demo built by SOVRN Growth. Your logo, doctor and calendar go here.</div>
+
+<header class="practice">
+  <div class="mark" id="mark" aria-hidden="true">YP</div>
+  <div>
+    <div class="practice-name" id="practice-name">Your Practice</div>
+    <div class="practice-sub" id="practice-sub">Implant consults with your doctor</div>
+  </div>
+</header>
+
+<main>
+  <h1 id="headline">Pick a time that suits you.</h1>
+  <p class="lede">In about 45 minutes you'll meet the doctor, talk through your options and leave with a written plan and price.</p>
+
+  <ol class="steps">
+    <li class="step">
+      <span class="step-num" aria-hidden="true">1</span>
+      <fieldset class="step-body">
+        <legend>What would you like to fix?</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="fix" value="one-tooth"><span>One tooth</span></label>
+          <label class="chip"><input type="radio" name="fix" value="several-teeth"><span>A few teeth</span></label>
+          <label class="chip"><input type="radio" name="fix" value="full-arch"><span>A full arch or dentures</span></label>
+          <label class="chip"><input type="radio" name="fix" value="not-sure"><span>Not sure yet</span></label>
+        </div>
+      </fieldset>
+    </li>
+
+    <li class="step">
+      <span class="step-num" aria-hidden="true">2</span>
+      <fieldset class="step-body">
+        <legend>How are you planning to pay?</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="pay" value="insurance"><span>Insurance</span></label>
+          <label class="chip"><input type="radio" name="pay" value="financing"><span>Monthly payments</span></label>
+          <label class="chip"><input type="radio" name="pay" value="cash"><span>Pay in full</span></label>
+          <label class="chip"><input type="radio" name="pay" value="not-sure"><span>Not sure yet</span></label>
+        </div>
+        <div class="note" id="pay-note" hidden aria-live="polite">
+          <p class="note-title" id="pay-note-title"></p>
+          <p class="note-body" id="pay-note-body"></p>
+          <a class="text-link" id="pay-note-link" href="#" hidden>Check my options</a>
+        </div>
+      </fieldset>
+    </li>
+
+    <li class="step">
+      <span class="step-num" aria-hidden="true">3</span>
+      <div class="step-body" id="time-step">
+        <p class="step-title" id="time-title">Choose a time</p>
+        <div class="days" id="days" role="radiogroup" aria-labelledby="time-title"></div>
+        <div class="slots" id="slots" role="radiogroup" aria-label="Available times"></div>
+        <button class="book" id="book" type="button" disabled>Choose a time</button>
+      </div>
+    </li>
+  </ol>
+
+  <p class="fine">Questions first? Reply to our text anytime and someone from the office will answer.</p>
+</main>
+
+<footer><a href="/privacy/">Privacy</a></footer>
+
+<script>
+(function () {
+  // Fill these in when a real practice goes live:
+  // CALENDAR_URL: the GoHighLevel calendar's booking link. When set, it replaces the demo time picker.
+  // FINANCING_URL: the practice's own financing pre-check link (for example from CareCredit, Sunbit or Cherry).
+  var CALENDAR_URL = '';
+  var FINANCING_URL = '';
+
+  var params = new URLSearchParams(location.search);
+  var name = (params.get('name') || '').trim();
+  var practice = (params.get('practice') || '').trim();
+  var doctor = (params.get('doctor') || '').trim();
+
+  if (practice) {
+    document.getElementById('practice-name').textContent = practice;
+    document.title = 'Pick your consult time | ' + practice;
+    var initials = practice.split(/\s+/).filter(function (w) { return /^[A-Za-z]/.test(w); }).slice(0, 2).map(function (w) { return w[0].toUpperCase(); }).join('');
+    if (initials) document.getElementById('mark').textContent = initials;
+  }
+  if (doctor) document.getElementById('practice-sub').textContent = 'Implant consults with ' + doctor;
+  if (name) document.getElementById('headline').textContent = name + ', pick a time that suits you.';
+
+  // Payment choice shows one short, helpful note.
+  var notes = {
+    insurance: ['Bring your insurance card.', "We'll check your benefits before your visit, so there are no surprises.", false],
+    financing: ['See your payment options before you come in.', 'It takes about a minute, and you can bring the result to your consult.', true],
+    cash: ["You'll get an exact price at your visit.", 'Nothing starts until you have it in writing.', false],
+    'not-sure': ['No problem.', 'Your doctor will walk you through every option at your visit.', false]
+  };
+  var note = document.getElementById('pay-note');
+  var noteLink = document.getElementById('pay-note-link');
+  noteLink.href = FINANCING_URL || '#';
+  noteLink.addEventListener('click', function (e) {
+    if (!FINANCING_URL) { e.preventDefault(); noteLink.textContent = "In the live version, this opens the practice's own financing check."; }
+  });
+  document.querySelectorAll('input[name="pay"]').forEach(function (input) {
+    input.addEventListener('change', function () {
+      var n = notes[input.value];
+      document.getElementById('pay-note-title').textContent = n[0];
+      document.getElementById('pay-note-body').textContent = n[1];
+      noteLink.hidden = !n[2];
+      note.hidden = false;
+    });
+  });
+
+  var timeStep = document.getElementById('time-step');
+  if (CALENDAR_URL) {
+    timeStep.innerHTML = '<p class="step-title">Choose a time</p><iframe class="calendar-frame" title="Booking calendar" src="' + CALENDAR_URL + '"></iframe>';
+    return;
+  }
+
+  // Demo time picker: the next three weekdays, a believable mix of open and taken times.
+  var times = ['8:30', '10:00', '11:15', '12:30', '2:15', '3:30', '4:45', '5:15'];
+  var ampm = ['AM', 'AM', 'AM', 'PM', 'PM', 'PM', 'PM', 'PM'];
+  var taken = [[1, 4, 6], [0, 2, 5, 7], [3, 4]];
+  var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  var days = [];
+  var d = new Date();
+  d.setHours(12, 0, 0, 0);
+  while (days.length < 3) {
+    d.setDate(d.getDate() + 1);
+    if (d.getDay() !== 0 && d.getDay() !== 6) days.push(new Date(d));
+  }
+  function iso(date) {
+    return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(date.getDate()).padStart(2, '0');
+  }
+
+  var daysEl = document.getElementById('days');
+  var slotsEl = document.getElementById('slots');
+  var book = document.getElementById('book');
+  var chosenDay = 0;
+  var chosenTime = null;
+
+  days.forEach(function (date, i) {
+    var label = document.createElement('label');
+    label.className = 'day';
+    label.innerHTML = '<input type="radio" name="day" value="' + i + '"' + (i === 0 ? ' checked' : '') + '><span><b></b><small></small></span>';
+    label.querySelector('b').textContent = dayNames[date.getDay()].slice(0, 3);
+    label.querySelector('small').textContent = monthNames[date.getMonth()].slice(0, 3) + ' ' + date.getDate();
+    label.querySelector('input').addEventListener('change', function () { chosenDay = i; chosenTime = null; renderSlots(); });
+    daysEl.appendChild(label);
+  });
+
+  function renderSlots() {
+    slotsEl.innerHTML = '';
+    times.forEach(function (t, j) {
+      var unavailable = taken[chosenDay].indexOf(j) !== -1;
+      var label = document.createElement('label');
+      label.className = 'slot';
+      label.innerHTML = '<input type="radio" name="time" value="' + j + '"' + (unavailable ? ' disabled' : '') + '><span></span>';
+      var span = label.querySelector('span');
+      span.textContent = t;
+      var small = document.createElement('small');
+      small.textContent = ampm[j];
+      span.appendChild(small);
+      if (unavailable) label.querySelector('input').setAttribute('aria-label', t + ' ' + ampm[j] + ', taken');
+      label.querySelector('input').addEventListener('change', function () { chosenTime = j; updateButton(); });
+      slotsEl.appendChild(label);
+    });
+    updateButton();
+  }
+
+  function updateButton() {
+    if (chosenTime === null) {
+      book.disabled = true;
+      book.textContent = 'Choose a time';
+      return;
+    }
+    var date = days[chosenDay];
+    book.disabled = false;
+    book.textContent = 'Book ' + dayNames[date.getDay()] + ' at ' + times[chosenTime] + ' ' + ampm[chosenTime];
+  }
+
+  book.addEventListener('click', function () {
+    if (chosenTime === null) return;
+    var next = new URLSearchParams();
+    if (name) next.set('name', name);
+    if (practice) next.set('practice', practice);
+    if (doctor) next.set('doctor', doctor);
+    next.set('day', iso(days[chosenDay]));
+    next.set('time', times[chosenTime] + ' ' + ampm[chosenTime]);
+    var fix = document.querySelector('input[name="fix"]:checked');
+    var pay = document.querySelector('input[name="pay"]:checked');
+    if (fix) next.set('fix', fix.value);
+    if (pay) next.set('pay', pay.value);
+    location.href = '../booked/?' + next.toString();
+  });
+
+  renderSlots();
+})();
+</script>
+</body>
+</html>
