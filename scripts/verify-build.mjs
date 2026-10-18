@@ -36,6 +36,13 @@ assert.ok(
   'verify-build: home page must load the text opt-in chat widget'
 );
 assert.ok(!/type="tel"/.test(home), 'verify-build: home page must not have another phone field');
+// Texting registration: the brand's address, phone and email must appear on these pages.
+for (const page of ['index.html', 'privacy/index.html', 'terms/index.html']) {
+  const text = readFileSync(new URL(`../dist/${page}`, import.meta.url), 'utf8');
+  for (const detail of ['110 N Interstate 35, Suite 315-1083, Round Rock, TX 78681', '(512) 882-0814', 'elijah@sovrngrowth.com']) {
+    assert.ok(text.includes(detail), `verify-build: ${page} must show ${detail}`);
+  }
+}
 // Sales demo pages: present, and kept out of search.
 for (const page of ['demo/book', 'demo/booked']) {
   const demo = readFileSync(new URL(`../dist/${page}/index.html`, import.meta.url), 'utf8');
