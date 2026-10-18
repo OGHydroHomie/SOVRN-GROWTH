@@ -22,6 +22,13 @@ assert.ok(
   readFileSync(new URL('../dist/terms/index.html', import.meta.url), 'utf8').includes('Terms of Service'),
   'verify-build: terms page is missing'
 );
+// The brand registered for texting is the LLC; its trade name must be tied to it on these pages.
+for (const page of ['index.html', 'privacy/index.html', 'terms/index.html']) {
+  assert.ok(
+    readFileSync(new URL(`../dist/${page}`, import.meta.url), 'utf8').includes('Lux Eterna LLC'),
+    `verify-build: ${page} must name Lux Eterna LLC`
+  );
+}
 // Sales demo pages: present, and kept out of search.
 for (const page of ['demo/book', 'demo/booked']) {
   const demo = readFileSync(new URL(`../dist/${page}/index.html`, import.meta.url), 'utf8');
