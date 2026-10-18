@@ -29,6 +29,13 @@ for (const page of ['index.html', 'privacy/index.html', 'terms/index.html']) {
     `verify-build: ${page} must name Lux Eterna LLC`
   );
 }
+// Texting registration: the home page's opt-in chat widget is the registered consent form,
+// so it must load, and the home page must not collect phone numbers any other way.
+assert.ok(
+  home.includes('data-widget-id="6ad53787d28aca7d19fffafb"'),
+  'verify-build: home page must load the text opt-in chat widget'
+);
+assert.ok(!/type="tel"/.test(home), 'verify-build: home page must not have another phone field');
 // Sales demo pages: present, and kept out of search.
 for (const page of ['demo/book', 'demo/booked']) {
   const demo = readFileSync(new URL(`../dist/${page}/index.html`, import.meta.url), 'utf8');
