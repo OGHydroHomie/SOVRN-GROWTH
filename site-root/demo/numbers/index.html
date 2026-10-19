@@ -367,6 +367,14 @@ footer { color: var(--muted); font-size: 14px; padding-bottom: 40px; }
           </div>
           <input type="range" id="value-r" min="1000" max="50000" step="250">
         </div>
+        <div class="field">
+          <div class="field-top">
+            <label for="margin-r">Kept after lab and materials</label>
+            <span class="value"><input class="v" id="margin" type="text" inputmode="numeric" autocomplete="off" min="20" max="90" step="5" aria-label="Percent of each case kept after lab and materials"><span class="unit">%</span></span>
+          </div>
+          <p class="hint">Used for break-even and return.</p>
+          <input type="range" id="margin-r" min="20" max="90" step="5">
+        </div>
       </div>
 
       <div>
@@ -449,8 +457,8 @@ footer { color: var(--muted); font-size: 14px; padding-bottom: 40px; }
                 </table>
                 <div class="verdict">
                   <div><span class="big num" id="v-break">0</span><p id="v-break-text">cases pay for all 90 days.</p></div>
-                  <div><span class="big num" id="v-per">$0</span><p id="v-per-text">per booked consult, each worth about $0 to you.</p></div>
-                  <div><span class="big num" id="v-return">0×</span><p>return on the total investment.</p></div>
+                  <div><span class="big num" id="v-per">$0</span><p id="v-per-text">per booked consult, each worth about $0 to you after lab and materials.</p></div>
+                  <div><span class="big num" id="v-return">0×</span><p>return on the total investment, after lab and materials.</p></div>
                 </div>
               </div>
             </div>
@@ -508,9 +516,9 @@ footer { color: var(--muted); font-size: 14px; padding-bottom: 40px; }
   var state = {
     leads: 30, fast: 25, book: 20,
     close: KINDS[kind].close, value: KINDS[kind].value,
-    past: 250, rebook: 4, lift: 2
+    past: 250, rebook: 4, margin: 60, lift: 2
   };
-  ['leads', 'fast', 'book', 'close', 'value', 'past', 'rebook'].forEach(function (k) {
+  ['leads', 'fast', 'book', 'close', 'value', 'past', 'rebook', 'margin'].forEach(function (k) {
     var v = parseFloat(params.get(k));
     if (!isNaN(v)) state[k] = v;
   });
@@ -534,7 +542,7 @@ footer { color: var(--muted); font-size: 14px; padding-bottom: 40px; }
   if (doctor) $('who-sub').textContent = 'Prepared for ' + doctor;
 
   // Inputs: each range and its number box stay in step
-  var keys = ['leads', 'fast', 'book', 'close', 'value', 'past', 'rebook'];
+  var keys = ['leads', 'fast', 'book', 'close', 'value', 'past', 'rebook', 'margin'];
   function clamp(k, v) {
     var box = $(k);
     return Math.min(parseFloat(box.getAttribute('max')), Math.max(parseFloat(box.getAttribute('min')), v));
@@ -689,8 +697,9 @@ footer { color: var(--muted); font-size: 14px; padding-bottom: 40px; }
     var ads = kd.adsMonthly * 3;
     var total = fee + ads;
     var perConsult = total / GUARANTEE;
-    var consultWorth = c * V;
-    var breakEven = Math.max(1, Math.ceil(total / V));
+    var kept = V * s.margin / 100;
+    var consultWorth = c * kept;
+    var breakEven = Math.max(1, Math.ceil(total / kept));
     var started = Math.round(cases);
 
     $('g-lede').textContent = "That's the guarantee: 30 booked consults within 90 days of your ads going live, or we keep working at no added fee until there are 30.";
@@ -714,8 +723,8 @@ footer { color: var(--muted); font-size: 14px; padding-bottom: 40px; }
     animateTo('v-break', breakEven, function (x) { return String(Math.round(x)); });
     $('v-break-text').textContent = (breakEven === 1 ? 'case pays' : 'cases pay') + ' for all 90 days' + (revealed ? ', ringed on the board.' : '.');
     animateTo('v-per', perConsult, function (x) { return usd.format(Math.round(x / 10) * 10); });
-    $('v-per-text').textContent = 'per booked consult, each worth about ' + about(consultWorth) + ' to you.';
-    animateTo('v-return', revenue / total, function (x) { return (Math.round(x * 10) / 10).toFixed(1) + '×'; });
+    $('v-per-text').textContent = 'per booked consult, each worth about ' + about(consultWorth) + ' to you after lab and materials.';
+    animateTo('v-return', revenue * s.margin / 100 / total, function (x) { return (Math.round(x * 10) / 10).toFixed(1) + '×'; });
 
     // Old inquiries
     var rConsults = s.past * s.rebook / 100;
