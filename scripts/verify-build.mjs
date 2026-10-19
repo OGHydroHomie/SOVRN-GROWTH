@@ -44,7 +44,7 @@ for (const page of ['index.html', 'privacy/index.html', 'terms/index.html']) {
   }
 }
 // Sales demo pages: present, and kept out of search.
-for (const page of ['demo/book', 'demo/booked']) {
+for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
   const demo = readFileSync(new URL(`../dist/${page}/index.html`, import.meta.url), 'utf8');
   assert.ok(demo.includes('<meta name="robots" content="noindex, nofollow">'), `verify-build: ${page} must be noindex`);
   assert.ok(demo.includes('This is a demo built by SOVRN Growth.'), `verify-build: ${page} must carry the demo label`);
