@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What new implant patients are worth</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f1f4f2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* A live meeting tool: the practice's own numbers turned into dollars.
+   One visual language throughout: every mark is a person. A hollow ring didn't book,
+   teal is a booked consult, gold is a patient who started treatment (a crown, in effect).
+   The memorable element is the 30-consult board; everything around it stays quiet. */
+:root {
+  --ground: #f1f4f2;
+  --sheet: #ffffff;
+  --ink: #13201c;
+  --muted: #56645e;
+  --line: #d3ddd8;
+  --ring: #a8b7b1;
+  --teal: #0b6e62;
+  --teal-soft: #dcebe6;
+  --gold: #b0841f;
+  --gold-ink: #7a5a10;
+  --gold-soft: #f5ecd6;
+  --on-ink: #f5f7f6;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #0b100f;
+    --sheet: #111816;
+    --ink: #e7edeb;
+    --muted: #9aa8a3;
+    --line: #25312d;
+    --ring: #4a5b55;
+    --teal: #52b9a8;
+    --teal-soft: #14241f;
+    --gold: #e0b452;
+    --gold-ink: #e8c372;
+    --gold-soft: #2a2312;
+    --on-ink: #0b100f;
+    --bar: #17211e;
+    --bar-ink: #c9d3cf;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #0b100f;
+  --sheet: #111816;
+  --ink: #e7edeb;
+  --muted: #9aa8a3;
+  --line: #25312d;
+  --ring: #4a5b55;
+  --teal: #52b9a8;
+  --teal-soft: #14241f;
+  --gold: #e0b452;
+  --gold-ink: #e8c372;
+  --gold-soft: #2a2312;
+  --on-ink: #0b100f;
+  --bar: #17211e;
+  --bar-ink: #c9d3cf;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 17px/1.55 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+p { margin: 0; }
+a { color: inherit; text-underline-offset: 3px; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; border-radius: 4px; }
+.num { font-family: var(--display); font-stretch: 118%; font-variant-numeric: tabular-nums lining-nums; }
+
+.demo-bar {
+  background: var(--bar, var(--ink));
+  color: var(--bar-ink, var(--on-ink));
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 9px 16px;
+  text-align: center;
+}
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+
+/* Header: whose numbers these are, and which kind of practice */
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; padding-top: 22px; }
+.who { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.mark {
+  flex: none; width: 44px; height: 44px; border-radius: 50%;
+  border: 1.5px solid var(--teal); color: var(--teal);
+  display: grid; place-items: center;
+  font: 700 15px/1 var(--display); font-stretch: 112%;
+}
+.who-name { font-weight: 600; font-size: 16px; line-height: 1.25; }
+.who-sub { color: var(--muted); font-size: 14px; line-height: 1.3; }
+
+.kind { display: inline-flex; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--sheet); }
+.kind button {
+  border: 0; background: transparent; padding: 8px 16px; border-radius: 999px;
+  font-size: 15px; font-weight: 600; color: var(--muted); cursor: pointer;
+}
+.kind button[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); }
+
+/* Hero: the headline is the result */
+.hero { padding: 40px 0 34px; max-width: 920px; }
+h1 {
+  font-family: var(--display);
+  font-stretch: 108%;
+  font-weight: 700;
+  font-size: clamp(32px, 5.4vw, 60px);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+.live {
+  font-stretch: 122%;
+  font-variant-numeric: tabular-nums lining-nums;
+  white-space: nowrap;
+  box-shadow: inset 0 -0.14em 0 var(--gold-soft);
+}
+.lede { color: var(--muted); margin-top: 16px; max-width: 46ch; font-size: 18px; }
+
+/* Body: inputs left, results right */
+.grid { display: grid; gap: 28px; padding-bottom: 48px; }
+@media (min-width: 980px) {
+  .grid { grid-template-columns: 340px minmax(0, 1fr); gap: 40px; align-items: start; }
+  .inputs { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; padding-right: 10px; padding-bottom: 28px; scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 28px), transparent); }
+}
+
+.inputs { display: grid; gap: 26px; }
+.group-title { font: 700 17px/1.25 var(--display); font-stretch: 108%; margin: 0 0 4px; }
+.field { padding: 14px 0 16px; border-bottom: 1px solid var(--line); }
+.field:last-child { border-bottom: 0; }
+.field-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.field label { font-size: 15px; line-height: 1.3; color: var(--ink); }
+.hint { color: var(--muted); font-size: 13.5px; line-height: 1.35; margin-top: 3px; }
+.value { display: inline-flex; align-items: baseline; gap: 2px; flex: none; }
+.value input {
+  width: 5.2ch; border: 0; border-bottom: 1.5px solid transparent; background: transparent;
+  color: var(--ink); text-align: right; padding: 0 0 1px;
+  font: 700 22px/1.1 var(--display); font-stretch: 118%; font-variant-numeric: tabular-nums;
+}
+.value input.wide { width: 6.6ch; }
+.value input:hover { border-bottom-color: var(--line); }
+.value input:focus { outline: none; border-bottom-color: var(--teal); }
+.value .unit { font: 700 17px/1 var(--display); font-stretch: 118%; color: var(--muted); }
+
+input[type="range"] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 30px; margin: 8px 0 0; background: transparent; cursor: pointer;
+  --pct: 50%;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px; border-radius: 999px;
+  background: linear-gradient(to right, var(--teal) 0 var(--pct), var(--line) var(--pct) 100%);
+}
+input[type="range"]::-moz-range-track { height: 6px; border-radius: 999px; background: var(--line); }
+input[type="range"]::-moz-range-progress { height: 6px; border-radius: 999px; background: var(--teal); }
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 22px; height: 22px; margin-top: -8px; border-radius: 50%;
+  background: var(--sheet); border: 2px solid var(--teal); box-shadow: 0 1px 2px rgba(19, 32, 28, 0.25);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--sheet); border: 2px solid var(--teal); box-shadow: 0 1px 2px rgba(19, 32, 28, 0.25);
+}
+input[type="range"]:focus-visible { outline: none; }
+input[type="range"]:focus-visible::-webkit-slider-thumb { outline: 3px solid var(--teal); outline-offset: 2px; }
+input[type="range"]:focus-visible::-moz-range-thumb { outline: 3px solid var(--teal); outline-offset: 2px; }
+
+.lift { display: flex; gap: 8px; margin-top: 10px; }
+.lift button {
+  flex: 1; padding: 9px 0; border: 1px solid var(--line); border-radius: 10px; background: var(--sheet);
+  font: 700 16px/1 var(--display); font-stretch: 118%; cursor: pointer;
+}
+.lift button[aria-pressed="true"] { border-color: var(--teal); box-shadow: inset 0 0 0 1px var(--teal); background: var(--teal-soft); }
+
+/* Results sheet */
+.sheet { background: var(--sheet); border: 1px solid var(--line); border-radius: 16px; padding: clamp(20px, 3.4vw, 40px); }
+.part + .part { margin-top: 40px; padding-top: 36px; border-top: 1px solid var(--line); }
+h2 { font: 700 clamp(22px, 2.6vw, 28px)/1.15 var(--display); font-stretch: 110%; margin: 0; text-wrap: balance; }
+.part-lede { color: var(--muted); margin-top: 8px; max-width: 58ch; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 16px; color: var(--muted); font-size: 14px; }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.key { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.key.none { border: 1.5px solid var(--ring); }
+.key.booked { background: var(--teal); }
+.key.started { background: var(--gold); }
+
+/* Dot rows: this month's inquiries, today vs a 60-second reply */
+.rows { margin-top: 22px; display: grid; gap: 22px; }
+.row-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.row-name { font-weight: 600; }
+.row-stat { color: var(--muted); font-size: 15px; text-align: right; }
+.row-stat b { color: var(--ink); font-weight: 700; font-family: var(--display); font-stretch: 112%; font-variant-numeric: tabular-nums; }
+.dots { display: flex; flex-wrap: wrap; gap: 5px; }
+.dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 1.5px solid var(--ring); background: transparent;
+  transition: background-color 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+}
+.dot.booked { background: var(--teal); border-color: var(--teal); }
+.dot.started { background: var(--gold); border-color: var(--gold); }
+.dot.hidden { transform: scale(0); }
+
+.delta {
+  margin-top: 24px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px;
+  padding: 16px 18px; border-radius: 12px; background: var(--gold-soft);
+}
+.delta .big { font: 700 clamp(26px, 3.2vw, 34px)/1 var(--display); font-stretch: 120%; font-variant-numeric: tabular-nums; color: var(--gold-ink); }
+.delta p { color: var(--ink); }
+
+/* The 30-consult board */
+.board {
+  margin-top: 22px; display: grid; gap: 8px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  max-width: 640px;
+}
+@media (min-width: 560px) { .board { grid-template-columns: repeat(10, minmax(0, 1fr)); } }
+.tile {
+  position: relative; aspect-ratio: 1; border-radius: 9px;
+  border: 1.5px solid var(--ring); background: transparent;
+  transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.4s cubic-bezier(.2, .8, .2, 1);
+}
+.tile.booked { background: var(--teal); border-color: var(--teal); }
+.tile.started { background: var(--gold); border-color: var(--gold); }
+.tile.pays::after {
+  content: ""; position: absolute; inset: 22% 22%;
+  border-radius: 50%; border: 2px solid var(--on-ink); opacity: 0.85;
+}
+.tile.pre { transform: scale(0.6); opacity: 0; }
+
+.outcome { margin-top: 22px; display: grid; gap: 4px; }
+.outcome .big { font: 700 clamp(30px, 4vw, 44px)/1.05 var(--display); font-stretch: 120%; font-variant-numeric: tabular-nums; }
+.outcome p { color: var(--muted); }
+
+.reveal {
+  margin-top: 22px; display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 20px; border-radius: 12px; border: 0; cursor: pointer;
+  background: var(--ink); color: var(--on-ink); font-weight: 600; font-size: 16px;
+}
+.reveal:hover { filter: brightness(1.15); }
+
+.invest { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.45s ease; }
+.invest.open { grid-template-rows: 1fr; }
+.invest > div { overflow: hidden; }
+.invest-inner { padding-top: 24px; }
+.ledger { width: 100%; max-width: 560px; border-collapse: collapse; }
+.ledger td { padding: 10px 0; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+.ledger td:last-child { text-align: right; font-family: var(--display); font-stretch: 116%; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 16px; }
+.ledger .sub { display: block; color: var(--muted); font-size: 14px; }
+.ledger tr.total td { border-bottom: 0; padding-top: 14px; font-weight: 700; }
+.verdict { margin-top: 18px; display: grid; gap: 14px; }
+@media (min-width: 720px) { .verdict { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.verdict div { padding: 16px 18px; border-radius: 12px; background: var(--teal-soft); }
+.verdict .big { display: block; font: 700 clamp(24px, 2.6vw, 30px)/1.05 var(--display); font-stretch: 120%; font-variant-numeric: tabular-nums; }
+.verdict p { color: var(--muted); font-size: 15px; margin-top: 4px; }
+
+/* Old inquiries */
+.math { margin-top: 20px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 14px; }
+.math .term { display: grid; }
+.math .term b { font: 700 clamp(24px, 2.8vw, 32px)/1.05 var(--display); font-stretch: 120%; font-variant-numeric: tabular-nums; }
+.math .term span { color: var(--muted); font-size: 14px; }
+.math .op { color: var(--ring); font: 400 26px/1 var(--display); }
+.math .term.result b { color: var(--gold-ink); }
+
+/* After the meeting */
+.share { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.share button {
+  padding: 11px 18px; border-radius: 12px; border: 1px solid var(--line); background: var(--sheet);
+  font-weight: 600; cursor: pointer;
+}
+.share .done { color: var(--teal); font-weight: 600; }
+
+.fine { color: var(--muted); font-size: 14px; line-height: 1.5; max-width: 80ch; padding-bottom: 40px; display: grid; gap: 8px; }
+footer { color: var(--muted); font-size: 14px; padding-bottom: 40px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 559px) {
+  .dot { width: 10px; height: 10px; }
+  .dots { gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::after { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="demo-bar">This is a demo built by SOVRN Growth. Every number on this page is yours to change.</div>
+
+<div class="wrap">
+  <header class="top">
+    <div class="who">
+      <div class="mark" id="mark" aria-hidden="true">YP</div>
+      <div>
+        <div class="who-name" id="who-name">Your practice</div>
+        <div class="who-sub" id="who-sub">New implant patients, in dollars</div>
+      </div>
+    </div>
+    <div class="kind" role="group" aria-label="Kind of practice">
+      <button type="button" data-kind="general" aria-pressed="true">General implants</button>
+      <button type="button" data-kind="fullarch" aria-pressed="false">Full-arch</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1 id="headline"><span id="h-lead">Slow follow-up is costing your practice about</span> <span class="live" id="h-num">$0</span> <span id="h-tail">a month.</span></h1>
+    <p class="lede">These are your numbers. Change any of them and everything below updates.</p>
+  </section>
+
+  <div class="grid">
+    <form class="inputs" id="inputs" onsubmit="return false">
+      <div>
+        <h2 class="group-title">Your inquiries</h2>
+        <div class="field">
+          <div class="field-top">
+            <label for="leads-r">New implant inquiries a month</label>
+            <span class="value"><input class="v" id="leads" type="text" inputmode="numeric" autocomplete="off" min="5" max="200" step="1" aria-label="New implant inquiries a month"></span>
+          </div>
+          <p class="hint">Calls, web forms and messages about implants.</p>
+          <input type="range" id="leads-r" min="5" max="200" step="1">
+        </div>
+        <div class="field">
+          <div class="field-top">
+            <label for="fast-r">Reached within 5 minutes today</label>
+            <span class="value"><input class="v" id="fast" type="text" inputmode="numeric" autocomplete="off" min="0" max="100" step="5" aria-label="Percent reached within 5 minutes today"><span class="unit">%</span></span>
+          </div>
+          <p class="hint">Count lunch, evenings and weekends.</p>
+          <input type="range" id="fast-r" min="0" max="100" step="5">
+        </div>
+        <div class="field">
+          <div class="field-top">
+            <label for="book-r">Inquiries that book a consult</label>
+            <span class="value"><input class="v" id="book" type="text" inputmode="numeric" autocomplete="off" min="5" max="60" step="1" aria-label="Percent of inquiries that book a consult"><span class="unit">%</span></span>
+          </div>
+          <input type="range" id="book-r" min="5" max="60" step="1">
+        </div>
+      </div>
+
+      <div>
+        <h2 class="group-title">Your consults</h2>
+        <div class="field">
+          <div class="field-top">
+            <label for="close-r">Consults that start treatment</label>
+            <span class="value"><input class="v" id="close" type="text" inputmode="numeric" autocomplete="off" min="5" max="80" step="1" aria-label="Percent of consults that start treatment"><span class="unit">%</span></span>
+          </div>
+          <input type="range" id="close-r" min="5" max="80" step="1">
+        </div>
+        <div class="field">
+          <div class="field-top">
+            <label for="value-r">Average case value</label>
+            <span class="value"><span class="unit">$</span><input class="v wide" id="value" type="text" inputmode="numeric" autocomplete="off" min="1000" max="50000" step="250" aria-label="Average case value in dollars"></span>
+          </div>
+          <input type="range" id="value-r" min="1000" max="50000" step="250">
+        </div>
+      </div>
+
+      <div>
+        <h2 class="group-title">Your old inquiries</h2>
+        <div class="field">
+          <div class="field-top">
+            <label for="past-r">Asked about implants, never booked</label>
+            <span class="value"><input class="v wide" id="past" type="text" inputmode="numeric" autocomplete="off" min="0" max="2000" step="10" aria-label="Past implant inquiries that never booked"></span>
+          </div>
+          <p class="hint">The last 12 to 24 months.</p>
+          <input type="range" id="past-r" min="0" max="2000" step="10">
+        </div>
+        <div class="field">
+          <div class="field-top">
+            <label for="rebook-r">Book when contacted again</label>
+            <span class="value"><input class="v" id="rebook" type="text" inputmode="numeric" autocomplete="off" min="1" max="20" step="1" aria-label="Percent of old inquiries that book when contacted again"><span class="unit">%</span></span>
+          </div>
+          <input type="range" id="rebook-r" min="1" max="20" step="1">
+        </div>
+      </div>
+
+      <div>
+        <h2 class="group-title" id="lift-title">How much a fast reply helps</h2>
+        <p class="hint">Inquiries reached within 5 minutes book this many times as often as the rest. 2× is conservative.</p>
+        <div class="lift" role="group" aria-labelledby="lift-title">
+          <button type="button" data-lift="1.5" aria-pressed="false">1.5×</button>
+          <button type="button" data-lift="2" aria-pressed="true">2×</button>
+          <button type="button" data-lift="3" aria-pressed="false">3×</button>
+        </div>
+      </div>
+    </form>
+
+    <div>
+      <div class="sheet">
+        <section class="part">
+          <h2>Every dot is someone who asked about implants this month.</h2>
+          <div class="legend" aria-hidden="true">
+            <span><i class="key none"></i>Didn't book</span>
+            <span><i class="key booked"></i>Booked a consult</span>
+            <span><i class="key started"></i>Started treatment</span>
+          </div>
+          <div class="rows">
+            <div>
+              <div class="row-head">
+                <span class="row-name">Today</span>
+                <span class="row-stat"><b id="t-consults">0</b> consults, <b id="t-cases">0</b> start treatment</span>
+              </div>
+              <div class="dots" id="dots-today" role="img" aria-label="This month's inquiries today"></div>
+            </div>
+            <div>
+              <div class="row-head">
+                <span class="row-name">With a reply in 60 seconds</span>
+                <span class="row-stat"><b id="f-consults">0</b> consults, <b id="f-cases">0</b> start treatment</span>
+              </div>
+              <div class="dots" id="dots-fast" role="img" aria-label="This month's inquiries with a reply in 60 seconds"></div>
+            </div>
+          </div>
+          <div class="delta">
+            <span class="big num" id="d-money">$0</span>
+            <p id="d-text">more a month from the inquiries you already get.</p>
+          </div>
+        </section>
+
+        <section class="part">
+          <h2>30 booked consults in 90 days</h2>
+          <p class="part-lede" id="g-lede">That's the guarantee: 30 booked consults within 90 days of your ads going live, or we keep working at no added fee until there are 30.</p>
+          <div class="board" id="board" role="img" aria-label="30 booked consults"></div>
+          <div class="outcome">
+            <span class="big num" id="g-money">$0</span>
+            <p id="g-text">from the consults that start treatment.</p>
+          </div>
+          <button class="reveal" type="button" id="reveal" aria-expanded="false" aria-controls="invest">Add the investment</button>
+          <div class="invest" id="invest">
+            <div>
+              <div class="invest-inner">
+                <table class="ledger">
+                  <tr><td>Our fee for the 90 days<span class="sub" id="fee-sub"></span></td><td id="fee">$0</td></tr>
+                  <tr><td>Ad budget for the 90 days<span class="sub" id="ads-sub"></span></td><td id="ads">$0</td></tr>
+                  <tr class="total"><td>Total investment</td><td id="total">$0</td></tr>
+                </table>
+                <div class="verdict">
+                  <div><span class="big num" id="v-break">0</span><p id="v-break-text">cases pay for all 90 days.</p></div>
+                  <div><span class="big num" id="v-per">$0</span><p id="v-per-text">per booked consult, each worth about $0 to you.</p></div>
+                  <div><span class="big num" id="v-return">0×</span><p>return on the total investment.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="part">
+          <h2>Old inquiries, booked again</h2>
+          <p class="part-lede">People who already asked about implants and never booked. We call, email and text them (texts only to people who agreed to get them).</p>
+          <div class="math">
+            <div class="term"><b id="r-past">0</b><span>old inquiries</span></div>
+            <span class="op" aria-hidden="true">×</span>
+            <div class="term"><b id="r-rate">0%</b><span>book again</span></div>
+            <span class="op" aria-hidden="true">=</span>
+            <div class="term"><b id="r-consults">0</b><span>consults</span></div>
+            <span class="op" aria-hidden="true">→</span>
+            <div class="term result"><b id="r-money">$0</b><span id="r-cases">0 start treatment</span></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="share">
+        <button type="button" id="copy">Copy a link with these numbers</button>
+        <span class="done" id="copied" hidden>Link copied.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="fine">
+    <p>Estimates from the numbers on this page, not a promise of results. The guarantee covers booked consults and needs the ad budget shown above, paid on time, with ads running.</p>
+    <p id="fine-value">The full-arch starting value is the national average fee for a full-arch implant prosthesis (CDT D6114), ADA fee survey data as published by Pearl, updated May 2026.</p>
+    <p>A Harvard Business Review study found companies that contacted leads within an hour were nearly 7 times as likely to qualify them as companies that waited longer. This page assumes a smaller lift, which you can change.</p>
+  </div>
+  <footer><a href="/privacy/">Privacy</a></footer>
+</div>
+
+<p class="sr" id="sr" aria-live="polite"></p>
+
+<noscript><p style="padding:16px;text-align:center">Turn on JavaScript to use this calculator.</p></noscript>
+
+<script>
+(function () {
+  var KINDS = {
+    general: { value: 5000, close: 35, feeMonthly: 5000, feeFull: 12000, adsMonthly: 3000, label: 'General implants' },
+    fullarch: { value: 22590, close: 25, feeMonthly: 6500, feeFull: 16000, adsMonthly: 5000, label: 'Full-arch' }
+  };
+  var GUARANTEE = 30;
+  var REACH_WITH_US = 0.95; // share of inquiries a 60-second reply actually reaches
+
+  var params = new URLSearchParams(location.search);
+  var practice = (params.get('practice') || '').trim();
+  var doctor = (params.get('doctor') || '').trim();
+  var kind = params.get('type') === 'fullarch' ? 'fullarch' : 'general';
+
+  var state = {
+    leads: 30, fast: 25, book: 20,
+    close: KINDS[kind].close, value: KINDS[kind].value,
+    past: 250, rebook: 4, lift: 2
+  };
+  ['leads', 'fast', 'book', 'close', 'value', 'past', 'rebook'].forEach(function (k) {
+    var v = parseFloat(params.get(k));
+    if (!isNaN(v)) state[k] = v;
+  });
+  var liftParam = parseFloat(params.get('lift'));
+  if ([1.5, 2, 3].indexOf(liftParam) !== -1) state.lift = liftParam;
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function (id) { return document.getElementById(id); };
+  var usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+  var about = function (x) { return usd.format(Math.round(x / 100) * 100); };
+  var one = function (x) { var r = Math.round(x * 10) / 10; return (r % 1 === 0 ? r.toFixed(0) : r.toFixed(1)); };
+
+  // Who these numbers belong to
+  var name = practice || 'your practice';
+  if (practice) {
+    $('who-name').textContent = practice;
+    document.title = 'What new implant patients are worth to ' + practice;
+    var initials = practice.split(/\s+/).filter(function (w) { return /^[A-Za-z]/.test(w); }).slice(0, 2).map(function (w) { return w[0].toUpperCase(); }).join('');
+    if (initials) $('mark').textContent = initials;
+  }
+  if (doctor) $('who-sub').textContent = 'Prepared for ' + doctor;
+
+  // Inputs: each range and its number box stay in step
+  var keys = ['leads', 'fast', 'book', 'close', 'value', 'past', 'rebook'];
+  function clamp(k, v) {
+    var box = $(k);
+    return Math.min(parseFloat(box.getAttribute('max')), Math.max(parseFloat(box.getAttribute('min')), v));
+  }
+  function show(v) { return Number(v).toLocaleString('en-US'); }
+  function parse(text) { return parseFloat(String(text).replace(/[^0-9.]/g, '')); }
+  function paintRange(r) {
+    var pct = (r.value - r.min) / (r.max - r.min) * 100;
+    r.style.setProperty('--pct', pct + '%');
+  }
+  function syncInputs() {
+    keys.forEach(function (k) {
+      state[k] = clamp(k, state[k]);
+      $(k).value = show(state[k]);
+      var r = $(k + '-r');
+      r.value = state[k];
+      paintRange(r);
+    });
+  }
+  keys.forEach(function (k) {
+    var r = $(k + '-r');
+    var box = $(k);
+    r.addEventListener('input', function () { state[k] = parseFloat(r.value); box.value = show(r.value); paintRange(r); update(); });
+    box.addEventListener('input', function () {
+      var v = parse(box.value);
+      if (isNaN(v)) return;
+      state[k] = clamp(k, v);
+      r.value = state[k];
+      paintRange(r);
+      update();
+    });
+    box.addEventListener('blur', function () { box.value = show(state[k]); });
+  });
+
+  document.querySelectorAll('.lift button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      state.lift = parseFloat(b.dataset.lift);
+      document.querySelectorAll('.lift button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      update();
+    });
+    b.setAttribute('aria-pressed', String(parseFloat(b.dataset.lift) === state.lift));
+  });
+
+  document.querySelectorAll('.kind button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (b.dataset.kind === kind) return;
+      kind = b.dataset.kind;
+      state.value = KINDS[kind].value;
+      state.close = KINDS[kind].close;
+      syncInputs();
+      update();
+    });
+  });
+
+  // Dots and tiles
+  var dotsToday = $('dots-today');
+  var dotsFast = $('dots-fast');
+  var board = $('board');
+  for (var i = 0; i < GUARANTEE; i++) {
+    var t = document.createElement('div');
+    t.className = 'tile' + (reduce ? '' : ' pre');
+    board.appendChild(t);
+  }
+  function fillDots(el, total, booked, started) {
+    while (el.children.length < 200) {
+      var d = document.createElement('i');
+      d.className = 'dot hidden';
+      el.appendChild(d);
+    }
+    for (var j = 0; j < el.children.length; j++) {
+      var cls = 'dot';
+      if (j >= total) cls += ' hidden';
+      else if (j < started) cls += ' started';
+      else if (j < booked) cls += ' booked';
+      el.children[j].className = cls;
+      el.children[j].style.display = j >= total ? 'none' : '';
+    }
+  }
+
+  // Count-up for every figure that changes
+  var shown = {};
+  function animateTo(id, target, fmt) {
+    var el = $(id);
+    var from = shown[id] === undefined ? 0 : shown[id];
+    shown[id] = target;
+    if (reduce || from === target) { el.textContent = fmt(target); return; }
+    var start = null;
+    var dur = 520;
+    cancelAnimationFrame(el._raf);
+    function step(ts) {
+      if (start === null) start = ts;
+      var p = Math.min(1, (ts - start) / dur);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(from + (target - from) * e);
+      if (p < 1) el._raf = requestAnimationFrame(step);
+    }
+    el._raf = requestAnimationFrame(step);
+  }
+
+  var revealed = false;
+  $('reveal').addEventListener('click', function () {
+    revealed = !revealed;
+    $('invest').classList.toggle('open', revealed);
+    this.setAttribute('aria-expanded', String(revealed));
+    this.textContent = revealed ? 'Hide the investment' : 'Add the investment';
+    update();
+  });
+
+  function update() {
+    var s = state;
+    var L = s.leads, f = s.fast / 100, b = s.book / 100, c = s.close / 100, V = s.value, k = s.lift;
+    document.querySelectorAll('.kind button').forEach(function (x) { x.setAttribute('aria-pressed', String(x.dataset.kind === kind)); });
+
+    // Today's booking rate is a blend of fast and slow replies. A 60-second reply moves almost everyone to fast.
+    var slow = b / (f * k + (1 - f));
+    var fastRate = Math.min(k * slow, 0.9);
+    var reach = Math.max(f, REACH_WITH_US);
+    var bWith = reach * fastRate + (1 - reach) * slow;
+    if (bWith < b) bWith = b;
+
+    var consultsToday = L * b, casesToday = consultsToday * c;
+    var consultsFast = L * bWith, casesFast = consultsFast * c;
+    var gap = (casesFast - casesToday) * V;
+
+    fillDots(dotsToday, L, Math.round(consultsToday), Math.round(casesToday));
+    fillDots(dotsFast, L, Math.round(consultsFast), Math.round(casesFast));
+    animateTo('t-consults', consultsToday, function (x) { return String(Math.round(x)); });
+    animateTo('t-cases', casesToday, one);
+    animateTo('f-consults', consultsFast, function (x) { return String(Math.round(x)); });
+    animateTo('f-cases', casesFast, one);
+
+    if (gap >= 100) {
+      $('h-lead').textContent = 'Slow follow-up is costing ' + name + ' about';
+      $('h-num').hidden = false;
+      $('h-tail').textContent = 'a month.';
+      animateTo('h-num', gap, about);
+      animateTo('d-money', gap, about);
+      $('d-text').textContent = 'more a month from the inquiries you already get. That\'s ' + one(consultsFast - consultsToday) + ' more consults and ' + one(casesFast - casesToday) + ' more patients starting treatment a month, on average.';
+    } else {
+      $('h-lead').textContent = name.charAt(0).toUpperCase() + name.slice(1) + ' already answers fast. Here\'s what more consults are worth.';
+      $('h-num').hidden = true;
+      $('h-tail').textContent = '';
+      animateTo('d-money', 0, about);
+      $('d-text').textContent = 'Your follow-up is already quick, so the gain comes from new consults below.';
+    }
+
+    // The guarantee
+    var kd = KINDS[kind];
+    var cases = GUARANTEE * c;
+    var revenue = cases * V;
+    var fee = kd.feeMonthly * 3;
+    var ads = kd.adsMonthly * 3;
+    var total = fee + ads;
+    var perConsult = total / GUARANTEE;
+    var consultWorth = c * V;
+    var breakEven = Math.max(1, Math.ceil(total / V));
+    var started = Math.round(cases);
+
+    $('g-lede').textContent = "That's the guarantee: 30 booked consults within 90 days of your ads going live, or we keep working at no added fee until there are 30.";
+    animateTo('g-money', revenue, about);
+    $('g-text').textContent = 'from about ' + one(cases) + ' of the 30 starting treatment at your ' + s.close + '% rate.';
+
+    var tiles = board.children;
+    for (var j = 0; j < tiles.length; j++) {
+      var cls = 'tile';
+      if (tiles[j].classList.contains('pre')) cls += ' pre';
+      cls += j < started ? ' started' : ' booked';
+      if (revealed && j < Math.min(breakEven, started)) cls += ' pays';
+      tiles[j].className = cls;
+    }
+
+    $('fee-sub').textContent = 'Founding price, 3 × ' + usd.format(kd.feeMonthly) + ' a month, or ' + usd.format(kd.feeFull) + ' paid up front';
+    $('ads-sub').textContent = '3 × ' + usd.format(kd.adsMonthly) + ' a month, paid straight to Meta';
+    $('fee').textContent = usd.format(fee);
+    $('ads').textContent = usd.format(ads);
+    $('total').textContent = usd.format(total);
+    animateTo('v-break', breakEven, function (x) { return String(Math.round(x)); });
+    $('v-break-text').textContent = (breakEven === 1 ? 'case pays' : 'cases pay') + ' for all 90 days' + (revealed ? ', ringed on the board.' : '.');
+    animateTo('v-per', perConsult, function (x) { return usd.format(Math.round(x / 10) * 10); });
+    $('v-per-text').textContent = 'per booked consult, each worth about ' + about(consultWorth) + ' to you.';
+    animateTo('v-return', revenue / total, function (x) { return (Math.round(x * 10) / 10).toFixed(1) + '×'; });
+
+    // Old inquiries
+    var rConsults = s.past * s.rebook / 100;
+    var rCases = rConsults * c;
+    animateTo('r-past', s.past, function (x) { return String(Math.round(x)); });
+    $('r-rate').textContent = s.rebook + '%';
+    animateTo('r-consults', rConsults, function (x) { return String(Math.round(x)); });
+    animateTo('r-money', rCases * V, about);
+    $('r-cases').textContent = one(rCases) + ' start treatment';
+
+    $('fine-value').hidden = kind !== 'fullarch';
+
+    // One calm summary for screen readers, after the numbers settle
+    clearTimeout(update._sr);
+    update._sr = setTimeout(function () {
+      $('sr').textContent = (gap >= 100 ? 'Slow follow-up costs about ' + about(gap) + ' a month. ' : '') +
+        '30 booked consults are worth about ' + about(revenue) + '.' + (revealed ? ' Total investment ' + usd.format(total) + ', ' + breakEven + ' cases pay for it.' : '');
+    }, 700);
+  }
+
+  // A link that reopens this page with the same numbers, for the follow-up email
+  $('copy').addEventListener('click', function () {
+    var p = new URLSearchParams();
+    if (practice) p.set('practice', practice);
+    if (doctor) p.set('doctor', doctor);
+    if (kind === 'fullarch') p.set('type', 'fullarch');
+    keys.forEach(function (k) { p.set(k, state[k]); });
+    p.set('lift', state.lift);
+    var url = location.origin + location.pathname + '?' + p.toString();
+    var done = function () { $('copied').hidden = false; setTimeout(function () { $('copied').hidden = true; }, 2400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(done, function () { window.prompt('Copy this link:', url); });
+    } else {
+      window.prompt('Copy this link:', url);
+    }
+  });
+
+  syncInputs();
+  update();
+
+  // One orchestrated moment on load: the board fills in, consult by consult.
+  if (!reduce) {
+    Array.prototype.forEach.call(board.children, function (t, n) {
+      setTimeout(function () { t.classList.remove('pre'); }, 250 + n * 40);
+    });
+  }
+})();
+</script>
+</body>
+</html>
