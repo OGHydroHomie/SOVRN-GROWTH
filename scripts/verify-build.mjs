@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import sharp from 'sharp';
 
 // Home page: the dental implant landing page copied from site-root/.
@@ -14,6 +14,18 @@ assert.ok(
   'verify-build: home page must state the months-four-through-six guarantee'
 );
 assert.ok(!home.includes('fee stops'), 'verify-build: home page still has the old "fee stops" guarantee');
+// One practice per area stays in the agreement only; the site doesn't mention it.
+assert.ok(!/per area/i.test(home), 'verify-build: home page should not mention one practice per area');
+// Prices are shared on the call, never on the site.
+for (const price of ['$3,000', '$5,000', '$6,500', '$12,000', '$16,000', '$15,000', '$18,500', '$3K', '$5K', '$12K', '$16K']) {
+  assert.ok(!home.includes(price), `verify-build: home page must not show the price ${price}`);
+}
+// The hero implant render and the link-preview image ship with the page.
+for (const img of ['implant-crown.webp', 'implant-abutment.webp', 'implant-fixture.webp', 'og-home.png']) {
+  assert.ok(existsSync(new URL(`../dist/img/${img}`, import.meta.url)), `verify-build: dist/img/${img} is missing`);
+}
+const homeOg = await sharp(new URL('../dist/img/og-home.png', import.meta.url).pathname).metadata();
+assert.ok(homeOg.width === 1200 && homeOg.height === 630, 'verify-build: home link-preview image must be 1200x630');
 assert.ok(
   readFileSync(new URL('../dist/demo/numbers/index.html', import.meta.url), 'utf8').includes(
     'or we work months four through six for free'
