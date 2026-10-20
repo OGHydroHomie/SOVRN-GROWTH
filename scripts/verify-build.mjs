@@ -8,6 +8,18 @@ assert.ok(
   home.includes('booked implant consults in'),
   'verify-build: dental home page is missing from dist/index.html'
 );
+// The guarantee: one wording everywhere, matching the emails and the call script.
+assert.ok(
+  home.includes('we work months four through six for free'),
+  'verify-build: home page must state the months-four-through-six guarantee'
+);
+assert.ok(!home.includes('fee stops'), 'verify-build: home page still has the old "fee stops" guarantee');
+assert.ok(
+  readFileSync(new URL('../dist/demo/numbers/index.html', import.meta.url), 'utf8').includes(
+    'or we work months four through six for free'
+  ),
+  'verify-build: calculator must state the months-four-through-six guarantee'
+);
 assert.ok(
   readFileSync(new URL('../dist/robots.txt', import.meta.url), 'utf8').includes('Disallow: /hvac/'),
   'verify-build: robots.txt should keep the HVAC archive out of search'
