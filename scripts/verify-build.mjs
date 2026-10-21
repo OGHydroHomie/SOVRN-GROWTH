@@ -87,6 +87,9 @@ for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
     assert.ok(read(page).includes('Back to the walkthrough'), `verify-build: ${page} must offer a way back to the walkthrough`);
   }
   assert.ok(read('demo/book').includes('Reply STOP to opt out'), 'verify-build: the booking page must ask consent before texts');
+  // The Primavera proposal stays private, and the agreement it links to ships with it.
+  assert.ok(read('proposal/primavera').includes('<meta name="robots" content="noindex, nofollow">'), 'verify-build: the Primavera proposal must be noindex');
+  assert.ok(existsSync(new URL('../dist/proposal/primavera/SOVRN-Growth-Agreement-Primavera.pdf', import.meta.url)), 'verify-build: the Primavera agreement PDF is missing');
 }
 
 // HVAC archive: the original site, served under /hvac/.
