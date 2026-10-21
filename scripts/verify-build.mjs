@@ -14,6 +14,8 @@ assert.ok(
   'verify-build: home page must state the months-four-through-six guarantee'
 );
 assert.ok(!home.includes('fee stops'), 'verify-build: home page still has the old "fee stops" guarantee');
+// No empty placeholders on the live page.
+assert.ok(!home.includes('Ad slot'), 'verify-build: home page still shows an empty "Ad slot" placeholder');
 // No false scarcity: the CTA is about fit, not area availability.
 assert.ok(!/area is open/i.test(home), 'verify-build: home page should not use "area is open" scarcity copy');
 // One practice per area stays in the agreement only; the site doesn't mention it.
