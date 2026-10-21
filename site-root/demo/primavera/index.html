@@ -56,6 +56,8 @@ a { color: inherit; }
 .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 
 /* Step 1: the ad */
+.ads { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.ads img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 30px 60px -34px rgb(11 37 69 / 0.5); }
 .ad-frame { width: min(420px, 100%); border-radius: 22px; overflow: hidden; box-shadow: 0 30px 60px -34px rgb(11 37 69 / 0.5); border: 1px solid var(--line); background: var(--mist); }
 .ad-frame img { display: block; width: 100%; height: auto; }
 .ad-missing { display: none; aspect-ratio: 3 / 4; place-items: center; padding: 24px; text-align: center; color: var(--slate); font-weight: 600; }
@@ -109,6 +111,8 @@ footer a { color: #fff; }
   .step-head { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; }
   .n { width: 44px; height: 44px; font-size: 18px; }
   .live, .terms, .plans { grid-template-columns: minmax(0, 1fr); }
+  .ads { grid-template-columns: repeat(3, 78%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .ads img { scroll-snap-align: start; }
   .timeline { grid-template-columns: minmax(0, 1fr); }
   .timeline::before { left: 7px; right: auto; top: 8px; bottom: 26px; width: 2px; height: auto; }
   .timeline li { padding: 0 0 22px 36px; }
@@ -125,7 +129,7 @@ footer a { color: #fff; }
     <h1>30 booked implant consults in your first 90 days.</h1>
     <p class="promise">Or we work months four through six for free.</p>
     <ol class="agenda" aria-label="What we'll cover">
-      <li><a href="#ad"><b>1</b> Your ad</a></li>
+      <li><a href="#ad"><b>1</b> Your ads</a></li>
       <li><a href="#tap"><b>2</b> A patient taps it</a></li>
       <li><a href="#call"><b>3</b> Your phone rings</a></li>
       <li><a href="#numbers"><b>4</b> Your numbers</a></li>
@@ -139,13 +143,14 @@ footer a { color: #fff; }
   <section class="step" id="ad">
     <div class="wrap">
       <div class="step-head"><span class="n">1</span><div>
-        <h2>Your first implant ad, already made</h2>
-        <p class="say">Built for Primavera and modeled on what's working for implant practices in Texas. We launch with three like it.</p>
+        <h2>Your implant ads, already made</h2>
+        <p class="say">Built for Primavera, each one modeled on implant ads that have run for over 290 days.</p>
       </div></div>
       <div class="body">
-        <div class="ad-frame" id="ad-frame">
-          <img src="/demo/primavera/ad.png" width="896" height="1200" alt="Implant ad for Primavera Dental Group, Pflugerville" id="ad-img">
-          <div class="ad-missing">Ad image goes here: /demo/primavera/ad.png</div>
+        <div class="ads">
+          <img src="/demo/primavera/ad.png" width="896" height="1200" alt="Implant ad: Don't get dental implants without knowing these 5 things">
+          <img src="/demo/primavera/ad-2.png" width="896" height="1200" alt="Implant ad: What do dental implants really cost?">
+          <img src="/demo/primavera/ad-3.png" width="896" height="1200" alt="Implant ad: Your implant plan in one visit">
         </div>
       </div>
     </div>
@@ -266,15 +271,6 @@ footer a { color: #fff; }
   </div>
 </footer>
 
-<script>
-(function () {
-  var frame = document.getElementById('ad-frame');
-  var img = document.getElementById('ad-img');
-  function missing() { frame.classList.add('missing'); }
-  if (img.complete && img.naturalWidth === 0) missing();
-  img.addEventListener('error', missing);
-})();
-</script>
 <!-- Same chat widget as the home page: it starts the 60-second call demo in step 3. -->
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6ad53787d28aca7d19fffafb" data-source="WEB_USER"></script>
 </body>
