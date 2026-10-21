@@ -88,6 +88,12 @@ a { color: inherit; }
 .ad-frame.missing .ad-missing { display: grid; }
 
 /* Step 3: live call */
+.plug { margin-top: 44px; max-width: 760px; padding: 26px 28px; border-radius: 22px; background: var(--mist); border: 1px solid var(--line); }
+.plug h3 { font-size: 21px; font-weight: 800; font-stretch: 104%; }
+.plug ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.plug li { font-size: 16px; line-height: 1.5; color: var(--slate); padding-left: 18px; position: relative; }
+.plug li::before { content: ""; position: absolute; left: 0; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--cobalt); }
+.plug li b { color: var(--navy); }
 .live { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .live div { padding-top: 16px; border-top: 2px solid var(--navy); }
 .live b { display: block; font-size: 19px; }
@@ -116,7 +122,8 @@ a { color: inherit; }
 .plan.best { border: 2px solid var(--navy); }
 .plan .k { font-size: 15px; font-weight: 700; color: var(--cobalt); }
 .plan .price { font-size: 44px; font-weight: 800; font-stretch: 100%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.plan .price small { font-size: 18px; font-weight: 600; color: var(--slate); letter-spacing: 0; }
+.plan .price s { font-size: 22px; font-weight: 600; color: var(--slate); text-decoration-thickness: 2px; margin-right: 4px; letter-spacing: 0; }
+.plan .price small { font-size: 18px; font-weight: 600; color: var(--slate); letter-spacing: 0; display: block; margin-top: 6px; }
 .plan p { color: var(--slate); font-size: 16px; }
 .plan .btn { margin-top: 16px; }
 .notes { margin-top: 26px; color: var(--slate); font-size: 16px; max-width: 66ch; display: grid; gap: 8px; }
@@ -253,6 +260,15 @@ footer a { color: #fff; }
         <div><b>The front desk phone rings</b><span>Today that's my phone: "New implant patient. Press 1 to connect." One tap and we're talking.</span></div>
         <div><b>Your cell rings</b><span>Within 60 seconds, before a patient would call the next office. Once you're live, it comes from your practice number.</span></div>
       </div>
+      <div class="body plug">
+        <h3>How it plugs into Primavera</h3>
+        <ul>
+          <li><b>Every new patient, from every door.</b> Anyone who reaches out through your ads, your website chat or your website form gets a call within 60 seconds. Your front desk phone rings first, and one tap connects them.</li>
+          <li><b>Missed calls get a text back.</b> With call forwarding set on your line, and once carriers approve texting for your practice (usually 1 to 3 weeks), anyone who calls and doesn't reach you gets a text to book within seconds.</li>
+          <li><b>Nothing you use today changes.</b> Your phone number, your booking link and your scheduling software stay as they are. The chat bubble sits next to your booking link, and your team books the consult in your system while the patient is on the line.</li>
+          <li><b>Patient information stays protected.</b> We sign a BAA before we touch any patient information.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -260,10 +276,10 @@ footer a { color: #fff; }
     <div class="wrap">
       <div class="step-head"><span class="n">4</span><div>
         <h2>What 30 consults are worth to Primavera</h2>
-        <p class="say">Your case value, your close rate, what you keep after lab. Change any number and the math updates, including how many cases pay for the whole 90 days.</p>
+        <p class="say">It opens on realistic numbers. Change two to make them yours: your average implant case and your close rate. Then one line matters: how many cases pay for the whole 90 days.</p>
       </div></div>
       <div class="body row">
-        <a class="btn" href="/demo/numbers/?practice=Primavera%20Dental%20Group&amp;doctor=Dr.%20Homsi" target="_blank" rel="noopener">Open your numbers</a>
+        <a class="btn" href="/demo/numbers/?practice=Primavera%20Dental%20Group&amp;doctor=Dr.%20Homsi&amp;leads=20&amp;fast=20&amp;book=30&amp;close=40&amp;value=8000&amp;rebook=5" target="_blank" rel="noopener">Open your numbers</a>
       </div>
     </div>
   </section>
@@ -295,19 +311,19 @@ footer a { color: #fff; }
     <div class="wrap">
       <div class="step-head"><span class="n">6</span><div>
         <h2>Getting started</h2>
-        <p class="say">Founding practice pricing: one of the first three practices, with your price locked for 12 months. A flat fee, never per patient.</p>
+        <p class="say">Standard pricing is $6,000 a month. As one of the first three founding practices, you're at $5,000, locked for 12 months. A flat fee, never per patient.</p>
       </div></div>
       <div class="body">
         <div class="plans">
           <div class="plan best">
             <span class="k">Pay in full, save $3,000</span>
-            <span class="price">$12,000 <small>for 90 days</small></span>
+            <span class="price"><s>$15,000</s> $12,000 <small>for 90 days</small></span>
             <p>Everything for the first 90 days, paid once.</p>
             <a class="btn" href="https://buy.stripe.com/4gMfZjbYG4Fp3qeavR9ws09" target="_blank" rel="noopener">Start with one payment</a>
           </div>
           <div class="plan">
             <span class="k">Monthly</span>
-            <span class="price">$5,000 <small>a month for 3 months</small></span>
+            <span class="price"><s>$6,000</s> $5,000 <small>a month for 3 months</small></span>
             <p>Then month to month at the same founding rate.</p>
             <a class="btn ghost" href="https://buy.stripe.com/dRm4gB6Em2xhbWK6fB9ws0a" target="_blank" rel="noopener">Start monthly</a>
           </div>
@@ -317,13 +333,13 @@ footer a { color: #fff; }
           <div class="plans">
             <div class="plan">
               <span class="k">Pay in full</span>
-              <span class="price">$16,000 <small>for 90 days</small></span>
+              <span class="price"><s>$18,500</s> $16,000 <small>for 90 days</small></span>
               <p>Full-arch interest only counts toward the 30. Ad budget at least $5,000 a month.</p>
               <a class="btn ghost" href="https://buy.stripe.com/8x27sNfaSefZaSG8nJ9ws0b" target="_blank" rel="noopener">Start with one payment</a>
             </div>
             <div class="plan">
               <span class="k">Monthly</span>
-              <span class="price">$6,500 <small>a month for 3 months</small></span>
+              <span class="price"><s>$7,500</s> $6,500 <small>a month for 3 months</small></span>
               <p>Then month to month at the same founding rate.</p>
               <a class="btn ghost" href="https://buy.stripe.com/28EfZjaUC9ZJ5ymgUf9ws0c" target="_blank" rel="noopener">Start monthly</a>
             </div>
