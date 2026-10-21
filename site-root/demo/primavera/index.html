@@ -55,7 +55,30 @@ a { color: inherit; }
 .btn.ghost:hover { background: var(--navy); color: #fff; }
 .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 
-/* Step 1: the ad */
+/* Step 1: the gallery. Dark room, lit ads, a placard under each, like work on a gallery wall */
+.gallery { background: radial-gradient(60% 40% at 50% 0%, #1a2433 0%, #0b0e13 70%); color: #fff; border-top: 0; }
+.gallery .n { border-color: #b8a273; color: #d9c49a; }
+.gallery .say { color: rgb(255 255 255 / 0.72); }
+.choose { list-style: none; padding: 0; margin: 0 0 48px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; counter-reset: c; }
+.choose li { padding-top: 16px; border-top: 1px solid rgb(184 162 115 / 0.55); font-size: 16px; color: rgb(255 255 255 / 0.66); line-height: 1.45; }
+.choose b { display: block; color: #fff; font-size: 17px; margin-bottom: 4px; }
+.exhibits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 40px; max-width: 840px; }
+.exhibit { margin: 0; min-width: 0; }
+.spot { position: relative; padding: 22px; border-radius: 22px; background: radial-gradient(70% 60% at 50% 35%, rgb(255 236 200 / 0.10), rgb(255 255 255 / 0) 70%); }
+.spot img { display: block; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 40px 80px -30px rgb(0 0 0 / 0.85), 0 0 0 1px rgb(255 255 255 / 0.06); }
+.placard { margin: 18px 22px 0; padding-top: 14px; border-top: 1px solid rgb(184 162 115 / 0.55); }
+.placard h3 { font-size: 20px; font-weight: 800; font-stretch: 104%; color: #fff; }
+.receipt { margin-top: 10px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: center; }
+.receipt b { font-size: 40px; line-height: 1; font-weight: 800; font-stretch: 100%; color: #d9c49a; font-variant-numeric: tabular-nums; }
+.receipt span { font-size: 13px; line-height: 1.35; color: rgb(255 255 255 / 0.6); }
+.receipt em { display: block; font-style: normal; font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.why { margin-top: 10px; font-size: 16px; line-height: 1.5; color: rgb(255 255 255 / 0.8); }
+.exhibit.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 40px; align-items: center; }
+.exhibit.wide .placard { margin: 0; }
+.phone { padding: 10px; border-radius: 40px; background: #1b2028; box-shadow: 0 40px 80px -30px rgb(0 0 0 / 0.9), inset 0 0 0 1px rgb(255 255 255 / 0.08); }
+.phone video { display: block; width: 100%; height: auto; border-radius: 30px; }
+.gallery-note { margin-top: 40px; font-size: 15px; color: rgb(255 255 255 / 0.6); }
+/* (older single-ad styles kept for the fallback frame) */
 .ads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; max-width: 760px; }
 .ads img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 30px 60px -34px rgb(11 37 69 / 0.5); }
 .ad-frame { width: min(420px, 100%); border-radius: 22px; overflow: hidden; box-shadow: 0 30px 60px -34px rgb(11 37 69 / 0.5); border: 1px solid var(--line); background: var(--mist); }
@@ -111,6 +134,14 @@ footer a { color: #fff; }
   .step-head { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; }
   .n { width: 44px; height: 44px; font-size: 18px; }
   .live, .terms, .plans { grid-template-columns: minmax(0, 1fr); }
+  .choose { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-bottom: 32px; }
+  .exhibits { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; max-width: none; margin-right: -20px; padding-right: 20px; }
+  .exhibit { scroll-snap-align: start; }
+  .exhibit.wide { grid-column: auto; display: block; }
+  .exhibit.wide .placard { margin: 14px 10px 0; }
+  .phone { max-width: 260px; margin: 10px auto 0; }
+  .spot { padding: 10px; }
+  .placard { margin: 14px 10px 0; }
   .ads { grid-template-columns: repeat(4, 78%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
   .ads img { scroll-snap-align: start; }
   .timeline { grid-template-columns: minmax(0, 1fr); }
@@ -140,19 +171,61 @@ footer a { color: #fff; }
 </header>
 
 <main>
-  <section class="step" id="ad">
+  <section class="step gallery" id="ad">
     <div class="wrap">
       <div class="step-head"><span class="n">1</span><div>
-        <h2>Your implant ads, already made</h2>
-        <p class="say">Built for Primavera, each one modeled on implant ads that have run for over 290 days.</p>
+        <h2>Your ads, built for Primavera</h2>
+        <p class="say">Each one is modeled on an implant ad that's been running for months. That's the only test that matters: practices stop paying for ads that don't book consults.</p>
       </div></div>
       <div class="body">
-        <div class="ads">
-          <img src="/demo/primavera/ad.png" width="896" height="1200" alt="Implant ad: Don't get dental implants without knowing these 5 things">
-          <img src="/demo/primavera/ad-2.png" width="896" height="1200" alt="Implant ad: What do dental implants really cost?">
-          <img src="/demo/primavera/ad-3.png" width="896" height="1200" alt="Implant ad: Your implant plan in one visit">
-          <img src="/demo/primavera/ad-4.png" width="896" height="1200" alt="Implant ad: What most patients don't know before getting dental implants">
+        <ol class="choose">
+          <li><b>We find the longest-running implant ads</b><span>in Meta's public Ad Library, where every advertiser's ads and start dates are visible.</span></li>
+          <li><b>Nobody pays for an ad for 294 days</b><span>unless it's booking patients. Run time is the proof.</span></li>
+          <li><b>We rebuild the winning angle for you</b><span>launch four, and put the budget behind the one that books.</span></li>
+        </ol>
+        <div class="exhibits">
+          <figure class="exhibit">
+            <div class="spot"><img src="/demo/primavera/ad.png" width="896" height="1200" alt="Primavera implant ad: Don't get dental implants without knowing these 5 things"></div>
+            <figcaption class="placard">
+              <h3>The curiosity hook</h3>
+              <p class="receipt"><b>294</b><span><em>days running</em>Original: Nuvia Dental Implant Center's "5 things" ad, Meta Ad Library</span></p>
+              <p class="why">Implant patients are afraid of choosing wrong. "Don't, without knowing" gets them to stop and read before they call anyone.</p>
+            </figcaption>
+          </figure>
+          <figure class="exhibit">
+            <div class="spot"><img src="/demo/primavera/ad-2.png" width="896" height="1200" alt="Primavera implant ad: What do dental implants really cost?"></div>
+            <figcaption class="placard">
+              <h3>The price question</h3>
+              <p class="receipt"><b>294</b><span><em>days running</em>Original: Nuvia's implant price-guide ad, Meta Ad Library</span></p>
+              <p class="why">Cost is the first question every implant patient has. The ad that promises a straight answer gets the tap.</p>
+            </figcaption>
+          </figure>
+          <figure class="exhibit">
+            <div class="spot"><img src="/demo/primavera/ad-3.png" width="896" height="1200" alt="Primavera implant ad: Your implant plan in one visit"></div>
+            <figcaption class="placard">
+              <h3>The speed angle</h3>
+              <p class="receipt"><b>294</b><span><em>days running</em>Original: Nuvia's "permanent teeth sooner" ad, Meta Ad Library</span></p>
+              <p class="why">Patients assume implants mean months of appointments. One visit to a full plan takes that fear off the table.</p>
+            </figcaption>
+          </figure>
+          <figure class="exhibit">
+            <div class="spot"><img src="/demo/primavera/ad-4.png" width="896" height="1200" alt="Primavera implant ad: What most patients don't know before getting dental implants"></div>
+            <figcaption class="placard">
+              <h3>The editorial read</h3>
+              <p class="receipt"><b>136</b><span><em>days running</em>Original: Nuvia's "what patients often miss" ad, Meta Ad Library</span></p>
+              <p class="why">It reads like advice, not an ad, so it reaches patients early in their research, before they've picked a practice.</p>
+            </figcaption>
+          </figure>
+          <figure class="exhibit wide">
+            <div class="phone"><video src="/demo/primavera/video-5-things.mp4" poster="/demo/primavera/video-5-things.jpg" width="720" height="1280" autoplay muted loop playsinline preload="metadata" aria-label="12-second video version of the 5 things ad for Primavera"></video></div>
+            <figcaption class="placard">
+              <h3>The video cut</h3>
+              <p class="receipt"><b>12</b><span><em>seconds, made for Reels and Stories</em>Same proven angle as the "5 things" ad: 294 days running for Nuvia</span></p>
+              <p class="why">The hook, the five things one at a time, then Primavera's name and a booking button. Built for Reels, where people watch with the sound off, and it gives the hook a second chance with patients who scrolled past the photo.</p>
+            </figcaption>
+          </figure>
         </div>
+        <p class="gallery-note">Before anything runs, every line in every ad gets checked with you.</p>
       </div>
     </div>
   </section>
@@ -272,6 +345,9 @@ footer a { color: #fff; }
   </div>
 </footer>
 
+<script>
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { document.querySelectorAll('.phone video').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; }); }
+</script>
 <!-- Same chat widget as the home page: it starts the 60-second call demo in step 3. -->
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6ad53787d28aca7d19fffafb" data-source="WEB_USER"></script>
 </body>
