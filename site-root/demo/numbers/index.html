@@ -290,6 +290,15 @@ h2 { font: 700 clamp(22px, 2.6vw, 28px)/1.15 var(--display); font-stretch: 110%;
 footer { color: var(--muted); font-size: 14px; padding-bottom: 40px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
+/* Opened from a meeting walkthrough: one tap back to it */
+.back-pill {
+  position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); z-index: 30;
+  display: inline-flex; align-items: center; min-height: 46px; padding: 0 20px; border-radius: 999px;
+  background: #0b2545; color: #fff; font: 600 15px/1 var(--body); text-decoration: none;
+  box-shadow: 0 12px 30px -12px rgb(0 0 0 / 0.55), 0 0 0 1px rgb(255 255 255 / 0.14);
+}
+.back-pill:hover { background: #1d5cc8; }
+
 @media (max-width: 559px) {
   .dot { width: 10px; height: 10px; }
   .dots { gap: 4px; }
@@ -512,6 +521,16 @@ footer { color: var(--muted); font-size: 14px; padding-bottom: 40px; }
   var practice = (params.get('practice') || '').trim();
   var doctor = (params.get('doctor') || '').trim();
   var kind = params.get('type') === 'fullarch' ? 'fullarch' : 'general';
+
+  // Opened from a meeting walkthrough: one tap back to it (same-site /demo/ paths only).
+  var walkBack = params.get('back') || '';
+  if (/^\/demo\/[\w\-\/]*(#[\w\-]+)?$/.test(walkBack)) {
+    var pill = document.createElement('a');
+    pill.className = 'back-pill';
+    pill.href = walkBack;
+    pill.textContent = 'Back to the walkthrough';
+    document.body.appendChild(pill);
+  }
 
   var state = {
     leads: 30, fast: 25, book: 20,

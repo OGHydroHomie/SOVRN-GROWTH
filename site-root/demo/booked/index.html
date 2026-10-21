@@ -205,6 +205,15 @@ details p { margin: 0 0 16px; color: var(--titanium); max-width: 32rem; }
 .fine { color: var(--titanium); font-size: 15px; margin-top: 40px; }
 footer { max-width: 36rem; margin: 0 auto; padding: 0 16px 40px; color: var(--titanium); font-size: 14px; }
 
+/* Opened from a meeting walkthrough: one tap back to it */
+.back-pill {
+  position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); z-index: 20;
+  display: inline-flex; align-items: center; min-height: 46px; padding: 0 20px; border-radius: 999px;
+  background: #0b2545; color: #fff; font: 600 15px/1 var(--sans); text-decoration: none;
+  box-shadow: 0 12px 30px -12px rgb(0 0 0 / 0.5);
+}
+.back-pill:hover { background: #1d5cc8; }
+
 @media (min-width: 560px) {
   .guest-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
@@ -343,11 +352,23 @@ footer { max-width: 36rem; margin: 0 auto; padding: 0 16px 40px; color: var(--ti
   document.getElementById('appt-date').textContent = monthNames[date.getMonth()] + ' ' + date.getDate();
   document.getElementById('appt-time').textContent = time + ', about 45 minutes';
 
+  // Opened from a meeting walkthrough: one tap back to it (same-site /demo/ paths only).
+  var walkBack = params.get('back') || '';
+  if (!/^\/demo\/[\w\-\/]*(#[\w\-]+)?$/.test(walkBack)) walkBack = '';
+  if (walkBack) {
+    var pill = document.createElement('a');
+    pill.className = 'back-pill';
+    pill.href = walkBack;
+    pill.textContent = 'Back to the walkthrough';
+    document.body.appendChild(pill);
+  }
+
   // "Change the time" goes back to the booking step with the same details.
   var back = new URLSearchParams();
   if (name) back.set('name', name);
   if (practice) back.set('practice', practice);
   if (doctor) back.set('doctor', doctor);
+  if (walkBack) back.set('back', walkBack);
   document.getElementById('change').href = '../book/' + (back.toString() ? '?' + back.toString() : '');
 
   // Calendar file for "Add to my calendar".

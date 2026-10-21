@@ -84,9 +84,19 @@ footer p + p { margin-top: 4px; }
 .sticky .btn { width: 100%; margin-top: 0; }
 .sticky.show { transform: none; }
 
+/* Opened from the meeting walkthrough: one tap back to it */
+.back-pill {
+  position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); z-index: 20;
+  display: inline-flex; align-items: center; min-height: 46px; padding: 0 20px; border-radius: 999px;
+  background: #0b2545; color: #fff; font: 600 15px/1 var(--font); text-decoration: none;
+  box-shadow: 0 12px 30px -12px rgb(0 0 0 / 0.6), 0 0 0 1px rgb(255 255 255 / 0.16);
+}
+.back-pill:hover { background: #1d5cc8; }
+
 @media (max-width: 760px) {
   .sticky { display: block; }
   footer { padding-bottom: 110px; }
+  .back-pill { bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
 }
 @media (min-width: 761px) {
   .top { padding-top: 64px; }
@@ -136,6 +146,21 @@ footer p + p { margin-top: 4px; }
   <a class="btn" href="/demo/book/?practice=Primavera%20Dental%20Group&amp;doctor=Dr.%20Homsi" tabindex="-1">Book a consult</a>
 </div>
 
+<script>
+// Opened from the meeting walkthrough: one tap back to it, carried through to booking (same-site /demo/ paths only).
+(function () {
+  var back = new URLSearchParams(location.search).get('back') || '';
+  if (!/^\/demo\/[\w\-\/]*(#[\w\-]+)?$/.test(back)) return;
+  document.querySelectorAll('a[href^="/demo/book/"]').forEach(function (a) {
+    a.setAttribute('href', a.getAttribute('href') + '&back=' + encodeURIComponent(back));
+  });
+  var pill = document.createElement('a');
+  pill.className = 'back-pill';
+  pill.href = back;
+  pill.textContent = 'Back to the walkthrough';
+  document.body.appendChild(pill);
+})();
+</script>
 <script>
 (function () {
   var sticky = document.getElementById('sticky');
