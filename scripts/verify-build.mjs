@@ -77,6 +77,17 @@ for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
   assert.ok(demo.includes('<meta name="robots" content="noindex, nofollow">'), `verify-build: ${page} must be noindex`);
   assert.ok(demo.includes('This is a demo built by SOVRN Growth.'), `verify-build: ${page} must carry the demo label`);
 }
+// Primavera walkthrough: step 4 works the numbers out on the page and step 6 repeats them next to the prices,
+// every detour page has a way back, and the booking page asks consent before texts.
+{
+  const read = (p) => readFileSync(new URL(`../dist/${p}/index.html`, import.meta.url), 'utf8');
+  const walk = read('demo/primavera');
+  assert.ok(walk.includes('id="w-value"') && walk.includes('id="s-break"'), 'verify-build: Primavera step 4 must work out the numbers on the page and step 6 must repeat them');
+  for (const page of ['demo/numbers', 'demo/book', 'demo/booked', 'demo/primavera/5-things']) {
+    assert.ok(read(page).includes('Back to the walkthrough'), `verify-build: ${page} must offer a way back to the walkthrough`);
+  }
+  assert.ok(read('demo/book').includes('Reply STOP to opt out'), 'verify-build: the booking page must ask consent before texts');
+}
 
 // HVAC archive: the original site, served under /hvac/.
 const dist = new URL('../dist/hvac/index.html', import.meta.url);

@@ -21,7 +21,9 @@
   color-scheme: light;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; }
+/* Smooth scrolling for the agenda chips, switched on after load so coming back from a demo page jumps straight to its step */
+html.glide { scroll-behavior: smooth; }
 body { margin: 0; background: var(--white); color: var(--navy); font-family: var(--font); font-size: 18px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
 .wrap { max-width: 1040px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
 h1, h2, h3 { margin: 0; line-height: 1.06; letter-spacing: -0.014em; text-wrap: balance; }
@@ -99,6 +101,29 @@ a { color: inherit; }
 .live b { display: block; font-size: 19px; }
 .live span { display: block; margin-top: 6px; color: var(--slate); font-size: 16px; }
 
+/* Step 4: two numbers and the bottom line, right on this page */
+.worth { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 24px 36px; align-items: start; max-width: 880px; }
+.asks { display: grid; gap: 14px; }
+.ask { display: block; padding: 14px 18px 12px; border: 1.5px solid var(--line); border-radius: 18px; background: var(--white); cursor: text; transition: border-color .15s ease, box-shadow .15s ease; }
+.ask:hover { border-color: #b9cde4; }
+.ask:focus-within { border-color: var(--cobalt); box-shadow: 0 0 0 4px rgb(29 92 200 / 0.14); }
+.ask-label { display: block; font-size: 15px; font-weight: 600; color: var(--slate); }
+.ask-box { display: flex; align-items: baseline; gap: 2px; margin-top: 2px; font-size: 36px; font-weight: 800; font-stretch: 104%; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.ask-box .unit { color: var(--slate); font-size: 26px; }
+.ask input { width: 5ch; min-width: 2ch; border: 0; padding: 0; margin: 0; background: transparent; color: var(--navy); font: inherit; letter-spacing: -0.01em; }
+.ask input:focus { outline: none; }
+.answer { padding: 24px 28px 26px; border-radius: 22px; background: var(--mist); border: 1px solid var(--line); }
+.answer-big { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; font-size: clamp(24px, 2.8vw, 32px); font-weight: 800; font-stretch: 104%; line-height: 1.1; letter-spacing: -0.01em; }
+.answer-big b { font-size: clamp(64px, 8vw, 88px); line-height: 0.9; color: var(--cobalt); font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
+.answer-line { margin-top: 16px; font-size: 18px; }
+.answer-line b { font-variant-numeric: tabular-nums; }
+.answer-fine { margin-top: 8px; font-size: 14px; line-height: 1.45; color: var(--slate); }
+.text-link { display: inline-block; margin-top: 14px; font-size: 16px; font-weight: 700; color: var(--cobalt); text-underline-offset: 3px; }
+
+/* Step 6: the decision on screen, right above the prices */
+.recap { margin: 0 0 22px; max-width: 820px; font-size: 19px; line-height: 1.45; color: var(--slate); }
+.recap b { color: var(--navy); font-weight: 800; }
+
 /* Step 5: guarantee */
 .guarantee { background: var(--navy); color: #fff; }
 .guarantee .n { border-color: #8fb4ff; color: #cfe0ff; }
@@ -140,7 +165,7 @@ footer a { color: #fff; }
   .body { margin-left: 0; }
   .step-head { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; }
   .n { width: 44px; height: 44px; font-size: 18px; }
-  .live, .terms, .plans { grid-template-columns: minmax(0, 1fr); }
+  .live, .terms, .plans, .worth { grid-template-columns: minmax(0, 1fr); }
   .choose { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-bottom: 32px; }
   .exhibits { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; max-width: none; margin-right: -20px; padding-right: 20px; }
   .exhibit { scroll-snap-align: start; }
@@ -156,7 +181,7 @@ footer a { color: #fff; }
   .timeline li { padding: 0 0 22px 36px; }
   .timeline li::before { top: 3px; }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { html, html.glide { scroll-behavior: auto; } * { transition: none !important; } }
 </style>
 </head>
 <body>
@@ -241,11 +266,11 @@ footer a { color: #fff; }
     <div class="wrap">
       <div class="step-head"><span class="n">2</span><div>
         <h2>A patient taps it and books, under your name</h2>
-        <p class="say">The "5 things" ad opens a short page under your name that ends in a booking button. Two quick questions, then they pick a consult time. No form that sits in an inbox until tomorrow.</p>
+        <p class="say">The "5 things" ad opens a short page under your name that ends in a booking button. Two quick questions, their cell number, then they pick a time. The second they give their number, your front desk phone rings, even if they never pick a time.</p>
       </div></div>
       <div class="body row">
-        <a class="btn" href="/demo/primavera/5-things/" target="_blank" rel="noopener">See the page the ad opens</a>
-        <a class="btn ghost" href="/demo/book/?practice=Primavera%20Dental%20Group&amp;doctor=Dr.%20Homsi" target="_blank" rel="noopener">Skip to booking</a>
+        <a class="btn" href="/demo/primavera/5-things/?back=%2Fdemo%2Fprimavera%2F%23call">See the page the ad opens</a>
+        <a class="btn ghost" href="/demo/book/?practice=Primavera%20Dental%20Group&amp;doctor=Dr.%20Homsi&amp;back=%2Fdemo%2Fprimavera%2F%23call">Skip to booking</a>
       </div>
     </div>
   </section>
@@ -264,7 +289,7 @@ footer a { color: #fff; }
       <div class="body plug">
         <h3>How it plugs into Primavera</h3>
         <ul>
-          <li><b>Every new patient, from every door.</b> Anyone who reaches out through your ads, your website chat or your website form gets a call within 60 seconds. Your front desk phone rings first, and one tap connects them.</li>
+          <li><b>Every new patient, from every door.</b> Anyone who gives their number, through an ad, your website chat, a website form or your booking page, gets a call within 60 seconds, even if they never pick a time. Your front desk phone rings first, and one tap connects them.</li>
           <li><b>Missed calls get a text back.</b> With call forwarding set on your line, and once carriers approve texting for your practice (usually 1 to 3 weeks), anyone who calls and doesn't reach you gets a text to book within seconds.</li>
           <li><b>Nothing you use today changes.</b> Your phone number, your booking link and your scheduling software stay as they are. The chat bubble sits next to your booking link, and your team books the consult in your system while the patient is on the line.</li>
           <li><b>Patient information stays protected.</b> We sign a BAA before we touch any patient information.</li>
@@ -277,10 +302,19 @@ footer a { color: #fff; }
     <div class="wrap">
       <div class="step-head"><span class="n">4</span><div>
         <h2>What 30 consults are worth to Primavera</h2>
-        <p class="say">It opens on realistic numbers. Change two to make them yours: your average implant case and your close rate. Then one line matters: how many cases pay for the whole 90 days.</p>
+        <p class="say">Two numbers make it yours: your average implant case and your case acceptance.</p>
       </div></div>
-      <div class="body row">
-        <a class="btn" href="/demo/numbers/?practice=Primavera%20Dental%20Group&amp;doctor=Dr.%20Homsi&amp;leads=20&amp;fast=20&amp;book=30&amp;close=40&amp;value=8000&amp;rebook=5" target="_blank" rel="noopener">Open your numbers</a>
+      <div class="body worth">
+        <div class="asks">
+          <label class="ask"><span class="ask-label">Average implant case</span><span class="ask-box"><span class="unit">$</span><input id="w-value" type="text" inputmode="numeric" autocomplete="off" value="8,000" aria-label="Average implant case, in dollars"></span></label>
+          <label class="ask"><span class="ask-label">Case acceptance</span><span class="ask-box"><input id="w-close" type="text" inputmode="numeric" autocomplete="off" value="40" aria-label="Case acceptance, in percent"><span class="unit">%</span></span></label>
+        </div>
+        <div class="answer">
+          <p class="answer-big" aria-live="polite"><b id="w-break">5</b><span id="w-break-text">cases pay for all 90 days.</span></p>
+          <p class="answer-line">30 consults at <span id="w-close-echo">40%</span> is about <b id="w-cases">12</b> new implant patients and <b id="w-money">$96,000</b> in treatment.</p>
+          <p class="answer-fine">Break-even counts the 60% of each case you keep after lab and materials, against everything for the 90 days: the fee plus the $3,000-a-month minimum ad budget.</p>
+          <a class="text-link" id="w-full" href="/demo/numbers/?practice=Primavera%20Dental%20Group&amp;doctor=Dr.%20Homsi&amp;leads=20&amp;fast=20&amp;book=30&amp;close=40&amp;value=8000&amp;rebook=5&amp;back=%2Fdemo%2Fprimavera%2F%23guarantee">See the full breakdown</a>
+        </div>
       </div>
     </div>
   </section>
@@ -315,6 +349,7 @@ footer a { color: #fff; }
         <p class="say">Standard pricing is $6,000 a month. As one of the first three founding practices, you're at $5,000, locked for 12 months. A flat fee, never per patient.</p>
       </div></div>
       <div class="body">
+        <p class="recap"><b>At your numbers, <span id="s-break">5</span> <span id="s-break-unit">cases pay</span> for all 90 days.</b> We're on the hook for 30 booked consults, or months four through six are free.</p>
         <div class="plans">
           <div class="plan best">
             <span class="k">Pay in full, save $3,000</span>
@@ -363,6 +398,76 @@ footer a { color: #fff; }
 </footer>
 
 <script>
+addEventListener('load', function () { setTimeout(function () { document.documentElement.classList.add('glide'); }, 0); });
+// Step 4: two numbers, one bottom line, shown again in step 6 next to the prices.
+// Same math as the full calculator: 30 consults, the founding monthly fee plus the minimum
+// ad budget for 90 days, and 60% of each case kept after lab and materials.
+(function () {
+  var TOTAL = 3 * 5000 + 3 * 3000, KEPT = 0.6, CONSULTS = 30;
+  var $ = function (id) { return document.getElementById(id); };
+  var vIn = $('w-value'), cIn = $('w-close');
+  if (!vIn || !cIn) return;
+  var usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+  var LIMITS = { value: [1000, 50000], close: [5, 80] };
+  var state = { value: 8000, close: 40 };
+  // Keep his numbers if he opens the full breakdown and comes back.
+  try {
+    var saved = JSON.parse(sessionStorage.getItem('primavera-numbers') || 'null');
+    if (saved && saved.value >= 1000 && saved.value <= 50000 && saved.close >= 5 && saved.close <= 80) state = saved;
+  } catch (e) {}
+  function num(text) { return parseFloat(String(text).replace(/[^0-9.]/g, '')); }
+  // Each box hugs its number, so the $ and % sit right against it.
+  var mirror = document.createElement('span');
+  mirror.setAttribute('aria-hidden', 'true');
+  mirror.style.cssText = 'position:absolute;left:-9999px;top:0;visibility:hidden;white-space:pre';
+  document.body.appendChild(mirror);
+  function fit(input) {
+    var cs = getComputedStyle(input);
+    ['fontFamily', 'fontSize', 'fontWeight', 'fontStretch', 'fontVariantNumeric', 'letterSpacing'].forEach(function (k) { mirror.style[k] = cs[k]; });
+    mirror.textContent = input.value || '0';
+    input.style.width = Math.ceil(mirror.getBoundingClientRect().width) + 2 + 'px';
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fit(vIn); fit(cIn); });
+  function paint() {
+    var breakEven = Math.max(1, Math.ceil(TOTAL / (state.value * KEPT)));
+    var cases = CONSULTS * state.close / 100;
+    var unit = breakEven === 1 ? 'case pays' : 'cases pay';
+    $('w-break').textContent = breakEven;
+    $('w-break-text').textContent = unit + ' for all 90 days.';
+    $('w-close-echo').textContent = state.close + '%';
+    $('w-cases').textContent = Math.round(cases);
+    $('w-money').textContent = usd.format(Math.round(cases * state.value / 100) * 100);
+    $('s-break').textContent = breakEven;
+    $('s-break-unit').textContent = unit;
+    var link = $('w-full');
+    var u = new URL(link.getAttribute('href'), location.href);
+    u.searchParams.set('value', state.value);
+    u.searchParams.set('close', state.close);
+    link.setAttribute('href', u.pathname + u.search);
+    try { sessionStorage.setItem('primavera-numbers', JSON.stringify(state)); } catch (e) {}
+  }
+  function bind(input, key, format) {
+    var lo = LIMITS[key][0], hi = LIMITS[key][1];
+    input.value = format(state[key]);
+    fit(input);
+    input.addEventListener('focus', function () { input.select(); });
+    input.addEventListener('input', function () {
+      fit(input);
+      var v = num(input.value);
+      if (!isNaN(v) && v >= lo && v <= hi) { state[key] = Math.round(v); paint(); }
+    });
+    input.addEventListener('blur', function () {
+      var v = num(input.value);
+      if (!isNaN(v)) { state[key] = Math.round(Math.min(hi, Math.max(lo, v))); paint(); }
+      input.value = format(state[key]);
+      fit(input);
+    });
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') input.blur(); });
+  }
+  bind(vIn, 'value', function (v) { return Number(v).toLocaleString('en-US'); });
+  bind(cIn, 'close', function (v) { return String(v); });
+  paint();
+})();
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { document.querySelectorAll('.phone video').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; }); }
 </script>
 <!-- Same chat widget as the home page: it starts the 60-second call demo in step 3. -->
