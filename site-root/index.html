@@ -297,7 +297,7 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top">SOVRN <span>Growth</span></a>
-    <a class="btn small" href="#intake">Check your area</a>
+    <a class="btn small" href="#intake">See if you're a fit</a>
   </div>
 </header>
 
@@ -309,7 +309,7 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
         <p class="promise">Or months four through six are free.</p>
         <p class="lede">For Texas implant practices: we run your ads and reach every new patient within 60 seconds.</p>
         <div class="actions">
-          <a class="btn" href="#intake">See if your area is open</a>
+          <a class="btn" href="#intake">See if you're a good fit</a>
           <a class="btn ghost" href="#how">See how it works</a>
         </div>
         <p class="fine">Flat fee, never per patient. 90 days, then month to month.</p>
@@ -331,7 +331,7 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 
   <section class="how" id="how">
     <div class="wrap">
-      <h2>A new patient reaches out. Seconds later, your phone rings.</h2>
+      <h2>Front desk busy? Never miss another implant patient.</h2>
       <ol class="story">
         <li class="frame">
           <div class="screen chat" aria-hidden="true">
@@ -440,9 +440,9 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
   <section class="intake" id="intake">
     <div class="wrap intake-grid">
       <div>
-        <h2>See if your area is open</h2>
-        <p class="sub">Three questions. About 20 seconds.</p>
-        <p class="next">If your area is open, you'll pick a time for a short call with Elijah.</p>
+        <h2>See if you're a good fit</h2>
+        <p class="sub">Two questions. About 10 seconds.</p>
+        <p class="next">If it's a fit, you'll pick a time for a short call with Elijah.</p>
       </div>
       <div class="intake-card">
         <form id="intake-form" novalidate>
@@ -460,21 +460,12 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
               <label class="choice"><input type="radio" name="implants" id="implants-no" value="no"><span>Not yet</span></label>
             </div>
           </fieldset>
-          <fieldset>
-            <legend>Collections in the last 12 months</legend>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="collections" id="col-under1" value="under1"><span>Under $1M</span></label>
-              <label class="choice"><input type="radio" name="collections" id="col-1to2" value="1to2"><span>$1M to $2M</span></label>
-              <label class="choice"><input type="radio" name="collections" id="col-2to5" value="2to5"><span>$2M to $5M</span></label>
-              <label class="choice"><input type="radio" name="collections" id="col-over5" value="over5"><span>Over $5M</span></label>
-            </div>
-          </fieldset>
-          <p class="form-error" id="form-error" hidden>Answer all three questions to check your area.</p>
-          <button class="btn" type="submit" id="check-btn">Check my area</button>
+          <p class="form-error" id="form-error" hidden>Answer both questions to check your fit.</p>
+          <button class="btn" type="submit" id="check-btn">Check my fit</button>
         </form>
 
         <div class="result" id="result-open" hidden>
-          <h3>Your area is open.</h3>
+          <h3>You're a good fit.</h3>
           <p>Add your name and email, then pick a time for a short call with Elijah. We'll walk through your numbers and what the first 90 days would look like for your practice.</p>
           <div class="fields">
             <label for="lead-name">Your name<input id="lead-name" type="text" autocomplete="name" placeholder="Dr. Jane Smith"></label>
@@ -485,7 +476,7 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 
         <div class="result" id="result-closed" hidden>
           <h3>Thanks for checking.</h3>
-          <p>Right now we only work with owners of practices that offer implants and collect at least $1M a year. If that changes, write to <a href="mailto:elijah@sovrngrowth.com">elijah@sovrngrowth.com</a>.</p>
+          <p>Right now we only work with owners of practices that offer implants. If that changes, write to <a href="mailto:elijah@sovrngrowth.com">elijah@sovrngrowth.com</a>.</p>
         </div>
       </div>
     </div>
@@ -525,15 +516,14 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
     e.preventDefault();
     var owner = form.elements.owner.value;
     var implants = form.elements.implants.value;
-    var collections = form.elements.collections.value;
-    if (!owner || !implants || !collections) {
+    if (!owner || !implants) {
       error.hidden = false;
       open.hidden = true;
       closed.hidden = true;
       return;
     }
     error.hidden = true;
-    var qualified = owner === 'yes' && implants === 'yes' && collections !== 'under1';
+    var qualified = owner === 'yes' && implants === 'yes';
     open.hidden = !qualified;
     closed.hidden = qualified;
     (qualified ? open : closed).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
