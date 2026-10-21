@@ -130,6 +130,17 @@ h2 { margin-top: 10px; font-size: clamp(32px, 3.8vw, 50px); font-weight: 800; fo
 .office b { display: block; font-size: 17px; }
 .office span { font-size: 15px; color: var(--slate); }
 
+/* Sofia's configuration: the settings we actually built, shown as a readout */
+.config { margin-top: 48px; border-radius: 26px; padding: 30px 32px 18px; background: radial-gradient(700px 300px at 100% 0%, rgb(29 92 200 / 0.35), rgb(29 92 200 / 0) 60%), var(--abyss); color: #fff; box-shadow: 0 40px 90px -50px rgb(6 16 31 / 0.85); }
+.config-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 20px; padding-bottom: 18px; border-bottom: 1px solid rgb(255 255 255 / 0.14); }
+.config-head h3 { font-size: 22px; font-weight: 800; font-stretch: 106%; }
+.config-head p { font-size: 15px; color: rgb(255 255 255 / 0.62); }
+.config dl { display: grid; grid-template-columns: 190px minmax(0, 1fr); }
+.config dt, .config dd { padding: 14px 0; border-bottom: 1px solid rgb(255 255 255 / 0.08); }
+.config dt { padding-right: 20px; font-size: 15px; font-weight: 700; color: var(--signal); }
+.config dd { font-size: 16px; line-height: 1.5; color: rgb(255 255 255 / 0.86); }
+.config dl > :nth-last-child(-n+2) { border-bottom: 0; }
+
 /* Ads */
 .ads { margin-top: 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .ads figure { margin: 0; }
@@ -215,6 +226,10 @@ footer a { color: #fff; }
   .hero-grid { margin-top: 48px; }
   .plogo { height: 40px; }
   .features, .terms, .qa, .steps, .offices, .included { grid-template-columns: minmax(0, 1fr); }
+  .config { padding: 24px 20px 10px; }
+  .config dl { grid-template-columns: minmax(0, 1fr); }
+  .config dt { padding-bottom: 2px; border-bottom: 0; }
+  .config dd { padding-top: 0; }
   .price-card { padding: 28px 22px; }
   .hero .row .btn { flex: 1 1 100%; }
 }
@@ -330,6 +345,23 @@ footer a { color: #fff; }
       <div class="offices">
         <div class="office"><b>Pflugerville</b><span>701 FM 685, Suite 150–155</span></div>
         <div class="office"><b>Downtown Austin</b><span>815 Brazos Street</span></div>
+      </div>
+      <div class="config" aria-labelledby="config-title">
+        <div class="config-head">
+          <h3 id="config-title">Sofia, configured for Primavera</h3>
+          <p>The exact settings behind her line</p>
+        </div>
+        <dl>
+          <dt>Greeting</dt><dd>"Thank you for calling Primavera Dental Group, this is Sofia. How can I help you today?"</dd>
+          <dt>Both offices</dt><dd>Knows Pflugerville and Downtown Austin by address, and asks which is easier for each patient.</dd>
+          <dt>Dr. Homsi</dt><dd>Introduces him as a prosthodontist: "replacing teeth is his specialty."</dd>
+          <dt>Booking</dt><dd>Checks open times in your calendar, offers two specific options, and books 45-minute consults on the hour or half hour, with at least 2 hours' notice.</dd>
+          <dt>No dead air</dt><dd>Tells callers she's checking the calendar, with a soft typing sound while it loads.</dd>
+          <dt>Emergencies</dt><dd>Asks about pain, swelling, bleeding and timing, and tells anyone with signs of a medical emergency to call 911. Everything else goes to your on-call phone, with a private brief only your team hears first.</dd>
+          <dt>Spanish</dt><dd>Switches the moment a caller does, hold lines included.</dd>
+          <dt>Guardrails</dt><dd>Never quotes prices, never diagnoses, never promises insurance coverage, and says she's a virtual assistant if asked.</dd>
+          <dt>Every call</dt><dd>Recorded, transcribed and summarized, so your team sees exactly what was said.</dd>
+        </dl>
       </div>
     </div>
   </section>
