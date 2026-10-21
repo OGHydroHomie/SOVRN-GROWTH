@@ -2,357 +2,448 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>SOVRN Growth: 30 booked implant consults in 90 days</title>
 <meta name="description" content="SOVRN Growth books implant consults for Texas practices: 30 booked implant consults in your first 90 days, or months four through six are free.">
-<meta property="og:title" content="SOVRN Growth">
-<meta property="og:description" content="SOVRN Growth books implant consults for Texas practices: 30 booked implant consults in your first 90 days, or months four through six are free.">
+<meta property="og:title" content="30 booked implant consults in 90 days, or months four through six are free.">
+<meta property="og:description" content="SOVRN Growth runs implant ads for Texas practices and reaches every new patient within 60 seconds.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#0b6e62">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b6e62'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='16' font-weight='700' fill='%23f5f7f6' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
-<title>SOVRN Growth</title>
+<meta property="og:url" content="https://www.sovrngrowth.com/">
+<meta property="og:image" content="https://www.sovrngrowth.com/img/og-home.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://www.sovrngrowth.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b2545'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='16' font-weight='700' fill='%23ffffff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="/img/implant-crown.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
 <style>
-/* Layout: a practice intake chart. Left-set editorial column, one numeric lockup in the hero,
-   a dated four-step plan, the guarantee set like a treatment plan, and an intake form that routes owners to booking. */
+/* Plan: one family (Archivo), width as the expressive axis. Clinical white-to-blue sweep at the top and bottom of the page,
+   a rendered implant as the one bold object, navy type everywhere else. Each section answers one question an owner asks. */
 :root {
-  --paper: #f5f7f6;
-  --panel: #ffffff;
-  --ink: #0e1412;
-  --muted: #55625d;
-  --line: #d4dcd9;
-  --accent: #0b6e62;
-  --accent-soft: #e4efeb;
-  --on-ink: #f5f7f6;
-  --warn: #8a4b12;
-  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --measure: 62ch;
-  --radius: 10px;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0b100f;
-    --panel: #111816;
-    --ink: #e7edeb;
-    --muted: #9aa8a3;
-    --line: #25312d;
-    --accent: #52b9a8;
-    --accent-soft: #14241f;
-    --on-ink: #0b100f;
-    --warn: #e0a46a;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #0b100f;
-  --panel: #111816;
-  --ink: #e7edeb;
-  --muted: #9aa8a3;
-  --line: #25312d;
-  --accent: #52b9a8;
-  --accent-soft: #14241f;
-  --on-ink: #0b100f;
-  --warn: #e0a46a;
-  color-scheme: dark;
+  --white: #ffffff;
+  --mist: #f4f8fd;
+  --sky: #d7e7f8;
+  --sky-deep: #c0d8f2;
+  --navy: #0b2545;
+  --slate: #4a5f7d;
+  --cobalt: #1d5cc8;
+  --line: #d3e1f0;
+  --warn: #b0401a;
+  --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; -webkit-text-size-adjust: 100%; }
 body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 17px;
+  margin: 0;
+  background: var(--white);
+  color: var(--navy);
+  font-family: var(--font);
+  font-size: 18px;
   line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
 }
 .wrap {
-  max-width: 1080px;
+  max-width: 1160px;
   margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
 }
-h1, h2, h3 {
-  font-family: var(--font-display);
-  font-stretch: 112%;
-  line-height: 1.08;
-  margin: 0;
-  text-wrap: balance;
-}
-p { margin: 0; }
+h1, h2, h3 { margin: 0; font-stretch: 108%; line-height: 1.06; letter-spacing: -0.012em; text-wrap: balance; }
+h2 { font-size: clamp(30px, 3.7vw, 46px); font-weight: 800; }
+p, dl, dd, ol, figure { margin: 0; }
+sup { font-size: 0.68em; line-height: 0; position: relative; top: -0.45em; vertical-align: baseline; }
 a { color: inherit; }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; border-radius: 6px; }
 
 /* Header */
 .top {
   position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  z-index: 5;
-  background: color-mix(in srgb, var(--paper) 92%, transparent);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line);
+  top: 0;
+  z-index: 10;
+  background: rgb(255 255 255 / 0.84);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  backdrop-filter: saturate(1.4) blur(12px);
+  border-bottom: 1px solid rgb(11 37 69 / 0.07);
 }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
-.brand { font-family: var(--font-display); font-weight: 800; font-stretch: 118%; letter-spacing: 0.02em; font-size: 18px; text-decoration: none; }
-.brand span { color: var(--accent); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; padding-bottom: 12px; }
+.brand { font-size: 19px; font-weight: 800; font-stretch: 118%; letter-spacing: 0.01em; text-decoration: none; white-space: nowrap; }
+.brand span { font-weight: 400; }
+
+/* Buttons */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  font-family: var(--font-display); font-weight: 700; font-stretch: 108%;
-  font-size: 16px; line-height: 1;
-  padding: 14px 20px; border-radius: 999px; border: 1px solid var(--ink);
-  background: var(--ink); color: var(--on-ink); text-decoration: none; cursor: pointer;
-  transition: transform 0.15s ease, background 0.15s ease;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 54px; padding: 0 26px;
+  border-radius: 999px; border: 1.5px solid var(--navy);
+  background: var(--navy); color: #fff;
+  font: inherit; font-size: 17px; font-weight: 700; font-stretch: 106%; line-height: 1.1;
+  text-decoration: none; cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
-.btn:hover { transform: translateY(-1px); }
-.btn.ghost { background: transparent; color: var(--ink); }
-.btn.small { padding: 10px 16px; font-size: 14px; }
+.btn:hover { background: var(--cobalt); border-color: var(--cobalt); }
+.btn.ghost { background: transparent; color: var(--navy); }
+.btn.ghost:hover { background: var(--navy); border-color: var(--navy); color: #fff; }
+.btn.small { min-height: 40px; padding: 0 16px; font-size: 15px; }
 
-/* Hero */
-.hero { padding-block: 56px 48px; }
-.eyebrow {
-  font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 20px;
+/* Hero: the clinical sweep, white into blue, with the implant lit from the left */
+.hero {
+  background:
+    radial-gradient(40% 48% at 76% 44%, rgb(255 255 255 / 0.95), rgb(255 255 255 / 0) 70%),
+    linear-gradient(180deg, var(--white) 0%, var(--mist) 34%, var(--sky) 76%, var(--sky-deep) 100%);
+  overflow: hidden;
 }
-.hero h1 { font-size: clamp(40px, 7.2vw, 84px); font-weight: 800; max-width: 15ch; }
-.hero h1 .num { color: var(--accent); font-stretch: 100%; }
-.hero .promise {
-  font-family: var(--font-display); font-stretch: 100%; font-weight: 500;
-  font-size: clamp(22px, 3vw, 30px); margin-top: 16px; color: var(--ink);
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 40px; padding-top: clamp(36px, 6vh, 72px); padding-bottom: clamp(44px, 7vh, 84px); }
+.hero h1 { font-size: clamp(42px, 4.7vw, 66px); font-weight: 800; font-stretch: 100%; letter-spacing: -0.016em; max-width: 17ch; }
+.promise { margin-top: 18px; font-size: clamp(22px, 2.3vw, 28px); font-weight: 600; font-stretch: 104%; line-height: 1.2; color: var(--cobalt); text-wrap: balance; }
+.lede { margin-top: 18px; max-width: 46ch; font-size: 19px; color: var(--slate); text-wrap: pretty; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.fine { margin-top: 16px; font-size: 15px; color: var(--slate); text-wrap: pretty; }
+
+.implant { --pw: clamp(170px, calc((100svh - 190px) * 0.361), 246px); position: relative; width: calc(var(--pw) + 250px); }
+.parts { position: relative; width: var(--pw); aspect-ratio: 520 / 1441; }
+.parts img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.parts::after {
+  content: ""; position: absolute; left: 26%; right: 30%; bottom: -3.5%; height: 3%;
+  background: radial-gradient(closest-side, rgb(11 37 69 / 0.24), rgb(11 37 69 / 0));
 }
-.hero .lede { max-width: var(--measure); margin-top: 22px; color: var(--muted); font-size: 19px; }
-.hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-.facts {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0;
-  margin-top: 44px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+.tag {
+  position: absolute; top: var(--y); left: calc(var(--pw) + 30px); width: 210px;
+  transform: translateY(-50%);
+  font-size: 15px; font-weight: 600; line-height: 1.3; text-wrap: balance;
 }
-.fact { padding: 18px 18px 18px 0; min-width: 0; }
-.fact + .fact { padding-left: 18px; border-left: 1px solid var(--line); }
-.fact b { display: block; font-family: var(--font-mono); font-weight: 500; font-size: 26px; color: var(--ink); font-variant-numeric: tabular-nums; }
-.fact span { color: var(--muted); font-size: 15px; }
-
-/* Sections */
-section.block { padding-block: 64px; border-top: 1px solid var(--line); }
-.block h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 750; max-width: 22ch; }
-.block .intro { margin-top: 14px; color: var(--muted); max-width: var(--measure); }
-.label {
-  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+.tag::before {
+  content: ""; position: absolute; top: 50%; right: calc(100% + 8px);
+  width: calc((1 - var(--edge)) * var(--pw) + 22px);
+  border-top: 1px solid rgb(11 37 69 / 0.35);
 }
-
-.leaks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 36px; }
-.leak { min-width: 0; padding-top: 18px; border-top: 2px solid var(--ink); }
-.leak h3 { font-size: 22px; font-weight: 700; }
-.leak p { margin-top: 10px; color: var(--muted); }
-
-.plan { list-style: none; padding: 0; margin: 36px 0 0; display: grid; gap: 0; }
-.step { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 24px; padding-block: 22px; border-top: 1px solid var(--line); }
-.step:last-child { border-bottom: 1px solid var(--line); }
-.when { font-family: var(--font-mono); font-size: 14px; color: var(--accent); padding-top: 4px; }
-.step h3 { font-size: 22px; font-weight: 700; }
-.step p { margin-top: 6px; color: var(--muted); max-width: var(--measure); }
-
-/* Guarantee, set like a treatment plan */
-.plan-card {
-  margin-top: 8px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: clamp(22px, 4vw, 40px);
+.tag::after {
+  content: ""; position: absolute; top: calc(50% - 3.5px);
+  right: calc(100% + 8px + (1 - var(--edge)) * var(--pw) + 22px - 4px);
+  width: 7px; height: 7px; border-radius: 50%; background: var(--navy);
 }
-.plan-card .head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-bottom: 18px; border-bottom: 1px dashed var(--line); }
-.plan-card h2 { margin-top: 18px; max-width: 20ch; }
-.plan-card .lead { margin-top: 14px; font-size: 19px; max-width: var(--measure); }
-.terms { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 14px 24px; margin: 26px 0 0; }
-.terms dt { font-family: var(--font-display); font-weight: 700; font-stretch: 105%; }
-.terms dd { margin: 0; color: var(--muted); min-width: 0; }
+.t-crown { --y: 15%; --edge: 0.92; }
+.t-abutment { --y: 46%; --edge: 0.61; }
+.t-fixture { --y: 80%; --edge: 0.62; }
 
-.why { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; margin-top: 36px; }
-.why div { min-width: 0; }
-.why h3 { font-size: 21px; font-weight: 700; }
-.why p { margin-top: 8px; color: var(--muted); }
+/* The one orchestrated moment: the three parts settle into place, then drift gently */
+@media (prefers-reduced-motion: no-preference) {
+  .parts img { animation: settle 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both, drift 7s ease-in-out infinite; }
+  .p-fixture { --from: 44px; animation-delay: 0s, 1.5s; }
+  .p-abutment { --from: -24px; animation-delay: 0.12s, 2.1s; }
+  .p-crown { --from: -60px; animation-delay: 0.24s, 1.8s; }
+  .tag { animation: tag-in 0.5s ease-out both; }
+  .t-fixture { animation-delay: 0.9s; }
+  .t-abutment { animation-delay: 1.05s; }
+  .t-crown { animation-delay: 1.2s; }
+}
+@keyframes settle { from { opacity: 0; transform: translateY(var(--from)); } to { opacity: 1; transform: none; } }
+@keyframes drift { 50% { transform: translateY(-5px); } }
+@keyframes tag-in { from { opacity: 0; } to { opacity: 1; } }
 
-.math { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 32px; align-items: end; }
-.math h2 { max-width: 18ch; }
-.fee { border-left: 3px solid var(--accent); padding-left: 20px; }
-.fee b { display: block; font-family: var(--font-mono); font-weight: 500; font-size: clamp(34px, 5vw, 52px); font-variant-numeric: tabular-nums; }
-.fee span { color: var(--muted); font-size: 15px; }
+/* How it works: the 60 seconds, frame by frame */
+.how { background: linear-gradient(180deg, var(--sky-deep) 0%, #e6f0fb 30%, var(--white) 74%); padding-top: 72px; padding-bottom: 88px; }
+.how h2 { max-width: 21ch; }
+.story { list-style: none; padding: 0; margin: 44px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.frame { min-width: 0; }
+.time { margin-top: 20px; font-size: 15px; font-weight: 700; color: var(--cobalt); font-variant-numeric: tabular-nums; }
+.cap { margin-top: 6px; font-size: 19px; font-weight: 600; line-height: 1.35; max-width: 25ch; }
+.after { margin-top: 40px; color: var(--slate); max-width: 60ch; }
 
-/* Intake */
-.intake-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(22px, 4vw, 40px); margin-top: 28px; max-width: 760px; }
-fieldset { border: 0; margin: 0 0 22px; padding: 0; min-width: 0; }
-legend { font-family: var(--font-display); font-weight: 700; font-stretch: 105%; font-size: 18px; margin-bottom: 10px; padding: 0; }
+.screen {
+  width: 250px; height: 312px; padding: 18px 16px;
+  display: flex; flex-direction: column; gap: 10px;
+  background: var(--white); border: 1px solid #cddbeb; border-radius: 30px;
+  box-shadow: 0 26px 50px -30px rgb(11 37 69 / 0.5);
+  font-size: 14px; line-height: 1.35; overflow: hidden;
+}
+.sc-head { font-size: 13px; font-weight: 700; color: var(--slate); padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.bubble { align-self: flex-end; max-width: 86%; margin-top: auto; padding: 11px 13px; border-radius: 18px 18px 4px 18px; background: var(--cobalt); color: #fff; }
+.greet { align-self: flex-start; max-width: 86%; padding: 11px 13px; border-radius: 18px 18px 18px 4px; background: #eef3f9; }
+.sent { align-self: flex-end; font-size: 12px; color: var(--slate); }
+.typing { display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; color: #8a9bb3; font-size: 13px; }
+
+.call { background: var(--navy); border-color: var(--navy); color: #fff; align-items: center; justify-content: space-between; text-align: center; }
+.who { display: grid; justify-items: center; gap: 4px; margin-top: 22px; }
+.avatar { width: 58px; height: 58px; margin-bottom: 8px; border-radius: 50%; background: rgb(255 255 255 / 0.14); display: grid; place-items: center; }
+.who b { font-size: 17px; font-stretch: 104%; }
+.who span { font-size: 13px; color: rgb(255 255 255 / 0.7); }
+.key { display: grid; justify-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; color: rgb(255 255 255 / 0.8); }
+.key i { width: 62px; height: 62px; border-radius: 50%; background: #fff; color: var(--navy); font-style: normal; font-size: 27px; font-weight: 800; display: grid; place-items: center; }
+
+.cal { gap: 0; }
+.cal .sc-head { margin-bottom: 4px; }
+.hour { display: grid; grid-template-columns: 44px minmax(0, 1fr); min-height: 52px; border-top: 1px solid var(--line); font-size: 12px; color: var(--slate); }
+.hour > span { padding-top: 5px; }
+.hour.first { border-top: 0; }
+.event { margin: 6px 0 4px; padding: 8px 10px; border-radius: 10px; background: #e7effc; border-left: 3px solid var(--cobalt); color: var(--navy); display: grid; gap: 1px; }
+.event b { font-size: 14px; }
+.event span { font-size: 12px; color: var(--slate); }
+
+/* The guarantee, as large as the headline */
+.guarantee { background: var(--navy); color: #fff; padding-top: clamp(64px, 9vw, 112px); padding-bottom: clamp(64px, 9vw, 112px); }
+.guarantee h2 { font-size: clamp(32px, 4.4vw, 58px); line-height: 1.08; max-width: 22ch; }
+.terms { margin-top: 52px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.terms > div { min-width: 0; padding-top: 18px; border-top: 1px solid rgb(255 255 255 / 0.22); }
+.terms dt { font-size: 18px; font-weight: 700; font-stretch: 104%; }
+.terms dd { margin-top: 8px; font-size: 17px; color: rgb(255 255 255 / 0.76); }
+
+/* First 90 days */
+.days { padding-top: 96px; padding-bottom: 72px; }
+.timeline { list-style: none; padding: 0; margin: 48px 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: relative; }
+.timeline::before { content: ""; position: absolute; left: 7px; right: 7px; top: 7px; height: 2px; background: var(--cobalt); }
+.timeline li { position: relative; min-width: 0; padding: 34px 20px 0 0; }
+.timeline li::before { content: ""; position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--white); border: 3px solid var(--cobalt); box-sizing: border-box; }
+.timeline li:last-child::before { background: var(--cobalt); }
+.when { display: block; font-size: 15px; font-weight: 700; color: var(--cobalt); font-variant-numeric: tabular-nums; }
+.timeline b { display: block; margin-top: 6px; font-size: 19px; font-weight: 700; line-height: 1.3; }
+
+/* Objections, answered up front */
+.answers { padding-top: 40px; padding-bottom: 64px; }
+.qa { margin-top: 44px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 64px; }
+.qa > div { min-width: 0; }
+.qa dt { font-size: 20px; font-weight: 700; font-stretch: 104%; line-height: 1.3; }
+.qa dd { margin-top: 8px; color: var(--slate); max-width: 46ch; }
+
+/* Intake: the sweep returns at the bottom of the page */
+.intake { background: linear-gradient(180deg, var(--white) 0%, #e9f1fb 40%, var(--sky-deep) 100%); padding-top: 88px; padding-bottom: 104px; }
+.intake-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+.intake h2 { font-size: clamp(32px, 4vw, 52px); }
+.sub { margin-top: 14px; font-size: 19px; color: var(--slate); }
+.next { margin-top: 10px; max-width: 32ch; color: var(--slate); }
+.intake-card { background: var(--white); border: 1px solid #d6e3f2; border-radius: 26px; padding: clamp(24px, 4vw, 40px); box-shadow: 0 32px 64px -40px rgb(11 37 69 / 0.45); }
+fieldset { border: 0; margin: 0 0 24px; padding: 0; min-width: 0; }
+legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; font-stretch: 104%; }
 .choices { display: flex; flex-wrap: wrap; gap: 10px; }
+.choice { position: relative; }
 .choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .choice span {
-  display: inline-block; padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px;
-  cursor: pointer; font-size: 16px; background: var(--paper); transition: border-color 0.15s ease;
+  display: inline-flex; align-items: center; min-height: 46px; padding: 0 18px;
+  border: 1.5px solid var(--line); border-radius: 999px; background: var(--white);
+  font-size: 16px; font-weight: 600; cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
 }
-.choice input:checked + span { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
-.choice input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
-.form-error { color: var(--warn); margin: 0 0 14px; font-weight: 600; }
-.result { margin-top: 24px; padding-top: 24px; border-top: 1px dashed var(--line); }
-.result h3 { font-size: 24px; font-weight: 750; }
-.result p { margin-top: 8px; color: var(--muted); max-width: var(--measure); }
+.choice span:hover { border-color: var(--navy); }
+.choice input:checked + span { background: var(--navy); border-color: var(--navy); color: #fff; }
+.choice input:focus-visible + span { outline: 3px solid var(--cobalt); outline-offset: 2px; }
+.form-error { margin: 0 0 14px; color: var(--warn); font-weight: 600; }
+.result { margin-top: 26px; padding-top: 24px; border-top: 1px solid var(--line); }
+.result h3 { font-size: 26px; font-weight: 800; }
+.result p { margin-top: 8px; color: var(--slate); }
 .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
-.fields label { display: grid; gap: 6px; font-size: 15px; font-weight: 600; min-width: 0; }
+.fields label { display: grid; gap: 6px; min-width: 0; font-size: 15px; font-weight: 600; }
 .fields input {
-  font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px;
-  background: var(--paper); color: var(--ink); min-width: 0; width: 100%;
+  width: 100%; min-width: 0; min-height: 50px; padding: 0 14px;
+  border: 1.5px solid var(--line); border-radius: 12px; background: var(--white); color: var(--navy);
+  font: inherit; font-size: 17px; font-weight: 400;
 }
+.fields input:focus { border-color: var(--cobalt); }
 .result .btn { margin-top: 18px; }
-.email { font-family: var(--font-mono); font-size: 15px; user-select: all; }
 
-/* FAQ */
-.faq { margin-top: 28px; max-width: 820px; }
-.faq details { border-top: 1px solid var(--line); padding-block: 18px; }
-.faq details:last-child { border-bottom: 1px solid var(--line); }
-.faq summary { cursor: pointer; font-family: var(--font-display); font-weight: 700; font-stretch: 105%; font-size: 19px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--accent); }
-.faq details[open] summary::after { content: "−"; }
-.faq details p { margin-top: 10px; color: var(--muted); max-width: var(--measure); }
+/* Footer */
+.foot { background: var(--navy); color: rgb(255 255 255 / 0.78); }
+.foot .wrap { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) auto; gap: 20px 40px; padding-top: 44px; padding-bottom: 52px; font-size: 15px; line-height: 1.6; }
+.foot a { color: #fff; text-underline-offset: 3px; }
+.foot .links { display: flex; gap: 20px; }
+.foot .fn { grid-column: 1 / -1; font-size: 13px; color: rgb(255 255 255 / 0.62); }
 
-footer { border-top: 1px solid var(--line); }
-footer .wrap { padding-block: 32px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; color: var(--muted); font-size: 14px; }
-
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .hero-grid { padding-bottom: 36px; }
+  .implant { --pw: 158px; justify-self: center; width: calc(var(--pw) + 196px); }
+  .how { padding-top: 52px; }
+  .tag { left: calc(var(--pw) + 24px); width: 172px; font-size: 14px; }
+  .intake-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+}
+@media (min-width: 600px) and (max-width: 960px) {
+  .implant { --pw: 196px; width: calc(var(--pw) + 240px); }
+  .tag { left: calc(var(--pw) + 28px); width: 205px; font-size: 15px; }
+}
+@media (max-width: 860px) {
+  .story { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .frame { display: grid; grid-template-columns: 136px minmax(0, 1fr); column-gap: 20px; align-items: center; }
+  .frame .screen { zoom: 0.544; grid-row: span 2; }
+  .time { margin-top: 0; align-self: end; }
+  .cap { align-self: start; font-size: 18px; }
+  .terms { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 40px; }
+  .terms > div { padding-bottom: 18px; }
+  .timeline { grid-template-columns: minmax(0, 1fr); }
+  .timeline::before { left: 7px; right: auto; top: 8px; bottom: 30px; width: 2px; height: auto; }
+  .timeline li { padding: 0 0 28px 40px; }
+  .timeline li::before { top: 4px; }
+  .timeline b { margin-top: 2px; }
+}
 @media (max-width: 760px) {
-  .facts { grid-template-columns: minmax(0, 1fr); }
-  .fact, .fact + .fact { padding: 14px 0; border-left: 0; }
-  .fact + .fact { border-top: 1px solid var(--line); }
-  .leaks, .why, .math { grid-template-columns: minmax(0, 1fr); }
-  .step { grid-template-columns: minmax(0, 1fr); gap: 6px; }
-  .terms { grid-template-columns: minmax(0, 1fr); gap: 4px; }
-  .terms dd { margin-bottom: 12px; }
+  .qa { grid-template-columns: minmax(0, 1fr); gap: 30px; }
   .fields { grid-template-columns: minmax(0, 1fr); }
-  .top .btn { display: none; }
+  .foot .wrap { grid-template-columns: minmax(0, 1fr); }
+  .actions .btn { flex: 1 1 100%; }
+}
+@media (max-width: 380px) {
+  .implant { --pw: 140px; width: calc(var(--pw) + 180px); }
+  .tag { width: 160px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; scroll-behavior: auto !important; }
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
 }
-html { scroll-behavior: smooth; }
 </style>
 </head>
 <body>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top">SOVRN <span>Growth</span></a>
-    <a class="btn small" href="#intake">Check your area</a>
+    <a class="btn small" href="#intake">See if you're a fit</a>
   </div>
 </header>
 
 <main id="top">
   <section class="hero">
-    <div class="wrap">
-      <p class="eyebrow">For implant and full-arch practices in Texas</p>
-      <h1><span class="num">30</span> booked implant consults in <span class="num">90</span> days.</h1>
-      <p class="promise">Or months four through six are free.</p>
-      <p class="lede">We build and run implant ads for your practice. Every new patient who reaches out gets a call or text within 60 seconds, and the people who asked and never booked hear from you again. You get consults on your calendar, not a spreadsheet of leads.</p>
-      <div class="actions">
-        <a class="btn" href="#intake">See if your area is open</a>
-        <a class="btn ghost" href="#guarantee">Read the guarantee</a>
+    <div class="wrap hero-grid">
+      <div>
+        <h1>30 booked implant consults in 90 days.</h1>
+        <p class="promise">Or months four through six are free.</p>
+        <p class="lede">For Texas implant practices: we run your ads and reach every new patient within 60 seconds.</p>
+        <div class="actions">
+          <a class="btn" href="#intake">See if you're a good fit</a>
+          <a class="btn ghost" href="#how">See how it works</a>
+        </div>
+        <p class="fine">Flat fee, never per patient. 90 days, then month to month.</p>
       </div>
-      <div class="facts">
-        <div class="fact"><b>72 hrs</b><span>from kickoff to ads ready to launch</span></div>
-        <div class="fact"><b>&lt;60 sec</b><span>to call or text every new patient, day or night</span></div>
-        <div class="fact"><b>1</b><span>implant practice per area, so never your competitor</span></div>
-      </div>
+      <figure class="implant">
+        <div class="parts">
+          <img class="p-crown" src="/img/implant-crown.webp" width="520" height="1441" alt="A dental implant in three parts: the crown, the abutment and the implant">
+          <img class="p-abutment" src="/img/implant-abutment.webp" width="520" height="1441" alt="">
+          <img class="p-fixture" src="/img/implant-fixture.webp" width="520" height="1441" alt="">
+        </div>
+        <figcaption>
+          <span class="tag t-crown">Booked consults on your calendar</span>
+          <span class="tag t-abutment">A call or text within 60 seconds</span>
+          <span class="tag t-fixture">Implant ads, ready in 72 hours</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
-  <section class="block">
+  <section class="how" id="how">
     <div class="wrap">
-      <h2>Where implant consults get lost</h2>
-      <div class="leaks">
-        <div class="leak">
-          <h3>The lead waits.</h3>
-          <p>A form comes in at 9 PM. The callback happens the next afternoon, if it happens at all. Patients researching implants often contact more than one office.</p>
-        </div>
-        <div class="leak">
-          <h3>Old inquiries go quiet.</h3>
-          <p>Every practice has people who asked about implants and never booked, or got a treatment plan and never scheduled. After a call or two, nobody follows up again.</p>
-        </div>
-        <div class="leak">
-          <h3>The ads take the blame.</h3>
-          <p>The ad did its job. The consult was lost somewhere between the lead and the calendar.</p>
-        </div>
-      </div>
+      <h2>Front desk busy? Never miss another implant patient.</h2>
+      <ol class="story">
+        <li class="frame">
+          <div class="screen chat" aria-hidden="true">
+            <div class="sc-head">Chat with us</div>
+            <div class="greet">Hi! How can we help today?</div>
+            <div class="bubble">Do you do implants? I'm missing a back tooth.</div>
+            <div class="sent">Sent</div>
+            <div class="typing">Write a message</div>
+          </div>
+          <p class="time">2:14:05 PM</p>
+          <p class="cap">A new patient asks about implants on your website.</p>
+        </li>
+        <li class="frame">
+          <div class="screen call" aria-hidden="true">
+            <div class="who">
+              <span class="avatar"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+              <b>New implant patient</b>
+              <span>From your website chat</span>
+            </div>
+            <div class="key"><i>1</i>Press 1 to connect</div>
+          </div>
+          <p class="time">2:14:09 PM</p>
+          <p class="cap">Your front desk's phone rings. Press 1 and you're talking.</p>
+        </li>
+        <li class="frame">
+          <div class="screen cal" aria-hidden="true">
+            <div class="sc-head">Thursday</div>
+            <div class="hour first"><span>9 AM</span><span></span></div>
+            <div class="hour"><span>10 AM</span><div class="event"><b>Implant consult</b><span>New patient, 10:30</span></div></div>
+            <div class="hour"><span>11 AM</span><span></span></div>
+            <div class="hour"><span>12 PM</span><span></span></div>
+          </div>
+          <p class="time">2:16 PM</p>
+          <p class="cap">They book a consult before they call another office.</p>
+        </li>
+      </ol>
+      <p class="after">After hours, they get a text with a link to book.</p>
     </div>
   </section>
 
-  <section class="block">
+  <section class="guarantee" id="guarantee">
     <div class="wrap">
-      <h2>What happens after you sign</h2>
-      <p class="intro">New patients come from the ads, and the 60-second reply turns them into booked consults. Your past inquiries get worked alongside.</p>
-      <ol class="plan">
-        <li class="step">
-          <span class="when">Days 1–3</span>
-          <div><h3>Your ads, ready to launch</h3><p>We finish the implant ads we've already started for you, modeled on what already works in Texas, and set up your ad account and lead forms.</p></div>
-        </li>
-        <li class="step">
-          <span class="when">Week 1</span>
-          <div><h3>Every new patient answered in 60 seconds</h3><p>New forms, chats and missed calls get a call or text in under a minute, day or night. During office hours your front desk's phone rings with the patient on the line. After hours, they get a text to book.</p></div>
-        </li>
-        <li class="step">
-          <span class="when">Week 1 on</span>
-          <div><h3>Past inquiries, followed up</h3><p>After we sign a BAA, people who asked about implants and never booked hear from your office again, under your practice's name. Consults often start here, before the ads warm up.</p></div>
-        </li>
-        <li class="step">
-          <span class="when">Weeks 1–2</span>
-          <div><h3>Ads go live and the 90 days start</h3><p>Your ad budget is paid straight to Meta. Every consult booked onto your calendar counts toward the 30.</p></div>
-        </li>
-        <li class="step">
-          <span class="when">Every Monday</span>
-          <div><h3>The scoreboard</h3><p>Booked, showed and started, in one short report. You always know what you're paying for.</p></div>
-        </li>
+      <h2>If we don't book you 30 implant consults in your first 90 days, we work months four through six for free.</h2>
+      <dl class="terms">
+        <div>
+          <dt>What counts</dt>
+          <dd>A real person in your area who books a specific date and time for an implant consult. Spam and duplicates don't count, and a reschedule counts once.</dd>
+        </div>
+        <div>
+          <dt>What we need from you</dt>
+          <dd>Calendar access, open consult times, approvals within one business day, and an ad budget paid straight to Meta.</dd>
+        </div>
+        <div>
+          <dt>If we fall short</dt>
+          <dd>We keep everything running for three more months at no fee. It's free work, not a refund.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="days">
+    <div class="wrap">
+      <h2>Your first 90 days</h2>
+      <ol class="timeline">
+        <li><span class="when">Days 1–3</span><b>Your implant ads, ready to launch</b></li>
+        <li><span class="when">Week 1</span><b>Every new patient answered in 60 seconds</b></li>
+        <li><span class="when">Weeks 1–2</span><b>Ads go live and your 90 days start</b></li>
+        <li><span class="when">Every Monday</span><b>Each booked consult, by name and date</b></li>
+        <li><span class="when">After day 90</span><b>Month to month</b></li>
       </ol>
     </div>
   </section>
 
-  <section class="block" id="guarantee">
+  <section class="answers">
     <div class="wrap">
-      <div class="plan-card">
-        <div class="head">
-          <span class="label">The guarantee</span>
-          <span class="label">Term: 90 days, then month to month</span>
+      <h2>Questions owners ask first</h2>
+      <dl class="qa">
+        <div>
+          <dt>What does it cost?</dt>
+          <dd>Our whole 90-day fee is less than one full-arch case, which averages $22,590 nationally.<sup>1</sup> We'll go through your numbers on a short call.</dd>
         </div>
-        <h2>30 booked consults in 90 days, or months four through six are free.</h2>
-        <p class="lead">If we don't book you 30 implant consults in your first 90 days, we work months four through six for free. The 90 days start when your ads go live.</p>
-        <dl class="terms">
-          <dt>What counts</dt>
-          <dd>One real person in your area who accepts a specific date and time for an implant consult. Consults from new ads and from past inquiries both count, and you see them separately. Duplicates and spam don't count, and a reschedule counts once. For full-arch centers, it has to be full-arch interest.</dd>
-          <dt>What we need from you</dt>
-          <dd>Your patient list and calendar access in the first week, approvals within one business day, open consult times on your calendar, and an ad budget of at least $3,000 a month ($5,000 for full-arch), paid straight to Meta.</dd>
-          <dt>If we fall short</dt>
-          <dd>We keep running everything for three more months at no fee. Your ad budget still goes to Meta, or we pause new ads and work the inquiries you already have. It's free work, not a refund.</dd>
-          <dt>What you can check</dt>
-          <dd>Every booked consult, by name and date, in your Monday scoreboard.</dd>
-        </dl>
-      </div>
+        <div>
+          <dt>Are we locked into a long contract?</dt>
+          <dd>No. 90 days, then month to month.</dd>
+        </div>
+        <div>
+          <dt>We already have a marketing agency.</dt>
+          <dd>Keep them. We can start by booking the new patients they already send you.</dd>
+        </div>
+        <div>
+          <dt>Is it HIPAA compliant?</dt>
+          <dd>We sign a BAA before we touch any patient information, and every message goes out under your practice's name.</dd>
+        </div>
+        <div>
+          <dt>Will this add work for my front desk?</dt>
+          <dd>Less, not more. They pick up a ringing phone instead of chasing callbacks, and we handle the rest.</dd>
+        </div>
+        <div>
+          <dt>Who runs my account?</dt>
+          <dd>Elijah Pitts, the founder, directly. He's here in Austin.</dd>
+        </div>
+      </dl>
     </div>
   </section>
 
-  <section class="block">
-    <div class="wrap">
-      <h2>Why practices work with us</h2>
-      <div class="why">
-        <div><h3>Booked consults, not leads.</h3><p>We own the path from the ad to your calendar, so nothing waits on a busy front desk.</p></div>
-        <div><h3>One practice per area.</h3><p>We won't take on the implant practice down the street.</p></div>
-        <div><h3>90 days, not a year.</h3><p>We ask for 90 days and earn every month after that.</p></div>
-        <div><h3>The founder on your account.</h3><p>You work with Elijah Pitts directly, here in Austin.</p></div>
+  <section class="intake" id="intake">
+    <div class="wrap intake-grid">
+      <div>
+        <h2>See if you're a good fit</h2>
+        <p class="sub">Two questions. About 10 seconds.</p>
+        <p class="next">If it's a fit, you'll pick a time for a short call with Elijah.</p>
       </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap math">
-      <h2>The full 90 days cost less than one full-arch case.</h2>
-      <div class="fee">
-        <b>$22,590</b>
-        <span>National average fee for a full-arch implant prosthesis, CDT D6114.<sup>1</sup></span>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="intake">
-    <div class="wrap">
-      <h2>See if your area is open</h2>
-      <p class="intro">Three questions. It takes about 20 seconds.</p>
       <div class="intake-card">
         <form id="intake-form" novalidate>
           <fieldset>
@@ -369,21 +460,12 @@ html { scroll-behavior: smooth; }
               <label class="choice"><input type="radio" name="implants" id="implants-no" value="no"><span>Not yet</span></label>
             </div>
           </fieldset>
-          <fieldset>
-            <legend>Collections in the last 12 months</legend>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="collections" id="col-under1" value="under1"><span>Under $1M</span></label>
-              <label class="choice"><input type="radio" name="collections" id="col-1to2" value="1to2"><span>$1M to $2M</span></label>
-              <label class="choice"><input type="radio" name="collections" id="col-2to5" value="2to5"><span>$2M to $5M</span></label>
-              <label class="choice"><input type="radio" name="collections" id="col-over5" value="over5"><span>Over $5M</span></label>
-            </div>
-          </fieldset>
-          <p class="form-error" id="form-error" hidden>Answer all three questions to check your area.</p>
-          <button class="btn" type="submit" id="check-btn">Check my area</button>
+          <p class="form-error" id="form-error" hidden>Answer both questions to check your fit.</p>
+          <button class="btn" type="submit" id="check-btn">Check my fit</button>
         </form>
 
         <div class="result" id="result-open" hidden>
-          <h3>Your area is open.</h3>
+          <h3>You're a good fit.</h3>
           <p>Add your name and email, then pick a time for a short call with Elijah. We'll walk through your numbers and what the first 90 days would look like for your practice.</p>
           <div class="fields">
             <label for="lead-name">Your name<input id="lead-name" type="text" autocomplete="name" placeholder="Dr. Jane Smith"></label>
@@ -394,45 +476,19 @@ html { scroll-behavior: smooth; }
 
         <div class="result" id="result-closed" hidden>
           <h3>Thanks for checking.</h3>
-          <p>Right now we only work with owners of practices that offer implants and collect at least $1M a year. If that changes, write to <span class="email">elijah@sovrngrowth.com</span>.</p>
+          <p>Right now we only work with owners of practices that offer implants. If that changes, write to <a href="mailto:elijah@sovrngrowth.com">elijah@sovrngrowth.com</a>.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap">
-      <h2>Questions owners ask</h2>
-      <div class="faq">
-        <details>
-          <summary>We already work with a marketing agency.</summary>
-          <p>Keep them. We can start by booking the leads they already send you, and take over the ads only if that's what you want.</p>
-        </details>
-        <details>
-          <summary>Do you need access to patient data?</summary>
-          <p>Only to answer your new leads and follow up with past inquiries. We sign a BAA before we touch anything, and every message goes out under your practice's name.</p>
-        </details>
-        <details>
-          <summary>What does it cost?</summary>
-          <p>We walk through it on the call, using your numbers. The full 90 days cost less than one full-arch case at the national average fee.</p>
-        </details>
-        <details>
-          <summary>Why 90 days?</summary>
-          <p>Ads need about two months to settle. The 90 days start when your ads go live, not the day you sign. After that you're month to month.</p>
-        </details>
-        <details>
-          <summary>What if you don't hit 30?</summary>
-          <p>We work months four through six for free. Your ad budget still goes to Meta, or we pause new ads and work the inquiries you already have.</p>
-        </details>
       </div>
     </div>
   </section>
 </main>
 
-<footer>
+<footer class="foot">
   <div class="wrap">
-    <span>SOVRN Growth, a trade name of Lux Eterna LLC · 110 N Interstate 35, Suite 315-1083, Round Rock, TX 78681 · <a href="tel:+15128820814">(512) 882-0814</a> · <span class="email">elijah@sovrngrowth.com</span> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
-    <span><sup>1</sup> ADA fee survey data, as published by Pearl, updated May 2026.</span>
+    <p>SOVRN Growth, a trade name of Lux Eterna LLC<br>110 N Interstate 35, Suite 315-1083, Round Rock, TX 78681</p>
+    <p><a href="tel:+15128820814">(512) 882-0814</a><br><a href="mailto:elijah@sovrngrowth.com">elijah@sovrngrowth.com</a></p>
+    <p class="links"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></p>
+    <p class="fn"><sup>1</sup> ADA fee survey data, as published by Pearl, updated May 2026.</p>
   </div>
 </footer>
 
@@ -460,15 +516,14 @@ html { scroll-behavior: smooth; }
     e.preventDefault();
     var owner = form.elements.owner.value;
     var implants = form.elements.implants.value;
-    var collections = form.elements.collections.value;
-    if (!owner || !implants || !collections) {
+    if (!owner || !implants) {
       error.hidden = false;
       open.hidden = true;
       closed.hidden = true;
       return;
     }
     error.hidden = true;
-    var qualified = owner === 'yes' && implants === 'yes' && collections !== 'under1';
+    var qualified = owner === 'yes' && implants === 'yes';
     open.hidden = !qualified;
     closed.hidden = qualified;
     (qualified ? open : closed).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
