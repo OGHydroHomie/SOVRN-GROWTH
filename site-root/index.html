@@ -17,21 +17,21 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://www.sovrngrowth.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b2545'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='16' font-weight='700' fill='%23ffffff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
-<link rel="preload" as="image" href="/img/implant-crown.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
 <style>
-/* Plan: one family (Archivo), width as the expressive axis. Clinical white-to-blue sweep at the top and bottom of the page,
-   a rendered implant as the one bold object, navy type everywhere else. Each section answers one question an owner asks. */
+/* Home v2. One family (Archivo), navy type, white base. Blue behaves like light: it pools behind the glass panel in the hero
+   and returns at the fit form. The hero shows the service itself (ad, 60-second reply, booked consult); the gallery shows the work. */
 :root {
   --white: #ffffff;
-  --mist: #f4f8fd;
-  --sky: #d7e7f8;
-  --sky-deep: #c0d8f2;
+  --mist: #f3f8fe;
+  --sky: #d3e5fa;
+  --sky-deep: #bcd5f4;
   --navy: #0b2545;
   --slate: #4a5f7d;
   --cobalt: #1d5cc8;
+  --glow: 36 91 255;
   --line: #d3e1f0;
   --warn: #b0401a;
   --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
@@ -75,7 +75,7 @@ a { color: inherit; }
 .brand { font-size: 19px; font-weight: 800; font-stretch: 118%; letter-spacing: 0.01em; text-decoration: none; white-space: nowrap; }
 .brand span { font-weight: 400; }
 
-/* Buttons */
+/* Buttons and links */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 54px; padding: 0 26px;
@@ -86,67 +86,135 @@ a { color: inherit; }
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 .btn:hover { background: var(--cobalt); border-color: var(--cobalt); }
-.btn.ghost { background: transparent; color: var(--navy); }
-.btn.ghost:hover { background: var(--navy); border-color: var(--navy); color: #fff; }
 .btn.small { min-height: 40px; padding: 0 16px; font-size: 15px; }
+.text-link { font-weight: 700; font-stretch: 106%; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 6px; }
+.text-link:hover { color: var(--cobalt); }
 
-/* Hero: the clinical sweep, white into blue, with the implant lit from the left */
+/* Hero: a white reading zone, with the blue pooled behind the glass panel on the right */
 .hero {
-  background:
-    radial-gradient(40% 48% at 76% 44%, rgb(255 255 255 / 0.95), rgb(255 255 255 / 0) 70%),
-    linear-gradient(180deg, var(--white) 0%, var(--mist) 34%, var(--sky) 76%, var(--sky-deep) 100%);
+  position: relative;
   overflow: hidden;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0) 74%, var(--white) 100%),
+    radial-gradient(42% 58% at 79% 50%, rgb(var(--glow) / 0.2), rgb(var(--glow) / 0) 70%),
+    radial-gradient(28% 36% at 94% 14%, rgb(143 186 246 / 0.45), rgb(143 186 246 / 0) 70%),
+    linear-gradient(118deg, var(--white) 0%, var(--white) 44%, var(--mist) 62%, var(--sky) 86%, var(--sky-deep) 100%);
 }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 40px; padding-top: clamp(36px, 6vh, 72px); padding-bottom: clamp(44px, 7vh, 84px); }
-.hero h1 { font-size: clamp(42px, 4.7vw, 66px); font-weight: 800; font-stretch: 100%; letter-spacing: -0.016em; max-width: 17ch; }
+.hero-grid {
+  display: grid; grid-template-columns: minmax(0, 52fr) minmax(0, 48fr); gap: 56px; align-items: center;
+  min-height: min(700px, calc(100svh - 150px));
+  padding-top: clamp(32px, 5vh, 64px); padding-bottom: clamp(40px, 6vh, 72px);
+}
+.hero h1 { font-size: clamp(42px, 4.8vw, 66px); font-weight: 800; font-stretch: 100%; letter-spacing: -0.016em; }
 .promise { margin-top: 18px; font-size: clamp(22px, 2.3vw, 28px); font-weight: 600; font-stretch: 104%; line-height: 1.2; color: var(--cobalt); text-wrap: balance; }
-.lede { margin-top: 18px; max-width: 46ch; font-size: 19px; color: var(--slate); text-wrap: pretty; }
-.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-.fine { margin-top: 16px; font-size: 15px; color: var(--slate); text-wrap: pretty; }
+.lede { margin-top: 18px; max-width: 44ch; font-size: 19px; color: var(--slate); text-wrap: pretty; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin-top: 30px; }
+.fine { margin-top: 18px; font-size: 15px; color: var(--slate); text-wrap: pretty; }
 
-.implant { --pw: clamp(170px, calc((100svh - 190px) * 0.361), 246px); position: relative; width: calc(var(--pw) + 250px); }
-.parts { position: relative; width: var(--pw); aspect-ratio: 520 / 1441; }
-.parts img { position: absolute; inset: 0; width: 100%; height: 100%; }
-.parts::after {
-  content: ""; position: absolute; left: 26%; right: 30%; bottom: -3.5%; height: 3%;
-  background: radial-gradient(closest-side, rgb(11 37 69 / 0.24), rgb(11 37 69 / 0));
+/* The stage: a glass panel (the Higgsfield loop plays inside it), three service objects on top, one connector */
+.stage { position: relative; width: 100%; max-width: 540px; justify-self: end; aspect-ratio: 520 / 440; container-type: inline-size; }
+.panel {
+  position: absolute; left: 6%; top: 4%; right: 0; bottom: 2%;
+  border-radius: 7cqw; overflow: hidden;
+  background: linear-gradient(150deg, rgb(255 255 255 / 0.6), rgb(255 255 255 / 0.14) 55%, rgb(var(--glow) / 0.16));
+  border: 1px solid rgb(255 255 255 / 0.85);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.9), 0 40px 90px -50px rgb(11 37 69 / 0.45);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
 }
-.tag {
-  position: absolute; top: var(--y); left: calc(var(--pw) + 30px); width: 210px;
-  transform: translateY(-50%);
-  font-size: 15px; font-weight: 600; line-height: 1.3; text-wrap: balance;
+.panel::before {
+  content: ""; position: absolute; inset: -40%;
+  background: conic-gradient(from 210deg at 60% 55%, rgb(255 255 255 / 0), rgb(255 255 255 / 0.55) 40deg, rgb(255 255 255 / 0) 90deg);
+  filter: blur(30px);
 }
-.tag::before {
-  content: ""; position: absolute; top: 50%; right: calc(100% + 8px);
-  width: calc((1 - var(--edge)) * var(--pw) + 22px);
-  border-top: 1px solid rgb(11 37 69 / 0.35);
-}
-.tag::after {
-  content: ""; position: absolute; top: calc(50% - 3.5px);
-  right: calc(100% + 8px + (1 - var(--edge)) * var(--pw) + 22px - 4px);
-  width: 7px; height: 7px; border-radius: 50%; background: var(--navy);
-}
-.t-crown { --y: 15%; --edge: 0.92; }
-.t-abutment { --y: 46%; --edge: 0.61; }
-.t-fixture { --y: 80%; --edge: 0.62; }
+.panel-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+.panel-tag { position: absolute; left: 4.5cqw; bottom: 3.2cqw; font-size: max(11px, 2.5cqw); font-weight: 600; color: var(--slate); }
+.wire { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.wire-path { fill: none; stroke: var(--cobalt); stroke-width: 1.6; stroke-dasharray: 4 5; opacity: 0.6; }
+.signal { fill: var(--cobalt); opacity: 0; }
+.signal-halo { fill: rgb(var(--glow) / 0.22); opacity: 0; }
 
-/* The one orchestrated moment: the three parts settle into place, then drift gently */
-@media (prefers-reduced-motion: no-preference) {
-  .parts img { animation: settle 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both, drift 7s ease-in-out infinite; }
-  .p-fixture { --from: 44px; animation-delay: 0s, 1.5s; }
-  .p-abutment { --from: -24px; animation-delay: 0.12s, 2.1s; }
-  .p-crown { --from: -60px; animation-delay: 0.24s, 1.8s; }
-  .tag { animation: tag-in 0.5s ease-out both; }
-  .t-fixture { animation-delay: 0.9s; }
-  .t-abutment { animation-delay: 1.05s; }
-  .t-crown { animation-delay: 1.2s; }
+.ad-card {
+  position: absolute; left: 1.5%; top: 12%; width: 35%; aspect-ratio: 3 / 4;
+  border-radius: 3.5cqw; overflow: hidden; transform: rotate(-3deg);
+  box-shadow: 0 30px 60px -28px rgb(11 37 69 / 0.55);
 }
-@keyframes settle { from { opacity: 0; transform: translateY(var(--from)); } to { opacity: 1; transform: none; } }
-@keyframes drift { 50% { transform: translateY(-5px); } }
-@keyframes tag-in { from { opacity: 0; } to { opacity: 1; } }
+.ad-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ad-empty {
+  width: 100%; height: 100%; display: grid; place-items: center; text-align: center;
+  background: radial-gradient(70% 55% at 50% 40%, #1f4f9c, var(--navy) 75%);
+  color: rgb(255 255 255 / 0.82); font-size: max(11px, 2.6cqw); font-weight: 700; letter-spacing: 0.02em;
+}
+.ad-empty small { display: block; margin-top: 0.6cqw; font-weight: 500; opacity: 0.7; font-size: max(10px, 2.2cqw); }
+
+.notif {
+  position: absolute; left: 38.5%; top: 10%; width: 50.5%;
+  display: grid; grid-template-columns: 7.4cqw minmax(0, 1fr) auto; gap: 2cqw; align-items: center;
+  padding: 2.4cqw 2.7cqw; border-radius: 4cqw;
+  background: rgb(255 255 255 / 0.88); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  border: 1px solid rgb(255 255 255 / 0.95); box-shadow: 0 24px 50px -26px rgb(11 37 69 / 0.45);
+}
+.notif-icon { width: 7.4cqw; height: 7.4cqw; border-radius: 2cqw; background: var(--navy); color: #fff; display: grid; place-items: center; }
+.notif-icon svg { width: 52%; height: 52%; }
+.notif-text b { display: block; font-size: max(12px, 2.7cqw); line-height: 1.25; }
+.notif-text span { display: block; font-size: max(11px, 2.5cqw); line-height: 1.3; color: var(--slate); }
+.notif time { align-self: start; font-size: max(10px, 2.3cqw); color: var(--slate); }
+
+.booked {
+  position: absolute; right: 5%; top: 36.5%;
+  padding: 1.2cqw 2.4cqw; border-radius: 999px; background: var(--navy); color: #fff;
+  font-size: max(11px, 2.5cqw); font-weight: 700; transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.cal {
+  position: absolute; right: 1%; top: 43%; width: 45.5%;
+  padding: 3cqw; border-radius: 4cqw; background: var(--white);
+  border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgb(11 37 69 / 0.5);
+}
+.cal-day { font-size: max(11px, 2.5cqw); font-weight: 700; color: var(--slate); padding-bottom: 1.6cqw; border-bottom: 1px solid var(--line); }
+.cal-hour { display: grid; grid-template-columns: 8cqw minmax(0, 1fr); min-height: 7.6cqw; padding-top: 1cqw; border-bottom: 1px solid var(--line); font-size: max(10px, 2.3cqw); color: var(--slate); }
+.cal-hour:last-child { border-bottom: 0; }
+.cal-event { margin: 0.4cqw 0 1.2cqw; padding: 1.4cqw 1.9cqw; border-radius: 1.9cqw; background: #e8efff; border-left: 3px solid var(--cobalt); color: var(--navy); transition: box-shadow 0.4s ease; }
+.cal-event b { display: block; font-size: max(11px, 2.5cqw); }
+.cal-event i { font-style: normal; font-size: max(10px, 2.3cqw); color: var(--slate); }
+.stage.playing .booked { opacity: 0; transform: translateY(4px); }
+.stage.landed .cal-event { box-shadow: 0 0 0 4px rgb(var(--glow) / 0.18); }
+
+/* Ad gallery */
+.work { padding-top: 56px; padding-bottom: 96px; }
+.work-head { display: flex; justify-content: space-between; align-items: end; gap: 24px 48px; flex-wrap: wrap; }
+.work-head h2 { max-width: 15ch; }
+.work-head p { max-width: 46ch; color: var(--slate); }
+.reel { margin-top: 44px; }
+.track { overflow: hidden; }
+.rail { display: flex; gap: 24px; width: max-content; padding: 6px max(20px, calc((100vw - 1160px) / 2 + 20px)) 10px; will-change: transform; }
+.track.native { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; scroll-padding-inline: max(20px, calc((100vw - 1160px) / 2 + 20px)); }
+.track.native::-webkit-scrollbar { display: none; }
+.track.native .rail { will-change: auto; }
+.slot { flex: 0 0 288px; scroll-snap-align: start; }
+.ad-frame {
+  position: relative; aspect-ratio: 3 / 4; border-radius: 18px; overflow: hidden;
+  background: linear-gradient(160deg, var(--mist), #e7f0fb); border: 1px solid var(--line);
+  display: grid; place-items: center;
+}
+.ad-frame img, .ad-frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #0c0e11; }
+.slot-empty { text-align: center; color: var(--slate); }
+.slot-empty svg { display: block; margin: 0 auto 10px; opacity: 0.55; }
+.slot-empty b { display: block; font-size: 16px; color: var(--navy); }
+.slot-empty span { display: block; margin-top: 2px; font-size: 13px; }
+.slot figcaption { margin-top: 12px; font-size: 14px; color: var(--slate); line-height: 1.4; }
+.slot figcaption b { color: var(--navy); }
+.proof { display: block; margin-top: 2px; font-weight: 600; color: var(--cobalt); }
+.proof:empty { display: none; }
+.reel-controls { display: flex; gap: 10px; margin-top: 18px; }
+.icon-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1.5px solid var(--line); background: var(--white); color: var(--navy);
+  display: grid; place-items: center; cursor: pointer; transition: border-color 0.15s ease;
+}
+.icon-btn:hover { border-color: var(--navy); }
+.icon-btn[hidden] { display: none; }
 
 /* How it works: the 60 seconds, frame by frame */
-.how { background: linear-gradient(180deg, var(--sky-deep) 0%, #e6f0fb 30%, var(--white) 74%); padding-top: 72px; padding-bottom: 88px; }
+.how { background: linear-gradient(180deg, var(--white) 0%, #eaf2fc 28%, var(--mist) 70%, var(--white) 100%); padding-top: 88px; padding-bottom: 88px; }
 .how h2 { max-width: 21ch; }
 .story { list-style: none; padding: 0; margin: 44px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
 .frame { min-width: 0; }
@@ -175,8 +243,8 @@ a { color: inherit; }
 .key { display: grid; justify-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; color: rgb(255 255 255 / 0.8); }
 .key i { width: 62px; height: 62px; border-radius: 50%; background: #fff; color: var(--navy); font-style: normal; font-size: 27px; font-weight: 800; display: grid; place-items: center; }
 
-.cal { gap: 0; }
-.cal .sc-head { margin-bottom: 4px; }
+.cal-screen { gap: 0; }
+.cal-screen .sc-head { margin-bottom: 4px; }
 .hour { display: grid; grid-template-columns: 44px minmax(0, 1fr); min-height: 52px; border-top: 1px solid var(--line); font-size: 12px; color: var(--slate); }
 .hour > span { padding-top: 5px; }
 .hour.first { border-top: 0; }
@@ -187,7 +255,7 @@ a { color: inherit; }
 /* The guarantee, as large as the headline */
 .guarantee { background: var(--navy); color: #fff; padding-top: clamp(64px, 9vw, 112px); padding-bottom: clamp(64px, 9vw, 112px); }
 .guarantee h2 { font-size: clamp(32px, 4.4vw, 58px); line-height: 1.08; max-width: 22ch; }
-.terms { margin-top: 52px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.terms { margin-top: 52px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 56px; max-width: 980px; }
 .terms > div { min-width: 0; padding-top: 18px; border-top: 1px solid rgb(255 255 255 / 0.22); }
 .terms dt { font-size: 18px; font-weight: 700; font-stretch: 104%; }
 .terms dd { margin-top: 8px; font-size: 17px; color: rgb(255 255 255 / 0.76); }
@@ -209,12 +277,20 @@ a { color: inherit; }
 .qa dt { font-size: 20px; font-weight: 700; font-stretch: 104%; line-height: 1.3; }
 .qa dd { margin-top: 8px; color: var(--slate); max-width: 46ch; }
 
-/* Intake: the sweep returns at the bottom of the page */
+/* Intake: the light returns at the bottom of the page, with the founder next to the form */
 .intake { background: linear-gradient(180deg, var(--white) 0%, #e9f1fb 40%, var(--sky-deep) 100%); padding-top: 88px; padding-bottom: 104px; }
-.intake-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+.intake-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 56px; align-items: start; }
 .intake h2 { font-size: clamp(32px, 4vw, 52px); }
-.sub { margin-top: 14px; font-size: 19px; color: var(--slate); }
-.next { margin-top: 10px; max-width: 32ch; color: var(--slate); }
+.sub { margin-top: 14px; max-width: 34ch; font-size: 19px; color: var(--slate); text-wrap: pretty; }
+.founder {
+  margin-top: 36px; display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 18px; align-items: center;
+  padding: 18px 20px; border-radius: 22px; background: rgb(255 255 255 / 0.7); border: 1px solid #d6e3f2;
+}
+.founder.no-photo { grid-template-columns: minmax(0, 1fr); }
+.f-photo { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; display: block; }
+.f-initials { display: grid; place-items: center; background: var(--navy); color: #fff; font-size: 24px; font-weight: 800; font-stretch: 112%; letter-spacing: 0.02em; }
+.founder h3 { font-size: 20px; font-weight: 800; font-stretch: 104%; }
+.founder p { margin-top: 4px; font-size: 16px; color: var(--slate); line-height: 1.45; }
 .intake-card { background: var(--white); border: 1px solid #d6e3f2; border-radius: 26px; padding: clamp(24px, 4vw, 40px); box-shadow: 0 32px 64px -40px rgb(11 37 69 / 0.45); }
 fieldset { border: 0; margin: 0 0 24px; padding: 0; min-width: 0; }
 legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; font-stretch: 104%; }
@@ -234,14 +310,6 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 .result { margin-top: 26px; padding-top: 24px; border-top: 1px solid var(--line); }
 .result h3 { font-size: 26px; font-weight: 800; }
 .result p { margin-top: 8px; color: var(--slate); }
-.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
-.fields label { display: grid; gap: 6px; min-width: 0; font-size: 15px; font-weight: 600; }
-.fields input {
-  width: 100%; min-width: 0; min-height: 50px; padding: 0 14px;
-  border: 1.5px solid var(--line); border-radius: 12px; background: var(--white); color: var(--navy);
-  font: inherit; font-size: 17px; font-weight: 400;
-}
-.fields input:focus { border-color: var(--cobalt); }
 .result .btn { margin-top: 18px; }
 
 /* Footer */
@@ -251,17 +319,20 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 .foot .links { display: flex; gap: 20px; }
 .foot .fn { grid-column: 1 / -1; font-size: 13px; color: rgb(255 255 255 / 0.62); }
 
-@media (max-width: 960px) {
-  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .hero-grid { padding-bottom: 36px; }
-  .implant { --pw: 158px; justify-self: center; width: calc(var(--pw) + 196px); }
-  .how { padding-top: 52px; }
-  .tag { left: calc(var(--pw) + 24px); width: 172px; font-size: 14px; }
-  .intake-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+@media (max-width: 1100px) {
+  .hero-grid { gap: 36px; }
 }
-@media (min-width: 600px) and (max-width: 960px) {
-  .implant { --pw: 196px; width: calc(var(--pw) + 240px); }
-  .tag { left: calc(var(--pw) + 28px); width: 205px; font-size: 15px; }
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; min-height: 0; padding-bottom: 56px; }
+  .stage { justify-self: center; max-width: 560px; }
+  .hero {
+    background:
+      linear-gradient(180deg, rgb(255 255 255 / 0) 82%, var(--white) 100%),
+      radial-gradient(70% 34% at 60% 74%, rgb(var(--glow) / 0.2), rgb(var(--glow) / 0) 70%),
+      linear-gradient(180deg, var(--white) 0%, var(--white) 46%, var(--mist) 62%, var(--sky) 88%, var(--sky-deep) 100%);
+  }
+  .intake-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .founder { max-width: 560px; }
 }
 @media (max-width: 860px) {
   .story { grid-template-columns: minmax(0, 1fr); gap: 28px; }
@@ -279,25 +350,43 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 }
 @media (max-width: 760px) {
   .qa { grid-template-columns: minmax(0, 1fr); gap: 30px; }
-  .fields { grid-template-columns: minmax(0, 1fr); }
   .foot .wrap { grid-template-columns: minmax(0, 1fr); }
   .actions .btn { flex: 1 1 100%; }
-}
-@media (max-width: 380px) {
-  .implant { --pw: 140px; width: calc(var(--pw) + 180px); }
-  .tag { width: 160px; }
+  .work, .how { padding-top: 64px; padding-bottom: 64px; }
+  .slot { flex-basis: min(78vw, 304px); }
+  /* Phones: a compact stage with its own layout, no connector, no video */
+  .stage { aspect-ratio: 342 / 322; }
+  .panel { left: 0; top: 3%; right: 0; bottom: 0; border-radius: 26px; }
+  .panel-video, .wire { display: none; }
+  .panel-tag { left: 16px; bottom: 12px; font-size: 12px; }
+  .ad-card { left: 4%; top: 12%; width: 29%; border-radius: 12px; }
+  .ad-empty { font-size: 12px; }
+  .ad-empty small { font-size: 10px; }
+  .notif { left: 36%; top: 7%; width: 61%; grid-template-columns: 30px minmax(0, 1fr); gap: 9px; padding: 10px 11px; border-radius: 16px; }
+  .notif time { display: none; }
+  .notif-icon { width: 30px; height: 30px; border-radius: 8px; }
+  .notif-text b { font-size: 13px; }
+  .notif-text span { font-size: 12px; }
+  .booked { right: 5%; top: 34%; font-size: 12px; padding: 5px 10px; }
+  .cal { right: 3%; top: 44%; width: 58%; padding: 11px 12px; border-radius: 16px; }
+  .cal-day { font-size: 12px; padding-bottom: 6px; }
+  .cal-hour { grid-template-columns: 36px minmax(0, 1fr); min-height: 30px; padding-top: 4px; font-size: 11px; }
+  .cal-event { margin: 2px 0 6px; padding: 5px 8px; border-radius: 8px; }
+  .cal-event b { font-size: 12px; }
+  .cal-event i { font-size: 11px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
+  .panel-video { display: none; }
 }
 </style>
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top">SOVRN <span>Growth</span></a>
-    <a class="btn small" href="#intake">See if you're a fit</a>
+    <a class="brand" href="#top" data-track="header_brand">SOVRN <span>Growth</span></a>
+    <a class="btn small" href="#intake" data-track="header_fit">See if you're a fit</a>
   </div>
 </header>
 
@@ -306,26 +395,82 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
     <div class="wrap hero-grid">
       <div>
         <h1>30 booked implant consults in 90 days.</h1>
-        <p class="promise">Or months four through six are free.</p>
-        <p class="lede">For Texas implant practices: we run your ads and reach every new patient within 60 seconds.</p>
+        <p class="promise">Or we work months four through six for free.</p>
+        <p class="lede">Meta ads for Texas implant practices. Every new patient gets a call or text within 60 seconds.</p>
         <div class="actions">
-          <a class="btn" href="#intake">See if you're a good fit</a>
-          <a class="btn ghost" href="#how">See how it works</a>
+          <a class="btn" href="#intake" data-track="hero_fit">See if you're a good fit</a>
+          <a class="text-link" href="#how" data-track="hero_how">See how it works</a>
         </div>
         <p class="fine">Flat fee, never per patient. 90 days, then month to month.</p>
       </div>
-      <figure class="implant">
-        <div class="parts">
-          <img class="p-crown" src="/img/implant-crown.webp" width="520" height="1441" alt="A dental implant in three parts: the crown, the abutment and the implant">
-          <img class="p-abutment" src="/img/implant-abutment.webp" width="520" height="1441" alt="">
-          <img class="p-fixture" src="/img/implant-fixture.webp" width="520" height="1441" alt="">
+
+      <div class="stage" aria-label="Example workflow: an implant ad, a call within 60 seconds, a booked consult" role="img">
+        <div class="panel">
+          <!-- Higgsfield loop slot (desktop only; phones and reduced motion keep the still panel). Drop the files in /media/ and uncomment:
+          <video class="panel-video" muted loop playsinline preload="none" poster="/media/hero-panel-poster.webp">
+            <source src="/media/hero-panel.mp4" type="video/mp4">
+          </video>
+          -->
+          <span class="panel-tag">Example workflow</span>
         </div>
-        <figcaption>
-          <span class="tag t-crown">Booked consults on your calendar</span>
-          <span class="tag t-abutment">A call or text within 60 seconds</span>
-          <span class="tag t-fixture">Implant ads, ready in 72 hours</span>
-        </figcaption>
-      </figure>
+        <svg class="wire" viewBox="0 0 520 440" aria-hidden="true">
+          <path class="wire-path" d="M170 142 C 206 118, 198 92, 238 86 L 404 110 C 436 138, 432 168, 424 196"/>
+          <circle class="signal-halo" r="11" cx="170" cy="142"/>
+          <circle class="signal" r="5" cx="170" cy="142"/>
+        </svg>
+        <div class="ad-card">
+          <img src="/img/ads/ad-1.webp" width="720" height="964" alt="Sample implant ad for a made-up practice: Don't Get Dental Implants Without Knowing These 5 Things">
+        </div>
+        <div class="notif">
+          <span class="notif-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+          <div class="notif-text"><b>New implant patient</b><span>From your ad. Press 1 to connect.</span></div>
+          <time>now</time>
+        </div>
+        <span class="booked">Booked</span>
+        <div class="cal">
+          <div class="cal-day">Thursday</div>
+          <div class="cal-hour"><span>9 AM</span><span></span></div>
+          <div class="cal-hour"><span>10 AM</span><div class="cal-event"><b>Implant consult</b><i>New patient, 10:30</i></div></div>
+          <div class="cal-hour"><span>11 AM</span><span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="work" id="work" aria-labelledby="work-title">
+    <div class="wrap work-head">
+      <h2 id="work-title">Built on ads that already work.</h2>
+      <p>Every ad we make is modeled on implant ads that have run for months in Meta's Ad Library. Practices don't keep paying for ads that don't book consults. These samples are for made-up practices.</p>
+    </div>
+    <div class="reel">
+      <div class="track" id="track">
+        <div class="rail" id="rail">
+          <figure class="slot">
+            <div class="ad-frame"><img src="/img/ads/ad-1.webp" width="720" height="964" loading="lazy" alt="Sample implant ad for a made-up practice: Don't Get Dental Implants Without Knowing These 5 Things"></div>
+            <figcaption><b>Vellora Implant Studio</b>, sample ad<span class="proof">Modeled on an ad running 290+ days</span></figcaption>
+          </figure>
+          <figure class="slot">
+            <div class="ad-frame"><img src="/img/ads/ad-2.webp" width="720" height="964" loading="lazy" alt="Sample implant ad for a made-up practice: What Do Dental Implants Really Cost?"></div>
+            <figcaption><b>Avenelle Dental</b>, sample ad<span class="proof">Modeled on an ad running 290+ days</span></figcaption>
+          </figure>
+          <figure class="slot">
+            <div class="ad-frame"><img src="/img/ads/ad-3.webp" width="720" height="964" loading="lazy" alt="Sample implant ad for a made-up practice: Your Implant Plan In One Visit"></div>
+            <figcaption><b>Cairnwell Dental</b>, sample ad<span class="proof">Modeled on an ad running 290+ days</span></figcaption>
+          </figure>
+          <figure class="slot">
+            <div class="ad-frame"><img src="/img/ads/ad-4.webp" width="720" height="964" loading="lazy" alt="Sample implant ad for a made-up practice: What Most Patients Don't Know Before Getting Dental Implants"></div>
+            <figcaption><b>Orison Dental</b>, sample ad<span class="proof">Modeled on an ad running 130+ days</span></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="wrap reel-controls">
+        <button class="icon-btn" type="button" id="reel-pause" aria-pressed="false" aria-label="Pause the gallery" data-track="gallery_pause">
+          <svg class="i-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="i-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:none"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button class="icon-btn" type="button" id="reel-prev" aria-label="Previous ad" data-track="gallery_prev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+        <button class="icon-btn" type="button" id="reel-next" aria-label="Next ad" data-track="gallery_next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
     </div>
   </section>
 
@@ -357,7 +502,7 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
           <p class="cap">Your front desk's phone rings. Press 1 and you're talking.</p>
         </li>
         <li class="frame">
-          <div class="screen cal" aria-hidden="true">
+          <div class="screen cal-screen" aria-hidden="true">
             <div class="sc-head">Thursday</div>
             <div class="hour first"><span>9 AM</span><span></span></div>
             <div class="hour"><span>10 AM</span><div class="event"><b>Implant consult</b><span>New patient, 10:30</span></div></div>
@@ -387,6 +532,10 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
         <div>
           <dt>If we fall short</dt>
           <dd>We keep everything running for three more months at no fee. It's free work, not a refund.</dd>
+        </div>
+        <div>
+          <dt>What stays separate</dt>
+          <dd>You pay Meta directly, including during free months. The guarantee covers our fee.</dd>
         </div>
       </dl>
     </div>
@@ -419,7 +568,7 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
         </div>
         <div>
           <dt>We already have a marketing agency.</dt>
-          <dd>Keep them. We can start by booking the new patients they already send you.</dd>
+          <dd>Keep them for everything else. We run your implant ads and the 60-second reply.</dd>
         </div>
         <div>
           <dt>Is it HIPAA compliant?</dt>
@@ -441,8 +590,14 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
     <div class="wrap intake-grid">
       <div>
         <h2>See if you're a good fit</h2>
-        <p class="sub">Two questions. About 10 seconds.</p>
-        <p class="next">If it's a fit, you'll pick a time for a short call with Elijah.</p>
+        <p class="sub">Two questions. If it's a fit, you pick a time for a short call.</p>
+        <div class="founder no-photo">
+          <!-- Headshot slot: add <img class="f-photo" src="/img/elijah.webp" width="152" height="152" alt="Elijah Pitts"> here and remove the no-photo class. -->
+          <div>
+            <h3>You work with me directly.</h3>
+            <p>Elijah Pitts, founder. I build your ads, set up the 60-second reply and send your Monday scoreboard myself.</p>
+          </div>
+        </div>
       </div>
       <div class="intake-card">
         <form id="intake-form" novalidate>
@@ -461,22 +616,18 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
             </div>
           </fieldset>
           <p class="form-error" id="form-error" hidden>Answer both questions to check your fit.</p>
-          <button class="btn" type="submit" id="check-btn">Check my fit</button>
+          <button class="btn" type="submit" id="check-btn" data-track="fit_submit">Check my fit</button>
         </form>
 
         <div class="result" id="result-open" hidden>
-          <h3>You're a good fit.</h3>
-          <p>Add your name and email, then pick a time for a short call with Elijah. We'll walk through your numbers and what the first 90 days would look like for your practice.</p>
-          <div class="fields">
-            <label for="lead-name">Your name<input id="lead-name" type="text" autocomplete="name" placeholder="Dr. Jane Smith"></label>
-            <label for="lead-email">Email<input id="lead-email" type="email" autocomplete="email" placeholder="you@yourpractice.com"></label>
-          </div>
-          <a class="btn" id="book-link" href="https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1" target="_blank" rel="noopener">Pick a time</a>
+          <h3 tabindex="-1" id="result-open-title">You're a good fit.</h3>
+          <p>Pick a time for a short call with Elijah. We'll walk through your numbers and what the first 90 days would look like for your practice.</p>
+          <a class="btn" id="book-link" href="https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1" target="_blank" rel="noopener" data-track="pick_a_time">Pick a time</a>
         </div>
 
         <div class="result" id="result-closed" hidden>
-          <h3>Thanks for checking.</h3>
-          <p>Right now we only work with owners of practices that offer implants. If that changes, write to <a href="mailto:elijah@sovrngrowth.com">elijah@sovrngrowth.com</a>.</p>
+          <h3 tabindex="-1" id="result-closed-title">Thanks for checking.</h3>
+          <p>Right now we only work with owners of practices that offer implants. If that changes, write to <a href="mailto:elijah@sovrngrowth.com" data-track="email_nonfit">elijah@sovrngrowth.com</a>.</p>
         </div>
       </div>
     </div>
@@ -486,7 +637,7 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 <footer class="foot">
   <div class="wrap">
     <p>SOVRN Growth, a trade name of Lux Eterna LLC<br>110 N Interstate 35, Suite 315-1083, Round Rock, TX 78681</p>
-    <p><a href="tel:+15128820814">(512) 882-0814</a><br><a href="mailto:elijah@sovrngrowth.com">elijah@sovrngrowth.com</a></p>
+    <p><a href="tel:+15128820814" data-track="footer_phone">(512) 882-0814</a><br><a href="mailto:elijah@sovrngrowth.com" data-track="footer_email">elijah@sovrngrowth.com</a></p>
     <p class="links"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></p>
     <p class="fn"><sup>1</sup> ADA fee survey data, as published by Pearl, updated May 2026.</p>
   </div>
@@ -494,23 +645,152 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 
 <script>
 (function () {
+  // Tracking hook: every element with data-track reports a named event to Vercel Web Analytics if it's installed; otherwise nothing happens.
+  function track(name) {
+    try { if (window.va) window.va('event', { name: name }); } catch (e) {}
+  }
+  window.sovrnTrack = track;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('[data-track]') : null;
+    if (el) track(el.getAttribute('data-track'));
+  });
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var small = window.matchMedia('(max-width: 760px)');
+
+  // Hero: one signal travels from the ad to the reply to the calendar, once, then the consult shows as booked.
+  var stage = document.querySelector('.stage');
+  if (stage && !reduce.matches && !small.matches) {
+    var path = stage.querySelector('.wire-path');
+    var dot = stage.querySelector('.signal');
+    var halo = stage.querySelector('.signal-halo');
+    var len = path.getTotalLength();
+    var start = null, delay = 700, dur = 2600;
+    stage.classList.add('playing');
+    var step = function (t) {
+      if (start === null) start = t;
+      var p = Math.min(1, Math.max(0, (t - start - delay) / dur));
+      var e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      var pt = path.getPointAtLength(e * len);
+      dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y);
+      halo.setAttribute('cx', pt.x); halo.setAttribute('cy', pt.y);
+      if (p > 0 && p < 1) { dot.style.opacity = 1; halo.style.opacity = 1; }
+      if (p < 1) { requestAnimationFrame(step); return; }
+      dot.style.opacity = 0; halo.style.opacity = 0;
+      stage.classList.remove('playing');
+      stage.classList.add('landed');
+      setTimeout(function () { stage.classList.remove('landed'); }, 1600);
+    };
+    requestAnimationFrame(step);
+  }
+
+  // Hero panel video (when the file is added): desktop only, never with reduced motion, paused when off screen.
+  var panelVideo = document.querySelector('.panel-video');
+  if (panelVideo) {
+    if (reduce.matches || small.matches) {
+      panelVideo.remove();
+    } else if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) panelVideo.play().catch(function () {}); else panelVideo.pause(); });
+      }, { threshold: 0.25 }).observe(panelVideo);
+    }
+  }
+
+  // Gallery: a slow drift on desktop (pause on hover, focus, button or manual navigation); native swipe on phones and with reduced motion.
+  var track_ = document.getElementById('track');
+  var rail = document.getElementById('rail');
+  var pauseBtn = document.getElementById('reel-pause');
+  var prevBtn = document.getElementById('reel-prev');
+  var nextBtn = document.getElementById('reel-next');
+  var originals = Array.prototype.slice.call(rail.children);
+  var GAP = 24, SPEED = 0.018; // px per ms (about 18 px a second)
+  var drift = !reduce.matches && !small.matches;
+  var paused = false, hovering = false, inView = false, x = 0, last = null, tween = null;
+
+  function stepWidth() { return originals[0].getBoundingClientRect().width + GAP; }
+  function setWidth() { return stepWidth() * originals.length; }
+
+  function setPaused(v) {
+    paused = v;
+    pauseBtn.setAttribute('aria-pressed', v ? 'true' : 'false');
+    pauseBtn.setAttribute('aria-label', v ? 'Play the gallery' : 'Pause the gallery');
+    pauseBtn.querySelector('.i-pause').style.display = v ? 'none' : '';
+    pauseBtn.querySelector('.i-play').style.display = v ? '' : 'none';
+  }
+
+  if (drift) {
+    originals.forEach(function (slot) {
+      var c = slot.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      c.setAttribute('inert', '');
+      rail.appendChild(c);
+    });
+    var frame = function (t) {
+      if (last !== null && !paused && !hovering && inView && !document.hidden && !tween) {
+        x -= (t - last) * SPEED;
+        var w = setWidth();
+        if (-x >= w) x += w;
+        rail.style.transform = 'translate3d(' + x + 'px,0,0)';
+      }
+      last = t;
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+    track_.addEventListener('mouseenter', function () { hovering = true; });
+    track_.addEventListener('mouseleave', function () { hovering = false; });
+    track_.addEventListener('focusin', function () { setPaused(true); });
+    var slide = function (dir) {
+      setPaused(true);
+      var from = x, to = x - dir * stepWidth(), t0 = null, w = setWidth();
+      if (to > 0) { from -= w; to -= w; }
+      if (-to >= w) { from += w; to += w; }
+      tween = function (t) {
+        if (t0 === null) t0 = t;
+        var p = Math.min(1, (t - t0) / 420), e = 1 - Math.pow(1 - p, 3);
+        x = from + (to - from) * e;
+        rail.style.transform = 'translate3d(' + x + 'px,0,0)';
+        if (p < 1) requestAnimationFrame(tween); else tween = null;
+      };
+      requestAnimationFrame(tween);
+    };
+    prevBtn.addEventListener('click', function () { slide(-1); });
+    nextBtn.addEventListener('click', function () { slide(1); });
+    pauseBtn.addEventListener('click', function () { setPaused(!paused); });
+  } else {
+    track_.classList.add('native');
+    pauseBtn.hidden = true;
+    prevBtn.addEventListener('click', function () { track_.scrollBy({ left: -stepWidth(), behavior: reduce.matches ? 'auto' : 'smooth' }); });
+    nextBtn.addEventListener('click', function () { track_.scrollBy({ left: stepWidth(), behavior: reduce.matches ? 'auto' : 'smooth' }); });
+  }
+
+  // Ad videos: muted, only while visible, one at a time; everything pauses when the gallery leaves the screen.
+  var videos = Array.prototype.slice.call(rail.querySelectorAll('figure:not([aria-hidden]) video'));
+  function playBest() {
+    if (!inView || reduce.matches) { videos.forEach(function (v) { v.pause(); }); return; }
+    var best = null, bestRatio = 0;
+    videos.forEach(function (v) {
+      var r = v.getBoundingClientRect();
+      var visible = Math.max(0, Math.min(r.right, window.innerWidth) - Math.max(r.left, 0)) / (r.width || 1);
+      if (visible > bestRatio) { bestRatio = visible; best = v; }
+    });
+    videos.forEach(function (v) { if (v === best && bestRatio > 0.6) { v.muted = true; v.play().catch(function () {}); } else v.pause(); });
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      inView = entries[0].isIntersecting;
+      playBest();
+    }, { threshold: 0.15 }).observe(track_);
+  } else {
+    inView = true;
+  }
+  if (videos.length) setInterval(playBest, 1000);
+  document.addEventListener('visibilitychange', function () { if (document.hidden) videos.forEach(function (v) { v.pause(); }); });
+
+  // Fit check: two questions; a fit goes straight to Calendly.
   var form = document.getElementById('intake-form');
   var error = document.getElementById('form-error');
   var open = document.getElementById('result-open');
   var closed = document.getElementById('result-closed');
-  var nameInput = document.getElementById('lead-name');
-  var emailInput = document.getElementById('lead-email');
-  var book = document.getElementById('book-link');
-  var base = 'https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1';
-
-  function updateLink() {
-    var params = [];
-    if (nameInput.value.trim()) params.push('name=' + encodeURIComponent(nameInput.value.trim()));
-    if (emailInput.value.trim()) params.push('email=' + encodeURIComponent(emailInput.value.trim()));
-    book.href = params.length ? base + '?' + params.join('&') : base;
-  }
-  nameInput.addEventListener('input', updateLink);
-  emailInput.addEventListener('input', updateLink);
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -520,14 +800,19 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
       error.hidden = false;
       open.hidden = true;
       closed.hidden = true;
+      track('fit_incomplete');
+      var firstMissing = !owner ? document.getElementById('owner-yes') : document.getElementById('implants-yes');
+      firstMissing.focus();
       return;
     }
     error.hidden = true;
     var qualified = owner === 'yes' && implants === 'yes';
     open.hidden = !qualified;
     closed.hidden = qualified;
-    (qualified ? open : closed).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    if (qualified) nameInput.focus({ preventScroll: true });
+    track(qualified ? 'fit_result_yes' : 'fit_result_no');
+    var shown = qualified ? open : closed;
+    shown.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'nearest' });
+    document.getElementById(qualified ? 'result-open-title' : 'result-closed-title').focus({ preventScroll: true });
   });
 })();
 </script>
