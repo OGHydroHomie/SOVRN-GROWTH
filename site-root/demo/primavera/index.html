@@ -146,12 +146,8 @@ a { color: inherit; }
 .plan { background: #fff; border: 1px solid #d6e3f2; border-radius: 24px; padding: 28px; box-shadow: 0 30px 60px -40px rgb(11 37 69 / 0.45); display: flex; flex-direction: column; gap: 6px; }
 .plan.best { border: 2px solid var(--navy); }
 .plan .k { font-size: 15px; font-weight: 700; color: var(--cobalt); }
-/* Sale price: the standard price sits small and quiet above, so the founding price reads first */
-.plan .was { margin-top: 10px; font-size: 16px; font-weight: 600; line-height: 1.2; color: var(--slate); font-variant-numeric: tabular-nums; }
-.plan .was s { text-decoration-thickness: 1.5px; }
-.plan .price { font-size: 50px; line-height: 1; font-weight: 800; font-stretch: 100%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.plan .price { margin-top: 8px; font-size: 50px; line-height: 1; font-weight: 800; font-stretch: 100%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .plan .price small { font-size: 18px; font-weight: 600; color: var(--slate); letter-spacing: 0; display: block; margin-top: 10px; }
-.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .plan p { color: var(--slate); font-size: 16px; }
 .plan .btn { margin-top: 16px; }
 .notes { margin-top: 26px; color: var(--slate); font-size: 16px; max-width: 66ch; display: grid; gap: 8px; }
@@ -349,21 +345,19 @@ footer a { color: #fff; }
     <div class="wrap">
       <div class="step-head"><span class="n">6</span><div>
         <h2>Getting started</h2>
-        <p class="say">Standard pricing is $6,000 a month. As one of the first three founding practices, you're at $5,000, locked for 12 months. A flat fee, never per patient.</p>
+        <p class="say">As one of our first three founding practices, you're at $5,000 a month, locked for 12 months. Practices that join after the first three pay $6,000. A flat fee, never per patient.</p>
       </div></div>
       <div class="body">
         <p class="recap"><b>At your numbers, <span id="s-break">5</span> <span id="s-break-unit">cases pay</span> for all 90 days.</b> We're on the hook for 30 booked consults, or months four through six are free.</p>
         <div class="plans">
           <div class="plan best">
             <span class="k">Pay in full, save $3,000</span>
-            <span class="was"><span class="sr-only">Standard price </span><s>$15,000</s></span>
             <span class="price">$12,000 <small>for 90 days</small></span>
             <p>Everything for the first 90 days, paid once.</p>
             <a class="btn" href="https://buy.stripe.com/4gMfZjbYG4Fp3qeavR9ws09" target="_blank" rel="noopener">Start with one payment</a>
           </div>
           <div class="plan">
             <span class="k">Monthly</span>
-            <span class="was"><span class="sr-only">Standard price </span><s>$6,000</s></span>
             <span class="price">$5,000 <small>a month for 3 months</small></span>
             <p>Then month to month at the same founding rate.</p>
             <a class="btn ghost" href="https://buy.stripe.com/dRm4gB6Em2xhbWK6fB9ws0a" target="_blank" rel="noopener">Start monthly</a>
@@ -374,14 +368,12 @@ footer a { color: #fff; }
           <div class="plans">
             <div class="plan">
               <span class="k">Pay in full</span>
-              <span class="was"><span class="sr-only">Standard price </span><s>$18,500</s></span>
               <span class="price">$16,000 <small>for 90 days</small></span>
               <p>Full-arch interest only counts toward the 30. Ad budget at least $5,000 a month.</p>
               <a class="btn ghost" href="https://buy.stripe.com/8x27sNfaSefZaSG8nJ9ws0b" target="_blank" rel="noopener">Start with one payment</a>
             </div>
             <div class="plan">
               <span class="k">Monthly</span>
-              <span class="was"><span class="sr-only">Standard price </span><s>$7,500</s></span>
               <span class="price">$6,500 <small>a month for 3 months</small></span>
               <p>Then month to month at the same founding rate.</p>
               <a class="btn ghost" href="https://buy.stripe.com/28EfZjaUC9ZJ5ymgUf9ws0c" target="_blank" rel="noopener">Start monthly</a>
