@@ -187,6 +187,10 @@ h2 { margin-top: 10px; font-size: clamp(32px, 3.8vw, 50px); font-weight: 800; fo
 .contact { margin-top: 40px; font-size: 18px; color: var(--slate); }
 .contact a { color: var(--navy); font-weight: 700; }
 
+/* When saved as a PDF, keep each block whole and each heading with what follows it */
+section, .console, .flow li, .features > div, .call, .office, .ads figure, .terms > div, .timeline li, .price-card, .side, .qa > div, .steps li { break-inside: avoid; }
+h2, .lead, .kicker { break-after: avoid; }
+
 footer { background: var(--abyss); color: rgb(255 255 255 / 0.7); font-size: 14px; }
 footer .wrap { padding-top: 28px; padding-bottom: 36px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
 footer a { color: #fff; }
