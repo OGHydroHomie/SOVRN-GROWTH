@@ -73,6 +73,10 @@ a { color: inherit; }
 .receipt span { font-size: 13px; line-height: 1.35; color: rgb(255 255 255 / 0.6); }
 .receipt em { display: block; font-style: normal; font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
 .why { margin-top: 10px; font-size: 16px; line-height: 1.5; color: rgb(255 255 255 / 0.8); }
+.exhibit.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 40px; align-items: center; }
+.exhibit.wide .placard { margin: 0; }
+.phone { padding: 10px; border-radius: 40px; background: #1b2028; box-shadow: 0 40px 80px -30px rgb(0 0 0 / 0.9), inset 0 0 0 1px rgb(255 255 255 / 0.08); }
+.phone video { display: block; width: 100%; height: auto; border-radius: 30px; }
 .gallery-note { margin-top: 40px; font-size: 15px; color: rgb(255 255 255 / 0.6); }
 /* (older single-ad styles kept for the fallback frame) */
 .ads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; max-width: 760px; }
@@ -131,8 +135,11 @@ footer a { color: #fff; }
   .n { width: 44px; height: 44px; font-size: 18px; }
   .live, .terms, .plans { grid-template-columns: minmax(0, 1fr); }
   .choose { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-bottom: 32px; }
-  .exhibits { grid-template-columns: repeat(4, 82%); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; max-width: none; margin-right: -20px; padding-right: 20px; }
+  .exhibits { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; max-width: none; margin-right: -20px; padding-right: 20px; }
   .exhibit { scroll-snap-align: start; }
+  .exhibit.wide { grid-column: auto; display: block; }
+  .exhibit.wide .placard { margin: 14px 10px 0; }
+  .phone { max-width: 260px; margin: 10px auto 0; }
   .spot { padding: 10px; }
   .placard { margin: 14px 10px 0; }
   .ads { grid-template-columns: repeat(4, 78%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
@@ -167,7 +174,7 @@ footer a { color: #fff; }
   <section class="step gallery" id="ad">
     <div class="wrap">
       <div class="step-head"><span class="n">1</span><div>
-        <h2>Four ads, built for Primavera</h2>
+        <h2>Your ads, built for Primavera</h2>
         <p class="say">Each one is modeled on an implant ad that's been running for months. That's the only test that matters: practices stop paying for ads that don't book consults.</p>
       </div></div>
       <div class="body">
@@ -207,6 +214,14 @@ footer a { color: #fff; }
               <h3>The editorial read</h3>
               <p class="receipt"><b>136</b><span><em>days running</em>Original: Nuvia's "what patients often miss" ad, Meta Ad Library</span></p>
               <p class="why">It reads like advice, not an ad, so it reaches patients early in their research, before they've picked a practice.</p>
+            </figcaption>
+          </figure>
+          <figure class="exhibit wide">
+            <div class="phone"><video src="/demo/primavera/video-5-things.mp4" poster="/demo/primavera/video-5-things.jpg" width="720" height="1280" autoplay muted loop playsinline preload="metadata" aria-label="12-second video version of the 5 things ad for Primavera"></video></div>
+            <figcaption class="placard">
+              <h3>The video cut</h3>
+              <p class="receipt"><b>12</b><span><em>seconds, made for Reels and Stories</em>Same proven angle as the "5 things" ad: 294 days running for Nuvia</span></p>
+              <p class="why">The hook, the five things one at a time, then Primavera's name and a booking button. Built for Reels, where people watch with the sound off, and it gives the hook a second chance with patients who scrolled past the photo.</p>
             </figcaption>
           </figure>
         </div>
@@ -330,6 +345,9 @@ footer a { color: #fff; }
   </div>
 </footer>
 
+<script>
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { document.querySelectorAll('.phone video').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; }); }
+</script>
 <!-- Same chat widget as the home page: it starts the 60-second call demo in step 3. -->
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6ad53787d28aca7d19fffafb" data-source="WEB_USER"></script>
 </body>
