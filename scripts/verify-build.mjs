@@ -90,6 +90,7 @@ for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
   // The Primavera proposal stays private, and the agreement it links to ships with it.
   assert.ok(read('proposal/primavera').includes('<meta name="robots" content="noindex, nofollow">'), 'verify-build: the Primavera proposal must be noindex');
   assert.ok(existsSync(new URL('../dist/proposal/primavera/SOVRN-Growth-Agreement-Primavera.pdf', import.meta.url)), 'verify-build: the Primavera agreement PDF is missing');
+  assert.ok(read('proposal/primavera').includes("tel: '+15124003799'"), 'verify-build: the Primavera proposal must carry Sofia\'s demo line');
 }
 
 // HVAC archive: the original site, served under /hvac/.
