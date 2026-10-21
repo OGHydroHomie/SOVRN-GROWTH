@@ -56,7 +56,7 @@ a { color: inherit; }
 .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 
 /* Step 1: the ad */
-.ads { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.ads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; max-width: 760px; }
 .ads img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 30px 60px -34px rgb(11 37 69 / 0.5); }
 .ad-frame { width: min(420px, 100%); border-radius: 22px; overflow: hidden; box-shadow: 0 30px 60px -34px rgb(11 37 69 / 0.5); border: 1px solid var(--line); background: var(--mist); }
 .ad-frame img { display: block; width: 100%; height: auto; }
@@ -111,7 +111,7 @@ footer a { color: #fff; }
   .step-head { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; }
   .n { width: 44px; height: 44px; font-size: 18px; }
   .live, .terms, .plans { grid-template-columns: minmax(0, 1fr); }
-  .ads { grid-template-columns: repeat(3, 78%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .ads { grid-template-columns: repeat(4, 78%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
   .ads img { scroll-snap-align: start; }
   .timeline { grid-template-columns: minmax(0, 1fr); }
   .timeline::before { left: 7px; right: auto; top: 8px; bottom: 26px; width: 2px; height: auto; }
@@ -151,6 +151,7 @@ footer a { color: #fff; }
           <img src="/demo/primavera/ad.png" width="896" height="1200" alt="Implant ad: Don't get dental implants without knowing these 5 things">
           <img src="/demo/primavera/ad-2.png" width="896" height="1200" alt="Implant ad: What do dental implants really cost?">
           <img src="/demo/primavera/ad-3.png" width="896" height="1200" alt="Implant ad: Your implant plan in one visit">
+          <img src="/demo/primavera/ad-4.png" width="896" height="1200" alt="Implant ad: What most patients don't know before getting dental implants">
         </div>
       </div>
     </div>
