@@ -253,7 +253,7 @@ footer a { color: #fff; }
   footer .wrap { padding: 12px 0; }
 }
 
-/* Office count: the price card works out setup and monthly for each practice */
+/* Office count: the price card works out the start and monthly price for each practice */
 .calc { margin-top: 26px; display: grid; gap: 14px; padding: 18px 20px; border-radius: 20px; background: rgb(255 255 255 / 0.06); border: 1px solid rgb(255 255 255 / 0.12); }
 .calc-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .calc-row > span { font-size: 16px; color: rgb(255 255 255 / 0.78); }
@@ -401,9 +401,9 @@ footer a { color: #fff; }
       <h2>Simple pricing, flat fees</h2>
       <div class="invest">
         <div class="price-card">
-          <span class="label">One-time setup</span>
+          <span class="label">To get started</span>
           <span class="price">$3,500</span>
-          <span class="monthly">Your first month is included. Then $750 a month per office.</span>
+          <span class="monthly">Your custom build and first three months. Then $750 a month per office.</span>
           <div class="calc" aria-labelledby="calc-label">
             <div class="calc-row">
               <span id="calc-label">How many offices?</span>
@@ -414,8 +414,8 @@ footer a { color: #fff; }
               </div>
             </div>
             <div class="totals">
-              <div><b id="t-setup">$3,500</b><span>Setup + month one</span></div>
-              <div><b id="t-monthly">$750</b><span>Each month after</span></div>
+              <div><b id="t-setup">$3,500</b><span>Build + first three months</span></div>
+              <div><b id="t-monthly">$750</b><span>Each month after that</span></div>
             </div>
           </div>
           <ul class="included">
@@ -431,8 +431,9 @@ footer a { color: #fff; }
           <a class="btn light" href="#next">Get yours built</a>
         </div>
         <div class="terms-side">
-          <div class="side"><b>Term</b><p>A three-month minimum, counted from go-live with your first month included, then month to month. Cancel anytime after that with 30 days' notice.</p></div>
-          <div class="side"><b>Credited in full</b><p>Add our implant growth package within 60 days, and your entire $3,500 setup is credited toward it.</p></div>
+          <div class="side"><b>Love it or your money back</b><p>If you're not happy in your first 30 days live, tell us and we refund your $3,500 in full.</p></div>
+          <div class="side"><b>Term</b><p>Your first three months live are included in the $3,500. After that, it's month to month. Cancel anytime with 30 days' notice.</p></div>
+          <div class="side"><b>Credited in full</b><p>Add our implant growth package within 60 days, and the full $3,500 is credited toward it.</p></div>
           <div class="side"><b>A flat fee</b><p>Never per call, per patient or per booking. No surprise bills.</p></div>
           <div class="side"><b>Patient privacy</b><p>We sign a HIPAA Business Associate Agreement with you before she takes a single patient call.</p></div>
         </div>
@@ -447,7 +448,7 @@ footer a { color: #fff; }
       <dl class="terms">
         <div><dt>What's added</dt><dd>Implant ads and video managed daily, a booking page under your name, and a callback within 60 seconds of every form.</dd></div>
         <div><dt>The guarantee</dt><dd>30 booked implant consults in your first 90 days, or we work months four through six for free. Free work, not a refund.</dd></div>
-        <div><dt>Your setup fee</dt><dd>Credited in full toward the package when you add it within 60 days. Your AI receptionist comes included.</dd></div>
+        <div><dt>Your $3,500</dt><dd>Credited in full toward the package when you add it within 60 days. Your AI receptionist comes included.</dd></div>
       </dl>
       <p class="clock">Ask Elijah for a full-suite proposal built around your practice.</p>
     </div>
@@ -536,7 +537,7 @@ footer a { color: #fff; }
     label.textContent = 'Book a live demo';
   }
 
-  // Office count: one $3,500 setup (first month included) for any number of offices, then $750 a month per office.
+  // Office count: one $3,500 start (build + first three months) for any number of offices, then $750 a month per office.
   var count = Math.min(10, Math.max(1, parseInt(q.get('offices'), 10) || 1));
   var out = document.getElementById('off-count');
   var minus = document.getElementById('off-minus');
