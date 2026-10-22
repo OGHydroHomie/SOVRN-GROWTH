@@ -95,9 +95,11 @@ for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
   const rec = read('proposal/ai-receptionist');
   assert.ok(rec.includes('<meta name="robots" content="noindex, nofollow">'), 'verify-build: the AI receptionist proposal must be noindex');
   assert.ok(
-    rec.includes('Then $750 a month per office') && rec.includes('first three months') && rec.includes('first 30 days live'),
-    'verify-build: the AI receptionist proposal must state the monthly price, the three included months and the 30-day money-back guarantee'
+    rec.includes('Then $750 a month per office') && rec.includes('first three months') && rec.includes('first 14 days live'),
+    'verify-build: the AI receptionist proposal must state the monthly price, the three included months and the 14-day money-back guarantee'
   );
+  // Practice logos load by slug from this folder, so the ones we link to must ship.
+  assert.ok(existsSync(new URL('../dist/proposal/ai-receptionist/logos/ctp.png', import.meta.url)), 'verify-build: the Central Texas Periodontics logo is missing');
 }
 
 // HVAC archive: the original site, served under /hvac/.

@@ -277,6 +277,7 @@ footer a { color: #fff; }
   <div class="wrap">
     <div class="topbar">
       <div class="brand">SOVRN <span>Growth</span></div>
+      <img class="plogo" id="plogo" alt="" hidden>
     </div>
     <div class="hero-grid">
       <div>
@@ -431,7 +432,7 @@ footer a { color: #fff; }
           <a class="btn light" href="#next">Get yours built</a>
         </div>
         <div class="terms-side">
-          <div class="side"><b>Love it or your money back</b><p>If you're not happy in your first 30 days live, tell us and we refund your $3,500 in full.</p></div>
+          <div class="side"><b>Love it or your money back</b><p>Tell us anything that's not right, and we'll fix it within two business days. If you're still not happy within your first 14 days live, we refund your $3,500 in full.</p></div>
           <div class="side"><b>Term</b><p>Your first three months live are included in the $3,500. After that, it's month to month. Cancel anytime with 30 days' notice.</p></div>
           <div class="side"><b>Credited in full</b><p>Add our implant growth package within 60 days, and the full $3,500 is credited toward it.</p></div>
           <div class="side"><b>A flat fee</b><p>Never per call, per patient or per booking. No surprise bills.</p></div>
@@ -514,6 +515,15 @@ footer a { color: #fff; }
     document.getElementById('r-role').textContent = 'AI receptionist for ' + practice;
     document.getElementById('foot-for').textContent = 'SOVRN Growth, a trade name of Lux Eterna LLC. Prepared for ' + practice + '.';
     document.title = 'AI Receptionist for ' + practice + ' | SOVRN Growth';
+  }
+
+  // Practice logo, when we have one on file: ?logo=ctp loads /proposal/ai-receptionist/logos/ctp.png.
+  var logo = (q.get('logo') || '').toLowerCase();
+  if (/^[a-z0-9-]{1,40}$/.test(logo)) {
+    var plogo = document.getElementById('plogo');
+    plogo.alt = practice;
+    plogo.addEventListener('load', function () { plogo.hidden = false; });
+    plogo.src = '/proposal/ai-receptionist/logos/' + logo + '.png';
   }
 
   var num = document.getElementById('r-number');
