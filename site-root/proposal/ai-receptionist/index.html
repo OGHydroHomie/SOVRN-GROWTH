@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#06101f">
+<title>AI Receptionist Proposal | SOVRN Growth</title>
+<meta name="description" content="An AI receptionist built for your practice: every call answered, every implant consult booked.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b2545'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='16' font-weight='700' fill='%23ffffff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+<style>
+/* A private, reusable proposal for the AI receptionist on its own. Same system as the
+   Primavera proposal: a dark hero where she can be called live, then quiet light sections.
+   ?practice=, ?line=, ?offices= and ?name= personalize it per practice. */
+:root {
+  --abyss: #06101f;
+  --navy: #0b2545;
+  --cobalt: #1d5cc8;
+  --signal: #7fb0ff;
+  --ice: #eef4fc;
+  --paper: #ffffff;
+  --ink: #0b2545;
+  --slate: #4a5f7d;
+  --line: #d6e3f2;
+  --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+html.glide { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 18px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p, ol, ul, dl, dd { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; border-radius: 8px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; border: 1.5px solid transparent; font: inherit; font-size: 17px; font-weight: 700; font-stretch: 108%; text-decoration: none; cursor: pointer; transition: background-color .15s ease, border-color .15s ease, color .15s ease, transform .15s ease; }
+.btn:active { transform: translateY(1px); }
+.btn.primary { background: var(--cobalt); color: #fff; }
+.btn.primary:hover { background: #2a6be0; }
+.btn.light { background: #fff; color: var(--navy); }
+.btn.light:hover { background: var(--ice); }
+.btn.ghost { border-color: rgb(255 255 255 / 0.34); color: #fff; }
+.btn.ghost:hover { border-color: #fff; }
+.btn.dark { background: var(--navy); color: #fff; }
+.btn.dark:hover { background: var(--cobalt); }
+.btn.outline { border-color: var(--navy); color: var(--navy); }
+.btn.outline:hover { background: var(--navy); color: #fff; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; color: #fff; background:
+    radial-gradient(900px 520px at 78% 18%, rgb(29 92 200 / 0.42), rgb(29 92 200 / 0) 62%),
+    radial-gradient(700px 420px at 4% 96%, rgb(127 176 255 / 0.14), rgb(127 176 255 / 0) 64%),
+    var(--abyss); }
+.hero::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgb(255 255 255 / 0.045) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 60% 30%, #000 30%, transparent 78%); mask-image: radial-gradient(ellipse 80% 70% at 60% 30%, #000 30%, transparent 78%); }
+.hero .wrap { position: relative; padding-top: 26px; padding-bottom: 88px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.brand { font-size: 17px; font-weight: 800; font-stretch: 118%; letter-spacing: 0.01em; }
+.brand span { font-weight: 400; }
+.plogo { height: 54px; width: auto; filter: brightness(0) invert(1); opacity: 0.92; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); gap: 56px; align-items: center; margin-top: 72px; }
+.for { font-size: 16px; color: rgb(255 255 255 / 0.66); }
+.for b { color: #fff; font-weight: 600; }
+.hero h1 { margin-top: 18px; font-size: clamp(38px, 4.4vw, 60px); font-weight: 800; font-stretch: 110%; line-height: 1.02; letter-spacing: -0.022em; text-wrap: balance; }
+.hero .sub { margin-top: 22px; font-size: clamp(18px, 1.8vw, 21px); color: rgb(255 255 255 / 0.76); max-width: 40ch; }
+.hero .row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+
+/* Sofia console */
+.console { position: relative; border-radius: 30px; padding: 26px 26px 24px; background: linear-gradient(180deg, rgb(255 255 255 / 0.09), rgb(255 255 255 / 0.04)); border: 1px solid rgb(159 197 255 / 0.24); box-shadow: 0 50px 120px -50px rgb(29 92 200 / 0.75), inset 0 1px 0 rgb(255 255 255 / 0.10); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.console-head { display: flex; align-items: center; gap: 14px; }
+.avatar { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 30% 30%, #9cc3ff, var(--cobalt) 70%); font-weight: 800; font-size: 20px; font-stretch: 112%; color: #fff; box-shadow: 0 0 0 4px rgb(127 176 255 / 0.18); }
+.console-name { font-size: 20px; font-weight: 800; font-stretch: 108%; line-height: 1.15; }
+.console-role { font-size: 14px; color: rgb(255 255 255 / 0.62); }
+.status { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: rgb(74 222 128 / 0.12); color: #a7f3c4; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.status i { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 0 rgb(74 222 128 / 0.7); animation: ping 2s ease-out infinite; }
+@keyframes ping { 0% { box-shadow: 0 0 0 0 rgb(74 222 128 / 0.6); } 80%, 100% { box-shadow: 0 0 0 9px rgb(74 222 128 / 0); } }
+.wave { display: flex; align-items: center; justify-content: space-between; gap: 4px; height: 92px; margin: 22px 0 8px; }
+.wave span { flex: 1; min-width: 2px; height: calc(var(--h) * 1%); border-radius: 999px; background: linear-gradient(180deg, #b9d4ff, var(--cobalt)); opacity: 0.9; transform-origin: center; animation: talk 1.25s ease-in-out infinite; animation-delay: var(--d); }
+@keyframes talk { 0%, 100% { transform: scaleY(0.35); } 50% { transform: scaleY(1); } }
+.line-label { margin-top: 12px; font-size: 14px; color: rgb(255 255 255 / 0.62); }
+.number { display: block; margin-top: 2px; font-size: clamp(32px, 3.6vw, 44px); font-weight: 800; font-stretch: 104%; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; text-decoration: none; }
+.number:hover { color: var(--signal); }
+.try { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgb(255 255 255 / 0.12); display: grid; gap: 8px; }
+.try p { font-size: 14px; color: rgb(255 255 255 / 0.62); }
+.try ul { display: flex; flex-wrap: wrap; gap: 8px; }
+.try li { padding: 7px 12px; border-radius: 999px; background: rgb(255 255 255 / 0.08); border: 1px solid rgb(255 255 255 / 0.10); font-size: 14px; }
+.console .btn { width: 100%; margin-top: 18px; }
+
+/* Sections */
+section { padding: 104px 0; }
+.ice { background: var(--ice); }
+.kicker { font-size: 16px; font-weight: 700; color: var(--cobalt); }
+h2 { margin-top: 10px; font-size: clamp(32px, 3.8vw, 50px); font-weight: 800; font-stretch: 108%; line-height: 1.04; letter-spacing: -0.018em; text-wrap: balance; max-width: 22ch; }
+.lead { margin-top: 16px; font-size: 20px; color: var(--slate); max-width: 52ch; }
+
+/* The system: a real sequence, so it's numbered */
+.flow { margin-top: 56px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; position: relative; counter-reset: s; }
+.flow::before { content: ""; position: absolute; left: 26px; right: 26px; top: 26px; height: 2px; background: linear-gradient(90deg, var(--cobalt), var(--signal)); }
+.flow li { position: relative; padding-right: 22px; }
+.flow .dot { position: relative; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; background: var(--paper); border: 2px solid var(--cobalt); color: var(--cobalt); font-weight: 800; font-size: 20px; font-variant-numeric: tabular-nums; }
+.flow li:nth-child(4) .dot { background: var(--cobalt); color: #fff; box-shadow: 0 0 0 6px rgb(29 92 200 / 0.14); }
+.flow h3 { margin-top: 20px; font-size: 20px; font-weight: 800; font-stretch: 104%; line-height: 1.2; }
+.flow p { margin-top: 8px; font-size: 16px; color: var(--slate); }
+
+/* Sofia */
+.sofia-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 64px; align-items: start; margin-top: 52px; }
+.features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 34px; }
+.features dt { font-size: 19px; font-weight: 800; font-stretch: 104%; padding-top: 16px; border-top: 2px solid var(--navy); }
+.features dd { margin-top: 6px; font-size: 16px; color: var(--slate); }
+.call { border-radius: 26px; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 40px 80px -50px rgb(11 37 69 / 0.45); padding: 22px; }
+.call-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.call-top b { font-size: 16px; font-weight: 800; }
+.call-top span { font-size: 13px; color: var(--slate); }
+.bubbles { display: grid; gap: 10px; margin-top: 16px; }
+.bubble { max-width: 88%; padding: 11px 14px; border-radius: 18px; font-size: 15px; line-height: 1.45; }
+.bubble.caller { justify-self: end; background: var(--ice); border-bottom-right-radius: 6px; }
+.bubble.sofia { justify-self: start; background: var(--navy); color: #fff; border-bottom-left-radius: 6px; }
+.bubble.booked { justify-self: stretch; max-width: none; display: flex; align-items: center; gap: 10px; background: rgb(74 222 128 / 0.12); color: #146c3a; font-weight: 700; border-radius: 14px; }
+.bubble.booked svg { width: 18px; height: 18px; flex: none; }
+.offices { margin-top: 44px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 760px; }
+.office { padding: 18px 20px; border-radius: 18px; background: var(--paper); border: 1px solid var(--line); }
+.office b { display: block; font-size: 17px; }
+.office span { font-size: 15px; color: var(--slate); }
+
+/* Sofia's configuration: the settings we actually built, shown as a readout */
+.config { margin-top: 48px; border-radius: 26px; padding: 30px 32px 18px; background: radial-gradient(700px 300px at 100% 0%, rgb(29 92 200 / 0.35), rgb(29 92 200 / 0) 60%), var(--abyss); color: #fff; box-shadow: 0 40px 90px -50px rgb(6 16 31 / 0.85); }
+.config-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 20px; padding-bottom: 18px; border-bottom: 1px solid rgb(255 255 255 / 0.14); }
+.config-head h3 { font-size: 22px; font-weight: 800; font-stretch: 106%; }
+.config-head p { font-size: 15px; color: rgb(255 255 255 / 0.62); }
+.config dl { display: grid; grid-template-columns: 190px minmax(0, 1fr); }
+.config dt, .config dd { padding: 14px 0; border-bottom: 1px solid rgb(255 255 255 / 0.08); }
+.config dt { padding-right: 20px; font-size: 15px; font-weight: 700; color: var(--signal); }
+.config dd { font-size: 16px; line-height: 1.5; color: rgb(255 255 255 / 0.86); }
+.config dl > :nth-last-child(-n+2) { border-bottom: 0; }
+
+/* Ads */
+.ads { margin-top: 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.ads figure { margin: 0; }
+.ads img { display: block; width: 100%; height: auto; border-radius: 14px; box-shadow: 0 30px 60px -36px rgb(11 37 69 / 0.6); }
+.ads figcaption { margin-top: 12px; font-size: 15px; font-weight: 700; }
+.ads figcaption span { display: block; font-weight: 400; color: var(--slate); }
+
+/* Guarantee */
+.guarantee { background: radial-gradient(800px 420px at 85% 0%, rgb(29 92 200 / 0.38), rgb(29 92 200 / 0) 60%), var(--navy); color: #fff; }
+.guarantee .kicker { color: var(--signal); }
+.guarantee .big { margin-top: 14px; font-size: clamp(30px, 3.6vw, 48px); font-weight: 800; font-stretch: 106%; line-height: 1.1; letter-spacing: -0.015em; max-width: 26ch; text-wrap: balance; }
+.terms { margin-top: 48px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; }
+.terms dt { font-size: 18px; font-weight: 800; padding-top: 16px; border-top: 1px solid rgb(255 255 255 / 0.24); }
+.terms dd { margin-top: 6px; font-size: 16px; color: rgb(255 255 255 / 0.76); }
+.clock { margin-top: 34px; font-size: 17px; color: rgb(255 255 255 / 0.8); }
+
+/* Timeline */
+.timeline { margin-top: 52px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); position: relative; }
+.timeline::before { content: ""; position: absolute; left: 8px; right: 8px; top: 8px; height: 2px; background: var(--line); }
+.timeline li { position: relative; padding: 34px 14px 0 0; }
+.timeline li::before { content: ""; position: absolute; left: 0; top: 0; width: 18px; height: 18px; border-radius: 50%; background: var(--paper); border: 3px solid var(--cobalt); box-sizing: border-box; }
+.timeline li.now::before { background: var(--cobalt); }
+.timeline em { display: block; font-style: normal; font-size: 14px; font-weight: 700; color: var(--cobalt); }
+.timeline b { display: block; margin-top: 4px; font-size: 16px; line-height: 1.3; }
+
+/* Investment */
+.invest { margin-top: 52px; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 28px; align-items: stretch; }
+.price-card { border-radius: 30px; padding: 36px; background: radial-gradient(600px 300px at 100% 0%, rgb(29 92 200 / 0.40), rgb(29 92 200 / 0) 60%), var(--abyss); color: #fff; box-shadow: 0 50px 100px -60px rgb(6 16 31 / 0.9); }
+.price-card .label { font-size: 16px; font-weight: 700; color: var(--signal); }
+.price { display: block; margin-top: 10px; font-size: clamp(64px, 8vw, 104px); line-height: 0.95; font-weight: 800; font-stretch: 104%; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.price-note { margin-top: 12px; font-size: 18px; color: rgb(255 255 255 / 0.78); }
+.included { margin-top: 28px; padding-top: 24px; border-top: 1px solid rgb(255 255 255 / 0.14); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; }
+.included li { display: flex; gap: 10px; font-size: 16px; line-height: 1.35; }
+.included svg { width: 18px; height: 18px; flex: none; margin-top: 2px; color: #7ee2a8; }
+.price-card .btn { margin-top: 30px; }
+.terms-side { display: grid; gap: 14px; align-content: start; }
+.side { padding: 22px 24px; border-radius: 22px; background: var(--paper); border: 1px solid var(--line); }
+.side b { display: block; font-size: 18px; font-weight: 800; font-stretch: 104%; }
+.side p { margin-top: 6px; font-size: 16px; color: var(--slate); }
+
+/* Questions */
+.qa { margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; }
+.qa div { padding: 22px 0; border-top: 1px solid var(--line); }
+.qa dt { font-size: 19px; font-weight: 800; font-stretch: 104%; }
+.qa dd { margin-top: 8px; font-size: 16px; color: var(--slate); }
+
+/* Next steps */
+.next { background: linear-gradient(180deg, var(--paper) 0%, var(--ice) 100%); }
+.steps { margin-top: 48px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.steps li { border-radius: 24px; padding: 28px; background: var(--paper); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+.steps .n { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: #fff; font-weight: 800; font-variant-numeric: tabular-nums; }
+.steps h3 { font-size: 21px; font-weight: 800; font-stretch: 104%; }
+.steps p { font-size: 16px; color: var(--slate); flex: 1; }
+.steps .btn { align-self: flex-start; margin-top: 8px; }
+.contact { margin-top: 40px; font-size: 18px; color: var(--slate); }
+.contact a { color: var(--navy); font-weight: 700; }
+
+/* When saved as a PDF, keep each block whole and each heading with what follows it */
+section, .console, .flow li, .features > div, .call, .office, .ads figure, .terms > div, .timeline li, .price-card, .side, .qa > div, .steps li { break-inside: avoid; }
+h2, .lead, .kicker { break-after: avoid; }
+
+footer { background: var(--abyss); color: rgb(255 255 255 / 0.7); font-size: 14px; }
+footer .wrap { padding-top: 28px; padding-bottom: 36px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
+footer a { color: #fff; }
+
+@media (max-width: 980px) {
+  .hero-grid, .sofia-grid, .invest { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .flow { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .flow::before { left: 26px; right: auto; top: 26px; bottom: 26px; width: 2px; height: auto; background: linear-gradient(180deg, var(--cobalt), var(--signal)); }
+  .flow li { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 0 18px; padding: 0; }
+  .flow h3 { margin-top: 12px; }
+  .flow p { grid-column: 2; }
+  .flow h3 { grid-column: 2; grid-row: 1; }
+  .timeline { grid-template-columns: minmax(0, 1fr); }
+  .timeline::before { left: 8px; right: auto; top: 9px; bottom: 20px; width: 2px; height: auto; }
+  .timeline li { padding: 0 0 22px 36px; }
+  .timeline li::before { top: 2px; }
+  .ads { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  section { padding: 72px 0; }
+  .hero .wrap { padding-bottom: 64px; }
+  .hero-grid { margin-top: 48px; }
+  .plogo { height: 40px; }
+  .features, .terms, .qa, .steps, .offices, .included { grid-template-columns: minmax(0, 1fr); }
+  .config { padding: 24px 20px 10px; }
+  .config dl { grid-template-columns: minmax(0, 1fr); }
+  .config dt { padding-bottom: 2px; border-bottom: 0; }
+  .config dd { padding-top: 0; }
+  .price-card { padding: 28px 22px; }
+  .hero .row .btn { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.glide { scroll-behavior: auto; }
+  .wave span, .status i { animation: none; }
+  * { transition: none !important; }
+}
+@media print {
+  body { font-size: 12pt; }
+  .hero, .guarantee, .price-card, footer { background: #fff !important; color: var(--ink) !important; box-shadow: none !important; }
+  .hero::before, .wave, .status, .btn, .try { display: none !important; }
+  .hero .sub, .for, .console-role, .line-label, .terms dd, .clock, .price-note, .guarantee .kicker, .price-card .label { color: var(--slate) !important; }
+  .for b, .number { color: var(--ink) !important; }
+  .plogo { filter: none; }
+  .console { border: 1px solid var(--line); background: #fff; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .terms dt, .included { border-color: var(--line) !important; }
+  section { padding: 36px 0; break-inside: avoid; }
+  .ads img, .call { box-shadow: none; }
+  footer .wrap { padding: 12px 0; }
+}
+
+/* Office count: the price card works out setup and monthly for each practice */
+.calc { margin-top: 26px; display: grid; gap: 14px; padding: 18px 20px; border-radius: 20px; background: rgb(255 255 255 / 0.06); border: 1px solid rgb(255 255 255 / 0.12); }
+.calc-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.calc-row > span { font-size: 16px; color: rgb(255 255 255 / 0.78); }
+.stepper { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; border: 1px solid rgb(255 255 255 / 0.24); padding: 4px; }
+.stepper button { width: 38px; height: 38px; border-radius: 50%; border: 0; background: rgb(255 255 255 / 0.10); color: #fff; font: inherit; font-size: 20px; font-weight: 700; cursor: pointer; }
+.stepper button:hover { background: rgb(255 255 255 / 0.2); }
+.stepper button:disabled { opacity: 0.35; cursor: default; }
+.stepper output { min-width: 2.2ch; text-align: center; font-size: 19px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.totals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.totals div { padding-top: 12px; border-top: 1px solid rgb(255 255 255 / 0.14); }
+.totals b { display: block; font-size: 28px; font-weight: 800; font-stretch: 104%; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.totals span { font-size: 14px; color: rgb(255 255 255 / 0.66); }
+.monthly { display: block; margin-top: 6px; font-size: 22px; font-weight: 700; color: var(--signal); }
+.number.text { font-size: clamp(28px, 3vw, 36px); line-height: 1.12; margin-top: 6px; }
+@media (max-width: 680px) { .console-head { flex-wrap: wrap; } .console-head > div:nth-child(2) { flex: 1 1 0; min-width: 0; } .status { margin-left: 62px; } }
+@media print { .calc { border-color: var(--line); background: #fff; } .stepper button { display: none; } .totals span, .calc-row > span { color: var(--slate) !important; } .monthly { color: var(--ink) !important; } }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">SOVRN <span>Growth</span></div>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <p class="for" id="for">AI receptionist proposal<br>Prepared by Elijah Pitts, SOVRN Growth</p>
+        <h1>Every call answered. Every implant consult booked.</h1>
+        <p class="sub">An AI receptionist built for your practice in one afternoon. She answers whenever your team can't, books consults into your calendar and texts the confirmation before the patient hangs up.</p>
+        <div class="row">
+          <a class="btn light" href="#investment">See the pricing</a>
+          <a class="btn ghost" href="#how">How it works</a>
+        </div>
+      </div>
+      <aside class="console" aria-label="Call your AI receptionist">
+        <div class="console-head">
+          <div class="avatar" aria-hidden="true" id="r-initial">S</div>
+          <div>
+            <div class="console-name" id="r-name">Sofia</div>
+            <div class="console-role" id="r-role">Your AI receptionist</div>
+          </div>
+          <span class="status" id="r-status"><i aria-hidden="true"></i>Answering now</span>
+        </div>
+        <div class="wave" id="wave" aria-hidden="true"></div>
+        <p class="line-label" id="line-label">Call her right now</p>
+        <a class="number" id="r-number" href="#">Built in one afternoon</a>
+        <div class="try" id="r-try">
+          <p>Try any of these:</p>
+          <ul>
+            <li>Book an implant consult</li>
+            <li>"Do you take my insurance?"</li>
+            <li>Speak Spanish</li>
+            <li>"Are you a real person?"</li>
+          </ul>
+        </div>
+        <a class="btn primary" id="r-call" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          <span id="r-call-label">Call her</span>
+        </a>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="how">
+    <div class="wrap">
+      <p class="kicker">How it works</p>
+      <h2>From ring to booked consult in about two minutes</h2>
+      <p class="lead">Your number, your calendar and your team stay the same. She picks up the calls your front desk can't get to.</p>
+      <ol class="flow">
+        <li><span class="dot">1</span><h3>A patient calls</h3><p>Busy lines, lunch, after hours and weekends ring through to her instead of voicemail.</p></li>
+        <li><span class="dot">2</span><h3>She answers in seconds</h3><p>Warm, calm and in English or Spanish, introduced with your practice's name.</p></li>
+        <li><span class="dot">3</span><h3>She books the consult</h3><p>Spells back the name, reads back the number and offers two open times from your calendar.</p></li>
+        <li><span class="dot">4</span><h3>The confirmation lands</h3><p>A text with the day and time arrives before the patient puts the phone down.</p></li>
+        <li><span class="dot">5</span><h3>Your team sees everything</h3><p>A recording, transcript and summary of every call, so nothing slips between shifts.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="ice" id="receptionist">
+    <div class="wrap">
+      <p class="kicker">Your AI receptionist</p>
+      <h2>A front desk that never misses a call</h2>
+      <p class="lead">Built for the office manager's day: fewer interruptions, no missed new patients, and a record of every conversation.</p>
+      <div class="sofia-grid">
+        <dl class="features">
+          <div><dt>Books implant consults</dt><dd>Asks what's going on, which office is easier and offers two specific times.</dd></div>
+          <div><dt>Gets the details right</dt><dd>Spells back every last name and reads back every phone number before booking.</dd></div>
+          <div><dt>Answers your FAQs</dt><dd>Hours, offices, insurance and membership plans, answered the way your team would.</dd></div>
+          <div><dt>English and Spanish</dt><dd>Switches when a caller speaks Spanish, and asks if she isn't sure.</dd></div>
+          <div><dt>Handles emergencies</dt><dd>Asks about pain, swelling and bleeding, books urgent visits and transfers true emergencies to your team.</dd></div>
+          <div><dt>Honest and careful</dt><dd>Says she's a virtual assistant if asked. Never quotes prices, diagnoses or promises insurance coverage.</dd></div>
+        </dl>
+        <figure class="call" aria-label="A sample call">
+          <div class="call-top"><b>Sample call</b><span>About 2 minutes</span></div>
+          <div class="bubbles">
+            <p class="bubble caller">Hi, I'm missing a back tooth. Do you do implants?</p>
+            <p class="bubble sofia">We do, and I can get you in for a consult. Can I get your first name?</p>
+            <p class="bubble caller">It's Maria.</p>
+            <p class="bubble sofia">Thanks, Maria. I have Thursday at ten or Friday at two. Which works better?</p>
+            <p class="bubble caller">Friday at two.</p>
+            <p class="bubble booked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Booked for Friday at 2:00 PM. Confirmation texted.</p>
+          </div>
+        </figure>
+      </div>
+      <div class="config" aria-labelledby="config-title">
+        <div class="config-head">
+          <h3 id="config-title">Configured for your practice</h3>
+          <p>What we set up in your first afternoon</p>
+        </div>
+        <dl>
+          <dt>Greeting</dt><dd>Answers with your practice's name, in a voice you choose.</dd>
+          <dt>Offices</dt><dd>Knows every location by address and asks which is easier for each patient.</dd>
+          <dt>Your doctors</dt><dd>Introduces each one by specialty, the way your team describes them.</dd>
+          <dt>Booking</dt><dd>Checks open times in your calendar and books with your consult length and notice rules.</dd>
+          <dt>Your FAQs</dt><dd>Hours, insurance, membership plans and parking, answered your way. Anything she doesn't know, she hands to your team.</dd>
+          <dt>Emergencies</dt><dd>Tells anyone with signs of a medical emergency to call 911, books urgent visits, and transfers true emergencies to your team with a private brief first.</dd>
+          <dt>Confirmations</dt><dd>A text right after every booking, with the day and time.</dd>
+          <dt>Guardrails</dt><dd>Never quotes prices, never diagnoses, never promises insurance coverage, and says she's a virtual assistant if asked.</dd>
+          <dt>Every call</dt><dd>Recorded, transcribed and summarized, so your team sees exactly what was said.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline">
+    <div class="wrap">
+      <p class="kicker">Timeline</p>
+      <h2>Live in about a week</h2>
+      <ol class="timeline">
+        <li class="now"><em>Day 1</em><b>Thirty-minute kickoff: offices, hours, FAQs</b></li>
+        <li><em>Same afternoon</em><b>Call your receptionist and tell us what to change</b></li>
+        <li><em>Days 2–4</em><b>Calendar, confirmations and call forwarding connected</b></li>
+        <li><em>Week 1</em><b>Live on your phones</b></li>
+        <li><em>Every week</em><b>Call summaries for your team</b></li>
+        <li><em>Day 90</em><b>Review together</b></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="ice" id="investment">
+    <div class="wrap">
+      <p class="kicker">Investment</p>
+      <h2>Simple pricing, flat fees</h2>
+      <div class="invest">
+        <div class="price-card">
+          <span class="label">One-time setup</span>
+          <span class="price">$3,500</span>
+          <p class="price-note">Covers up to two offices. Each additional office is $500.</p>
+          <span class="monthly">Then $750 a month per office</span>
+          <div class="calc" aria-labelledby="calc-label">
+            <div class="calc-row">
+              <span id="calc-label">How many offices?</span>
+              <div class="stepper">
+                <button type="button" id="off-minus" aria-label="One fewer office">&minus;</button>
+                <output id="off-count" aria-live="polite">1</output>
+                <button type="button" id="off-plus" aria-label="One more office">+</button>
+              </div>
+            </div>
+            <div class="totals">
+              <div><b id="t-setup">$3,500</b><span>Setup, one time</span></div>
+              <div><b id="t-monthly">$750</b><span>Each month</span></div>
+            </div>
+          </div>
+          <ul class="included">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Built for your practice in one afternoon</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Every office, by address</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>English and Spanish</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Text confirmation on every booking</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Emergency transfers with a private brief</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A recording and summary of every call</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Changes whenever you need them</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Elijah as your direct contact</li>
+          </ul>
+          <a class="btn light" href="#next">Get yours built</a>
+        </div>
+        <div class="terms-side">
+          <div class="side"><b>Term</b><p>A three-month minimum, then month to month. Cancel anytime after that with 30 days' notice.</p></div>
+          <div class="side"><b>Credited in full</b><p>Add our implant growth package within 60 days, and your entire $3,500 setup is credited toward it.</p></div>
+          <div class="side"><b>A flat fee</b><p>Never per call, per patient or per booking. No surprise bills.</p></div>
+          <div class="side"><b>Patient privacy</b><p>We sign a HIPAA Business Associate Agreement with you before she takes a single patient call.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="guarantee" id="suite">
+    <div class="wrap">
+      <p class="kicker">The full suite</p>
+      <p class="big">Want more implant patients calling in the first place? Add implant ads, 60-second callbacks and our guarantee.</p>
+      <dl class="terms">
+        <div><dt>What's added</dt><dd>Implant ads and video managed daily, a booking page under your name, and a callback within 60 seconds of every form.</dd></div>
+        <div><dt>The guarantee</dt><dd>30 booked implant consults in your first 90 days, or we work months four through six for free. Free work, not a refund.</dd></div>
+        <div><dt>Your setup fee</dt><dd>Credited in full toward the package when you add it within 60 days. Your AI receptionist comes included.</dd></div>
+      </dl>
+      <p class="clock">Ask Elijah for a full-suite proposal built around your practice.</p>
+    </div>
+  </section>
+
+  <section id="questions">
+    <div class="wrap">
+      <p class="kicker">Questions</p>
+      <h2>What you'll probably want to know</h2>
+      <dl class="qa">
+        <div><dt>Does she replace our front desk?</dt><dd>No. She covers the calls your team can't get to: busy lines, lunch, after hours and weekends. Your team handles everything else.</dd></div>
+        <div><dt>Which number do patients call?</dt><dd>Your existing number. We set up forwarding so she picks up only when your team can't.</dd></div>
+        <div><dt>Is it HIPAA compliant?</dt><dd>Yes. We sign a Business Associate Agreement with you before she takes a patient call, and she runs on a platform that signs one with us.</dd></div>
+        <div><dt>Does she book into our practice software?</dt><dd>She books into a calendar your team can see. During setup we check your software and connect her directly if it supports it.</dd></div>
+        <div><dt>Will patients know they're talking to AI?</dt><dd>If they ask, she tells them. Most callers want an answer and a time, and she gives both in a couple of minutes.</dd></div>
+        <div><dt>Can we change what she says?</dt><dd>Anytime. Tell Elijah what to change, and it's updated the same day.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="next" id="next">
+    <div class="wrap">
+      <p class="kicker">Next steps</p>
+      <h2>Hear yours this afternoon</h2>
+      <p class="lead">Fifteen minutes with Elijah, and your receptionist is built and answering before the end of the day.</p>
+      <ol class="steps">
+        <li><span class="n">1</span><h3>Book a quick call</h3><p>Your offices, doctors, hours and the questions patients ask most.</p><a class="btn outline" href="https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1" target="_blank" rel="noopener">Pick a time</a></li>
+        <li><span class="n">2</span><h3>Call her and give feedback</h3><p>Same day, she answers with your practice's name. Tell us what to change.</p></li>
+        <li><span class="n">3</span><h3>Sign and go live</h3><p>A short agreement and a Business Associate Agreement, then we connect your calendar and phones.</p></li>
+      </ol>
+      <p class="contact">Questions first? Call or text Elijah at <a href="tel:+15128820814">(512) 882-0814</a>, or email <a href="mailto:elijah@sovrngrowth.com">elijah@sovrngrowth.com</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span id="foot-for">SOVRN Growth, a trade name of Lux Eterna LLC.</span>
+    <span><a href="/privacy/">Privacy</a> &nbsp; <a href="/terms/">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+// Personalize per practice: /proposal/ai-receptionist/?practice=Name&line=5125550123&offices=2&name=Sofia
+(function () {
+  var q = new URLSearchParams(location.search);
+  var clean = function (s, max) { return (s || '').replace(/[\u0000-\u001f<>]/g, '').trim().slice(0, max); };
+  var practice = clean(q.get('practice'), 80);
+  var rname = clean(q.get('name'), 24) || 'Sofia';
+  var digits = (q.get('line') || '').replace(/\D/g, '');
+  if (digits.length === 11 && digits[0] === '1') digits = digits.slice(1);
+  var line = digits.length === 10 ? digits : '';
+
+  document.getElementById('r-name').textContent = rname;
+  document.getElementById('r-initial').textContent = rname.charAt(0).toUpperCase();
+  if (practice) {
+    var forEl = document.getElementById('for');
+    forEl.textContent = '';
+    forEl.appendChild(document.createTextNode('AI receptionist proposal for '));
+    var b = document.createElement('b'); b.textContent = practice; forEl.appendChild(b);
+    forEl.appendChild(document.createElement('br'));
+    forEl.appendChild(document.createTextNode('Prepared by Elijah Pitts, SOVRN Growth'));
+    document.getElementById('r-role').textContent = 'AI receptionist for ' + practice;
+    document.getElementById('foot-for').textContent = 'SOVRN Growth, a trade name of Lux Eterna LLC. Prepared for ' + practice + '.';
+    document.title = 'AI Receptionist for ' + practice + ' | SOVRN Growth';
+  }
+
+  var num = document.getElementById('r-number');
+  var call = document.getElementById('r-call');
+  var label = document.getElementById('r-call-label');
+  if (line) {
+    var display = '(' + line.slice(0, 3) + ') ' + line.slice(3, 6) + '-' + line.slice(6);
+    num.textContent = display;
+    num.href = 'tel:+1' + line;
+    call.href = 'tel:+1' + line;
+    label.textContent = 'Call ' + rname;
+  } else {
+    document.getElementById('line-label').textContent = 'Hear yours today';
+    num.removeAttribute('href');
+    num.classList.add('text');
+    document.getElementById('r-try').hidden = true;
+    document.getElementById('r-status').lastChild.textContent = 'Built same day';
+    call.href = 'https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1';
+    call.target = '_blank';
+    call.rel = 'noopener';
+    label.textContent = 'Book a live demo';
+  }
+
+  // Office count: setup covers two offices, $500 for each one after; $750 a month per office.
+  var count = Math.min(10, Math.max(1, parseInt(q.get('offices'), 10) || 1));
+  var out = document.getElementById('off-count');
+  var minus = document.getElementById('off-minus');
+  var plus = document.getElementById('off-plus');
+  var money = function (n) { return '$' + n.toLocaleString('en-US'); };
+  function renderPrice() {
+    out.textContent = count;
+    document.getElementById('t-setup').textContent = money(3500 + Math.max(0, count - 2) * 500);
+    document.getElementById('t-monthly').textContent = money(750 * count);
+    minus.disabled = count <= 1;
+    plus.disabled = count >= 10;
+  }
+  minus.addEventListener('click', function () { count = Math.max(1, count - 1); renderPrice(); });
+  plus.addEventListener('click', function () { count = Math.min(10, count + 1); renderPrice(); });
+  renderPrice();
+
+  // The voice waveform: one bar per slot, heights shaped like speech.
+  var wave = document.getElementById('wave');
+  var n = 44;
+  for (var i = 0; i < n; i++) {
+    var bar = document.createElement('span');
+    var env = Math.sin(Math.PI * (i + 0.5) / n);
+    var h = 18 + Math.round(env * (40 + 42 * Math.abs(Math.sin(i * 1.7))));
+    bar.style.setProperty('--h', h);
+    bar.style.setProperty('--d', (-(i * 0.083) % 1.25).toFixed(3) + 's');
+    wave.appendChild(bar);
+  }
+  addEventListener('load', function () { setTimeout(function () { document.documentElement.classList.add('glide'); }, 0); });
+})();
+</script>
+</body>
+</html>
