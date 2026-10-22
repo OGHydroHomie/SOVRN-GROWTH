@@ -91,6 +91,10 @@ for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
   assert.ok(read('proposal/primavera').includes('<meta name="robots" content="noindex, nofollow">'), 'verify-build: the Primavera proposal must be noindex');
   assert.ok(existsSync(new URL('../dist/proposal/primavera/SOVRN-Growth-Agreement-Primavera.pdf', import.meta.url)), 'verify-build: the Primavera agreement PDF is missing');
   assert.ok(read('proposal/primavera').includes("tel: '+15124003799'"), 'verify-build: the Primavera proposal must carry Sofia\'s demo line');
+  // The reusable AI receptionist proposal shows prices, so it stays private like every /proposal/ page.
+  const rec = read('proposal/ai-receptionist');
+  assert.ok(rec.includes('<meta name="robots" content="noindex, nofollow">'), 'verify-build: the AI receptionist proposal must be noindex');
+  assert.ok(rec.includes('Then $750 a month per office') && rec.includes('three-month minimum'), 'verify-build: the AI receptionist proposal must state the monthly price and the three-month minimum');
 }
 
 // HVAC archive: the original site, served under /hvac/.
