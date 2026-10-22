@@ -94,7 +94,10 @@ for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
   // The reusable AI receptionist proposal shows prices, so it stays private like every /proposal/ page.
   const rec = read('proposal/ai-receptionist');
   assert.ok(rec.includes('<meta name="robots" content="noindex, nofollow">'), 'verify-build: the AI receptionist proposal must be noindex');
-  assert.ok(rec.includes('Then $750 a month per office') && rec.includes('three-month minimum'), 'verify-build: the AI receptionist proposal must state the monthly price and the three-month minimum');
+  assert.ok(
+    rec.includes('Then $750 a month per office') && rec.includes('first three months') && rec.includes('first 30 days live'),
+    'verify-build: the AI receptionist proposal must state the monthly price, the three included months and the 30-day money-back guarantee'
+  );
 }
 
 // HVAC archive: the original site, served under /hvac/.
