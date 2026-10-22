@@ -403,8 +403,8 @@ footer a { color: #fff; }
         <div class="price-card">
           <span class="label">One-time setup</span>
           <span class="price">$3,500</span>
-          <p class="price-note">Covers up to two offices. Each additional office is $500.</p>
-          <span class="monthly">Then $750 a month per office</span>
+          <p class="price-note">One time, no matter how many offices you have.</p>
+          <span class="monthly">Your first month is included. Then $750 a month per office.</span>
           <div class="calc" aria-labelledby="calc-label">
             <div class="calc-row">
               <span id="calc-label">How many offices?</span>
@@ -415,8 +415,8 @@ footer a { color: #fff; }
               </div>
             </div>
             <div class="totals">
-              <div><b id="t-setup">$3,500</b><span>Setup, one time</span></div>
-              <div><b id="t-monthly">$750</b><span>Each month</span></div>
+              <div><b id="t-setup">$3,500</b><span>Setup + month one</span></div>
+              <div><b id="t-monthly">$750</b><span>Each month after</span></div>
             </div>
           </div>
           <ul class="included">
@@ -432,7 +432,7 @@ footer a { color: #fff; }
           <a class="btn light" href="#next">Get yours built</a>
         </div>
         <div class="terms-side">
-          <div class="side"><b>Term</b><p>A three-month minimum, then month to month. Cancel anytime after that with 30 days' notice.</p></div>
+          <div class="side"><b>Term</b><p>A three-month minimum, counted from go-live with your first month included, then month to month. Cancel anytime after that with 30 days' notice.</p></div>
           <div class="side"><b>Credited in full</b><p>Add our implant growth package within 60 days, and your entire $3,500 setup is credited toward it.</p></div>
           <div class="side"><b>A flat fee</b><p>Never per call, per patient or per booking. No surprise bills.</p></div>
           <div class="side"><b>Patient privacy</b><p>We sign a HIPAA Business Associate Agreement with you before she takes a single patient call.</p></div>
@@ -537,7 +537,7 @@ footer a { color: #fff; }
     label.textContent = 'Book a live demo';
   }
 
-  // Office count: setup covers two offices, $500 for each one after; $750 a month per office.
+  // Office count: one $3,500 setup (first month included) for any number of offices, then $750 a month per office.
   var count = Math.min(10, Math.max(1, parseInt(q.get('offices'), 10) || 1));
   var out = document.getElementById('off-count');
   var minus = document.getElementById('off-minus');
@@ -545,7 +545,7 @@ footer a { color: #fff; }
   var money = function (n) { return '$' + n.toLocaleString('en-US'); };
   function renderPrice() {
     out.textContent = count;
-    document.getElementById('t-setup').textContent = money(3500 + Math.max(0, count - 2) * 500);
+    document.getElementById('t-setup').textContent = money(3500);
     document.getElementById('t-monthly').textContent = money(750 * count);
     minus.disabled = count <= 1;
     plus.disabled = count >= 10;
