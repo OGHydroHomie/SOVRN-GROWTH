@@ -110,7 +110,7 @@ for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
   }
 }
 // Home: the AI receptionist section, with its demo-line slot.
-assert.ok(home.includes('And when nobody can pick up, she does.') && home.includes('data-demo-line='), 'verify-build: home page must show the AI receptionist section and its demo-line slot');
+assert.ok(home.includes('And when nobody can pick up, she does.') && home.includes('data-demo-line="2108802308"'), 'verify-build: home page must show the AI receptionist section and its demo-line slot');
 
 // HVAC archive: the original site, served under /hvac/.
 const dist = new URL('../dist/hvac/index.html', import.meta.url);
