@@ -100,7 +100,17 @@ for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
   );
   // Practice logos load by slug from this folder, so the ones we link to must ship.
   assert.ok(existsSync(new URL('../dist/proposal/ai-receptionist/logos/ctp.png', import.meta.url)), 'verify-build: the Central Texas Periodontics logo is missing');
+  // The Implant Ad Pack page shows its price and takes payment, so it stays private too.
+  const pack = read('proposal/ad-pack');
+  assert.ok(pack.includes('<meta name="robots" content="noindex, nofollow">'), 'verify-build: the Ad Pack page must be noindex');
+  assert.ok(pack.includes('$1,500') && pack.includes('five business days'), 'verify-build: the Ad Pack page must state the $1,500 price and five business days');
+  assert.ok(pack.includes('https://buy.stripe.com/7sY14p8Mu9ZJd0OdI39ws0e'), 'verify-build: the Ad Pack page must link the Ad Pack payment page');
+  for (let i = 1; i <= 5; i++) {
+    assert.ok(existsSync(new URL(`../dist/img/samples/halden-carousel-${i}.webp`, import.meta.url)), `verify-build: sample carousel slide ${i} is missing`);
+  }
 }
+// Home: the AI receptionist section, with its demo-line slot.
+assert.ok(home.includes('And when nobody can pick up, she does.') && home.includes('data-demo-line="2108802308"'), 'verify-build: home page must show the AI receptionist section and its demo-line slot');
 
 // HVAC archive: the original site, served under /hvac/.
 const dist = new URL('../dist/hvac/index.html', import.meta.url);
