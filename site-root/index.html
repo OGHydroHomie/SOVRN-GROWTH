@@ -252,6 +252,40 @@ a { color: inherit; }
 .event b { font-size: 14px; }
 .event span { font-size: 12px; color: var(--slate); }
 
+/* The AI receptionist: the phone half of the same promise. Copy on the left, a sample call on the right.
+   The demo number lives in one place: data-demo-line on .rx-demo. Empty shows the "book a live demo" button. */
+.rx { padding-top: 24px; padding-bottom: 96px; }
+.rx-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 64px; align-items: center; }
+.rx h2 { max-width: 18ch; }
+.rx-lede { margin-top: 18px; font-size: 20px; color: var(--slate); max-width: 46ch; }
+.rx-facts { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 10px; }
+.rx-facts li { display: flex; gap: 10px; font-size: 18px; font-weight: 600; }
+.rx-facts svg { width: 20px; height: 20px; flex: none; margin-top: 3px; color: var(--cobalt); }
+.rx-demo { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); max-width: 460px; }
+.rx-demo .rx-label { font-size: 15px; font-weight: 700; color: var(--cobalt); }
+.rx-number { display: inline-block; margin-top: 2px; font-size: clamp(34px, 4vw, 46px); font-weight: 800; font-stretch: 104%; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; text-decoration: none; }
+.rx-number:hover { color: var(--cobalt); }
+.rx-demo p { margin-top: 6px; font-size: 16px; color: var(--slate); }
+.rx-fine { margin-top: 18px; font-size: 15px; color: var(--slate); }
+.rx-card { border-radius: 28px; padding: 22px; background: var(--navy); color: #fff; box-shadow: 0 50px 90px -50px rgb(11 37 69 / 0.75); }
+.rx-card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid rgb(255 255 255 / 0.14); }
+.rx-card-top b { font-size: 16px; font-weight: 800; }
+.rx-card-top span { font-size: 13px; color: rgb(255 255 255 / 0.66); font-variant-numeric: tabular-nums; }
+.rx-lines { display: grid; gap: 10px; margin-top: 16px; }
+.rx-line { max-width: 86%; padding: 11px 14px; border-radius: 18px; font-size: 15px; line-height: 1.45; }
+.rx-line.rx-caller { justify-self: end; background: rgb(255 255 255 / 0.12); border-bottom-right-radius: 6px; }
+.rx-line.rx-ai { justify-self: start; background: #fff; color: var(--navy); border-bottom-left-radius: 6px; }
+.rx-line.rx-booked { justify-self: stretch; max-width: none; display: flex; align-items: center; gap: 10px; background: rgb(74 222 128 / 0.16); color: #a7f3c4; font-weight: 700; border-radius: 14px; }
+.rx-line.rx-booked svg { width: 18px; height: 18px; flex: none; }
+@media (max-width: 960px) {
+  .rx-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .rx-card { max-width: 520px; }
+}
+@media (max-width: 760px) {
+  .rx { padding-top: 8px; padding-bottom: 64px; }
+  .rx-demo .btn { width: 100%; }
+}
+
 /* The guarantee, as large as the headline */
 .guarantee { background: var(--navy); color: #fff; padding-top: clamp(64px, 9vw, 112px); padding-bottom: clamp(64px, 9vw, 112px); }
 .guarantee h2 { font-size: clamp(32px, 4.4vw, 58px); line-height: 1.08; max-width: 22ch; }
@@ -514,6 +548,42 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
         </li>
       </ol>
       <p class="after">After hours, they get a text with a link to book.</p>
+    </div>
+  </section>
+
+  <section class="rx" id="receptionist" aria-labelledby="rx-title">
+    <div class="wrap rx-grid">
+      <div>
+        <h2 id="rx-title">And when nobody can pick up, she does.</h2>
+        <p class="rx-lede">An AI receptionist built for your practice answers the calls your team can't get to: busy lines, lunch, after hours and weekends. She books the consult and texts the confirmation before the patient hangs up.</p>
+        <ul class="rx-facts">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Answers in English or Spanish</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Books onto your calendar, with a text confirmation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sends real emergencies straight to your team</li>
+        </ul>
+        <div class="rx-demo" id="rx-demo" data-demo-line="">
+          <div id="rx-call" hidden>
+            <span class="rx-label">Hear her now</span><br>
+            <a class="rx-number" id="rx-number" href="#" data-track="rx_demo_call"></a>
+            <p>Pretend you're a patient calling your own office.</p>
+          </div>
+          <div id="rx-book">
+            <a class="btn" href="https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1" target="_blank" rel="noopener" data-track="rx_demo_book">Hear her on a live demo</a>
+          </div>
+        </div>
+        <p class="rx-fine">Included in the 90-day program, or on its own.</p>
+      </div>
+      <figure class="rx-card" aria-label="A sample after-hours call">
+        <div class="rx-card-top"><b>Sample call</b><span>9:42 PM</span></div>
+        <div class="rx-lines">
+          <p class="rx-line rx-caller">Hi, I'm missing a back tooth. Do you do implants?</p>
+          <p class="rx-line rx-ai">We do, and I can get you in for a consult. Can I get your first name?</p>
+          <p class="rx-line rx-caller">It's Maria.</p>
+          <p class="rx-line rx-ai">Thanks, Maria. I have Thursday at ten or Friday at two. Which works better?</p>
+          <p class="rx-line rx-caller">Friday at two.</p>
+          <p class="rx-line rx-booked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Booked for Friday at 2:00 PM. Confirmation texted.</p>
+        </div>
+      </figure>
     </div>
   </section>
 
@@ -817,6 +887,21 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 })();
 </script>
 <!-- Text opt-in chat widget (GoHighLevel / LeadConnector). Registered with carriers as this page's only SMS consent form; don't add other phone-collecting forms here. -->
+<script>
+// AI receptionist demo line: set data-demo-line on #rx-demo to a 10-digit number and the call link appears.
+(function () {
+  var box = document.getElementById('rx-demo');
+  if (!box) return;
+  var d = (box.getAttribute('data-demo-line') || '').replace(/\D/g, '');
+  if (d.length === 11 && d[0] === '1') d = d.slice(1);
+  if (d.length !== 10) return;
+  var a = document.getElementById('rx-number');
+  a.textContent = '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6);
+  a.href = 'tel:+1' + d;
+  document.getElementById('rx-call').hidden = false;
+  document.getElementById('rx-book').hidden = true;
+})();
+</script>
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6ad53787d28aca7d19fffafb" data-source="WEB_USER"></script>
 </body>
 </html>
