@@ -268,7 +268,7 @@ footer a { color: #fff; }
 .totals span { font-size: 14px; color: rgb(255 255 255 / 0.66); }
 .monthly { display: block; margin-top: 14px; font-size: 22px; font-weight: 700; color: var(--signal); }
 .number.text { font-size: clamp(28px, 3vw, 36px); line-height: 1.12; margin-top: 6px; }
-@media (max-width: 680px) { .console-head { flex-wrap: wrap; } .console-head > div:nth-child(2) { flex: 1 1 0; min-width: 0; } .status { margin-left: 62px; } }
+@media (max-width: 680px) { .console-head { flex-wrap: wrap; } .console-head > div:nth-child(2) { flex: 1 1 auto; min-width: 9em; } .status { margin-left: 0; } }
 @media print { .calc { border-color: var(--line); background: #fff; } .stepper button { display: none; } .totals span, .calc-row > span { color: var(--slate) !important; } .monthly { color: var(--ink) !important; } }
 </style>
 </head>
@@ -501,7 +501,10 @@ footer a { color: #fff; }
   var rname = clean(q.get('name'), 24) || 'Sofia';
   var digits = (q.get('line') || '').replace(/\D/g, '');
   if (digits.length === 11 && digits[0] === '1') digits = digits.slice(1);
-  var line = digits.length === 10 ? digits : '';
+  // No ?line= (every cold-email link): show the live demo line the emails point to, Sofia – Demo.
+  var DEMO_LINE = '2108802308';
+  var isDemo = digits.length !== 10;
+  var line = isDemo ? DEMO_LINE : digits;
 
   document.getElementById('r-name').textContent = rname;
   document.getElementById('r-initial').textContent = rname.charAt(0).toUpperCase();
@@ -529,22 +532,15 @@ footer a { color: #fff; }
   var num = document.getElementById('r-number');
   var call = document.getElementById('r-call');
   var label = document.getElementById('r-call-label');
-  if (line) {
-    var display = '(' + line.slice(0, 3) + ') ' + line.slice(3, 6) + '-' + line.slice(6);
-    num.textContent = display;
-    num.href = 'tel:+1' + line;
-    call.href = 'tel:+1' + line;
-    label.textContent = 'Call ' + rname;
-  } else {
-    document.getElementById('line-label').textContent = 'Hear yours today';
-    num.removeAttribute('href');
-    num.classList.add('text');
-    document.getElementById('r-try').hidden = true;
-    document.getElementById('r-status').lastChild.textContent = 'Built same day';
-    call.href = 'https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1';
-    call.target = '_blank';
-    call.rel = 'noopener';
-    label.textContent = 'Book a live demo';
+  var display = '(' + line.slice(0, 3) + ') ' + line.slice(3, 6) + '-' + line.slice(6);
+  num.textContent = display;
+  num.href = 'tel:+1' + line;
+  call.href = 'tel:+1' + line;
+  label.textContent = 'Call ' + rname;
+  if (isDemo) {
+    // The demo answers as a sample practice, so label it as the demo, not as this practice's receptionist.
+    document.getElementById('r-role').textContent = 'Live demo line';
+    document.getElementById('line-label').textContent = 'Call the live demo';
   }
 
   // Office count: one $3,500 start (build + first three months) for any number of offices, then $750 a month per office.

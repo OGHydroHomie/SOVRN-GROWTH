@@ -98,6 +98,8 @@ for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
     rec.includes('Then $750 a month per office') && rec.includes('first three months') && rec.includes('first 14 days live'),
     'verify-build: the AI receptionist proposal must state the monthly price, the three included months and the 14-day money-back guarantee'
   );
+  // Cold-email links carry no ?line=, so the page falls back to the live demo line the emails point to.
+  assert.ok(rec.includes("var DEMO_LINE = '2108802308';"), 'verify-build: the AI receptionist proposal must fall back to the (210) 880-2308 demo line');
   // Practice logos load by slug from this folder, so the ones we link to must ship.
   assert.ok(existsSync(new URL('../dist/proposal/ai-receptionist/logos/ctp.png', import.meta.url)), 'verify-build: the Central Texas Periodontics logo is missing');
   // The Implant Ad Pack page shows its price and takes payment, so it stays private too.
