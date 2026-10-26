@@ -98,9 +98,25 @@ for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
     rec.includes('Then $750 a month per office') && rec.includes('first three months') && rec.includes('first 14 days live'),
     'verify-build: the AI receptionist proposal must state the monthly price, the three included months and the 14-day money-back guarantee'
   );
+  // Cold-email links carry no ?line=, so the page falls back to the live demo line the emails point to.
+  assert.ok(rec.includes("var DEMO_LINE = '2108802308';"), 'verify-build: the AI receptionist proposal must fall back to the (210) 880-2308 demo line');
+  // Same-day build: the timeline leads with it, and the page never states two different call lengths.
+  assert.ok(rec.includes('<h2>Built the same day</h2>') && !rec.includes('about a week'), 'verify-build: the AI receptionist proposal timeline must lead with the same-day build');
+  assert.ok(!/Fifteen minutes|Thirty-minute/.test(rec), 'verify-build: the AI receptionist proposal must not state two different call lengths');
   // Practice logos load by slug from this folder, so the ones we link to must ship.
   assert.ok(existsSync(new URL('../dist/proposal/ai-receptionist/logos/ctp.png', import.meta.url)), 'verify-build: the Central Texas Periodontics logo is missing');
+  // The Implant Ad Pack page shows its price and takes payment, so it stays private too.
+  const pack = read('proposal/ad-pack');
+  assert.ok(pack.includes('<meta name="robots" content="noindex, nofollow">'), 'verify-build: the Ad Pack page must be noindex');
+  assert.ok(pack.includes('$1,500') && pack.includes('five business days'), 'verify-build: the Ad Pack page must state the $1,500 price and five business days');
+  assert.ok(pack.includes('https://buy.stripe.com/7sY14p8Mu9ZJd0OdI39ws0e'), 'verify-build: the Ad Pack page must link the Ad Pack payment page');
+  for (let i = 1; i <= 5; i++) {
+    assert.ok(existsSync(new URL(`../dist/img/samples/halden-carousel-${i}.webp`, import.meta.url)), `verify-build: sample carousel slide ${i} is missing`);
+  }
 }
+// Home: the AI receptionist section, with its demo-line slot.
+assert.ok(home.includes('And when nobody can pick up, she does.') && home.includes('data-demo-line="2108802308"'), 'verify-build: home page must show the AI receptionist section and its demo-line slot');
+assert.ok(home.includes('Built for your practice in one afternoon'), 'verify-build: the home receptionist section must state the same-day build');
 
 // HVAC archive: the original site, served under /hvac/.
 const dist = new URL('../dist/hvac/index.html', import.meta.url);
