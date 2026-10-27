@@ -77,7 +77,7 @@ a { color: inherit; }
 /* Sofia console */
 .console { position: relative; border-radius: 30px; padding: 26px 26px 24px; background: linear-gradient(180deg, rgb(255 255 255 / 0.09), rgb(255 255 255 / 0.04)); border: 1px solid rgb(159 197 255 / 0.24); box-shadow: 0 50px 120px -50px rgb(29 92 200 / 0.75), inset 0 1px 0 rgb(255 255 255 / 0.10); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
 .console-head { display: flex; align-items: center; gap: 14px; }
-.avatar { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 30% 30%, #9cc3ff, var(--cobalt) 70%); font-weight: 800; font-size: 20px; font-stretch: 112%; color: #fff; box-shadow: 0 0 0 4px rgb(127 176 255 / 0.18); }
+.avatar { flex: none; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 30% 30%, #9cc3ff, var(--cobalt) 70%); font-weight: 800; font-size: 20px; font-stretch: 112%; color: #fff; box-shadow: 0 0 0 4px rgb(127 176 255 / 0.18); }
 .console-name { font-size: 20px; font-weight: 800; font-stretch: 108%; line-height: 1.15; }
 .console-role { font-size: 14px; color: rgb(255 255 255 / 0.62); }
 .status { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: rgb(74 222 128 / 0.12); color: #a7f3c4; font-size: 13px; font-weight: 600; white-space: nowrap; }
@@ -266,10 +266,14 @@ footer a { color: #fff; }
 .totals div { padding-top: 12px; border-top: 1px solid rgb(255 255 255 / 0.14); }
 .totals b { display: block; font-size: 28px; font-weight: 800; font-stretch: 104%; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
 .totals span { font-size: 14px; color: rgb(255 255 255 / 0.66); }
+/* Payback: one quiet line, shown only when the link carries their own value of a new patient (?value=) */
+.payback { margin-top: 20px; font-size: 17px; line-height: 1.5; color: rgb(255 255 255 / 0.78); }
+.payback b { color: #fff; font-weight: 800; font-variant-numeric: tabular-nums; }
 .monthly { display: block; margin-top: 14px; font-size: 22px; font-weight: 700; color: var(--signal); }
 .number.text { font-size: clamp(28px, 3vw, 36px); line-height: 1.12; margin-top: 6px; }
 @media (max-width: 680px) { .console-head { flex-wrap: wrap; } .console-head > div:nth-child(2) { flex: 1 1 auto; min-width: 9em; } .status { margin-left: 0; } }
 @media print { .calc { border-color: var(--line); background: #fff; } .stepper button { display: none; } .totals span, .calc-row > span { color: var(--slate) !important; } .monthly { color: var(--ink) !important; } }
+@media print { .payback { color: var(--slate) !important; } .payback b { color: var(--ink) !important; } }
 </style>
 </head>
 <body>
@@ -419,6 +423,7 @@ footer a { color: #fff; }
               <div><b id="t-monthly">$750</b><span>Each month after that</span></div>
             </div>
           </div>
+          <p class="payback" id="payback" hidden>At <b id="pay-value"></b> a new patient, her first year, <span id="pay-year"></span>, is covered by <b id="pay-calls"></b>.</p>
           <ul class="included">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Built for your practice in one afternoon</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Every office, by address</li>
@@ -432,7 +437,7 @@ footer a { color: #fff; }
           <a class="btn light" href="#next">Get yours built</a>
         </div>
         <div class="terms-side">
-          <div class="side"><b>Love it or your money back</b><p>Tell us anything that's not right, and we'll fix it within two business days. If you're still not happy within your first 14 days live, we refund your $3,500 in full.</p></div>
+          <div class="side"><b>Built right, or your money back</b><p>Tell us anything that's not right in your first 14 days live, and we'll fix it within two business days. If, after our fixes, she still can't do what this page lists, we refund your $3,500 in full.</p></div>
           <div class="side"><b>Term</b><p>Your first three months live are included in the $3,500. After that, it's month to month. Cancel anytime with 30 days' notice.</p></div>
           <div class="side"><b>Credited in full</b><p>Add our implant growth package within 60 days, and the full $3,500 is credited toward it.</p></div>
           <div class="side"><b>A flat fee</b><p>Never per call, per patient or per booking. No surprise bills.</p></div>
@@ -549,12 +554,25 @@ footer a { color: #fff; }
   var minus = document.getElementById('off-minus');
   var plus = document.getElementById('off-plus');
   var money = function (n) { return '$' + n.toLocaleString('en-US'); };
+  // Payback, only when the link carries the value of one new patient they gave on the call (?value=5000).
+  // Year one = $3,500 (build + first three months) + nine more months at $750 per office.
+  var patientValue = parseInt(String(q.get('value') || '').replace(/\D/g, ''), 10);
+  function renderPayback() {
+    if (!(patientValue >= 100)) return;
+    var year = 3500 + 9 * 750 * count;
+    var calls = Math.max(1, Math.ceil(year / patientValue));
+    document.getElementById('pay-value').textContent = money(patientValue);
+    document.getElementById('pay-year').textContent = money(year) + (count === 1 ? '' : ' for ' + count + ' offices');
+    document.getElementById('pay-calls').textContent = calls === 1 ? 'one answered call' : calls + ' answered calls';
+    document.getElementById('payback').hidden = false;
+  }
   function renderPrice() {
     out.textContent = count;
     document.getElementById('t-setup').textContent = money(3500);
     document.getElementById('t-monthly').textContent = money(750 * count);
     minus.disabled = count <= 1;
     plus.disabled = count >= 10;
+    renderPayback();
   }
   minus.addEventListener('click', function () { count = Math.max(1, count - 1); renderPrice(); });
   plus.addEventListener('click', function () { count = Math.min(10, count + 1); renderPrice(); });

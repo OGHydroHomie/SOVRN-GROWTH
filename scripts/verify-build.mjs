@@ -98,6 +98,16 @@ for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
     rec.includes('Then $750 a month per office') && rec.includes('first three months') && rec.includes('first 14 days live'),
     'verify-build: the AI receptionist proposal must state the monthly price, the three included months and the 14-day money-back guarantee'
   );
+  // Payback line: shown only when the link carries their value of one new patient (?value=), against year one
+  // ($3,500 + nine months at $750 per office). No input box: the page states it, it doesn't argue it.
+  assert.ok(
+    rec.includes('id="payback" hidden') && rec.includes('var year = 3500 + 9 * 750 * count;') && !rec.includes('id="pay-out"'),
+    'verify-build: the AI receptionist proposal must show the payback line only from the number on the link'
+  );
+  // The money-back guarantee is fix-first: we get to fix what they flag before any refund.
+  assert.ok(rec.includes('after our fixes'), 'verify-build: the AI receptionist proposal guarantee must be fix-first');
+  // The receptionist orb stays a circle when the practice name is long.
+  assert.ok(rec.includes('.avatar { flex: none;'), 'verify-build: the receptionist avatar must not shrink into an oval');
   // Cold-email links carry no ?line=, so the page falls back to the live demo line the emails point to.
   assert.ok(rec.includes("var DEMO_LINE = '2108802308';"), 'verify-build: the AI receptionist proposal must fall back to the (210) 880-2308 demo line');
   // Same-day build: the timeline leads with it, and the page never states two different call lengths.
