@@ -98,6 +98,11 @@ for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
     rec.includes('Then $750 a month per office') && rec.includes('first three months') && rec.includes('first 14 days live'),
     'verify-build: the AI receptionist proposal must state the monthly price, the three included months and the 14-day money-back guarantee'
   );
+  // Payback calculator: their value of one new patient, divided into year one ($3,500 + nine months at $750 per office).
+  assert.ok(
+    rec.includes('id="pay-value"') && rec.includes('id="pay-calls"') && rec.includes('var year = 3500 + 9 * 750 * count;'),
+    'verify-build: the AI receptionist proposal must work out the payback from their own number'
+  );
   // Cold-email links carry no ?line=, so the page falls back to the live demo line the emails point to.
   assert.ok(rec.includes("var DEMO_LINE = '2108802308';"), 'verify-build: the AI receptionist proposal must fall back to the (210) 880-2308 demo line');
   // Same-day build: the timeline leads with it, and the page never states two different call lengths.

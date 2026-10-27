@@ -266,10 +266,19 @@ footer a { color: #fff; }
 .totals div { padding-top: 12px; border-top: 1px solid rgb(255 255 255 / 0.14); }
 .totals b { display: block; font-size: 28px; font-weight: 800; font-stretch: 104%; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
 .totals span { font-size: 14px; color: rgb(255 255 255 / 0.66); }
+/* Payback: their own value of one new patient, turned into the answered calls that cover year one */
+.payback .calc-row > label { font-size: 16px; color: rgb(255 255 255 / 0.78); }
+.money-in { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; border: 1px solid rgb(255 255 255 / 0.24); padding: 7px 16px; }
+.money-in:focus-within { border-color: var(--signal); box-shadow: 0 0 0 3px rgb(255 255 255 / 0.14); }
+.money-in span { font-size: 19px; font-weight: 800; color: rgb(255 255 255 / 0.66); }
+.money-in input { width: 6.5ch; border: 0; padding: 0; background: transparent; color: #fff; font: inherit; font-size: 19px; font-weight: 800; font-variant-numeric: tabular-nums; outline: none; }
+.pay-out { padding-top: 12px; border-top: 1px solid rgb(255 255 255 / 0.14); font-size: 15px; line-height: 1.45; color: rgb(255 255 255 / 0.72); }
+.pay-out b { display: block; font-size: 28px; font-weight: 800; font-stretch: 104%; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; color: #fff; }
 .monthly { display: block; margin-top: 14px; font-size: 22px; font-weight: 700; color: var(--signal); }
 .number.text { font-size: clamp(28px, 3vw, 36px); line-height: 1.12; margin-top: 6px; }
 @media (max-width: 680px) { .console-head { flex-wrap: wrap; } .console-head > div:nth-child(2) { flex: 1 1 auto; min-width: 9em; } .status { margin-left: 0; } }
 @media print { .calc { border-color: var(--line); background: #fff; } .stepper button { display: none; } .totals span, .calc-row > span { color: var(--slate) !important; } .monthly { color: var(--ink) !important; } }
+@media print { .money-in, .pay-out { border-color: var(--line); } .money-in input, .pay-out b { color: var(--ink) !important; } .pay-out, .money-in span, .payback .calc-row > label { color: var(--slate) !important; } }
 </style>
 </head>
 <body>
@@ -419,6 +428,13 @@ footer a { color: #fff; }
               <div><b id="t-monthly">$750</b><span>Each month after that</span></div>
             </div>
           </div>
+          <div class="calc payback">
+            <div class="calc-row">
+              <label for="pay-value">What's one new patient worth to you?</label>
+              <div class="money-in"><span aria-hidden="true">$</span><input id="pay-value" type="text" inputmode="numeric" autocomplete="off" value="4,000" aria-describedby="pay-out"></div>
+            </div>
+            <p class="pay-out" id="pay-out" aria-live="polite"><b id="pay-calls">3 answered calls</b><span id="pay-note">pay for her whole first year: $10,250 for one office. Every call after that is yours.</span></p>
+          </div>
           <ul class="included">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Built for your practice in one afternoon</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Every office, by address</li>
@@ -549,12 +565,35 @@ footer a { color: #fff; }
   var minus = document.getElementById('off-minus');
   var plus = document.getElementById('off-plus');
   var money = function (n) { return '$' + n.toLocaleString('en-US'); };
+  // Payback: what one new patient is worth to them, turned into the answered calls that cover year one.
+  // Year one = $3,500 (build + first three months) + nine more months at $750 per office.
+  // A link can carry their number from the call: ?value=5000.
+  var payIn = document.getElementById('pay-value');
+  var startValue = parseInt(String(q.get('value') || '').replace(/\D/g, ''), 10);
+  if (startValue >= 100) payIn.value = startValue.toLocaleString('en-US');
+  function renderPayback() {
+    var raw = payIn.value.toLowerCase().replace(/[$,\s]/g, '');
+    var m = raw.match(/^(\d+(?:\.\d+)?)(k?)$/);
+    var v = m ? parseFloat(m[1]) * (m[2] ? 1000 : 1) : 0;
+    var year = 3500 + 9 * 750 * count;
+    var offices = count === 1 ? 'one office' : count + ' offices';
+    if (!(v >= 100)) {
+      document.getElementById('pay-calls').textContent = 'Type your number';
+      document.getElementById('pay-note').textContent = 'Year one is ' + money(year) + ' for ' + offices + '.';
+      return;
+    }
+    var calls = Math.max(1, Math.ceil(year / v));
+    document.getElementById('pay-calls').textContent = calls === 1 ? '1 answered call' : calls + ' answered calls';
+    document.getElementById('pay-note').textContent = (calls === 1 ? 'pays' : 'pay') + ' for her whole first year: ' + money(year) + ' for ' + offices + '. Every call after that is yours.';
+  }
+  payIn.addEventListener('input', renderPayback);
   function renderPrice() {
     out.textContent = count;
     document.getElementById('t-setup').textContent = money(3500);
     document.getElementById('t-monthly').textContent = money(750 * count);
     minus.disabled = count <= 1;
     plus.disabled = count >= 10;
+    renderPayback();
   }
   minus.addEventListener('click', function () { count = Math.max(1, count - 1); renderPrice(); });
   plus.addEventListener('click', function () { count = Math.min(10, count + 1); renderPrice(); });
