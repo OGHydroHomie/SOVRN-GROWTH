@@ -449,7 +449,7 @@ footer { color: var(--muted); font-size: 14px; padding-bottom: 40px; }
 
         <section class="part">
           <h2>30 booked consults in 90 days</h2>
-          <p class="part-lede" id="g-lede">That's the guarantee: 30 booked implant consults in your first 90 days, or we work months four through six for free.</p>
+          <p class="part-lede" id="g-lede">That's the guarantee: 30 booked implant consults in your first 90 days, or we keep working for free until you get there.</p>
           <div class="board" id="board" role="img" aria-label="30 booked consults"></div>
           <div class="outcome">
             <span class="big num" id="g-money">$0</span>
@@ -721,7 +721,7 @@ footer { color: var(--muted); font-size: 14px; padding-bottom: 40px; }
     var breakEven = Math.max(1, Math.ceil(total / kept));
     var started = Math.round(cases);
 
-    $('g-lede').textContent = "That's the guarantee: 30 booked implant consults in your first 90 days, or we work months four through six for free.";
+    $('g-lede').textContent = "That's the guarantee: 30 booked implant consults in your first 90 days, or we keep working for free until you get there.";
     animateTo('g-money', revenue, about);
     $('g-text').textContent = 'from about ' + one(cases) + ' of the 30 starting treatment at your ' + s.close + '% rate.';
 

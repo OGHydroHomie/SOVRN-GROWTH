@@ -1,0 +1,83 @@
+<!doctype html>
+<!--
+  Link-preview image for the home page (site-root/img/og-home.png, 1200x630).
+  To re-render: serve the repo root with any local web server, open /design/og-home/ at a 1200x630 viewport
+  (device scale 1) once Archivo has loaded, and save a screenshot as PNG to site-root/img/og-home.png.
+  It matches the home hero: the headline, the example call Sofia answers and books, and the guarantee in gold.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+<style>
+html, body { margin: 0; }
+body {
+  width: 1200px; height: 630px; overflow: hidden; position: relative;
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif; color: #fff; -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(440px 400px at 935px 320px, rgb(29 92 200 / 0.5), rgb(29 92 200 / 0) 72%),
+    radial-gradient(70% 60% at 100% 0%, rgb(29 92 200 / 0.28), rgb(29 92 200 / 0) 70%),
+    #06101f;
+}
+.grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(48% 70% at 76% 46%, #000 25%, transparent 80%);
+  mask-image: radial-gradient(48% 70% at 76% 46%, #000 25%, transparent 80%);
+}
+.brand { position: absolute; left: 72px; top: 60px; font-size: 26px; font-weight: 800; font-stretch: 118%; letter-spacing: 0.01em; }
+.brand span { font-weight: 400; }
+h1 {
+  position: absolute; left: 72px; top: 158px; width: 640px; margin: 0;
+  font-size: 68px; font-weight: 800; font-stretch: 106%; line-height: 1; letter-spacing: -0.024em;
+}
+.promise { position: absolute; left: 72px; top: 396px; margin: 0; font-size: 31px; font-weight: 600; font-stretch: 104%; color: #d6b26e; }
+.ticks { position: absolute; left: 72px; bottom: 62px; width: 560px; height: 26px; display: grid; grid-template-columns: repeat(60, minmax(0, 1fr)); gap: 3px; align-items: end; }
+.ticks i { display: block; height: 15px; border-radius: 2px; background: #d6b26e; }
+.ticks i:nth-child(10n) { height: 26px; }
+.card {
+  position: absolute; left: 742px; top: 150px; width: 400px; padding: 18px; border-radius: 28px;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.11), rgb(255 255 255 / 0.045));
+  border: 1px solid rgb(159 197 255 / 0.26);
+  box-shadow: 0 50px 100px -50px rgb(29 92 200 / 0.9), inset 0 1px 0 rgb(255 255 255 / 0.1);
+}
+.top { display: flex; align-items: center; gap: 12px; padding: 2px 2px 14px; border-bottom: 1px solid rgb(255 255 255 / 0.1); }
+.ring { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: #1d5cc8; box-shadow: 0 0 0 4px rgb(127 176 255 / 0.14); flex: none; }
+.ring svg { width: 19px; height: 19px; }
+.call { flex: 1; }
+.call b { display: block; font-size: 17px; font-weight: 800; font-stretch: 104%; line-height: 1.25; }
+.call span { display: block; font-size: 14px; color: #7fb0ff; }
+.ex { align-self: flex-start; padding: 3px 10px; border-radius: 999px; background: rgb(255 255 255 / 0.1); border: 1px solid rgb(255 255 255 / 0.16); font-size: 13px; font-weight: 700; }
+.agent { display: flex; align-items: center; gap: 10px; padding: 14px 2px 2px; }
+.orb { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 30% 30%, #9cc3ff, #1d5cc8 70%); font-weight: 800; font-size: 16px; box-shadow: 0 0 0 4px rgb(127 176 255 / 0.16); flex: none; }
+.who b { display: block; font-size: 15px; font-weight: 800; line-height: 1.2; }
+.who span { display: block; font-size: 13px; color: #aab6c8; }
+.wave { flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 3px; height: 34px; }
+.wave i { width: 3px; border-radius: 999px; background: linear-gradient(180deg, #b9d4ff, #1d5cc8); }
+.line { max-width: 86%; margin: 10px 0 0; padding: 10px 14px; border-radius: 16px; font-size: 15px; line-height: 1.4; }
+.caller { margin-left: auto; width: fit-content; background: rgb(255 255 255 / 0.12); border-bottom-right-radius: 5px; }
+.ai { width: fit-content; background: #fff; color: #0b2545; border-bottom-left-radius: 5px; }
+.booked { display: flex; align-items: center; gap: 10px; margin: 12px 0 0; padding: 12px 16px; border-radius: 14px; background: rgb(214 178 110 / 0.16); border: 1px solid rgb(214 178 110 / 0.45); color: #f1dcae; font-size: 15px; }
+.booked svg { width: 18px; height: 18px; color: #d6b26e; flex: none; }
+.booked b { color: #f6e3b8; font-weight: 800; }
+.booked span { margin-left: auto; }
+</style>
+</head>
+<body>
+<div class="grid"></div>
+<div class="brand">SOVRN <span>Growth</span></div>
+<h1>60 booked<br>new patients<br>in 90 days.</h1>
+<p class="promise">Or we work free until you get there.</p>
+<div class="ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="card">
+  <div class="top"><span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><div class="call"><b>Incoming call, 9:42 PM</b><span>Answered by Sofia</span></div><span class="ex">Example</span></div>
+  <div class="agent"><span class="orb">S</span><div class="who"><b>Sofia</b><span>AI receptionist</span></div><div class="wave"><i style="height:26%"></i><i style="height:40%"></i><i style="height:45%"></i><i style="height:51%"></i><i style="height:69%"></i><i style="height:50%"></i><i style="height:82%"></i><i style="height:79%"></i><i style="height:75%"></i><i style="height:98%"></i><i style="height:64%"></i><i style="height:95%"></i><i style="height:87%"></i><i style="height:72%"></i><i style="height:91%"></i><i style="height:59%"></i><i style="height:73%"></i><i style="height:64%"></i><i style="height:47%"></i><i style="height:51%"></i><i style="height:34%"></i><i style="height:29%"></i></div></div>
+  <p class="line caller">Hi, can I get in for an implant consult?</p>
+  <p class="line ai">Yes. I have Friday at 2:00 PM, and I'll text you the confirmation.</p>
+  <p class="booked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><b>Consult booked</b><span>Friday, 2:00 PM</span></p>
+</div>
+</body>
+</html>
