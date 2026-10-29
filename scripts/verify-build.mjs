@@ -5,15 +5,31 @@ import sharp from 'sharp';
 // Home page: the dental implant landing page copied from site-root/.
 const home = readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
 assert.ok(
-  home.includes('booked implant consults in'),
+  home.includes('60 booked new patients in'),
   'verify-build: dental home page is missing from dist/index.html'
 );
 // The guarantee: one wording everywhere, matching the emails and the call script.
 assert.ok(
-  home.includes('we work months four through six for free'),
-  'verify-build: home page must state the months-four-through-six guarantee'
+  home.includes('we keep working for free until we do') && !home.includes('months four through six'),
+  'verify-build: home page must state the free-until-60 guarantee, not the old months-four-through-six one'
 );
 assert.ok(!home.includes('fee stops'), 'verify-build: home page still has the old "fee stops" guarantee');
+// The guarantee is 60 booked new patients of any type, the same words in the title, link preview, headline and guarantee.
+assert.ok(
+  home.includes('<title>SOVRN Growth: 60 booked new patients in 90 days</title>') &&
+    home.includes('<meta property="og:title" content="60 booked new patients in 90 days, or we work free until you get there.">') &&
+    home.includes('60 booked new patients in 90 days.</h1>') &&
+    home.includes("If we don't book you 60 new patients in your first 90 days, we keep working for free until we do."),
+  'verify-build: home page must state the 60-new-patient guarantee in the title, link preview, headline and guarantee'
+);
+assert.ok(!/\b60 (booked )?implant consults/i.test(home), 'verify-build: home page still states the old 60-implant-consult guarantee');
+// "30 booked implant consults" belongs only to the implants-only answer in the questions; nowhere else on the page.
+const implantsOnly = 'Then the guarantee is 30 booked implant consults in your first 90 days, same terms.';
+assert.ok(home.includes(implantsOnly), 'verify-build: home page must answer "We only do implants." with the 30-consult guarantee');
+assert.ok(
+  !/\b30 booked implant consults/i.test(home.split(implantsOnly).join('')),
+  'verify-build: "30 booked implant consults" may appear only in the implants-only answer'
+);
 // No empty placeholders on the live page.
 assert.ok(!home.includes('Ad slot'), 'verify-build: home page still shows an empty "Ad slot" placeholder');
 // No false scarcity: the CTA is about fit, not area availability.
@@ -24,17 +40,17 @@ assert.ok(!/per area/i.test(home), 'verify-build: home page should not mention o
 for (const price of ['$3,000', '$5,000', '$6,500', '$12,000', '$16,000', '$15,000', '$18,500', '$3K', '$5K', '$12K', '$16K']) {
   assert.ok(!home.includes(price), `verify-build: home page must not show the price ${price}`);
 }
-// The hero implant render and the link-preview image ship with the page.
-for (const img of ['implant-crown.webp', 'implant-abutment.webp', 'implant-fixture.webp', 'og-home.png']) {
+// The link-preview image ships with the page.
+for (const img of ['og-home.png']) {
   assert.ok(existsSync(new URL(`../dist/img/${img}`, import.meta.url)), `verify-build: dist/img/${img} is missing`);
 }
 const homeOg = await sharp(new URL('../dist/img/og-home.png', import.meta.url).pathname).metadata();
 assert.ok(homeOg.width === 1200 && homeOg.height === 630, 'verify-build: home link-preview image must be 1200x630');
 assert.ok(
   readFileSync(new URL('../dist/demo/numbers/index.html', import.meta.url), 'utf8').includes(
-    'or we work months four through six for free'
+    'or we keep working for free until you get there'
   ),
-  'verify-build: calculator must state the months-four-through-six guarantee'
+  'verify-build: calculator must state the free-until-you-get-there guarantee'
 );
 assert.ok(
   readFileSync(new URL('../dist/robots.txt', import.meta.url), 'utf8').includes('Disallow: /hvac/'),

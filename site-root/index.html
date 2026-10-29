@@ -3,336 +3,402 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="light">
-<title>SOVRN Growth: 30 booked implant consults in 90 days</title>
-<meta name="description" content="SOVRN Growth books implant consults for Texas practices: 30 booked implant consults in your first 90 days, or months four through six are free.">
-<meta property="og:title" content="30 booked implant consults in 90 days, or months four through six are free.">
-<meta property="og:description" content="SOVRN Growth runs implant ads for Texas practices and reaches every new patient within 60 seconds.">
+<meta name="color-scheme" content="dark light">
+<title>SOVRN Growth: 60 booked new patients in 90 days</title>
+<meta name="description" content="SOVRN Growth books new patients for Texas dental practices: 60 booked new patients in your first 90 days, or we keep working free until you get there.">
+<meta property="og:title" content="60 booked new patients in 90 days, or we work free until you get there.">
+<meta property="og:description" content="SOVRN Growth runs Meta ads for Texas dental practices and reaches every new patient within 60 seconds.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.sovrngrowth.com/">
 <meta property="og:image" content="https://www.sovrngrowth.com/img/og-home.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SOVRN Growth: 60 booked new patients in 90 days, or we work free until you get there.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#ffffff">
+<meta name="twitter:title" content="60 booked new patients in 90 days, or we work free until you get there.">
+<meta name="twitter:description" content="SOVRN Growth runs Meta ads for Texas dental practices and reaches every new patient within 60 seconds.">
+<meta name="twitter:image" content="https://www.sovrngrowth.com/img/og-home.png">
+<meta name="theme-color" content="#06101f">
 <link rel="canonical" href="https://www.sovrngrowth.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b2545'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='16' font-weight='700' fill='%23ffffff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
 <style>
-/* Home v2. One family (Archivo), navy type, white base. Blue behaves like light: it pools behind the glass panel in the hero
-   and returns at the fit form. The hero shows the service itself (ad, 60-second reply, booked consult); the gallery shows the work. */
+/* Home v3. One family (Archivo), and its width axis does the work: wide and heavy for display, condensed for readouts.
+   The page opens dark on the product itself: an after-hours call comes in, Sofia answers and the consult is booked,
+   then a meter of 60 marks fills to the guarantee. Gold means booked or guaranteed, nothing else.
+   The lights come on at the guarantee, and go down again for the fit check.
+   Motion: one hero sequence (CSS, plays without JS), then quiet one-time reveals. Transform and opacity only. */
 :root {
-  --white: #ffffff;
-  --mist: #f3f8fe;
-  --sky: #d3e5fa;
-  --sky-deep: #bcd5f4;
+  --abyss: #06101f;
+  --deep: #0c1c35;
   --navy: #0b2545;
   --slate: #4a5f7d;
   --cobalt: #1d5cc8;
-  --glow: 36 91 255;
-  --line: #d3e1f0;
-  --warn: #b0401a;
-  --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  color-scheme: light;
+  --signal: #7fb0ff;
+  --gold: #d6b26e;
+  --gold-ink: #85600f;
+  --ice: #eef4fc;
+  --white: #ffffff;
+  --mute: #aab6c8;
+  --hair: rgb(159 197 255 / 0.16);
+  --line: #d6e3f2;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --spring: cubic-bezier(0.22, 1.16, 0.36, 1);
+  --font: "Archivo", "Archivo Fallback", "Helvetica Neue", Arial, sans-serif;
+  /* Film grain for the dark stages: a static tile, so it costs one paint. */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .055 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+/* Arial, sized to Archivo's text width, so lines don't rewrap when the web font arrives. */
+@font-face { font-family: "Archivo Fallback"; src: local("Arial"), local("Helvetica Neue"), local("Liberation Sans"); font-weight: 100 599; size-adjust: 98%; }
+@font-face { font-family: "Archivo Fallback"; src: local("Arial Bold"), local("Arial"), local("Liberation Sans Bold"); font-weight: 600 900; size-adjust: 106%; }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 72px; -webkit-text-size-adjust: 100%; }
+[hidden] { display: none !important; }
+html { background: var(--abyss); color-scheme: dark; -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
 body {
   margin: 0;
-  background: var(--white);
-  color: var(--navy);
+  background: var(--grain), var(--abyss);
+  color: var(--white);
   font-family: var(--font);
-  font-size: 18px;
-  line-height: 1.55;
+  font-size: 17px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 .wrap {
-  max-width: 1160px;
+  max-width: 1200px;
   margin: 0 auto;
   padding-left: max(20px, env(safe-area-inset-left, 0px));
   padding-right: max(20px, env(safe-area-inset-right, 0px));
 }
-h1, h2, h3 { margin: 0; font-stretch: 108%; line-height: 1.06; letter-spacing: -0.012em; text-wrap: balance; }
-h2 { font-size: clamp(30px, 3.7vw, 46px); font-weight: 800; }
-p, dl, dd, ol, figure { margin: 0; }
+h1, h2, h3 { margin: 0; font-weight: 800; font-stretch: 110%; line-height: 1.02; letter-spacing: -0.022em; text-wrap: balance; }
+h2 { font-size: clamp(33px, 4.4vw, 58px); }
+p, dl, dd, ol, ul, figure { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
 sup { font-size: 0.68em; line-height: 0; position: relative; top: -0.45em; vertical-align: baseline; }
 a { color: inherit; }
-:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; border-radius: 6px; }
+:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; border-radius: 8px; }
+.lit :focus-visible, .intake-card :focus-visible { outline-color: var(--cobalt); }
+.readout { font-stretch: 78%; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: 0.01em; }
 
 /* Header */
 .top {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: rgb(255 255 255 / 0.84);
-  -webkit-backdrop-filter: saturate(1.4) blur(12px);
-  backdrop-filter: saturate(1.4) blur(12px);
-  border-bottom: 1px solid rgb(11 37 69 / 0.07);
+  position: sticky; top: 0; z-index: 30;
+  background: rgb(6 16 31 / 0.74);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  backdrop-filter: saturate(1.4) blur(14px);
+  border-bottom: 1px solid rgb(159 197 255 / 0.1);
 }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; padding-bottom: 12px; }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
 .brand { font-size: 19px; font-weight: 800; font-stretch: 118%; letter-spacing: 0.01em; text-decoration: none; white-space: nowrap; }
 .brand span { font-weight: 400; }
 
 /* Buttons and links */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-height: 54px; padding: 0 26px;
-  border-radius: 999px; border: 1.5px solid var(--navy);
-  background: var(--navy); color: #fff;
-  font: inherit; font-size: 17px; font-weight: 700; font-stretch: 106%; line-height: 1.1;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 28px;
+  border-radius: 999px; border: 1.5px solid transparent;
+  font: inherit; font-size: 17px; font-weight: 700; font-stretch: 108%; line-height: 1.1;
   text-decoration: none; cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
-.btn:hover { background: var(--cobalt); border-color: var(--cobalt); }
-.btn.small { min-height: 40px; padding: 0 16px; font-size: 15px; }
-.text-link { font-weight: 700; font-stretch: 106%; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 6px; }
-.text-link:hover { color: var(--cobalt); }
+.btn-light { background: var(--white); color: var(--navy); }
+.btn-light:hover { background: #dce9fb; }
+.btn-dark { background: var(--navy); color: var(--white); }
+.btn-dark:hover { background: var(--cobalt); }
+.btn.small { min-height: 42px; padding: 0 18px; font-size: 15px; }
+.text-link {
+  font-weight: 700; font-stretch: 106%;
+  text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 6px; text-decoration-color: rgb(127 176 255 / 0.6);
+}
+.text-link:hover { color: var(--signal); }
 
-/* Hero: a white reading zone, with the blue pooled behind the glass panel on the right */
-.hero {
-  position: relative;
-  overflow: hidden;
+/* Hero: the copy, then the product moment */
+.hero { position: relative; overflow: hidden; isolation: isolate; padding-bottom: 44px; }
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -2; pointer-events: none;
   background:
-    linear-gradient(180deg, rgb(255 255 255 / 0) 74%, var(--white) 100%),
-    radial-gradient(42% 58% at 79% 50%, rgb(var(--glow) / 0.2), rgb(var(--glow) / 0) 70%),
-    radial-gradient(28% 36% at 94% 14%, rgb(143 186 246 / 0.45), rgb(143 186 246 / 0) 70%),
-    linear-gradient(118deg, var(--white) 0%, var(--white) 44%, var(--mist) 62%, var(--sky) 86%, var(--sky-deep) 100%);
+    linear-gradient(180deg, rgb(6 16 31 / 0) 78%, var(--abyss) 100%),
+    radial-gradient(60% 50% at 88% 0%, rgb(29 92 200 / 0.3), rgb(29 92 200 / 0) 70%),
+    radial-gradient(45% 40% at 0% 0%, rgb(127 176 255 / 0.08), rgb(127 176 255 / 0) 70%);
+}
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -2; pointer-events: none;
+  background-image: linear-gradient(rgb(255 255 255 / 0.045) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(60% 55% at 78% 34%, #000 20%, transparent 78%);
+  mask-image: radial-gradient(60% 55% at 78% 34%, #000 20%, transparent 78%);
 }
 .hero-grid {
-  display: grid; grid-template-columns: minmax(0, 52fr) minmax(0, 48fr); gap: 56px; align-items: center;
-  min-height: min(700px, calc(100svh - 150px));
-  padding-top: clamp(32px, 5vh, 64px); padding-bottom: clamp(40px, 6vh, 72px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "title" "promise" "art" "lede" "actions" "fine";
+  padding-top: 26px;
 }
-.hero h1 { font-size: clamp(42px, 4.8vw, 66px); font-weight: 800; font-stretch: 100%; letter-spacing: -0.016em; }
-.promise { margin-top: 18px; font-size: clamp(22px, 2.3vw, 28px); font-weight: 600; font-stretch: 104%; line-height: 1.2; color: var(--cobalt); text-wrap: balance; }
-.lede { margin-top: 18px; max-width: 44ch; font-size: 19px; color: var(--slate); text-wrap: pretty; }
-.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin-top: 30px; }
-.fine { margin-top: 18px; font-size: 15px; color: var(--slate); text-wrap: pretty; }
+.hero-copy { display: contents; }
+.hero h1 { grid-area: title; font-size: clamp(34px, 10.6vw, 44px); font-stretch: 100%; letter-spacing: -0.024em; line-height: 1; }
+.promise { grid-area: promise; margin-top: 14px; font-size: 19px; font-weight: 600; font-stretch: 104%; line-height: 1.28; color: var(--gold); text-wrap: balance; }
+.lede { grid-area: lede; margin-top: 22px; max-width: 46ch; font-size: 17px; color: var(--mute); text-wrap: pretty; }
+.actions { grid-area: actions; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 26px; margin-top: 24px; }
+.actions .btn { flex: 1 1 100%; }
+.fine { grid-area: fine; margin-top: 16px; font-size: 14px; color: var(--mute); text-wrap: pretty; }
 
-/* The stage: a glass panel (the Higgsfield loop plays inside it), three service objects on top, one connector */
-.stage { position: relative; width: 100%; max-width: 540px; justify-self: end; aspect-ratio: 520 / 440; container-type: inline-size; }
-.panel {
-  position: absolute; left: 6%; top: 4%; right: 0; bottom: 2%;
-  border-radius: 7cqw; overflow: hidden;
-  background: linear-gradient(150deg, rgb(255 255 255 / 0.6), rgb(255 255 255 / 0.14) 55%, rgb(var(--glow) / 0.16));
-  border: 1px solid rgb(255 255 255 / 0.85);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.9), 0 40px 90px -50px rgb(11 37 69 / 0.45);
-  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+/* The product moment: an after-hours call comes in, Sofia answers, one short exchange, then the consult is booked.
+   Marked as an example. Every piece's resting style is its final state, so it reads complete without JS or motion. */
+.hc-wrap { grid-area: art; position: relative; width: 100%; max-width: 460px; margin: 26px 0 0; }
+.hc-wrap::before {
+  content: ""; position: absolute; z-index: -1; left: 50%; top: 50%; width: 160%; height: 150%; pointer-events: none;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgb(29 92 200 / 0.42), rgb(29 92 200 / 0));
 }
-.panel::before {
-  content: ""; position: absolute; inset: -40%;
-  background: conic-gradient(from 210deg at 60% 55%, rgb(255 255 255 / 0), rgb(255 255 255 / 0.55) 40deg, rgb(255 255 255 / 0) 90deg);
-  filter: blur(30px);
+.hc {
+  position: relative; border-radius: 26px; padding: 14px;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.04));
+  border: 1px solid rgb(159 197 255 / 0.24);
+  box-shadow: 0 50px 100px -50px rgb(29 92 200 / 0.85), inset 0 1px 0 rgb(255 255 255 / 0.1);
 }
-.panel-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
-.panel-tag { position: absolute; left: 4.5cqw; bottom: 3.2cqw; font-size: max(11px, 2.5cqw); font-weight: 600; color: var(--slate); }
-.wire { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
-.wire-path { fill: none; stroke: var(--cobalt); stroke-width: 1.6; stroke-dasharray: 4 5; opacity: 0.6; }
-.signal { fill: var(--cobalt); opacity: 0; }
-.signal-halo { fill: rgb(var(--glow) / 0.22); opacity: 0; }
+.hc-top { display: flex; align-items: center; gap: 12px; padding: 4px 4px 14px; border-bottom: 1px solid rgb(255 255 255 / 0.1); }
+.hc-ring {
+  position: relative; flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--cobalt); color: var(--white); box-shadow: 0 0 0 4px rgb(127 176 255 / 0.14);
+}
+.hc-ring svg { width: 18px; height: 18px; }
+.hc-ring::before, .hc-ring::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid var(--signal); opacity: 0; }
+.hc-call { flex: 1; min-width: 0; }
+.hc-call b { display: block; font-size: 15px; font-weight: 800; font-stretch: 104%; line-height: 1.25; }
+.hc-state { display: grid; font-size: 13px; line-height: 1.4; }
+.hc-state > span { grid-area: 1 / 1; }
+.hc-state .s1 { color: var(--mute); opacity: 0; }
+.hc-state .s2 { color: var(--signal); }
+.hc-ex {
+  flex: none; align-self: flex-start; padding: 3px 10px; border-radius: 999px;
+  background: rgb(255 255 255 / 0.1); border: 1px solid rgb(255 255 255 / 0.16);
+  font-size: 12px; font-weight: 700; color: rgb(255 255 255 / 0.92);
+}
+.hc-agent { display: flex; align-items: center; gap: 10px; padding: 14px 4px 2px; }
+.orb {
+  flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(circle at 30% 30%, #9cc3ff, var(--cobalt) 70%);
+  font-weight: 800; font-size: 15px; font-stretch: 112%; box-shadow: 0 0 0 4px rgb(127 176 255 / 0.16);
+}
+.hc-who b { display: block; font-size: 14px; font-weight: 800; line-height: 1.2; }
+.hc-who span { display: block; font-size: 12px; color: var(--mute); }
+.hc-wave { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: flex-end; gap: 3px; height: 30px; }
+.hc-wave span { flex: none; width: 3px; height: calc(var(--h) * 1%); border-radius: 999px; background: linear-gradient(180deg, #b9d4ff, var(--cobalt)); }
+.hc-lines { display: grid; gap: 8px; padding: 12px 4px 0; }
+.hc-line { max-width: 86%; padding: 9px 13px; border-radius: 16px; font-size: 14px; line-height: 1.42; }
+.hc-caller { justify-self: end; background: rgb(255 255 255 / 0.12); border-bottom-right-radius: 5px; }
+.hc-ai { justify-self: start; background: var(--white); color: var(--navy); border-bottom-left-radius: 5px; }
+.hc-booked {
+  position: relative; margin: 12px 4px 4px; display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-radius: 14px;
+  background: rgb(214 178 110 / 0.16); border: 1px solid rgb(214 178 110 / 0.45); color: #f1dcae; font-size: 14px;
+}
+.hc-booked svg { width: 18px; height: 18px; flex: none; color: var(--gold); }
+.hc-booked b { font-weight: 800; color: #f6e3b8; }
+.hc-booked span { margin-left: auto; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hc-booked::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; border: 2px solid var(--gold); opacity: 0; pointer-events: none; }
 
-.ad-card {
-  position: absolute; left: 1.5%; top: 12%; width: 35%; aspect-ratio: 3 / 4;
-  border-radius: 3.5cqw; overflow: hidden; transform: rotate(-3deg);
-  box-shadow: 0 30px 60px -28px rgb(11 37 69 / 0.55);
-}
-.ad-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.ad-empty {
-  width: 100%; height: 100%; display: grid; place-items: center; text-align: center;
-  background: radial-gradient(70% 55% at 50% 40%, #1f4f9c, var(--navy) 75%);
-  color: rgb(255 255 255 / 0.82); font-size: max(11px, 2.6cqw); font-weight: 700; letter-spacing: 0.02em;
-}
-.ad-empty small { display: block; margin-top: 0.6cqw; font-weight: 500; opacity: 0.7; font-size: max(10px, 2.2cqw); }
-
-.notif {
-  position: absolute; left: 38.5%; top: 10%; width: 50.5%;
-  display: grid; grid-template-columns: 7.4cqw minmax(0, 1fr) auto; gap: 2cqw; align-items: center;
-  padding: 2.4cqw 2.7cqw; border-radius: 4cqw;
-  background: rgb(255 255 255 / 0.88); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
-  border: 1px solid rgb(255 255 255 / 0.95); box-shadow: 0 24px 50px -26px rgb(11 37 69 / 0.45);
-}
-.notif-icon { width: 7.4cqw; height: 7.4cqw; border-radius: 2cqw; background: var(--navy); color: #fff; display: grid; place-items: center; }
-.notif-icon svg { width: 52%; height: 52%; }
-.notif-text b { display: block; font-size: max(12px, 2.7cqw); line-height: 1.25; }
-.notif-text span { display: block; font-size: max(11px, 2.5cqw); line-height: 1.3; color: var(--slate); }
-.notif time { align-self: start; font-size: max(10px, 2.3cqw); color: var(--slate); }
-
-.booked {
-  position: absolute; right: 5%; top: 36.5%;
-  padding: 1.2cqw 2.4cqw; border-radius: 999px; background: var(--navy); color: #fff;
-  font-size: max(11px, 2.5cqw); font-weight: 700; transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.cal {
-  position: absolute; right: 1%; top: 43%; width: 45.5%;
-  padding: 3cqw; border-radius: 4cqw; background: var(--white);
-  border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgb(11 37 69 / 0.5);
-}
-.cal-day { font-size: max(11px, 2.5cqw); font-weight: 700; color: var(--slate); padding-bottom: 1.6cqw; border-bottom: 1px solid var(--line); }
-.cal-hour { display: grid; grid-template-columns: 8cqw minmax(0, 1fr); min-height: 7.6cqw; padding-top: 1cqw; border-bottom: 1px solid var(--line); font-size: max(10px, 2.3cqw); color: var(--slate); }
-.cal-hour:last-child { border-bottom: 0; }
-.cal-event { margin: 0.4cqw 0 1.2cqw; padding: 1.4cqw 1.9cqw; border-radius: 1.9cqw; background: #e8efff; border-left: 3px solid var(--cobalt); color: var(--navy); transition: box-shadow 0.4s ease; }
-.cal-event b { display: block; font-size: max(11px, 2.5cqw); }
-.cal-event i { font-style: normal; font-size: max(10px, 2.3cqw); color: var(--slate); }
-.stage.playing .booked { opacity: 0; transform: translateY(4px); }
-.stage.landed .cal-event { box-shadow: 0 0 0 4px rgb(var(--glow) / 0.18); }
+/* The guarantee meter: 60 marks, one per booked new patient, filled in gold. The number stays 60 throughout; only the marks move. */
+.goal { position: relative; margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--hair); }
+.goal-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.goal-label { font-size: 15px; color: var(--signal); }
+.goal-count { font-size: 15px; color: var(--mute); white-space: nowrap; }
+.goal-count b { display: inline-block; min-width: 2ch; text-align: right; font-size: 26px; font-weight: 800; font-stretch: 100%; color: var(--white); font-variant-numeric: tabular-nums; margin-right: 4px; }
+.ticks { display: grid; grid-template-columns: repeat(60, minmax(0, 1fr)); gap: 2.5px; align-items: end; height: 30px; margin-top: 10px; }
+.ticks i { position: relative; display: block; height: 18px; border-radius: 2px; background: rgb(159 197 255 / 0.18); }
+.ticks i:nth-child(10n) { height: 30px; }
+.ticks i::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--gold); transform-origin: 50% 100%; }
 
 /* Ad gallery */
-.work { padding-top: 56px; padding-bottom: 96px; }
-.work-head { display: flex; justify-content: space-between; align-items: end; gap: 24px 48px; flex-wrap: wrap; }
-.work-head h2 { max-width: 15ch; }
-.work-head p { max-width: 46ch; color: var(--slate); }
+.work { padding-top: 88px; padding-bottom: 88px; }
+.work-head { display: grid; gap: 18px; }
+.work-head h2 { max-width: 14ch; }
+.work-head p { max-width: 50ch; color: var(--mute); }
 .reel { margin-top: 44px; }
-.track { overflow: hidden; }
-.rail { display: flex; gap: 24px; width: max-content; padding: 6px max(20px, calc((100vw - 1160px) / 2 + 20px)) 10px; will-change: transform; }
-.track.native { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; scroll-padding-inline: max(20px, calc((100vw - 1160px) / 2 + 20px)); }
-.track.native::-webkit-scrollbar { display: none; }
-.track.native .rail { will-change: auto; }
-.slot { flex: 0 0 288px; scroll-snap-align: start; }
+/* Phones and tablets swipe through the ads; from 1024px all four sit in one still row. */
+.track { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; scroll-padding-inline: max(20px, calc((100vw - 1200px) / 2 + 20px)); }
+.track::-webkit-scrollbar { display: none; }
+.rail { display: flex; gap: 24px; width: max-content; padding: 6px max(20px, calc((100vw - 1200px) / 2 + 20px)) 12px; }
+.slot { flex: 0 0 min(76vw, 300px); scroll-snap-align: start; margin: 0; }
 .ad-frame {
-  position: relative; aspect-ratio: 3 / 4; border-radius: 18px; overflow: hidden;
-  background: linear-gradient(160deg, var(--mist), #e7f0fb); border: 1px solid var(--line);
-  display: grid; place-items: center;
+  position: relative; aspect-ratio: 3 / 4; border-radius: 18px; overflow: hidden; background: #0c0e11;
+  box-shadow: 0 0 0 1px rgb(159 197 255 / 0.14), 0 40px 70px -40px rgb(0 0 0 / 0.9);
 }
-.ad-frame img, .ad-frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #0c0e11; }
-.slot-empty { text-align: center; color: var(--slate); }
-.slot-empty svg { display: block; margin: 0 auto 10px; opacity: 0.55; }
-.slot-empty b { display: block; font-size: 16px; color: var(--navy); }
-.slot-empty span { display: block; margin-top: 2px; font-size: 13px; }
-.slot figcaption { margin-top: 12px; font-size: 14px; color: var(--slate); line-height: 1.4; }
-.slot figcaption b { color: var(--navy); }
-.proof { display: block; margin-top: 2px; font-weight: 600; color: var(--cobalt); }
+.ad-frame img, .ad-frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.slot figcaption { margin-top: 14px; font-size: 14px; color: var(--mute); line-height: 1.45; }
+.slot figcaption b { color: var(--white); }
+.proof { display: block; margin-top: 2px; font-weight: 600; color: var(--signal); }
 .proof:empty { display: none; }
-.reel-controls { display: flex; gap: 10px; margin-top: 18px; }
+.reel-controls { display: flex; gap: 10px; margin-top: 20px; }
+.reel-controls:not(.on) { visibility: hidden; }
 .icon-btn {
   width: 44px; height: 44px; border-radius: 50%;
-  border: 1.5px solid var(--line); background: var(--white); color: var(--navy);
-  display: grid; place-items: center; cursor: pointer; transition: border-color 0.15s ease;
+  border: 1.5px solid rgb(159 197 255 / 0.28); background: transparent; color: var(--white);
+  display: grid; place-items: center; cursor: pointer; transition: border-color 0.15s ease, background-color 0.15s ease;
 }
-.icon-btn:hover { border-color: var(--navy); }
-.icon-btn[hidden] { display: none; }
+.icon-btn:hover { border-color: var(--white); background: rgb(255 255 255 / 0.06); }
 
 /* How it works: the 60 seconds, frame by frame */
-.how { background: linear-gradient(180deg, var(--white) 0%, #eaf2fc 28%, var(--mist) 70%, var(--white) 100%); padding-top: 88px; padding-bottom: 88px; }
-.how h2 { max-width: 21ch; }
-.story { list-style: none; padding: 0; margin: 44px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
-.frame { min-width: 0; }
-.time { margin-top: 20px; font-size: 15px; font-weight: 700; color: var(--cobalt); font-variant-numeric: tabular-nums; }
-.cap { margin-top: 6px; font-size: 19px; font-weight: 600; line-height: 1.35; max-width: 25ch; }
-.after { margin-top: 40px; color: var(--slate); max-width: 60ch; }
+.how { position: relative; padding-top: 96px; padding-bottom: 96px; background: linear-gradient(180deg, rgb(12 28 53 / 0) 0%, rgb(12 28 53 / 0.9) 55%, rgb(12 28 53 / 0) 100%); }
+.how h2 { max-width: 19ch; }
+.story { margin-top: 48px; display: grid; gap: 28px; }
+.frame {
+  display: grid; grid-template-columns: 136px minmax(0, 1fr); grid-template-areas: "screen time" "screen cap";
+  column-gap: 20px; align-items: center;
+}
+.frame .screen { grid-area: screen; zoom: 0.544; }
+.time { grid-area: time; align-self: end; display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--signal); }
+.time::before { content: ""; width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 4px rgb(127 176 255 / 0.16); }
+.cap { grid-area: cap; align-self: start; margin-top: 6px; font-size: 18px; font-weight: 600; line-height: 1.35; max-width: 25ch; }
+.after { margin-top: 40px; color: var(--mute); max-width: 60ch; }
 
 .screen {
-  width: 250px; height: 312px; padding: 18px 16px;
+  position: relative; width: 250px; height: 312px; padding: 18px 16px;
   display: flex; flex-direction: column; gap: 10px;
-  background: var(--white); border: 1px solid #cddbeb; border-radius: 30px;
-  box-shadow: 0 26px 50px -30px rgb(11 37 69 / 0.5);
+  background: var(--white); color: var(--navy); border-radius: 30px;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.5), 0 40px 80px -36px rgb(29 92 200 / 0.75);
   font-size: 14px; line-height: 1.35; overflow: hidden;
 }
+.ex {
+  position: absolute; top: 14px; right: 14px;
+  padding: 3px 13px; border-radius: 999px; background: #e3ebf7; color: var(--navy);
+  font-size: 20px; font-weight: 700; line-height: 1.3;
+}
+.call .ex { background: rgb(255 255 255 / 0.14); color: rgb(255 255 255 / 0.86); }
 .sc-head { font-size: 13px; font-weight: 700; color: var(--slate); padding-bottom: 10px; border-bottom: 1px solid var(--line); }
 .bubble { align-self: flex-end; max-width: 86%; margin-top: auto; padding: 11px 13px; border-radius: 18px 18px 4px 18px; background: var(--cobalt); color: #fff; }
 .greet { align-self: flex-start; max-width: 86%; padding: 11px 13px; border-radius: 18px 18px 18px 4px; background: #eef3f9; }
 .sent { align-self: flex-end; font-size: 12px; color: var(--slate); }
-.typing { display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; color: #8a9bb3; font-size: 13px; }
-
-.call { background: var(--navy); border-color: var(--navy); color: #fff; align-items: center; justify-content: space-between; text-align: center; }
-.who { display: grid; justify-items: center; gap: 4px; margin-top: 22px; }
+.typing { display: flex; align-items: center; min-height: 40px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; color: #5d6f88; font-size: 13px; }
+.call { background: var(--navy); color: #fff; align-items: center; justify-content: space-between; text-align: center; }
+.who { display: grid; justify-items: center; gap: 4px; margin-top: 30px; }
 .avatar { width: 58px; height: 58px; margin-bottom: 8px; border-radius: 50%; background: rgb(255 255 255 / 0.14); display: grid; place-items: center; }
 .who b { font-size: 17px; font-stretch: 104%; }
-.who span { font-size: 13px; color: rgb(255 255 255 / 0.7); }
-.key { display: grid; justify-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; color: rgb(255 255 255 / 0.8); }
+.who span { font-size: 13px; color: rgb(255 255 255 / 0.74); }
+.key { display: grid; justify-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; color: rgb(255 255 255 / 0.82); }
 .key i { width: 62px; height: 62px; border-radius: 50%; background: #fff; color: var(--navy); font-style: normal; font-size: 27px; font-weight: 800; display: grid; place-items: center; }
-
 .cal-screen { gap: 0; }
 .cal-screen .sc-head { margin-bottom: 4px; }
 .hour { display: grid; grid-template-columns: 44px minmax(0, 1fr); min-height: 52px; border-top: 1px solid var(--line); font-size: 12px; color: var(--slate); }
 .hour > span { padding-top: 5px; }
 .hour.first { border-top: 0; }
-.event { margin: 6px 0 4px; padding: 8px 10px; border-radius: 10px; background: #e7effc; border-left: 3px solid var(--cobalt); color: var(--navy); display: grid; gap: 1px; }
+.event { margin: 6px 0 4px; padding: 8px 10px; border-radius: 10px; background: #f8f0de; border-left: 3px solid #c39433; color: var(--navy); display: grid; gap: 1px; }
 .event b { font-size: 14px; }
-.event span { font-size: 12px; color: var(--slate); }
+.event span { font-size: 12px; color: #5a5040; }
 
-/* The AI receptionist: the phone half of the same promise. Copy on the left, a sample call on the right.
-   The demo number lives in one place: data-demo-line on .rx-demo. Empty shows the "book a live demo" button. */
-.rx { padding-top: 24px; padding-bottom: 96px; }
-.rx-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 64px; align-items: center; }
-.rx h2 { max-width: 18ch; }
-.rx-lede { margin-top: 18px; font-size: 20px; color: var(--slate); max-width: 46ch; }
-.rx-facts { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 10px; }
-.rx-facts li { display: flex; gap: 10px; font-size: 18px; font-weight: 600; }
-.rx-facts svg { width: 20px; height: 20px; flex: none; margin-top: 3px; color: var(--cobalt); }
-.rx-demo { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); max-width: 460px; }
-.rx-demo .rx-label { font-size: 15px; font-weight: 700; color: var(--cobalt); }
-.rx-number { display: inline-block; margin-top: 2px; font-size: clamp(34px, 4vw, 46px); font-weight: 800; font-stretch: 104%; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; text-decoration: none; }
-.rx-number:hover { color: var(--cobalt); }
-.rx-demo p { margin-top: 6px; font-size: 16px; color: var(--slate); }
-.rx-fine { margin-top: 18px; font-size: 15px; color: var(--slate); }
-.rx-card { border-radius: 28px; padding: 22px; background: var(--navy); color: #fff; box-shadow: 0 50px 90px -50px rgb(11 37 69 / 0.75); }
-.rx-card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid rgb(255 255 255 / 0.14); }
-.rx-card-top b { font-size: 16px; font-weight: 800; }
-.rx-card-top span { font-size: 13px; color: rgb(255 255 255 / 0.66); font-variant-numeric: tabular-nums; }
-.rx-lines { display: grid; gap: 10px; margin-top: 16px; }
-.rx-line { max-width: 86%; padding: 11px 14px; border-radius: 18px; font-size: 15px; line-height: 1.45; }
-.rx-line.rx-caller { justify-self: end; background: rgb(255 255 255 / 0.12); border-bottom-right-radius: 6px; }
-.rx-line.rx-ai { justify-self: start; background: #fff; color: var(--navy); border-bottom-left-radius: 6px; }
-.rx-line.rx-booked { justify-self: stretch; max-width: none; display: flex; align-items: center; gap: 10px; background: rgb(74 222 128 / 0.16); color: #a7f3c4; font-weight: 700; border-radius: 14px; }
-.rx-line.rx-booked svg { width: 18px; height: 18px; flex: none; }
-@media (max-width: 960px) {
-  .rx-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .rx-card { max-width: 520px; }
+/* Sofia, the AI receptionist. The demo number lives in one place: data-demo-line on .rx-demo. */
+.rx { position: relative; overflow: hidden; isolation: isolate; padding-top: 88px; padding-bottom: 104px; }
+.rx::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none; right: -20%; top: 10%; width: 90%; height: 90%;
+  background: radial-gradient(closest-side, rgb(29 92 200 / 0.34), rgb(29 92 200 / 0));
 }
-@media (max-width: 760px) {
-  .rx { padding-top: 8px; padding-bottom: 64px; }
-  .rx-demo .btn { width: 100%; }
+.rx-grid { display: grid; gap: 22px; }
+.rx h2 { max-width: 16ch; }
+.rx-lede { font-size: 18px; color: var(--mute); max-width: 46ch; }
+.rx-facts { margin-top: 26px; display: grid; gap: 12px; }
+.rx-facts li { display: flex; gap: 12px; font-size: 17px; font-weight: 600; line-height: 1.4; }
+.rx-facts svg { width: 20px; height: 20px; flex: none; margin-top: 1px; color: var(--signal); }
+/* The demo line is this section's picture: one big number to call, with the call rings behind it. */
+.rx-demo {
+  position: relative; overflow: hidden; isolation: isolate; margin-top: 48px;
+  padding: 30px 22px 28px; border-radius: 28px;
+  background:
+    radial-gradient(90% 120% at 0% 0%, rgb(29 92 200 / 0.4), rgb(29 92 200 / 0) 62%),
+    linear-gradient(180deg, rgb(255 255 255 / 0.07), rgb(255 255 255 / 0.025));
+  border: 1px solid rgb(159 197 255 / 0.22);
+  box-shadow: 0 60px 120px -60px rgb(29 92 200 / 0.75), inset 0 1px 0 rgb(255 255 255 / 0.08);
 }
+.rx-demo::before {
+  content: ""; position: absolute; z-index: -1; left: -150px; top: -150px; width: 400px; height: 400px; border-radius: 50%; pointer-events: none;
+  background: repeating-radial-gradient(circle, rgb(127 176 255 / 0.16) 0 1px, rgb(127 176 255 / 0) 1px 46px);
+  -webkit-mask-image: radial-gradient(closest-side, #000 30%, transparent);
+  mask-image: radial-gradient(closest-side, #000 30%, transparent);
+}
+.rx-label { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; color: var(--signal); }
+.rx-label::before {
+  content: ""; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--cobalt) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z'/%3E%3C/svg%3E") center / 15px no-repeat;
+  box-shadow: 0 0 0 4px rgb(127 176 255 / 0.14);
+}
+.rx-number {
+  display: inline-block; margin-top: 10px; white-space: nowrap;
+  font-size: clamp(28px, 9.6vw, 104px); font-weight: 800; font-stretch: 104%; letter-spacing: -0.02em; line-height: 1.04;
+  font-variant-numeric: tabular-nums; text-decoration: none;
+}
+.rx-number:hover { color: var(--signal); }
+.rx-demo p { margin-top: 10px; font-size: 17px; color: var(--mute); }
+.rx-fine { margin-top: 18px; font-size: 15px; color: var(--mute); }
 
-/* The guarantee, as large as the headline */
-.guarantee { background: var(--navy); color: #fff; padding-top: clamp(64px, 9vw, 112px); padding-bottom: clamp(64px, 9vw, 112px); }
-.guarantee h2 { font-size: clamp(32px, 4.4vw, 58px); line-height: 1.08; max-width: 22ch; }
-.terms { margin-top: 52px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 56px; max-width: 980px; }
-.terms > div { min-width: 0; padding-top: 18px; border-top: 1px solid rgb(255 255 255 / 0.22); }
-.terms dt { font-size: 18px; font-weight: 700; font-stretch: 104%; }
-.terms dd { margin-top: 8px; font-size: 17px; color: rgb(255 255 255 / 0.76); }
+/* The lit stretch: guarantee, first 90 days, questions */
+.lit { background: var(--white); color: var(--navy); color-scheme: light; }
+.guarantee { position: relative; overflow: hidden; padding-top: clamp(80px, 10vw, 132px); padding-bottom: clamp(72px, 8vw, 112px); }
+.guarantee h2 { font-size: clamp(31px, 4.6vw, 62px); line-height: 1.04; max-width: 23ch; }
+.months { margin-top: 52px; display: grid; gap: 22px; }
+.m-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.m-row span { display: flex; align-items: center; min-height: 54px; padding: 0 14px; border-radius: 10px; font-size: 15px; }
+.m-paid .m-row span { background: var(--navy); color: var(--white); }
+.m-free .m-row span {
+  border: 1.5px solid #cfa85a; color: var(--gold-ink);
+  background: repeating-linear-gradient(135deg, rgb(214 178 110 / 0.2) 0 7px, rgb(214 178 110 / 0.06) 7px 14px);
+}
+.m-row .m-until { grid-column: 1 / -1; }
+.m-cap { margin-top: 10px; font-size: 16px; font-weight: 700; font-stretch: 104%; }
+.m-free .m-cap { color: var(--gold-ink); }
+.terms { margin-top: 52px; display: grid; }
+.terms > div { min-width: 0; padding: 20px 0 22px; border-top: 1px solid var(--line); }
+.terms dt { font-size: 19px; font-weight: 800; font-stretch: 104%; }
+.terms dd { margin-top: 6px; color: var(--slate); max-width: 48ch; }
 
-/* First 90 days */
-.days { padding-top: 96px; padding-bottom: 72px; }
-.timeline { list-style: none; padding: 0; margin: 48px 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: relative; }
-.timeline::before { content: ""; position: absolute; left: 7px; right: 7px; top: 7px; height: 2px; background: var(--cobalt); }
-.timeline li { position: relative; min-width: 0; padding: 34px 20px 0 0; }
-.timeline li::before { content: ""; position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--white); border: 3px solid var(--cobalt); box-sizing: border-box; }
-.timeline li:last-child::before { background: var(--cobalt); }
-.when { display: block; font-size: 15px; font-weight: 700; color: var(--cobalt); font-variant-numeric: tabular-nums; }
-.timeline b { display: block; margin-top: 6px; font-size: 19px; font-weight: 700; line-height: 1.3; }
+.days { background: var(--ice); padding-top: 88px; padding-bottom: 88px; }
+.timeline { position: relative; margin-top: 44px; display: grid; }
+.timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 40px; width: 2px; background: #c5d7ee; }
+.timeline::after { content: ""; position: absolute; left: 7px; top: 8px; bottom: 40px; width: 2px; background: var(--cobalt); transform-origin: 50% 0; }
+.timeline li { position: relative; min-width: 0; padding: 0 0 26px 40px; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li::before {
+  content: ""; position: absolute; z-index: 1; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--ice); border: 3px solid var(--cobalt); box-sizing: border-box;
+}
+.timeline li.goal-step::before { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 0 5px rgb(214 178 110 / 0.28); }
+.when { display: block; font-size: 15px; color: var(--cobalt); }
+.goal-step .when { color: var(--gold-ink); }
+.timeline b { display: block; margin-top: 2px; font-size: 18px; font-weight: 700; line-height: 1.32; }
 
-/* Objections, answered up front */
-.answers { padding-top: 40px; padding-bottom: 64px; }
-.qa { margin-top: 44px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 64px; }
-.qa > div { min-width: 0; }
-.qa dt { font-size: 20px; font-weight: 700; font-stretch: 104%; line-height: 1.3; }
-.qa dd { margin-top: 8px; color: var(--slate); max-width: 46ch; }
+.answers { padding-top: 88px; padding-bottom: 96px; }
+.qa { margin-top: 40px; display: grid; }
+.qa > div { min-width: 0; padding: 22px 0 24px; border-top: 1px solid var(--line); }
+.qa dt { font-size: 19px; font-weight: 800; font-stretch: 104%; line-height: 1.3; }
+.qa dd { margin-top: 8px; color: var(--slate); max-width: 48ch; }
 
-/* Intake: the light returns at the bottom of the page, with the founder next to the form */
-.intake { background: linear-gradient(180deg, var(--white) 0%, #e9f1fb 40%, var(--sky-deep) 100%); padding-top: 88px; padding-bottom: 104px; }
-.intake-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 56px; align-items: start; }
-.intake h2 { font-size: clamp(32px, 4vw, 52px); }
-.sub { margin-top: 14px; max-width: 34ch; font-size: 19px; color: var(--slate); text-wrap: pretty; }
+/* Fit check: the lights go down again, with the founder next to the form */
+.intake { position: relative; overflow: hidden; isolation: isolate; padding-top: 96px; padding-bottom: 112px; }
+.intake::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none; left: -10%; top: -30%; width: 80%; height: 110%;
+  background: radial-gradient(closest-side, rgb(29 92 200 / 0.32), rgb(29 92 200 / 0));
+}
+.intake-grid { display: grid; gap: 32px; }
+.intake h2 { font-size: clamp(34px, 4.4vw, 56px); }
+.sub { margin-top: 14px; max-width: 34ch; font-size: 18px; color: var(--mute); text-wrap: pretty; }
 .founder {
-  margin-top: 36px; display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 18px; align-items: center;
-  padding: 18px 20px; border-radius: 22px; background: rgb(255 255 255 / 0.7); border: 1px solid #d6e3f2;
+  margin-top: 32px; display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 18px; align-items: center;
+  padding: 20px 22px; border-radius: 22px; background: rgb(255 255 255 / 0.05); border: 1px solid var(--hair);
 }
 .founder.no-photo { grid-template-columns: minmax(0, 1fr); }
 .f-photo { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; display: block; }
-.f-initials { display: grid; place-items: center; background: var(--navy); color: #fff; font-size: 24px; font-weight: 800; font-stretch: 112%; letter-spacing: 0.02em; }
-.founder h3 { font-size: 20px; font-weight: 800; font-stretch: 104%; }
-.founder p { margin-top: 4px; font-size: 16px; color: var(--slate); line-height: 1.45; }
-.intake-card { background: var(--white); border: 1px solid #d6e3f2; border-radius: 26px; padding: clamp(24px, 4vw, 40px); box-shadow: 0 32px 64px -40px rgb(11 37 69 / 0.45); }
+.founder h3 { font-size: 20px; font-weight: 800; font-stretch: 104%; line-height: 1.2; }
+.founder p { margin-top: 6px; font-size: 16px; color: var(--mute); line-height: 1.5; }
+.intake-card {
+  background: var(--white); color: var(--navy); color-scheme: light;
+  border-radius: 28px; padding: clamp(24px, 4vw, 40px);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.6), 0 60px 120px -60px rgb(29 92 200 / 0.85);
+}
 fieldset { border: 0; margin: 0 0 24px; padding: 0; min-width: 0; }
 legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; font-stretch: 104%; }
 .choices { display: flex; flex-wrap: wrap; gap: 10px; }
 .choice { position: relative; }
 .choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .choice span {
-  display: inline-flex; align-items: center; min-height: 46px; padding: 0 18px;
+  display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px;
   border: 1.5px solid var(--line); border-radius: 999px; background: var(--white);
   font-size: 16px; font-weight: 600; cursor: pointer;
   transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
@@ -340,79 +406,158 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 .choice span:hover { border-color: var(--navy); }
 .choice input:checked + span { background: var(--navy); border-color: var(--navy); color: #fff; }
 .choice input:focus-visible + span { outline: 3px solid var(--cobalt); outline-offset: 2px; }
-.form-error { margin: 0 0 14px; color: var(--warn); font-weight: 600; }
+.form-error { margin: 0 0 14px; color: #b0401a; font-weight: 600; }
 .result { margin-top: 26px; padding-top: 24px; border-top: 1px solid var(--line); }
 .result h3 { font-size: 26px; font-weight: 800; }
+.result h3:focus { outline: none; }
 .result p { margin-top: 8px; color: var(--slate); }
 .result .btn { margin-top: 18px; }
+.noscript-book { margin-top: 16px; font-size: 15px; color: var(--slate); }
 
 /* Footer */
-.foot { background: var(--navy); color: rgb(255 255 255 / 0.78); }
-.foot .wrap { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) auto; gap: 20px 40px; padding-top: 44px; padding-bottom: 52px; font-size: 15px; line-height: 1.6; }
-.foot a { color: #fff; text-underline-offset: 3px; }
+.foot { background: #040b16; color: var(--mute); border-top: 1px solid rgb(159 197 255 / 0.1); }
+.foot .wrap { display: grid; gap: 18px 40px; padding-top: 44px; padding-bottom: 52px; font-size: 15px; line-height: 1.6; }
+.foot a { color: var(--white); text-underline-offset: 3px; }
 .foot .links { display: flex; gap: 20px; }
-.foot .fn { grid-column: 1 / -1; font-size: 13px; color: rgb(255 255 255 / 0.62); }
+.foot .fn { font-size: 13px; color: #8d99ab; }
 
-@media (max-width: 1100px) {
-  .hero-grid { gap: 36px; }
+/* Larger phones and tablets */
+@media (min-width: 600px) {
+  .hero-grid { padding-top: 44px; }
+  .hc-wrap { margin-top: 32px; }
+  .hero h1 { font-size: clamp(44px, 7vw, 60px); }
+  .promise { font-size: 22px; }
+  .actions .btn { flex: 0 0 auto; }
+  .ticks { gap: 4px; }
 }
-@media (max-width: 960px) {
-  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; min-height: 0; padding-bottom: 56px; }
-  .stage { justify-self: center; max-width: 560px; }
-  .hero {
-    background:
-      linear-gradient(180deg, rgb(255 255 255 / 0) 82%, var(--white) 100%),
-      radial-gradient(70% 34% at 60% 74%, rgb(var(--glow) / 0.2), rgb(var(--glow) / 0) 70%),
-      linear-gradient(180deg, var(--white) 0%, var(--white) 46%, var(--mist) 62%, var(--sky) 88%, var(--sky-deep) 100%);
+@media (min-width: 761px) {
+  body { font-size: 18px; }
+  .lede { font-size: 19px; }
+  .work-head { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; gap: 48px; }
+  .terms, .qa { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px; }
+  .months { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .m-row span { min-height: 64px; font-size: 16px; }
+  .foot .wrap { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) auto; }
+  .foot .fn { grid-column: 1 / -1; }
+}
+@media (min-width: 861px) {
+  .story { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; position: relative; }
+  .story::before { content: ""; position: absolute; left: 4px; right: 0; top: 11px; height: 1px; background: linear-gradient(90deg, rgb(127 176 255 / 0.7), rgb(127 176 255 / 0.08)); transform-origin: 0 50%; }
+  .frame { display: block; }
+  .frame .screen { zoom: 1; margin-top: 26px; }
+  .ex { top: 15px; padding: 2px 9px; font-size: 11px; }
+  .time { align-self: auto; }
+  .cap { margin-top: 22px; font-size: 19px; }
+}
+@media (min-width: 961px) {
+  .rx-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: start; }
+  .rx-demo { padding: 44px 48px 42px; }
+  .rx-demo::before { left: -110px; top: -170px; width: 560px; height: 560px; }
+  .timeline { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .timeline::before, .timeline::after { left: 8px; right: 8px; top: 7px; bottom: auto; width: auto; height: 2px; }
+  .timeline::after { transform-origin: 0 50%; }
+  .timeline li { padding: 34px 18px 0 0; }
+  .timeline li::before { top: 0; }
+  .timeline b { margin-top: 6px; }
+  .intake-grid { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 64px; align-items: start; }
+}
+/* Desktop: copy on the left, the call on the right, the meter across both */
+@media (min-width: 1024px) {
+  .hero { padding-bottom: 52px; }
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr); grid-template-areas: "copy art";
+    column-gap: 48px; align-items: center; padding-top: clamp(32px, 6vh, 72px);
   }
-  .intake-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .founder { max-width: 560px; }
+  .hero-copy { display: block; grid-area: copy; }
+  .hero h1 { font-size: clamp(50px, 4.75vw, 70px); font-stretch: 108%; }
+  .promise { margin-top: 20px; font-size: clamp(22px, 2vw, 28px); }
+  .lede { margin-top: 18px; }
+  .actions { margin-top: 30px; }
+  .hc-wrap { justify-self: end; max-width: 452px; margin: 0; }
+  .hc { padding: 18px; border-radius: 30px; }
+  .hc-ring { width: 42px; height: 42px; }
+  .hc-call b { font-size: 16px; }
+  .hc-state { font-size: 14px; }
+  .orb { width: 38px; height: 38px; font-size: 16px; }
+  .hc-who b { font-size: 15px; }
+  .hc-who span { font-size: 13px; }
+  .hc-wave { height: 34px; }
+  .hc-line { font-size: 15px; padding: 10px 14px; }
+  .hc-booked { font-size: 15px; padding: 12px 16px; }
+  .goal { margin-top: 40px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: end; gap: 28px; padding-top: 22px; }
+  .goal-head { display: contents; }
+  .goal-label { order: 0; padding-bottom: 2px; }
+  .ticks { order: 1; gap: 7px; height: 34px; margin-top: 0; }
+  .ticks i { height: 20px; border-radius: 3px; }
+  .ticks i:nth-child(10n) { height: 34px; }
+  .goal-count { order: 2; }
+  .goal-count b { font-size: 30px; }
+  .track { overflow: visible; scroll-snap-type: none; }
+  .rail {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: auto; max-width: 1200px; margin: 0 auto;
+    padding: 6px max(20px, env(safe-area-inset-right, 0px)) 12px max(20px, env(safe-area-inset-left, 0px));
+  }
+  .reel-controls { display: none; }
 }
-@media (max-width: 860px) {
-  .story { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .frame { display: grid; grid-template-columns: 136px minmax(0, 1fr); column-gap: 20px; align-items: center; }
-  .frame .screen { zoom: 0.544; grid-row: span 2; }
-  .time { margin-top: 0; align-self: end; }
-  .cap { align-self: start; font-size: 18px; }
-  .terms { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 40px; }
-  .terms > div { padding-bottom: 18px; }
-  .timeline { grid-template-columns: minmax(0, 1fr); }
-  .timeline::before { left: 7px; right: auto; top: 8px; bottom: 30px; width: 2px; height: auto; }
-  .timeline li { padding: 0 0 28px 40px; }
-  .timeline li::before { top: 4px; }
-  .timeline b { margin-top: 2px; }
-}
-@media (max-width: 760px) {
-  .qa { grid-template-columns: minmax(0, 1fr); gap: 30px; }
-  .foot .wrap { grid-template-columns: minmax(0, 1fr); }
-  .actions .btn { flex: 1 1 100%; }
-  .work, .how { padding-top: 64px; padding-bottom: 64px; }
-  .slot { flex-basis: min(78vw, 304px); }
-  /* Phones: a compact stage with its own layout, no connector, no video */
-  .stage { aspect-ratio: 342 / 322; }
-  .panel { left: 0; top: 3%; right: 0; bottom: 0; border-radius: 26px; }
-  .panel-video, .wire { display: none; }
-  .panel-tag { left: 16px; bottom: 12px; font-size: 12px; }
-  .ad-card { left: 4%; top: 12%; width: 29%; border-radius: 12px; }
-  .ad-empty { font-size: 12px; }
-  .ad-empty small { font-size: 10px; }
-  .notif { left: 36%; top: 7%; width: 61%; grid-template-columns: 30px minmax(0, 1fr); gap: 9px; padding: 10px 11px; border-radius: 16px; }
-  .notif time { display: none; }
-  .notif-icon { width: 30px; height: 30px; border-radius: 8px; }
-  .notif-text b { font-size: 13px; }
-  .notif-text span { font-size: 12px; }
-  .booked { right: 5%; top: 34%; font-size: 12px; padding: 5px 10px; }
-  .cal { right: 3%; top: 44%; width: 58%; padding: 11px 12px; border-radius: 16px; }
-  .cal-day { font-size: 12px; padding-bottom: 6px; }
-  .cal-hour { grid-template-columns: 36px minmax(0, 1fr); min-height: 30px; padding-top: 4px; font-size: 11px; }
-  .cal-event { margin: 2px 0 6px; padding: 5px 8px; border-radius: 8px; }
-  .cal-event b { font-size: 12px; }
-  .cal-event i { font-size: 11px; }
+
+/* The one orchestrated moment. Without motion (or without CSS animation), everything shows in its final state. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy > * { animation: rise 0.9s var(--ease) both; }
+  .hero h1 { animation-delay: 0.05s; }
+  .promise { animation-delay: 0.14s; }
+  .lede { animation-delay: 0.22s; }
+  .actions { animation-delay: 0.3s; }
+  .fine { animation-delay: 0.38s; }
+  /* The call, about three seconds: it rings, Sofia answers and talks, one exchange, the consult lands in gold,
+     and the guarantee meter fills behind it. */
+  .hc-wrap { animation: rise 0.9s var(--ease) 0.1s both; }
+  .hc-ring::before { animation: ring 0.62s ease-out 0.2s 2 both; }
+  .hc-ring::after { animation: ring 0.62s ease-out 0.42s 2 both; }
+  .hc-state .s1 { animation: state-out 1.05s linear both; }
+  .hc-state .s2 { animation: fade-in 0.3s ease-out 1s both; }
+  .hc-agent { animation: pop 0.6s var(--ease) 1s both; }
+  .hc-wave span { animation: talk 0.5s ease-in-out 3 both; animation-delay: calc(1.2s + var(--i) * 22ms); }
+  .hc-caller { animation: pop 0.55s var(--ease) 1.3s both; }
+  .hc-ai { animation: pop 0.55s var(--ease) 1.8s both; }
+  .hc-booked { animation: booked 0.7s var(--spring) 2.35s both; }
+  .hc-booked::after { animation: halo 1s ease-out 2.45s both; }
+  .goal { animation: rise 0.9s var(--ease) 0.5s both; }
+  .ticks i::after { animation: tick 0.42s var(--ease) both; animation-delay: calc(2.2s + var(--i) * 13ms); }
+  @keyframes rise { from { opacity: 0; transform: translate3d(0, 18px, 0); } to { opacity: 1; transform: none; } }
+  @keyframes ring { from { opacity: 0.75; transform: none; } to { opacity: 0; transform: scale(1.9); } }
+  @keyframes state-out { 0%, 88% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pop { from { opacity: 0; transform: translate3d(0, 10px, 0) scale(0.97); } to { opacity: 1; transform: none; } }
+  @keyframes talk { 0%, 100% { transform: none; } 50% { transform: scaleY(0.3); } }
+  @keyframes booked { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: none; } }
+  @keyframes halo { from { opacity: 0.85; transform: none; } to { opacity: 0; transform: scale(1.05, 1.4); } }
+  @keyframes tick { from { opacity: 0; transform: scaleY(0.25); } to { opacity: 1; transform: none; } }
+
+  /* Scroll reveals, once each. The script adds .rv-on only after it has marked what's already on screen. */
+  .rv-on .rv { transition: opacity 0.8s var(--ease), transform 0.9s var(--ease); }
+  .rv-on .rv:not(.in) { opacity: 0; transform: translate3d(0, 22px, 0); }
+  /* The 60 seconds play out once: the timecode line draws across and each frame arrives as it passes. */
+  .rv-on .story.rv:not(.in) { opacity: 1; transform: none; }
+  .rv-on .story::before { transition: transform 1.5s cubic-bezier(0.45, 0, 0.2, 1); }
+  .rv-on .story:not(.in)::before { transform: scaleX(0); }
+  .rv-on .story .frame { transition: opacity 0.8s var(--ease), transform 0.9s var(--ease); }
+  .rv-on .story:not(.in) .frame { opacity: 0; transform: translate3d(0, 22px, 0); }
+  .rv-on .story .frame:nth-child(2) { transition-delay: 0.35s; }
+  .rv-on .story .frame:nth-child(3) { transition-delay: 0.7s; }
+  .rv-on .rx-demo::before { transition: opacity 1.2s var(--ease) 0.2s, transform 1.4s var(--ease) 0.2s; }
+  .rv-on .rx-demo:not(.in)::before { opacity: 0; transform: scale(0.55); }
+  .rv-on .timeline::after { transition: transform 1.4s var(--ease) 0.15s; }
+  .rv-on .timeline:not(.in)::after { transform: scale(0); }
+  .rv-on .m-row span { transition: opacity 0.6s var(--ease), transform 0.7s var(--ease); }
+  .rv-on .months:not(.in) .m-row span { opacity: 0; transform: translate3d(0, 10px, 0); }
+  .rv-on .m-row span:nth-child(2) { transition-delay: 0.08s; }
+  .rv-on .m-row span:nth-child(3) { transition-delay: 0.16s; }
+  .rv-on .m-free .m-row span:nth-child(1) { transition-delay: 0.32s; }
+  .rv-on .m-free .m-row span:nth-child(2) { transition-delay: 0.4s; }
+  .rv-on .m-free .m-row span:nth-child(3) { transition-delay: 0.48s; }
 }
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   * { transition: none !important; }
-  .panel-video { display: none; }
 }
 </style>
 </head>
@@ -420,111 +565,112 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top" data-track="header_brand">SOVRN <span>Growth</span></a>
-    <a class="btn small" href="#intake" data-track="header_fit">See if you're a fit</a>
+    <a class="btn btn-light small" href="#intake" data-track="header_fit">See if you're a fit</a>
   </div>
 </header>
 
 <main id="top">
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <h1>30 booked implant consults in 90 days.</h1>
-        <p class="promise">Or we work months four through six for free.</p>
-        <p class="lede">Meta ads for Texas implant practices. Every new patient gets a call or text within 60 seconds.</p>
-        <div class="actions">
-          <a class="btn" href="#intake" data-track="hero_fit">See if you're a good fit</a>
-          <a class="text-link" href="#how" data-track="hero_how">See how it works</a>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1 id="hero-title">60 booked new patients in 90 days.</h1>
+          <p class="promise">Or we keep working for free until you get there.</p>
+          <p class="lede">Meta ads for Texas dental practices. Every new patient gets a call or text within 60 seconds.</p>
+          <div class="actions">
+            <a class="btn btn-light" href="#intake" data-track="hero_fit">See if you're a good fit</a>
+            <a class="text-link" href="#how" data-track="hero_how">See how it works</a>
+          </div>
+          <p class="fine">Flat fee, never per patient. 90 days, then month to month.</p>
         </div>
-        <p class="fine">Flat fee, never per patient. 90 days, then month to month.</p>
+
+        <figure class="hc-wrap" role="img" aria-label="Example: an incoming call at 9:42 PM, after hours. Sofia, the AI receptionist, answers and books an implant consult for Friday at 2:00 PM.">
+          <div class="hc">
+            <div class="hc-top">
+              <span class="hc-ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+              <div class="hc-call">
+                <b>Incoming call, 9:42 PM</b>
+                <span class="hc-state"><span class="s1">Ringing</span><span class="s2">Answered by Sofia</span></span>
+              </div>
+              <span class="hc-ex">Example</span>
+            </div>
+            <div class="hc-agent">
+              <span class="orb">S</span>
+              <div class="hc-who"><b>Sofia</b><span>AI receptionist</span></div>
+              <div class="hc-wave"><span style="--h:26;--i:0"></span><span style="--h:40;--i:1"></span><span style="--h:45;--i:2"></span><span style="--h:51;--i:3"></span><span style="--h:69;--i:4"></span><span style="--h:50;--i:5"></span><span style="--h:82;--i:6"></span><span style="--h:79;--i:7"></span><span style="--h:75;--i:8"></span><span style="--h:98;--i:9"></span><span style="--h:64;--i:10"></span><span style="--h:95;--i:11"></span><span style="--h:87;--i:12"></span><span style="--h:72;--i:13"></span><span style="--h:91;--i:14"></span><span style="--h:59;--i:15"></span><span style="--h:73;--i:16"></span><span style="--h:64;--i:17"></span><span style="--h:47;--i:18"></span><span style="--h:51;--i:19"></span><span style="--h:34;--i:20"></span><span style="--h:29;--i:21"></span></div>
+            </div>
+            <div class="hc-lines">
+              <p class="hc-line hc-caller">Hi, can I get in for an implant consult?</p>
+              <p class="hc-line hc-ai">Yes. I have Friday at 2:00 PM, and I'll text you the confirmation.</p>
+            </div>
+            <p class="hc-booked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><b>Consult booked</b><span>Friday, 2:00 PM</span></p>
+          </div>
+        </figure>
       </div>
 
-      <div class="stage" aria-label="Example workflow: an implant ad, a call within 60 seconds, a booked consult" role="img">
-        <div class="panel">
-          <!-- Higgsfield loop slot (desktop only; phones and reduced motion keep the still panel). Drop the files in /media/ and uncomment:
-          <video class="panel-video" muted loop playsinline preload="none" poster="/media/hero-panel-poster.webp">
-            <source src="/media/hero-panel.mp4" type="video/mp4">
-          </video>
-          -->
-          <span class="panel-tag">Example workflow</span>
-        </div>
-        <svg class="wire" viewBox="0 0 520 440" aria-hidden="true">
-          <path class="wire-path" d="M170 142 C 206 118, 198 92, 238 86 L 404 110 C 436 138, 432 168, 424 196"/>
-          <circle class="signal-halo" r="11" cx="170" cy="142"/>
-          <circle class="signal" r="5" cx="170" cy="142"/>
-        </svg>
-        <div class="ad-card">
-          <img src="/img/ads/ad-1.webp" width="720" height="964" alt="Sample implant ad for a made-up practice: Don't Get Dental Implants Without Knowing These 5 Things">
-        </div>
-        <div class="notif">
-          <span class="notif-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
-          <div class="notif-text"><b>New implant patient</b><span>From your ad. Press 1 to connect.</span></div>
-          <time>now</time>
-        </div>
-        <span class="booked">Booked</span>
-        <div class="cal">
-          <div class="cal-day">Thursday</div>
-          <div class="cal-hour"><span>9 AM</span><span></span></div>
-          <div class="cal-hour"><span>10 AM</span><div class="cal-event"><b>Implant consult</b><i>New patient, 10:30</i></div></div>
-          <div class="cal-hour"><span>11 AM</span><span></span></div>
-        </div>
+      <div class="goal" role="img" aria-label="Your 90-day guarantee: 60 booked new patients">
+        <p class="goal-head">
+          <span class="goal-label readout">Your 90-day guarantee</span>
+          <span class="goal-count"><b id="goal-n">60</b>booked new patients</span>
+        </p>
+        <div class="ticks" id="ticks"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i><i style="--i:14"></i><i style="--i:15"></i><i style="--i:16"></i><i style="--i:17"></i><i style="--i:18"></i><i style="--i:19"></i><i style="--i:20"></i><i style="--i:21"></i><i style="--i:22"></i><i style="--i:23"></i><i style="--i:24"></i><i style="--i:25"></i><i style="--i:26"></i><i style="--i:27"></i><i style="--i:28"></i><i style="--i:29"></i><i style="--i:30"></i><i style="--i:31"></i><i style="--i:32"></i><i style="--i:33"></i><i style="--i:34"></i><i style="--i:35"></i><i style="--i:36"></i><i style="--i:37"></i><i style="--i:38"></i><i style="--i:39"></i><i style="--i:40"></i><i style="--i:41"></i><i style="--i:42"></i><i style="--i:43"></i><i style="--i:44"></i><i style="--i:45"></i><i style="--i:46"></i><i style="--i:47"></i><i style="--i:48"></i><i style="--i:49"></i><i style="--i:50"></i><i style="--i:51"></i><i style="--i:52"></i><i style="--i:53"></i><i style="--i:54"></i><i style="--i:55"></i><i style="--i:56"></i><i style="--i:57"></i><i style="--i:58"></i><i style="--i:59"></i></div>
       </div>
     </div>
   </section>
 
   <section class="work" id="work" aria-labelledby="work-title">
-    <div class="wrap work-head">
+    <div class="wrap work-head rv">
       <h2 id="work-title">Built on ads that already work.</h2>
-      <p>Every ad we make is modeled on implant ads that have run for months in Meta's Ad Library. Practices don't keep paying for ads that don't book consults. These samples are for made-up practices.</p>
+      <p>Practices don't keep paying for ads that don't book consults. So every ad we make is modeled on implant ads that have run for months in Meta's Ad Library. These samples are for made-up practices.</p>
     </div>
-    <div class="reel">
+    <div class="reel rv">
       <div class="track" id="track">
         <div class="rail" id="rail">
           <figure class="slot">
-            <div class="ad-frame"><img src="/img/ads/ad-1.webp" width="720" height="964" loading="lazy" alt="Sample implant ad for a made-up practice: Don't Get Dental Implants Without Knowing These 5 Things"></div>
+            <div class="ad-frame"><img src="/img/ads/ad-1.webp" width="720" height="964" loading="lazy" decoding="async" alt="Sample implant ad for a made-up practice: Don't Get Dental Implants Without Knowing These 5 Things"></div>
             <figcaption><b>Vellora Implant Studio</b>, sample ad<span class="proof">Modeled on an ad running 290+ days</span></figcaption>
           </figure>
           <figure class="slot">
-            <div class="ad-frame"><img src="/img/ads/ad-2.webp" width="720" height="964" loading="lazy" alt="Sample implant ad for a made-up practice: What Do Dental Implants Really Cost?"></div>
+            <div class="ad-frame"><img src="/img/ads/ad-2.webp" width="720" height="964" loading="lazy" decoding="async" alt="Sample implant ad for a made-up practice: What Do Dental Implants Really Cost?"></div>
             <figcaption><b>Avenelle Dental</b>, sample ad<span class="proof">Modeled on an ad running 290+ days</span></figcaption>
           </figure>
           <figure class="slot">
-            <div class="ad-frame"><img src="/img/ads/ad-3.webp" width="720" height="964" loading="lazy" alt="Sample implant ad for a made-up practice: Your Implant Plan In One Visit"></div>
+            <div class="ad-frame"><img src="/img/ads/ad-3.webp" width="720" height="964" loading="lazy" decoding="async" alt="Sample implant ad for a made-up practice: Your Implant Plan In One Visit"></div>
             <figcaption><b>Cairnwell Dental</b>, sample ad<span class="proof">Modeled on an ad running 290+ days</span></figcaption>
           </figure>
           <figure class="slot">
-            <div class="ad-frame"><img src="/img/ads/ad-4.webp" width="720" height="964" loading="lazy" alt="Sample implant ad for a made-up practice: What Most Patients Don't Know Before Getting Dental Implants"></div>
+            <div class="ad-frame"><img src="/img/ads/ad-4.webp" width="720" height="964" loading="lazy" decoding="async" alt="Sample implant ad for a made-up practice: What Most Patients Don't Know Before Getting Dental Implants"></div>
             <figcaption><b>Orison Dental</b>, sample ad<span class="proof">Modeled on an ad running 130+ days</span></figcaption>
           </figure>
         </div>
       </div>
-      <div class="wrap reel-controls">
-        <button class="icon-btn" type="button" id="reel-pause" aria-pressed="false" aria-label="Pause the gallery" data-track="gallery_pause">
-          <svg class="i-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-          <svg class="i-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:none"><path d="M8 5v14l11-7z"/></svg>
-        </button>
+      <div class="wrap reel-controls" id="reel-controls">
         <button class="icon-btn" type="button" id="reel-prev" aria-label="Previous ad" data-track="gallery_prev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
         <button class="icon-btn" type="button" id="reel-next" aria-label="Next ad" data-track="gallery_next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
       </div>
     </div>
   </section>
 
-  <section class="how" id="how">
+  <section class="how" id="how" aria-labelledby="how-title">
     <div class="wrap">
-      <h2>Front desk busy? Never miss another implant patient.</h2>
-      <ol class="story">
+      <h2 id="how-title" class="rv">Front desk busy? Never miss another implant patient.</h2>
+      <ol class="story rv">
         <li class="frame">
+          <p class="time readout">2:14:05 PM</p>
           <div class="screen chat" aria-hidden="true">
+            <span class="ex">Example</span>
             <div class="sc-head">Chat with us</div>
             <div class="greet">Hi! How can we help today?</div>
             <div class="bubble">Do you do implants? I'm missing a back tooth.</div>
             <div class="sent">Sent</div>
             <div class="typing">Write a message</div>
           </div>
-          <p class="time">2:14:05 PM</p>
           <p class="cap">A new patient asks about implants on your website.</p>
         </li>
         <li class="frame">
+          <p class="time readout">2:14:09 PM</p>
           <div class="screen call" aria-hidden="true">
+            <span class="ex">Example</span>
             <div class="who">
               <span class="avatar"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
               <b>New implant patient</b>
@@ -532,18 +678,18 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
             </div>
             <div class="key"><i>1</i>Press 1 to connect</div>
           </div>
-          <p class="time">2:14:09 PM</p>
           <p class="cap">Your front desk's phone rings. Press 1 and you're talking.</p>
         </li>
         <li class="frame">
+          <p class="time readout">2:16 PM</p>
           <div class="screen cal-screen" aria-hidden="true">
+            <span class="ex">Example</span>
             <div class="sc-head">Thursday</div>
             <div class="hour first"><span>9 AM</span><span></span></div>
             <div class="hour"><span>10 AM</span><div class="event"><b>Implant consult</b><span>New patient, 10:30</span></div></div>
             <div class="hour"><span>11 AM</span><span></span></div>
             <div class="hour"><span>12 PM</span><span></span></div>
           </div>
-          <p class="time">2:16 PM</p>
           <p class="cap">They book a consult before they call another office.</p>
         </li>
       </ol>
@@ -552,9 +698,10 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
   </section>
 
   <section class="rx" id="receptionist" aria-labelledby="rx-title">
-    <div class="wrap rx-grid">
-      <div>
+    <div class="wrap">
+      <div class="rx-grid rv">
         <h2 id="rx-title">And when nobody can pick up, she does.</h2>
+        <div>
         <p class="rx-lede">An AI receptionist built for your practice answers the calls your team can't get to: busy lines, lunch, after hours and weekends. She books the consult and texts the confirmation before the patient hangs up.</p>
         <ul class="rx-facts">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Built for your practice in one afternoon</li>
@@ -562,39 +709,39 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Books onto your calendar, with a text confirmation</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sends real emergencies straight to your team</li>
         </ul>
-        <div class="rx-demo" id="rx-demo" data-demo-line="2108802308">
-          <div id="rx-call" hidden>
-            <span class="rx-label">Hear her now</span><br>
-            <a class="rx-number" id="rx-number" href="#" data-track="rx_demo_call"></a>
-            <p>Pretend you're a patient calling your own office.</p>
-          </div>
-          <div id="rx-book">
-            <a class="btn" href="https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1" target="_blank" rel="noopener" data-track="rx_demo_book">Hear her on a live demo</a>
-          </div>
         </div>
-        <p class="rx-fine">Included in the 90-day program, or on its own.</p>
       </div>
-      <figure class="rx-card" aria-label="A sample after-hours call">
-        <div class="rx-card-top"><b>Sample call</b><span>9:42 PM</span></div>
-        <div class="rx-lines">
-          <p class="rx-line rx-caller">Hi, I'm missing a back tooth. Do you do implants?</p>
-          <p class="rx-line rx-ai">We do, and I can get you in for a consult. Can I get your first name?</p>
-          <p class="rx-line rx-caller">It's Maria.</p>
-          <p class="rx-line rx-ai">Thanks, Maria. I have Thursday at ten or Friday at two. Which works better?</p>
-          <p class="rx-line rx-caller">Friday at two.</p>
-          <p class="rx-line rx-booked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Booked for Friday at 2:00 PM. Confirmation texted.</p>
+      <div class="rx-demo rv" id="rx-demo" data-demo-line="2108802308">
+        <div id="rx-call">
+          <span class="rx-label readout">Hear her now</span><br>
+          <a class="rx-number" id="rx-number" href="tel:+12108802308" data-track="rx_demo_call">(210) 880-2308</a>
+          <p>Pretend you're a patient calling your own office.</p>
         </div>
-      </figure>
+        <div id="rx-book" hidden>
+          <a class="btn btn-light" href="https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1" target="_blank" rel="noopener" data-track="rx_demo_book">Hear her on a live demo</a>
+        </div>
+      </div>
+      <p class="rx-fine">Included in the 90-day program, or on its own.</p>
     </div>
   </section>
 
-  <section class="guarantee" id="guarantee">
+  <section class="guarantee lit" id="guarantee" aria-labelledby="g-title">
     <div class="wrap">
-      <h2>If we don't book you 30 implant consults in your first 90 days, we work months four through six for free.</h2>
-      <dl class="terms">
+      <h2 id="g-title" class="rv">If we don't book you 60 new patients in your first 90 days, we keep working for free until we do.</h2>
+      <div class="months rv" role="img" aria-label="Months one through three are your first 90 days. If we fall short of 60 booked new patients, we keep working for free until we hit 60.">
+        <div class="m-paid">
+          <div class="m-row readout"><span>Month 1</span><span>Month 2</span><span>Month 3</span></div>
+          <p class="m-cap">Your first 90 days</p>
+        </div>
+        <div class="m-free">
+          <div class="m-row readout"><span class="m-until">After day 90</span></div>
+          <p class="m-cap">Free until we hit 60</p>
+        </div>
+      </div>
+      <dl class="terms rv">
         <div>
           <dt>What counts</dt>
-          <dd>A real person in your area who books a specific date and time for an implant consult. Spam and duplicates don't count, and a reschedule counts once.</dd>
+          <dd>Any real new patient in your area who books a specific date and time. Cleanings, exams, same-day extractions and implants all count. Each patient counts once, and a reschedule counts once. Spam and duplicates don't count.</dd>
         </div>
         <div>
           <dt>What we need from you</dt>
@@ -602,33 +749,34 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
         </div>
         <div>
           <dt>If we fall short</dt>
-          <dd>We keep everything running for three more months at no fee. It's free work, not a refund.</dd>
+          <dd>We keep everything running at no fee until you have 60, as long as your ads keep running. It's free work, not a refund.</dd>
         </div>
         <div>
           <dt>What stays separate</dt>
-          <dd>You pay Meta directly, including during free months. The guarantee covers our fee.</dd>
+          <dd>You pay Meta directly, including while we work free. The guarantee covers our fee.</dd>
         </div>
       </dl>
     </div>
   </section>
 
-  <section class="days">
+  <section class="days lit" aria-labelledby="days-title">
     <div class="wrap">
-      <h2>Your first 90 days</h2>
-      <ol class="timeline">
-        <li><span class="when">Days 1–3</span><b>Your implant ads, ready to launch</b></li>
-        <li><span class="when">Week 1</span><b>Every new patient answered in 60 seconds</b></li>
-        <li><span class="when">Weeks 1–2</span><b>Ads go live and your 90 days start</b></li>
-        <li><span class="when">Every Monday</span><b>Each booked consult, by name and date</b></li>
-        <li><span class="when">After day 90</span><b>Month to month</b></li>
+      <h2 id="days-title" class="rv">Your first 90 days</h2>
+      <ol class="timeline rv">
+        <li><span class="when readout">Days 1–3</span><b>Your implant ads, ready to launch</b></li>
+        <li><span class="when readout">Week 1</span><b>Every new patient answered in 60 seconds</b></li>
+        <li><span class="when readout">Weeks 1–2</span><b>Ads go live and your 90 days start</b></li>
+        <li><span class="when readout">Every Monday</span><b>Each booked consult, by name and date</b></li>
+        <li class="goal-step"><span class="when readout">Day 90</span><b>60 booked new patients, or we keep working for free until you get there</b></li>
+        <li><span class="when readout">After day 90</span><b>Month to month</b></li>
       </ol>
     </div>
   </section>
 
-  <section class="answers">
+  <section class="answers lit" aria-labelledby="qa-title">
     <div class="wrap">
-      <h2>Questions owners ask first</h2>
-      <dl class="qa">
+      <h2 id="qa-title" class="rv">Questions owners ask first</h2>
+      <dl class="qa rv">
         <div>
           <dt>What does it cost?</dt>
           <dd>Our whole 90-day fee is less than one full-arch case, which averages $22,590 nationally.<sup>1</sup> We'll go through your numbers on a short call.</dd>
@@ -636,6 +784,10 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
         <div>
           <dt>Are we locked into a long contract?</dt>
           <dd>No. 90 days, then month to month.</dd>
+        </div>
+        <div>
+          <dt>We only do implants.</dt>
+          <dd>Then the guarantee is 30 booked implant consults in your first 90 days, same terms.</dd>
         </div>
         <div>
           <dt>We already have a marketing agency.</dt>
@@ -657,10 +809,10 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
     </div>
   </section>
 
-  <section class="intake" id="intake">
+  <section class="intake" id="intake" aria-labelledby="intake-title">
     <div class="wrap intake-grid">
-      <div>
-        <h2>See if you're a good fit</h2>
+      <div class="rv">
+        <h2 id="intake-title">See if you're a good fit</h2>
         <p class="sub">Two questions. If it's a fit, you pick a time for a short call.</p>
         <div class="founder no-photo">
           <!-- Headshot slot: add <img class="f-photo" src="/img/elijah.webp" width="152" height="152" alt="Elijah Pitts"> here and remove the no-photo class. -->
@@ -670,7 +822,7 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
           </div>
         </div>
       </div>
-      <div class="intake-card">
+      <div class="intake-card rv">
         <form id="intake-form" novalidate>
           <fieldset>
             <legend>Do you own the practice?</legend>
@@ -687,13 +839,14 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
             </div>
           </fieldset>
           <p class="form-error" id="form-error" hidden>Answer both questions to check your fit.</p>
-          <button class="btn" type="submit" id="check-btn" data-track="fit_submit">Check my fit</button>
+          <button class="btn btn-dark" type="submit" id="check-btn" data-track="fit_submit">Check my fit</button>
         </form>
+        <noscript><p class="noscript-book">Or <a href="https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1" target="_blank" rel="noopener">pick a time for a short call with Elijah</a>.</p></noscript>
 
         <div class="result" id="result-open" hidden>
           <h3 tabindex="-1" id="result-open-title">You're a good fit.</h3>
           <p>Pick a time for a short call with Elijah. We'll walk through your numbers and what the first 90 days would look like for your practice.</p>
-          <a class="btn" id="book-link" href="https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1" target="_blank" rel="noopener" data-track="pick_a_time">Pick a time</a>
+          <a class="btn btn-dark" id="book-link" href="https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1" target="_blank" rel="noopener" data-track="pick_a_time">Pick a time</a>
         </div>
 
         <div class="result" id="result-closed" hidden>
@@ -727,112 +880,37 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
   });
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var small = window.matchMedia('(max-width: 760px)');
 
-  // Hero: one signal travels from the ad to the reply to the calendar, once, then the consult shows as booked.
-  var stage = document.querySelector('.stage');
-  if (stage && !reduce.matches && !small.matches) {
-    var path = stage.querySelector('.wire-path');
-    var dot = stage.querySelector('.signal');
-    var halo = stage.querySelector('.signal-halo');
-    var len = path.getTotalLength();
-    var start = null, delay = 700, dur = 2600;
-    stage.classList.add('playing');
-    var step = function (t) {
-      if (start === null) start = t;
-      var p = Math.min(1, Math.max(0, (t - start - delay) / dur));
-      var e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
-      var pt = path.getPointAtLength(e * len);
-      dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y);
-      halo.setAttribute('cx', pt.x); halo.setAttribute('cy', pt.y);
-      if (p > 0 && p < 1) { dot.style.opacity = 1; halo.style.opacity = 1; }
-      if (p < 1) { requestAnimationFrame(step); return; }
-      dot.style.opacity = 0; halo.style.opacity = 0;
-      stage.classList.remove('playing');
-      stage.classList.add('landed');
-      setTimeout(function () { stage.classList.remove('landed'); }, 1600);
-    };
-    requestAnimationFrame(step);
-  }
-
-  // Hero panel video (when the file is added): desktop only, never with reduced motion, paused when off screen.
-  var panelVideo = document.querySelector('.panel-video');
-  if (panelVideo) {
-    if (reduce.matches || small.matches) {
-      panelVideo.remove();
-    } else if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) { if (en.isIntersecting) panelVideo.play().catch(function () {}); else panelVideo.pause(); });
-      }, { threshold: 0.25 }).observe(panelVideo);
+  // Scroll reveals, once each. Anything already on screen is marked first, so nothing blinks; without this script, nothing is hidden.
+  try {
+    var rv = Array.prototype.slice.call(document.querySelectorAll('.rv'));
+    if (!reduce.matches && 'IntersectionObserver' in window) {
+      var vh = window.innerHeight || 800;
+      rv.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < vh * 0.94 && r.bottom > 0) el.classList.add('in');
+      });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+      rv.forEach(function (el) { if (!el.classList.contains('in')) io.observe(el); });
+      document.documentElement.classList.add('rv-on');
     }
-  }
+  } catch (e) {}
 
-  // Gallery: a slow drift on desktop (pause on hover, focus, button or manual navigation); native swipe on phones and with reduced motion.
+  // Gallery: all four ads sit still in one row from 1024px; below that they swipe, and the arrows step one ad at a time.
   var track_ = document.getElementById('track');
   var rail = document.getElementById('rail');
-  var pauseBtn = document.getElementById('reel-pause');
+  var controls = document.getElementById('reel-controls');
   var prevBtn = document.getElementById('reel-prev');
   var nextBtn = document.getElementById('reel-next');
-  var originals = Array.prototype.slice.call(rail.children);
-  var GAP = 24, SPEED = 0.018; // px per ms (about 18 px a second)
-  var drift = !reduce.matches && !small.matches;
-  var paused = false, hovering = false, inView = false, x = 0, last = null, tween = null;
-
-  function stepWidth() { return originals[0].getBoundingClientRect().width + GAP; }
-  function setWidth() { return stepWidth() * originals.length; }
-
-  function setPaused(v) {
-    paused = v;
-    pauseBtn.setAttribute('aria-pressed', v ? 'true' : 'false');
-    pauseBtn.setAttribute('aria-label', v ? 'Play the gallery' : 'Pause the gallery');
-    pauseBtn.querySelector('.i-pause').style.display = v ? 'none' : '';
-    pauseBtn.querySelector('.i-play').style.display = v ? '' : 'none';
-  }
-
-  if (drift) {
-    originals.forEach(function (slot) {
-      var c = slot.cloneNode(true);
-      c.setAttribute('aria-hidden', 'true');
-      c.setAttribute('inert', '');
-      rail.appendChild(c);
-    });
-    var frame = function (t) {
-      if (last !== null && !paused && !hovering && inView && !document.hidden && !tween) {
-        x -= (t - last) * SPEED;
-        var w = setWidth();
-        if (-x >= w) x += w;
-        rail.style.transform = 'translate3d(' + x + 'px,0,0)';
-      }
-      last = t;
-      requestAnimationFrame(frame);
-    };
-    requestAnimationFrame(frame);
-    track_.addEventListener('mouseenter', function () { hovering = true; });
-    track_.addEventListener('mouseleave', function () { hovering = false; });
-    track_.addEventListener('focusin', function () { setPaused(true); });
-    var slide = function (dir) {
-      setPaused(true);
-      var from = x, to = x - dir * stepWidth(), t0 = null, w = setWidth();
-      if (to > 0) { from -= w; to -= w; }
-      if (-to >= w) { from += w; to += w; }
-      tween = function (t) {
-        if (t0 === null) t0 = t;
-        var p = Math.min(1, (t - t0) / 420), e = 1 - Math.pow(1 - p, 3);
-        x = from + (to - from) * e;
-        rail.style.transform = 'translate3d(' + x + 'px,0,0)';
-        if (p < 1) requestAnimationFrame(tween); else tween = null;
-      };
-      requestAnimationFrame(tween);
-    };
-    prevBtn.addEventListener('click', function () { slide(-1); });
-    nextBtn.addEventListener('click', function () { slide(1); });
-    pauseBtn.addEventListener('click', function () { setPaused(!paused); });
-  } else {
-    track_.classList.add('native');
-    pauseBtn.hidden = true;
-    prevBtn.addEventListener('click', function () { track_.scrollBy({ left: -stepWidth(), behavior: reduce.matches ? 'auto' : 'smooth' }); });
-    nextBtn.addEventListener('click', function () { track_.scrollBy({ left: stepWidth(), behavior: reduce.matches ? 'auto' : 'smooth' }); });
-  }
+  var GAP = 24, inView = false;
+  function stepWidth() { return rail.children[0].getBoundingClientRect().width + GAP; }
+  prevBtn.addEventListener('click', function () { track_.scrollBy({ left: -stepWidth(), behavior: reduce.matches ? 'auto' : 'smooth' }); });
+  nextBtn.addEventListener('click', function () { track_.scrollBy({ left: stepWidth(), behavior: reduce.matches ? 'auto' : 'smooth' }); });
+  controls.classList.add('on');
 
   // Ad videos: muted, only while visible, one at a time; everything pauses when the gallery leaves the screen.
   var videos = Array.prototype.slice.call(rail.querySelectorAll('figure:not([aria-hidden]) video'));
@@ -889,13 +967,18 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 </script>
 <!-- Text opt-in chat widget (GoHighLevel / LeadConnector). Registered with carriers as this page's only SMS consent form; don't add other phone-collecting forms here. -->
 <script>
-// AI receptionist demo line: set data-demo-line on #rx-demo to a 10-digit number and the call link appears.
+// AI receptionist demo line: data-demo-line on #rx-demo holds a 10-digit number, and the call link shows it (it's in the HTML too, so it works without JS).
+// Clear the attribute and the "Hear her on a live demo" booking button shows instead.
 (function () {
   var box = document.getElementById('rx-demo');
   if (!box) return;
   var d = (box.getAttribute('data-demo-line') || '').replace(/\D/g, '');
   if (d.length === 11 && d[0] === '1') d = d.slice(1);
-  if (d.length !== 10) return;
+  if (d.length !== 10) {
+    document.getElementById('rx-call').hidden = true;
+    document.getElementById('rx-book').hidden = false;
+    return;
+  }
   var a = document.getElementById('rx-number');
   a.textContent = '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6);
   a.href = 'tel:+1' + d;
