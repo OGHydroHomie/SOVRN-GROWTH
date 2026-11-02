@@ -23,12 +23,16 @@ assert.ok(
   'verify-build: home page must state the 60-new-patient guarantee in the title, link preview, headline and guarantee'
 );
 assert.ok(!/\b60 (booked )?implant consults/i.test(home), 'verify-build: home page still states the old 60-implant-consult guarantee');
-// "30 booked implant consults" belongs only to the implants-only answer in the questions; nowhere else on the page.
-const implantsOnly = 'Then the guarantee is 30 booked implant consults in your first 90 days, same terms.';
-assert.ok(home.includes(implantsOnly), 'verify-build: home page must answer "We only do implants." with the 30-consult guarantee');
+// Implants-only practices get the same guarantee as everyone else: 60 booked new patients (the agreement's wording). No 30 anywhere.
+const implantsOnly = 'Same guarantee: 60 booked new patients in your first 90 days.';
+assert.ok(home.includes(implantsOnly), 'verify-build: home page must answer "We only do implants." with the same 60-new-patient guarantee');
+assert.ok(!/\b30 booked implant consults/i.test(home), 'verify-build: the old 30-implant-consult guarantee is gone from the home page');
+// The price answer never anchors the fee to a full-arch case (it reads as a ~$20K price).
+assert.ok(!/less than one full-arch case|22,590/.test(home), 'verify-build: the price answer must not compare the fee to a full-arch case');
+// The fit check lets office managers and other team members book; it never asks whether they own the practice.
 assert.ok(
-  !/\b30 booked implant consults/i.test(home.split(implantsOnly).join('')),
-  'verify-build: "30 booked implant consults" may appear only in the implants-only answer'
+  !home.includes('Do you own the practice?') && !home.includes('only work with owners'),
+  'verify-build: the fit check must not turn away non-owners'
 );
 // No empty placeholders on the live page.
 assert.ok(!home.includes('Ad slot'), 'verify-build: home page still shows an empty "Ad slot" placeholder');

@@ -779,7 +779,7 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
       <dl class="qa rv">
         <div>
           <dt>What does it cost?</dt>
-          <dd>Our whole 90-day fee is less than one full-arch case, which averages $22,590 nationally.<sup>1</sup> We'll go through your numbers on a short call.</dd>
+          <dd>One flat fee covers the full 90 days, never per patient, and your ad budget goes straight to Meta. We'll go through your numbers on a short call.</dd>
         </div>
         <div>
           <dt>Are we locked into a long contract?</dt>
@@ -787,7 +787,7 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
         </div>
         <div>
           <dt>We only do implants.</dt>
-          <dd>Then the guarantee is 30 booked implant consults in your first 90 days, same terms.</dd>
+          <dd>Same guarantee: 60 booked new patients in your first 90 days.</dd>
         </div>
         <div>
           <dt>We already have a marketing agency.</dt>
@@ -825,10 +825,10 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
       <div class="intake-card rv">
         <form id="intake-form" novalidate>
           <fieldset>
-            <legend>Do you own the practice?</legend>
+            <legend>What's your role?</legend>
             <div class="choices">
-              <label class="choice"><input type="radio" name="owner" id="owner-yes" value="yes"><span>Yes</span></label>
-              <label class="choice"><input type="radio" name="owner" id="owner-no" value="no"><span>No</span></label>
+              <label class="choice"><input type="radio" name="role" id="role-owner" value="owner"><span>Owner or doctor</span></label>
+              <label class="choice"><input type="radio" name="role" id="role-team" value="team"><span>Practice team</span></label>
             </div>
           </fieldset>
           <fieldset>
@@ -845,13 +845,13 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 
         <div class="result" id="result-open" hidden>
           <h3 tabindex="-1" id="result-open-title">You're a good fit.</h3>
-          <p>Pick a time for a short call with Elijah. We'll walk through your numbers and what the first 90 days would look like for your practice.</p>
+          <p>Pick a time for a short call with Elijah. We'll walk through your numbers and what the first 90 days would look like for your practice. If you manage the office, bring the doctor along if you can.</p>
           <a class="btn btn-dark" id="book-link" href="https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1" target="_blank" rel="noopener" data-track="pick_a_time">Pick a time</a>
         </div>
 
         <div class="result" id="result-closed" hidden>
           <h3 tabindex="-1" id="result-closed-title">Thanks for checking.</h3>
-          <p>Right now we only work with owners of practices that offer implants. If that changes, write to <a href="mailto:elijah@sovrngrowth.com" data-track="email_nonfit">elijah@sovrngrowth.com</a>.</p>
+          <p>Right now we only work with practices that offer implants. If that changes, write to <a href="mailto:elijah@sovrngrowth.com" data-track="email_nonfit">elijah@sovrngrowth.com</a>.</p>
         </div>
       </div>
     </div>
@@ -863,7 +863,6 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
     <p>SOVRN Growth, a trade name of Lux Eterna LLC<br>110 N Interstate 35, Suite 315-1083, Round Rock, TX 78681</p>
     <p><a href="tel:+15128820814" data-track="footer_phone">(512) 882-0814</a><br><a href="mailto:elijah@sovrngrowth.com" data-track="footer_email">elijah@sovrngrowth.com</a></p>
     <p class="links"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></p>
-    <p class="fn"><sup>1</sup> ADA fee survey data, as published by Pearl, updated May 2026.</p>
   </div>
 </footer>
 
@@ -936,6 +935,7 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
   document.addEventListener('visibilitychange', function () { if (document.hidden) videos.forEach(function (v) { v.pause(); }); });
 
   // Fit check: two questions; a fit goes straight to Calendly.
+  // Owners and practice teams (office managers, coordinators) both book; only practices without implants are turned away.
   var form = document.getElementById('intake-form');
   var error = document.getElementById('form-error');
   var open = document.getElementById('result-open');
@@ -943,19 +943,20 @@ legend { padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700; fon
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var owner = form.elements.owner.value;
+    var role = form.elements.role.value;
     var implants = form.elements.implants.value;
-    if (!owner || !implants) {
+    if (!role || !implants) {
       error.hidden = false;
       open.hidden = true;
       closed.hidden = true;
       track('fit_incomplete');
-      var firstMissing = !owner ? document.getElementById('owner-yes') : document.getElementById('implants-yes');
+      var firstMissing = !role ? document.getElementById('role-owner') : document.getElementById('implants-yes');
       firstMissing.focus();
       return;
     }
     error.hidden = true;
-    var qualified = owner === 'yes' && implants === 'yes';
+    track('fit_role_' + role);
+    var qualified = implants === 'yes';
     open.hidden = !qualified;
     closed.hidden = qualified;
     track(qualified ? 'fit_result_yes' : 'fit_result_no');
