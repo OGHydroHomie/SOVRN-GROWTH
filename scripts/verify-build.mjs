@@ -18,7 +18,7 @@ assert.ok(!home.includes('fee stops'), 'verify-build: home page still has the ol
 assert.ok(
   home.includes('<title>SOVRN Growth: 60 booked new patients in 90 days</title>') &&
     home.includes('<meta property="og:title" content="60 booked new patients in 90 days, or we work free until you get there.">') &&
-    home.includes('60 booked new patients in 90 days.</h1>') &&
+    home.includes('60 booked new patients on your calendar in 90 days.</h1>') &&
     home.includes("If we don't book you 60 new patients in your first 90 days, we keep working for free until we do."),
   'verify-build: home page must state the 60-new-patient guarantee in the title, link preview, headline and guarantee'
 );
@@ -35,6 +35,13 @@ assert.ok(
   home.includes('Bookings land in the schedule you already use'),
   'verify-build: the software answer must say bookings land in the schedule the practice already uses'
 );
+// The sample Monday report is placeholder data, so it must always say so (pre-client: no fake proof).
+assert.ok(
+  home.includes('Names and numbers are placeholders.') && home.includes('<span class="rp-tag">Sample</span>'),
+  'verify-build: the Monday report must stay labeled as a sample with placeholder names and numbers'
+);
+// The guarantee reads as confident free work; the legal "non-refundable" wording lives in the agreement, not on the page.
+assert.ok(!home.includes('free work, not a refund'), 'verify-build: drop the defensive "free work, not a refund" line');
 // The fit check lets office managers and other team members book; it never asks whether they own the practice.
 assert.ok(
   !home.includes('Do you own the practice?') && !home.includes('only work with owners'),
@@ -151,7 +158,7 @@ for (const page of ['demo/book', 'demo/booked', 'demo/numbers']) {
   }
 }
 // Home: the AI receptionist section, with its demo-line slot.
-assert.ok(home.includes('And when nobody can pick up, she does.') && home.includes('data-demo-line="2108802308"'), 'verify-build: home page must show the AI receptionist section and its demo-line slot');
+assert.ok(home.includes('Stop losing implant cases to voicemail.') && home.includes('data-demo-line="2108802308"'), 'verify-build: home page must show the AI receptionist section and its demo-line slot');
 assert.ok(home.includes('Built for your practice in one afternoon'), 'verify-build: the home receptionist section must state the same-day build');
 
 // HVAC archive: the original site, served under /hvac/.
