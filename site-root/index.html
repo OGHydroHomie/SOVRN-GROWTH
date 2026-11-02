@@ -37,11 +37,11 @@
   --slate: #4a5f7d;
   --cobalt: #1d5cc8;
   --signal: #7fb0ff;
-  --gold: #ffb21e;
+  --gold: #ffbf47;
   --gold-ink: #9a5800;
-  /* Liquid gold: amber (#ff9f1c) to laser gold (#ffd000), shaded top to bottom like a lit glass rod, plus a warm amber glow */
-  --gold-metal: linear-gradient(180deg, #ffe680 0%, #ffd000 28%, #ff9f1c 68%, #d26f00 100%);
-  --gold-glow: rgb(255 159 28 / 0.55);
+  /* Anodized gold: a flat two-stop amber-gold (no gloss), with a tight warm glow where gold marks money on the calendar */
+  --gold-metal: linear-gradient(180deg, #ffc24a 0%, #d9870c 100%);
+  --gold-glow: rgb(255 168 40 / 0.45);
   --ice: #eef4fc;
   --white: #ffffff;
   --mute: #aab6c8;
@@ -142,9 +142,9 @@ a { color: inherit; }
 .hero h1 { grid-area: title; font-size: clamp(34px, 10.6vw, 44px); font-stretch: 100%; letter-spacing: -0.024em; line-height: 1; }
 .promise {
   grid-area: promise; margin-top: 14px; font-size: 19px; font-weight: 600; font-stretch: 104%; line-height: 1.28; color: var(--gold); text-wrap: balance;
-  background: linear-gradient(180deg, #ffe88f 0%, #ffcd3a 46%, #ffa424 100%) 0 0 / 100% 1.28em repeat-y;
+  background: linear-gradient(180deg, #ffd77e 0%, #ffbb3c 50%, #f39c1f 100%) 0 0 / 100% 1.28em repeat-y;
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 18px rgb(255 159 28 / 0.42));
+  filter: drop-shadow(0 0 14px rgb(255 168 40 / 0.35));
 }
 .lede { grid-area: lede; margin-top: 22px; max-width: 46ch; font-size: 17px; color: var(--mute); text-wrap: pretty; }
 .actions { grid-area: actions; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 26px; margin-top: 24px; }
@@ -203,7 +203,7 @@ a { color: inherit; }
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 0 28px -6px var(--gold-glow);
 }
 .hc-booked svg { width: 18px; height: 18px; flex: none; color: var(--gold); }
-.hc-booked b { font-weight: 800; color: #ffe27a; }
+.hc-booked b { font-weight: 800; color: #ffd884; }
 .hc-booked span { margin-left: auto; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .hc-booked::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; border: 2px solid var(--gold); opacity: 0; pointer-events: none; }
 
@@ -216,7 +216,7 @@ a { color: inherit; }
 .ticks { display: grid; grid-template-columns: repeat(60, minmax(0, 1fr)); gap: 2.5px; align-items: end; height: 30px; margin-top: 10px; }
 .ticks i { position: relative; display: block; height: 18px; border-radius: 2px; background: rgb(159 197 255 / 0.18); }
 .ticks i:nth-child(10n) { height: 30px; }
-.ticks i::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--gold-metal); box-shadow: 0 0 7px var(--gold-glow); transform-origin: 50% 100%; }
+.ticks i::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--gold-metal); box-shadow: 0 0 5px var(--gold-glow); transform-origin: 50% 100%; }
 
 /* Ad gallery */
 .work { padding-top: 88px; padding-bottom: 88px; }
@@ -347,9 +347,9 @@ a { color: inherit; }
 .m-row span { display: flex; align-items: center; min-height: 54px; padding: 0 14px; border-radius: 10px; font-size: 15px; }
 .m-paid .m-row span { background: var(--navy); color: var(--white); }
 .m-free .m-row span {
-  border: 1px solid #f0a015; color: #5a3300; font-weight: 800;
-  background: linear-gradient(180deg, #ffe680 0%, #ffd000 34%, #ffb420 72%, #f59300 100%);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.7), inset 0 -2px 3px rgb(160 70 0 / 0.25), 0 0 0 4px rgb(255 176 30 / 0.14), 0 14px 34px -12px rgb(255 140 20 / 0.7);
+  border: 1px solid #d99016; color: #3d2400; font-weight: 800;
+  background: var(--gold-metal);
+  box-shadow: 0 0 0 4px rgb(255 176 40 / 0.12), 0 12px 30px -14px rgb(217 135 12 / 0.7);
 }
 .m-row .m-until { grid-column: 1 / -1; }
 .m-cap { margin-top: 10px; font-size: 16px; font-weight: 700; font-stretch: 104%; }
@@ -369,7 +369,7 @@ a { color: inherit; }
   content: ""; position: absolute; z-index: 1; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 50%;
   background: var(--ice); border: 3px solid var(--cobalt); box-sizing: border-box;
 }
-.timeline li.goal-step::before { background: var(--gold-metal); border-color: #f0a015; box-shadow: 0 0 0 5px rgb(255 176 30 / 0.2), 0 0 18px 4px var(--gold-glow); }
+.timeline li.goal-step::before { background: var(--gold-metal); border-color: #d99016; box-shadow: 0 0 0 5px rgb(255 176 40 / 0.18), 0 0 12px 2px var(--gold-glow); }
 .when { display: block; font-size: 15px; color: var(--cobalt); }
 .goal-step .when { color: var(--gold-ink); }
 .timeline b { display: block; margin-top: 2px; font-size: 18px; font-weight: 700; line-height: 1.32; }
@@ -395,25 +395,21 @@ a { color: inherit; }
 .rp-goal-head > span { font-size: 14px; color: var(--mute); }
 .rp-goal-head b { font-size: 32px; font-weight: 700; line-height: 1; color: var(--white); }
 .rp-goal-head b span { font-size: 16px; font-weight: 600; color: var(--mute); }
-/* The bar: a sharp glass rod (lit top to bottom, gloss streak, crisp edge) with a blurred copy behind it that casts amber light onto the card */
+/* The bar: flat anodized gold with a crisp 1px rim (no gloss), and a tight blurred copy behind it so the light stays close to the bar */
 .rp-bar {
-  position: relative; isolation: isolate; margin-top: 14px; height: 12px; border-radius: 999px;
-  background: linear-gradient(180deg, rgb(255 255 255 / 0.03), rgb(255 255 255 / 0.08));
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12), inset 0 2px 4px rgb(0 0 0 / 0.6);
+  position: relative; isolation: isolate; margin-top: 14px; height: 10px; border-radius: 999px;
+  background: rgb(255 255 255 / 0.06);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1);
 }
 .rp-bar i {
   position: absolute; inset: 0 auto 0 0; width: var(--p); border-radius: inherit;
   background: var(--gold-metal);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.7), inset 0 -1px 1px rgb(110 45 0 / 0.55), 0 0 0 1px rgb(255 190 60 / 0.5);
-}
-.rp-bar i::after {
-  content: ""; position: absolute; left: 5px; right: 5px; top: 2px; height: 38%; border-radius: 999px;
-  background: linear-gradient(180deg, rgb(255 255 255 / 0.85), rgb(255 255 255 / 0));
+  box-shadow: 0 0 0 1px rgb(255 200 90 / 0.45);
 }
 .rp-bar i::before {
-  content: ""; position: absolute; inset: -6px -4px; z-index: -1; border-radius: 999px;
-  background: linear-gradient(90deg, #ff9f1c, #ffd000);
-  filter: blur(14px); opacity: 0.75;
+  content: ""; position: absolute; inset: -2px; z-index: -1; border-radius: 999px;
+  background: #ffa828;
+  filter: blur(8px); opacity: 0.45;
 }
 .rp-pace { margin-top: 10px; font-size: 13px; font-weight: 600; color: #ffc94d; }
 .rp-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 16px; padding: 16px 0; border-bottom: 1px solid rgb(255 255 255 / 0.08); }
