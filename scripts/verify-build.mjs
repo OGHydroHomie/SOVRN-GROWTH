@@ -29,6 +29,12 @@ assert.ok(home.includes(implantsOnly), 'verify-build: home page must answer "We 
 assert.ok(!/\b30 booked implant consults/i.test(home), 'verify-build: the old 30-implant-consult guarantee is gone from the home page');
 // The price answer never anchors the fee to a full-arch case (it reads as a ~$20K price).
 assert.ok(!/less than one full-arch case|22,590/.test(home), 'verify-build: the price answer must not compare the fee to a full-arch case');
+// The questions answer the objections owners don't say out loud: no-shows (reminders) and software (their own schedule).
+assert.ok(home.includes('reminders before the visit'), 'verify-build: the no-show answer must promise reminders before the visit');
+assert.ok(
+  home.includes('Bookings land in the schedule you already use'),
+  'verify-build: the software answer must say bookings land in the schedule the practice already uses'
+);
 // The fit check lets office managers and other team members book; it never asks whether they own the practice.
 assert.ok(
   !home.includes('Do you own the practice?') && !home.includes('only work with owners'),
