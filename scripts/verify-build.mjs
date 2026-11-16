@@ -3,7 +3,10 @@ import { existsSync, readFileSync } from 'node:fs';
 import sharp from 'sharp';
 
 // Home page: the dental implant landing page copied from site-root/.
-const home = readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
+const home = readFileSync(new URL('../dist/dental/index.html', import.meta.url), 'utf8');
+const restorationHome = readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
+assert.ok(restorationHome.includes('Emergency intake for independent restoration companies'), 'verify-build: restoration home page missing');
+assert.ok(restorationHome.includes('FICTIONAL EXAMPLE') && restorationHome.includes('href="/privacy/"'), 'verify-build: restoration home lacks demo disclosure or privacy link');
 assert.ok(
   home.includes('60 booked new patients in'),
   'verify-build: dental home page is missing from dist/index.html'
