@@ -4,6 +4,20 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "redirects": [
-    { "source": "/hvac", "destination": "/hvac/", "permanent": true }
+    {
+      "source": "/hvac",
+      "destination": "/hvac/",
+      "permanent": true
+    },
+    {
+      "source": "/restoration",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/restoration/",
+      "destination": "/",
+      "permanent": false
+    }
   ]
 }
