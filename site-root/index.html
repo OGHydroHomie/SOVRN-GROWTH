@@ -892,7 +892,7 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
   var lines = items.map(function(li){ return { t: parseFloat(li.getAttribute("data-t")), who: li.querySelector("b").textContent, text: li.querySelector("span").textContent, li: li }; });
   var DUR = parseFloat(live.getAttribute("data-duration")) || 131;
   var shown = -1;
-  function clock(s){ s = Math.max(0, Math.round(s)); var m = Math.floor(s / 60), r = s % 60; return m + ":" + (r < 10 ? "0" : "") + r; }
+  function mmss(s){ s = Math.max(0, Math.round(s)); var m = Math.floor(s / 60), r = s % 60; return m + ":" + (r < 10 ? "0" : "") + r; }
   function render(t, all){
     fields.forEach(function(f){ f.classList.toggle("is-pending", !all && t < parseFloat(f.getAttribute("data-at"))); });
     var idx = -1; for (var i = 0; i < lines.length; i++){ if (t >= lines[i].t) idx = i; }
@@ -918,13 +918,13 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
     setPlaying(true); sub.textContent = "Playing the call";
   });
   audio.addEventListener("pause", function(){ setPlaying(false); if (!audio.ended) sub.textContent = "Paused"; });
-  audio.addEventListener("timeupdate", function(){ render(audio.currentTime, false); timer.textContent = clock(audio.currentTime); });
-  audio.addEventListener("ended", function(){ setPlaying(false); live.classList.add("is-ended"); render(DUR, true); timer.textContent = clock(DUR); sub.textContent = "Call ended, 2 min 11 sec. Play again"; });
+  audio.addEventListener("timeupdate", function(){ render(audio.currentTime, false); timer.textContent = mmss(audio.currentTime); });
+  audio.addEventListener("ended", function(){ setPlaying(false); live.classList.add("is-ended"); render(DUR, true); timer.textContent = mmss(DUR); sub.textContent = "Call ended, 2 min 11 sec. Play again"; });
   audio.addEventListener("error", function(){ btn.hidden = true; sub.textContent = "Call ended, 2 min 11 sec"; });
   bar.addEventListener("click", function(e){
     var r = bar.getBoundingClientRect(); var t = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * DUR;
     if (audio.readyState > 0) audio.currentTime = t; else { audio.addEventListener("loadedmetadata", function(){ audio.currentTime = t; }, { once: true }); audio.load(); }
-    render(t, false); timer.textContent = clock(t);
+    render(t, false); timer.textContent = mmss(t);
     if (audio.paused){ var p = audio.play(); if (p && p.catch) p.catch(function(){}); }
   });
 })();
