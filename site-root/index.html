@@ -18,13 +18,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"ProfessionalService","@id":"https://www.sovrngrowth.com/#org","name":"SOVRN Growth","url":"https://www.sovrngrowth.com/","telephone":"+1-512-882-0814","email":"elijah@sovrngrowth.com","areaServed":{"@type":"State","name":"Texas"},"address":{"@type":"PostalAddress","streetAddress":"110 N Interstate 35, Suite 315-1083","addressLocality":"Round Rock","addressRegion":"TX","postalCode":"78681","addressCountry":"US"},"founder":{"@type":"Person","name":"Elijah Pitts"},"description":"After-hours and overflow call answering and dispatch for restoration companies, installed for a one-time fee.","makesOffer":[{"@type":"Offer","name":"Emergency Dispatch","price":"3500","priceCurrency":"USD"},{"@type":"Offer","name":"Dispatch + Revenue Recovery","price":"6000","priceCurrency":"USD"}]},
+{"@type":"ProfessionalService","@id":"https://www.sovrngrowth.com/#org","name":"SOVRN Growth","url":"https://www.sovrngrowth.com/","telephone":"+1-512-882-0814","email":"elijah@sovrngrowth.com","areaServed":{"@type":"State","name":"Texas"},"address":{"@type":"PostalAddress","streetAddress":"110 N Interstate 35, Suite 315-1083","addressLocality":"Round Rock","addressRegion":"TX","postalCode":"78681","addressCountry":"US"},"founder":{"@type":"Person","name":"Elijah Pitts"},"description":"After-hours and overflow call answering and dispatch for restoration companies, installed for a one-time fee.","makesOffer":[{"@type":"Offer","name":"Emergency Dispatch","description":"After-hours and overflow answering with on-call dispatch, installed for a one-time fee."},{"@type":"Offer","name":"Dispatch + Revenue Recovery","description":"Emergency Dispatch plus accept-or-escalate, missed-call follow-up and estimate tracking, installed for a one-time fee."},{"@type":"Offer","name":"Custom build","description":"A tool built around how a restoration shop already works, scoped and quoted before work starts."}]},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Is Ryan a person?","acceptedAnswer":{"@type":"Answer","text":"No. Ryan is a voice agent built for your company, with your name, your service area and your questions. If a caller wants a person, Ryan takes their number and alerts your on-call tech right away."}},
 {"@type":"Question","name":"What if someone is in danger?","acceptedAnswer":{"@type":"Answer","text":"Ryan tells them to hang up and call 911. It never gives safety or repair instructions. That stays with your team."}},
 {"@type":"Question","name":"Do I keep my number?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your phone forwards calls to the line when your team doesn't pick up, or after hours. You choose."}},
 {"@type":"Question","name":"What does it cost to run?","acceptedAnswer":{"@type":"Answer","text":"Usage on your own phone, voice and CRM accounts, billed by those vendors. You see the monthly number in writing before you sign."}},
-{"@type":"Question","name":"How much does installation cost?","acceptedAnswer":{"@type":"Answer","text":"Emergency Dispatch is $3,500 one-time. Dispatch + Revenue Recovery is $6,000 one-time. Extra locations are $1,000 each."}}
+{"@type":"Question","name":"How much does installation cost?","acceptedAnswer":{"@type":"Answer","text":"Installation is a one-time fee, quoted on a 15-minute Zoom once we see how your on-call works. The monthly running cost is shown in writing before you pay."}}
 ]}
 ]}
 </script>
@@ -260,7 +260,7 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
 .cmp-note{margin:16px 0 0;font-size:15px;color:var(--muted)}
 
 /* packages */
-.plans{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:stretch}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
 .plan{display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:12px;padding:30px 30px 32px;background:var(--surface)}
 .plan-name{font-size:26px;font-stretch:80%;font-weight:750;margin:0 0 4px}
 .plan-price{display:flex;align-items:baseline;gap:10px;margin:8px 0 6px}
@@ -272,6 +272,7 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
 .ticks .ic{width:20px;height:20px;color:var(--ok);stroke-width:2.2;margin-top:1px}
 .plan-cta{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px}
 .plan-cta .btn{flex:1 1 auto;white-space:normal;text-align:center;line-height:1.25;padding:12px 20px}
+@media (min-width:961px) and (max-width:1180px){.plan{padding:26px 22px 28px}.plan-cta .btn{white-space:nowrap;padding:12px 14px;font-size:16px}}
 .plan.pro{background:var(--panel);color:var(--panel-ink);border-color:var(--panel-rule)}
 .plan.pro .plan-price span{color:var(--panel-muted)}
 .plan.pro .ticks li{border-top-color:var(--panel-rule)}
@@ -682,12 +683,11 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
 
   <section class="sec" id="packages" aria-labelledby="pk-h">
     <div class="wrap">
-      <h2 id="pk-h">Two installations</h2>
-      <p class="sub">One notifies. One confirms and recovers.</p>
+      <h2 id="pk-h">What we install</h2>
+      <p class="sub">One notifies. One confirms and recovers. One is built around your shop.</p>
       <div class="plans">
         <article class="plan">
           <h3 class="plan-name">Emergency Dispatch</h3>
-          <p class="plan-price"><b class="num">$3,500</b><span>one-time</span></p>
           <p class="plan-line">Every call answered and handed to your on-call tech.</p>
           <ul class="ticks">
             <li><svg class="ic"><use href="#i-check"/></svg>Answers after hours and overflow in your name</li>
@@ -698,13 +698,12 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
             <li><svg class="ic"><use href="#i-check"/></svg>Installed, tested with your team, 30 days of support</li>
           </ul>
           <div class="plan-cta">
-            <a class="btn btn-line" href="https://checkout.sovrngrowth.com/b/aFa6oJ9Qy5Jt9OCavR9ws0k">Start Emergency Dispatch</a>
+            <a class="btn btn-line" href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20I%27d%20like%20to%20book%20a%2015-minute%20Zoom%20for%20">Book a 15-minute Zoom</a>
           </div>
         </article>
         <article class="plan pro">
           <span class="plan-tag"><svg class="ic"><use href="#i-loop"/></svg>Closed-loop dispatch</span>
           <h3 class="plan-name">Dispatch + Revenue Recovery</h3>
-          <p class="plan-price"><b class="num">$6,000</b><span>one-time</span></p>
           <p class="plan-line">Every emergency accepted by a person, or it escalates until it is.</p>
           <ul class="ticks">
             <li><svg class="ic"><use href="#i-check"/></svg>Everything in Emergency Dispatch</li>
@@ -715,17 +714,31 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
             <li><svg class="ic"><use href="#i-check"/></svg>One CRM or job system connected</li>
           </ul>
           <div class="plan-cta">
-            <a class="btn btn-hivis" href="https://checkout.sovrngrowth.com/b/4gM3cxd2K9ZJ3qegUf9ws0l">Start Dispatch + Revenue Recovery</a>
+            <a class="btn btn-hivis" href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20I%27d%20like%20to%20book%20a%2015-minute%20Zoom%20for%20">Book a 15-minute Zoom</a>
+          </div>
+        </article>
+        <article class="plan">
+          <span class="plan-tag"><svg class="ic"><use href="#i-wrench"/></svg>Built for your shop</span>
+          <h3 class="plan-name">Custom build</h3>
+          <p class="plan-line">Mold estimates, follow-up, paperwork. Whatever eats your week, we build the tool for it.</p>
+          <ul class="ticks">
+            <li><svg class="ic"><use href="#i-check"/></svg>Built on your templates and your process</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Your team reviews everything before it goes out</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Scoped on a Zoom and quoted before work starts</li>
+            <li><svg class="ic"><use href="#i-check"/></svg>Yours to keep, like every install</li>
+          </ul>
+          <div class="plan-cta">
+            <a class="btn btn-line" href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20I%27d%20like%20to%20talk%20about%20a%20custom%20build%20for%20">Tell me what it is</a>
           </div>
         </article>
       </div>
       <ul class="terms">
-        <li><svg class="ic"><use href="#i-pins"/></svg><span><b>Extra locations</b>$1,000 each, either package</span></li>
+        <li><svg class="ic"><use href="#i-pins"/></svg><span><b>More than one location</b>Each gets its own number, service area and routing</span></li>
         <li><svg class="ic"><use href="#i-dollar"/></svg><span><b>Running costs</b>Usage on your own accounts, in writing before you sign</span></li>
         <li><svg class="ic"><use href="#i-cal"/></svg><span><b>Live in about 7 business days</b>10 for Revenue Recovery</span></li>
-        <li><svg class="ic"><use href="#i-key"/></svg><span><b>Own it or we host it</b>Nothing monthly to us, or $199 a month hosted</span></li>
+        <li><svg class="ic"><use href="#i-key"/></svg><span><b>Own it or we host it</b>Nothing monthly to us, or we run it for you</span></li>
       </ul>
-      <p class="fine">Checkout asks you to accept the <a href="/agreement/restoration/">installation agreement</a>. Prefer to see it first? Call <a class="num" href="tel:+15128820814">(512) 882-0814</a> and I'll bring it set up to answer as your company.</p>
+      <p class="fine">Every install is one-time, and you own everything. Pricing comes on a 15-minute Zoom, once I see how your crew works. Checkout asks you to accept the <a href="/agreement/restoration/">installation agreement</a>. Rather talk now? Call <a class="num" href="tel:+15128820814">(512) 882-0814</a>.</p>
     </div>
   </section>
 
@@ -759,7 +772,6 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
     <div class="wrap founder">
       <div>
         <h2 id="f-h" class="vh">Who installs it</h2>
-        <img class="founder-photo" src="/img/elijah-pitts.jpg" width="560" height="640" alt="Elijah Pitts, founder of SOVRN Growth" loading="lazy" decoding="async">
         <p class="founder-name">Elijah Pitts</p>
         <p class="founder-role">Founder, SOVRN Growth. Based in the Austin area.</p>
       </div>
@@ -782,13 +794,14 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
           <details><summary>What if someone's in danger?</summary><p>Ryan tells them to hang up and call 911. It never gives safety or repair instructions. That stays with your team.</p></details>
           <details><summary>Do I keep my number?</summary><p>Yes. Your phone forwards calls to the line when your team doesn't pick up, or after hours. You choose.</p></details>
           <details><summary>What does it cost to run?</summary><p>Usage on your own phone, voice and CRM accounts, billed by those vendors. You'll see the monthly number in writing before you sign.</p></details>
-          <details><summary>Who hosts it?</summary><p>Your choice. Own it outright on your accounts with nothing monthly to us, or we host it in a private account for $199 a month and move it to you any time.</p></details>
-          <details><summary>We have more than one location.</summary><p>Each extra office or market is $1,000 on either package and gets its own service area and on-call routing.</p></details>
+          <details><summary>How much is the install?</summary><p>It's a one-time fee, quoted on a 15-minute Zoom once I see how your on-call works. You see the full number, and the monthly running cost, in writing before you pay.</p></details>
+          <details><summary>Who hosts it?</summary><p>Your choice. Own it outright on your accounts with nothing monthly to us, or we host it in a private account and move it to you any time.</p></details>
+          <details><summary>We have more than one location.</summary><p>Each extra office or market gets its own number, service area and on-call routing, on either package. It's quoted with your install.</p></details>
         </div>
         <aside class="short" aria-labelledby="short-h">
           <h3 id="short-h">In short</h3>
           <p>SOVRN Growth installs an after-hours and overflow call line for restoration companies in Texas. It answers in your company's name, collects the loss, address and insurance, checks your service area and texts the job to your on-call tech.</p>
-          <p>Installation is one-time: $3,500 for Emergency Dispatch or $6,000 for Dispatch + Revenue Recovery. Based in Round Rock, serving the Austin and San Antonio areas.</p>
+          <p>Installation is one-time and quoted on a 15-minute Zoom. Based in the Austin area, serving Austin and San Antonio.</p>
         </aside>
       </div>
     </div>
@@ -798,13 +811,13 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
     <div class="wrap final-grid">
       <div>
         <h2 id="fin-h">Hear it before you decide.</h2>
-        <p>Call Ryan and report a burst pipe. Then book 30 minutes at your shop, and I'll bring it set up to answer as your company.</p>
+        <p>Call Ryan and report a burst pipe. Then book 15 minutes on Zoom, and I'll show it answering as your company.</p>
       </div>
       <div>
         <a class="big-num num" href="tel:+17372146271">(737) 214-6271</a>
         <div class="cta-row">
           <a class="btn btn-hivis" href="tel:+17372146271"><svg class="ic"><use href="#i-phone"/></svg>Call the line</a>
-          <a class="btn btn-line" href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20I%27d%20like%20to%20book%20a%20shop%20visit%20for%20">Book a shop visit</a>
+          <a class="btn btn-line" href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20I%27d%20like%20to%20book%20a%2015-minute%20Zoom%20for%20">Book a 15-minute Zoom</a>
         </div>
       </div>
     </div>
