@@ -776,8 +776,9 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
     var probe = new Image();
     probe.onload = function(){ video.poster = video.dataset.poster; };
     probe.src = video.dataset.poster;
+    video.preload = "auto"; video.autoplay = true;
     video.src = video.dataset.src;
-    video.addEventListener("canplay", function(){ var p = video.play(); if (p && p.catch) p.catch(function(){}); }, {once:true});
+    var playing = video.play(); if (playing && playing.catch) playing.catch(function(){});
     video.addEventListener("error", function(){ video.remove(); });
     video.addEventListener("timeupdate", function(){
       var t = video.currentTime, i = 0;
