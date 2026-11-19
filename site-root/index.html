@@ -778,7 +778,10 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
     probe.src = video.dataset.poster;
     video.preload = "auto"; video.autoplay = true;
     video.src = video.dataset.src;
-    var playing = video.play(); if (playing && playing.catch) playing.catch(function(){});
+    var kick = function(){ if (video.isConnected && video.paused && !document.hidden){ var p = video.play(); if (p && p.catch) p.catch(function(){}); } };
+    kick();
+    video.addEventListener("canplay", kick, {once:true});
+    document.addEventListener("visibilitychange", kick);
     video.addEventListener("error", function(){ video.remove(); });
     video.addEventListener("timeupdate", function(){
       var t = video.currentTime, i = 0;
