@@ -907,12 +907,16 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
     live.classList.toggle("is-playing", on);
     btn.setAttribute("aria-label", on ? "Pause the call" : "Play the call");
   }
+  var fresh = false;
   btn.addEventListener("click", function(){
     if (!audio.paused){ audio.pause(); return; }
-    if (audio.ended || audio.currentTime === 0){ live.classList.remove("is-ended"); render(0, false); }
+    fresh = audio.ended || audio.currentTime === 0;
     var p = audio.play(); if (p && p.catch) p.catch(function(){ setPlaying(false); sub.textContent = "Tap play again to hear the call"; });
   });
-  audio.addEventListener("play", function(){ setPlaying(true); sub.textContent = "Playing the call"; });
+  audio.addEventListener("play", function(){
+    if (fresh){ live.classList.remove("is-ended"); render(0, false); fresh = false; }
+    setPlaying(true); sub.textContent = "Playing the call";
+  });
   audio.addEventListener("pause", function(){ setPlaying(false); if (!audio.ended) sub.textContent = "Paused"; });
   audio.addEventListener("timeupdate", function(){ render(audio.currentTime, false); timer.textContent = clock(audio.currentTime); });
   audio.addEventListener("ended", function(){ setPlaying(false); live.classList.add("is-ended"); render(DUR, true); timer.textContent = clock(DUR); sub.textContent = "Call ended, 2 min 11 sec. Play again"; });
