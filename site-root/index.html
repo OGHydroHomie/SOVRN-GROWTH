@@ -96,7 +96,7 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
 .portal-clock span{margin-top:8px;font-size:15px;font-weight:600;color:#D3DADC}
 .portal-clock.tick b,.portal-clock.tick span{animation:tick .5s ease}
 @keyframes tick{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-.portal h1{font-size:clamp(40px,5.2vw,74px);max-width:15ch;margin:0 0 18px;color:#fff}
+.portal h1{font-size:clamp(40px,5.2vw,74px);max-width:15ch;margin:0 0 18px;color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.35)}
 .portal .lede{font-size:20px;line-height:1.45;color:#DCE2E4;max-width:31em;margin:0 0 28px}
 .portal .btn-line{color:#fff}
 .portal .btn-line:hover{background:rgba(255,255,255,.1)}
@@ -278,6 +278,7 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
 
 /* founder */
 .founder{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:end}
+.founder-photo{display:block;width:min(100%,260px);height:auto;aspect-ratio:7/8;object-fit:cover;border-radius:14px;margin:0 0 22px;background:var(--rule)}
 .founder-name{font-weight:800;font-stretch:66%;font-size:clamp(48px,6vw,84px);line-height:.92;margin:0 0 10px}
 .founder-role{font-size:17px;color:var(--muted)}
 .founder-text{font-size:20px;line-height:1.45;max-width:28em;margin:0 0 18px}
@@ -336,6 +337,7 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
   .hero{padding:12px 0 0}
   .portal{min-height:620px;border-radius:20px;padding:24px 20px 26px}
   .portal{justify-content:space-between;gap:28px}
+  .portal-shade{background:linear-gradient(0deg,rgba(9,14,17,.9) 0%,rgba(9,14,17,.62) 45%,rgba(9,14,17,.5) 100%)}
   .portal-clock{position:static;align-items:flex-start;text-align:left}
   .portal .lede{font-size:18px}
   .cta-row .btn{flex:1 1 100%}
@@ -427,7 +429,7 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
   <section class="hero" aria-labelledby="hero-h">
     <div class="wrap">
       <div class="portal" id="portal">
-        <video class="portal-video" id="portal-video" muted loop playsinline preload="none" aria-hidden="true" data-src="" data-poster=""></video>
+        <video class="portal-video" id="portal-video" muted loop playsinline preload="none" aria-hidden="true" data-src="/media/night-to-dawn.mp4" data-poster="/media/night-to-dawn.jpg"></video>
         <div class="portal-shade" aria-hidden="true"></div>
         <p class="portal-clock" id="portal-clock" aria-hidden="true"><b class="num" id="clock-t">2:10<small>a.m.</small></b><span id="clock-l">The job hits the on-call phone</span></p>
         <div class="portal-copy">
@@ -687,6 +689,7 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
     <div class="wrap founder">
       <div>
         <h2 id="f-h" class="vh">Who installs it</h2>
+        <img class="founder-photo" src="/img/elijah-pitts.jpg" width="560" height="640" alt="Elijah Pitts, founder of SOVRN Growth" loading="lazy" decoding="async">
         <p class="founder-name">Elijah Pitts</p>
         <p class="founder-role">Founder, SOVRN Growth. Based in the Austin area.</p>
       </div>
@@ -758,9 +761,9 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
   var clockL = document.getElementById("clock-l");
   var BEATS = [
     {at:0,     t:"2:10", l:"The job hits the on-call phone"},
-    {at:3.75,  t:"2:41", l:"Tech on site"},
-    {at:7.5,   t:"2:58", l:"Water coming out"},
-    {at:11.25, t:"6:52", l:"Drying, before the office opens"}
+    {at:3.0,   t:"2:41", l:"Tech on site"},
+    {at:8.71,  t:"2:58", l:"Water coming out"},
+    {at:12.38, t:"6:52", l:"Drying, before the office opens"}
   ];
   var beat = 0;
   function show(i){
@@ -768,7 +771,8 @@ h1,h2,h3{margin:0;font-weight:800;font-stretch:72%;letter-spacing:-0.005em;line-
     clockT.innerHTML = BEATS[i].t + "<small>a.m.</small>"; clockL.textContent = BEATS[i].l;
     if (!reduce){ clock.classList.remove("tick"); void clock.offsetWidth; clock.classList.add("tick"); }
   }
-  if (video && video.dataset.src && !reduce){
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (video && video.dataset.src && !reduce && !saveData){
     var probe = new Image();
     probe.onload = function(){ video.poster = video.dataset.poster; };
     probe.src = video.dataset.poster;
