@@ -315,6 +315,249 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-0.025em;line-height:1.03;te
 .foot a{color:var(--muted)}
 .foot a:hover{color:var(--ink)}
 
+/* The working dashboard: menu, views and the Ask panel */
+.hero-vis{max-width:1344px}
+.dash{width:1280px}
+.d{grid-template-columns:190px minmax(0,1fr) 290px}
+.frame{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.frame:hover,.frame:focus-within{transform:perspective(2400px) rotateX(0deg)}
+.d-nav button{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border:0;border-radius:9px;background:none;color:var(--muted);font:inherit;font-weight:550;text-align:left;cursor:pointer;transition:background-color .15s ease,color .15s ease}
+.d-nav button:hover{background:rgba(255,255,255,.045);color:var(--ink)}
+.d-nav button[aria-pressed="true"]{background:linear-gradient(90deg,rgba(59,232,160,.16),rgba(59,232,160,.04));color:var(--ink);box-shadow:inset 2px 0 0 var(--green)}
+.d-nav button[aria-pressed="true"] .ic{color:var(--green)}
+button.d-search{font:inherit;text-align:left;cursor:text}
+button.d-search:hover{border-color:var(--line-2)}
+.d-main{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);row-gap:14px;overflow:hidden}
+.v{grid-row:2;grid-column:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.v[hidden]{display:flex;visibility:hidden;pointer-events:none}
+.v.enter{animation:v-in .26s ease both}
+@keyframes v-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.v-head{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:30px}
+.v-head b{font-size:15px;font-weight:750}
+.v-head small{color:var(--dim);font-size:12px;margin-left:8px}
+.seg{display:flex;gap:2px;padding:3px;border-radius:10px;background:var(--glass);border:1px solid var(--line)}
+.seg span{padding:4px 10px;border-radius:7px;color:var(--muted);font-size:11.5px;font-weight:600;white-space:nowrap}
+.seg span.on{background:var(--glass-3);color:var(--ink)}
+.d-kpi .spark{position:static;display:block;width:100%;height:24px;margin-top:12px}
+.pill.n{color:var(--muted);background:rgba(255,255,255,.065)}
+.pill.a{color:var(--amber);background:rgba(255,181,71,.12)}
+.d .view-note{margin-top:12px;padding-top:10px;font-size:12px}
+
+/* Jobs board and hiring pipeline */
+.board{flex:1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;align-items:stretch}
+.pipe{flex:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;align-items:stretch}
+.col{display:grid;gap:6px;align-content:start;padding:8px;border-radius:12px;background:rgba(255,255,255,.018);border:1px solid var(--line)}
+.col > header{display:flex;align-items:center;gap:7px;padding:2px 3px 5px;font-size:11.5px;font-weight:700;color:var(--muted);white-space:nowrap}
+.col > header i{flex:none;width:7px;height:7px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c)}
+.col > header em{margin-left:auto;font-style:normal;color:var(--dim);font-weight:650}
+.job{padding:9px 10px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.022));border:1px solid var(--line);transition:box-shadow .3s ease,background-color .3s ease,border-color .3s ease}
+.job b{display:block;font-size:12.5px;font-weight:700}
+.job small{display:block;margin-top:2px;color:var(--muted);font-size:11px;line-height:1.3}
+.job footer{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:8px}
+.job.warn{border-color:rgba(255,181,71,.32)}
+.job.bad{border-color:rgba(255,93,115,.38)}
+.tag{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:999px}
+.tag.w{color:#8DB8FF;background:rgba(110,155,255,.14)}
+.tag.f{color:#FFA584;background:rgba(255,140,100,.13)}
+.tag.m{color:#C8AEFF;background:rgba(170,130,255,.14)}
+.tag.n{color:var(--muted);background:rgba(255,255,255,.065)}
+.av.sm{width:22px;height:22px;font-size:9.5px}
+.more{margin:2px 3px 0;color:var(--dim);font-size:11px;font-weight:600}
+
+/* Claims table and drafted follow-up */
+.tbl-wrap{border-radius:14px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.012));overflow:hidden}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{padding:10px 12px;text-align:left;font-size:11.5px;font-weight:600;color:var(--dim);border-bottom:1px solid var(--line)}
+.tbl td{padding:9px 12px;color:var(--muted);border-bottom:1px solid var(--line);vertical-align:middle;transition:background-color .3s ease}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td b{display:block;color:var(--ink);font-weight:650}
+.tbl td small{display:block;color:var(--dim);font-size:11px;margin-top:1px}
+.draft{padding:14px 16px;border-radius:14px;background:linear-gradient(180deg,rgba(59,232,160,.07),rgba(59,232,160,.02));border:1px solid rgba(59,232,160,.22)}
+.draft-h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.draft-h b{font-size:13px;font-weight:700}
+.draft p{margin-top:8px;color:#C9D3E1;font-size:12.5px;line-height:1.45}
+.draft p span{display:block;color:var(--dim);font-size:11.5px;margin-bottom:4px}
+.draft-b{display:flex;gap:8px;margin-top:12px}
+.mbtn{display:inline-flex;align-items:center;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;color:var(--ink);background:var(--glass-2);border:1px solid var(--line-2)}
+.mbtn.g{color:var(--green-ink);background:var(--green);border-color:transparent}
+
+/* Estimates */
+.est{flex:1;display:grid;grid-template-columns:230px minmax(0,1fr);gap:12px;align-items:stretch}
+.est-list{list-style:none;margin:0;padding:6px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.02);display:grid;gap:4px;align-content:start}
+.est-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;align-items:center;padding:9px 10px;border-radius:10px}
+.est-list li.on{background:var(--glass-2);box-shadow:inset 2px 0 0 var(--green)}
+.est-list b{font-size:12.5px;font-weight:650}
+.est-list small{grid-column:1;color:var(--dim);font-size:11px}
+.est-list .pill{grid-row:1 / span 2;grid-column:2}
+.est-doc{display:flex;flex-direction:column;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.012))}
+.est-src{display:block;margin-top:2px;color:var(--dim);font-size:11.5px}
+.est-doc .lines{font-size:12.5px;margin-top:12px}
+.est-doc .lines li{padding:8px 0}
+.est-note{margin-top:auto;padding-top:12px;color:var(--dim);font-size:11.5px}
+.mchart{display:block;width:100%;height:auto;margin-top:4px}
+.mchart text{font-family:inherit;font-size:11px;fill:#6E7887}
+.wbars{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:8px;align-items:end;height:92px;margin-top:10px}
+.wbars i{display:block;height:var(--h);border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,rgba(59,232,160,.9),rgba(59,232,160,.16));box-shadow:0 0 14px -6px rgba(59,232,160,.9)}
+.wbars i:last-child{background:linear-gradient(180deg,#6BF5BD,rgba(59,232,160,.3))}
+.hrs{margin-top:10px;gap:12px}
+.hrs .ag-row{grid-template-columns:100px minmax(0,1fr) 60px}
+.hrs .ag-row span,.hrs .ag-row b{font-size:12.5px}
+.hrs .ag-row .bar{height:9px}
+
+/* Crews */
+.oncall-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,rgba(59,232,160,.12),rgba(59,232,160,.03));border:1px solid rgba(59,232,160,.25);font-size:12.5px;color:var(--muted)}
+.oncall-bar b{color:var(--ink);margin-right:4px}
+.oncall-bar::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+.crew-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.crew{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:0 12px;align-items:center;padding:14px;border-radius:14px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));transition:box-shadow .3s ease,background-color .3s ease,border-color .3s ease}
+.crew .av{width:36px;height:36px;font-size:12px}
+.crew b{display:block;font-size:13px}
+.crew small{display:block;color:var(--muted);font-size:11.5px}
+.crew p{grid-column:1 / -1;margin-top:12px;padding-top:10px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+
+/* Equipment and reports */
+.eq{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:12px;align-items:start}
+.rep{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.eq .aging,.rep .aging{gap:14px;margin-top:10px}
+.eq .ag-row{grid-template-columns:142px minmax(0,1fr) 64px}
+.rep .ag-row{grid-template-columns:100px minmax(0,1fr) 70px}
+.eq .ag-row span,.eq .ag-row b,.rep .ag-row span,.rep .ag-row b{font-size:12.5px}
+.eq .ag-row .bar,.rep .ag-row .bar{height:9px}
+
+/* Hiring certifications */
+.certs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.cert{padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.025)}
+.cert span{display:block;color:var(--dim);font-size:11px;font-weight:600}
+.cert b{display:block;margin-top:4px;font-size:13px}
+.cert small{display:block;margin-top:3px;font-size:11.5px;color:var(--muted)}
+.cert small.w{color:var(--amber)}
+.cert small.g{color:var(--green)}
+
+/* What an answer points at */
+.hl{border-color:rgba(59,232,160,.6)!important;background:rgba(59,232,160,.08)!important;box-shadow:0 0 0 1px rgba(59,232,160,.35),0 0 28px -8px rgba(59,232,160,.8)!important}
+tr.hl{box-shadow:none!important;background:none!important}
+tr.hl td{background:rgba(59,232,160,.08)}
+tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
+.attn li.hl,.crews li.hl{border-radius:10px;padding-left:8px;padding-right:8px;margin:0 -8px}
+.ag-row.hl{border-radius:8px;padding:5px 7px;margin:-5px -7px}
+
+/* Ask panel */
+.d-ask{display:flex;flex-direction:column;min-width:0;border-left:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.028),rgba(255,255,255,.008))}
+.ask-h{display:flex;align-items:center;gap:10px;padding:20px 16px 14px;font-size:14px;font-weight:750;border-bottom:1px solid var(--line)}
+.ask-h i{flex:none;width:22px;height:22px;border-radius:7px;background:conic-gradient(from 200deg,#3BE8A0,#2DD4BF,#6E9BFF,#3BE8A0);box-shadow:0 0 12px rgba(59,232,160,.5)}
+.ask-h small{margin-left:auto;color:var(--dim);font-size:11.5px;font-weight:550}
+.ask-thread{display:grid;gap:2px;padding:16px 16px 4px}
+.q-row{display:flex}
+.ask-thread .q{font-size:12.5px;max-width:94%}
+.ask-thread .a p{font-size:12.5px;line-height:1.45;min-height:7.3em}
+.ask-try{display:grid;gap:6px;padding:8px 16px 0}
+.ask-try small{color:var(--dim);font-size:11.5px;font-weight:600;margin-bottom:2px}
+.ask-try button,.app-try button{display:block;width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--glass);color:var(--ink);font:inherit;font-size:12.5px;text-align:left;cursor:pointer;transition:border-color .15s ease,background-color .15s ease}
+.ask-try button:hover,.app-try button:hover{border-color:rgba(59,232,160,.45);background:rgba(59,232,160,.06)}
+.ask-try button[aria-pressed="true"]{border-color:rgba(59,232,160,.55);background:rgba(59,232,160,.09)}
+.ask-in{display:flex;align-items:center;gap:8px;margin:auto 16px 16px;padding:7px 7px 7px 12px;border-radius:12px;background:rgba(5,8,14,.75);border:1px solid var(--line-2)}
+.ask-in:focus-within{border-color:rgba(59,232,160,.55);box-shadow:0 0 0 3px rgba(59,232,160,.12)}
+.ask-in input{flex:1;min-width:0;padding:4px 0;border:0;background:none;color:var(--ink);font:inherit;font-size:12.5px;outline:none}
+.ask-in input::placeholder{color:var(--dim)}
+.ask-in button{flex:none;width:28px;height:28px;display:grid;place-items:center;border:0;border-radius:8px;background:var(--green);color:var(--green-ink);cursor:pointer}
+.ask-in button .ic{width:15px;height:15px;stroke-width:2.2}
+.hint{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:9px;margin:24px 0 0;color:var(--muted);font-size:15px}
+.hint::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+.f-call{top:auto;right:auto;bottom:-50px;left:0;width:290px}
+
+/* Phone-sized app, shown instead of the dashboard on small screens */
+.app{display:none;position:relative;z-index:1;max-width:440px;margin:0 auto;padding:7px;border-radius:30px;text-align:left;
+  background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.03) 40%,rgba(255,255,255,.02));box-shadow:0 40px 110px -40px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.07)}
+.app-in{border-radius:24px;overflow:hidden;font-size:14px;line-height:1.35;background:radial-gradient(420px 240px at 85% -10%,rgba(59,232,160,.13),transparent 60%),#070B12}
+.app-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 18px 6px}
+.app-top small{display:block;color:var(--dim);font-size:12.5px}
+.app-top b{display:block;margin-top:2px;font-size:21px;font-weight:750;letter-spacing:-.015em}
+.app-top .av{width:34px;height:34px;font-size:12px}
+.app-body{padding:10px 14px 16px;min-height:476px}
+.ap[hidden]{display:none}
+.app-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.app-kpi{padding:12px 13px;border-radius:14px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02))}
+.app-kpi span{display:block;color:var(--muted);font-size:12px}
+.app-kpi b{display:block;margin-top:4px;font-size:22px;font-weight:750;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.app-kpi .chip{margin-top:6px;font-size:11px}
+.app h5{margin:18px 2px 8px;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:0}
+.app h5.first{margin-top:4px}
+.app-list{list-style:none;margin:0;padding:0 12px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.025)}
+.app-list li{display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:10px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}
+.app-list li:first-child{border-top:0}
+.app-list .dot{margin-top:0}
+.app-list b{display:block;font-size:14px;font-weight:650}
+.app-list small{display:block;margin-top:2px;color:var(--muted);font-size:12.5px}
+.app-list .n{font-size:15px;font-weight:750;font-variant-numeric:tabular-nums}
+.app-list.cr li{grid-template-columns:30px minmax(0,1fr) auto}
+.app-oncall{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:4px 0 12px;padding:12px 14px;border-radius:14px;border:1px solid rgba(59,232,160,.25);background:linear-gradient(90deg,rgba(59,232,160,.12),rgba(59,232,160,.03))}
+.app-oncall small{width:100%;color:var(--dim);font-size:12px}
+.app-oncall b{font-size:16px}
+.app-oncall span{color:var(--muted);font-size:13px}
+.app .ask-thread{padding:4px 2px 0}
+.app .ask-thread .q{font-size:14px}
+.app .ask-thread .a p{font-size:14px;min-height:8em}
+.app-try{display:grid;gap:8px;margin-top:14px}
+.app-try button{font-size:14px;padding:11px 12px}
+.app-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line);background:rgba(255,255,255,.02)}
+.app-tabs button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0 12px;border:0;background:none;color:var(--dim);font:inherit;font-size:11.5px;font-weight:650;cursor:pointer}
+.app-tabs button[aria-pressed="true"]{color:var(--green)}
+.app-tabs .ic{width:21px;height:21px}
+
+/* Your week, after */
+.week{list-style:none;margin:60px 0 0;padding:0;position:relative;display:grid;gap:22px}
+.week::before{content:"";position:absolute;left:150px;top:12px;bottom:64px;width:1px;background:linear-gradient(180deg,var(--green),var(--teal) 45%,var(--blue) 80%,transparent)}
+.wk{display:grid;grid-template-columns:150px minmax(0,1fr) minmax(0,400px);gap:0 48px;align-items:start}
+.wk-t{position:relative;padding:3px 30px 0 0;text-align:right}
+.wk-t b{display:block;font-size:17px;font-weight:750}
+.wk-t span{display:block;margin-top:2px;color:var(--dim);font-size:15px}
+.wk-t::after{content:"";position:absolute;right:-6px;top:10px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--green);box-shadow:0 0 14px rgba(59,232,160,.75)}
+.wk-c{padding:0 0 26px}
+.wk-c h3{font-size:clamp(23px,2.3vw,29px);letter-spacing:-0.02em;line-height:1.15}
+.wk-c p{margin-top:10px;color:var(--muted);font-size:17px;max-width:30em}
+.wk-v{padding:16px 18px}
+.wk-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wk-kpis b{display:block;font-size:27px;font-weight:750;letter-spacing:-.02em}
+.wk-kpis span{display:block;color:var(--muted);font-size:13px;line-height:1.3}
+.wk-drafts{list-style:none;margin:10px 0 0;padding:0}
+.wk-drafts li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--line);font-size:13.5px}
+.wk-drafts li span{color:var(--muted);text-align:right}
+.wk-hire{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:12px;align-items:center}
+.wk-hire .av{width:36px;height:36px;font-size:12px}
+.wk-hire b{display:block}
+.wk-hire small{display:block;color:var(--muted);font-size:13px}
+.wk-sub{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+.wk-cash{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.wk-cash span{display:block;color:var(--muted);font-size:13px}
+.wk-cash b{display:block;margin-top:2px;font-size:25px;font-weight:750;letter-spacing:-.02em}
+.wk-cash div:first-child b{color:var(--green)}
+.wk-cash div:last-child b{color:var(--amber)}
+
+/* What stays, what goes */
+.ledger.sg td:nth-child(3){color:var(--ink)}
+.fate{display:block;width:max-content;margin:0 0 7px;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:700}
+.fate.rep{color:var(--green);background:rgba(59,232,160,.12)}
+.fate.stay{color:#C9D3E1;background:rgba(255,255,255,.07)}
+.fate.new{color:var(--blue);background:rgba(110,155,255,.14)}
+.own-foot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;max-width:1000px;margin-top:32px}
+.own-foot p{color:var(--muted);font-size:17px}
+.own-foot b{display:block;margin-bottom:4px;color:var(--ink);font-size:19px;font-weight:700}
+
+/* Booking panel on computers */
+.book{width:min(520px,calc(100% - 32px));padding:36px;border:0;border-radius:24px;color:var(--ink);background:linear-gradient(180deg,#0F1622,#080D15);box-shadow:0 40px 120px -30px rgba(0,0,0,.9),0 0 80px -30px rgba(59,232,160,.45)}
+.book::backdrop{background:rgba(3,6,10,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.book h2{font-size:30px;letter-spacing:-0.025em}
+.book-p{margin-top:12px;color:var(--muted);font-size:17px}
+.book-row{display:grid;grid-template-columns:168px minmax(0,1fr);gap:24px;align-items:center;margin-top:26px}
+.qr{padding:8px;border-radius:16px;background:#FFFFFF;box-shadow:0 0 0 1px rgba(59,232,160,.35),0 0 40px -10px rgba(59,232,160,.6)}
+.qr svg{display:block;width:100%;height:auto}
+.book-alt{display:grid;gap:2px}
+.book-alt span{color:var(--dim);font-size:14px}
+.book-alt span + a{margin-bottom:12px}
+.book-alt a{color:var(--ink);font-size:19px;font-weight:700;text-decoration:none;overflow-wrap:anywhere}
+.book-alt a:hover{color:var(--green)}
+.book-x{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:11px;border:1px solid var(--line-2);background:rgba(255,255,255,.04);color:var(--muted);font:inherit;font-size:22px;line-height:1;cursor:pointer}
+.book-x:hover{color:var(--ink);border-color:rgba(255,255,255,.3)}
 /* Responsive */
 @media (max-width:1100px){
   .float{position:relative;top:auto;right:auto;bottom:auto;left:auto;width:auto}
@@ -360,6 +603,41 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-0.025em;line-height:1.03;te
   .btn,.top,.float,.qa summary::after{transition:none}
   .a p.typing::after{animation:none}
 }
+
+/* Responsive: the dashboard, phone app, timeline and booking panel */
+@media (max-width:1100px){
+  .floats{grid-template-columns:minmax(0,1fr);max-width:440px;margin-left:auto;margin-right:auto}
+  .wk{grid-template-columns:120px minmax(0,1fr);gap:0 40px}
+  .week::before{left:120px}
+  .wk-v{grid-column:2;margin:0 0 30px}
+  .own-foot{grid-template-columns:minmax(0,1fr);gap:16px}
+}
+@media (max-width:960px){
+  .frame,.hint{display:none}
+  .app{display:block}
+}
+@media (max-width:720px){
+  .app{padding:6px;border-radius:26px}
+  .app-in{border-radius:21px}
+  .week{margin-top:40px;gap:8px}
+  .week::before{left:5px;top:10px;bottom:48px}
+  .wk{grid-template-columns:minmax(0,1fr);padding-left:30px}
+  .wk-t{text-align:left;padding:0 0 8px}
+  .wk-t b,.wk-t span{display:inline}
+  .wk-t span{margin-left:8px}
+  .wk-t::after{left:-30px;right:auto;top:6px}
+  .wk-c{padding-bottom:16px}
+  .wk-c p{font-size:16px}
+  .wk-v{grid-column:1;margin:0 0 34px}
+  .wk-kpis b{font-size:24px}
+  .book{padding:28px 22px}
+  .book-row{grid-template-columns:minmax(0,1fr)}
+  .qr{max-width:200px}
+}
+@media (prefers-reduced-motion: reduce){
+  .frame,.job,.crew,.tbl td,.d-nav button{transition:none}
+  .v.enter{animation:none}
+}
 </style>
 </head>
 <body id="top">
@@ -380,6 +658,7 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-0.025em;line-height:1.03;te
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></symbol>
   <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></symbol>
   </defs>
 </svg>
 
@@ -408,94 +687,394 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-0.025em;line-height:1.03;te
 
   <div class="hero-vis" id="hero-vis">
     <div class="glow"></div>
-    <figure class="frame" aria-label="An operations dashboard for a restoration company: open jobs, claims waiting on carriers, money owed, cash collected, jobs that need attention and crews on site">
-      <div class="frame-in"><div class="dash" id="dash" aria-hidden="true">
+    <figure class="frame" aria-label="A working operations dashboard for a restoration company. Use its menu to switch views, or ask it a question.">
+      <div class="frame-in"><div class="dash" id="dash">
         <div class="d">
           <aside class="d-side">
             <div class="d-brand"><span class="d-logo"></span>Operations</div>
-            <nav class="d-nav">
-              <span class="on"><svg class="ic"><use href="#i-grid"/></svg>Overview</span>
-              <span><svg class="ic"><use href="#i-clip"/></svg>Jobs<em>23</em></span>
-              <span><svg class="ic"><use href="#i-shield"/></svg>Claims<em>7</em></span>
-              <span><svg class="ic"><use href="#i-doc"/></svg>Estimates<em>5</em></span>
-              <span><svg class="ic"><use href="#i-user"/></svg>Crews</span>
-              <span><svg class="ic"><use href="#i-fan"/></svg>Equipment</span>
-              <span><svg class="ic"><use href="#i-userplus"/></svg>Hiring</span>
-              <span><svg class="ic"><use href="#i-chart"/></svg>Reports</span>
+            <nav class="d-nav" aria-label="Dashboard views">
+              <button type="button" data-go="overview" aria-pressed="true"><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg>Overview</button>
+              <button type="button" data-go="jobs" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-clip"/></svg>Jobs<em>23</em></button>
+              <button type="button" data-go="claims" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg>Claims<em>7</em></button>
+              <button type="button" data-go="estimates" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-doc"/></svg>Estimates<em>5</em></button>
+              <button type="button" data-go="crews" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg>Crews</button>
+              <button type="button" data-go="equipment" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-fan"/></svg>Equipment</button>
+              <button type="button" data-go="hiring" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-userplus"/></svg>Hiring</button>
+              <button type="button" data-go="reports" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg>Reports</button>
             </nav>
             <div class="d-oncall"><small>On call tonight</small><b>Marcus T.</b></div>
-            <div class="d-me"><span class="av">DO</span><div><b>Dana Ortiz</b><small>Owner</small></div></div>
+            <div class="d-me"><span class="av" aria-hidden="true">DO</span><div><b>Dana Ortiz</b><small>Owner</small></div></div>
           </aside>
           <div class="d-main">
             <div class="d-top">
               <div><h4>Good morning, Dana</h4><small>Today, 7:02 AM</small></div>
-              <div class="d-search"><svg class="ic"><use href="#i-search"/></svg>Search jobs, claims, homeowners<kbd>&#8984;K</kbd></div>
-              <span class="d-bell"><svg class="ic"><use href="#i-bell"/></svg></span>
-              <span class="av">DO</span>
+              <button type="button" class="d-search" data-focus-ask><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>Search jobs, claims, homeowners<kbd>&#8984;K</kbd></button>
+              <span class="d-bell" aria-hidden="true"><svg class="ic"><use href="#i-bell"/></svg></span>
+              <span class="av" aria-hidden="true">DO</span>
             </div>
-            <div class="d-kpis">
-              <div class="d-kpi"><span>Open jobs</span><b data-count="23">23</b><em class="chip up">+3 this week</em><svg class="spark" viewBox="0 0 84 26"><polyline points="0.0,24.0 9.3,20.3 18.7,20.3 28.0,16.7 37.3,13.0 46.7,16.7 56.0,9.3 65.3,5.7 74.7,9.3 84.0,2.0" fill="none" stroke="#3BE8A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="d-kpi"><span>Waiting on carriers</span><b data-count="7">7</b><em class="chip warn">2 past 14 days</em><svg class="spark" viewBox="0 0 84 26"><polyline points="0.0,24.0 9.3,16.7 18.7,16.7 28.0,9.3 37.3,16.7 46.7,9.3 56.0,2.0 65.3,9.3 74.7,2.0 84.0,2.0" fill="none" stroke="#FFB547" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="d-kpi"><span>Owed to you</span><b data-count="184300" data-prefix="$">$184,300</b><em class="chip bad">$61,200 past 60 days</em><svg class="spark" viewBox="0 0 84 26"><polyline points="0.0,24.0 9.3,18.8 18.7,16.2 28.0,17.5 37.3,12.4 46.7,10.4 56.0,7.8 65.3,5.9 74.7,3.9 84.0,2.0" fill="none" stroke="#FF5D73" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <div class="d-kpi"><span>Collected this month</span><b data-count="96450" data-prefix="$">$96,450</b><em class="chip up">+18% vs last month</em><svg class="spark" viewBox="0 0 84 26"><polyline points="0.0,24.0 9.3,22.1 18.7,22.7 28.0,18.3 37.3,17.1 46.7,15.2 56.0,12.1 65.3,9.5 74.7,5.8 84.0,2.0" fill="none" stroke="#3BE8A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+            <div class="v" data-v="overview">
+              <div class="d-kpis">
+                <div class="d-kpi"><span>Open jobs</span><b data-count="23">23</b><em class="chip up">+3 this week</em><svg class="spark" viewBox="0 0 84 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,24.0 9.3,20.3 18.7,20.3 28.0,16.7 37.3,13.0 46.7,16.7 56.0,9.3 65.3,5.7 74.7,9.3 84.0,2.0" fill="none" stroke="#3BE8A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg></div>
+                <div class="d-kpi"><span>Waiting on carriers</span><b data-count="7">7</b><em class="chip warn">2 past 14 days</em><svg class="spark" viewBox="0 0 84 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,24.0 9.3,16.7 18.7,16.7 28.0,9.3 37.3,16.7 46.7,9.3 56.0,2.0 65.3,9.3 74.7,2.0 84.0,2.0" fill="none" stroke="#FFB547" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg></div>
+                <div class="d-kpi" data-k="owed"><span>Owed to you</span><b data-count="184300" data-prefix="$">$184,300</b><em class="chip bad">$61,200 past 60 days</em><svg class="spark" viewBox="0 0 84 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,24.0 9.3,18.8 18.7,16.2 28.0,17.5 37.3,12.4 46.7,10.4 56.0,7.8 65.3,5.9 74.7,3.9 84.0,2.0" fill="none" stroke="#FF5D73" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg></div>
+                <div class="d-kpi"><span>Collected this month</span><b data-count="96450" data-prefix="$">$96,450</b><em class="chip up">+18% vs last month</em><svg class="spark" viewBox="0 0 84 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="0.0,24.0 9.3,22.1 18.7,22.7 28.0,18.3 37.3,17.1 46.7,15.2 56.0,12.1 65.3,9.5 74.7,5.8 84.0,2.0" fill="none" stroke="#3BE8A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg></div>
+              </div>
+              <div class="d-grid">
+                <section class="d-card">
+                  <header><div><b>Cash collected</b><small>Last 12 weeks</small></div><div class="legend" aria-hidden="true"><span><i style="background:#3BE8A0"></i>Collected</span><span><i style="background:#6E9BFF;opacity:.75"></i>Invoiced</span></div></header>
+                  <svg class="chart" viewBox="0 0 640 214" role="img" aria-label="Cash collected over the last 12 weeks, rising to $33,600 last week">
+                    <defs><linearGradient id="gc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3BE8A0" stop-opacity=".4"/><stop offset="1" stop-color="#3BE8A0" stop-opacity="0"/></linearGradient></defs>
+                    <g stroke="rgba(255,255,255,.06)" stroke-width="1"><path d="M44 192H628M44 148.5H628M44 105H628M44 61.5H628M44 18H628"/></g>
+                    <g text-anchor="end"><text x="36" y="196">$0</text><text x="36" y="152.5">$10k</text><text x="36" y="109">$20k</text><text x="36" y="65.5">$30k</text><text x="36" y="22">$40k</text></g>
+                    <g text-anchor="middle"><text x="44" y="211">Sep 1</text><text x="150.2" y="211">Sep 15</text><text x="256.4" y="211">Sep 29</text><text x="362.5" y="211">Oct 13</text><text x="468.7" y="211">Oct 27</text><text x="574.9" y="211">Nov 10</text></g>
+                    <path class="area-c" d="M44.0,130.2 C70.5,130.2 70.5,111.5 97.1,111.5 C123.6,111.5 123.6,122.0 150.2,122.0 C176.7,122.0 176.7,98.9 203.3,98.9 C229.8,98.9 229.8,105.9 256.4,105.9 C282.9,105.9 282.9,85.0 309.5,85.0 C336.0,85.0 336.0,95.0 362.5,95.0 C389.1,95.0 389.1,70.6 415.6,70.6 C442.2,70.6 442.2,81.5 468.7,81.5 C495.3,81.5 495.3,60.6 521.8,60.6 C548.4,60.6 548.4,66.7 574.9,66.7 C601.5,66.7 601.5,45.8 628.0,45.8 L628.0,192 L44.0,192 Z" fill="url(#gc)"/>
+                    <path d="M44.0,113.7 C70.5,113.7 70.5,100.6 97.1,100.6 C123.6,100.6 123.6,104.1 150.2,104.1 C176.7,104.1 176.7,87.2 203.3,87.2 C229.8,87.2 229.8,92.0 256.4,92.0 C282.9,92.0 282.9,73.7 309.5,73.7 C336.0,73.7 336.0,78.5 362.5,78.5 C389.1,78.5 389.1,59.8 415.6,59.8 C442.2,59.8 442.2,65.0 468.7,65.0 C495.3,65.0 495.3,48.0 521.8,48.0 C548.4,48.0 548.4,51.1 574.9,51.1 C601.5,51.1 601.5,34.5 628.0,34.5" fill="none" stroke="#6E9BFF" stroke-opacity=".75" stroke-width="1.6" stroke-dasharray="4 5"/>
+                    <path class="line-c" d="M44.0,130.2 C70.5,130.2 70.5,111.5 97.1,111.5 C123.6,111.5 123.6,122.0 150.2,122.0 C176.7,122.0 176.7,98.9 203.3,98.9 C229.8,98.9 229.8,105.9 256.4,105.9 C282.9,105.9 282.9,85.0 309.5,85.0 C336.0,85.0 336.0,95.0 362.5,95.0 C389.1,95.0 389.1,70.6 415.6,70.6 C442.2,70.6 442.2,81.5 468.7,81.5 C495.3,81.5 495.3,60.6 521.8,60.6 C548.4,60.6 548.4,66.7 574.9,66.7 C601.5,66.7 601.5,45.8 628.0,45.8" fill="none" stroke="#3BE8A0" stroke-width="2.4" stroke-linecap="round" style="--len:720"/>
+                    <circle cx="628" cy="45.8" r="11" fill="#3BE8A0" fill-opacity=".18"/><circle cx="628" cy="45.8" r="4.5" fill="#3BE8A0"/>
+                    <rect x="552" y="4" width="66" height="24" rx="7" fill="#0B121D" stroke="rgba(255,255,255,.14)"/><text x="585" y="20.5" text-anchor="middle" style="fill:#EEF2F7;font-weight:700;font-size:11.5px">$33,600</text>
+                  </svg>
+                </section>
+                <section class="d-card">
+                  <header><b>Needs attention<small>4</small></b></header>
+                  <ul class="attn">
+                    <li data-k="garza" style="--c:#FF5D73"><i class="dot"></i><div><b>Garza, water loss</b><small>State Farm: no reply on the estimate</small></div><span class="age">19d</span></li>
+                    <li data-k="lopez" style="--c:#FFB547"><i class="dot"></i><div><b>Lopez, water loss</b><small>Allstate: supplement under review</small></div><span class="age">16d</span></li>
+                    <li data-k="moore" style="--c:#FFB547"><i class="dot"></i><div><b>Moore, water loss</b><small>Supplement approved. Invoice not sent</small></div><span class="age">4d</span></li>
+                    <li data-k="ruiz" style="--c:#6E9BFF"><i class="dot"></i><div><b>Ruiz, water loss</b><small>Drying day 6. Readings flat on dehu 14</small></div><span class="age">2d</span></li>
+                  </ul>
+                </section>
+                <section class="d-card">
+                  <header><div><b>Jobs by stage</b><small>23 open</small></div></header>
+                  <div class="stages">
+                    <div class="stage" style="--h:50%;--c:#6E9BFF"><i></i><b>4</b><small>New loss</small></div>
+                    <div class="stage" style="--h:100%;--c:#58A6F2"><i></i><b>8</b><small>Drying</small></div>
+                    <div class="stage" style="--h:62.5%;--c:#41C0DA"><i></i><b>5</b><small>Estimate out</small></div>
+                    <div class="stage" style="--h:25%;--c:#2DD4BF"><i></i><b>2</b><small>Approved</small></div>
+                    <div class="stage" style="--h:37.5%;--c:#34DEA9"><i></i><b>3</b><small>Rebuild</small></div>
+                    <div class="stage" style="--h:12.5%;--c:#3BE8A0"><i></i><b>1</b><small>Invoiced</small></div>
+                  </div>
+                </section>
+                <section class="d-card">
+                  <header><b>Crews today</b></header>
+                  <ul class="crews">
+                    <li data-k="marcus"><span class="av" aria-hidden="true">MT</span><div><b>Marcus T.</b><small>Ruiz, drying day 6</small></div><span class="pill g">On site</span></li>
+                    <li><span class="av" aria-hidden="true">LR</span><div><b>Luis R.</b><small>Fischer, mold containment</small></div><span class="pill g">On site</span></li>
+                    <li><span class="av" aria-hidden="true">JK</span><div><b>Jen K.</b><small>2 estimate visits</small></div><span class="pill b">Driving</span></li>
+                  </ul>
+                </section>
+              </div>
             </div>
-            <div class="d-grid">
+
+            <div class="v" data-v="jobs" hidden>
+              <div class="v-head"><div><b>Jobs</b><small>23 open</small></div><div class="seg" aria-hidden="true"><span class="on">All 23</span><span>Water 18</span><span>Mold 3</span><span>Fire 2</span></div></div>
+              <div class="board">
+                <section class="col" style="--c:#6E9BFF"><header><i></i>New loss<em>4</em></header>
+                  <article class="job"><b>Holt</b><small>Upstairs bath, called 2:14 AM</small><footer><span class="tag w">Water</span><span class="av sm" aria-hidden="true">MT</span></footer></article>
+                  <article class="job"><b>Nguyen</b><small>Inspection 7:30 AM</small><footer><span class="tag w">Water</span><span class="av sm" aria-hidden="true">JK</span></footer></article>
+                  <article class="job"><b>Patel</b><small>Estimate draft ready</small><footer><span class="tag m">Mold</span><span class="av sm" aria-hidden="true">JK</span></footer></article>
+                  <article class="job"><b>Hale</b><small>Inspection 1:00 PM</small><footer><span class="tag m">Mold</span><span class="av sm" aria-hidden="true">JK</span></footer></article>
+                </section>
+                <section class="col" style="--c:#58A6F2"><header><i></i>Drying<em>8</em></header>
+                  <article class="job warn" data-k="ruiz"><b>Ruiz</b><small>Day 6. Readings flat on dehu 14</small><footer><span class="tag w">Water</span><span class="age" style="--c:#FFB547">2d</span></footer></article>
+                  <article class="job"><b>Kim</b><small>Day 2. On track</small><footer><span class="tag w">Water</span><span class="av sm" aria-hidden="true">AW</span></footer></article>
+                  <article class="job"><b>Chen</b><small>Day 1. Equipment set</small><footer><span class="tag w">Water</span><span class="av sm" aria-hidden="true">AW</span></footer></article>
+                  <p class="more">5 more on track</p>
+                </section>
+                <section class="col" style="--c:#41C0DA"><header><i></i>Estimate out<em>5</em></header>
+                  <article class="job bad" data-k="garza"><b>Garza</b><small>State Farm, no reply</small><footer><span class="tag w">Water</span><span class="age" style="--c:#FF5D73">19d</span></footer></article>
+                  <article class="job warn" data-k="lopez"><b>Lopez</b><small>Allstate, supplement</small><footer><span class="tag w">Water</span><span class="age" style="--c:#FFB547">16d</span></footer></article>
+                  <article class="job"><b>Brooks</b><small>Liberty Mutual, contents</small><footer><span class="tag f">Fire</span><span class="age" style="--c:#6E9BFF">11d</span></footer></article>
+                  <p class="more">2 more</p>
+                </section>
+                <section class="col" style="--c:#2DD4BF"><header><i></i>Approved<em>2</em></header>
+                  <article class="job"><b>Fischer</b><small>Containment today</small><footer><span class="tag m">Mold</span><span class="av sm" aria-hidden="true">LR</span></footer></article>
+                  <article class="job"><b>Reyes</b><small>Rebuild starts Monday</small><footer><span class="tag w">Water</span><span class="av sm" aria-hidden="true">LR</span></footer></article>
+                </section>
+                <section class="col" style="--c:#34DEA9"><header><i></i>Rebuild<em>3</em></header>
+                  <article class="job warn" data-k="moore"><b>Moore</b><small>Supplement approved, invoice not sent</small><footer><span class="tag w">Water</span><span class="age" style="--c:#FFB547">4d</span></footer></article>
+                  <article class="job"><b>Walsh</b><small>Drywall and paint</small><footer><span class="tag f">Fire</span><span class="av sm" aria-hidden="true">AW</span></footer></article>
+                  <article class="job"><b>Ortega</b><small>Cabinets Thursday</small><footer><span class="tag w">Water</span><span class="av sm" aria-hidden="true">LR</span></footer></article>
+                </section>
+                <section class="col" style="--c:#3BE8A0"><header><i></i>Invoiced<em>1</em></header>
+                  <article class="job"><b>Bennett</b><small>$8,420 to Farmers, 12 days ago</small><footer><span class="tag w">Water</span></footer></article>
+                </section>
+              </div>
+            </div>
+
+            <div class="v" data-v="claims" hidden>
+              <div class="v-head"><div><b>Claims</b><small>7 waiting on carriers</small></div><div class="seg" aria-hidden="true"><span class="on">Waiting 7</span><span>Past 14 days 2</span><span>Paid this month 9</span></div></div>
+              <div class="tbl-wrap">
+                <table class="tbl">
+                  <thead><tr><th scope="col">Job</th><th scope="col">Carrier</th><th scope="col">Waiting on</th><th scope="col">Days</th><th scope="col">Next step</th></tr></thead>
+                  <tbody>
+                    <tr data-k="garza"><td><b>Garza</b><small>Water loss</small></td><td>State Farm</td><td>Reply on the estimate</td><td><span class="age" style="--c:#FF5D73">19d</span></td><td><span class="pill g">Follow-up drafted</span></td></tr>
+                    <tr data-k="lopez"><td><b>Lopez</b><small>Water loss</small></td><td>Allstate</td><td>Supplement review</td><td><span class="age" style="--c:#FFB547">16d</span></td><td><span class="pill g">Follow-up drafted</span></td></tr>
+                    <tr><td><b>Bennett</b><small>Water loss</small></td><td>Farmers</td><td>Payment on the invoice</td><td><span class="age" style="--c:#6E9BFF">12d</span></td><td><span class="pill n">Check Monday</span></td></tr>
+                    <tr><td><b>Brooks</b><small>Fire loss</small></td><td>Liberty Mutual</td><td>Contents approval</td><td><span class="age" style="--c:#6E9BFF">11d</span></td><td><span class="pill n">Adjuster call Friday</span></td></tr>
+                    <tr><td><b>Reyes</b><small>Water loss</small></td><td>Travelers</td><td>Mitigation payment</td><td><span class="age" style="--c:#6E9BFF">5d</span></td><td><span class="pill n">On schedule</span></td></tr>
+                    <tr><td><b>Kim</b><small>Water loss</small></td><td>USAA</td><td>Drying logs review</td><td><span class="age" style="--c:#6E9BFF">2d</span></td><td><span class="pill g">Logs sent</span></td></tr>
+                    <tr><td><b>Nguyen</b><small>Water loss</small></td><td>State Farm</td><td>Adjuster assignment</td><td><span class="age" style="--c:#6E9BFF">1d</span></td><td><span class="pill n">Inspection today</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="draft">
+                <div class="draft-h"><b>Follow-up to State Farm</b><em class="badge">Ready to send</em></div>
+                <p><span>Garza water loss, estimate sent 19 days ago</span>Following up on the estimate we sent for the Garza water loss. Please confirm it's under review, and tell us if you need anything else from us.</p>
+                <div class="draft-b" aria-hidden="true"><span class="mbtn g">Send</span><span class="mbtn">Edit</span></div>
+              </div>
+            </div>
+
+            <div class="v" data-v="estimates" hidden>
+              <div class="v-head"><div><b>Estimates</b><small>5 in progress</small></div><div class="seg" aria-hidden="true"><span class="on">In progress 5</span><span>Sent 5</span></div></div>
+              <div class="est">
+                <ul class="est-list">
+                  <li class="on"><b>Patel, mold</b><small>Draft ready for review</small><span class="pill g">Ready</span></li>
+                  <li><b>Brooks, fire</b><small>Contents supplement</small><span class="pill b">Drafting</span></li>
+                  <li><b>Ortega, water</b><small>Cabinet supplement</small><span class="pill b">Drafting</span></li>
+                  <li><b>Nguyen, water</b><small>Inspection 7:30 AM</small><span class="pill n">Today</span></li>
+                  <li><b>Hale, mold</b><small>Inspection 1:00 PM</small><span class="pill n">Today</span></li>
+                </ul>
+                <div class="est-doc">
+                  <div class="draft-h"><div><b>Patel, mold remediation</b><small class="est-src">Drafted from 14 photos, the sketch and the protocol</small></div><em class="badge">Ready for review</em></div>
+                  <ul class="lines">
+                    <li><span>Containment, 6 mil poly</span><b>220 SF</b></li>
+                    <li><span>Negative air machine</span><b>3 days</b></li>
+                    <li><span>Remove affected drywall</span><b>96 SF</b></li>
+                    <li><span>Remove baseboard</span><b>42 LF</b></li>
+                    <li><span>HEPA vacuum and antimicrobial</span><b>450 SF</b></li>
+                    <li><span>Clearance test</span><b>1 EA</b></li>
+                  </ul>
+                  <p class="est-note">Your estimator reviews it and sends the final from Xactimate.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="v" data-v="crews" hidden>
+              <div class="v-head"><div><b>Crews</b><small>4 out today</small></div><div class="seg" aria-hidden="true"><span class="on">Today</span><span>This week</span></div></div>
+              <div class="oncall-bar"><span><b>On call tonight: Marcus T.</b> Backup: Luis R. After-hours calls go straight to his phone.</span></div>
+              <div class="crew-grid">
+                <article class="crew" data-k="marcus"><span class="av" aria-hidden="true">MT</span><div><b>Marcus T.</b><small>Lead tech</small></div><span class="pill g">On site</span><p>Ruiz, drying day 6. Checking dehu 14. On site since 6:50 AM</p></article>
+                <article class="crew"><span class="av" aria-hidden="true">LR</span><div><b>Luis R.</b><small>Mold tech</small></div><span class="pill g">On site</span><p>Fischer, setting up containment. On site since 6:55 AM</p></article>
+                <article class="crew"><span class="av" aria-hidden="true">AW</span><div><b>Andre W.</b><small>Tech</small></div><span class="pill g">On site</span><p>Kim and Chen, daily moisture readings. On site since 6:40 AM</p></article>
+                <article class="crew"><span class="av" aria-hidden="true">JK</span><div><b>Jen K.</b><small>Estimator</small></div><span class="pill b">Driving</span><p>Nguyen inspection at 7:30 AM, Hale at 1:00 PM</p></article>
+              </div>
               <section class="d-card">
-                <header><div><b>Cash collected</b><small>Last 12 weeks</small></div><div class="legend"><span><i style="background:#3BE8A0"></i>Collected</span><span><i style="background:#6E9BFF;opacity:.75"></i>Invoiced</span></div></header>
-                <svg class="chart" viewBox="0 0 640 214">
-                  <defs><linearGradient id="gc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3BE8A0" stop-opacity=".4"/><stop offset="1" stop-color="#3BE8A0" stop-opacity="0"/></linearGradient></defs>
-                  <g stroke="rgba(255,255,255,.06)" stroke-width="1"><path d="M44 192H628M44 148.5H628M44 105H628M44 61.5H628M44 18H628"/></g>
-                  <g text-anchor="end"><text x="36" y="196">$0</text><text x="36" y="152.5">$10k</text><text x="36" y="109">$20k</text><text x="36" y="65.5">$30k</text><text x="36" y="22">$40k</text></g>
-                  <g text-anchor="middle"><text x="44" y="211">Sep 1</text><text x="150.2" y="211">Sep 15</text><text x="256.4" y="211">Sep 29</text><text x="362.5" y="211">Oct 13</text><text x="468.7" y="211">Oct 27</text><text x="574.9" y="211">Nov 10</text></g>
-                  <path class="area-c" d="M44.0,130.2 C70.5,130.2 70.5,111.5 97.1,111.5 C123.6,111.5 123.6,122.0 150.2,122.0 C176.7,122.0 176.7,98.9 203.3,98.9 C229.8,98.9 229.8,105.9 256.4,105.9 C282.9,105.9 282.9,85.0 309.5,85.0 C336.0,85.0 336.0,95.0 362.5,95.0 C389.1,95.0 389.1,70.6 415.6,70.6 C442.2,70.6 442.2,81.5 468.7,81.5 C495.3,81.5 495.3,60.6 521.8,60.6 C548.4,60.6 548.4,66.7 574.9,66.7 C601.5,66.7 601.5,45.8 628.0,45.8 L628.0,192 L44.0,192 Z" fill="url(#gc)"/>
-                  <path d="M44.0,113.7 C70.5,113.7 70.5,100.6 97.1,100.6 C123.6,100.6 123.6,104.1 150.2,104.1 C176.7,104.1 176.7,87.2 203.3,87.2 C229.8,87.2 229.8,92.0 256.4,92.0 C282.9,92.0 282.9,73.7 309.5,73.7 C336.0,73.7 336.0,78.5 362.5,78.5 C389.1,78.5 389.1,59.8 415.6,59.8 C442.2,59.8 442.2,65.0 468.7,65.0 C495.3,65.0 495.3,48.0 521.8,48.0 C548.4,48.0 548.4,51.1 574.9,51.1 C601.5,51.1 601.5,34.5 628.0,34.5" fill="none" stroke="#6E9BFF" stroke-opacity=".75" stroke-width="1.6" stroke-dasharray="4 5"/>
-                  <path class="line-c" d="M44.0,130.2 C70.5,130.2 70.5,111.5 97.1,111.5 C123.6,111.5 123.6,122.0 150.2,122.0 C176.7,122.0 176.7,98.9 203.3,98.9 C229.8,98.9 229.8,105.9 256.4,105.9 C282.9,105.9 282.9,85.0 309.5,85.0 C336.0,85.0 336.0,95.0 362.5,95.0 C389.1,95.0 389.1,70.6 415.6,70.6 C442.2,70.6 442.2,81.5 468.7,81.5 C495.3,81.5 495.3,60.6 521.8,60.6 C548.4,60.6 548.4,66.7 574.9,66.7 C601.5,66.7 601.5,45.8 628.0,45.8" fill="none" stroke="#3BE8A0" stroke-width="2.4" stroke-linecap="round" style="--len:720"/>
-                  <circle cx="628" cy="45.8" r="11" fill="#3BE8A0" fill-opacity=".18"/><circle cx="628" cy="45.8" r="4.5" fill="#3BE8A0"/>
-                  <rect x="552" y="4" width="66" height="24" rx="7" fill="#0B121D" stroke="rgba(255,255,255,.14)"/><text x="585" y="20.5" text-anchor="middle" style="fill:#EEF2F7;font-weight:700;font-size:11.5px">$33,600</text>
+                <header><div><b>Hours this week</b><small>So far</small></div></header>
+                <div class="aging hrs">
+                  <div class="ag-row" style="--w:100%;--c:#FFB547"><span>Marcus T.</span><div class="bar"><i></i></div><b>46 hrs</b></div>
+                  <div class="ag-row" style="--w:89%;--c:#3BE8A0"><span>Luis R.</span><div class="bar"><i></i></div><b>41 hrs</b></div>
+                  <div class="ag-row" style="--w:85%;--c:#3BE8A0"><span>Andre W.</span><div class="bar"><i></i></div><b>39 hrs</b></div>
+                  <div class="ag-row" style="--w:83%;--c:#3BE8A0"><span>Jen K.</span><div class="bar"><i></i></div><b>38 hrs</b></div>
+                </div>
+                <p class="view-note">Marcus is 6 hours into overtime. Andre can take the Holt readings tomorrow.</p>
+              </section>
+            </div>
+
+            <div class="v" data-v="equipment" hidden>
+              <div class="v-head"><div><b>Equipment</b><small>Out on 10 jobs</small></div><div class="seg" aria-hidden="true"><span class="on">All</span><span>Drying</span><span>Mold</span></div></div>
+              <div class="eq">
+                <section class="d-card">
+                  <header><b>In use</b></header>
+                  <div class="aging">
+                    <div class="ag-row" style="--w:64%;--c:#58A6F2"><span>Dehumidifiers</span><div class="bar"><i></i></div><b>14 of 22</b></div>
+                    <div class="ag-row" style="--w:69%;--c:#41C0DA"><span>Air movers</span><div class="bar"><i></i></div><b>48 of 70</b></div>
+                    <div class="ag-row" style="--w:50%;--c:#2DD4BF"><span>Air scrubbers</span><div class="bar"><i></i></div><b>3 of 6</b></div>
+                    <div class="ag-row" style="--w:50%;--c:#34DEA9"><span>Negative air machines</span><div class="bar"><i></i></div><b>2 of 4</b></div>
+                    <div class="ag-row" style="--w:83%;--c:#3BE8A0"><span>Moisture meters</span><div class="bar"><i></i></div><b>5 of 6</b></div>
+                  </div>
+                </section>
+                <section class="d-card">
+                  <header><b>By job</b></header>
+                  <ul class="crews">
+                    <li data-k="ruiz"><i class="dot" style="--c:#FFB547"></i><div><b>Ruiz</b><small>4 dehus, 12 air movers. Dehu 14 flat for 2 days</small></div><span class="pill a">Check</span></li>
+                    <li><i class="dot" style="--c:#3BE8A0"></i><div><b>Chen</b><small>4 dehus, 12 air movers</small></div><span class="pill g">Drying</span></li>
+                    <li><i class="dot" style="--c:#3BE8A0"></i><div><b>Kim</b><small>3 dehus, 10 air movers</small></div><span class="pill g">Drying</span></li>
+                    <li><i class="dot" style="--c:#3BE8A0"></i><div><b>Fischer</b><small>2 negative air machines, 1 scrubber</small></div><span class="pill g">Mold</span></li>
+                    <li><i class="dot" style="--c:#3BE8A0"></i><div><b>Walsh</b><small>2 air scrubbers</small></div><span class="pill g">Fire</span></li>
+                  </ul>
+                </section>
+              </div>
+              <section class="d-card">
+                <header><div><b>Ruiz, kitchen wall moisture</b><small>Read each morning</small></div><span class="pill a">Flat for 2 days</span></header>
+                <svg class="mchart" viewBox="0 0 640 134" role="img" aria-label="Moisture in the Ruiz kitchen wall fell from 38 percent to 18 percent, then held at 18 percent for two days, above the 12 percent dry goal">
+                  <g stroke="rgba(255,255,255,.06)" stroke-width="1"><path d="M48 104H624M48 56H624M48 8H624"/></g>
+                  <g text-anchor="end"><text x="40" y="108">0%</text><text x="40" y="60">20%</text><text x="40" y="12">40%</text></g>
+                  <path d="M48 75.2H624" stroke="#3BE8A0" stroke-opacity=".6" stroke-width="1.2" stroke-dasharray="5 6"/>
+                  <text x="624" y="92" text-anchor="end" style="fill:#3BE8A0">Dry goal 12%</text>
+                  <polyline points="80,12.8 184,32 288,46.4 392,58.4 496,60.8" fill="none" stroke="#58A6F2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M496 60.8H600" stroke="#FFB547" stroke-width="2.4" stroke-linecap="round"/>
+                  <g fill="#58A6F2"><circle cx="80" cy="12.8" r="4"/><circle cx="184" cy="32" r="4"/><circle cx="288" cy="46.4" r="4"/><circle cx="392" cy="58.4" r="4"/></g>
+                  <g fill="#FFB547"><circle cx="496" cy="60.8" r="4.5"/><circle cx="600" cy="60.8" r="4.5"/></g>
+                  <g text-anchor="middle" style="fill:#C9D3E1;font-weight:650"><text x="80" y="30">38%</text><text x="184" y="49">30%</text><text x="288" y="63">24%</text><text x="392" y="47">19%</text><text x="496" y="49">18%</text><text x="600" y="49">18%</text></g>
+                  <g text-anchor="middle"><text x="80" y="128">Day 1</text><text x="184" y="128">Day 2</text><text x="288" y="128">Day 3</text><text x="392" y="128">Day 4</text><text x="496" y="128">Day 5</text><text x="600" y="128">Day 6</text></g>
                 </svg>
               </section>
+            </div>
+
+            <div class="v" data-v="hiring" hidden>
+              <div class="v-head"><div><b>Hiring</b><small>Mitigation tech, 2 openings</small></div><div class="seg" aria-hidden="true"><span class="on">Mitigation tech</span><span>Rebuild carpenter</span></div></div>
+              <div class="pipe">
+                <section class="col" style="--c:#6E9BFF"><header><i></i>Applied<em>11</em></header>
+                  <article class="job"><b>J. Ramos</b><small>2 years carpet cleaning</small><footer><span class="tag n">Indeed</span></footer></article>
+                  <article class="job"><b>T. Okafor</b><small>No certifications yet</small><footer><span class="tag n">Indeed</span></footer></article>
+                  <p class="more">9 more</p>
+                </section>
+                <section class="col" style="--c:#41C0DA"><header><i></i>Phone screen<em>4</em></header>
+                  <article class="job"><b>K. Mason</b><small>1 year, no certifications</small><footer><span class="pill n">Today 11:00 AM</span></footer></article>
+                  <article class="job"><b>R. Diaz</b><small>WRT, 2 years</small><footer><span class="pill n">Friday 9:00 AM</span></footer></article>
+                  <p class="more">2 more</p>
+                </section>
+                <section class="col" style="--c:#2DD4BF"><header><i></i>Ride-along<em>2</em></header>
+                  <article class="job" data-k="alvarez"><b>D. Alvarez</b><small>WRT, 3 years in mitigation</small><footer><span class="pill g">Thursday 3:15 PM</span></footer></article>
+                  <article class="job"><b>B. Shaw</b><small>ASD, 4 years</small><footer><span class="pill n">Monday 8:00 AM</span></footer></article>
+                </section>
+                <section class="col" style="--c:#3BE8A0"><header><i></i>Offer<em>1</em></header>
+                  <article class="job"><b>T. Price</b><small>WRT and ASD, 5 years</small><footer><span class="pill g">Offer sent</span></footer></article>
+                </section>
+              </div>
+              <div class="certs">
+                <div class="cert"><span>Certification</span><b>Luis R., WRT</b><small class="w">Renews in 30 days</small></div>
+                <div class="cert"><span>Certification</span><b>Jen K., AMRT</b><small>Renews in 52 days</small></div>
+                <div class="cert"><span>Certification</span><b>Marcus T., ASD</b><small class="g">Current</small></div>
+              </div>
+            </div>
+
+            <div class="v" data-v="reports" hidden>
+              <div class="v-head"><div><b>Reports</b><small>Last 90 days</small></div><div class="seg" aria-hidden="true"><span>30 days</span><span class="on">90 days</span><span>Year</span></div></div>
+              <div class="rep">
+                <section class="d-card">
+                  <header><b>Days from invoice to payment</b></header>
+                  <div class="aging">
+                    <div class="ag-row" data-k="statefarm" style="--w:100%;--c:#FF5D73"><span>State Farm</span><div class="bar"><i></i></div><b>41 days</b></div>
+                    <div class="ag-row" style="--w:93%;--c:#FFB547"><span>Allstate</span><div class="bar"><i></i></div><b>38 days</b></div>
+                    <div class="ag-row" style="--w:85%;--c:#FFB547"><span>Liberty Mutual</span><div class="bar"><i></i></div><b>35 days</b></div>
+                    <div class="ag-row" style="--w:71%;--c:#2DD4BF"><span>Travelers</span><div class="bar"><i></i></div><b>29 days</b></div>
+                    <div class="ag-row" style="--w:54%;--c:#3BE8A0"><span>USAA</span><div class="bar"><i></i></div><b>22 days</b></div>
+                  </div>
+                </section>
+                <section class="d-card">
+                  <header><b>Revenue by type of loss</b></header>
+                  <div class="aging">
+                    <div class="ag-row" style="--w:100%;--c:#58A6F2"><span>Water</span><div class="bar"><i></i></div><b>$214,600</b></div>
+                    <div class="ag-row" style="--w:29%;--c:#C8AEFF"><span>Mold</span><div class="bar"><i></i></div><b>$61,300</b></div>
+                    <div class="ag-row" style="--w:23%;--c:#FFA584"><span>Fire</span><div class="bar"><i></i></div><b>$48,900</b></div>
+                  </div>
+                  <p class="view-note">Water jobs are drying in 4.6 days on average, down from 5.3 last quarter.</p>
+                </section>
+              </div>
               <section class="d-card">
-                <header><b>Needs attention<small>4</small></b></header>
-                <ul class="attn">
-                  <li style="--c:#FF5D73"><i class="dot"></i><div><b>Garza, water loss</b><small>State Farm: no reply on the estimate</small></div><span class="age">19d</span></li>
-                  <li style="--c:#FFB547"><i class="dot"></i><div><b>Lopez, water loss</b><small>Allstate: supplement under review</small></div><span class="age">16d</span></li>
-                  <li style="--c:#FFB547"><i class="dot"></i><div><b>Moore, water loss</b><small>Supplement approved. Invoice not sent</small></div><span class="age">4d</span></li>
-                  <li style="--c:#6E9BFF"><i class="dot"></i><div><b>Ruiz, water loss</b><small>Drying day 6. Readings flat on dehu 14</small></div><span class="age">2d</span></li>
-                </ul>
-              </section>
-              <section class="d-card">
-                <header><div><b>Jobs by stage</b><small>23 open</small></div></header>
-                <div class="stages">
-                  <div class="stage" style="--h:33%;--c:#6E9BFF"><i></i><b>3</b><small>New loss</small></div>
-                  <div class="stage" style="--h:100%;--c:#58A6F2"><i></i><b>9</b><small>Drying</small></div>
-                  <div class="stage" style="--h:56%;--c:#41C0DA"><i></i><b>5</b><small>Estimate out</small></div>
-                  <div class="stage" style="--h:22%;--c:#2DD4BF"><i></i><b>2</b><small>Approved</small></div>
-                  <div class="stage" style="--h:33%;--c:#34DEA9"><i></i><b>3</b><small>Rebuild</small></div>
-                  <div class="stage" style="--h:11%;--c:#3BE8A0"><i></i><b>1</b><small>Invoiced</small></div>
-                </div>
-              </section>
-              <section class="d-card">
-                <header><b>Crews today</b></header>
-                <ul class="crews">
-                  <li><span class="av">MT</span><div><b>Marcus T.</b><small>Garza, drying day 3</small></div><span class="pill g">On site</span></li>
-                  <li><span class="av">LR</span><div><b>Luis R.</b><small>Patel, containment</small></div><span class="pill g">On site</span></li>
-                  <li><span class="av">JK</span><div><b>Jen K.</b><small>2 estimate visits</small></div><span class="pill b">Driving</span></li>
-                </ul>
+                <header><div><b>Jobs closed per week</b><small>Last 12 weeks</small></div><span class="pill g">11 last week</span></header>
+                <div class="wbars" aria-hidden="true"><i style="--h:45%"></i><i style="--h:55%"></i><i style="--h:36%"></i><i style="--h:64%"></i><i style="--h:55%"></i><i style="--h:73%"></i><i style="--h:64%"></i><i style="--h:82%"></i><i style="--h:73%"></i><i style="--h:91%"></i><i style="--h:82%"></i><i style="--h:100%"></i></div>
               </section>
             </div>
           </div>
+
+          <aside class="d-ask" aria-label="Ask">
+            <div class="ask-h"><i aria-hidden="true"></i>Ask<small>Answers from your own jobs</small></div>
+            <div class="ask-thread" aria-live="polite">
+              <div class="q-row"><span class="q" id="ask-q">Which claims are stuck past 14 days?</span></div>
+              <div class="a"><i aria-hidden="true"></i><p id="ask-a">Two: Garza with State Farm at 19 days, and Lopez with Allstate at 16. Follow-ups to both adjusters are drafted and ready to send.</p></div>
+            </div>
+            <div class="ask-try">
+              <small>Try asking</small>
+              <button type="button" data-ask="claims" aria-pressed="true">Which claims are stuck past 14 days?</button>
+              <button type="button" data-ask="oncall" aria-pressed="false">Who's on call tonight?</button>
+              <button type="button" data-ask="owed" aria-pressed="false">What's owed past 60 days?</button>
+              <button type="button" data-ask="drying" aria-pressed="false">Which drying jobs aren't moving?</button>
+              <button type="button" data-ask="hire" aria-pressed="false">Who's our best applicant?</button>
+              <button type="button" data-ask="slow" aria-pressed="false">Which carrier pays slowest?</button>
+            </div>
+            <form class="ask-in" id="ask-form" action="#hero-vis" autocomplete="off">
+              <label class="vh" for="ask-input">Ask a question</label>
+              <input id="ask-input" type="text" placeholder="Ask about jobs, claims, crews" maxlength="120">
+              <button type="submit" aria-label="Ask"><svg class="ic" aria-hidden="true"><use href="#i-send"/></svg></button>
+            </form>
+          </aside>
         </div>
       </div></div>
     </figure>
+    <p class="hint">Click around. Ask it a question.</p>
+
+    <div class="app" id="app">
+      <div class="app-in">
+        <div class="app-top"><div><small>Today, 7:02 AM</small><b>Good morning, Dana</b></div><span class="av" aria-hidden="true">DO</span></div>
+        <div class="app-body">
+          <section class="ap" data-p="today" aria-label="Today">
+            <div class="app-kpis">
+              <div class="app-kpi"><span>Open jobs</span><b>23</b><em class="chip up">+3 this week</em></div>
+              <div class="app-kpi"><span>Waiting on carriers</span><b>7</b><em class="chip warn">2 past 14 days</em></div>
+              <div class="app-kpi"><span>Owed to you</span><b>$184,300</b><em class="chip bad">$61,200 past 60</em></div>
+              <div class="app-kpi"><span>Collected</span><b>$96,450</b><em class="chip up">+18% this month</em></div>
+            </div>
+            <h5>Needs you</h5>
+            <ul class="app-list">
+              <li style="--c:#FF5D73"><i class="dot"></i><div><b>Garza</b><small>State Farm: no reply on the estimate</small></div><span class="age">19d</span></li>
+              <li style="--c:#FFB547"><i class="dot"></i><div><b>Lopez</b><small>Allstate: supplement under review</small></div><span class="age">16d</span></li>
+              <li style="--c:#FFB547"><i class="dot"></i><div><b>Moore</b><small>Supplement approved. Invoice not sent</small></div><span class="age">4d</span></li>
+              <li style="--c:#6E9BFF"><i class="dot"></i><div><b>Ruiz</b><small>Drying day 6. Readings flat on dehu 14</small></div><span class="age">2d</span></li>
+            </ul>
+          </section>
+          <section class="ap" data-p="jobs" aria-label="Jobs" hidden>
+            <h5 class="first">23 open jobs</h5>
+            <ul class="app-list">
+              <li style="--c:#6E9BFF"><i class="dot"></i><div><b>New loss</b><small>Holt, Nguyen, Patel, Hale</small></div><span class="n">4</span></li>
+              <li style="--c:#58A6F2"><i class="dot"></i><div><b>Drying</b><small>Ruiz flat on day 6. Kim, Chen and 5 more on track</small></div><span class="n">8</span></li>
+              <li style="--c:#41C0DA"><i class="dot"></i><div><b>Estimate out</b><small>Garza 19 days, Lopez 16, Brooks 11</small></div><span class="n">5</span></li>
+              <li style="--c:#2DD4BF"><i class="dot"></i><div><b>Approved</b><small>Fischer containment today, Reyes rebuild Monday</small></div><span class="n">2</span></li>
+              <li style="--c:#34DEA9"><i class="dot"></i><div><b>Rebuild</b><small>Moore, Walsh, Ortega</small></div><span class="n">3</span></li>
+              <li style="--c:#3BE8A0"><i class="dot"></i><div><b>Invoiced</b><small>Bennett, $8,420 with Farmers</small></div><span class="n">1</span></li>
+            </ul>
+          </section>
+          <section class="ap" data-p="claims" aria-label="Claims" hidden>
+            <h5 class="first">7 waiting on carriers</h5>
+            <ul class="app-list">
+              <li style="--c:#FF5D73"><i class="dot"></i><div><b>Garza, State Farm</b><small>Reply on the estimate. Follow-up drafted</small></div><span class="age">19d</span></li>
+              <li style="--c:#FFB547"><i class="dot"></i><div><b>Lopez, Allstate</b><small>Supplement review. Follow-up drafted</small></div><span class="age">16d</span></li>
+              <li style="--c:#6E9BFF"><i class="dot"></i><div><b>Bennett, Farmers</b><small>Payment on the invoice</small></div><span class="age">12d</span></li>
+              <li style="--c:#6E9BFF"><i class="dot"></i><div><b>Brooks, Liberty Mutual</b><small>Contents approval</small></div><span class="age">11d</span></li>
+              <li style="--c:#6E9BFF"><i class="dot"></i><div><b>Reyes, Travelers</b><small>Mitigation payment</small></div><span class="age">5d</span></li>
+              <li style="--c:#6E9BFF"><i class="dot"></i><div><b>Kim, USAA</b><small>Drying logs review</small></div><span class="age">2d</span></li>
+              <li style="--c:#6E9BFF"><i class="dot"></i><div><b>Nguyen, State Farm</b><small>Adjuster assignment</small></div><span class="age">1d</span></li>
+            </ul>
+          </section>
+          <section class="ap" data-p="crews" aria-label="Crews" hidden>
+            <div class="app-oncall"><small>On call tonight</small><b>Marcus T.</b><span>Backup: Luis R.</span></div>
+            <ul class="app-list cr">
+              <li><span class="av" aria-hidden="true">MT</span><div><b>Marcus T.</b><small>Ruiz, drying day 6</small></div><span class="pill g">On site</span></li>
+              <li><span class="av" aria-hidden="true">LR</span><div><b>Luis R.</b><small>Fischer, mold containment</small></div><span class="pill g">On site</span></li>
+              <li><span class="av" aria-hidden="true">AW</span><div><b>Andre W.</b><small>Kim and Chen, moisture readings</small></div><span class="pill g">On site</span></li>
+              <li><span class="av" aria-hidden="true">JK</span><div><b>Jen K.</b><small>Nguyen 7:30 AM, Hale 1:00 PM</small></div><span class="pill b">Driving</span></li>
+            </ul>
+          </section>
+          <section class="ap" data-p="ask" aria-label="Ask" hidden>
+            <div class="ask-thread" aria-live="polite">
+              <div class="q-row"><span class="q" id="app-q">Which claims are stuck past 14 days?</span></div>
+              <div class="a"><i aria-hidden="true"></i><p id="app-a">Two: Garza with State Farm at 19 days, and Lopez with Allstate at 16. Follow-ups to both adjusters are drafted and ready to send.</p></div>
+            </div>
+            <div class="app-try">
+              <button type="button" data-aask="claims">Which claims are stuck past 14 days?</button>
+              <button type="button" data-aask="oncall">Who's on call tonight?</button>
+              <button type="button" data-aask="owed">What's owed past 60 days?</button>
+              <button type="button" data-aask="drying">Which drying jobs aren't moving?</button>
+            </div>
+          </section>
+        </div>
+        <nav class="app-tabs" aria-label="App sections">
+          <button type="button" data-tab="today" aria-pressed="true"><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg>Today</button>
+          <button type="button" data-tab="jobs" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-clip"/></svg>Jobs</button>
+          <button type="button" data-tab="claims" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg>Claims</button>
+          <button type="button" data-tab="crews" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg>Crews</button>
+          <button type="button" data-tab="ask" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-msg"/></svg>Ask</button>
+        </nav>
+      </div>
+    </div>
+
     <div class="floats">
       <div class="float f-call" aria-hidden="true">
         <div class="f-head"><svg class="ic"><use href="#i-phone"/></svg>New call<small>2:14 AM</small></div>
         <p class="f-quote">&ldquo;Water's coming through the kitchen ceiling.&rdquo;</p>
         <div class="f-done"><svg class="ic"><use href="#i-check"/></svg>Texted to Marcus, on call</div>
-      </div>
-      <div class="float f-ask" aria-hidden="true">
-        <div class="q-row"><span class="q">Which claims are stuck past 14 days?</span></div>
-        <div class="a"><i></i><p id="ask-a">Two: Garza with State Farm at 19 days, and Lopez with Allstate at 16. Follow-ups to both adjusters are drafted and ready to send.</p></div>
       </div>
     </div>
   </div>
@@ -506,6 +1085,60 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-0.025em;line-height:1.03;te
       <span><svg class="ic"><use href="#i-doc"/></svg>Works alongside Xactimate</span>
       <span><svg class="ic"><use href="#i-pins"/></svg>Based in the Austin area</span>
     </div>
+  </div>
+</section>
+
+<section class="sec" id="week" aria-labelledby="week-h">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 id="week-h">Your week, after</h2>
+      <p>Same crews, same jobs. The difference is everything you stop chasing.</p>
+    </div>
+    <ol class="week">
+      <li class="wk">
+        <p class="wk-t"><b>Monday</b><span class="num">7:02 AM</span></p>
+        <div class="wk-c"><h3>You see the whole shop before the trucks roll.</h3><p>Every job, claim and crew on one screen. No calling around, no digging through the spreadsheet.</p></div>
+        <div class="wk-v view" aria-hidden="true">
+          <div class="wk-kpis"><div><b class="num">23</b><span>open jobs</span></div><div><b class="num">7</b><span>waiting on carriers</span></div><div><b class="num">4</b><span>need you today</span></div></div>
+        </div>
+      </li>
+      <li class="wk">
+        <p class="wk-t"><b>Tuesday</b><span class="num">2:14 AM</span></p>
+        <div class="wk-c"><h3>A ceiling leak gets answered in your company's name.</h3><p>The address, the type of loss and the insurance are on Marcus's phone before he's out of bed.</p></div>
+        <div class="wk-v view" aria-hidden="true">
+          <div class="call-row"><span class="t">2:14 AM</span><div><b>New call</b><q>Water's coming through the kitchen ceiling.</q></div></div>
+          <div class="call-row done"><span class="t">2:16 AM</span><div><b>Texted to Marcus, on call</b><span>Address, type of loss and callback number</span></div></div>
+        </div>
+      </li>
+      <li class="wk">
+        <p class="wk-t"><b>Wednesday</b><span class="num">10:40 AM</span></p>
+        <div class="wk-c"><h3>Two claims pass 14 days. The follow-ups are already written.</h3><p>You read them, change a word if you want, and hit send.</p></div>
+        <div class="wk-v view" aria-hidden="true">
+          <div class="draft-h"><b>Follow-ups ready</b><em class="badge">2 drafts</em></div>
+          <ul class="wk-drafts">
+            <li><b>State Farm</b><span>Garza estimate, no reply</span></li>
+            <li><b>Allstate</b><span>Lopez supplement under review</span></li>
+          </ul>
+          <div class="draft-b"><span class="mbtn g">Review and send</span></div>
+        </div>
+      </li>
+      <li class="wk">
+        <p class="wk-t"><b>Thursday</b><span class="num">3:15 PM</span></p>
+        <div class="wk-c"><h3>Your best applicant shows up for a ride-along.</h3><p>Nobody had to chase him to book it. Certifications that are about to lapse get flagged the same way.</p></div>
+        <div class="wk-v view" aria-hidden="true">
+          <div class="wk-hire"><span class="av">DA</span><div><b>D. Alvarez</b><small>WRT certified, 3 years in mitigation</small></div><span class="pill g">Ride-along</span></div>
+          <p class="wk-sub">Thursday at 3:15 PM with Marcus T.</p>
+        </div>
+      </li>
+      <li class="wk">
+        <p class="wk-t"><b>Friday</b><span class="num">5:30 PM</span></p>
+        <div class="wk-c"><h3>You know what came in, and exactly what's still out.</h3><p>Who owes you, how long it's been, and what's holding up each check.</p></div>
+        <div class="wk-v view" aria-hidden="true">
+          <div class="wk-cash"><div><span>Collected this week</span><b class="num">$33,600</b></div><div><span>Past 60 days</span><b class="num">$61,200</b></div></div>
+          <p class="wk-sub">Two checks are waiting on the mortgage company to endorse them.</p>
+        </div>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -573,7 +1206,7 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-0.025em;line-height:1.03;te
           <a class="btn btn-green" href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20I%27d%20like%20to%20talk%20about%20a%20custom%20build%20for%20">Tell us what it is</a>
         </div>
         <div class="minis" aria-hidden="true">
-          <div class="mini"><span>Hiring</span><b>Mitigation tech</b><small>6 applied, 2 interviews this week</small></div>
+          <div class="mini"><span>Hiring</span><b>Mitigation tech</b><small>11 applied, 2 ride-alongs this week</small></div>
           <div class="mini"><span>Certifications</span><b>Luis, WRT</b><small class="w">Renews in 30 days</small></div>
           <div class="mini"><span>Reviews</span><b>4 finished jobs</b><small class="g">Ready for a review request</small></div>
         </div>
@@ -585,21 +1218,29 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-0.025em;line-height:1.03;te
 <section class="sec" id="own" aria-labelledby="own-h">
   <div class="wrap">
     <div class="sec-h">
-      <h2 id="own-h">Own your tools instead of renting them.</h2>
-      <p>Software you rent is built for everyone. A build you own is built for your shop, and you pay for it once.</p>
+      <h2 id="own-h">What stays, what goes</h2>
+      <p>You keep the tools that work and stop paying for the ones that don't fit. Your build connects to what stays.</p>
     </div>
     <div class="own-body glass">
-      <table class="ledger">
+      <table class="ledger sg">
         <thead>
-          <tr><th scope="col"><span class="vh">Compared on</span></th><th scope="col">Software you rent</th><th scope="col" class="yours">A build you own</th></tr>
+          <tr><th scope="col">The work</th><th scope="col">What you use today</th><th scope="col" class="yours">With your build</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Fit</th><td>Close enough, after workarounds</td><td class="yours">Built around how your crew already works</td></tr>
-          <tr><th scope="row">What you pay</th><td>Every month, often per user</td><td class="yours">Once. Usage runs on your own accounts</td></tr>
-          <tr><th scope="row">Your data</th><td>Lives in their system</td><td class="yours">Lives in your accounts</td></tr>
-          <tr><th scope="row">Changes</th><td>Wait for their roadmap</td><td class="yours">We change it for you</td></tr>
+          <tr><th scope="row">Tracking jobs</th><td>ClickUp, a spreadsheet, the whiteboard</td><td><span class="fate rep">Replaced</span>One board with every job by stage</td></tr>
+          <tr><th scope="row">Chasing claims</th><td>Email threads and sticky notes</td><td><span class="fate rep">Replaced</span>Days open on every claim, follow-ups drafted</td></tr>
+          <tr><th scope="row">Hiring</th><td>Texts, calls and a folder of resumes</td><td><span class="fate rep">Replaced</span>Applicants, ride-alongs and certifications in one list</td></tr>
+          <tr><th scope="row">Accounting</th><td>QuickBooks</td><td><span class="fate stay">Stays</span>Invoices and payments show on each job</td></tr>
+          <tr><th scope="row">Estimates</th><td>Xactimate</td><td><span class="fate stay">Stays</span>Drafts are built alongside it</td></tr>
+          <tr><th scope="row">Job photos</th><td>CompanyCam</td><td><span class="fate stay">Stays</span>Photos show up on each job</td></tr>
+          <tr><th scope="row">2 a.m. calls</th><td>Voicemail</td><td><span class="fate new">New</span>Answered in your company's name</td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="own-foot">
+      <p><b>You pay once.</b>No seats and no renewals.</p>
+      <p><b>You own it.</b>The code and the data live in your accounts.</p>
+      <p><b>It changes when you do.</b>We adjust it as your shop grows.</p>
     </div>
     <p class="own-note">Rather not run it yourself? We can host it, and you can move it to your own accounts any time.</p>
   </div>
@@ -676,25 +1317,166 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-0.025em;line-height:1.03;te
   </div>
 </footer>
 
+<dialog class="book edge" id="book" aria-labelledby="book-h">
+  <form method="dialog"><button class="book-x" aria-label="Close">&times;</button></form>
+  <h2 id="book-h">Book a 15-minute Zoom</h2>
+  <p class="book-p">Text Elijah and pick a time. Scan the code with your phone's camera and the text opens, ready to send.</p>
+  <div class="book-row">
+    <div class="qr" role="img" aria-label="QR code that starts a text to (512) 882-0814"><svg viewBox="0 0 41 41" class="segno"><path class="qrline" stroke="#05080e" d="M2 2.5h7m3 0h3m2 0h1m2 0h1m1 0h1m2 0h3m4 0h7m-37 1h1m5 0h1m2 0h1m2 0h3m3 0h2m1 0h1m2 0h1m2 0h2m1 0h1m5 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m2 0h2m1 0h3m1 0h7m2 0h2m1 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m2 0h1m4 0h2m1 0h1m2 0h1m1 0h2m1 0h2m1 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m1 0h4m1 0h2m1 0h2m1 0h1m1 0h1m2 0h1m3 0h1m1 0h3m1 0h1m-37 1h1m5 0h1m1 0h2m2 0h2m1 0h1m2 0h1m2 0h1m2 0h1m2 0h1m2 0h1m5 0h1m-37 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-29 1h2m2 0h3m5 0h2m5 0h1m-28 1h1m1 0h5m2 0h1m1 0h1m1 0h1m4 0h1m1 0h2m1 0h1m2 0h2m2 0h5m-35 1h1m2 0h1m1 0h1m1 0h1m3 0h7m5 0h1m2 0h1m1 0h1m5 0h3m-36 1h1m2 0h3m3 0h4m6 0h1m6 0h1m1 0h3m2 0h3m-36 1h1m2 0h2m1 0h2m4 0h2m1 0h1m1 0h1m2 0h1m1 0h1m2 0h6m3 0h2m-37 1h2m1 0h2m1 0h1m1 0h1m1 0h1m3 0h1m2 0h1m4 0h4m1 0h2m1 0h6m-36 1h4m1 0h1m1 0h1m2 0h3m4 0h5m1 0h1m1 0h2m2 0h1m3 0h1m-32 1h1m3 0h2m1 0h1m1 0h1m1 0h5m2 0h2m3 0h1m1 0h1m1 0h1m1 0h1m2 0h3m-37 1h5m4 0h1m1 0h2m1 0h1m1 0h6m7 0h2m4 0h1m-36 1h1m1 0h1m1 0h1m1 0h1m4 0h1m1 0h2m1 0h1m4 0h1m2 0h9m2 0h1m-36 1h1m2 0h1m3 0h1m1 0h2m1 0h1m1 0h2m1 0h2m1 0h2m1 0h1m4 0h1m4 0h2m1 0h1m-37 1h3m3 0h2m3 0h1m1 0h4m1 0h2m1 0h1m2 0h1m1 0h3m1 0h2m2 0h3m-36 1h1m1 0h3m1 0h1m2 0h1m1 0h2m1 0h1m3 0h5m3 0h4m2 0h1m1 0h1m-33 1h1m2 0h2m1 0h7m1 0h1m1 0h1m2 0h1m1 0h2m1 0h2m1 0h5m1 0h1m-36 1h3m3 0h6m1 0h1m1 0h1m1 0h2m5 0h2m2 0h1m-29 1h2m1 0h1m1 0h2m1 0h2m2 0h3m2 0h1m1 0h1m1 0h1m1 0h4m1 0h1m1 0h3m1 0h2m-37 1h2m6 0h1m2 0h2m1 0h3m7 0h1m1 0h2m1 0h2m1 0h1m-30 1h1m1 0h4m2 0h1m2 0h2m2 0h5m1 0h3m1 0h6m2 0h1m-37 1h5m3 0h1m6 0h3m5 0h1m1 0h1m2 0h1m4 0h1m1 0h2m-37 1h1m1 0h1m1 0h7m1 0h1m1 0h1m2 0h2m1 0h2m2 0h2m1 0h1m2 0h1m2 0h1m1 0h2m-37 1h1m3 0h1m3 0h1m2 0h1m2 0h1m1 0h1m4 0h1m2 0h1m3 0h1m7 0h1m-37 1h1m1 0h2m1 0h4m2 0h2m3 0h2m6 0h1m1 0h1m1 0h9m-29 1h3m1 0h1m3 0h3m1 0h2m1 0h3m2 0h1m3 0h1m1 0h1m-35 1h7m6 0h3m1 0h1m3 0h1m3 0h2m1 0h1m1 0h1m1 0h1m1 0h3m-37 1h1m5 0h1m1 0h4m2 0h2m1 0h2m2 0h2m1 0h1m1 0h3m3 0h2m2 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m4 0h4m4 0h1m1 0h10m1 0h1m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h3m1 0h2m1 0h1m2 0h1m1 0h1m1 0h4m1 0h1m2 0h1m1 0h2m2 0h1m-37 1h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h2m2 0h1m1 0h2m4 0h3m5 0h2m-37 1h1m5 0h1m2 0h4m1 0h2m3 0h3m5 0h2m3 0h2m2 0h1m-37 1h7m1 0h1m1 0h3m1 0h2m1 0h3m3 0h4m2 0h2m1 0h5"/></svg></div>
+    <div class="book-alt">
+      <span>Text or call</span>
+      <a class="num" href="tel:+15128820814">(512) 882-0814</a>
+      <span>Email</span>
+      <a href="mailto:elijah@sovrngrowth.com">elijah@sovrngrowth.com</a>
+    </div>
+  </div>
+</dialog>
+
 <script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var each = function(list, fn){ Array.prototype.forEach.call(list, fn); };
 
   /* Header picks up a rule once the page scrolls. */
   var bar = document.getElementById("top-bar");
   var onScroll = function(){ bar.classList.toggle("scrolled", window.scrollY > 8); };
   onScroll(); window.addEventListener("scroll", onScroll, {passive:true});
 
-  /* The dashboard is drawn at 1120px and scaled to fit its frame. */
-  var dash = document.getElementById("dash"), box = dash && dash.parentNode;
-  function fit(){ if (dash && box.clientWidth) dash.style.setProperty("--z", (box.clientWidth / 1120).toFixed(4)); }
+  /* The dashboard is drawn at 1280px and scaled to fit its frame. */
+  var W = 1280, dash = document.getElementById("dash"), box = dash && dash.parentNode;
+  function fit(){ if (dash && box.clientWidth) dash.style.setProperty("--z", (box.clientWidth / W).toFixed(4)); }
   fit();
   if ("ResizeObserver" in window && box){ new ResizeObserver(fit).observe(box); } else { window.addEventListener("resize", fit); }
+
+  /* On a computer, the text links open a QR code that starts the same text on their phone. */
+  var book = document.getElementById("book");
+  var fine = window.matchMedia ? window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 721px)") : null;
+  if (book && typeof book.showModal === "function"){
+    document.addEventListener("click", function(e){
+      var link = e.target.closest ? e.target.closest('a[href^="sms:"]') : null;
+      if (!link || !fine || !fine.matches) return;
+      e.preventDefault();
+      book.showModal();
+    });
+    book.addEventListener("click", function(e){ if (e.target === book) book.close(); });
+  }
+
+  /* What the demo can answer, which view each answer opens, and what it lights up. */
+  var QA = {
+    claims:{q:"Which claims are stuck past 14 days?", a:"Two: Garza with State Farm at 19 days, and Lopez with Allstate at 16. Follow-ups to both adjusters are drafted and ready to send.", v:"claims", k:["garza","lopez"]},
+    oncall:{q:"Who's on call tonight?", a:"Marcus T., with Luis R. as backup. After-hours calls go straight to Marcus's phone with the address, the type of loss and the insurance.", v:"crews", k:["marcus"]},
+    owed:{q:"What's owed past 60 days?", a:"$61,200 across 6 invoices. The two over 90 days are waiting on the mortgage company to endorse the check.", v:"overview", k:["owed"]},
+    drying:{q:"Which drying jobs aren't moving?", a:"Ruiz, on drying day 6. Readings on dehu 14 have been flat for two days. Marcus is on site this morning and can check it.", v:"jobs", k:["ruiz"]},
+    hire:{q:"Who's our best applicant?", a:"D. Alvarez for the mitigation tech job: WRT certified, with 3 years in mitigation. His ride-along with Marcus is Thursday at 3:15 PM.", v:"hiring", k:["alvarez"]},
+    slow:{q:"Which carrier pays slowest?", a:"State Farm, at 41 days on average from invoice to payment. Allstate is next at 38 days.", v:"reports", k:["statefarm"]},
+    crews:{q:"Where are the crews?", a:"Four out: Marcus at Ruiz, Luis setting up containment at Fischer, Andre on the Kim and Chen readings, and Jen driving to the Nguyen inspection.", v:"crews", k:[]},
+    jobs:{q:"What's open right now?", a:"23 jobs: 4 new losses, 8 drying, 5 estimates out, 2 approved, 3 in rebuild and 1 invoiced. Ruiz is the one to watch.", v:"jobs", k:["ruiz"]}
+  };
+  var RULES = [
+    ["slow", /slow|fast|days to pay|pays/],
+    ["owed", /owe|money|invoice|past due|collect|cash|\b60\b|\b90\b/],
+    ["oncall", /on.?call|tonight|after.?hours|overnight|emergenc/],
+    ["drying", /dry|dehu|moisture|reading|not moving/],
+    ["hire", /hir|applicant|candidate|recruit|interview|ride/],
+    ["claims", /claim|stuck|carrier|adjuster|insur|supplement|state farm|allstate/],
+    ["crews", /crew|where|marcus|luis|andre|\bjen\b|tech/],
+    ["jobs", /job|open|board|stage|busy/]
+  ];
+  var FALLBACK = "In your build, it answers from your own jobs, claims and crews. Try one of the questions below.";
+  function match(text){
+    var t = String(text).toLowerCase();
+    for (var i = 0; i < RULES.length; i++){ if (RULES[i][1].test(t)) return RULES[i][0]; }
+    return null;
+  }
+
+  /* Types an answer out; a newer answer cancels one still typing. */
+  function typer(el){
+    var token = 0;
+    return function(text){
+      var mine = ++token, i = 0;
+      if (reduce){ el.textContent = text; el.classList.remove("typing"); return; }
+      el.textContent = ""; el.classList.add("typing");
+      (function step(){
+        if (mine !== token) return;
+        i += 2; el.textContent = text.slice(0, i);
+        if (i < text.length) setTimeout(step, 18); else el.classList.remove("typing");
+      })();
+    };
+  }
+
+  /* The dashboard menu switches views, and Ask opens the view its answer comes from. */
+  var typeAsk = function(){}, touched = false;
+  if (dash){
+    var navs = dash.querySelectorAll("[data-go]"), views = dash.querySelectorAll(".v"), current = "overview";
+    var clearHl = function(){ each(dash.querySelectorAll(".hl"), function(n){ n.classList.remove("hl"); }); };
+    var go = function(name){
+      if (name === current) return;
+      current = name;
+      each(navs, function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-go") === name ? "true" : "false"); });
+      each(views, function(v){
+        var on = v.getAttribute("data-v") === name;
+        v.hidden = !on;
+        if (on && !reduce){ v.classList.remove("enter"); void v.offsetWidth; v.classList.add("enter"); }
+      });
+    };
+    each(navs, function(b){ b.addEventListener("click", function(){ touched = true; clearHl(); go(b.getAttribute("data-go")); }); });
+
+    var askQ = document.getElementById("ask-q"), askA = document.getElementById("ask-a");
+    var tries = dash.querySelectorAll("[data-ask]");
+    if (askA) typeAsk = typer(askA);
+    var answer = function(key, asked){
+      var it = QA[key];
+      touched = true;
+      if (askQ) askQ.textContent = asked || (it ? it.q : "");
+      each(tries, function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-ask") === key ? "true" : "false"); });
+      clearHl();
+      if (!it){ typeAsk(FALLBACK); return; }
+      go(it.v);
+      var view = dash.querySelector('.v[data-v="' + it.v + '"]');
+      it.k.forEach(function(k){ each(view.querySelectorAll('[data-k="' + k + '"]'), function(n){ n.classList.add("hl"); }); });
+      typeAsk(it.a);
+    };
+    each(tries, function(b){ b.addEventListener("click", function(){ answer(b.getAttribute("data-ask")); }); });
+    var form = document.getElementById("ask-form"), input = document.getElementById("ask-input");
+    if (form && input){
+      form.addEventListener("submit", function(e){
+        e.preventDefault();
+        var text = input.value.trim();
+        if (!text) return;
+        answer(match(text), text);
+        input.value = "";
+      });
+    }
+    each(dash.querySelectorAll("[data-focus-ask]"), function(b){ b.addEventListener("click", function(){ if (input) input.focus(); }); });
+  }
+
+  /* The phone version: tabs, and its own Ask. */
+  var app = document.getElementById("app");
+  if (app){
+    var tabs = app.querySelectorAll("[data-tab]"), panels = app.querySelectorAll("[data-p]");
+    each(tabs, function(t){
+      t.addEventListener("click", function(){
+        var name = t.getAttribute("data-tab");
+        each(tabs, function(x){ x.setAttribute("aria-pressed", x === t ? "true" : "false"); });
+        each(panels, function(p){ p.hidden = p.getAttribute("data-p") !== name; });
+      });
+    });
+    var appQ = document.getElementById("app-q"), appA = document.getElementById("app-a");
+    var typeApp = appA ? typer(appA) : function(){};
+    each(app.querySelectorAll("[data-aask]"), function(b){
+      b.addEventListener("click", function(){
+        var it = QA[b.getAttribute("data-aask")];
+        if (!it) return;
+        if (appQ) appQ.textContent = it.q;
+        typeApp(it.a);
+      });
+    });
+  }
 
   /* The hero plays once: numbers count up, the chart draws, stuck jobs light up, the call lands, the answer types. */
   var vis = document.getElementById("hero-vis");
   if (!vis || reduce) return;
-  var nums = Array.prototype.slice.call(vis.querySelectorAll("[data-count]"));
+  var nums = Array.prototype.slice.call(vis.querySelectorAll(".v [data-count]"));
   var items = Array.prototype.slice.call(vis.querySelectorAll(".attn li"));
   var floats = Array.prototype.slice.call(vis.querySelectorAll(".float"));
   var a = document.getElementById("ask-a"), full = a ? a.textContent : "";
@@ -711,12 +1493,7 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-0.025em;line-height:1.03;te
     if (k < 1) requestAnimationFrame(frame); else light(0);
   }
   function light(i){ if (i < items.length){ items[i].classList.add("lit"); setTimeout(function(){ light(i + 1); }, 220); } else show(0); }
-  function show(i){ if (i < floats.length){ floats[i].classList.add("in"); setTimeout(function(){ show(i + 1); }, 550); } else type(); }
-  function type(){
-    if (!a) return;
-    var i = 0; a.classList.add("typing");
-    (function step(){ i += 2; a.textContent = full.slice(0, i); if (i < full.length) setTimeout(step, 20); else a.classList.remove("typing"); })();
-  }
+  function show(i){ if (i < floats.length){ floats[i].classList.add("in"); setTimeout(function(){ show(i + 1); }, 550); } else if (!touched) typeAsk(full); }
   setTimeout(function(){ vis.classList.add("drawn"); requestAnimationFrame(frame); }, 400);
 })();
 </script>
