@@ -56,10 +56,14 @@ html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--top-h) + 12px);
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:18px;line-height:1.55;font-stretch:100%;-webkit-font-smoothing:antialiased}
 main{overflow-x:clip}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) body::before{opacity:.025;filter:invert(1)}}
+:root[data-theme="dark"] body::before{opacity:.025;filter:invert(1)}
 a{color:var(--blue);text-underline-offset:3px}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
 p{margin:0}
-h1,h2,h3{margin:0;font-weight:800;letter-spacing:-0.02em;line-height:1.02;text-wrap:balance}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-0.025em;line-height:1.02;text-wrap:balance}
+h1{letter-spacing:-0.035em;font-weight:820}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .num{font-variant-numeric:tabular-nums}
@@ -139,6 +143,11 @@ h1,h2,h3{margin:0;font-weight:800;letter-spacing:-0.02em;line-height:1.02;text-w
 .ask-q{display:flex;align-items:center;gap:10px;color:var(--panel-ink);font-weight:650}
 .ask-q .ic{width:18px;height:18px;color:var(--t4)}
 .ask-a{margin-top:8px;color:#C6D0E0;min-height:2.8em}
+.win.pre .heat{opacity:.25;box-shadow:none;transform:scale(.7)}
+.win.pre .age{opacity:0}
+.win.pre .attn li.lit .heat{opacity:1;transform:none;box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 22%,transparent),0 0 16px color-mix(in srgb,var(--c) 85%,transparent)}
+.win.pre .attn li.lit .age{opacity:1}
+.heat,.age{transition:opacity .5s ease,transform .5s ease,box-shadow .5s ease}
 .ask-a.typing::after{content:"";display:inline-block;width:2px;height:1.05em;margin-left:2px;vertical-align:-2px;background:var(--t4);animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 
@@ -150,19 +159,20 @@ h1,h2,h3{margin:0;font-weight:800;letter-spacing:-0.02em;line-height:1.02;text-w
 
 /* What we build */
 .builds{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;margin-top:48px}
-.tile{border:1px solid var(--rule);border-radius:18px;padding:30px;background:transparent;display:flex;flex-direction:column;gap:14px}
-.tile h3{font-size:24px;letter-spacing:-0.01em}
+.tile{position:relative;border:1px solid var(--rule);border-radius:20px;padding:32px;background:transparent;display:flex;flex-direction:column;gap:14px}
+.tile h3{font-size:24px;letter-spacing:-0.015em}
 .tile p{color:var(--muted)}
 .tile .ic-lg{width:28px;height:28px;color:var(--blue)}
-.tile-main{grid-column:span 7;grid-row:span 2;background:var(--surface);border-color:transparent;box-shadow:0 1px 0 var(--rule),0 18px 40px -30px rgba(13,22,37,.35);padding:36px}
-.tile-main h3{font-size:30px}
-.tile-main > p{font-size:19px;max-width:28em}
+.tile-main{grid-column:span 12;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;background:var(--surface);border-color:transparent;box-shadow:0 1px 0 var(--rule),0 24px 50px -36px rgba(13,22,37,.4);padding:40px}
+.tile-copy{display:flex;flex-direction:column;gap:14px}
+.tile-main h3{font-size:32px}
+.tile-main .tile-copy > p{font-size:19px;max-width:28em}
 .caps{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:18px 24px}
 .caps li{display:flex;gap:12px;align-items:flex-start}
 .caps .ic{color:var(--blue);margin-top:3px}
 .caps b{display:block;font-weight:650;color:var(--ink)}
 .caps span{display:block;color:var(--muted);font-size:16px;margin-top:2px}
-.tile-side{grid-column:span 5}
+.tile-half{grid-column:span 6}
 .tile-dark{background:var(--panel);color:var(--panel-ink);border-color:transparent}
 .tile-dark p{color:#B9C4D6}
 .tile-dark .ic-lg{color:var(--t4)}
@@ -170,9 +180,52 @@ h1,h2,h3{margin:0;font-weight:800;letter-spacing:-0.02em;line-height:1.02;text-w
 .testline .ic{color:var(--t4)}
 .testline span{border-bottom:1.5px solid rgba(255,255,255,.35)}
 .testline:hover span{border-color:#FFFFFF}
-.tile-wide{grid-column:span 12;flex-direction:row;align-items:center;justify-content:space-between;gap:28px;background:var(--blue-soft);border-color:transparent}
-.tile-wide > div{max-width:46em}
+.tile-wide{grid-column:span 12;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:center;background:var(--blue-soft);border-color:transparent}
 .tile-wide h3{margin-bottom:8px}
+.tile-wide .btn{margin-top:20px;align-self:flex-start}
+
+/* Product views inside the tiles */
+.view{border-radius:16px;padding:18px 20px;font-size:14.5px;line-height:1.4}
+.view-dark{position:relative;background:var(--panel);color:var(--panel-ink)}
+.view-light{background:var(--paper);border:1px solid var(--rule);margin-top:6px}
+.view-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;font-size:13.5px;font-weight:650}
+.view-dark .view-h{color:var(--panel-muted)}
+.view-light .view-h{color:var(--ink)}
+.view-h b{font-size:22px;color:var(--panel-ink);font-weight:750;letter-spacing:-0.02em}
+.aging{display:grid;gap:12px}
+.ag-row{display:grid;grid-template-columns:96px minmax(0,1fr) 84px;gap:12px;align-items:center}
+.ag-row span{color:var(--panel-muted);font-size:13.5px}
+.ag-row i{display:block;height:12px;border-radius:6px;width:var(--w);background:var(--c);box-shadow:0 0 18px -2px color-mix(in srgb,var(--c) 70%,transparent)}
+.ag-row b{text-align:right;font-variant-numeric:tabular-nums;font-weight:650}
+.view-note{margin-top:16px;padding-top:14px;border-top:1px solid var(--panel-rule);color:#B9C4D6!important;font-size:13.5px}
+.badge{font-style:normal;font-size:12.5px;font-weight:700;color:var(--blue);background:var(--blue-soft);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.inputs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.inputs span{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);border:1px solid var(--rule);border-radius:999px;padding:4px 10px;background:var(--surface)}
+.inputs span::before{content:"";width:6px;height:6px;border-radius:50%;background:#1E9E5A}
+.lines{list-style:none;margin:0;padding:0}
+.lines li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-top:1px solid var(--rule)}
+.lines li span{color:var(--ink)}
+.lines li b{font-variant-numeric:tabular-nums;font-weight:650;color:var(--muted);white-space:nowrap}
+.call{display:grid;gap:2px;background:rgba(255,255,255,.03);border:1px solid var(--panel-rule);margin-top:6px}
+.call-row{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--panel-rule)}
+.call-row:first-child{border-top:0;padding-top:2px}
+.call-row .t{font-size:12.5px;font-weight:700;color:var(--panel-muted);font-variant-numeric:tabular-nums;padding-top:2px}
+.call-row b{display:block;font-weight:650}
+.call-row q{display:block;margin-top:3px;color:#C6D0E0;font-style:italic}
+.call-row > div > span:not(.chips){display:block;margin-top:3px;color:#B9C4D6;font-size:13.5px}
+.call-row.hot .t,.call-row.hot b{color:var(--t5)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chips i{font-style:normal;font-size:12.5px;color:var(--panel-ink);background:var(--panel-3);border-radius:999px;padding:3px 9px}
+.minis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.mini{position:relative;background:var(--panel);color:var(--panel-ink);border-radius:14px;padding:16px}
+.mini span{display:block;font-size:12.5px;color:var(--panel-muted);font-weight:600}
+.mini b{display:block;margin-top:6px;font-weight:700;font-size:16px}
+.mini small{display:block;margin-top:4px;color:#B9C4D6;font-size:13px;line-height:1.35}
+
+/* Edge light on the dark surfaces, like heat on a thermal camera */
+.win::before,.tile-dark::before,.view-dark::before,.final::before,.mini::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:2;
+  background:linear-gradient(140deg,color-mix(in srgb,var(--t4) 60%,transparent),color-mix(in srgb,var(--t3) 30%,transparent) 28%,rgba(255,255,255,.05) 55%,color-mix(in srgb,var(--t1) 30%,transparent));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
 
 /* Own it */
 .own-body{margin-top:44px;max-width:980px}
@@ -231,8 +284,8 @@ h1,h2,h3{margin:0;font-weight:800;letter-spacing:-0.02em;line-height:1.02;text-w
 @media (max-width:1040px){
   .hero-grid{grid-template-columns:minmax(0,1fr);gap:48px}
   .lede{max-width:36em}
-  .tile-main{grid-column:span 12;grid-row:auto}
-  .tile-side{grid-column:span 6}
+  .tile-main{grid-template-columns:minmax(0,1fr);gap:32px}
+  .tile-wide{grid-template-columns:minmax(0,1fr);gap:28px}
   .faq,.founder{grid-template-columns:minmax(0,1fr);gap:32px}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
   .steps::before{display:none}
@@ -250,8 +303,10 @@ h1,h2,h3{margin:0;font-weight:800;letter-spacing:-0.02em;line-height:1.02;text-w
   .sec{padding:72px 0}
   .sec-h p{font-size:18px}
   .tile,.tile-main{padding:24px}
-  .tile-side{grid-column:span 12}
-  .tile-wide{flex-direction:column;align-items:stretch}
+  .tile-half{grid-column:span 12}
+  .minis{grid-template-columns:minmax(0,1fr)}
+  .ag-row{grid-template-columns:78px minmax(0,1fr) 74px;gap:10px}
+  .tile-wide .btn{width:100%}
   .caps{grid-template-columns:minmax(0,1fr)}
   .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
   .kpi:nth-child(2){border-right:0}
@@ -333,10 +388,10 @@ h1,h2,h3{margin:0;font-weight:800;letter-spacing:-0.02em;line-height:1.02;text-w
             <span class="win-time">Today, 7:02 AM</span>
           </div>
           <div class="kpis">
-            <div class="kpi"><b>23</b><span>open jobs</span></div>
-            <div class="kpi"><b>7</b><span>waiting on a carrier</span></div>
-            <div class="kpi"><b>$184,300</b><span>owed to you</span><em>$61,200 past 60 days</em></div>
-            <div class="kpi"><b>41</b><span>drying units out</span></div>
+            <div class="kpi"><b data-count="23">23</b><span>open jobs</span></div>
+            <div class="kpi"><b data-count="7">7</b><span>waiting on a carrier</span></div>
+            <div class="kpi"><b data-count="184300" data-prefix="$">$184,300</b><span>owed to you</span><em>$61,200 past 60 days</em></div>
+            <div class="kpi"><b data-count="41">41</b><span>drying units out</span></div>
           </div>
           <div class="blk">
             <div class="blk-h">Jobs by stage</div>
@@ -378,33 +433,66 @@ h1,h2,h3{margin:0;font-weight:800;letter-spacing:-0.02em;line-height:1.02;text-w
     </div>
     <div class="builds">
       <article class="tile tile-main">
-        <svg class="ic ic-lg"><use href="#i-grid"/></svg>
-        <h3>Operations dashboard</h3>
-        <p>Replaces ClickUp, the spreadsheets and the apps that don't talk to each other. Your whole shop in one place.</p>
-        <ul class="caps">
-          <li><svg class="ic"><use href="#i-clip"/></svg><div><b>Every job, start to finish</b><span>From the first call to the final payment</span></div></li>
-          <li><svg class="ic"><use href="#i-shield"/></svg><div><b>Claims and carriers</b><span>Anything stuck with an adjuster gets flagged</span></div></li>
-          <li><svg class="ic"><use href="#i-user"/></svg><div><b>Crews, equipment and hiring</b><span>Who's where, what's running, who's next</span></div></li>
-          <li><svg class="ic"><use href="#i-msg"/></svg><div><b>Ask it anything</b><span>Plain-English questions, straight answers</span></div></li>
-        </ul>
+        <div class="tile-copy">
+          <svg class="ic ic-lg"><use href="#i-grid"/></svg>
+          <h3>Operations dashboard</h3>
+          <p>Replaces ClickUp, the spreadsheets and the apps that don't talk to each other. Your whole shop in one place.</p>
+          <ul class="caps">
+            <li><svg class="ic"><use href="#i-clip"/></svg><div><b>Every job, start to finish</b><span>From the first call to the final payment</span></div></li>
+            <li><svg class="ic"><use href="#i-shield"/></svg><div><b>Claims and carriers</b><span>Anything stuck with an adjuster gets flagged</span></div></li>
+            <li><svg class="ic"><use href="#i-user"/></svg><div><b>Crews, equipment and hiring</b><span>Who's where, what's running, who's next</span></div></li>
+            <li><svg class="ic"><use href="#i-msg"/></svg><div><b>Ask it anything</b><span>Plain-English questions, straight answers</span></div></li>
+          </ul>
+        </div>
+        <div class="view view-dark" aria-hidden="true">
+          <div class="view-h"><span>Owed to you, by age</span><b class="num">$184,300</b></div>
+          <div class="aging">
+            <div class="ag-row" style="--w:100%;--c:var(--t1)"><span>0 to 30 days</span><i></i><b>$72,400</b></div>
+            <div class="ag-row" style="--w:70%;--c:var(--t2)"><span>31 to 60</span><i></i><b>$50,700</b></div>
+            <div class="ag-row" style="--w:54%;--c:var(--t3)"><span>61 to 90</span><i></i><b>$38,900</b></div>
+            <div class="ag-row" style="--w:31%;--c:var(--t4)"><span>Over 90</span><i></i><b>$22,300</b></div>
+          </div>
+          <p class="view-note">Two invoices over 90 days are waiting on the mortgage company to endorse the check.</p>
+        </div>
       </article>
-      <article class="tile tile-side">
+      <article class="tile tile-half">
         <svg class="ic ic-lg"><use href="#i-doc"/></svg>
         <h3>Estimate drafts</h3>
         <p>Mold and water estimates drafted from your photos, sketch and protocol. Your team reviews, tweaks and sends from Xactimate.</p>
+        <div class="view view-light" aria-hidden="true">
+          <div class="view-h"><span>Patel, mold remediation</span><em class="badge">Ready for review</em></div>
+          <div class="inputs"><span>14 photos</span><span>Sketch</span><span>Protocol</span></div>
+          <ul class="lines">
+            <li><span>Containment, 6 mil poly</span><b>220 SF</b></li>
+            <li><span>Negative air machine</span><b>3 days</b></li>
+            <li><span>Remove affected drywall</span><b>96 SF</b></li>
+            <li><span>HEPA vacuum and antimicrobial</span><b>450 SF</b></li>
+            <li><span>Clearance test</span><b>1 EA</b></li>
+          </ul>
+        </div>
       </article>
-      <article class="tile tile-side tile-dark">
+      <article class="tile tile-half tile-dark">
         <svg class="ic ic-lg"><use href="#i-phone"/></svg>
         <h3>After-hours dispatch</h3>
         <p>Answers in your company's name when the crew is tied up, gets the loss, address and insurance, and puts the job on your on-call tech's phone.</p>
+        <div class="view call" aria-hidden="true">
+          <div class="call-row"><span class="t">2:14 AM</span><div><b>New call</b><q>Water's coming through the kitchen ceiling.</q></div></div>
+          <div class="call-row"><span class="t">2:16 AM</span><div><b>Job captured</b><span class="chips"><i>Water, upstairs bath</i><i>In your service area</i><i>State Farm</i></span></div></div>
+          <div class="call-row hot"><span class="t">2:16 AM</span><div><b>Texted to Marcus, on call</b><span>Address, type of loss and callback number</span></div></div>
+        </div>
         <a class="testline" href="tel:+17372146271"><svg class="ic"><use href="#i-phone"/></svg><span>Hear it answer: <span class="num">(737) 214-6271</span></span></a>
       </article>
       <article class="tile tile-wide">
         <div>
           <h3>Something else</h3>
           <p>Follow-up, paperwork, reporting, hiring. If it eats your week, we scope it on a 15-minute Zoom and quote it before work starts.</p>
+          <a class="btn btn-primary" href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20I%27d%20like%20to%20talk%20about%20a%20custom%20build%20for%20">Tell us what it is</a>
         </div>
-        <a class="btn btn-primary" href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20I%27d%20like%20to%20talk%20about%20a%20custom%20build%20for%20">Tell us what it is</a>
+        <div class="minis" aria-hidden="true">
+          <div class="mini"><span>Hiring</span><b>Mitigation tech</b><small>6 applied, 2 interviews this week</small></div>
+          <div class="mini"><span>Certifications</span><b>Luis, WRT</b><small>Renews in 30 days</small></div>
+          <div class="mini"><span>Reviews</span><b>4 finished jobs</b><small>Ready for a review request</small></div>
+        </div>
       </article>
     </div>
   </div>
@@ -513,15 +601,31 @@ h1,h2,h3{margin:0;font-weight:800;letter-spacing:-0.02em;line-height:1.02;text-w
   var onScroll = function(){ bar.classList.toggle("scrolled", window.scrollY > 8); };
   onScroll(); window.addEventListener("scroll", onScroll, {passive:true});
 
-  /* The dashboard answers its question once, as if typed. */
-  var a = document.getElementById("ask-a");
-  if (!a || reduce) return;
-  var full = a.textContent, i = 0;
-  a.textContent = ""; a.classList.add("typing");
-  setTimeout(function step(){
-    i += 2; a.textContent = full.slice(0, i);
-    if (i < full.length){ setTimeout(step, 22); } else { a.classList.remove("typing"); }
-  }, 900);
+  /* The dashboard comes alive once: numbers count up, the stuck jobs light up, then the answer types out. */
+  var win = document.querySelector(".win"), a = document.getElementById("ask-a");
+  if (!win || reduce) return;
+  var nums = Array.prototype.slice.call(win.querySelectorAll("[data-count]"));
+  var items = Array.prototype.slice.call(win.querySelectorAll(".attn li"));
+  var full = a ? a.textContent : "";
+  win.classList.add("pre");
+  nums.forEach(function(n){ n.textContent = (n.dataset.prefix || "") + "0"; });
+  if (a) a.textContent = "";
+  var t0 = null, dur = 1100;
+  function frame(ts){
+    if (t0 === null) t0 = ts;
+    var k = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+    nums.forEach(function(n){ var v = Math.round(Number(n.dataset.count) * e); n.textContent = (n.dataset.prefix || "") + v.toLocaleString("en-US"); });
+    if (k < 1) requestAnimationFrame(frame); else lightUp(0);
+  }
+  function lightUp(i){
+    if (i < items.length){ items[i].classList.add("lit"); setTimeout(function(){ lightUp(i + 1); }, 260); }
+    else if (a){ typeOut(); }
+  }
+  function typeOut(){
+    var i = 0; a.classList.add("typing");
+    (function step(){ i += 2; a.textContent = full.slice(0, i); if (i < full.length) setTimeout(step, 22); else a.classList.remove("typing"); })();
+  }
+  setTimeout(function(){ requestAnimationFrame(frame); }, 350);
 })();
 </script>
 </body>
