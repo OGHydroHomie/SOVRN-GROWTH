@@ -5,7 +5,7 @@ import sharp from 'sharp';
 // Home page: the dental implant landing page copied from site-root/.
 const home = readFileSync(new URL('../dist/dental/index.html', import.meta.url), 'utf8');
 const restorationHome = readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
-assert.ok(restorationHome.includes('Your website promises an hour. That hour starts when someone answers.'), 'verify-build: restoration home page missing');
+assert.ok(restorationHome.includes("Stop renting software that doesn't fit your shop."), 'verify-build: restoration home page missing');
 assert.ok(restorationHome.includes('href="/privacy/"') && restorationHome.includes('href="/terms/"'), 'verify-build: restoration home must link the privacy policy and terms');
 // Checkout asks buyers to accept the installation agreement, so the agreement page ships with the home page.
 assert.ok(restorationHome.includes('href="/agreement/restoration/"'), 'verify-build: restoration home must link the installation agreement');
