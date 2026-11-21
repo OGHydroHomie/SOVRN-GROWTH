@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mold Estimate Desk | DRYmedic NW Austin</title>
+<meta name="description" content="A working mold estimate desk prepared for DRYmedic Restoration of NW Austin by SOVRN Growth.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B1118">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#EDF0F3;--panel:#FFFFFF;--well:#F6F8FA;
+  --ink:#0E1620;--ink-2:#475467;--ink-3:#7A8696;
+  --line:#E2E7ED;--line-2:#CDD5DF;
+  --blue:#2563C9;--blue-soft:rgba(37,99,201,.08);--blue-line:rgba(37,99,201,.35);
+  --hot:#C2410C;--hot-soft:rgba(194,65,12,.10);
+  --go:#14804F;--go-2:#0F6A41;--go-soft:rgba(20,128,79,.10);
+  --amber:#9A6200;--amber-soft:rgba(202,138,4,.14);
+  --head:#0B1118;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--canvas);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--canvas);color:var(--ink);font:400 15px/1.5 "Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit}
+h1,h2,h3{margin:0;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+.ic{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+
+/* Header */
+.head{background:var(--head);color:#E9EEF4}
+.head-in{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
+.head h1{font-size:20px;font-weight:800;letter-spacing:-.01em;color:#FFFFFF}
+.head small{display:block;margin-top:2px;color:#93A0B2;font-size:13.5px}
+.mark{display:flex;align-items:center;gap:9px;color:#E9EEF4;text-decoration:none;font-size:15px;font-weight:500;font-stretch:112%;white-space:nowrap}
+.mark b{font-weight:850}
+.mark i{width:18px;height:18px;border-radius:6px;background:conic-gradient(from 210deg,#3BE8A0,#2DD4BF,#6E9BFF,#3BE8A0)}
+
+/* Job bar */
+.job{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding:16px 0}
+.job b{font-size:17px;font-weight:750}
+.job span{color:var(--ink-2);font-size:14px}
+.job .stand{margin-left:auto;color:var(--ink-3);font-size:13px}
+
+/* Layout */
+.desk{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px;align-items:start;padding-bottom:28px}
+.col{display:grid;gap:14px;min-width:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:0 1px 2px rgba(14,22,32,.04),0 14px 30px -24px rgba(14,22,32,.25);min-width:0}
+.card-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px 0}
+.card-h h2{font-size:15px;font-weight:750;letter-spacing:-.005em}
+.card-h small{color:var(--ink-3);font-size:12.5px}
+.card-b{padding:12px 16px 16px}
+
+/* Sketch */
+.sketch{display:block;width:100%;height:auto;border-radius:10px;background:
+  linear-gradient(rgba(37,99,201,.06) 1px,transparent 1px) 0 0/16px 16px,
+  linear-gradient(90deg,rgba(37,99,201,.06) 1px,transparent 1px) 0 0/16px 16px,#FBFCFE;border:1px solid var(--line)}
+.sketch text{font-family:"Archivo",sans-serif;fill:#3B4A5E}
+.sketch .room{fill:#FFFFFF;stroke:#2B3C55;stroke-width:3}
+.sketch .room.hall{fill:#F7F9FC}
+.sketch .dim{font-size:11px;fill:#6B7A8F}
+.sketch .lbl{font-size:13px;font-weight:700;fill:#1F2D40}
+.sketch .sf{font-size:11px;fill:#6B7A8F}
+.sketch .wall{stroke:var(--hot);stroke-width:6;stroke-linecap:round;opacity:.9;transition:stroke-width .2s ease,opacity .2s ease}
+.sketch .contain{fill:none;stroke:var(--blue);stroke-width:1.6;stroke-dasharray:6 5;opacity:.75}
+.sketch .read rect{fill:#FFFFFF;stroke:var(--hot);stroke-width:1.2}
+.sketch .read text{font-size:11px;font-weight:700;fill:var(--hot)}
+.sketch .cam circle{fill:var(--ink);opacity:.85}
+.sketch .cam text{font-size:9.5px;font-weight:800;fill:#FFFFFF}
+.sketch .fix{fill:#EEF2F7;stroke:#9AA8BA;stroke-width:1.2}
+.sketch .zone{font-size:10.5px;font-weight:700;fill:var(--blue)}
+.sketch .lit{stroke-width:10;opacity:1}
+.sketch rect.lit,.sketch path.lit{stroke-width:3;opacity:1}
+.sketch g.lit rect{stroke-width:2.4;fill:#FFF4EE}
+.sketch .wall,.sketch .read,.sketch .cam,.proto li,.ph{transition:opacity .25s ease,stroke-width .2s ease,background-color .25s ease,box-shadow .2s ease,border-color .2s ease}
+body.has-lit .sketch .wall:not(.lit),body.has-lit .sketch .read:not(.lit),body.has-lit .sketch .cam:not(.lit){opacity:.22}
+body.has-lit .proto li:not(.lit){opacity:.45}
+body.has-lit .ph:not(.lit):not(.more){opacity:.4}
+.sketch .cam.lit circle{fill:var(--hot);opacity:1}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;color:var(--ink-2);font-size:12.5px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{display:inline-block;width:18px;height:0;border-top:4px solid var(--hot);border-radius:2px}
+.legend i.c{border-top:2px dashed var(--blue)}
+.legend i.r{width:9px;height:9px;border:1.5px solid var(--hot);border-radius:3px;background:#fff}
+
+/* Protocol */
+.proto{list-style:none;margin:0;padding:0;counter-reset:p}
+.proto li{position:relative;display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;padding:8px 8px 8px 6px;border-radius:9px;color:var(--ink-2);font-size:13.5px;line-height:1.45;counter-increment:p;transition:background-color .25s ease,color .25s ease}
+.proto li::before{content:counter(p);display:grid;place-items:center;width:20px;height:20px;border-radius:6px;background:var(--well);border:1px solid var(--line);color:var(--ink-3);font-size:11px;font-weight:750}
+.proto mark{background:none;color:var(--ink);font-weight:650}
+.proto li.lit{background:var(--blue-soft);color:var(--ink)}
+.proto li.lit::before{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* Photos */
+.photos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.ph{margin:0;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--well);transition:box-shadow .2s ease,border-color .2s ease}
+.ph svg{display:block;width:100%;height:auto}
+.ph figcaption{padding:6px 7px 7px;font-size:11.5px;line-height:1.3;color:var(--ink-2)}
+.ph figcaption b{color:var(--ink);font-weight:750;margin-right:4px}
+.ph.lit{border-color:var(--hot);box-shadow:0 0 0 2px var(--hot-soft)}
+.ph.more{display:grid;place-items:center;text-align:center;color:var(--ink-3);font-size:12.5px;font-weight:650;min-height:90px}
+
+/* Draft button */
+.go{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;padding:14px 18px;border:0;border-radius:13px;background:var(--go);color:#FFFFFF;font-size:16px;font-weight:750;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 10px 24px -12px rgba(20,128,79,.8);transition:background-color .15s ease,transform .15s ease}
+.go:hover{background:var(--go-2)}
+.go:active{transform:translateY(1px)}
+.go[disabled]{opacity:.65;cursor:default}
+
+/* Estimate */
+.est{min-height:420px}
+@media (min-width:981px){.inputs{position:sticky;top:14px;max-height:calc(100vh - 28px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:0 6px 2px 0;margin-right:-6px}}
+.empty{display:grid;place-items:center;align-content:center;text-align:center;gap:12px;min-height:420px;padding:36px 24px;color:var(--ink-2)}
+.empty .go{width:auto;margin-top:8px;padding:14px 26px}
+.empty h3{font-size:19px;color:var(--ink)}
+.empty p{max-width:30em}
+.steps{list-style:none;margin:0;padding:18px 18px 22px;display:grid;gap:12px}
+.steps li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:center;color:var(--ink-3);font-size:14.5px;transition:color .2s ease}
+.steps li i{width:20px;height:20px;border-radius:50%;border:2px solid var(--line-2);display:grid;place-items:center}
+.steps li.on{color:var(--ink)}
+.steps li.on i{border-color:var(--blue);border-top-color:transparent;animation:spin .8s linear infinite}
+.steps li.ok{color:var(--ink)}
+.steps li.ok i{border-color:var(--go);background:var(--go)}
+.steps li.ok i::after{content:"";width:8px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sum{display:flex;flex-wrap:wrap;gap:8px;padding:14px 16px 0}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:var(--well);border:1px solid var(--line);color:var(--ink-2);font-size:12.5px;font-weight:650}
+.chip b{color:var(--ink)}
+.chip.go-c{background:var(--go-soft);border-color:rgba(20,128,79,.25);color:var(--go)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;padding:12px 16px 4px}
+.tb{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:8px 13px;border-radius:10px;border:1px solid var(--line-2);background:var(--panel);color:var(--ink);font-size:13.5px;font-weight:700;cursor:pointer;transition:border-color .15s ease,background-color .15s ease}
+.tb:hover{border-color:#AEB9C7;background:var(--well)}
+.tb.pri{background:var(--ink);border-color:var(--ink);color:#FFFFFF}
+.tb.pri:hover{background:#1D2938}
+.tb[aria-pressed="true"]{background:var(--blue-soft);border-color:var(--blue-line);color:var(--blue)}
+.grp{padding:6px 8px 4px}
+.grp-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:12px 8px 6px;border-bottom:1px solid var(--line)}
+.grp-h h3{font-size:14px;font-weight:800;letter-spacing:0}
+.grp-h small{color:var(--ink-3);font-size:12px}
+.ln{display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:4px 12px;align-items:start;width:100%;padding:10px 8px;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;text-align:left;cursor:pointer;transition:background-color .15s ease}
+.ln:hover{background:#FAFBFC}
+.ln.sel{background:var(--blue-soft)}
+.ln.new{animation:in .32s ease both}
+@keyframes in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.cat{display:inline-grid;place-items:center;height:22px;border-radius:6px;background:var(--well);border:1px solid var(--line);color:var(--ink-2);font-size:10.5px;font-weight:800;letter-spacing:.02em}
+.ln .d{font-size:14px;font-weight:600;color:var(--ink);line-height:1.35}
+.srcs{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.src{padding:1px 7px;border-radius:999px;background:var(--well);border:1px solid var(--line);color:var(--ink-3);font-size:11px;font-weight:650}
+.why{grid-column:2 / -1;display:none;margin-top:4px;color:var(--ink-2);font-size:13px;line-height:1.45}
+.ln.sel .why{display:block}
+.q{display:flex;align-items:center;gap:6px;justify-self:end;white-space:nowrap}
+.q b{min-width:46px;padding:3px 7px;border-radius:7px;border:1px solid transparent;text-align:right;font-size:14px;font-weight:750;font-variant-numeric:tabular-nums}
+.ln:hover .q b{border-color:var(--line-2);background:#FFFFFF}
+.q span{width:24px;color:var(--ink-3);font-size:12px;font-weight:700}
+.q input{width:70px;padding:3px 7px;border:1.5px solid var(--blue);border-radius:7px;font:inherit;font-size:14px;font-weight:750;text-align:right;font-variant-numeric:tabular-nums;outline:none}
+.edited{display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;background:var(--amber-soft);color:var(--amber);font-size:10.5px;font-weight:750;vertical-align:1px}
+.by{display:flex;gap:10px;align-items:flex-start;margin:6px 16px 0;padding:11px 12px;border-radius:11px;background:var(--well);border:1px dashed var(--line-2);color:var(--ink-2);font-size:13px}
+.by b{color:var(--ink)}
+.foot-note{padding:12px 16px 16px;color:var(--ink-3);font-size:12.5px}
+.rebuild[hidden]{display:none}
+
+/* How and next */
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:6px 0 18px}
+.how .card{padding:18px}
+.how h3{display:flex;align-items:center;gap:10px;font-size:16px}
+.how h3 em{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800}
+.how p{margin-top:8px;color:var(--ink-2);font-size:14px}
+.next{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px 28px;align-items:center;margin:0 0 40px;padding:24px 26px;border-radius:18px;background:var(--head);color:#E9EEF4}
+.next h2{font-size:22px;color:#fff}
+.next p{margin-top:6px;color:#A9B5C5;max-width:40em}
+.next-b{display:flex;flex-wrap:wrap;gap:10px}
+.next a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 18px;border-radius:12px;font-weight:750;text-decoration:none}
+.next a.g{background:#3BE8A0;color:#03140B}
+.next a.o{border:1px solid rgba(255,255,255,.22);color:#fff}
+.small-foot{padding:0 0 36px;color:var(--ink-3);font-size:12.5px;text-align:center}
+
+/* Export dialog and toast */
+dialog{width:min(640px,calc(100% - 28px));max-height:min(80vh,720px);padding:0;border:0;border-radius:18px;color:var(--ink);box-shadow:0 40px 100px -30px rgba(14,22,32,.6)}
+dialog::backdrop{background:rgba(11,17,24,.5)}
+.dl-h{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 22px 0}
+.dl-h h2{font-size:19px}
+.dl-h p{margin-top:4px;color:var(--ink-2);font-size:13.5px}
+.x{flex:none;width:34px;height:34px;border-radius:10px;border:1px solid var(--line-2);background:#fff;font-size:19px;line-height:1;cursor:pointer}
+.xlist{margin:14px 22px 0;max-height:46vh;overflow:auto;border:1px solid var(--line);border-radius:12px}
+.xlist table{width:100%;border-collapse:collapse;font-size:13px}
+.xlist th,.xlist td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left}
+.xlist th{position:sticky;top:0;background:var(--well);color:var(--ink-3);font-size:11.5px;font-weight:700}
+.xlist td.n{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.dl-b{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;padding:14px 22px 20px}
+.dl-b small{color:var(--ink-3);font-size:12.5px;max-width:28em}
+.toast{position:fixed;left:50%;bottom:22px;z-index:50;display:flex;align-items:center;gap:8px;padding:11px 16px;border-radius:12px;background:var(--ink);color:#fff;font-size:14px;font-weight:700;box-shadow:0 18px 40px -14px rgba(0,0,0,.6);transform:translate(-50%,10px);opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast .ic{color:#56C892}
+
+@media (max-width:980px){
+  .desk{grid-template-columns:minmax(0,1fr)}
+  .est{position:static}
+  #draft{position:sticky;bottom:12px;z-index:5;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 14px 30px -10px rgba(14,22,32,.45)}
+  #draft.done{position:static}
+  .how{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:600px){
+  .wrap{padding:0 14px}
+  .head-in{min-height:64px}
+  .head h1{font-size:17px}
+  .mark span{display:none}
+  .job{gap:4px 14px}
+  .job .stand{margin-left:0;width:100%}
+  .photos{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ph.more{grid-column:span 3;min-height:40px}
+  .ln{grid-template-columns:36px minmax(0,1fr) auto;gap:4px 8px;padding:10px 6px}
+  .q b{min-width:34px;padding:3px 5px}
+  .q span{width:20px}
+  .ln .d{font-size:13.5px}
+  .next{grid-template-columns:minmax(0,1fr);padding:22px 18px}
+  .next a{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .ln.new{animation:none}
+  .steps li.on i{animation:none}
+  .toast,.proto li,.sketch .wall{transition:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5l1.8 5.2 5.2 1.8-5.2 1.8L12 17.5l-1.8-5.2L5 10.5l5.2-1.8z"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M12 4v11M7.5 8.5L12 4l4.5 4.5M5 14v4.5a1.5 1.5 0 0 0 1.5 1.5h11a1.5 1.5 0 0 0 1.5-1.5V14"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="11.5" height="11.5" rx="2"/><path d="M15.5 8V6a1.5 1.5 0 0 0-1.5-1.5H6A1.5 1.5 0 0 0 4.5 6v8A1.5 1.5 0 0 0 6 15.5h2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-redo" viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.1-5M19 4.5V9h-4.5"/></symbol>
+  <symbol id="i-wall" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="1.5"/><path d="M4 12h16M10 5v7M14 12v7"/></symbol>
+</svg>
+
+<header class="head">
+  <div class="wrap head-in">
+    <div>
+      <h1>Mold estimate desk</h1>
+      <small>Prepared for Sean at DRYmedic Restoration of NW Austin</small>
+    </div>
+    <a class="mark" href="https://www.sovrngrowth.com/"><i aria-hidden="true"></i><span><b>SOVRN</b> Growth</span></a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="job">
+    <b>Hendricks residence, Cedar Park</b>
+    <span>Window leak at two exterior walls, plus a slow supply-line leak behind the hall bath vanity</span>
+    <span>Inspected November 19</span>
+    <span class="stand">Running on a stand-in job. Send one of yours and it runs on your real numbers.</span>
+  </div>
+
+  <div class="desk">
+    <div class="col inputs" id="inputs">
+      <section class="card" id="c-sk" aria-labelledby="sk-h">
+        <div class="card-h"><h2 id="sk-h">Sketch and moisture map</h2><small>From the inspection</small></div>
+        <div class="card-b">
+          <svg class="sketch" viewBox="0 0 520 300" role="img" aria-label="Floor sketch: Bedroom 2 is 12 by 11 feet, the closet 5 by 4, the hall 5 by 7 and the hall bath 9 by 6. Affected walls are the bedroom's north and west walls, the closet back wall and ceiling corner, and the bath wall behind the vanity.">
+            <path class="contain" data-k="contain" d="M28 28H468V212H324V266H220V228H28Z"/>
+            <rect class="room" x="40" y="40" width="192" height="176"/>
+            <rect class="room" x="232" y="40" width="80" height="64"/>
+            <rect class="room hall" x="232" y="104" width="80" height="112"/>
+            <rect class="room" x="312" y="104" width="144" height="96"/>
+            <rect class="fix" data-k="vanity" x="424" y="114" width="26" height="76" rx="3"/>
+            <text class="sf" x="437" y="156" text-anchor="middle" transform="rotate(-90 437 156)">vanity</text>
+            <line class="wall" data-k="b2-north" x1="44" y1="40" x2="228" y2="40"/>
+            <line class="wall" data-k="b2-west" x1="40" y1="44" x2="40" y2="212"/>
+            <line class="wall" data-k="cl-back" x1="236" y1="40" x2="308" y2="40"/>
+            <line class="wall" data-k="hb-wall" x1="456" y1="108" x2="456" y2="196"/>
+            <rect data-k="cl-ceil" x="284" y="44" width="24" height="18" rx="3" fill="rgba(194,65,12,.14)" stroke="#C2410C" stroke-width="1.4" stroke-dasharray="3 3"/>
+            <text class="lbl" x="136" y="124" text-anchor="middle">Bedroom 2</text>
+            <text class="sf" x="136" y="141" text-anchor="middle">132 SF</text>
+            <text class="lbl" x="262" y="82" text-anchor="middle" style="font-size:11.5px">Closet</text>
+            <text class="sf" x="262" y="95" text-anchor="middle">20 SF</text>
+            <text class="lbl" x="272" y="164" text-anchor="middle" style="font-size:11.5px">Hall</text>
+            <text class="lbl" x="372" y="150" text-anchor="middle">Hall bath</text>
+            <text class="sf" x="372" y="166" text-anchor="middle">54 SF</text>
+            <text class="dim" x="136" y="20" text-anchor="middle">12' 0"</text>
+            <text class="dim" x="16" y="128" text-anchor="middle" transform="rotate(-90 16 128)">11' 0"</text>
+            <text class="dim" x="272" y="20" text-anchor="middle">5'</text>
+            <text class="dim" x="384" y="226" text-anchor="middle">9' 0"</text>
+            <text class="dim" x="488" y="152" text-anchor="middle" transform="rotate(-90 488 152)">6' 0"</text>
+            <g class="read" data-k="m-n"><rect x="104" y="48" width="44" height="18" rx="5"/><text x="126" y="61" text-anchor="middle">31%</text></g>
+            <g class="read" data-k="m-w"><rect x="48" y="150" width="44" height="18" rx="5"/><text x="70" y="163" text-anchor="middle">26%</text></g>
+            <g class="read" data-k="m-c"><rect x="238" y="48" width="40" height="18" rx="5"/><text x="258" y="61" text-anchor="middle">35%</text></g>
+            <g class="read" data-k="m-b"><rect x="372" y="176" width="44" height="18" rx="5"/><text x="394" y="189" text-anchor="middle">40%</text></g>
+            <g class="cam" data-k="ph1"><circle cx="186" cy="58" r="8"/><text x="186" y="61.5" text-anchor="middle">1</text></g>
+            <g class="cam" data-k="ph2"><circle cx="160" cy="76" r="8"/><text x="160" y="79.5" text-anchor="middle">2</text></g>
+            <g class="cam" data-k="ph3"><circle cx="58" cy="100" r="8"/><text x="58" y="103.5" text-anchor="middle">3</text></g>
+            <g class="cam" data-k="ph4"><circle cx="58" cy="196" r="8"/><text x="58" y="199.5" text-anchor="middle">4</text></g>
+            <g class="cam" data-k="ph5"><circle cx="298" cy="88" r="8"/><text x="298" y="91.5" text-anchor="middle">5</text></g>
+            <g class="cam" data-k="ph6"><circle cx="406" cy="128" r="8"/><text x="406" y="131.5" text-anchor="middle">6</text></g>
+            <rect data-k="zip" x="252" y="212" width="40" height="8" rx="2" fill="#2563C9" opacity=".85"/>
+            <text class="zone" x="272" y="248" text-anchor="middle">Decon</text>
+            <text class="zone" x="388" y="252" text-anchor="middle" style="font-weight:600">Containment, 6 mil poly</text>
+          </svg>
+          <div class="legend"><span><i></i>Affected wall</span><span><i class="c"></i>Containment line</span><span><i class="r"></i>Reading, dry standard 12%</span></div>
+        </div>
+      </section>
+
+      <section class="card" id="c-pr" aria-labelledby="pr-h">
+        <div class="card-h"><h2 id="pr-h">Remediation protocol</h2><small>From the IEP, 2 pages</small></div>
+        <div class="card-b">
+          <ol class="proto">
+            <li data-k="p-cont"><span>Build <mark>containment</mark> around Bedroom 2, the closet, the hall and the hall bath. <mark>6 mil poly</mark>, a <mark>zipper door</mark> at the hall and a <mark>decon chamber</mark> outside it.</span></li>
+            <li data-k="p-neg"><span>Run <mark>HEPA negative air</mark> for the whole job and keep the work area under negative pressure.</span></li>
+            <li data-k="p-cut"><span>Remove drywall and insulation <mark>2 ft past visible growth</mark>. Bedroom 2 north and west walls to 4 ft, the closet back wall full height, and the bath wall behind the vanity to 4 ft.</span></li>
+            <li data-k="p-trim"><span>Remove <mark>baseboard</mark> in Bedroom 2 and the closet. <mark>Detach the vanity</mark> for access.</span></li>
+            <li data-k="p-clean"><span><mark>HEPA vacuum</mark> and damp wipe every surface. Apply <mark>antimicrobial</mark> to exposed framing.</span></li>
+            <li data-k="p-clear"><span>Clearance testing by the IEP before any rebuild.</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="card" id="c-ph" aria-labelledby="ph-h">
+        <div class="card-h"><h2 id="ph-h">Site photos</h2><small>14 photos, 6 with growth</small></div>
+        <div class="card-b">
+          <div class="photos" id="photos"></div>
+        </div>
+      </section>
+
+      <button type="button" class="go" id="draft"><svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg>Draft estimate</button>
+    </div>
+
+    <section class="card est" id="est" aria-labelledby="est-h" aria-live="polite">
+      <div class="card-h"><h2 id="est-h">Draft estimate</h2><small id="est-sub">Waiting for the job files</small></div>
+      <div id="est-body">
+        <div class="empty">
+          <svg class="ic" style="width:34px;height:34px;color:#9AA8BA" aria-hidden="true"><use href="#i-wall"/></svg>
+          <h3>Press Draft estimate</h3>
+          <p>It reads the sketch, the protocol, the photos and the moisture readings, then writes every line item with the reason it's there. You review and change anything before it goes into Xactimate.</p>
+          <button type="button" class="go" data-draft><svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg>Draft estimate</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="how">
+    <div class="card"><h3><em>1</em>Drop in the job</h3><p>Photos, moisture readings, the sketch and the protocol. The same files your team already collects on every mold job.</p></div>
+    <div class="card"><h3><em>2</em>Get the draft</h3><p>Every line comes with where it came from, so checking it takes minutes instead of building it from scratch.</p></div>
+    <div class="card"><h3><em>3</em>Send it your way</h3><p>Change any line, then key it into Xactimate in the same order. Nothing goes to a carrier or homeowner until you send it.</p></div>
+  </div>
+
+  <div class="next">
+    <div>
+      <h2>Run it on one of your jobs</h2>
+      <p>Send me one finished mold job: the protocol, a few photos, the sketch and the estimate you sent. I'll run it here so you can compare it line by line with what you built.</p>
+    </div>
+    <div class="next-b">
+      <a class="g" href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20here%27s%20a%20mold%20job%20to%20run%3A%20">Text Elijah</a>
+      <a class="o" href="mailto:elijah@sovrngrowth.com?subject=Mold%20job%20for%20the%20estimate%20desk">Email the files</a>
+    </div>
+  </div>
+  <p class="small-foot">Prepared by SOVRN Growth for DRYmedic Restoration of NW Austin. Private link. Elijah Pitts, <a href="tel:+15128820814" style="color:inherit">(512) 882-0814</a></p>
+</main>
+
+<dialog id="xd" aria-labelledby="xd-h">
+  <div class="dl-h"><div><h2 id="xd-h">Line items for Xactimate</h2><p>In category order, ready to key in. Prices come from your Xactimate price list.</p></div><button type="button" class="x" data-close aria-label="Close">&times;</button></div>
+  <div class="xlist"><table><thead><tr><th scope="col">Cat</th><th scope="col">Line item</th><th scope="col">Area</th><th scope="col" style="text-align:right">Qty</th><th scope="col">Unit</th></tr></thead><tbody id="xbody"></tbody></table></div>
+  <div class="dl-b"><small>In your build, this goes straight into the format your estimator uses.</small><button type="button" class="tb pri" id="copy"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copy line items</button></div>
+</dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var each = function(l, f){ Array.prototype.forEach.call(l, f); };
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); };
+
+  /* Site photos: drawn walls with the growth each photo shows. */
+  var PH = [
+    {n:1, k:"ph1", cap:"Bedroom 2, north wall", seed:3, x:.30, w:.46, base:true},
+    {n:2, k:"ph2", cap:"Under the window", seed:7, x:.42, w:.30, win:true},
+    {n:3, k:"ph3", cap:"Bedroom 2, west wall", seed:11, x:.18, w:.52, base:true},
+    {n:4, k:"ph4", cap:"Behind the baseboard", seed:5, x:.20, w:.62, low:true, base:true},
+    {n:5, k:"ph5", cap:"Closet back wall and ceiling", seed:13, x:.52, w:.40, ceil:true},
+    {n:6, k:"ph6", cap:"Behind the vanity", seed:17, x:.26, w:.50, van:true}
+  ];
+  function rnd(seed){ var s = seed; return function(){ s = (s * 9301 + 49297) % 233280; return s / 233280; }; }
+  function photo(p){
+    var r = rnd(p.seed), W = 120, H = 90, dots = "", n = 46, i;
+    var x0 = p.x * W, x1 = (p.x + p.w) * W, top = p.ceil ? 4 : (p.low ? 58 : 34), bot = p.ceil ? 30 : (p.base ? 74 : 80);
+    for (i = 0; i < n; i++){
+      var dx = x0 + r() * (x1 - x0), dy = top + Math.pow(r(), p.ceil ? 1.6 : .7) * (bot - top), rr = .8 + r() * 2.6;
+      dots += '<circle cx="' + dx.toFixed(1) + '" cy="' + dy.toFixed(1) + '" r="' + rr.toFixed(1) + '" fill="' + (r() > .45 ? "#2F3A2A" : "#55633F") + '" opacity="' + (.35 + r() * .55).toFixed(2) + '"/>';
+    }
+    var extra = "";
+    if (p.base) extra += '<rect x="0" y="76" width="120" height="14" fill="#F4F5F6"/><rect x="0" y="76" width="120" height="1.5" fill="#C9CED5"/>';
+    if (p.win) extra += '<rect x="30" y="4" width="60" height="26" fill="#DCE8F5" stroke="#B9C4D1"/><rect x="26" y="29" width="68" height="4" fill="#E9EDF1"/>';
+    if (p.ceil) extra += '<rect x="0" y="0" width="120" height="3" fill="#C9CED5"/><line x1="72" y1="0" x2="72" y2="90" stroke="#C9CED5" stroke-width="1"/>';
+    if (p.van) extra += '<rect x="8" y="58" width="104" height="32" fill="#E9E3D8" stroke="#C9C2B4"/><path d="M48 58v-10h6" fill="none" stroke="#9AA3AE" stroke-width="2.4" stroke-linecap="round"/>';
+    var box = '<rect x="' + (x0 - 4).toFixed(1) + '" y="' + (top - 4) + '" width="' + (x1 - x0 + 8).toFixed(1) + '" height="' + (bot - top + 8) + '" rx="3" fill="none" stroke="#C2410C" stroke-width="1.6" stroke-dasharray="4 3"/>';
+    return '<figure class="ph" data-k="' + p.k + '"><svg viewBox="0 0 120 90" aria-hidden="true"><defs><linearGradient id="g' + p.n + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ECEDEE"/><stop offset="1" stop-color="#D8DBDF"/></linearGradient></defs><rect width="120" height="90" fill="url(#g' + p.n + ')"/>' + extra + dots + box + '</svg><figcaption><b>' + p.n + '</b>' + esc(p.cap) + '</figcaption></figure>';
+  }
+  $("#photos").innerHTML = PH.map(photo).join("") + '<div class="ph more">+8 more</div>';
+
+  /* The draft: every line knows where it came from. */
+  var G = [
+    {h:"Setup and containment", s:"Whole work area", L:[
+      ["HMR","Containment barrier, 6 mil poly",220,"SF",["Protocol 1","Sketch"],["p-cont","contain"],"Protocol line 1, measured along the containment line on the sketch: the hall opening and both doorways sealed."],
+      ["HMR","Zipper door",1,"EA",["Protocol 1"],["p-cont","zip"],"Protocol line 1 calls for a zipper door at the hall."],
+      ["HMR","Decontamination chamber",1,"EA",["Protocol 1"],["p-cont","zip"],"Protocol line 1 puts the decon chamber just outside the zipper door."],
+      ["HMR","Negative air machine, HEPA, per 24 hours",3,"DA",["Protocol 2"],["p-neg","contain"],"Protocol line 2. Three days covers tear-out, cleaning and the clearance visit."],
+      ["HMR","Air scrubber, HEPA, per 24 hours",3,"DA",["Protocol 2","Sketch"],["p-neg","vanity"],"A second unit for the hall bath, which sits at the far end of the airflow on the sketch."],
+      ["HMR","Protective gear, full kit, per tech per day",6,"EA",["Protocol 2"],["p-neg"],"Two techs for three days."]
+    ]},
+    {h:"Bedroom 2", s:"12' × 11', 8' ceiling", L:[
+      ["HMR","Tear out drywall to 4 ft, bag for disposal",92,"SF",["Protocol 3","Sketch","Photos 1 to 3"],["p-cut","b2-north","b2-west","ph1","ph2","ph3","m-n","m-w"],"North wall 12 ft plus west wall 11 ft is 23 LF. Growth reaches 2 ft in photos 1 to 3, so the protocol's 2 ft rule puts the cut at 4 ft."],
+      ["HMR","Tear out insulation, bag for disposal",92,"SF",["Protocol 3","Sketch"],["p-cut","b2-north","b2-west"],"Both walls are exterior walls on the sketch, so the batts come out with the drywall."],
+      ["FNC","Remove baseboard, bag for disposal",23,"LF",["Protocol 4","Photo 4"],["p-trim","ph4","b2-north","b2-west"],"Photo 4 shows growth behind the baseboard on both affected walls."],
+      ["HMR","HEPA vacuum, framing and floor",224,"SF",["Protocol 5"],["p-clean","b2-north","b2-west"],"92 SF of open framing plus 132 SF of floor."],
+      ["HMR","Apply antimicrobial to framing",92,"SF",["Protocol 5"],["p-clean","b2-north","b2-west"],"Every stud bay that was opened."]
+    ]},
+    {h:"Closet", s:"5' × 4'", L:[
+      ["HMR","Tear out drywall, full height, bag for disposal",40,"SF",["Protocol 3","Photo 5"],["p-cut","cl-back","ph5","m-c"],"Back wall, 5 ft by 8 ft, full height per protocol line 3."],
+      ["HMR","Tear out ceiling drywall at the corner",8,"SF",["Photo 5"],["cl-ceil","ph5"],"Photo 5 shows growth at the ceiling corner. 2 ft by 4 ft."],
+      ["FNC","Remove baseboard, bag for disposal",18,"LF",["Protocol 4","Sketch"],["p-trim","cl-back"],"The closet's full perimeter on the sketch."],
+      ["HMR","HEPA vacuum, framing and floor",68,"SF",["Protocol 5"],["p-clean","cl-back","cl-ceil"],"48 SF of open wall and ceiling plus 20 SF of floor."],
+      ["HMR","Apply antimicrobial to framing",48,"SF",["Protocol 5"],["p-clean","cl-back","cl-ceil"],"The opened wall and ceiling framing."]
+    ]},
+    {h:"Hall bath", s:"9' × 6'", L:[
+      ["CAB","Detach and reset vanity",1,"EA",["Protocol 4","Photo 6"],["p-trim","vanity","ph6"],"Protocol line 4. Photo 6 shows the leak behind it."],
+      ["HMR","Tear out drywall behind the vanity to 4 ft",24,"SF",["Protocol 3","Photo 6"],["p-cut","hb-wall","ph6","m-b"],"The 6 ft wall behind the vanity, cut to 4 ft."],
+      ["HMR","HEPA vacuum, framing and floor",78,"SF",["Protocol 5"],["p-clean","hb-wall"],"24 SF of open framing plus 54 SF of floor."],
+      ["HMR","Apply antimicrobial to framing",24,"SF",["Protocol 5"],["p-clean","hb-wall"],"The opened framing behind the vanity."]
+    ]},
+    {h:"Close-out", s:"All four areas", L:[
+      ["CLN","Final HEPA vacuum and damp wipe, contained area",241,"SF",["Protocol 5","Sketch"],["p-clean","contain"],"Floor of every contained area: 132 + 20 + 35 for the hall + 54."],
+      ["HMR","Haul bagged debris",1,"EA",["Sketch"],["b2-north","b2-west","cl-back","hb-wall"],"One load for about 256 SF of tear-out."]
+    ]}
+  ];
+  var R = {h:"Rebuild after clearance", s:"Drafted now, sent when clearance passes", L:[
+    ["DRY","Hang, tape and finish drywall",164,"SF",["Tear-out above"],["b2-north","b2-west","cl-back","cl-ceil","hb-wall"],"Matches every square foot torn out: 92 + 40 + 8 + 24."],
+    ["INS","Batt insulation, exterior walls",92,"SF",["Tear-out above"],["b2-north","b2-west"],"Replaces the insulation removed from the two exterior walls."],
+    ["PNT","Seal and paint walls, Bedroom 2",368,"SF",["Sketch"],["b2-north","b2-west"],"All four walls so the color matches: 46 LF by 8 ft."],
+    ["PNT","Seal and paint walls, closet",144,"SF",["Sketch"],["cl-back"],"18 LF by 8 ft."],
+    ["PNT","Paint wall behind the vanity",48,"SF",["Sketch"],["hb-wall"],"6 LF by 8 ft."],
+    ["FNC","Install baseboard",41,"LF",["Tear-out above"],["b2-north","b2-west","cl-back"],"23 LF in Bedroom 2 plus 18 LF in the closet."],
+    ["PNT","Paint baseboard",41,"LF",["Tear-out above"],["b2-north","b2-west","cl-back"],"Same 41 LF."]
+  ]};
+
+  var body = $("#est-body"), sub = $("#est-sub"), btn = $("#draft"), drafted = false, showRebuild = false, edits = 0, selKey = null;
+
+  function clearLit(){ each(document.querySelectorAll(".lit"), function(n){ n.classList.remove("lit"); }); document.body.classList.remove("has-lit"); }
+  var inputs = $("#inputs"), wide = window.matchMedia ? window.matchMedia("(min-width: 981px)") : null;
+  function light(keys){ clearLit(); keys.forEach(function(k){ each(document.querySelectorAll('[data-k="' + k + '"]'), function(n){ n.classList.add("lit"); }); }); if (keys.length) document.body.classList.add("has-lit"); }
+  function reveal(prefer){
+    if (!wide || !wide.matches) return;
+    var card = prefer ? document.getElementById(prefer) : null;
+    if (!card){ var first = inputs.querySelector(".lit"); if (!first) return; card = first.closest(".card") || first; }
+    var top = card.offsetTop - inputs.offsetTop, h = card.offsetHeight;
+    if (top < inputs.scrollTop || top + h > inputs.scrollTop + inputs.clientHeight){ inputs.scrollTo({top: Math.max(0, top - 4), behavior: reduce ? "auto" : "smooth"}); }
+  }
+
+  function lineHTML(l, gi, li, anim){
+    var id = gi + "-" + li;
+    return '<div class="ln' + (anim ? " new" : "") + '" role="button" tabindex="0" data-id="' + id + '" style="' + (anim ? "animation-delay:" + (li * 40) + "ms" : "") + '">' +
+      '<span class="cat">' + l[0] + '</span>' +
+      '<span><span class="d">' + esc(l[1]) + (l.edited ? '<span class="edited">Edited</span>' : "") + '</span><span class="srcs">' + l[4].map(function(s){ return '<span class="src">' + esc(s) + '</span>'; }).join("") + '</span></span>' +
+      '<span class="q"><b data-q="' + id + '" title="Change the quantity">' + Number(l[2]).toLocaleString("en-US") + '</b><span>' + l[3] + '</span></span>' +
+      '<span class="why">' + esc(l[6]) + '</span></div>';
+  }
+  function groupHTML(g, gi, anim){
+    return '<div class="grp' + (gi === "r" ? " rebuild" : "") + '"' + (gi === "r" && !showRebuild ? " hidden" : "") + '><div class="grp-h"><h3>' + esc(g.h) + '</h3><small>' + esc(g.s) + '</small></div>' + g.L.map(function(l, li){ return lineHTML(l, gi, li, anim); }).join("") + '</div>';
+  }
+  function count(){ var n = 0; G.forEach(function(g){ n += g.L.length; }); return n; }
+  function find(id){ var p = id.split("-"); return p[0] === "r" ? R.L[+p[1]] : G[+p[0]].L[+p[1]]; }
+
+  function render(anim){
+    var n = count();
+    sub.textContent = "Hendricks residence, ready for your review";
+    body.innerHTML =
+      '<div class="sum"><span class="chip"><b>' + n + '</b> lines</span><span class="chip"><b>4</b> areas</span><span class="chip"><b>256 SF</b> tear-out</span><span class="chip go-c" id="ed-chip">' + (edits ? edits + (edits === 1 ? " change" : " changes") + " by you" : "Nothing changed yet") + '</span></div>' +
+      '<div class="tools"><button type="button" class="tb pri" id="x-open"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>Export for Xactimate</button><button type="button" class="tb" id="rb" aria-pressed="' + showRebuild + '">Rebuild lines, ' + R.L.length + ' ready</button><button type="button" class="tb" id="redo"><svg class="ic" aria-hidden="true"><use href="#i-redo"/></svg>Draft again</button></div>' +
+      '<div class="by"><svg class="ic" style="color:var(--blue);margin-top:1px" aria-hidden="true"><use href="#i-spark"/></svg><span><b>Tap any line</b> to see where it came from on the sketch, the protocol and the photos. Tap a quantity to change it.</span></div>' +
+      G.map(function(g, gi){ return groupHTML(g, gi, anim); }).join("") + groupHTML(R, "r", false) +
+      '<p class="foot-note">Clearance testing is by the IEP, so it stays off your estimate. Quantities come from the sketch, the protocol and the photos. Prices come from your Xactimate price list.</p>';
+    if (selKey){ var s = body.querySelector('[data-id="' + selKey + '"]'); if (s) s.classList.add("sel"); }
+  }
+
+  var STEPS = [
+    ["Reading the sketch: 4 areas, 241 SF of floor, 8 ft ceilings", ["contain","b2-north","b2-west","cl-back","hb-wall"], "c-sk"],
+    ["Reading the protocol: containment, negative air, 2 ft past growth", ["p-cont","p-neg","p-cut"], "c-pr"],
+    ["Matching 14 photos: growth on 4 walls and 1 ceiling corner", ["ph1","ph2","ph3","ph4","ph5","ph6"], "c-ph"],
+    ["Checking moisture readings against the 12% dry standard", ["m-n","m-w","m-c","m-b"], "c-sk"],
+    ["Writing " + count() + " line items in Xactimate order", ["b2-north","b2-west","cl-back","cl-ceil","hb-wall"], "c-sk"]
+  ];
+  function draft(){
+    btn.disabled = true; selKey = null;
+    sub.textContent = "Drafting";
+    if (reduce){ drafted = true; render(false); btn.disabled = false; btn.lastChild.textContent = "Draft again"; btn.classList.add("done"); clearLit(); return; }
+    body.innerHTML = '<ol class="steps">' + STEPS.map(function(s){ return '<li><i></i>' + esc(s[0]) + '</li>'; }).join("") + '</ol>';
+    var items = body.querySelectorAll(".steps li"), i = 0;
+    (function step(){
+      if (i > 0){ items[i - 1].classList.remove("on"); items[i - 1].classList.add("ok"); }
+      if (i === items.length){
+        setTimeout(function(){ clearLit(); drafted = true; render(true); btn.disabled = false; btn.lastChild.textContent = "Draft again"; btn.classList.add("done"); reveal("c-sk"); }, 380);
+        return;
+      }
+      items[i].classList.add("on"); light(STEPS[i][1]); reveal(STEPS[i][2]);
+      i++; setTimeout(step, 640);
+    })();
+    if (window.innerWidth < 981){ $("#est").scrollIntoView({behavior: reduce ? "auto" : "smooth", block:"start"}); }
+  }
+  btn.addEventListener("click", draft);
+  body.addEventListener("click", function(e){ if (e.target.closest && e.target.closest("[data-draft]")) draft(); });
+
+  /* Selecting a line shows its reason and lights up its sources. */
+  function select(row){
+    var id = row.getAttribute("data-id"), l = find(id);
+    each(body.querySelectorAll(".ln.sel"), function(n){ if (n !== row) n.classList.remove("sel"); });
+    if (row.classList.contains("sel")){ row.classList.remove("sel"); selKey = null; clearLit(); return; }
+    row.classList.add("sel"); selKey = id; light(l[5]); reveal();
+  }
+  function editQty(b){
+    var id = b.getAttribute("data-q"), l = find(id), input = document.createElement("input");
+    input.type = "number"; input.min = "0"; input.step = "1"; input.value = l[2]; input.setAttribute("aria-label", "Quantity for " + l[1]);
+    b.replaceWith(input); input.focus(); input.select();
+    var done = false;
+    function commit(save){
+      if (done) return; done = true;
+      var v = Math.max(0, Math.round(Number(input.value)));
+      if (save && !isNaN(v) && v !== l[2]){ l[2] = v; if (!l.edited){ l.edited = true; edits++; } toast("Quantity updated. Marked as your change."); }
+      render(false);
+    }
+    input.addEventListener("keydown", function(e){ if (e.key === "Enter"){ e.preventDefault(); commit(true); } if (e.key === "Escape"){ commit(false); } });
+    input.addEventListener("blur", function(){ commit(true); });
+  }
+  body.addEventListener("click", function(e){
+    var t = e.target;
+    if (t.closest("input")) return;
+    var q = t.closest("[data-q]");
+    if (q){ e.stopPropagation(); editQty(q); return; }
+    if (t.closest("#x-open")){ openX(); return; }
+    if (t.closest("#rb")){ showRebuild = !showRebuild; render(false); if (showRebuild){ var r = body.querySelector(".rebuild"); if (r) r.scrollIntoView({behavior: reduce ? "auto" : "smooth", block:"nearest"}); } return; }
+    if (t.closest("#redo")){ draft(); return; }
+    var row = t.closest(".ln");
+    if (row) select(row);
+  });
+  body.addEventListener("keydown", function(e){
+    var row = e.target.closest && e.target.closest(".ln");
+    if (row && (e.key === "Enter" || e.key === " ") && e.target === row){ e.preventDefault(); select(row); }
+  });
+
+  /* Export: the lines in Xactimate's order, with a copy button. */
+  var xd = $("#xd"), xbody = $("#xbody");
+  function allLines(){
+    var out = [];
+    G.forEach(function(g){ g.L.forEach(function(l){ out.push([l[0], l[1], g.h, l[2], l[3]]); }); });
+    if (showRebuild) R.L.forEach(function(l){ out.push([l[0], l[1], "Rebuild", l[2], l[3]]); });
+    return out.sort(function(a, b){ return a[0] === b[0] ? 0 : (a[0] < b[0] ? -1 : 1); });
+  }
+  function openX(){
+    xbody.innerHTML = allLines().map(function(r){ return '<tr><td><span class="cat" style="padding:0 6px">' + r[0] + '</span></td><td>' + esc(r[1]) + '</td><td style="color:var(--ink-3)">' + esc(r[2]) + '</td><td class="n">' + Number(r[3]).toLocaleString("en-US") + '</td><td>' + r[4] + '</td></tr>'; }).join("");
+    if (typeof xd.showModal === "function") xd.showModal(); else xd.setAttribute("open", "");
+  }
+  xd.addEventListener("click", function(e){ if (e.target === xd || e.target.closest("[data-close]")) xd.close(); });
+  $("#copy").addEventListener("click", function(){
+    var rows = allLines(), text = rows.map(function(r){ return r[0] + "\t" + r[1] + "\t" + r[2] + "\t" + r[3] + "\t" + r[4]; }).join("\n");
+    var ok = function(){ toast("Copied " + rows.length + " line items"); };
+    if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(ok, function(){ toast("Select the table to copy it"); }); } else { toast("Select the table to copy it"); }
+  });
+
+  var toastEl = $("#toast"), tT = 0;
+  function toast(msg){
+    toastEl.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>';
+    toastEl.appendChild(document.createTextNode(msg));
+    toastEl.classList.add("show"); clearTimeout(tT); tT = setTimeout(function(){ toastEl.classList.remove("show"); }, 2400);
+  }
+})();
+</script>
+</body>
+</html>
