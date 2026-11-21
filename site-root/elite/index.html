@@ -702,6 +702,8 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
 @media (max-width:999px){.found .fx{grid-template-columns:minmax(0,1fr)}.found .ff{flex-direction:column;gap:8px}.found .ff small{text-align:left}}
 
 .nw{white-space:nowrap}
+
+.hp-note{margin:10px 0 0!important;padding-top:10px;border-top:1px solid #EEF1F4;color:#3D4855;font-size:12.5px!important}
 </style>
 </head>
 <body>
@@ -827,7 +829,7 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
           <h3 data-group="carrier">Carrier review <em>4</em></h3>
           <button type="button" class="jr" data-job="castillo" data-k="castillo" data-region="tx"><div><b>Castillo</b><small>Stone Oak. State Farm, no reply on the estimate</small></div><span class="av sm" aria-hidden="true">JK</span><span class="chip r">19 days</span></button>
           <button type="button" class="jr" data-job="lopez" data-k="lopez" data-region="tx"><div><b>Lopez</b><small>Bulverde. Allstate, supplement under review</small></div><span class="av sm" aria-hidden="true">JK</span><span class="chip a">16 days</span></button>
-          <button type="button" class="jr" data-job="brooks" data-region="tx"><div><b>Brooks</b><small>Kerrville. Nationwide, contents approval</small></div><span class="av sm" aria-hidden="true">JK</span><span class="chip">11 days</span></button>
+          <button type="button" class="jr" data-job="brooks" data-k="brooks" data-region="tx"><div><b>Brooks</b><small>Kerrville. Nationwide, contents approval 11 days</small></div><span class="av sm" aria-hidden="true">JK</span><span class="chip a">No update, 4 days</span></button>
           <button type="button" class="jr" data-job="thib" data-region="la"><div><b>Thibodeaux</b><small>Lake Charles. Allstate, estimate sent</small></div><span class="av sm" aria-hidden="true">TR</span><span class="chip">6 days</span></button>
           <h3 data-group="approved">Approved <em>2</em></h3>
           <button type="button" class="jr" data-job="patel" data-region="tx"><div><b>Patel</b><small>New Braunfels. Mold, containment today</small></div><span class="av sm" aria-hidden="true">AP</span><span class="chip">Today</span></button>
@@ -1216,7 +1218,7 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
     lc:{t:"Lake Charles, LA", s:"Storm deployment", st:["Day 4 of the trip",""], f:[["Crew","Chris B. and Tony R."],["Jobs","3 drying, 1 waiting"],["Hotel","Through Monday"],["Back","Tuesday"]], c:[["Hotel booked",1],["Per diem logged",1],["Daily readings sent",1],["Return trip booked",0]], files:["62 photos"]},
     castillo:{t:"Castillo, water loss", s:"Stone Oak, San Antonio", st:["Waiting on State Farm, 19 days","r"], f:[["Lead","Jordan K."],["Carrier","State Farm"],["Adjuster","Raul Diaz"],["Estimate","$18,240"]], c:[["Estimate sent",1,"19 days ago"],["First follow-up",1,"8 days ago"],["Second follow-up",0,"Drafted"],["Call the adjuster",0]], d:["Follow-up to State Farm","Following up on the estimate we sent for the Castillo water loss, claim 0441-2877. Please confirm it's under review, and tell us if you need anything else from us."], files:["Xactimate estimate","Matterport 3D scan","28 photos"]},
     lopez:{t:"Lopez, water loss", s:"Bulverde", st:["Supplement under review, 16 days","a"], f:[["Lead","Jordan K."],["Carrier","Allstate"],["Claim number","AL-48213"],["Adjuster","Sarah Patterson"]], c:[["Supplement sent",1,"16 days ago"],["Photos and logs attached",1],["Follow-up",0,"Drafted"]], d:["Follow-up to Allstate","Following up on the supplement for the Lopez water loss. The photos and moisture logs are attached to the original submission."], files:["Supplement","19 photos"]},
-    brooks:{t:"Brooks, fire loss", s:"Kerrville", st:["Contents approval, 11 days",""], f:[["Lead","Jordan K."],["Carrier","Nationwide"],["Claim number","NW-99102"],["Homeowner","R. Brooks"]], c:[["Pack-out done",1],["Contents inventory sent",1,"11 days ago"],["Approval",0]], files:["Inventory","44 photos"]},
+    brooks:{t:"Brooks, fire loss", s:"Kerrville", st:["No update in 4 days","a"], f:[["Lead","Jordan K."],["Carrier","Nationwide"],["Claim number","NW-99102"],["Homeowner","Ron B."]], c:[["Pack-out done",1],["Contents inventory sent",1,"11 days ago"],["Homeowner update today",0,"Last one 4 days ago"],["Approval",0]], d:["Update for Ron","Hi Ron, it's Sam with Elite. Quick update on your contents claim: Nationwide still has the inventory we sent 11 days ago. We're following up with them today and will text you the moment they answer."], files:["Inventory","44 photos"]},
     thib:{t:"Thibodeaux, water loss", s:"Lake Charles, LA", st:["Estimate sent, 6 days",""], f:[["Lead","Tony R."],["Carrier","Allstate"],["Claim number","AL-50277"],["Homeowner","L. Thibodeaux"]], c:[["Estimate sent",1],["Adjuster assigned",1],["Approval",0]], files:["Estimate","22 photos"]},
     patel:{t:"Patel, mold remediation", s:"New Braunfels", st:["Approved, containment today",""], f:[["Lead","Alex P."],["Carrier","Nationwide"],["Claim number","Missing"],["Homeowner","P. Patel"]], c:[["Protocol approved",1],["Containment set",0,"Today"],["Negative air running",0],["Clearance test booked",0]], files:["Protocol","12 photos"]},
     reyes:{t:"Reyes, rebuild", s:"Boerne", st:["Rebuild starts Monday",""], f:[["Lead","Ray S."],["Carrier","Chubb"],["Claim number","CH-7604"],["Homeowner","C. Reyes"]], c:[["Materials ordered",1],["Walkthrough with homeowner",1],["Drywall crew booked",0]], files:["Scope","15 photos"]},
@@ -1391,6 +1393,7 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
     else if (a === "lopez") sendJob("lopez");
     else if (a === "updates") UPD.forEach(sendJob);
     else if (a === "moore") sendJob("moore");
+    else if (a === "brooks") sendJob("brooks");
     else if (a === "alvarez"){
       S.alvarez = true;
       var chip = $("alvarez-chip");
@@ -1539,6 +1542,13 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
         html: left.map(function(k){ var f = FIN[k]; return msg({ ch: "Text", to: f.to, side: money(f.amt) + ", " + f.work, body: finText(f), extra: lnk("Your Wisetack prequalify link goes at the end") }); }).join(""),
         note: "Sends by text from your office number. They see monthly options before they sign.", send: left.length > 1 ? "Send all " + left.length : "Send financing offer", done: "Offers sent",
         toast: "Financing offers sent to " + left.length + " homeowner" + (left.length > 1 ? "s" : "") + ".", run: function(){ left.forEach(sendFin); } };
+    },
+    brooks: function(){
+      if (JOBS.brooks.sent) return null;
+      return { kicker: "Drafted from the job's records", title: "Update for Ron Brooks",
+        html: meta([["To", "Ron Brooks, homeowner"], ["Job", "Fire loss, Kerrville"], ["Last update", "4 days ago"]]) + msg({ ch: "Text", to: "Ron Brooks", side: "Brooks, fire loss", body: JOBS.brooks.d[1], extra: lnk("Link to Ron's home page goes at the end") }),
+        note: "Sends by text from your office number and saves to the Brooks job.", send: "Send update", done: "Update sent",
+        toast: "Update sent to Ron Brooks.", run: function(){ act("brooks"); } };
     },
     reviews: function(){
       if (S.reviews) return null;
@@ -1720,7 +1730,7 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
     var s = '<div class="hp-top">' + brandMini() + '<div><b>Your home, with Elite</b><small>' + esc(j.s) + '</small></div>' + CLOSE + '</div>';
     s += '<div class="hp-hero"><small>Hi ' + esc(h.name) + ', here\'s where things stand</small><h4>Drying, day ' + h.day + '</h4><p>' + esc(h.msg) + '</p></div>';
     s += '<ol class="steps">' + steps.map(function(x, i){ return '<li class="' + (i < h.step ? "done" : i === h.step ? "now" : "") + '">' + x + '</li>'; }).join("") + '</ol>';
-    s += '<div class="hp-card"><h5>Next visit</h5><div class="hp-who"><span class="av">' + esc(h.next[0]) + '</span><div><b>' + esc(h.next[1]) + '</b><small>' + esc(h.next[2]) + '. ' + esc(h.next[3]) + '</small></div></div></div>';
+    s += '<div class="hp-card"><h5>Next visit</h5><div class="hp-who"><span class="av">' + esc(h.next[0]) + '</span><div><b>' + esc(h.next[1]) + '</b><small>' + esc(h.next[2]) + '. ' + esc(h.next[3]) + '</small></div></div><p class="hp-note">If anything changes, you get a text right away.</p></div>';
     if (j.files.indexOf("Matterport 3D scan") > -1) s += '<div class="hp-card"><h5>Your scans</h5><div class="hp-scan"><span>3D walkthrough</span><span>Thermal photos</span></div></div>';
     s += '<div class="hp-card"><h5>Your claim</h5><p><b>' + esc(h.claim[0]) + '</b>, claim ' + esc(h.claim[1]) + '. ' + esc(h.claim[2]) + '</p></div>';
     s += '<div class="hp-card"><h5>Updates</h5><ul class="tl">' + h.tl.map(function(t){ return '<li><small>' + esc(t[0]) + '</small>' + esc(t[1]) + '</li>'; }).join("") + '</ul></div>';
@@ -1859,6 +1869,12 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
         row("hartman", "Hartman", "Crawl space", "14 days ago", "$3,200")
       ]) + '<div class="ac-foot">' + btn("finall", "Offer financing to all 3", "Offers sent", all, true) + '<small>Each gets a text with your Wisetack link, so they can say yes the same day.</small></div>' };
     },
+    unheard: function(){
+      var sent = !!JOBS.brooks.sent;
+      return { t: sent ? "Every homeowner has heard from you in 3 days" : "Ron Brooks hasn't heard from you in 4 days", h: tbl(["Homeowner", "Job", "Last update", "Waiting on"], [
+        '<tr><td><b>Ron B.</b><small>Kerrville</small></td><td>Fire loss</td><td>' + (sent ? '<span class="chip g">Today</span>' : '<span class="chip a">4 days ago</span>') + '</td><td>Nationwide, contents approval</td></tr>'
+      ]) + '<div class="ac-foot">' + btn("brooks", "Review the update", "Update sent", sent, true) + '<small>Elite flags anyone who goes 3 days without hearing from you, and drafts the text.</small></div>' };
+    },
     reviews: function(){
       var a = S.reviews;
       return { t: "3 homeowners to ask for a review", h: tbl(["Homeowner", "Job", "Closed"], [
@@ -1885,6 +1901,10 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
     if (!S.rebuilt.ruiz) items.push("<b>Ruiz</b>, $14,200");
     if (!S.rebuilt.lc) items.push("<b>Lake Charles</b>, 3 homes, $31,700");
     return { lead: "<b>" + money(l.amt) + "</b> across " + l.n + (l.n > 1 ? " jobs:" : " job:"), items: items, tail: "Each estimate drafts from the scans and moisture maps already on the job." };
+  }
+  function unheardAnswer(){
+    if (JOBS.brooks.sent) return { lead: "Nobody. Every homeowner has heard from you in the last 3 days.", items: [], tail: "Elite flags anyone who goes 3 days without an update." };
+    return { lead: "One homeowner: <b>Ron Brooks</b>.", items: ["Fire loss in Kerrville, <b>4 days</b> since his last update", "His contents claim has been with Nationwide for 11 days"], tail: "An update is drafted. Nobody should go 3 days without hearing from you." };
   }
   function updatesAnswer(){
     var left = UPD.filter(function(k){ return !JOBS[k].sent; });
@@ -1914,6 +1934,7 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
     licenses: { q: "Which licenses renew soon?", a: { lead: "Two renew soon:", items: ["<b>Texas mold remediation company license</b>, 45 days", "<b>Chris B.'s WRT</b>, 30 days"], tail: "Both have the next step on the HR desk." }, v: "hr", k: ["lic1", "wrt"] },
     movein: { q: "What did the move-in clean up?", a: { lead: "Your ClickUp and three sheets, cleaned up:", items: ["<b>14</b> duplicate jobs merged", "<b>37</b> carrier names fixed", "<b>23</b> addresses standardized", "<b>48</b> ClickUp tasks attached to their jobs"], tail: "9 jobs are missing a claim number, flagged for the office." }, v: "movein", k: ["sum"] },
     missing: { q: "Which jobs are missing a claim number?", a: { lead: "<b>9 jobs</b> came over without a claim number.", items: ["Each one is flagged in the cleaned-up sheet", "<b>Patel</b> comes first: containment starts today"], tail: "Once the office fills them in, they flow to each job's claim checklist." }, v: "movein", k: ["missing"] },
+    unheard: { q: "Who hasn't heard from us in 3 days?", a: unheardAnswer, v: "jobs", k: ["brooks"], job: "brooks" },
     updates: { q: "Which homeowners haven't had an update today?", a: updatesAnswer, v: "jobs", k: ["garza", "kim", "ruiz"], job: "garza" },
     storm: { q: "Who's deployed out of state?", a: { lead: "<b>Chris B.</b> and <b>Tony R.</b>, day 4 in Lake Charles:", items: ["4 jobs: 3 drying, 1 waiting on Allstate", "Hotel and per diem set through Monday"], tail: "They're back Tuesday." }, v: "overview", k: ["storm"] },
     hire: { q: "Who's our best applicant?", a: { lead: "Your best applicant is <b>D. Alvarez</b>.", items: ["WRT and ASD, 3 years", "Ride-along with Diego, Thursday 3:15 PM"] }, v: "hr", k: ["alvarez"] },
@@ -1929,6 +1950,7 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
       if (!JOBS.castillo.sent) items.push("<b>Castillo</b>: 19 days with State Farm, follow-up drafted");
       if (!JOBS.lopez.sent) items.push("<b>Lopez</b>: 16 days with Allstate, follow-up drafted");
       if (st.left.length) items.push("<b>" + st.left.length + " homeowner update" + (st.left.length > 1 ? "s" : "") + "</b> due by 5 PM");
+      if (!JOBS.brooks.sent) items.push("<b>Ron Brooks</b>: no update in 4 days, text drafted");
       items.push("<b>Lake Charles</b>: 4 jobs, day 4 of the deployment");
       return { lead: "18 open jobs. Worth your eyes:", items: items, tail: "Tap any job for its checklist, files and drafts." };
     },
@@ -1946,7 +1968,7 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
     movein: function(){ return QA.movein.a; },
     costs: costAnswer
   };
-  var CHIPS = { overview: ["today", "claims", "owed", "rebuilds", "oncall"], jobs: ["claims", "updates", "storm", "owed"], growth: ["rebuilds", "partners", "estimates", "reviews", "found"], hr: ["oncall", "reyes", "licenses", "hire", "overtime"], movein: ["movein", "missing", "cost"], costs: ["cost", "movein"] };
+  var CHIPS = { overview: ["today", "claims", "owed", "rebuilds", "oncall"], jobs: ["claims", "updates", "unheard", "storm"], growth: ["rebuilds", "partners", "estimates", "reviews", "found"], hr: ["oncall", "reyes", "licenses", "hire", "overtime"], movein: ["movein", "missing", "cost"], costs: ["cost", "movein"] };
   var FALLBACK = "Once it's built on your records, it answers questions like that from your own jobs, claims and crews. Try one of the questions below.";
   var askQ = $("ask-q"), askA = $("ask-a"), tryList = $("try-list"), lastFn = null;
   function chips(view, on){
@@ -1996,6 +2018,7 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
     ["today", /today|need me|needs me|priorit|morning|brief/],
     ["found", /website|web site|our site|your site|found on|phone number|call button/],
     ["reviews", /review|rating|stars|google/],
+    ["unheard", /heard|silent|communicat|in touch|no update in/],
     ["updates", /update|homeowner|customer/],
     ["oncall", /on call|on-call|night|rotation|burn/],
     ["overtime", /overtime|hours|40/],

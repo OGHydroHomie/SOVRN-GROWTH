@@ -6,162 +6,408 @@
 <title>Elite Operations Build Agreement | SOVRN Growth</title>
 <meta name="description" content="SOVRN Growth build agreement for Elite Operations, built for Restoration Solutions By Elite.">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#05080E">
 <link rel="canonical" href="https://www.sovrngrowth.com/agreement/elite/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#EEF0EC;--surface:#F8F9F6;--ink:#1C2125;--muted:#545D64;--rule:#CDD3CB;--tape:#1B64A3;--hivis:#F2C200}
-@media (prefers-color-scheme:dark){:root{--bg:#14181B;--surface:#1A1F23;--ink:#E6E9E3;--muted:#9CA5AA;--rule:#2C3338;--tape:#8CC1EE}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Archivo,system-ui,sans-serif}
-main{max-width:760px;margin:0 auto;padding:48px 20px 80px}
-.brand{font-weight:800;font-stretch:112%;letter-spacing:.01em;text-decoration:none;color:var(--ink)}
-h1{font-size:clamp(30px,5vw,44px);line-height:1.08;font-weight:800;font-stretch:108%;margin:28px 0 8px}
-.lede{color:var(--muted);margin:0 0 24px}
-.glance{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 20px}
-.glance div{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:14px 16px}
-.glance b{display:block;font-size:24px;line-height:1.15;font-weight:800;font-stretch:108%;font-variant-numeric:tabular-nums}
-.glance span{display:block;margin-top:3px;color:var(--muted);font-size:14px;line-height:1.4}
-@media (min-width:680px){.glance{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.card{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:24px 24px 8px;margin:0 0 16px}
-h2{font-size:19px;font-weight:750;margin:0 0 10px;display:flex;gap:10px;align-items:baseline}
-h2 span{color:var(--tape);font-variant-numeric:tabular-nums;font-size:15px}
-h3{font-size:16px;margin:18px 0 6px}
-h3 em{font-style:normal;color:var(--muted);font-weight:600}
-p,ul{margin:0 0 16px}
-ul{padding-left:20px}
-li{margin:4px 0}
-li b{font-weight:700}
-.foot{color:var(--muted);font-size:15px;margin-top:28px}
-a{color:var(--tape)}
-@media print{body{background:#fff;color:#000}.card,.glance div{border-color:#bbb}}
+:root{
+  --bg:#05080E;--bg-2:#0A0F18;--ink:#EEF2F7;--muted:#A0AAB8;--dim:#6E7887;
+  --line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);--glass:rgba(255,255,255,.035);
+  --green:#3BE8A0;--green-ink:#03140B;--green-soft:rgba(59,232,160,.12);
+  --paper:#F3F5F8;--sheet:#FFFFFF;--p-ink:#121821;--p-muted:#4A5565;--p-line:#E2E7EE;--p-accent:#087A4C;--p-hover:rgba(18,24,33,.05);
+  --gutter:32px;--max:1160px;color-scheme:dark;
+}
+@media (prefers-color-scheme:dark){:root{--paper:#070B12;--sheet:#0C121C;--p-ink:#E8EDF4;--p-muted:#A0AAB8;--p-line:rgba(255,255,255,.08);--p-accent:#3BE8A0;--p-hover:rgba(255,255,255,.05)}}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+h1,h2,h3,h4{text-wrap:balance}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.num{font-variant-numeric:tabular-nums}
+.ic{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+a{color:var(--green);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:10px}
+.nw{white-space:nowrap}
+
+/* Header */
+.top{border-bottom:1px solid var(--line)}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.mark{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-size:19px;font-weight:500;letter-spacing:.01em;font-stretch:112%;white-space:nowrap}
+.mark b{font-weight:850}
+.mark i{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 210deg,#3BE8A0,#2DD4BF,#6E9BFF,#3BE8A0);box-shadow:0 0 16px rgba(59,232,160,.55)}
+.for{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:14px}
+.for .logo{display:grid;place-items:center;height:44px;padding:4px 10px;border-radius:12px;background:#FFFFFF;box-shadow:0 0 0 1px rgba(255,255,255,.2)}
+.for img{display:block;height:36px;width:auto}
+
+/* The offer */
+.offer{position:relative;padding:76px 0 34px;overflow:hidden}
+.offer::before{content:"";position:absolute;left:50%;top:-140px;width:1100px;height:620px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(59,232,160,.17),rgba(45,212,191,.06) 55%,transparent 75%);pointer-events:none}
+.offer .wrap{position:relative}
+.kicker{margin:0;color:var(--muted);font-size:15px;font-weight:600}
+h1{margin:10px 0 0;font-size:clamp(50px,8.2vw,96px);line-height:.96;font-weight:850;letter-spacing:-.04em;font-stretch:104%}
+.lede{max-width:620px;margin:20px 0 0;color:var(--muted);font-size:19px;line-height:1.55}
+.packs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:46px}
+.pack{position:relative;display:flex;flex-direction:column;padding:32px;border:1px solid var(--line-2);border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.pack.rec{border:1px solid transparent;background:linear-gradient(180deg,#0F1D18,#0A1210) padding-box,linear-gradient(155deg,rgba(59,232,160,.95),rgba(45,212,191,.35) 42%,rgba(110,155,255,.28)) border-box;box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 40px 90px -40px rgba(59,232,160,.55)}
+.pack-h{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pack h2{margin:0;font-size:30px;line-height:1.1;font-weight:820;letter-spacing:-.02em}
+.tag{padding:5px 12px;border-radius:999px;background:var(--green-soft);box-shadow:inset 0 0 0 1px rgba(59,232,160,.35);color:var(--green);font-size:13px;font-weight:720;white-space:nowrap}
+.pack-sub{margin:6px 0 0;color:var(--muted);font-size:16.5px}
+.price{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin:24px 0 0}
+.price b{font-size:58px;line-height:1;font-weight:850;letter-spacing:-.035em}
+.price span{color:var(--muted);font-size:15px}
+.ticks{display:grid;gap:13px;margin:24px 0 0;padding:24px 0 0;border-top:1px solid var(--line);list-style:none}
+.ticks li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:12px;color:var(--muted);font-size:15.5px;line-height:1.5}
+.ticks .ic{margin-top:3px;color:var(--dim)}
+.ticks b{color:var(--ink);font-weight:700}
+.rec .ticks .add .ic{color:var(--green)}
+.pays{display:flex;gap:10px;align-items:flex-start;margin:22px 0 0;padding:13px 15px;border-radius:14px;background:var(--green-soft);color:#C9F8E3;font-size:15px;font-weight:600;line-height:1.45}
+.pays .ic{margin-top:2px;color:var(--green)}
+.pay{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:26px}
+.pay-note{display:block;margin-top:12px;color:var(--dim);font-size:13.5px;line-height:1.45}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 22px;border-radius:14px;font:inherit;font-size:16.5px;font-weight:750;text-decoration:none;white-space:nowrap;transition:box-shadow .2s ease,filter .2s ease,border-color .2s ease,background-color .2s ease,transform .2s ease}
+.btn-green{color:var(--green-ink);background:linear-gradient(180deg,#6BF5BD 0%,#35E19A 55%,#22CF88 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 0 0 1px rgba(107,245,189,.55),0 12px 34px -10px rgba(59,232,160,.75),0 0 60px -14px rgba(59,232,160,.6)}
+.btn-green:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn-ghost{color:var(--ink);background:rgba(255,255,255,.04);border:1px solid var(--line-2)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.07)}
+.pack:not(.rec) .btn-ghost:first-child{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22)}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn-green:hover{transform:none}}
+.both{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:22px 0 0;padding:0;list-style:none}
+.both li{padding:17px 18px;border:1px solid var(--line);border-radius:18px;background:var(--glass);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.both b{display:block;font-size:17px;font-weight:760}
+.both span{display:block;margin-top:4px;color:var(--muted);font-size:14px;line-height:1.45}
+
+/* Side by side */
+.cmp{padding:58px 0 84px}
+.cmp-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.cmp h2{margin:0;font-size:clamp(30px,3.6vw,42px);line-height:1.05;font-weight:820;letter-spacing:-.03em}
+.cmp-h p{margin:0;color:var(--muted);font-size:15.5px}
+.grid{width:100%;border-collapse:separate;border-spacing:0;font-size:15.5px}
+.grid th,.grid td{padding:15px 18px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+.grid thead th{padding-top:18px;color:var(--muted);font-size:14px;font-weight:600;vertical-align:bottom}
+.grid thead th b{display:block;color:var(--ink);font-size:19px;font-weight:800;letter-spacing:-.01em}
+.grid tbody th{color:var(--ink);font-weight:500}
+.grid tbody th small{display:block;margin-top:2px;color:var(--dim);font-size:13.5px;font-weight:400}
+.grid td{width:170px;text-align:center;color:var(--muted)}
+.grid .c{background:rgba(59,232,160,.07)}
+.grid thead .c{border-radius:16px 16px 0 0;box-shadow:inset 0 1px 0 rgba(59,232,160,.4)}
+.grid tbody tr:last-child td.c{border-radius:0 0 16px 16px}
+.grid td .ic{width:20px;height:20px;vertical-align:middle;color:var(--muted)}
+.grid td.c .ic{color:var(--green)}
+.grid .no{display:inline-block;width:14px;height:2px;border-radius:2px;background:var(--dim);vertical-align:middle}
+.grid tr.x th{color:#FFFFFF;font-weight:650}
+.grid td b{color:var(--ink);font-weight:700}
+.grid td.c b{color:var(--green)}
+
+/* The terms */
+.paper{background:var(--paper);color:var(--p-ink);padding:84px 0 92px;color-scheme:light}
+@media (prefers-color-scheme:dark){.paper{color-scheme:dark}}
+.paper-in{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:230px minmax(0,1fr);gap:44px;align-items:start}
+.toc{position:sticky;top:28px}
+.toc p{margin:0 0 10px 10px;color:var(--p-muted);font-size:14px;font-weight:650}
+.toc ol{display:grid;gap:1px;margin:0;padding:0;list-style:none}
+.toc a{display:flex;gap:12px;padding:6px 10px;border-radius:9px;color:var(--p-muted);font-size:14.5px;line-height:1.4;text-decoration:none}
+.toc a span{min-width:20px;color:var(--p-accent);font-weight:700;font-variant-numeric:tabular-nums}
+.toc a:hover{background:var(--p-hover);color:var(--p-ink)}
+.toc a:focus-visible{outline-color:var(--p-accent)}
+.sheet{max-width:780px;padding:52px 60px 40px;border:1px solid var(--p-line);border-radius:24px;background:var(--sheet);box-shadow:0 1px 2px rgba(16,24,40,.04),0 40px 80px -50px rgba(16,24,40,.3)}
+.sheet-h h2{margin:0;font-size:36px;line-height:1.05;font-weight:820;letter-spacing:-.03em}
+.sheet-h p{margin:10px 0 0;color:var(--p-muted)}
+.sheet section{margin-top:30px;padding-top:30px;border-top:1px solid var(--p-line);scroll-margin-top:24px}
+.sheet h3{display:flex;gap:14px;align-items:baseline;margin:0 0 12px;font-size:21px;line-height:1.25;font-weight:760;letter-spacing:-.01em}
+.sheet h3 span{color:var(--p-accent);font-size:15px;font-weight:760;font-variant-numeric:tabular-nums}
+.sheet h4{display:flex;align-items:baseline;gap:8px;margin:22px 0 8px;font-size:16.5px;font-weight:760}
+.sheet h4 em{font-style:normal;color:var(--p-muted);font-weight:600}
+.sheet p,.sheet ul{margin:0 0 14px}
+.sheet ul{padding-left:20px}
+.sheet li{margin:7px 0}
+.sheet li::marker{color:var(--p-muted)}
+.sheet a{color:var(--p-accent)}
+.sheet a:focus-visible{outline-color:var(--p-accent)}
+
+/* Start */
+.close{position:relative;padding:92px 0 72px;text-align:center;overflow:hidden}
+.close::before{content:"";position:absolute;left:50%;top:0;width:900px;height:420px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(59,232,160,.12),transparent 75%);pointer-events:none}
+.close .wrap{position:relative}
+.close h2{margin:0;font-size:clamp(36px,5.4vw,60px);line-height:1.02;font-weight:850;letter-spacing:-.035em}
+.close p{margin:14px auto 0;max-width:560px;color:var(--muted)}
+.close .pay{justify-content:center;margin-top:28px;padding-top:0}
+.contact{font-size:15px}
+.contact a{color:var(--ink)}
+.foot{padding:0 0 48px;color:var(--dim);font-size:14px;text-align:center}
+
+@media (max-width:999px){.paper-in{grid-template-columns:minmax(0,1fr)}.toc{display:none}.sheet{padding:36px 28px 28px}}
+@media (max-width:880px){.packs{grid-template-columns:minmax(0,1fr)}.both{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){
+  :root{--gutter:16px}
+  .top-in{min-height:64px}.for>span{display:none}
+  .offer{padding:44px 0 26px}.lede{font-size:17px}
+  .pack{padding:22px;border-radius:20px}.price b{font-size:46px}
+  .pay .btn{flex:1 1 100%}
+  .both{grid-template-columns:minmax(0,1fr)}
+  .cmp{padding:44px 0 56px}
+  .grid{font-size:14.5px}.grid th,.grid td{padding:12px 8px}.grid td{width:74px}.grid thead th b{font-size:16px}
+  .paper{padding:48px 0 56px}.sheet{padding:28px 18px 20px;border-radius:18px}.sheet-h h2{font-size:30px}
+}
+@media print{
+  :root{--paper:#fff;--sheet:#fff;--p-ink:#000;--p-muted:#333;--p-line:#ccc;--p-accent:#000}
+  body,.paper{background:#fff;color:#000}
+  .top,.offer,.cmp,.close,.toc{display:none}
+  .paper{padding:0}.paper-in{display:block;padding:0}.sheet{max-width:none;border:0;box-shadow:none;padding:0}
+}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5l1.8 5.2 5.2 1.8-5.2 1.8L12 17.5l-1.8-5.2L5 10.5l5.2-1.8z"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="mark" href="/"><i aria-hidden="true"></i><span><b>SOVRN</b> Growth</span></a>
+    <div class="for"><span>Prepared for</span><span class="logo"><img src="/elite/elite-logo.png" alt="Restoration Solutions by Elite" width="48" height="36"></span></div>
+  </div>
+</header>
+
 <main>
-<a class="brand" href="/">SOVRN Growth</a>
-<h1>Elite Operations Build Agreement</h1>
-<p class="lede">Built for Restoration Solutions By Elite LLC. Version of November 20, 2026.</p>
+<section class="offer" aria-labelledby="title">
+  <div class="wrap">
+    <p class="kicker">Build agreement, November 21, 2026</p>
+    <h1 id="title">Elite Operations</h1>
+    <p class="lede">Built for Restoration Solutions By Elite LLC. Choose a package, read the terms below, and check the agreement box at checkout.</p>
 
-<div class="glance">
-<div><b>$15,000</b><span>Complete: operations plus the tools that bring in work</span></div>
-<div><b>$10,000</b><span>Core: the operations system</span></div>
-<div><b>Yours</b><span>You own the system and every record in it</span></div>
-<div><b>Fix-first</b><span>If it fails and we can't fix it, you get your money back</span></div>
-</div>
+    <div class="packs">
+      <article class="pack rec" aria-labelledby="pk-complete">
+        <div class="pack-h"><h2 id="pk-complete">Complete</h2><span class="tag">Recommended</span></div>
+        <p class="pack-sub">Runs the shop and brings in work</p>
+        <p class="price"><b class="num">$15,000</b><span>one-time, and you own it</span></p>
+        <ul class="ticks">
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>Everything in Core</b>, from jobs and claims to the morning brief</span></li>
+          <li class="add"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span><b>Partner portal.</b> Plumbers and property managers send you a loss in 30 seconds and follow it.</span></li>
+          <li class="add"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span><b>Rebuilds and estimates.</b> Rebuild work you haven't offered, drafted from each job, with financing follow-up.</span></li>
+          <li class="add"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span><b>Reviews and proof.</b> A review request on every closed job, and your live numbers on your website.</span></li>
+          <li class="add"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span><b>60 days of support</b> after go-live, instead of 30.</span></li>
+        </ul>
+        <p class="pays"><svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg>One rebuild you'd have missed covers the difference.</p>
+        <div class="pay">
+          <a class="btn btn-green" href="https://checkout.sovrngrowth.com/b/dRm28t7Iq6NxaSG6fB9ws0p">Pay $15,000</a>
+          <a class="btn btn-ghost" href="https://checkout.sovrngrowth.com/b/14A4gBgeW1td0e2fQb9ws0q">Pay $7,500 now</a>
+        </div>
+        <small class="pay-note">With half now, the other $7,500 is due when the core system goes live on your data.</small>
+      </article>
 
-<section class="card">
-<h2><span>01</span>Parties and start date</h2>
-<p>This agreement is between Lux Eterna LLC, doing business as SOVRN Growth ("SOVRN Growth"), and Restoration Solutions By Elite LLC (the "Company"). It starts the day the Company makes its first payment.</p>
+      <article class="pack" aria-labelledby="pk-core">
+        <div class="pack-h"><h2 id="pk-core">Core</h2></div>
+        <p class="pack-sub">Runs the shop</p>
+        <p class="price"><b class="num">$10,000</b><span>one-time, and you own it</span></p>
+        <ul class="ticks">
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>Jobs, claims, money and crews</b> on one screen, with how fast each carrier pays</span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>Morning brief and Ask Elite.</b> What needs you today, and answers from your own records.</span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>HR desk and homeowner updates.</b> Hiring, paperwork and renewals, and a page for every homeowner.</span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>Move-in and Found first.</b> Your ClickUp and spreadsheets brought over, and your search listings fixed.</span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>30 days of support</b> after go-live, plus live training.</span></li>
+        </ul>
+        <div class="pay">
+          <a class="btn btn-ghost" href="https://checkout.sovrngrowth.com/b/3cIcN75AiefZ9OC9rN9ws0n">Pay $10,000</a>
+          <a class="btn btn-ghost" href="https://checkout.sovrngrowth.com/b/4gM4gB3sac7R1i60Vh9ws0o">Pay $5,000 now</a>
+        </div>
+        <small class="pay-note">With half now, the other $5,000 is due when the core system goes live on your data.</small>
+      </article>
+    </div>
+
+    <ul class="both" aria-label="Included in both packages">
+      <li><b>Yours</b><span>You own the system and every record in it.</span></li>
+      <li><b>Fix-first</b><span>If an agreed function fails and we can't fix it, you get your money back.</span></li>
+      <li><b>No monthly fee</b><span>Unless you choose the $499 care plan.</span></li>
+      <li><b>Live in 30 days</b><span>The core system on your own data, everything else by day 60.</span></li>
+    </ul>
+  </div>
 </section>
 
-<section class="card">
-<h2><span>02</span>What SOVRN Growth builds</h2>
-<p>Elite Operations: a private system for the Company's owner, office team and crew chiefs, on phones and computers, with day and night modes. The package is the one the Company selects at checkout.</p>
-<h3>Core <em>$10,000</em></h3>
-<ul>
-<li><b>Jobs and claims.</b> Every job from first call to final invoice, with its stage, checklist, carrier and adjuster, and who it's waiting on.</li>
-<li><b>Money.</b> What's owed, what's past due, and how long each carrier takes to pay. Connects one accounting system, such as QuickBooks Online, if the Company uses one that allows it.</li>
-<li><b>Crews and on call.</b> Who's on which job, who's on call tonight, and who's out on a storm deployment.</li>
-<li><b>Morning brief.</b> Each morning the owner sees the things that need him that day, on the home screen and by email, each with a button that does it.</li>
-<li><b>HR desk.</b> The hiring pipeline, a new-hire paperwork checklist, certification and license renewal dates, on-call load, overtime, and review dates.</li>
-<li><b>Homeowner updates.</b> A private page for each job that the team can text or email to the homeowner in one tap, showing progress, who's coming next and the claim's status.</li>
-<li><b>Ask Elite.</b> Questions in plain English, answered from the Company's own records, with links to the records behind each answer.</li>
-<li><b>Move-in.</b> SOVRN Growth brings over the Company's ClickUp lists and spreadsheets, merges duplicates and flags missing details before go-live.</li>
-<li><b>Found first.</b> A one-time check of how the Company shows up when homeowners ask AI assistants and search engines for water, mold and fire help in its service area, plus the fixes SOVRN Growth can make to its business profile, website details and click-to-call links. It doesn't promise rankings.</li>
-<li><b>Training and support.</b> A live training session for the office team and crew chiefs, a recorded walkthrough, and 30 days of support with free fixes after go-live.</li>
-</ul>
-<h3>Complete <em>$15,000</em></h3>
-<p>Everything in Core, plus:</p>
-<ul>
-<li><b>Partner portal.</b> A private link for each plumber, property manager and agent to report a loss and follow its status, plus a partner list with jobs and work sent, and an alert when a partner goes quiet.</li>
-<li><b>Rebuilds and estimates.</b> A list of jobs where rebuild work hasn't been offered yet, with estimate drafts started from each job's records, and follow-up on unsigned out-of-pocket estimates that includes the Company's financing link.</li>
-<li><b>Reviews and proof.</b> One review request to each homeowner when a job closes, and the Company's live review count, response time and jobs completed, ready to show on its website.</li>
-</ul>
+<section class="cmp" aria-labelledby="cmp-title">
+  <div class="wrap">
+    <div class="cmp-h"><h2 id="cmp-title">Side by side</h2><p>Complete is Core plus the tools that bring in work.</p></div>
+    <table class="grid">
+      <thead><tr><th scope="col"><span class="vh">What's included</span></th><th scope="col">Core<b class="num">$10,000</b></th><th scope="col" class="c">Complete<b class="num">$15,000</b></th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Jobs and claims<small>Every job from first call to final invoice</small></th><td><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td><td class="c"><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td></tr>
+        <tr><th scope="row">Money<small>What's owed, what's late, how fast each carrier pays</small></th><td><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td><td class="c"><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td></tr>
+        <tr><th scope="row">Crews and on call<small>Who's where, who's on tonight, who's out on a storm</small></th><td><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td><td class="c"><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td></tr>
+        <tr><th scope="row">Morning brief<small>Each item with a button that does it</small></th><td><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td><td class="c"><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td></tr>
+        <tr><th scope="row">HR desk<small>Hiring, paperwork, renewals, on-call load</small></th><td><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td><td class="c"><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td></tr>
+        <tr><th scope="row">Homeowner updates<small>A private page per job, sent in one tap</small></th><td><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td><td class="c"><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td></tr>
+        <tr><th scope="row">Ask Elite<small>Plain-English answers from your own records</small></th><td><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td><td class="c"><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td></tr>
+        <tr><th scope="row">Move-in<small>ClickUp and spreadsheets cleaned up and brought over</small></th><td><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td><td class="c"><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td></tr>
+        <tr><th scope="row">Found first<small>AI and search check, plus fixes to your listings and call buttons</small></th><td><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td><td class="c"><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td></tr>
+        <tr class="x"><th scope="row">Partner portal<small>A private link for every plumber, property manager and agent</small></th><td><span class="no" role="img" aria-label="Not included"></span></td><td class="c"><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td></tr>
+        <tr class="x"><th scope="row">Rebuilds and estimates<small>Unoffered rebuild work, drafted estimates, financing follow-up</small></th><td><span class="no" role="img" aria-label="Not included"></span></td><td class="c"><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td></tr>
+        <tr class="x"><th scope="row">Reviews and proof<small>Review requests and live numbers on your website</small></th><td><span class="no" role="img" aria-label="Not included"></span></td><td class="c"><svg class="ic" role="img" aria-label="Included"><use href="#i-check"/></svg></td></tr>
+        <tr><th scope="row">Support after go-live<small>Questions and free fixes</small></th><td><b class="num">30 days</b></td><td class="c"><b class="num">60 days</b></td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
-<section class="card">
-<h2><span>03</span>What the Company does</h2>
-<ul>
-<li>Within 3 business days of its first payment, provides exports of, or access to, its ClickUp workspace and the spreadsheets it uses today, plus its team list with roles, its carriers and adjusters, and its open jobs. For Complete, it also provides its partner list, its financing link and its Google review link.</li>
-<li>Opens the accounts the system runs on in its own name, or chooses the care plan (section 05). SOVRN Growth gives the list of accounts and their expected monthly cost in writing before the build starts.</li>
-<li>Makes one person in the office available for a 30-minute check-in each week of the build.</li>
-<li>Reviews each part within 3 business days of SOVRN Growth showing it.</li>
-<li>Pays usage on its own accounts, billed directly by those vendors.</li>
-</ul>
+<section class="paper" id="terms" aria-labelledby="terms-title">
+  <div class="paper-in">
+    <nav class="toc" aria-label="Sections of the terms">
+      <p>The terms</p>
+      <ol>
+        <li><a href="#s01"><span>01</span>Parties</a></li>
+        <li><a href="#s02"><span>02</span>What we build</a></li>
+        <li><a href="#s03"><span>03</span>What you do</a></li>
+        <li><a href="#s04"><span>04</span>Fee and payment</a></li>
+        <li><a href="#s05"><span>05</span>Care plan</a></li>
+        <li><a href="#s06"><span>06</span>Timeline</a></li>
+        <li><a href="#s07"><span>07</span>Guarantee</a></li>
+        <li><a href="#s08"><span>08</span>Information</a></li>
+        <li><a href="#s09"><span>09</span>Ask Elite and automation</a></li>
+        <li><a href="#s10"><span>10</span>Ownership</a></li>
+        <li><a href="#s11"><span>11</span>Ending early</a></li>
+        <li><a href="#s12"><span>12</span>Limits</a></li>
+        <li><a href="#s13"><span>13</span>General</a></li>
+        <li><a href="#s14"><span>14</span>How to accept</a></li>
+      </ol>
+    </nav>
+
+    <article class="sheet">
+      <header class="sheet-h"><h2 id="terms-title">The terms</h2><p>Version of November 21, 2026. Fourteen short sections in plain English.</p></header>
+
+      <section id="s01">
+        <h3><span>01</span>Parties and start date</h3>
+        <p>This agreement is between Lux Eterna LLC, doing business as SOVRN Growth ("SOVRN Growth"), and Restoration Solutions By Elite LLC (the "Company"). It starts the day the Company makes its first payment.</p>
+      </section>
+
+      <section id="s02">
+        <h3><span>02</span>What SOVRN Growth builds</h3>
+        <p>Elite Operations: a private system for the Company's owner, office team and crew chiefs, on phones and computers, with day and night modes. The package is the one the Company selects at checkout.</p>
+        <h4>Core <em>$10,000</em></h4>
+        <ul>
+          <li><b>Jobs and claims.</b> Every job from first call to final invoice, with its stage, checklist, carrier and adjuster, and who it's waiting on.</li>
+          <li><b>Money.</b> What's owed, what's past due, and how long each carrier takes to pay. Connects one accounting system, such as QuickBooks Online, if the Company uses one that allows it.</li>
+          <li><b>Crews and on call.</b> Who's on which job, who's on call tonight, and who's out on a storm deployment.</li>
+          <li><b>Morning brief.</b> Each morning the owner sees the things that need him that day, on the home screen and by email, each with a button that does it.</li>
+          <li><b>HR desk.</b> The hiring pipeline, a new-hire paperwork checklist, certification and license renewal dates, on-call load, overtime, and review dates.</li>
+          <li><b>Homeowner updates.</b> A private page for each job that the team can text or email to the homeowner in one tap, showing progress, who's coming next and the claim's status.</li>
+          <li><b>Ask Elite.</b> Questions in plain English, answered from the Company's own records, with links to the records behind each answer.</li>
+          <li><b>Move-in.</b> SOVRN Growth brings over the Company's ClickUp lists and spreadsheets, merges duplicates and flags missing details before go-live.</li>
+          <li><b>Found first.</b> A one-time check of how the Company shows up when homeowners ask AI assistants and search engines for water, mold and fire help in its service area, plus the fixes SOVRN Growth can make to its business profile, website details and click-to-call links. It doesn't promise rankings.</li>
+          <li><b>Training and support.</b> A live training session for the office team and crew chiefs, a recorded walkthrough, and 30 days of support with free fixes after go-live.</li>
+        </ul>
+        <h4>Complete <em>$15,000</em></h4>
+        <p>Everything in Core, plus:</p>
+        <ul>
+          <li><b>Partner portal.</b> A private link for each plumber, property manager and agent to report a loss and follow its status, plus a partner list with jobs and work sent, and an alert when a partner goes quiet.</li>
+          <li><b>Rebuilds and estimates.</b> A list of jobs where rebuild work hasn't been offered yet, with estimate drafts started from each job's records, and follow-up on unsigned out-of-pocket estimates that includes the Company's financing link.</li>
+          <li><b>Reviews and proof.</b> One review request to each homeowner when a job closes, and the Company's live review count, response time and jobs completed, ready to show on its website.</li>
+          <li><b>60 days of support.</b> Support and free fixes run for 60 days after go-live, instead of 30.</li>
+        </ul>
+      </section>
+
+      <section id="s03">
+        <h3><span>03</span>What the Company does</h3>
+        <ul>
+          <li>Within 3 business days of its first payment, provides exports of, or access to, its ClickUp workspace and the spreadsheets it uses today, plus its team list with roles, its carriers and adjusters, and its open jobs. For Complete, it also provides its partner list, its financing link and its Google review link.</li>
+          <li>Opens the accounts the system runs on in its own name, or chooses the care plan (section 05). SOVRN Growth gives the list of accounts and their expected monthly cost in writing before the build starts.</li>
+          <li>Makes one person in the office available for a 30-minute check-in each week of the build.</li>
+          <li>Reviews each part within 3 business days of SOVRN Growth showing it.</li>
+          <li>Pays usage on its own accounts, billed directly by those vendors.</li>
+        </ul>
+      </section>
+
+      <section id="s04">
+        <h3><span>04</span>Fee and payment</h3>
+        <p>Core is $10,000 and Complete is $15,000, one-time. The Company pays the whole fee at checkout, or pays half at checkout and the other half when the core system goes live on its data. Paying from a bank account is preferred; a card is also accepted. There is no monthly fee to SOVRN Growth unless the Company chooses the care plan.</p>
+      </section>
+
+      <section id="s05">
+        <h3><span>05</span>Own it, or the care plan</h3>
+        <p>By default the system runs on the Company's own accounts and the Company owns it outright. Or SOVRN Growth runs it for $499 a month, which covers hosting, backups, AI usage, monitoring and up to 2 hours of changes a month. The Company can move to its own accounts at any time, and can end the care plan with 30 days' written notice.</p>
+      </section>
+
+      <section id="s06">
+        <h3><span>06</span>Timeline</h3>
+        <ul>
+          <li>SOVRN Growth holds a kickoff call within 1 business day of the first payment.</li>
+          <li>Jobs and claims, money, crews, Ask Elite and the move-in go live on the Company's own data within 30 days after the Company completes section 03.</li>
+          <li>The HR desk, morning brief, homeowner updates and Found first follow within 45 days.</li>
+          <li>For Complete, the partner portal, rebuilds and estimates, and reviews and proof follow within 60 days.</li>
+          <li>Delays in access, data or reviews move these dates by the same amount.</li>
+        </ul>
+      </section>
+
+      <section id="s07">
+        <h3><span>07</span>The guarantee</h3>
+        <p>Every agreed function is tested with the Company's team, on its own data, before the Company relies on it. If an agreed function fails and SOVRN Growth can't fix it within 10 business days of written notice, SOVRN Growth refunds the fees paid.</p>
+        <p>The guarantee covers what the system does. It doesn't promise jobs, revenue, referrals, reviews, payments from carriers or search rankings. It is the Company's only remedy if a function fails.</p>
+      </section>
+
+      <section id="s08">
+        <h3><span>08</span>Employee, homeowner and partner information</h3>
+        <ul>
+          <li>SOVRN Growth keeps the Company's records confidential, uses them only to build and support the system, and deletes its own copies when the Company asks after handover.</li>
+          <li>The HR desk tracks the status of paperwork, licenses and certifications. The Company stays responsible for its employment-law obligations and decides which documents it stores in the system.</li>
+          <li>Homeowner pages show only what the Company chooses to share. Partners see only the jobs they sent.</li>
+        </ul>
+      </section>
+
+      <section id="s09">
+        <h3><span>09</span>Ask Elite and automation</h3>
+        <ul>
+          <li>Ask Elite answers from the Company's records. Answers can be wrong or incomplete, so the Company checks them before relying on them for payroll, legal, insurance or safety decisions.</li>
+          <li>Nothing goes to homeowners, partners, carriers or staff unless someone on the Company's team chooses to send it, or the Company turns on automatic sending for that message, such as review requests or estimate follow-ups.</li>
+        </ul>
+      </section>
+
+      <section id="s10">
+        <h3><span>10</span>Ownership and confidentiality</h3>
+        <p>The Company owns the finished system, its accounts and all of its records. SOVRN Growth may reuse its general templates, components and know-how in other work, never with the Company's records or anything that identifies the Company. Each side keeps the other's private information confidential.</p>
+      </section>
+
+      <section id="s11">
+        <h3><span>11</span>Ending early</h3>
+        <p>The Company can stop at any time. Once build work has started, fees paid aren't refundable except under the guarantee in section 07. If the Company paid half and stops before the core system goes live, the second half isn't owed.</p>
+      </section>
+
+      <section id="s12">
+        <h3><span>12</span>Limits</h3>
+        <p>SOVRN Growth's total liability under this agreement is limited to the fees the Company paid. Neither side is liable for indirect damages or lost profits, including lost jobs.</p>
+      </section>
+
+      <section id="s13">
+        <h3><span>13</span>General</h3>
+        <p>Texas law governs this agreement. This page is the full agreement between the parties, and any change must be in writing and agreed by both.</p>
+      </section>
+
+      <section id="s14">
+        <h3><span>14</span>How the Company accepts</h3>
+        <p>The Company accepts this agreement by choosing a package on this page, checking the agreement box at checkout and paying. Checkout records the package, the name, email, company and the date and time of acceptance. No separate signature is needed.</p>
+      </section>
+    </article>
+  </div>
 </section>
 
-<section class="card">
-<h2><span>04</span>Fee and payment</h2>
-<p>Core is $10,000 and Complete is $15,000, one-time. The Company pays in full at checkout, or pays half at checkout and the other half when the core system goes live on its data. Paying from a bank account is preferred; a card is also accepted. There is no monthly fee to SOVRN Growth unless the Company chooses the care plan.</p>
+<section class="close" aria-labelledby="close-title">
+  <div class="wrap">
+    <h2 id="close-title">Ready when you are</h2>
+    <p>Your kickoff call happens within one business day of your first payment, and the core system is live on your own data within 30 days.</p>
+    <div class="pay">
+      <a class="btn btn-green" href="https://checkout.sovrngrowth.com/b/dRm28t7Iq6NxaSG6fB9ws0p">Start Complete, $15,000</a>
+      <a class="btn btn-ghost" href="https://checkout.sovrngrowth.com/b/3cIcN75AiefZ9OC9rN9ws0n">Start Core, $10,000</a>
+    </div>
+    <p class="contact">Questions before you start: Elijah Pitts, <a class="nw" href="tel:+15128820814">(512) 882-0814</a>, <a href="mailto:elijah@sovrngrowth.com">elijah@sovrngrowth.com</a></p>
+  </div>
 </section>
-
-<section class="card">
-<h2><span>05</span>Own it, or the care plan</h2>
-<p>By default the system runs on the Company's own accounts and the Company owns it outright. Or SOVRN Growth runs it for $499 a month, which covers hosting, backups, AI usage, monitoring and up to 2 hours of changes a month. The Company can move to its own accounts at any time, and can end the care plan with 30 days' written notice.</p>
-</section>
-
-<section class="card">
-<h2><span>06</span>Timeline</h2>
-<ul>
-<li>SOVRN Growth holds a kickoff call within 1 business day of the first payment.</li>
-<li>Jobs and claims, money, crews, Ask Elite and the move-in go live on the Company's own data within 30 days after the Company completes section 03.</li>
-<li>The HR desk, morning brief, homeowner updates and Found first follow within 45 days.</li>
-<li>For Complete, the partner portal, rebuilds and estimates, and reviews and proof follow within 60 days.</li>
-<li>Delays in access, data or reviews move these dates by the same amount.</li>
-</ul>
-</section>
-
-<section class="card">
-<h2><span>07</span>The guarantee</h2>
-<p>Every agreed function is tested with the Company's team, on its own data, before the Company relies on it. If an agreed function fails and SOVRN Growth can't fix it within 10 business days of written notice, SOVRN Growth refunds the fees paid.</p>
-<p>The guarantee covers what the system does. It doesn't promise jobs, revenue, referrals, reviews, payments from carriers or search rankings. It is the Company's only remedy if a function fails.</p>
-</section>
-
-<section class="card">
-<h2><span>08</span>Employee, homeowner and partner information</h2>
-<ul>
-<li>SOVRN Growth keeps the Company's records confidential, uses them only to build and support the system, and deletes its own copies when the Company asks after handover.</li>
-<li>The HR desk tracks the status of paperwork, licenses and certifications. The Company stays responsible for its employment-law obligations and decides which documents it stores in the system.</li>
-<li>Homeowner pages show only what the Company chooses to share. Partners see only the jobs they sent.</li>
-</ul>
-</section>
-
-<section class="card">
-<h2><span>09</span>Ask Elite and automation</h2>
-<ul>
-<li>Ask Elite answers from the Company's records. Answers can be wrong or incomplete, so the Company checks them before relying on them for payroll, legal, insurance or safety decisions.</li>
-<li>Nothing goes to homeowners, partners, carriers or staff unless someone on the Company's team chooses to send it, or the Company turns on automatic sending for that message, such as review requests or estimate follow-ups.</li>
-</ul>
-</section>
-
-<section class="card">
-<h2><span>10</span>Ownership and confidentiality</h2>
-<p>The Company owns the finished system, its accounts and all of its records. SOVRN Growth may reuse its general templates, components and know-how in other work, never with the Company's records or anything that identifies the Company. Each side keeps the other's private information confidential.</p>
-</section>
-
-<section class="card">
-<h2><span>11</span>Ending early</h2>
-<p>The Company can stop at any time. Once build work has started, fees paid aren't refundable except under the guarantee in section 07. If the Company paid half and stops before the core system goes live, the second half isn't owed.</p>
-</section>
-
-<section class="card">
-<h2><span>12</span>Limits</h2>
-<p>SOVRN Growth's total liability under this agreement is limited to the fees the Company paid. Neither side is liable for indirect damages or lost profits, including lost jobs.</p>
-</section>
-
-<section class="card">
-<h2><span>13</span>General</h2>
-<p>Texas law governs this agreement. This page is the full agreement between the parties, and any change must be in writing and agreed by both.</p>
-</section>
-
-<section class="card">
-<h2><span>14</span>How the Company accepts</h2>
-<p>The Company accepts this agreement by checking the agreement box on SOVRN Growth's checkout page and paying. Checkout records the package, the name, email, company and the date and time of acceptance. No separate signature is needed.</p>
-</section>
-
-<p class="foot">Questions before you accept: Elijah Pitts, <a href="tel:+15128820814">(512) 882-0814</a>, <a href="mailto:elijah@sovrngrowth.com">elijah@sovrngrowth.com</a>.<br>SOVRN Growth is operated by Lux Eterna LLC, 110 N Interstate 35, Suite 315-1083, Round Rock, TX 78681.</p>
 </main>
+
+<footer class="foot">
+  <div class="wrap">SOVRN Growth is operated by Lux Eterna LLC, 110 N Interstate 35, Suite 315-1083, Round Rock, TX 78681.</div>
+</footer>
 </body>
 </html>
