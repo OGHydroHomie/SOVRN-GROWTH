@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="day">
+<html lang="en" data-theme="day" data-look="full">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,8 +18,8 @@
 <style>/* Elite Operations v2. Its own system: day and night themes, one color code, three depth levels. */
 :root{
   color-scheme:light;
-  --brand:#1D5BD6;--brand-ink:#FFFFFF;--brand-soft:rgba(29,91,214,.09);--brand-line:rgba(29,91,214,.30);
-  --canvas:#E9EDF2;--glow:rgba(29,91,214,.11);--glow-2:rgba(120,150,190,.16);
+  --brand:#2361AE;--brand-ink:#FFFFFF;--brand-soft:rgba(35,97,174,.10);--brand-line:rgba(35,97,174,.32);
+  --canvas:#E9EDF2;--glow:rgba(35,97,174,.12);--glow-2:rgba(120,150,190,.16);
   --panel:rgba(255,255,255,.74);--panel-edge:rgba(255,255,255,.96);
   --raised:#FFFFFF;--well:rgba(16,24,32,.04);--hair:rgba(16,24,32,.08);--hair-2:rgba(16,24,32,.15);
   --ink:#0E1620;--ink-2:#465363;--ink-3:#7C8998;
@@ -32,21 +32,22 @@
 }
 html[data-theme="night"]{
   color-scheme:dark;
-  --brand:#82AAFF;--brand-ink:#07101F;--brand-soft:rgba(130,170,255,.13);--brand-line:rgba(130,170,255,.38);
-  --canvas:#0A101C;--glow:rgba(66,112,255,.20);--glow-2:rgba(40,190,170,.07);
+  --brand:#5AB0EA;--brand-ink:#06111F;--brand-soft:rgba(90,176,234,.14);--brand-line:rgba(90,176,234,.40);
+  --canvas:#08101C;--glow:rgba(36,98,180,.30);--glow-2:rgba(40,190,170,.07);
   --panel:rgba(21,31,48,.62);--panel-edge:rgba(255,255,255,.07);
   --raised:#152134;--well:rgba(255,255,255,.04);--hair:rgba(255,255,255,.07);--hair-2:rgba(255,255,255,.13);
   --ink:#E7ECF3;--ink-2:#A1AEC0;--ink-3:#6D7C93;
   --red:#FF7D75;--red-soft:rgba(255,125,117,.13);
   --amber:#F1B74E;--amber-dot:#F1B74E;--amber-soft:rgba(241,183,78,.14);
   --green:#56C892;--green-dot:#56C892;--green-soft:rgba(86,200,146,.13);
-  --sh-1:inset 0 1px 0 rgba(255,255,255,.05),0 18px 40px -22px rgba(0,0,0,.75);
-  --sh-2:inset 0 1px 0 rgba(255,255,255,.07),0 32px 64px -26px rgba(0,0,0,.85);
+  --sh-1:inset 0 1px 0 rgba(255,255,255,.08),0 18px 40px -22px rgba(0,0,0,.75);
+  --sh-2:inset 0 1px 0 rgba(255,255,255,.10),0 32px 64px -26px rgba(0,0,0,.85);
   --grain:.05;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:var(--canvas);color:var(--ink);font:400 14px/1.45 Archivo,system-ui,-apple-system,sans-serif;font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased;transition:background-color .3s ease,color .3s ease}
+html{background:var(--canvas)}
+body{background:var(--canvas);color:var(--ink);font:400 14px/1.45 Archivo,system-ui,-apple-system,sans-serif;font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased}
 button,input{font:inherit;color:inherit}
 .ic{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -328,7 +329,7 @@ button,input{font:inherit;color:inherit}
 .steps li.done::before{background:#21A067;border-color:#21A067}
 .steps li.done + li::after,.steps li.now::after{background:#21A067}
 .steps li.now{color:#101820}
-.steps li.now::before{border-color:var(--hp,#1D5BD6);box-shadow:0 0 0 4px rgba(29,91,214,.15)}
+.steps li.now::before{border-color:var(--hp,#2361AE);box-shadow:0 0 0 4px rgba(35,97,174,.15)}
 .hp-card{margin:12px 14px 0;padding:14px;border-radius:16px;background:#fff;box-shadow:0 1px 2px rgba(16,24,32,.05)}
 .hp-card h5{margin:0 0 8px;color:#6B7785;font-size:11.5px;font-weight:650}
 .hp-card p{margin:0;font-size:13.5px;line-height:1.5}
@@ -346,7 +347,7 @@ button,input{font:inherit;color:inherit}
 .tl small{display:block;color:#6B7785;font-size:11.5px}
 .hp-cta{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 14px 26px}
 .hp-cta span{display:flex;align-items:center;justify-content:center;gap:6px;height:42px;border-radius:12px;font-size:13px;font-weight:680}
-.hp-cta .p{background:var(--hp,#1D5BD6);color:#fff}
+.hp-cta .p{background:var(--hp,#2361AE);color:#fff}
 .hp-cta .s{background:#fff;color:#101820;box-shadow:inset 0 0 0 1px rgba(16,24,32,.12)}
 
 /* Phones and small tablets: drop the scaling and stack it */
@@ -424,18 +425,138 @@ button,input{font:inherit;color:inherit}
 .src .ico{width:32px;height:32px;border-radius:9px}
 .cost td:nth-child(2),.cost td:nth-child(3){white-space:nowrap}
 .cost input{width:56px}
+
+/* Night fix: the canvas paints its own color, so no browser has to repaint the page background behind it */
+.canvas{background-color:var(--canvas)}
+.brand .logo{height:52px;width:auto;max-width:96px;flex:none}
+.hp-top .logo{height:34px}
+.hp-scan{display:flex;flex-wrap:wrap;gap:6px}
+.hp-scan span{padding:6px 10px;border-radius:999px;background:#EEF3FA;color:#2361AE;font-size:12.5px;font-weight:650}
+
+/* Baseline color, look A: an Elite blue band across the top that the panels float over */
+.band{display:none}
+html[data-look="band"] .band{display:block;position:absolute;left:0;right:0;top:0;height:calc(312px * var(--zz,1));pointer-events:none;
+  background:
+    linear-gradient(104deg,transparent 30%,rgba(255,255,255,.07) 41%,transparent 52%),
+    radial-gradient(520px 240px at 96% -20%,rgba(228,48,36,.20),transparent 70%),
+    radial-gradient(560px 260px at 74% -30%,rgba(120,192,60,.13),transparent 70%),
+    linear-gradient(118deg,#0A1A33 0%,#12376C 50%,#2361AE 100%);
+  -webkit-mask-image:linear-gradient(180deg,#000 82%,transparent);mask-image:linear-gradient(180deg,#000 82%,transparent)}
+html[data-look="band"][data-theme="night"] .band{background:
+    linear-gradient(104deg,transparent 30%,rgba(255,255,255,.05) 41%,transparent 52%),
+    radial-gradient(520px 240px at 96% -20%,rgba(228,48,36,.16),transparent 70%),
+    radial-gradient(560px 260px at 74% -30%,rgba(120,192,60,.10),transparent 70%),
+    linear-gradient(118deg,#060D1A 0%,#0B2142 52%,#15467F 100%)}
+html[data-look="band"] .top h1{color:#fff}
+html[data-look="band"] .top p,html[data-look="band"] .legend{color:rgba(255,255,255,.74)}
+html[data-look="band"] .search{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.20);color:rgba(255,255,255,.78)}
+html[data-look="band"] .search kbd{border-color:rgba(255,255,255,.28);color:rgba(255,255,255,.7)}
+html[data-look="band"] .theme{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)}
+html[data-look="band"] .theme button{color:rgba(255,255,255,.72)}
+html[data-look="band"] .theme button[aria-pressed="true"]{background:#fff;color:#0E1620}
+@media (min-width:1000px){
+  html[data-look="band"] .vhd h2{color:#fff}
+  html[data-look="band"] .vhd small{color:rgba(255,255,255,.72)}
+  html[data-look="band"] .vhd .seg{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)}
+  html[data-look="band"] .vhd .seg button{color:rgba(255,255,255,.75)}
+  html[data-look="band"] .vhd .seg button[aria-pressed="true"]{background:#fff;color:#0E1620}
+}
+@media (max-width:999px){html[data-look="band"] .band{height:250px}}
+
+/* Baseline color, look B: Elite navy across the whole background, panels floating on it */
+html[data-look="full"]{--canvas:#0D2142}
+html[data-look="full"][data-theme="night"]{--canvas:#060E1B}
+html[data-look="full"] .canvas{background-image:
+    linear-gradient(104deg,transparent 28%,rgba(255,255,255,.05) 40%,transparent 52%),
+    radial-gradient(1100px 620px at 6% -12%,rgba(35,97,174,.55),transparent 70%),
+    radial-gradient(700px 420px at 100% -10%,rgba(228,48,36,.14),transparent 70%),
+    radial-gradient(900px 700px at 100% 110%,rgba(72,168,228,.22),transparent 70%)}
+html[data-look="full"][data-theme="night"] .canvas{background-image:
+    radial-gradient(1100px 620px at 6% -12%,rgba(35,97,174,.30),transparent 70%),
+    radial-gradient(900px 700px at 100% 110%,rgba(72,168,228,.10),transparent 70%)}
+html[data-look="full"]:not([data-theme="night"]) .glass{background:rgba(255,255,255,.96)}
+html[data-look="full"] .top h1,html[data-look="full"] .vhd h2{color:#fff}
+html[data-look="full"] .top p,html[data-look="full"] .legend,html[data-look="full"] .vhd small{color:rgba(255,255,255,.72)}
+html[data-look="full"] .search{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.20);color:rgba(255,255,255,.78)}
+html[data-look="full"] .search kbd{border-color:rgba(255,255,255,.28);color:rgba(255,255,255,.7)}
+html[data-look="full"] .theme,html[data-look="full"] .vhd .seg{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)}
+html[data-look="full"] .theme button,html[data-look="full"] .vhd .seg button{color:rgba(255,255,255,.75)}
+html[data-look="full"] .theme button[aria-pressed="true"],html[data-look="full"] .vhd .seg button[aria-pressed="true"]{background:#fff;color:#0E1620}
+
+/* Look B polish: search and toggle read as one piece of hardware */
+html[data-look="full"] .search,html[data-look="full"] .theme,html[data-look="full"] .vhd .seg{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12)}
+.num,.amt,.tile b,.stat b,.kv b,.res b,.stage b,.bars em,.money .big{font-variant-numeric:tabular-nums}
+
+/* Ask answer card: the screen rearranges around the answer */
+.anscard{margin:0 0 16px;padding:16px 18px;background-image:linear-gradient(var(--brand-soft),var(--brand-soft));border-color:var(--brand-line)}
+.anscard[hidden]{display:none}
+.anscard.enter{animation:cardin .34s cubic-bezier(.2,.8,.2,1) both}
+@keyframes cardin{from{opacity:0;transform:translateY(-8px) scale(.99)}to{opacity:1;transform:none}}
+.ac-h{display:flex;align-items:center;gap:11px;margin-bottom:10px}
+.ac-h .orb{width:30px;height:30px;flex:none;display:grid;place-items:center;border-radius:9px;background:var(--brand);color:var(--brand-ink)}
+.ac-h small{display:block;color:var(--brand);font-size:11.5px;font-weight:650}
+.ac-h b{display:block;font-size:15px;font-weight:720;letter-spacing:-.005em}
+.ac-x{margin-left:auto;width:32px;height:32px;flex:none;display:grid;place-items:center;border:0;border-radius:9px;background:var(--well);color:var(--ink-2);cursor:pointer}
+.ac-x:hover{color:var(--ink)}
+.ac-t td{padding:9px 10px}
+.ac-foot{display:flex;align-items:center;gap:14px;margin-top:12px}
+.ac-foot small{color:var(--ink-2);font-size:12.5px}
+tr.hl{box-shadow:none!important}
+tr.hl td{background:var(--brand-soft)}
+
+/* Growth */
+.sub-h{margin:14px 0 4px;color:var(--ink-3);font-size:12px;font-weight:650}
+.ph + .sub-h{margin-top:0}
+.mlist li{grid-template-columns:auto minmax(0,1fr) auto auto;gap:12px}
+.mlist .amt{font-weight:720;color:var(--ink)}
+.part td:nth-child(n+2){white-space:nowrap}
+.part td:last-child{text-align:right}
+.site{margin-top:6px;overflow:hidden;border:1px solid rgba(16,24,32,.10);border-radius:12px;background:#fff;color:#101820}
+.site-bar{display:flex;align-items:center;gap:5px;padding:7px 10px;background:#F1F4F7;border-bottom:1px solid #E3E8EE;color:#6B7785;font-size:11px}
+.site-bar i{width:7px;height:7px;border-radius:50%;background:#D3DAE2}
+.site-bar span{margin-left:6px}
+.site-stats{display:grid;grid-template-columns:repeat(3,1fr)}
+.site-stats div{padding:12px 8px;text-align:center}
+.site-stats div + div{border-left:1px solid #EEF1F4}
+.site-stats b{display:block;color:#101820;font-size:20px;font-weight:760;letter-spacing:-.01em}
+.site-stats span{display:block;margin-top:1px;color:#5B6673;font-size:11.5px}
+
+/* Partner portal preview */
+.pf{display:grid;gap:12px}
+.pf label{display:block;margin-bottom:5px;color:#6B7785;font-size:11.5px;font-weight:600}
+.pf .in{padding:10px 12px;border:1px solid #E3E8EE;border-radius:10px;background:#F6F8FA;font-size:13.5px}
+.pf .chips{display:flex;flex-wrap:wrap;gap:6px}
+.pf .chips span{padding:6px 11px;border:1px solid #D9E0E7;border-radius:999px;font-size:12.5px;font-weight:600}
+.pf .chips span.on{background:var(--hp,#2361AE);border-color:var(--hp,#2361AE);color:#fff}
+.pf .send{display:flex;align-items:center;justify-content:center;height:44px;border-radius:12px;background:var(--hp,#2361AE);color:#fff;font-size:14px;font-weight:700}
+.pl{list-style:none;margin:0;padding:0}
+.pl li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid #EEF1F4;font-size:13px}
+.pl li:first-child{border-top:0;padding-top:2px}
+.pl em{color:#5B6673;font-size:12.5px;font-style:normal;text-align:right}
+@media (max-width:999px){
+  .ac-foot{flex-wrap:wrap}
+  .mlist li{grid-template-columns:auto minmax(0,1fr) auto}
+  .mlist li .btn{grid-column:2 / -1;justify-self:start}
+  .ph{flex-wrap:wrap}
+  .ph .btn.end{margin-left:0}
+}
+.two.grow2{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+.mlist li{grid-template-columns:minmax(0,1fr) auto auto}
+@media (max-width:999px){.two.grow2{grid-template-columns:minmax(0,1fr)}.mlist li{grid-template-columns:minmax(0,1fr) auto}.mlist li .btn{grid-column:1 / -1}}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol><symbol id="i-clip" viewBox="0 0 24 24"><rect x="5.5" y="5" width="13" height="15.5" rx="1.2"/><path d="M9 5V3.5h6V5M9 11h6M9 14.5h4"/></symbol><symbol id="i-userplus" viewBox="0 0 24 24"><circle cx="10" cy="8.5" r="3.5"/><path d="M3 20c.8-3.6 3.6-5.5 7-5.5 1.6 0 3 .4 4.2 1.1"/><path d="M18 14v6M15 17h6"/></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3.5l8.5 4.5L12 12.5 3.5 8 12 3.5z"/><path d="M3.5 12l8.5 4.5 8.5-4.5"/><path d="M3.5 16l8.5 4.5 8.5-4.5"/></symbol><symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M8.5 16v-4M12.5 16V8.5M16.5 16v-6"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></symbol><symbol id="i-send" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></symbol><symbol id="i-msg" viewBox="0 0 24 24"><path d="M4.5 5.5h15v10h-9l-4 3.5v-3.5h-2z"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.5 4-2 1.3a11 11 0 0 0 6.7 6.7L16 14l4 1.5V19a1.5 1.5 0 0 1-1.6 1.5C10.6 20 4 13.4 3.5 5.6A1.5 1.5 0 0 1 5 4z"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol><symbol id="i-doc" viewBox="0 0 24 24"><path d="M6.5 3.5H14l4 4v12.5a.5.5 0 0 1-.5.5h-11A.5.5 0 0 1 6 20V4a.5.5 0 0 1 .5-.5z"/><path d="M14 3.5V8h4M9 12h6M9 15.5h6"/></symbol><symbol id="i-table" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17M3.5 14.5h17M9.5 9.5v10"/></symbol><symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6.5h11M9 12h11M9 17.5h11"/><circle cx="4.8" cy="6.5" r="1"/><circle cx="4.8" cy="12" r="1"/><circle cx="4.8" cy="17.5" r="1"/></symbol><symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c3.5 4.2 6 7.6 6 10.6a6 6 0 0 1-12 0C6 10.6 8.5 7.2 12 3z"/></symbol><symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5l1.8 5.2 5.2 1.8-5.2 1.8L12 17.5l-1.8-5.2L5 10.5l5.2-1.8z"/><path d="M18.5 16l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></symbol></defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol><symbol id="i-clip" viewBox="0 0 24 24"><rect x="5.5" y="5" width="13" height="15.5" rx="1.2"/><path d="M9 5V3.5h6V5M9 11h6M9 14.5h4"/></symbol><symbol id="i-userplus" viewBox="0 0 24 24"><circle cx="10" cy="8.5" r="3.5"/><path d="M3 20c.8-3.6 3.6-5.5 7-5.5 1.6 0 3 .4 4.2 1.1"/><path d="M18 14v6M15 17h6"/></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3.5l8.5 4.5L12 12.5 3.5 8 12 3.5z"/><path d="M3.5 12l8.5 4.5 8.5-4.5"/><path d="M3.5 16l8.5 4.5 8.5-4.5"/></symbol><symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M8.5 16v-4M12.5 16V8.5M16.5 16v-6"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></symbol><symbol id="i-send" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></symbol><symbol id="i-msg" viewBox="0 0 24 24"><path d="M4.5 5.5h15v10h-9l-4 3.5v-3.5h-2z"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.5 4-2 1.3a11 11 0 0 0 6.7 6.7L16 14l4 1.5V19a1.5 1.5 0 0 1-1.6 1.5C10.6 20 4 13.4 3.5 5.6A1.5 1.5 0 0 1 5 4z"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol><symbol id="i-doc" viewBox="0 0 24 24"><path d="M6.5 3.5H14l4 4v12.5a.5.5 0 0 1-.5.5h-11A.5.5 0 0 1 6 20V4a.5.5 0 0 1 .5-.5z"/><path d="M14 3.5V8h4M9 12h6M9 15.5h6"/></symbol><symbol id="i-table" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17M3.5 14.5h17M9.5 9.5v10"/></symbol><symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6.5h11M9 12h11M9 17.5h11"/><circle cx="4.8" cy="6.5" r="1"/><circle cx="4.8" cy="12" r="1"/><circle cx="4.8" cy="17.5" r="1"/></symbol><symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c3.5 4.2 6 7.6 6 10.6a6 6 0 0 1-12 0C6 10.6 8.5 7.2 12 3z"/></symbol><symbol id="i-trend" viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></symbol><symbol id="i-hammer" viewBox="0 0 24 24"><path d="M13.5 3.5l7 7-3 3-7-7z"/><path d="M12 9L3.5 17.5l3 3L15 12"/></symbol><symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5l1.8 5.2 5.2 1.8-5.2 1.8L12 17.5l-1.8-5.2L5 10.5l5.2-1.8z"/><path d="M18.5 16l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></symbol></defs></svg>
 <div class="canvas">
+<div class="band" aria-hidden="true"></div>
 <div class="app" id="app">
 
   <aside class="side glass" aria-label="Elite Operations">
-    <div class="brand"><span class="mark" aria-hidden="true">E</span><div><b>Elite Operations</b><small>Restoration Solutions by Elite</small></div></div>
+    <div class="brand"><img class="logo" src="elite-logo.png" alt="Restoration Solutions by Elite"><div><b>Elite Operations</b><small>Boerne, Texas</small></div></div>
     <nav class="nav" aria-label="Screens">
       <button type="button" data-go="overview" aria-pressed="true"><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg>Overview</button>
       <button type="button" data-go="jobs" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-clip"/></svg>Jobs<em>18</em></button>
+      <button type="button" data-go="growth" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-trend"/></svg>Growth</button>
       <button type="button" data-go="hr" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-userplus"/></svg>HR desk</button>
       <button type="button" data-go="movein" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg>Move-in</button>
       <button type="button" data-go="costs" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg>What you pay now</button>
@@ -458,16 +579,19 @@ button,input{font:inherit;color:inherit}
       </div>
     </header>
 
+    <div class="glass anscard" id="anscard" hidden aria-live="polite"><div class="ac-h"><span class="orb" aria-hidden="true"><svg class="ic"><use href="#i-spark"/></svg></span><div><small>Ask Elite</small><b id="ac-title"></b></div><button type="button" class="ac-x" id="ac-x" aria-label="Close this answer"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div><div id="ac-body"></div></div>
+
     <!-- Overview -->
     <section class="v" data-v="overview" aria-label="Overview">
       <div class="ov-a">
         <div class="glass panel today-wrap" id="today-wrap">
-          <div class="ph"><h2>Today</h2><small id="today-count">4 things need you</small><small class="end">Also in your email at 6:30 AM</small></div>
+          <div class="ph"><h2>Today</h2><small id="today-count">5 things need you</small><small class="end">Also in your email at 6:30 AM</small></div>
           <ul class="today">
-            <li data-k="castillo" data-item="castillo"><i class="dot r"></i><div><b>Castillo: day 19 with State Farm</b><small>No reply on the estimate. The second follow-up is drafted.</small></div><span class="amt">$18,240</span><button type="button" class="btn" data-act="castillo" data-done="Sent">Send follow-up</button></li>
-            <li data-k="updates" data-item="updates"><i class="dot a"></i><div><b id="upd-title">3 homeowner updates due by 5 PM</b><small id="upd-names">Garza, Kim and Ruiz. Drafted from this morning's readings.</small></div><span class="amt"></span><button type="button" class="btn" data-act="updates" data-done="Sent" id="upd-btn">Send all 3</button></li>
-            <li data-k="moore" data-item="moore"><i class="dot a"></i><div><b>Moore invoice is ready to send</b><small>State Farm approved the supplement 4 days ago.</small></div><span class="amt">$3,260</span><button type="button" class="btn" data-act="moore" data-done="Sent">Send invoice</button></li>
-            <li data-k="alvarez" data-item="alvarez"><i class="dot"></i><div><b>Ride-along with D. Alvarez, Thursday 3:15 PM</b><small>Your best applicant for the mitigation tech opening. Diego leads it.</small></div><span class="amt"></span><button type="button" class="btn ghost" data-act="alvarez" data-done="Confirmed">Confirm</button></li>
+            <li data-k="castillo" data-item="castillo" data-say="Castillo's claim is 19 days with State Farm"><i class="dot r"></i><div><b>Castillo: day 19 with State Farm</b><small>No reply on the estimate. The second follow-up is drafted.</small></div><span class="amt">$18,240</span><button type="button" class="btn" data-act="castillo" data-done="Sent">Send follow-up</button></li>
+            <li data-k="updates" data-item="updates" data-say="homeowner updates are due by 5 PM"><i class="dot a"></i><div><b id="upd-title">3 homeowner updates due by 5 PM</b><small id="upd-names">Garza, Kim and Ruiz. Drafted from this morning's readings.</small></div><span class="amt"></span><button type="button" class="btn" data-act="updates" data-done="Sent" id="upd-btn">Send all 3</button></li>
+            <li data-k="moore" data-item="moore" data-say="Moore's $3,260 invoice is ready to send"><i class="dot a"></i><div><b>Moore invoice is ready to send</b><small>State Farm approved the supplement 4 days ago.</small></div><span class="amt">$3,260</span><button type="button" class="btn" data-act="moore" data-done="Sent">Send invoice</button></li>
+            <li data-k="rebuild" data-item="rebuild" data-say="Bennett is ready for an $18,500 rebuild estimate"><i class="dot a"></i><div><b>Bennett is ready for a rebuild estimate</b><small>Mitigation was paid 12 days ago. Kitchen cabinets and drywall.</small></div><span class="amt">$18,500</span><button type="button" class="btn" data-act="rebuild" data-done="Drafted">Draft estimate</button></li>
+            <li data-k="alvarez" data-item="alvarez" data-say="Alvarez's ride-along is Thursday at 3:15 PM"><i class="dot"></i><div><b>Ride-along with D. Alvarez, Thursday 3:15 PM</b><small>Your best applicant for the mitigation tech opening. Diego leads it.</small></div><span class="amt"></span><button type="button" class="btn ghost" data-act="alvarez" data-done="Confirmed">Confirm</button></li>
           </ul>
           <p class="clear">You're clear for today. Everything that needed you is handled.</p>
         </div>
@@ -481,8 +605,8 @@ button,input{font:inherit;color:inherit}
           <ul class="bars">
             <li><span>State Farm</span><span class="bar"><i style="--w:91%;--c:var(--red)"></i></span><em>41 days</em></li>
             <li><span>Allstate</span><span class="bar"><i style="--w:73%;--c:var(--amber-dot)"></i></span><em>33 days</em></li>
-            <li><span>Liberty Mutual</span><span class="bar"><i style="--w:62%"></i></span><em>28 days</em></li>
-            <li><span>Travelers</span><span class="bar"><i style="--w:49%;--c:var(--green-dot)"></i></span><em>22 days</em></li>
+            <li><span>Nationwide</span><span class="bar"><i style="--w:62%"></i></span><em>28 days</em></li>
+            <li><span>Chubb</span><span class="bar"><i style="--w:49%;--c:var(--green-dot)"></i></span><em>22 days</em></li>
             <li><span>USAA</span><span class="bar"><i style="--w:40%;--c:var(--green-dot)"></i></span><em>18 days</em></li>
           </ul>
           <p class="note"><i class="dot a"></i> 2 checks are waiting on a mortgage company to endorse them.</p>
@@ -545,7 +669,7 @@ button,input{font:inherit;color:inherit}
           <h3 data-group="carrier">Carrier review <em>4</em></h3>
           <button type="button" class="jr" data-job="castillo" data-k="castillo" data-region="tx"><div><b>Castillo</b><small>Stone Oak. State Farm, no reply on the estimate</small></div><span class="av sm" aria-hidden="true">JK</span><span class="chip r">19 days</span></button>
           <button type="button" class="jr" data-job="lopez" data-k="lopez" data-region="tx"><div><b>Lopez</b><small>Bulverde. Allstate, supplement under review</small></div><span class="av sm" aria-hidden="true">JK</span><span class="chip a">16 days</span></button>
-          <button type="button" class="jr" data-job="brooks" data-region="tx"><div><b>Brooks</b><small>Kerrville. Liberty Mutual, contents approval</small></div><span class="av sm" aria-hidden="true">JK</span><span class="chip">11 days</span></button>
+          <button type="button" class="jr" data-job="brooks" data-region="tx"><div><b>Brooks</b><small>Kerrville. Nationwide, contents approval</small></div><span class="av sm" aria-hidden="true">JK</span><span class="chip">11 days</span></button>
           <button type="button" class="jr" data-job="thib" data-region="la"><div><b>Thibodeaux</b><small>Lake Charles. Allstate, estimate sent</small></div><span class="av sm" aria-hidden="true">TR</span><span class="chip">6 days</span></button>
           <h3 data-group="approved">Approved <em>2</em></h3>
           <button type="button" class="jr" data-job="patel" data-region="tx"><div><b>Patel</b><small>New Braunfels. Mold, containment today</small></div><span class="av sm" aria-hidden="true">AP</span><span class="chip">Today</span></button>
@@ -554,9 +678,74 @@ button,input{font:inherit;color:inherit}
           <button type="button" class="jr" data-job="moore" data-k="moore" data-region="tx"><div><b>Moore</b><small>Boerne. Supplement approved, invoice not sent</small></div><span class="av sm" aria-hidden="true">RS</span><span class="chip a">Invoice ready</span></button>
           <button type="button" class="jr" data-job="walsh" data-region="tx"><div><b>Walsh</b><small>San Antonio. Fire rebuild, paint this week</small></div><span class="av sm" aria-hidden="true">RS</span><span class="chip">This week</span></button>
           <h3 data-group="invoiced">Invoiced <em>1</em></h3>
-          <button type="button" class="jr" data-job="bennett" data-region="tx"><div><b>Bennett</b><small>Fair Oaks Ranch. $8,420 with Farmers</small></div><span class="av sm" aria-hidden="true">JK</span><span class="chip">12 days</span></button>
+          <button type="button" class="jr" data-job="bennett" data-region="tx"><div><b>Bennett</b><small>Fair Oaks Ranch. $8,420 with USAA</small></div><span class="av sm" aria-hidden="true">JK</span><span class="chip">12 days</span></button>
         </div>
         <aside class="jp" id="jp" aria-live="polite"></aside>
+      </div>
+    </section>
+
+
+    <!-- Growth -->
+    <section class="v" data-v="growth" hidden aria-label="Growth">
+      <div class="vhd"><h2>Growth</h2><small>Work coming in, bigger tickets, and proof that sells you</small></div>
+      <div class="tiles">
+        <div class="glass tile"><span>Partner jobs, last 90 days</span><b class="num">23</b><small>$134,700 of work sent your way</small></div>
+        <div class="glass tile" data-k="rebuild-t"><span>Rebuild work not offered yet</span><b class="num"><i class="dot a"></i>$86,400</b><small>4 jobs finishing mitigation</small></div>
+        <div class="glass tile"><span>Unsigned estimates</span><b class="num">$14,950</b><small>3 out of pocket, financing ready</small></div>
+        <div class="glass tile"><span>Google rating</span><b class="num">4.9</b><small>31 reviews, 6 new this month</small></div>
+      </div>
+
+      <div class="glass panel tbl-wrap" data-k="partners">
+        <div class="ph"><h2>Referral partners</h2><small>Plumbers, property managers and agents who send you jobs</small><button type="button" class="btn ghost end" data-partner-view><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>See what a partner sees</button></div>
+        <table class="tbl part">
+          <thead><tr><th scope="col">Partner</th><th scope="col">Jobs, 90 days</th><th scope="col">Work sent</th><th scope="col">Last job</th><th scope="col"><span class="vh">Next step</span></th></tr></thead>
+          <tbody>
+            <tr><td><b>Dunmore Plumbing</b><small>Plumber, Boerne</small></td><td class="num">6</td><td class="num">$41,200</td><td>3 days ago</td><td></td></tr>
+            <tr><td><b>Keller Property Group</b><small>Property manager, NARPM</small></td><td class="num">5</td><td class="num">$33,600</td><td>9 days ago</td><td></td></tr>
+            <tr><td><b>Pinecrest Apartments</b><small>Apartment community, SAAA</small></td><td class="num">4</td><td class="num">$24,100</td><td>12 days ago</td><td></td></tr>
+            <tr><td><b>Hollis Plumbing</b><small>Plumber, New Braunfels</small></td><td class="num">4</td><td class="num">$19,800</td><td>6 days ago</td><td></td></tr>
+            <tr><td><b>Ruelas Insurance Agency</b><small>Insurance agent, Helotes</small></td><td class="num">4</td><td class="num">$16,000</td><td>21 days ago</td><td></td></tr>
+            <tr data-k="quiet" data-quiet><td><b>Oakmont Realty</b><small>Real estate, Fair Oaks Ranch. Sent 3 jobs last quarter</small></td><td class="num">0</td><td class="num">$0</td><td><span class="chip a">47 days</span></td><td><button type="button" class="btn ghost" data-step data-done="On today's list">Call</button></td></tr>
+            <tr data-k="quiet" data-quiet><td><b>Whitlock Plumbing</b><small>Plumber, Canyon Lake. Sent 2 jobs last quarter</small></td><td class="num">0</td><td class="num">$0</td><td><span class="chip a">52 days</span></td><td><button type="button" class="btn ghost" data-step data-done="On today's list">Call</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="two grow2">
+        <div class="glass panel" data-k="rebuilds">
+          <div class="ph"><h2>Rebuilds and estimates</h2><small>From work you already won</small></div>
+          <h4 class="sub-h">Rebuild work you haven't offered</h4>
+          <ul class="plist mlist">
+            <li data-rebuild="bennett"><div><b>Bennett, kitchen and drywall</b><small>Mitigation paid 12 days ago</small></div><span class="amt">$18,500</span><button type="button" class="btn ghost" data-step data-done="Drafted">Draft estimate</button></li>
+            <li data-rebuild="garza"><div><b>Garza, cabinets and flooring</b><small>Drying, day 3</small></div><span class="amt">$22,000</span><button type="button" class="btn ghost" data-step data-done="Drafted">Draft estimate</button></li>
+            <li data-rebuild="ruiz"><div><b>Ruiz, hall bath and baseboards</b><small>Drying, day 5</small></div><span class="amt">$14,200</span><button type="button" class="btn ghost" data-step data-done="Drafted">Draft estimate</button></li>
+            <li data-rebuild="lc"><div><b>Lake Charles, 3 homes</b><small>Storm jobs finishing drying</small></div><span class="amt">$31,700</span><button type="button" class="btn ghost" data-step data-done="Drafted">Draft estimates</button></li>
+          </ul>
+          <h4 class="sub-h">Unsigned estimates, out of pocket</h4>
+          <ul class="plist mlist">
+            <li><div><b>Nguyen, mold remediation</b><small>Free assessment 5 days ago. Not covered by insurance</small></div><span class="amt">$6,800</span><button type="button" class="btn ghost" data-step data-done="Sent">Offer financing</button></li>
+            <li><div><b>Delacruz, attic mold</b><small>Sent 9 days ago, no answer</small></div><span class="amt">$4,950</span><button type="button" class="btn ghost" data-step data-done="Sent">Offer financing</button></li>
+            <li><div><b>Hartman, crawl space</b><small>Sent 14 days ago, no answer</small></div><span class="amt">$3,200</span><button type="button" class="btn ghost" data-step data-done="Sent">Offer financing</button></li>
+          </ul>
+          <p class="note">Financing goes out with your Wisetack prequalify link, so a homeowner can say yes the same day.</p>
+        </div>
+        <div class="glass panel" data-k="reviews">
+          <div class="ph"><h2>Reviews and proof</h2><small>Asked once per job</small></div>
+          <div class="kv"><div><span>Google rating</span><b class="num">4.9</b></div><div><span>New this month</span><b class="g num">+6</b></div></div>
+          <h4 class="sub-h">Closed this week, not asked yet</h4>
+          <ul class="plist">
+            <li data-reviewee><span class="av" aria-hidden="true">LM</span><div><b>L. Morales</b><small>Water, closed Tuesday</small></div><span class="chip">Not asked</span></li>
+            <li data-reviewee><span class="av" aria-hidden="true">EL</span><div><b>E. Lindgren</b><small>Fire, final walkthrough Wednesday</small></div><span class="chip">Not asked</span></li>
+            <li data-reviewee><span class="av" aria-hidden="true">RY</span><div><b>R. Yates</b><small>Mold, clearance passed Monday</small></div><span class="chip">Not asked</span></li>
+          </ul>
+          <div style="margin-top:10px"><button type="button" class="btn" data-act="askreviews" data-done="Requests sent">Ask all 3 for a review</button></div>
+          <h4 class="sub-h">On your website</h4>
+          <div class="site" aria-label="Preview of the numbers on your website">
+            <div class="site-bar"><i></i><i></i><i></i><span>restorationsolutionsbyelite.com</span></div>
+            <div class="site-stats"><div><b>4.9</b><span>31 reviews</span></div><div><b>18 min</b><span>Avg response</span></div><div><b>412</b><span>Homes restored</span></div></div>
+          </div>
+          <p class="note">These fill the empty Customer Reviews, Happy Customers and Fast Response Time sections on your site, and update themselves.</p>
+        </div>
       </div>
     </section>
 
@@ -639,7 +828,7 @@ button,input{font:inherit;color:inherit}
             <li><span>Alex P.</span><span class="bar"><i style="--w:14%"></i></span><em>2 nights</em></li>
           </ul>
           <p class="note" id="nw-line">Next week, as scheduled: Diego 4 nights, Jordan 2, Alex 1. Ray is on rebuilds, not the rotation.</p>
-          <div style="margin-top:10px"><button type="button" class="btn ghost" data-act="rebalance" data-done="Rotation updated">Give Jordan 2 of Diego's nights</button></div>
+          <div style="margin-top:10px"><button type="button" class="btn ghost" id="hr-rebal" data-act="rebalance" data-done="Rotation updated">Give Jordan 2 of Diego's nights</button></div>
         </div>
         <div class="glass panel ot" data-k="ot">
           <div class="ph"><h2>Hours this week</h2><small>The line marks 40 hours</small></div>
@@ -681,8 +870,8 @@ button,input{font:inherit;color:inherit}
               <tr><td>Lopez, J</td><td>88 Bulverde Rd.</td><td>All State</td><td>AL-48213</td><td>waiting on supp</td></tr>
               <tr><td>castillo</td><td>1410 stone oak pkwy #4</td><td>SF</td><td>0441-2877</td><td>est sent</td></tr>
               <tr><td class="dup">Garza Maria</td><td class="dup">102 Oak Ridge Dr</td><td class="dup">Allstate</td><td class="dup">AL-44190</td><td class="dup">Drying</td></tr>
-              <tr><td>Brooks, R</td><td>kerrville</td><td>Liberty</td><td>LM 99-102</td><td>contents</td></tr>
-              <tr><td>patel</td><td>New Braunfels TX</td><td>Farmers Ins</td><td class="bad"></td><td>approved!!</td></tr>
+              <tr><td>Brooks, R</td><td>kerrville</td><td>Nationwde</td><td>NW 99-102</td><td>contents</td></tr>
+              <tr><td>patel</td><td>New Braunfels TX</td><td>nationwide ins</td><td class="bad"></td><td>approved!!</td></tr>
             </tbody>
           </table>
           <table class="tbl clean" data-sheet-view="clean">
@@ -691,8 +880,8 @@ button,input{font:inherit;color:inherit}
               <tr><td><b>Maria Garza</b><small>2 rows merged</small></td><td>102 Oak Ridge Dr, Fair Oaks Ranch 78015</td><td>Allstate</td><td>AL-44190</td><td>Drying</td></tr>
               <tr><td><b>J. Lopez</b></td><td>88 Bulverde Rd, Bulverde 78163</td><td>Allstate</td><td>AL-48213</td><td>Carrier review</td></tr>
               <tr><td><b>Castillo</b></td><td>1410 Stone Oak Pkwy #4, San Antonio 78258</td><td>State Farm</td><td>0441-2877</td><td>Carrier review</td></tr>
-              <tr><td><b>R. Brooks</b></td><td class="flag">Kerrville 78028, street missing</td><td>Liberty Mutual</td><td>LM-99102</td><td>Carrier review</td></tr>
-              <tr><td><b>Patel</b></td><td>New Braunfels 78130</td><td>Farmers</td><td class="flag">Missing, flagged</td><td>Approved</td></tr>
+              <tr><td><b>R. Brooks</b></td><td class="flag">Kerrville 78028, street missing</td><td>Nationwide</td><td>NW-99102</td><td>Carrier review</td></tr>
+              <tr><td><b>Patel</b></td><td>New Braunfels 78130</td><td>Nationwide</td><td class="flag">Missing, flagged</td><td>Approved</td></tr>
             </tbody>
           </table>
         </div>
@@ -760,16 +949,17 @@ button,input{font:inherit;color:inherit}
     <div class="ask-h"><span class="orb" aria-hidden="true"><svg class="ic"><use href="#i-spark"/></svg></span><div><b>Ask Elite</b><small>Answers from your own records</small></div></div>
     <div class="thread" aria-live="polite">
       <div class="q" id="ask-q">What needs me today?</div>
-      <p class="ans" id="ask-a">Four things: Castillo's claim is 19 days with State Farm, three homeowner updates are due by 5 PM, Moore's $3,260 invoice is ready to send, and Alvarez's ride-along is Thursday at 3:15 PM. Each one has a button on your Today list.</p>
+      <p class="ans" id="ask-a">Five things: Castillo's claim is 19 days with State Farm, 3 homeowner updates are due by 5 PM, Moore's $3,260 invoice is ready to send, Bennett is ready for an $18,500 rebuild estimate, and Alvarez's ride-along is Thursday at 3:15 PM. Each one has a button on your Today list.</p>
     </div>
     <div class="try">
       <small>Try asking</small>
       <button type="button" data-ask="today" aria-pressed="true">What needs me today?</button>
       <button type="button" data-ask="claims" aria-pressed="false">Which claims are stuck past 14 days?</button>
       <button type="button" data-ask="owed" aria-pressed="false">What's owed past 60 days?</button>
+      <button type="button" data-ask="rebuilds" aria-pressed="false">What rebuild work haven't we offered?</button>
+      <button type="button" data-ask="partners" aria-pressed="false">Which partners have gone quiet?</button>
       <button type="button" data-ask="oncall" aria-pressed="false">Who's been on call the most?</button>
       <button type="button" data-ask="licenses" aria-pressed="false">Which licenses renew soon?</button>
-      <button type="button" data-ask="movein" aria-pressed="false">What did the move-in clean up?</button>
     </div>
     <form class="askin" id="ask-form" action="#" autocomplete="off">
       <label class="vh" for="ask-input">Ask a question</label>
@@ -783,7 +973,7 @@ button,input{font:inherit;color:inherit}
   <div class="ho-wrap">
     <div class="ho-side">
       <b id="ho-title">What the homeowner sees</b>
-      <p>A private page for their home, sent by text from the job. No app to download and no login. It updates as your crew works.</p>
+      <p id="ho-sub">A private page for their home, sent by text from the job. No app to download and no login. It updates as your crew works.</p>
       <button type="button" class="btn" data-ho-close>Close</button>
     </div>
     <div class="phone"><div class="screen" id="ho-screen"></div></div>
@@ -798,6 +988,7 @@ button,input{font:inherit;color:inherit}
   var $ = function(id){ return document.getElementById(id); };
   var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
   var app = $("app"), root = document.documentElement;
+  var CHECK = '<svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>';
 
   /* Day and night. Day is the default; the choice is remembered on this device. */
   var modeBtns = document.querySelectorAll(".theme button");
@@ -823,9 +1014,11 @@ button,input{font:inherit;color:inherit}
       var z = Math.min(1.3, w / 1440);
       app.style.setProperty("--z", z.toFixed(4));
       app.style.setProperty("--dh", Math.round(window.innerHeight / z) + "px");
+      root.style.setProperty("--zz", z.toFixed(4));
     } else {
       app.style.removeProperty("--z");
       app.style.removeProperty("--dh");
+      root.style.removeProperty("--zz");
     }
   }
   fit(); window.addEventListener("resize", fit);
@@ -835,22 +1028,22 @@ button,input{font:inherit;color:inherit}
     holt:{t:"Holt, water loss", s:"Boerne", st:["New loss, called 2:14 AM",""], f:[["Lead","Diego M."],["Carrier","Not given yet"],["Claim number","Pending"],["Homeowner","J. Holt"]], c:[["Answered and dispatched",1,"2:16 AM"],["Water shut off",1],["Insurance details collected",0],["Work authorization signed",0],["Moisture map",0]], files:["4 photos"]},
     nguyen:{t:"Nguyen, mold inspection", s:"Stone Oak, San Antonio", st:["Inspection at 9:00 AM",""], f:[["Lead","Jordan K."],["Carrier","State Farm"],["Claim number","0441-3102"],["Homeowner","T. Nguyen"]], c:[["Inspection booked",1],["Air samples",0],["Protocol written",0],["Estimate draft",0]], files:[]},
     bishop:{t:"Bishop, biohazard cleanup", s:"San Antonio", st:["Today at 11:00 AM",""], f:[["Lead","Alex P."],["Paying","Homeowner"],["Crew","2 techs"],["Site","Released by police"]], c:[["Release confirmed",1],["PPE and containment kit",0],["Cleanup and testing",0],["Disposal manifest",0]], files:[]},
-    garza:{t:"Garza, water loss", s:"Fair Oaks Ranch", st:["Drying, day 3","a"], f:[["Lead","Diego M."],["Carrier","Allstate"],["Claim number","AL-44190"],["Homeowner","Maria G."]], c:[["Moisture map",1,"Day 1"],["Containment set",1],["Contents packed out",1],["Equipment logged",1,"3 dehus, 9 air movers"],["Homeowner update today",0,"Due 5 PM"],["Drying log to adjuster",0,"Friday"]], d:["Update for Maria","Hi Maria, day 3 at your home. Readings dropped in the kitchen and hallway overnight. Diego will check them again tomorrow morning. Your page has today's progress."], files:["23 photos","Moisture map","Drying log"],
+    garza:{t:"Garza, water loss", s:"Fair Oaks Ranch", st:["Drying, day 3","a"], f:[["Lead","Diego M."],["Carrier","Allstate"],["Claim number","AL-44190"],["Homeowner","Maria G."]], c:[["Moisture map",1,"Day 1"],["Containment set",1],["Contents packed out",1],["Equipment logged",1,"3 dehus, 9 air movers"],["Homeowner update today",0,"Due 5 PM"],["Drying log to adjuster",0,"Friday"]], d:["Update for Maria","Hi Maria, day 3 at your home. Readings dropped in the kitchen and hallway overnight. Diego will check them again tomorrow morning. Your page has today's progress."], files:["23 photos","Thermal images","Matterport 3D scan","Moisture map","Drying log"],
       home:{name:"Maria", day:3, step:1, msg:"Your kitchen and hallway dried a lot overnight. Most rooms are on track, with about 2 more days to go.", next:["DM","Diego M.","Tomorrow, 8:00 AM","Readings and an equipment check"], claim:["Allstate","AL-44190","Your drying log goes to your adjuster on Friday."], tl:[["Today, 7:40 AM","Diego took readings. The kitchen and hallway are drying faster."],["Yesterday, 4:10 PM","Two air movers moved into the hallway closet."],["Day 1, 11:05 AM","Equipment set: 3 dehumidifiers and 9 air movers."],["Day 1, 9:20 AM","Water extracted and your moisture map made."]]}},
-    ruiz:{t:"Ruiz, water loss", s:"Helotes", st:["Drying, day 5","a"], f:[["Lead","Diego M."],["Carrier","USAA"],["Claim number","US-20931"],["Homeowner","Ana R."]], c:[["Moisture map",1,"Day 1"],["Containment set",1],["Daily readings",1],["Check dehu 3, readings flat",0,"Today"],["Homeowner update today",0,"Due 5 PM"],["Drying log to adjuster",0]], d:["Update for Ana","Hi Ana, day 5. Most of the house is drying on schedule. The hall bath is slower, so Diego is checking that unit this morning."], files:["31 photos","Moisture map","Drying log"],
+    ruiz:{t:"Ruiz, water loss", s:"Helotes", st:["Drying, day 5","a"], f:[["Lead","Diego M."],["Carrier","USAA"],["Claim number","US-20931"],["Homeowner","Ana R."]], c:[["Moisture map",1,"Day 1"],["Containment set",1],["Daily readings",1],["Check dehu 3, readings flat",0,"Today"],["Homeowner update today",0,"Due 5 PM"],["Drying log to adjuster",0]], d:["Update for Ana","Hi Ana, day 5. Most of the house is drying on schedule. The hall bath is slower, so Diego is checking that unit this morning."], files:["31 photos","Thermal images","Moisture map","Drying log"],
       home:{name:"Ana", day:5, step:1, msg:"Most of the house is drying on schedule. The hall bath is slower, so Diego is checking that unit this morning.", next:["DM","Diego M.","Today, 10:30 AM","A check on the hall bath dehumidifier"], claim:["USAA","US-20931","Your adjuster has the drying log through yesterday."], tl:[["Today, 7:55 AM","Readings taken. Hall bath is behind the other rooms."],["Yesterday, 3:30 PM","Living room and kitchen reached their drying goal."],["Day 1, 2:40 PM","Equipment set: 4 dehumidifiers and 12 air movers."],["Day 1, 11:15 AM","Water extracted and your moisture map made."]]}},
-    kim:{t:"Kim, water loss", s:"Alamo Heights, San Antonio", st:["Drying, day 2","a"], f:[["Lead","Diego M."],["Carrier","Travelers"],["Claim number","TR-7719"],["Homeowner","David K."]], c:[["Moisture map",1,"Day 1"],["Containment set",1],["Equipment logged",1,"2 dehus, 6 air movers"],["Homeowner update today",0,"Due 5 PM"],["Day 3 readings",0,"Tomorrow"]], d:["Update for David","Hi David, day 2. Everything is drying on track. We'll take readings again tomorrow at 8."], files:["17 photos","Moisture map"],
-      home:{name:"David", day:2, step:1, msg:"Everything is drying on track. We'll take readings again tomorrow at 8.", next:["DM","Diego M.","Tomorrow, 8:00 AM","Day 3 readings"], claim:["Travelers","TR-7719","Your claim is open and your adjuster has the moisture map."], tl:[["Today, 7:20 AM","Readings taken. Every room is drying as planned."],["Day 1, 6:45 PM","Equipment set: 2 dehumidifiers and 6 air movers."],["Day 1, 4:30 PM","Water extracted and your moisture map made."]]}},
+    kim:{t:"Kim, water loss", s:"Alamo Heights, San Antonio", st:["Drying, day 2","a"], f:[["Lead","Diego M."],["Carrier","Chubb"],["Claim number","CH-7719"],["Homeowner","David K."]], c:[["Moisture map",1,"Day 1"],["Containment set",1],["Equipment logged",1,"2 dehus, 6 air movers"],["Homeowner update today",0,"Due 5 PM"],["Day 3 readings",0,"Tomorrow"]], d:["Update for David","Hi David, day 2. Everything is drying on track. We'll take readings again tomorrow at 8."], files:["17 photos","Moisture map"],
+      home:{name:"David", day:2, step:1, msg:"Everything is drying on track. We'll take readings again tomorrow at 8.", next:["DM","Diego M.","Tomorrow, 8:00 AM","Day 3 readings"], claim:["Chubb","CH-7719","Your claim is open and your adjuster has the moisture map."], tl:[["Today, 7:20 AM","Readings taken. Every room is drying as planned."],["Day 1, 6:45 PM","Equipment set: 2 dehumidifiers and 6 air movers."],["Day 1, 4:30 PM","Water extracted and your moisture map made."]]}},
     lc:{t:"Lake Charles, LA", s:"Storm deployment", st:["Day 4 of the trip",""], f:[["Crew","Chris B. and Tony R."],["Jobs","3 drying, 1 waiting"],["Hotel","Through Monday"],["Back","Tuesday"]], c:[["Hotel booked",1],["Per diem logged",1],["Daily readings sent",1],["Return trip booked",0]], files:["62 photos"]},
-    castillo:{t:"Castillo, water loss", s:"Stone Oak, San Antonio", st:["Waiting on State Farm, 19 days","r"], f:[["Lead","Jordan K."],["Carrier","State Farm"],["Adjuster","R. Diaz"],["Estimate","$18,240"]], c:[["Estimate sent",1,"19 days ago"],["First follow-up",1,"8 days ago"],["Second follow-up",0,"Drafted"],["Call the adjuster",0]], d:["Follow-up to State Farm","Following up on the estimate we sent for the Castillo water loss, claim 0441-2877. Please confirm it's under review, and tell us if you need anything else from us."], files:["Estimate","28 photos"]},
+    castillo:{t:"Castillo, water loss", s:"Stone Oak, San Antonio", st:["Waiting on State Farm, 19 days","r"], f:[["Lead","Jordan K."],["Carrier","State Farm"],["Adjuster","R. Diaz"],["Estimate","$18,240"]], c:[["Estimate sent",1,"19 days ago"],["First follow-up",1,"8 days ago"],["Second follow-up",0,"Drafted"],["Call the adjuster",0]], d:["Follow-up to State Farm","Following up on the estimate we sent for the Castillo water loss, claim 0441-2877. Please confirm it's under review, and tell us if you need anything else from us."], files:["Xactimate estimate","Matterport 3D scan","28 photos"]},
     lopez:{t:"Lopez, water loss", s:"Bulverde", st:["Supplement under review, 16 days","a"], f:[["Lead","Jordan K."],["Carrier","Allstate"],["Claim number","AL-48213"],["Adjuster","S. Patterson"]], c:[["Supplement sent",1,"16 days ago"],["Photos and logs attached",1],["Follow-up",0,"Drafted"]], d:["Follow-up to Allstate","Following up on the supplement for the Lopez water loss. The photos and moisture logs are attached to the original submission."], files:["Supplement","19 photos"]},
-    brooks:{t:"Brooks, fire loss", s:"Kerrville", st:["Contents approval, 11 days",""], f:[["Lead","Jordan K."],["Carrier","Liberty Mutual"],["Claim number","LM-99102"],["Homeowner","R. Brooks"]], c:[["Pack-out done",1],["Contents inventory sent",1,"11 days ago"],["Approval",0]], files:["Inventory","44 photos"]},
+    brooks:{t:"Brooks, fire loss", s:"Kerrville", st:["Contents approval, 11 days",""], f:[["Lead","Jordan K."],["Carrier","Nationwide"],["Claim number","NW-99102"],["Homeowner","R. Brooks"]], c:[["Pack-out done",1],["Contents inventory sent",1,"11 days ago"],["Approval",0]], files:["Inventory","44 photos"]},
     thib:{t:"Thibodeaux, water loss", s:"Lake Charles, LA", st:["Estimate sent, 6 days",""], f:[["Lead","Tony R."],["Carrier","Allstate"],["Claim number","AL-50277"],["Homeowner","L. Thibodeaux"]], c:[["Estimate sent",1],["Adjuster assigned",1],["Approval",0]], files:["Estimate","22 photos"]},
-    patel:{t:"Patel, mold remediation", s:"New Braunfels", st:["Approved, containment today",""], f:[["Lead","Alex P."],["Carrier","Farmers"],["Claim number","Missing"],["Homeowner","P. Patel"]], c:[["Protocol approved",1],["Containment set",0,"Today"],["Negative air running",0],["Clearance test booked",0]], files:["Protocol","12 photos"]},
-    reyes:{t:"Reyes, rebuild", s:"Boerne", st:["Rebuild starts Monday",""], f:[["Lead","Ray S."],["Carrier","Travelers"],["Claim number","TR-7604"],["Homeowner","C. Reyes"]], c:[["Materials ordered",1],["Walkthrough with homeowner",1],["Drywall crew booked",0]], files:["Scope","15 photos"]},
+    patel:{t:"Patel, mold remediation", s:"New Braunfels", st:["Approved, containment today",""], f:[["Lead","Alex P."],["Carrier","Nationwide"],["Claim number","Missing"],["Homeowner","P. Patel"]], c:[["Protocol approved",1],["Containment set",0,"Today"],["Negative air running",0],["Clearance test booked",0]], files:["Protocol","12 photos"]},
+    reyes:{t:"Reyes, rebuild", s:"Boerne", st:["Rebuild starts Monday",""], f:[["Lead","Ray S."],["Carrier","Chubb"],["Claim number","CH-7604"],["Homeowner","C. Reyes"]], c:[["Materials ordered",1],["Walkthrough with homeowner",1],["Drywall crew booked",0]], files:["Scope","15 photos"]},
     moore:{t:"Moore, rebuild", s:"Boerne", st:["Supplement approved, invoice not sent","a"], f:[["Lead","Ray S."],["Carrier","State Farm"],["Claim number","0441-2690"],["Homeowner","K. Moore"]], c:[["Supplement approved",1],["Invoice drafted",1],["Invoice sent",0]], d:["Invoice ready","Invoice 1148 for the approved supplement, $3,260, is ready to send to State Farm."], files:["Invoice 1148","Supplement"]},
-    walsh:{t:"Walsh, fire rebuild", s:"San Antonio", st:["Paint this week",""], f:[["Lead","Ray S."],["Carrier","Liberty Mutual"],["Claim number","LM-98877"],["Homeowner","G. Walsh"]], c:[["Drywall done",1],["Paint",0,"This week"],["Final walkthrough",0]], files:["38 photos"]},
-    bennett:{t:"Bennett, water loss", s:"Fair Oaks Ranch", st:["Invoiced, 12 days",""], f:[["Lead","Jordan K."],["Carrier","Farmers"],["Claim number","FA-5512"],["Homeowner","M. Bennett"]], c:[["Invoice sent",1,"$8,420"],["Payment",0]], files:["Invoice 1139"]}
+    walsh:{t:"Walsh, fire rebuild", s:"San Antonio", st:["Paint this week",""], f:[["Lead","Ray S."],["Carrier","Nationwide"],["Claim number","NW-98877"],["Homeowner","G. Walsh"]], c:[["Drywall done",1],["Paint",0,"This week"],["Final walkthrough",0]], files:["38 photos"]},
+    bennett:{t:"Bennett, water loss", s:"Fair Oaks Ranch", st:["Invoiced, 12 days",""], f:[["Lead","Jordan K."],["Carrier","USAA"],["Claim number","US-5512"],["Homeowner","M. Bennett"]], c:[["Invoice sent",1,"$8,420"],["Payment",0]], files:["Invoice 1139"]}
   };
 
   /* Job detail panel */
@@ -882,7 +1075,6 @@ button,input{font:inherit;color:inherit}
     jp.innerHTML = h;
     progress(j);
   }
-
   function setRowChip(key, text, cls){
     var chip = app.querySelector('.jr[data-job="' + key + '"] .chip');
     if (chip){ chip.className = "chip " + (cls || ""); chip.textContent = text; }
@@ -896,9 +1088,7 @@ button,input{font:inherit;color:inherit}
     var note = app.querySelector('.jr[data-job="' + key + '"] small');
     if (note) note.textContent = note.textContent.replace("no update today", "update sent");
     if (currentJob === key) renderJob(key);
-    syncBrief();
   }
-
   if (jp){
     jp.addEventListener("click", function(e){
       var j = JOBS[currentJob];
@@ -911,58 +1101,122 @@ button,input{font:inherit;color:inherit}
         return;
       }
       var send = e.target.closest ? e.target.closest("#jp-send") : null;
-      if (send && j && !j.sent){ sendJob(currentJob); return; }
+      if (send && j && !j.sent){ sendJob(currentJob); syncAll(); return; }
       var home = e.target.closest ? e.target.closest("[data-home]") : null;
       if (home) openHome(home.getAttribute("data-home"));
     });
   }
   each(rows, function(r){ r.addEventListener("click", function(){ renderJob(r.getAttribute("data-job")); }); });
 
-  /* Today: the morning brief. Each button does the job, and the list keeps count. */
-  var alvarezOk = false;
-  var UPD = ["garza", "kim", "ruiz"], NAMES = { garza: "Garza", kim: "Kim", ruiz: "Ruiz" };
+  /* Shared state for actions that show up in more than one place */
+  var S = { alvarez: false, rebuilt: {}, quiet: false, reviews: false, reminded: false, rebal: false };
+  function markDone(b, label){
+    if (!b || b.disabled) return;
+    b.disabled = true; b.classList.add("done");
+    b.innerHTML = CHECK + esc(label || b.getAttribute("data-done") || "Done");
+  }
   function listNames(arr){ return arr.length < 2 ? arr.join("") : arr.slice(0, -1).join(", ") + " and " + arr[arr.length - 1]; }
-  function syncBrief(){
+  var WORDS = ["Nothing", "One thing", "Two things", "Three things", "Four things", "Five things"];
+
+  /* Today: the morning brief. Each button does the job, and the list keeps count. */
+  var UPD = ["garza", "kim", "ruiz"], NAMES = { garza: "Garza", kim: "Kim", ruiz: "Ruiz" };
+  function briefDone(){
     var left = UPD.filter(function(k){ return !JOBS[k].sent; });
-    var done = { castillo: !!JOBS.castillo.sent, updates: left.length === 0, moore: !!JOBS.moore.sent, alvarez: alvarezOk };
+    return { castillo: !!JOBS.castillo.sent, updates: left.length === 0, moore: !!JOBS.moore.sent, rebuild: !!S.rebuilt.bennett, alvarez: S.alvarez, left: left };
+  }
+  function syncBrief(){
+    var st = briefDone(), left = st.left;
     if (left.length){
       $("upd-title").textContent = left.length + " homeowner update" + (left.length > 1 ? "s" : "") + " due by 5 PM";
       $("upd-names").textContent = listNames(left.map(function(k){ return NAMES[k]; })) + ". Drafted from this morning's readings.";
-      $("upd-btn").textContent = left.length > 1 ? "Send all " + left.length : "Send";
+      if (!$("upd-btn").disabled) $("upd-btn").textContent = left.length > 1 ? "Send all " + left.length : "Send";
     } else {
       $("upd-title").textContent = "Homeowner updates sent";
       $("upd-names").textContent = "Garza, Kim and Ruiz each have today's progress.";
     }
     var open = 0;
     each(app.querySelectorAll("[data-item]"), function(li){
-      var k = li.getAttribute("data-item"), isDone = done[k];
+      var k = li.getAttribute("data-item"), isDone = st[k];
       li.classList.toggle("is-done", isDone);
-      var dot = li.querySelector(".dot");
-      if (isDone) dot.className = "dot g";
-      var b = li.querySelector("[data-act]");
-      if (isDone && b){ b.disabled = true; b.classList.add("done"); b.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>' + esc(b.getAttribute("data-done")); }
-      if (!isDone) open++;
+      if (isDone){ li.querySelector(".dot").className = "dot g"; markDone(li.querySelector("[data-act]")); }
+      else open++;
     });
     $("today-count").textContent = open ? open + (open === 1 ? " thing needs you" : " things need you") : "All clear";
     $("today-wrap").classList.toggle("all-done", open === 0);
-    if (!left.length) $("st-drying").innerHTML = '<i class="dot g"></i>Updates sent';
-    else $("st-drying").innerHTML = '<i class="dot a"></i>' + left.length + (left.length > 1 ? " updates" : " update") + " due";
+    $("st-drying").innerHTML = left.length ? '<i class="dot a"></i>' + left.length + (left.length > 1 ? " updates" : " update") + " due" : '<i class="dot g"></i>Updates sent';
     if (JOBS.moore.sent) $("st-rebuild").innerHTML = '<i class="dot g"></i>Invoice sent';
-    if (JOBS.castillo.sent) $("st-carrier").innerHTML = '<i class="dot a"></i>Followed up';
+    if (JOBS.castillo.sent && JOBS.lopez.sent) $("st-carrier").innerHTML = '<i class="dot g"></i>Both followed up';
+    else if (JOBS.castillo.sent) $("st-carrier").innerHTML = '<i class="dot a"></i>Castillo followed up';
   }
-  function act(a){
+  function todayAnswer(){
+    var st = briefDone(), parts = [];
+    each(app.querySelectorAll("[data-item]"), function(li){
+      var k = li.getAttribute("data-item");
+      if (st[k]) return;
+      parts.push(k === "updates" ? st.left.length + " " + li.getAttribute("data-say").replace("updates are", st.left.length > 1 ? "updates are" : "update is") : li.getAttribute("data-say"));
+    });
+    if (!parts.length) return "Nothing right now. Everything on your Today list is handled.";
+    return WORDS[parts.length] + ": " + listNames(parts) + ". " + (parts.length > 1 ? "Each one has a button" : "It has a button") + " on your Today list.";
+  }
+
+  /* Growth: rebuilds, partners and reviews */
+  function draftRebuild(k){
+    S.rebuilt[k] = true;
+    markDone(app.querySelector('[data-rebuild="' + k + '"] .btn'), k === "lc" ? "Drafted" : "Drafted");
+  }
+  function quietCalls(){
+    S.quiet = true;
+    each(app.querySelectorAll("[data-quiet] .btn"), function(b){ markDone(b); });
+  }
+  function askReviews(){
+    S.reviews = true;
+    each(app.querySelectorAll("[data-reviewee] .chip"), function(c){ c.className = "chip g"; c.textContent = "Asked"; });
+    markDone(app.querySelector('[data-act="askreviews"]'));
+  }
+  function rebalance(){
+    S.rebal = true;
+    $("nw-line").textContent = "Next week: Diego 2 nights, Jordan 4, Alex 1. Both are on the new rotation. Ray is on rebuilds, not the rotation.";
+    markDone(app.querySelector('#hr-rebal'));
+  }
+  function remind(){
+    S.reminded = true;
+    each(app.querySelectorAll("[data-inv][data-rem] .chip"), function(c){ c.className = "chip g"; c.textContent = "Reminder sent"; });
+  }
+
+  /* Every button that does something runs through here */
+  function act(a, b){
     if (a === "castillo") sendJob("castillo");
     else if (a === "updates") UPD.forEach(sendJob);
     else if (a === "moore") sendJob("moore");
+    else if (a === "rebuild") draftRebuild("bennett");
     else if (a === "alvarez"){
-      alvarezOk = true;
+      S.alvarez = true;
       var chip = $("alvarez-chip");
       if (chip){ chip.className = "chip g"; chip.textContent = "Confirmed, Thu 3:15 PM"; }
-      syncBrief();
-    } else if (a === "rebalance") rebalance();
+    }
+    else if (a === "followups"){ sendJob("castillo"); sendJob("lopez"); }
+    else if (a === "remind") remind();
+    else if (a === "rebalance") rebalance();
+    else if (a === "draftall") ["bennett", "garza", "ruiz", "lc"].forEach(draftRebuild);
+    else if (a === "quiet") quietCalls();
+    else if (a === "askreviews") askReviews();
+    if (b) markDone(b);
+    syncAll();
   }
-  each(app.querySelectorAll("[data-act]"), function(b){ b.addEventListener("click", function(){ if (!b.disabled) act(b.getAttribute("data-act")); }); });
-  syncBrief();
+  function syncAll(){ syncBrief(); refreshCard(); }
+  app.addEventListener("click", function(e){
+    if (!e.target.closest) return;
+    var a = e.target.closest("[data-act]");
+    if (a && app.contains(a)){ if (!a.disabled) act(a.getAttribute("data-act"), a); return; }
+    var s = e.target.closest("[data-step]");
+    if (s && !s.disabled){
+      var r = s.closest("[data-rebuild]");
+      if (r) draftRebuild(r.getAttribute("data-rebuild"));
+      else markDone(s);
+      if (s.closest("[data-quiet]") && app.querySelectorAll("[data-quiet] .btn:not([disabled])").length === 0) S.quiet = true;
+      syncAll();
+    }
+  });
 
   /* Screens */
   var navs = app.querySelectorAll("[data-go]"), views = app.querySelectorAll(".v"), current = "overview";
@@ -978,7 +1232,7 @@ button,input{font:inherit;color:inherit}
     });
     window.scrollTo({ top: 0, behavior: "auto" });
   }
-  each(navs, function(b){ b.addEventListener("click", function(){ clearHl(); go(b.getAttribute("data-go")); }); });
+  each(navs, function(b){ b.addEventListener("click", function(){ clearHl(); hideCard(); go(b.getAttribute("data-go")); }); });
   function reveal(el){
     if (!el) return;
     var r = el.getBoundingClientRect();
@@ -989,7 +1243,7 @@ button,input{font:inherit;color:inherit}
   each(app.querySelectorAll("[data-stage]"), function(s){
     s.addEventListener("click", function(){
       var g = s.getAttribute("data-stage");
-      clearHl(); setRegion("all"); go("jobs");
+      clearHl(); hideCard(); setRegion("all"); go("jobs");
       var h = app.querySelector('.jl h3[data-group="' + g + '"]');
       if (!h) return;
       h.classList.add("hl");
@@ -999,7 +1253,7 @@ button,input{font:inherit;color:inherit}
     });
   });
   each(app.querySelectorAll("[data-go-hr]"), function(b){
-    b.addEventListener("click", function(){ clearHl(); go("hr"); var p = app.querySelector('[data-k="oncall2"]'); if (p){ p.classList.add("hl"); setTimeout(function(){ reveal(p); }, 30); } });
+    b.addEventListener("click", function(){ clearHl(); hideCard(); go("hr"); var p = app.querySelector('[data-k="oncall2"]'); if (p){ p.classList.add("hl"); setTimeout(function(){ reveal(p); }, 30); } });
   });
 
   /* Jobs: Texas or Louisiana */
@@ -1026,7 +1280,7 @@ button,input{font:inherit;color:inherit}
     });
   });
 
-  /* HR desk: onboarding, renewals and the on-call rotation */
+  /* HR desk: onboarding */
   var obBtns = app.querySelectorAll("[data-ob] button");
   function obUpdate(){
     var n = 0;
@@ -1038,18 +1292,6 @@ button,input{font:inherit;color:inherit}
   }
   each(obBtns, function(b){ b.addEventListener("click", function(){ b.setAttribute("aria-checked", b.getAttribute("aria-checked") === "true" ? "false" : "true"); obUpdate(); }); });
   obUpdate();
-  each(app.querySelectorAll("[data-step]"), function(b){
-    b.addEventListener("click", function(){
-      if (b.disabled) return;
-      b.disabled = true; b.classList.add("done");
-      b.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>' + esc(b.getAttribute("data-done"));
-    });
-  });
-  function rebalance(){
-    $("nw-line").textContent = "Next week: Diego 2 nights, Jordan 4, Alex 1. Both are on the new rotation.";
-    var b = app.querySelector('[data-act="rebalance"]');
-    if (b){ b.disabled = true; b.classList.add("done"); b.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>' + esc(b.getAttribute("data-done")); }
-  }
 
   /* What you pay now */
   var money = function(n){ return "$" + Math.round(n).toLocaleString("en-US"); };
@@ -1064,44 +1306,135 @@ button,input{font:inherit;color:inherit}
   each(["c1s","c1p","c2s","c2p","c3p","c4s","c4p"], function(id){ $(id).addEventListener("input", calc); });
   calc();
 
-  /* What the homeowner sees */
+  /* Phone previews: what a homeowner sees, and what a partner sees */
   var dlg = $("ho"), scr = $("ho-screen");
   function brandMini(){
     var logo = document.querySelector(".brand .logo");
     return logo ? '<img class="logo" src="' + logo.getAttribute("src") + '" alt="">' : '<span class="mark" aria-hidden="true">E</span>';
   }
+  var CLOSE = '<button type="button" class="hp-x" data-ho-close aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>';
+  function openPhone(title, sub, html){
+    if (!dlg || !dlg.showModal) return;
+    $("ho-title").textContent = title;
+    $("ho-sub").textContent = sub;
+    scr.innerHTML = html; scr.scrollTop = 0;
+    dlg.showModal();
+  }
   function openHome(key){
     var j = JOBS[key], h = j && j.home;
-    if (!h || !dlg || !dlg.showModal) return;
-    $("ho-title").textContent = "What " + h.name + " sees";
+    if (!h) return;
     var steps = ["Water out", "Drying", "Dry", "Repairs", "Done"];
     var first = h.next[1].split(" ")[0];
-    var s = '<div class="hp-top">' + brandMini() + '<div><b>Your home, with Elite</b><small>' + esc(j.s) + '</small></div><button type="button" class="hp-x" data-ho-close aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>';
+    var s = '<div class="hp-top">' + brandMini() + '<div><b>Your home, with Elite</b><small>' + esc(j.s) + '</small></div>' + CLOSE + '</div>';
     s += '<div class="hp-hero"><small>Hi ' + esc(h.name) + ', here\'s where things stand</small><h4>Drying, day ' + h.day + '</h4><p>' + esc(h.msg) + '</p></div>';
     s += '<ol class="steps">' + steps.map(function(x, i){ return '<li class="' + (i < h.step ? "done" : i === h.step ? "now" : "") + '">' + x + '</li>'; }).join("") + '</ol>';
     s += '<div class="hp-card"><h5>Next visit</h5><div class="hp-who"><span class="av">' + esc(h.next[0]) + '</span><div><b>' + esc(h.next[1]) + '</b><small>' + esc(h.next[2]) + '. ' + esc(h.next[3]) + '</small></div></div></div>';
+    if (j.files.indexOf("Matterport 3D scan") > -1) s += '<div class="hp-card"><h5>Your scans</h5><div class="hp-scan"><span>3D walkthrough</span><span>Thermal photos</span></div></div>';
     s += '<div class="hp-card"><h5>Your claim</h5><p><b>' + esc(h.claim[0]) + '</b>, claim ' + esc(h.claim[1]) + '. ' + esc(h.claim[2]) + '</p></div>';
     s += '<div class="hp-card"><h5>Updates</h5><ul class="tl">' + h.tl.map(function(t){ return '<li><small>' + esc(t[0]) + '</small>' + esc(t[1]) + '</li>'; }).join("") + '</ul></div>';
     s += '<div class="hp-cta"><span class="p"><svg class="ic" aria-hidden="true"><use href="#i-msg"/></svg>Text ' + esc(first) + '</span><span class="s"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Call the office</span></div>';
-    scr.innerHTML = s; scr.scrollTop = 0;
-    dlg.showModal();
+    openPhone("What " + h.name + " sees", "A private page for their home, sent by text from the job. No app to download and no login. It updates as your crew works.", s);
   }
+  function openPartner(){
+    var s = '<div class="hp-top">' + brandMini() + '<div><b>Elite partner portal</b><small>Dunmore Plumbing</small></div>' + CLOSE + '</div>';
+    s += '<div class="hp-hero"><small>Report a loss</small><h4>Send Elite a job in 30 seconds</h4><p>Elite calls the homeowner right away and keeps you posted here.</p></div>';
+    s += '<div class="hp-card pf"><div><label>Property address</label><div class="in">1412 Oak Ridge Dr, Boerne</div></div>';
+    s += '<div><label>What happened</label><div class="chips"><span class="on">Water</span><span>Fire</span><span>Mold</span><span>Storm</span></div></div>';
+    s += '<div><label>Homeowner phone</label><div class="in">(830) 555-0142</div></div>';
+    s += '<div><label>Photos</label><div class="in">3 photos added</div></div>';
+    s += '<div class="send">Send to Elite</div></div>';
+    s += '<div class="hp-card"><h5>Your jobs with Elite</h5><ul class="pl"><li><span>9 Cypress Bend</span><em>Drying, day 3</em></li><li><span>88 Bulverde Rd</span><em>Waiting on Allstate</em></li><li><span>Pinecrest Apts #214</span><em>Done and paid</em></li></ul></div><div style="height:26px"></div>';
+    openPhone("What a partner sees", "A private link for each plumber and property manager. They report a loss in 30 seconds and watch it move, so the next one comes to you too.", s);
+  }
+  each(app.querySelectorAll("[data-partner-view]"), function(b){ b.addEventListener("click", openPartner); });
   if (dlg){
     dlg.addEventListener("click", function(e){
       if (e.target === dlg || (e.target.closest && e.target.closest("[data-ho-close]"))) dlg.close();
     });
   }
 
-  /* Ask Elite: answers from the records on screen, opening the screen each answer comes from */
+  /* Ask Elite: answers open the screen they come from, light up the records, and put a card on top to act on */
+  var card = $("anscard"), cardT = $("ac-title"), cardB = $("ac-body"), cardKey = null;
+  function hideCard(){ if (card){ card.hidden = true; cardKey = null; } }
+  $("ac-x").addEventListener("click", function(){ hideCard(); clearHl(); });
+  function tbl(head, body){
+    return '<table class="tbl ac-t"><thead><tr>' + head.map(function(h){ return '<th scope="col">' + h + '</th>'; }).join("") + '</tr></thead><tbody>' + body.join("") + '</tbody></table>';
+  }
+  function btn(a, label, doneLabel, isDone){
+    return isDone ? '<button type="button" class="btn done" disabled>' + CHECK + esc(doneLabel) + '</button>' : '<button type="button" class="btn" data-act="' + a + '" data-done="' + esc(doneLabel) + '">' + esc(label) + '</button>';
+  }
+  var CARDS = {
+    claims: function(){
+      var c = JOBS.castillo.sent, l = JOBS.lopez.sent;
+      return { t: "2 claims past 14 days", h: tbl(["Job", "Carrier", "Waiting", "Status"], [
+        '<tr><td><b>Castillo</b><small>Estimate $18,240</small></td><td>State Farm</td><td><span class="chip r">19 days</span></td><td>' + (c ? '<span class="chip g">Follow-up sent</span>' : 'Follow-up drafted') + '</td></tr>',
+        '<tr><td><b>Lopez</b><small>Supplement</small></td><td>Allstate</td><td><span class="chip a">16 days</span></td><td>' + (l ? '<span class="chip g">Follow-up sent</span>' : 'Follow-up drafted') + '</td></tr>'
+      ]) + '<div class="ac-foot">' + btn("followups", "Send both follow-ups", "Both sent", c && l) + '<small>Each goes to the adjuster on file with the claim number.</small></div>' };
+    },
+    owed: function(){
+      var r = S.reminded, sent = '<span class="chip g">Reminder sent</span>', due = '<span class="chip">Reminder ready</span>';
+      return { t: "$48,300 past 60 days, across 5 invoices", h: tbl(["Job", "Carrier", "Days", "Amount", "Next step"], [
+        '<tr data-inv data-rem><td><b>Delgado</b></td><td>Allstate</td><td class="num">68</td><td class="num">$11,860</td><td>' + (r ? sent : due) + '</td></tr>',
+        '<tr data-inv data-rem><td><b>Ortiz</b></td><td>USAA</td><td class="num">63</td><td class="num">$7,320</td><td>' + (r ? sent : due) + '</td></tr>',
+        '<tr data-inv data-rem><td><b>Pruitt</b></td><td>State Farm</td><td class="num">66</td><td class="num">$5,470</td><td>' + (r ? sent : due) + '</td></tr>',
+        '<tr data-inv><td><b>Harmon</b></td><td>State Farm</td><td class="num">74</td><td class="num">$14,200</td><td><span class="chip a">Check at mortgage company</span></td></tr>',
+        '<tr data-inv><td><b>Whitfield</b></td><td>Nationwide</td><td class="num">81</td><td class="num">$9,450</td><td><span class="chip a">Check at mortgage company</span></td></tr>'
+      ]) + '<div class="ac-foot">' + btn("remind", "Send the 3 reminders", "Reminders sent", r) + '<small>The two mortgage checks need a call to the lender, so they\'re on your list.</small></div>' };
+    },
+    oncall: function(){
+      return { t: "Diego has been on call 9 of the last 14 nights", h: tbl(["Tech", "Nights, last 14", "Next week"], [
+        '<tr><td><b>Diego M.</b></td><td><span class="chip r">9</span></td><td class="num">' + (S.rebal ? "2" : "4") + '</td></tr>',
+        '<tr><td><b>Jordan K.</b></td><td class="num">3</td><td class="num">' + (S.rebal ? "4" : "2") + '</td></tr>',
+        '<tr><td><b>Alex P.</b></td><td class="num">2</td><td class="num">1</td></tr>'
+      ]) + '<div class="ac-foot">' + btn("rebalance", "Give Jordan 2 of Diego's nights", "Rotation updated", S.rebal) + '<small>Burned-out techs are the ones who leave. This evens it out.</small></div>' };
+    },
+    rebuilds: function(){
+      var rb = S.rebuilt, all = rb.bennett && rb.garza && rb.ruiz && rb.lc;
+      var row = function(k, n, note, amt){ return '<tr><td><b>' + n + '</b><small>' + note + '</small></td><td class="num">' + amt + '</td><td>' + (rb[k] ? '<span class="chip g">Drafted</span>' : '<span class="chip a">Not offered</span>') + '</td></tr>'; };
+      return { t: "$86,400 in rebuild work you haven't offered", h: tbl(["Job", "Rebuild", "Estimate"], [
+        row("bennett", "Bennett", "Mitigation paid 12 days ago", "$18,500"),
+        row("garza", "Garza", "Drying, day 3", "$22,000"),
+        row("ruiz", "Ruiz", "Drying, day 5", "$14,200"),
+        row("lc", "Lake Charles, 3 homes", "Storm jobs finishing drying", "$31,700")
+      ]) + '<div class="ac-foot">' + btn("draftall", "Draft all 4 estimates", "All drafted", all) + '<small>Drafts come from the moisture maps and scans already on each job.</small></div>' };
+    },
+    partners: function(){
+      var q = S.quiet;
+      return { t: "2 partners have gone quiet", h: tbl(["Partner", "Last job", "Usually sends"], [
+        '<tr><td><b>Oakmont Realty</b><small>Real estate, Fair Oaks Ranch</small></td><td><span class="chip a">47 days</span></td><td>3 a quarter</td></tr>',
+        '<tr><td><b>Whitlock Plumbing</b><small>Plumber, Canyon Lake</small></td><td><span class="chip a">52 days</span></td><td>2 a quarter</td></tr>'
+      ]) + '<div class="ac-foot">' + btn("quiet", "Put both on today's call list", "On today's list", q) + '<small>Your top 5 partners sent 23 jobs worth $134,700 in the last 90 days.</small></div>' };
+    },
+    reviews: function(){
+      var a = S.reviews;
+      return { t: "3 homeowners to ask for a review", h: tbl(["Homeowner", "Job", "Closed"], [
+        '<tr><td><b>L. Morales</b></td><td>Water</td><td>Tuesday</td></tr>',
+        '<tr><td><b>E. Lindgren</b></td><td>Fire</td><td>Wednesday</td></tr>',
+        '<tr><td><b>R. Yates</b></td><td>Mold</td><td>Monday</td></tr>'
+      ]) + '<div class="ac-foot">' + btn("askreviews", "Ask all 3", "Requests sent", a) + '<small>Each gets a text with your Google review link, once.</small></div>' };
+    }
+  };
+  function showCard(key){
+    var f = CARDS[key];
+    if (!f || !card){ hideCard(); return; }
+    var c = f(); cardKey = key;
+    cardT.textContent = c.t; cardB.innerHTML = c.h; card.hidden = false;
+    if (!reduce){ card.classList.remove("enter"); void card.offsetWidth; card.classList.add("enter"); }
+  }
+  function refreshCard(){ if (cardKey && !card.hidden){ var c = CARDS[cardKey](); cardT.textContent = c.t; cardB.innerHTML = c.h; } }
+
   function reyesLeft(){
     var left = [];
     each(obBtns, function(b){ if (b.getAttribute("aria-checked") !== "true") left.push(b.getAttribute("data-say")); });
     return left.length ? left.length + " of " + obBtns.length + " steps are left: " + listNames(left) + "." : "Nothing. All " + obBtns.length + " onboarding steps are done, so he's set for Monday.";
   }
   var QA = {
-    today:{q:"What needs me today?", a:function(){ return $("today-wrap").classList.contains("all-done") ? "Nothing right now. Everything on your Today list is handled." : "Four things: Castillo's claim is 19 days with State Farm, three homeowner updates are due by 5 PM, Moore's $3,260 invoice is ready to send, and Alvarez's ride-along is Thursday at 3:15 PM. Each one has a button on your Today list."; }, v:"overview", k:["castillo","updates","moore","alvarez"]},
+    today:{q:"What needs me today?", a:todayAnswer, v:"overview", k:["castillo","updates","moore","rebuild","alvarez"]},
     claims:{q:"Which claims are stuck past 14 days?", a:"Two: Castillo with State Farm at 19 days, and Lopez with Allstate at 16. Follow-ups to both adjusters are drafted and ready to send.", v:"jobs", k:["castillo","lopez"], job:"castillo"},
-    owed:{q:"What's owed past 60 days?", a:"$48,300 across 5 invoices. Two of those checks are waiting on a mortgage company to endorse them, and State Farm is your slowest payer at 41 days.", v:"overview", k:["owed"]},
+    owed:{q:"What's owed past 60 days?", a:"$48,300 across 5 invoices. Three just need a reminder, and two are checks waiting on a mortgage company to endorse them. State Farm is your slowest payer at 41 days.", v:"overview", k:["owed"]},
+    rebuilds:{q:"What rebuild work haven't we offered?", a:"$86,400 across 4 jobs. Bennett is the first to send: mitigation was paid 12 days ago and nobody has offered him the $18,500 rebuild.", v:"growth", k:["rebuilds","rebuild-t"]},
+    partners:{q:"Which partners have gone quiet?", a:"Two: Oakmont Realty hasn't sent a job in 47 days and Whitlock Plumbing in 52. Both sent jobs every month last quarter.", v:"growth", k:["partners"]},
+    reviews:{q:"Who should we ask for a review?", a:"Three homeowners closed this week and haven't been asked: Morales, Lindgren and Yates. You're at 4.9 with 31 reviews.", v:"growth", k:["reviews"]},
     oncall:{q:"Who's been on call the most?", a:"Diego: 9 of the last 14 nights. Jordan has had 3 and Alex 2. Giving Jordan two of Diego's nights next week evens it out.", v:"hr", k:["oncall","oncall2"]},
     licenses:{q:"Which licenses renew soon?", a:"Two: the Texas mold remediation company license in 45 days, and Chris B.'s WRT in 30 days. Both have the next step on the HR desk.", v:"hr", k:["lic1","wrt"]},
     movein:{q:"What did the move-in clean up?", a:"It merged 14 duplicate jobs, fixed 37 carrier names, standardized 23 addresses and attached 48 ClickUp tasks to their jobs. 9 jobs are missing a claim number, and they're flagged for the office.", v:"movein", k:["sum"]},
@@ -1114,6 +1447,7 @@ button,input{font:inherit;color:inherit}
   };
   var RULES = [
     ["today", /today|need me|needs me|priorit|morning|brief/],
+    ["reviews", /review|rating|stars|google/],
     ["updates", /update|homeowner|customer/],
     ["oncall", /on call|on-call|night|rotation|burn/],
     ["overtime", /overtime|hours|40/],
@@ -1122,12 +1456,19 @@ button,input{font:inherit;color:inherit}
     ["reyes", /reyes|onboard|paperwork|new hire|i-9|i9/],
     ["cost", /paying|pay for|cost|subscription|seats/],
     ["movein", /move|clickup|sheet|spreadsheet|clean|duplicate|excel|import/],
+    ["rebuilds", /rebuild|reconstruct|estimate|bigger|upsell/],
+    ["partners", /partner|plumber|property manager|referr|quiet|realtor/],
     ["owed", /owe|money|invoice|past due|collect|cash|\b60\b|\b90\b|mortgage/],
-    ["hire", /hir|applicant|candidate|recruit|interview|ride/],
-    ["claims", /claim|stuck|carrier|adjuster|insur|supplement|state farm|allstate/]
+    ["claims", /claim|stuck|carrier|adjuster|insur|supplement|state farm|allstate/],
+    ["hire", /hir|applicant|candidate|recruit|interview|ride/]
   ];
   var FALLBACK = "Once it's built on your records, it answers questions like that from your own jobs, claims and crews. Try one of the questions below.";
-  function match(text){ var t = String(text).toLowerCase(); for (var i = 0; i < RULES.length; i++){ if (RULES[i][1].test(t)) return RULES[i][0]; } return null; }
+  function match(text){
+    var t = String(text).toLowerCase();
+    if (/carrier review|under review/.test(t)) return "claims";
+    for (var i = 0; i < RULES.length; i++){ if (RULES[i][1].test(t)) return RULES[i][0]; }
+    return null;
+  }
   var askQ = $("ask-q"), askA = $("ask-a"), token = 0;
   function typeAnswer(text){
     var mine = ++token, i = 0;
@@ -1141,12 +1482,14 @@ button,input{font:inherit;color:inherit}
     askQ.textContent = asked || (it ? it.q : "");
     each(tries, function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-ask") === key ? "true" : "false"); });
     clearHl();
-    if (!it){ typeAnswer(FALLBACK); return; }
+    if (!it){ hideCard(); typeAnswer(FALLBACK); return; }
     go(it.v);
+    showCard(key);
     var view = app.querySelector('.v[data-v="' + it.v + '"]'), firstLit = null;
     it.k.forEach(function(k){ each(view.querySelectorAll('[data-k="' + k + '"]'), function(n){ n.classList.add("hl"); if (!firstLit) firstLit = n; }); });
     if (it.job) renderJob(it.job);
-    setTimeout(function(){ reveal(firstLit); }, 30);
+    if (!CARDS[key]) setTimeout(function(){ reveal(firstLit); }, 30);
+    else window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
     typeAnswer(typeof it.a === "function" ? it.a() : it.a);
   }
   each(tries, function(b){ b.addEventListener("click", function(){ answer(b.getAttribute("data-ask")); }); });
@@ -1155,6 +1498,7 @@ button,input{font:inherit;color:inherit}
   each(app.querySelectorAll("[data-focus-ask]"), function(b){ b.addEventListener("click", function(){ input.focus(); }); });
   document.addEventListener("keydown", function(e){ if ((e.metaKey || e.ctrlKey) && String(e.key).toLowerCase() === "k"){ e.preventDefault(); input.focus(); } });
 
+  syncBrief();
   renderJob("garza");
 })();
 </script>
