@@ -1,0 +1,352 @@
+[
+  {
+    "slug": "texas-restoration-group",
+    "company": "Texas Restoration Group",
+    "brand": "TRG",
+    "name": "Texas Restoration Group",
+    "first": "Carlos",
+    "last": "Acevedo",
+    "h1": "Texas Restoration Group, on software you own.",
+    "lede": "You went independent in June. Here is what running TRG on its own system could look like: every job, claim and crew on one screen, built once and owned by you.",
+    "cards": [
+      [
+        "Arrival times you can prove",
+        "You promise under an hour across Greater Austin. Every call logs when the crew arrived, so you see the average and the slow ones."
+      ],
+      [
+        "The franchise system, replaced",
+        "Jobs, claims and crews on one board that belongs to TRG. No seats, no renewals, nobody else's rules."
+      ],
+      [
+        "Claims that chase themselves",
+        "Days open on every claim, with the follow-up to the adjuster already written. You review it and send."
+      ]
+    ]
+  },
+  {
+    "slug": "all-ways-restoration",
+    "company": "All Ways Restoration & Construction",
+    "brand": "All Ways",
+    "first": "Richard",
+    "last": "Tannery",
+    "h1": "All Ways, from Austin to Great Falls, on one screen.",
+    "lede": "You're opening a location in Great Falls. Here is how both locations could run from one board: jobs, claims, crews and the techs you're hiring.",
+    "cards": [
+      [
+        "Two locations, one board",
+        "Austin and Great Falls side by side. Every job by stage, with a switch to see one location or both."
+      ],
+      [
+        "Great Falls hiring in one list",
+        "Applicants, phone screens, ride-alongs and certifications in one place, instead of texts and a folder of resumes."
+      ],
+      [
+        "Claims that chase themselves",
+        "Days open on every claim, with the follow-up to the adjuster already written. You review it and send."
+      ]
+    ]
+  },
+  {
+    "slug": "lightspeed-greater-west-austin",
+    "company": "Lightspeed Restoration of Greater West Austin",
+    "brand": "Lightspeed",
+    "name": "Lightspeed Greater West Austin",
+    "first": "Heather",
+    "last": "Noble",
+    "h1": "Every job from Liberty Hill to Killeen, on one screen.",
+    "lede": "A working preview built around how your crews cover Cedar Park, Leander, Dripping Springs, Marble Falls and Killeen.",
+    "cards": [
+      [
+        "Jobs by town",
+        "See every open job by town and stage, so you know where each crew is headed before the day starts."
+      ],
+      [
+        "Claims, the way you'd run them",
+        "You know insurance. Every claim shows its carrier, days open and the next follow-up, already written."
+      ],
+      [
+        "On top of what corporate requires",
+        "Lightspeed's system stays. This adds what it doesn't do: the morning brief, the follow-ups and hiring."
+      ]
+    ]
+  },
+  {
+    "slug": "lightspeed-georgetown-round-rock",
+    "company": "Lightspeed Restoration of Georgetown & Round Rock",
+    "brand": "Lightspeed",
+    "name": "Lightspeed Georgetown and Round Rock",
+    "first": "Jonathan",
+    "last": "Friedman",
+    "h1": "Georgetown and Round Rock, on one screen.",
+    "lede": "A working preview for your Lightspeed territories: every job, claim and crew across both, with a morning brief that tells you what needs you.",
+    "cards": [
+      [
+        "Both territories, one board",
+        "Georgetown and Round Rock side by side. Every job by stage, with a switch to see one or both."
+      ],
+      [
+        "On top of what corporate requires",
+        "Lightspeed's system stays. This adds what it doesn't do: the morning brief, the follow-ups and hiring."
+      ],
+      [
+        "Claims that chase themselves",
+        "Days open on every claim, with the follow-up to the adjuster already written. You review it and send."
+      ]
+    ]
+  },
+  {
+    "slug": "quick-dry-restoration",
+    "company": "Quick Dry Restoration",
+    "brand": "Quick Dry",
+    "first": "Penny",
+    "last": "Lane",
+    "h1": "Mitigation, moving and rebuild, on one screen.",
+    "lede": "Quick Dry runs mitigation, its own moving company and a full rebuild team out of Heatherwilde. Here is how all three could run from one board.",
+    "cards": [
+      [
+        "Three divisions, one schedule",
+        "Dry-outs, pack-outs and rebuilds on the same board, so one job moves from crew to crew without a phone call."
+      ],
+      [
+        "Hand-offs that don't drop",
+        "When drying wraps, the rebuild team sees it the same morning, with the photos and readings attached."
+      ],
+      [
+        "Your estimate form, answered",
+        "Requests from your website land on the board with a reply already drafted, day or night."
+      ]
+    ]
+  },
+  {
+    "slug": "austin-hi-tech-restoration",
+    "company": "Austin Hi-Tech Restoration",
+    "brand": "Hi-Tech",
+    "name": "Austin Hi-Tech",
+    "first": "Virgil",
+    "last": "Alexander",
+    "h1": "Every carrier, every claim, on one screen.",
+    "lede": "Austin Hi-Tech works with about a dozen insurance carriers. Here is how every claim could show its carrier, its days open and the next follow-up, already written.",
+    "cards": [
+      [
+        "Claims by carrier",
+        "See which carriers are sitting on what, and for how long, without opening a single email thread."
+      ],
+      [
+        "Follow-ups already written",
+        "When a claim passes 14 days, the follow-up to the adjuster is drafted and waiting. You review it and send."
+      ],
+      [
+        "Since 1991, on one board",
+        "Every job and crew on one screen, so the office and the trucks see the same day."
+      ]
+    ]
+  },
+  {
+    "slug": "dwyer-restoration",
+    "company": "Dwyer Restoration",
+    "brand": "Dwyer",
+    "first": "Dan",
+    "last": "Dwyer",
+    "h1": "San Antonio and Austin, on one screen.",
+    "lede": "You're growing Dwyer from Converse into Austin. Here is how both markets could run from one board: jobs, claims, crews and the people you're hiring.",
+    "cards": [
+      [
+        "Two markets, one board",
+        "San Antonio and Austin side by side. Every job by stage, with a switch to see one market or both."
+      ],
+      [
+        "Austin hiring in one list",
+        "Applicants, ride-alongs and certifications for the Austin crew in one place, from the first call to the first week."
+      ],
+      [
+        "Claims that chase themselves",
+        "Days open on every claim, with the follow-up to the adjuster already written. You review it and send."
+      ]
+    ]
+  },
+  {
+    "slug": "austin-fire-and-flood",
+    "company": "Austin Fire & Flood",
+    "brand": "Fire & Flood",
+    "name": "Austin Fire & Flood",
+    "first": "Robin",
+    "last": "Hall",
+    "h1": "Austin Fire & Flood, across the metro, on one screen.",
+    "lede": "You expanded across the Austin metro this year. Here is how every crew, claim and on-call shift could live on one board.",
+    "cards": [
+      [
+        "Every crew across the metro",
+        "Where each crew is, what job they're on and what's next, on one screen the office and the trucks share."
+      ],
+      [
+        "Who's on call, and who took the job",
+        "The rotation is on the board, and every after-hours job shows who accepted it and when."
+      ],
+      [
+        "Claims that chase themselves",
+        "Days open on every claim, with the follow-up to the adjuster already written. You review it and send."
+      ]
+    ]
+  },
+  {
+    "slug": "db-integrity",
+    "company": "DB Integrity",
+    "brand": "DB Integrity",
+    "first": "Jason",
+    "last": "Dye",
+    "h1": "Austin to Pleasanton, on one screen.",
+    "lede": "DB Integrity covers a long stretch of Texas from the Selma office. Here is how every job, claim and supplement could live on one board.",
+    "cards": [
+      [
+        "Every job, wherever it is",
+        "Every open job by town and stage, so you know what each crew is driving to before the day starts."
+      ],
+      [
+        "Supplements tracked to paid",
+        "You know supplements better than most. Each one shows what was asked for, what was approved and what's still open."
+      ],
+      [
+        "Claims by carrier",
+        "You work with every carrier. See who is sitting on what, with the follow-up already written."
+      ]
+    ]
+  },
+  {
+    "slug": "crown-restoration",
+    "company": "Crown Restoration",
+    "brand": "Crown",
+    "first": "Jeremy",
+    "last": "Newman",
+    "h1": "Plumbing and restoration, three locations, one screen.",
+    "lede": "Crown runs plumbing and restoration out of George Rd, Jones Maltsberger and Selma. Here is how all of it could run from one board.",
+    "cards": [
+      [
+        "From plumbing call to restoration job",
+        "When a plumbing call turns into a water loss, the job moves to the restoration board with the notes and photos attached."
+      ],
+      [
+        "Three locations, one board",
+        "Every job by stage across all three locations, with a switch to see one or all."
+      ],
+      [
+        "Claims that chase themselves",
+        "Days open on every claim, with the follow-up to the adjuster already written. You review it and send."
+      ]
+    ]
+  },
+  {
+    "slug": "champion-restoration",
+    "company": "Champion Restoration",
+    "brand": "Champion",
+    "first": "Melinda",
+    "last": "Mikeska",
+    "h1": "Over 40 carriers, one screen.",
+    "lede": "Champion is a preferred vendor for over 40 insurance carriers across Houston. Here is how every claim could show its carrier, its days open and the next step.",
+    "cards": [
+      [
+        "Claims by carrier",
+        "See which carriers are sitting on what, and for how long, without opening a single email thread."
+      ],
+      [
+        "Every job from Katy to Cypress",
+        "Mitigation, mold, storm and rebuild jobs on one board, by stage and by part of town."
+      ],
+      [
+        "Follow-ups already written",
+        "When a claim passes 14 days, the follow-up to the adjuster is drafted and waiting. You review it and send."
+      ]
+    ]
+  },
+  {
+    "slug": "atlas-restoration",
+    "company": "Atlas Restoration",
+    "brand": "Atlas",
+    "first": "Nick",
+    "last": "Forsell",
+    "h1": "One contractor, one screen.",
+    "lede": "You started Atlas so a homeowner only deals with one contractor for the whole job. Here is how that promise could run from one board.",
+    "cards": [
+      [
+        "Mitigation through rebuild",
+        "Every job on one timeline, from the first call to the final walkthrough, so nothing waits on a phone call."
+      ],
+      [
+        "Homeowner updates, drafted",
+        "Each homeowner gets an update when their job moves. You review it and send."
+      ],
+      [
+        "Materials and subs on the schedule",
+        "What's ordered, what's arrived and which sub is on which job, all on the same board."
+      ]
+    ]
+  },
+  {
+    "slug": "copper-creek-construction",
+    "company": "Copper Creek Construction",
+    "brand": "Copper Creek",
+    "first": "Jason",
+    "last": "Hartnett",
+    "h1": "Every Copper Creek rebuild, on one screen.",
+    "lede": "Copper Creek has been doing insurance restoration since 1998. Here is how every rebuild, supplement and homeowner update could live on one board.",
+    "cards": [
+      [
+        "Rebuilds by stage",
+        "Demo, drywall, cabinets, paint and final walkthrough. Every job by stage, so you see what's stuck."
+      ],
+      [
+        "Supplements tracked to paid",
+        "Each supplement shows what was asked for, what was approved and what's still open."
+      ],
+      [
+        "Homeowner updates, drafted",
+        "Each homeowner gets an update when their job moves. You review it and send."
+      ]
+    ]
+  },
+  {
+    "slug": "big-iron-construction",
+    "company": "Big Iron Construction",
+    "brand": "Big Iron",
+    "first": "Jason",
+    "last": "Hunt",
+    "h1": "Big Iron and your referral partners, on one screen.",
+    "lede": "You and Luis have built Big Iron on referral partners since 2022. Here is how every partner, job and claim could live on one board.",
+    "cards": [
+      [
+        "A page for your referral partners",
+        "Plumbers and agents send you a loss with photos in one tap, and you see who sends the most work."
+      ],
+      [
+        "Every job on one board",
+        "Mitigation, remediation and rebuilds by stage, so the office and the crews see the same day."
+      ],
+      [
+        "Claims that chase themselves",
+        "Days open on every claim, with the follow-up to the adjuster already written. You review it and send."
+      ]
+    ]
+  },
+  {
+    "slug": "premier-restoration",
+    "company": "Premier Restoration",
+    "brand": "Premier",
+    "first": "Hector",
+    "last": "Quesada",
+    "h1": "Every Premier job across Texas, on one screen.",
+    "lede": "Premier works water, fire and mold across the whole state from San Antonio. Here is how every job, estimate and claim could live on one board.",
+    "cards": [
+      [
+        "Statewide jobs on one board",
+        "Every job by city and stage, so you know where each crew is and what's next."
+      ],
+      [
+        "Estimates drafted from the job file",
+        "Photos, readings and the sketch go in. A draft comes out for your estimator to check and send from Xactimate."
+      ],
+      [
+        "Claims that chase themselves",
+        "Days open on every claim, with the follow-up to the adjuster already written. You review it and send."
+      ]
+    ]
+  }
+]

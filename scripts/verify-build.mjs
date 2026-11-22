@@ -197,6 +197,19 @@ assert.ok(
 assert.ok(html.includes('<meta name="twitter:card" content="summary_large_image"'));
 assert.ok(html.includes('href="/hvac/privacy/"'), 'verify-build: archive footer links must point under /hvac/');
 
+// Private preview pages for prospects (site-root/p/<slug>/) ship noindex and stay out of the sitemap.
+{
+  const { readdirSync } = await import('node:fs');
+  const pDir = new URL('../dist/p/', import.meta.url);
+  const sitemap = existsSync(new URL('../dist/sitemap.xml', import.meta.url)) ? readFileSync(new URL('../dist/sitemap.xml', import.meta.url), 'utf8') : '';
+  if (existsSync(pDir)) {
+    for (const slug of readdirSync(pDir)) {
+      const page = readFileSync(new URL(`../dist/p/${slug}/index.html`, import.meta.url), 'utf8');
+      assert.ok(page.includes('<meta name="robots" content="noindex, nofollow">'), `verify-build: /p/${slug}/ must be noindex`);
+      assert.ok(!sitemap.includes(`/p/${slug}`), `verify-build: /p/${slug}/ must not be in the sitemap`);
+    }
+  }
+}
 const og = await sharp(new URL('../public/og.png', import.meta.url).pathname).metadata();
 assert.equal(og.width, 1200, 'verify-build: OG image width must be 1200');
 assert.equal(og.height, 630, 'verify-build: OG image height must be 630');
