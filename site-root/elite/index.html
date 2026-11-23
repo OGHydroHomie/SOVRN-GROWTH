@@ -243,7 +243,7 @@ button,input{font:inherit;color:inherit}
 .tbl .num{font-variant-numeric:tabular-nums}
 .ot .bar::after{content:"";position:absolute;left:66.6%;top:-4px;bottom:-4px;width:1.5px;border-radius:1px;background:var(--ink-3);opacity:.5}
 
-/* Move-in */
+/* Switch-over */
 .sources{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .src{display:flex;align-items:center;gap:12px;padding:14px 16px}
 .src .ico{width:38px;height:38px;flex:none;display:grid;place-items:center;border-radius:11px;background:var(--well);color:var(--ink-2)}
@@ -719,7 +719,7 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
       <button type="button" data-go="jobs" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-clip"/></svg>Jobs<em>18</em></button>
       <button type="button" data-go="growth" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-trend"/></svg>Growth<em class="badge" id="grow-badge" title="Rebuild work not offered yet, plus unsigned estimates">$101K</em></button>
       <button type="button" data-go="hr" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-userplus"/></svg>HR desk</button>
-      <button type="button" data-go="movein" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg>Move-in</button>
+      <button type="button" data-go="movein" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg>Switch-over</button>
       <button type="button" data-go="costs" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg>What you pay now</button>
     </nav>
     <div class="oncall"><small>On call tonight</small><b><span class="av sm" aria-hidden="true">DM</span>Diego M.</b><p>6 PM to 7 AM. Backup: Jordan K.</p></div>
@@ -1015,9 +1015,9 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
       </div>
     </section>
 
-    <!-- Move-in -->
-    <section class="v" data-v="movein" hidden aria-label="Move-in">
-      <div class="vhd"><h2>Move-in</h2><small>Your ClickUp and three spreadsheets, brought into one place</small></div>
+    <!-- Switch-over -->
+    <section class="v" data-v="movein" hidden aria-label="Switch-over">
+      <div class="vhd"><h2>Switch-over</h2><small>Your ClickUp and three spreadsheets, brought into one place</small></div>
       <div class="sources">
         <div class="glass src"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg></span><div><b>ClickUp</b><small>11 lists, 214 tasks</small></div></div>
         <div class="glass src"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-table"/></svg></span><div><b>Jobs 2025.xlsx</b><small>412 rows</small></div></div>
@@ -1673,7 +1673,7 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
   }
   each(regBtns, function(b){ b.addEventListener("click", function(){ setRegion(b.getAttribute("data-region-btn")); }); });
 
-  /* Move-in: before and after */
+  /* Switch-over: before and after */
   var sheetBtns = app.querySelectorAll("[data-sheet]");
   each(sheetBtns, function(b){
     b.addEventListener("click", function(){
@@ -1932,7 +1932,7 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
     found: { q: "What did you find on our website?", a: { lead: "Three things on your website and listings:", items: ["<b>Four phone numbers</b>: your site, its call buttons, Google and BBB each list a different one", "<b>Empty proof sections</b> on your site, while Google shows <b>134 reviews at 4.9</b>", "<b>No door for partners</b>: a plumber can only call"], tail: "Your 10 county pages and financing page are already solid." }, v: "growth", k: ["found"] },
     oncall: { q: "Who's been on call the most?", a: { lead: "<b>Diego</b>: 9 of the last 14 nights.", items: ["Jordan: 3 nights", "Alex: 2 nights"], tail: "Giving Jordan two of Diego's nights next week evens it out." }, v: "hr", k: ["oncall", "oncall2"] },
     licenses: { q: "Which licenses renew soon?", a: { lead: "Two renew soon:", items: ["<b>Texas mold remediation company license</b>, 45 days", "<b>Chris B.'s WRT</b>, 30 days"], tail: "Both have the next step on the HR desk." }, v: "hr", k: ["lic1", "wrt"] },
-    movein: { q: "What did the move-in clean up?", a: { lead: "Your ClickUp and three sheets, cleaned up:", items: ["<b>14</b> duplicate jobs merged", "<b>37</b> carrier names fixed", "<b>23</b> addresses standardized", "<b>48</b> ClickUp tasks attached to their jobs"], tail: "9 jobs are missing a claim number, flagged for the office." }, v: "movein", k: ["sum"] },
+    movein: { q: "What did the switch-over clean up?", a: { lead: "Your ClickUp and three sheets, cleaned up:", items: ["<b>14</b> duplicate jobs merged", "<b>37</b> carrier names fixed", "<b>23</b> addresses standardized", "<b>48</b> ClickUp tasks attached to their jobs"], tail: "9 jobs are missing a claim number, flagged for the office." }, v: "movein", k: ["sum"] },
     missing: { q: "Which jobs are missing a claim number?", a: { lead: "<b>9 jobs</b> came over without a claim number.", items: ["Each one is flagged in the cleaned-up sheet", "<b>Patel</b> comes first: containment starts today"], tail: "Once the office fills them in, they flow to each job's claim checklist." }, v: "movein", k: ["missing"] },
     unheard: { q: "Who hasn't heard from us in 3 days?", a: unheardAnswer, v: "jobs", k: ["brooks"], job: "brooks" },
     updates: { q: "Which homeowners haven't had an update today?", a: updatesAnswer, v: "jobs", k: ["garza", "kim", "ruiz"], job: "garza" },
@@ -1942,7 +1942,7 @@ html[data-look="full"] .search:focus-within{border-color:rgba(255,255,255,.5);bo
     overtime: { q: "Who's over 40 hours this week?", a: { lead: "Three people are over 40 hours:", items: ["<b>Chris B.</b>, 52 hours", "<b>Tony R.</b>, 49 hours", "<b>Diego M.</b>, 44 hours"], tail: "Chris and Tony are on the Lake Charles deployment." }, v: "hr", k: ["ot"] },
     cost: { q: "What are we paying for software?", a: costAnswer, v: "costs", k: ["cost"] }
   };
-  var LABEL = { overview: "Your day", jobs: "Jobs", growth: "Growth", hr: "HR desk", movein: "Move-in", costs: "What you pay now" };
+  var LABEL = { overview: "Your day", jobs: "Jobs", growth: "Growth", hr: "HR desk", movein: "Switch-over", costs: "What you pay now" };
   var BRIEF = {
     overview: todayAnswer,
     jobs: function(){
