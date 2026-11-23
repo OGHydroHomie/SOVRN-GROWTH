@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Your Blueprint | SOVRN Growth</title>
+<meta name="description" content="Answer 13 questions about how you run your restoration company. Get what your tools really cost, the money sitting in your jobs, and the first three screens we would build for you.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#05080E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05080E;--bg-2:#0A0F18;--ink:#EEF2F7;--muted:#A0AAB8;--dim:#6E7887;
+  --line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);--glass:rgba(255,255,255,.035);--glass-2:rgba(255,255,255,.055);
+  --green:#3BE8A0;--green-2:#1FC985;--green-ink:#03140B;--green-soft:rgba(59,232,160,.12);--amber:#FFB547;--red:#FF5D73;
+  --paper:#F3F5F8;--sheet:#FFFFFF;--p-ink:#121821;--p-muted:#4A5565;--p-dim:#7A8494;--p-line:#E2E7EE;--p-accent:#087A4C;--p-soft:rgba(8,122,76,.08);
+  --gutter:32px;color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 "Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+button,input,textarea{font:inherit;color:inherit}
+a{color:var(--green);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:10px}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:1120px;margin:0 auto;padding:0 var(--gutter)}
+.ic{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+
+/* Header */
+.top{border-bottom:1px solid var(--line)}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.mark{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-size:19px;font-weight:500;font-stretch:112%;white-space:nowrap}
+.mark b{font-weight:850}
+.mark i{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 210deg,#3BE8A0,#2DD4BF,#6E9BFF,#3BE8A0);box-shadow:0 0 16px rgba(59,232,160,.55)}
+.top a.txt{color:var(--muted);font-size:15px;text-decoration:none}
+.top a.txt b{color:var(--ink);font-weight:650}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 24px;border:0;border-radius:14px;font-size:16.5px;font-weight:750;text-decoration:none;cursor:pointer;white-space:nowrap;transition:filter .2s ease,transform .2s ease,background-color .2s ease,border-color .2s ease}
+.btn-green{color:var(--green-ink);background:linear-gradient(180deg,#6BF5BD 0%,#35E19A 55%,#22CF88 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 0 0 1px rgba(107,245,189,.55),0 12px 34px -10px rgba(59,232,160,.75)}
+.btn-green:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn-ghost{color:var(--ink);background:rgba(255,255,255,.04);border:1px solid var(--line-2)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.07)}
+.btn[disabled]{opacity:.6;cursor:default;transform:none}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn-green:hover{transform:none}}
+
+/* Intro */
+.intro{position:relative;padding:72px 0 40px;overflow:hidden}
+.intro::before{content:"";position:absolute;left:50%;top:-160px;width:1100px;height:640px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(59,232,160,.16),rgba(45,212,191,.05) 55%,transparent 75%);pointer-events:none}
+.intro .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center}
+.intro h1{font-size:clamp(44px,6.6vw,78px);line-height:.98;font-weight:850;letter-spacing:-.04em;font-stretch:104%}
+.intro .lede{max-width:560px;margin-top:20px;color:var(--muted);font-size:19px}
+.intro .facts{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0;padding:0;list-style:none}
+.intro .facts li{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid var(--line-2);border-radius:999px;background:var(--glass);color:var(--muted);font-size:14.5px}
+.intro .facts .ic{width:16px;height:16px;color:var(--green)}
+.intro .go{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:30px}
+.intro .go small{color:var(--dim);font-size:14px}
+.peek{position:relative;padding:22px;border:1px solid var(--line-2);border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 50px 100px -50px rgba(59,232,160,.45)}
+.peek h2{font-size:15px;font-weight:650;color:var(--muted)}
+.peek ul{display:grid;gap:12px;margin:14px 0 0;padding:0;list-style:none}
+.peek li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:start;padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--glass)}
+.peek li em{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--green-soft);color:var(--green);font-style:normal}
+.peek li b{display:block;font-size:16px;font-weight:720}
+.peek li span{display:block;margin-top:2px;color:var(--muted);font-size:14.5px;line-height:1.45}
+
+/* Form */
+.flow{padding:36px 0 90px}
+.card{max-width:760px;margin:0 auto;padding:30px 34px 28px;border:1px solid var(--line-2);border-radius:26px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.018));box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.bar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.bar i{height:5px;border-radius:5px;background:rgba(255,255,255,.1);transition:background-color .3s ease}
+.bar i.on{background:var(--green)}
+.step-n{margin-top:18px;color:var(--dim);font-size:14px;font-weight:600}
+.step h2{margin-top:4px;font-size:clamp(28px,3.4vw,36px);line-height:1.08;font-weight:820;letter-spacing:-.025em}
+.step .why{margin-top:8px;color:var(--muted);font-size:16px}
+.q{margin:26px 0 0;padding:0;border:0;min-width:0}
+.q legend,.q .lbl{display:block;padding:0;margin-bottom:10px;font-size:16.5px;font-weight:700}
+.q .hint{display:block;margin:-6px 0 10px;color:var(--dim);font-size:14px;font-weight:400}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tiles.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tiles.wide{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.tile{position:relative;display:block;cursor:pointer}
+.tile input{position:absolute;opacity:0;width:1px;height:1px}
+.tile span{display:flex;align-items:center;gap:10px;min-height:52px;height:100%;padding:12px 15px;border:1px solid var(--line-2);border-radius:14px;background:rgba(255,255,255,.03);color:var(--ink);font-size:15.5px;line-height:1.35;transition:border-color .15s ease,background-color .15s ease}
+.tile span::before{content:"";flex:none;width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);transition:all .15s ease}
+.tile input[type=checkbox]+span::before{border-radius:6px}
+.tile:hover span{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.05)}
+.tile input:checked+span{border-color:rgba(59,232,160,.7);background:rgba(59,232,160,.09)}
+.tile input:checked+span::before{border-color:var(--green);background:var(--green);box-shadow:inset 0 0 0 3px #0B1A14}
+.tile input:focus-visible+span{outline:2px solid var(--green);outline-offset:2px}
+.field{position:relative;display:flex;align-items:center;border:1px solid var(--line-2);border-radius:14px;background:rgba(255,255,255,.03);transition:border-color .15s ease}
+.field:focus-within{border-color:rgba(59,232,160,.7)}
+.field input,.field textarea{width:100%;min-height:52px;padding:13px 15px;border:0;background:transparent;outline:none;font-size:16.5px}
+.field textarea{min-height:92px;resize:vertical;line-height:1.5}
+.field .pre,.field .suf{flex:none;padding:0 0 0 15px;color:var(--dim);font-size:16px}
+.field .pre+input{padding-left:6px}
+.field .suf{padding:0 15px 0 0}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pair label small{display:block;margin-bottom:6px;color:var(--muted);font-size:14px}
+.brand-in{margin-top:10px}
+.brand-in[hidden]{display:none}
+.err{display:none;margin-top:8px;color:var(--red);font-size:14.5px}
+.q.bad .err{display:block}
+.q.bad .field,.q.bad .tile span{border-color:rgba(255,93,115,.55)}
+.nav-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:30px;padding-top:22px;border-top:1px solid var(--line)}
+.nav-row .btn-ghost{min-width:110px}
+.fine{margin-top:16px;color:var(--dim);font-size:13.5px;line-height:1.5}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+[hidden]{display:none!important}
+
+/* Report */
+.report{background:var(--paper);color:var(--p-ink);color-scheme:light;padding:56px 0 80px}
+.sheet{max-width:980px;margin:0 auto;border:1px solid var(--p-line);border-radius:26px;background:var(--sheet);box-shadow:0 1px 2px rgba(16,24,40,.04),0 40px 80px -50px rgba(16,24,40,.3);overflow:hidden}
+.sheet-h{position:relative;padding:44px 48px 36px;color:#EAF6FF;background:
+  linear-gradient(rgba(110,155,255,.13) 1px,transparent 1px) 0 0/28px 28px,
+  linear-gradient(90deg,rgba(110,155,255,.13) 1px,transparent 1px) 0 0/28px 28px,
+  linear-gradient(160deg,#0B1D3A,#0A1528 60%,#08111F)}
+.sheet-h .who{color:#9FB6D6;font-size:15px}
+.sheet-h h1{margin-top:8px;font-size:clamp(34px,5vw,56px);line-height:1.02;font-weight:850;letter-spacing:-.035em}
+.sheet-h .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.sheet-h .btn-ghost{color:#EAF6FF;border-color:rgba(234,246,255,.25)}
+.sec{padding:36px 48px;border-top:1px solid var(--p-line)}
+.sec h2{font-size:24px;line-height:1.15;font-weight:800;letter-spacing:-.02em}
+.sec>p.sub{margin-top:6px;color:var(--p-muted);font-size:16px}
+.finds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
+.find{padding:20px;border:1px solid var(--p-line);border-radius:18px;background:#FAFBFC}
+.find h3{color:var(--p-muted);font-size:15px;font-weight:650}
+.find .big{display:block;margin-top:10px;font-size:34px;line-height:1.05;font-weight:850;letter-spacing:-.03em;color:var(--p-ink)}
+.find .big small{display:block;margin-top:4px;font-size:15px;font-weight:600;letter-spacing:0;color:var(--p-muted)}
+.find p{margin-top:12px;color:var(--p-muted);font-size:15px;line-height:1.5}
+.find p b{color:var(--p-ink);font-weight:700}
+.screens{display:grid;gap:12px;margin:20px 0 0;padding:0;list-style:none;counter-reset:s}
+.screens li{display:grid;grid-template-columns:42px minmax(0,1fr);gap:14px;align-items:start;padding:18px;border:1px solid var(--p-line);border-radius:18px;counter-increment:s}
+.screens li::before{content:counter(s);display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--p-soft);color:var(--p-accent);font-size:18px;font-weight:800}
+.screens b{display:block;font-size:17px;font-weight:750}
+.screens span{display:block;margin-top:3px;color:var(--p-muted);font-size:15.5px}
+.pv{margin-top:20px;padding:22px;border-radius:22px;background:linear-gradient(160deg,#0A1220,#060A12);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.pv-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
+.pv-h h3{font-size:26px;font-weight:820;letter-spacing:-.02em}
+.pv-h small{color:var(--muted);font-size:14.5px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:16px}
+.kpi{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--glass)}
+.kpi small{display:block;color:var(--muted);font-size:13px}
+.kpi b{display:block;margin-top:4px;font-size:24px;font-weight:820;letter-spacing:-.02em}
+.today{margin-top:12px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--glass)}
+.today h4{margin:0 0 8px;font-size:15px;font-weight:700}
+.today ul{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.today li{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:15px}
+.today li i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--amber)}
+.today li:first-child i{background:var(--red)}
+.next{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px 28px;align-items:center}
+.next p{color:var(--p-muted);font-size:16px;max-width:36em}
+.next .acts{display:flex;flex-wrap:wrap;gap:10px}
+.next .btn-ghost{color:var(--p-ink);border-color:var(--p-line);background:#fff}
+.foot{padding:28px 0 40px;color:var(--dim);font-size:14px;text-align:center}
+.foot a{color:var(--muted)}
+
+@media (max-width:900px){
+  .intro .wrap{grid-template-columns:minmax(0,1fr);gap:34px}
+  .finds{grid-template-columns:minmax(0,1fr)}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .next{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  :root{--gutter:16px}
+  .top-in{min-height:60px}.top a.txt span{display:none}
+  .intro{padding:40px 0 24px}.intro .lede{font-size:17px}
+  .card{padding:22px 18px 20px;border-radius:20px}
+  .tiles.two,.pair{grid-template-columns:minmax(0,1fr)}
+  .nav-row .btn{flex:1}
+  .sheet{border-radius:18px}
+  .sheet-h{padding:30px 20px 26px}
+  .sec{padding:28px 20px}
+  .sheet-h .acts .btn,.next .acts .btn{flex:1 1 100%}
+  .intro .go .btn{flex:1 1 100%}
+}
+@media print{
+  body,.report{background:#fff}
+  .top,.intro,.flow,.foot,.acts,.no-print{display:none!important}
+  .report{padding:0}.sheet{border:0;box-shadow:none;max-width:none}
+  .sheet-h{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pv{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-cost" viewBox="0 0 24 24"><path d="M12 4v16M16 7.5c0-1.7-1.8-3-4-3s-4 1.3-4 3 1.8 2.6 4 3 4 1.4 4 3.2-1.8 3.3-4 3.3-4-1.4-4-3"/></symbol>
+  <symbol id="i-money" viewBox="0 0 24 24"><rect x="3.5" y="6.5" width="17" height="11" rx="2"/><circle cx="12" cy="12" r="2.5"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="mark" href="/"><i aria-hidden="true"></i><span><b>SOVRN</b> Growth</span></a>
+    <a class="txt" href="tel:+15128820814"><span>Questions: </span><b>(512) 882-0814</b></a>
+  </div>
+</header>
+
+<main>
+<section class="intro" id="intro" aria-labelledby="intro-h">
+  <div class="wrap">
+    <div>
+      <h1 id="intro-h">See your company on one screen.</h1>
+      <p class="lede">Answer 13 questions about how you run jobs, claims and crews. Your blueprint comes back the moment you finish: what your tools really cost, the money sitting in your jobs, and the first three screens we'd build for you, with a preview that carries your company's name.</p>
+      <ul class="facts">
+        <li><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>About 8 minutes</li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Built only from your answers</li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>Private, nothing to buy</li>
+      </ul>
+      <div class="go">
+        <button class="btn btn-green" type="button" id="start">Start my blueprint</button>
+        <small>Elijah Pitts at SOVRN Growth reads every one.</small>
+      </div>
+    </div>
+    <aside class="peek" aria-labelledby="peek-h">
+      <h2 id="peek-h">What your blueprint shows</h2>
+      <ul>
+        <li><em><svg class="ic" aria-hidden="true"><use href="#i-cost"/></svg></em><div><b>What your tools really cost</b><span>Your monthly software, added up over three years.</span></div></li>
+        <li><em><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg></em><div><b>The money sitting in your jobs</b><span>Unsigned estimates, rebuilds you could be winning, and your office's time.</span></div></li>
+        <li><em><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg></em><div><b>What we'd build first</b><span>Three screens picked for your biggest headache, and a preview with your name on it.</span></div></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section class="flow" id="flow" hidden aria-label="Blueprint questions">
+  <div class="wrap">
+    <form class="card" id="bp" novalidate>
+      <div class="bar" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+
+      <!-- Step 1 -->
+      <div class="step" data-step="1">
+        <p class="step-n">Step 1 of 4</p>
+        <h2 tabindex="-1">Your company</h2>
+        <p class="why">So the blueprint fits how you're set up.</p>
+
+        <fieldset class="q" data-req="kind">
+          <legend>Franchise or independent</legend>
+          <div class="tiles two">
+            <label class="tile"><input type="radio" name="kind" value="Independent"><span>Independent</span></label>
+            <label class="tile"><input type="radio" name="kind" value="Franchise"><span>Franchise</span></label>
+          </div>
+          <div class="field brand-in" id="brand-wrap" hidden><input type="text" name="brand" maxlength="80" aria-label="Which franchise brand" placeholder="Which brand"></div>
+          <p class="err">Pick one.</p>
+        </fieldset>
+
+        <fieldset class="q" data-req="services">
+          <legend>What you do</legend>
+          <span class="hint">Pick all that apply.</span>
+          <div class="tiles">
+            <label class="tile"><input type="checkbox" name="services" value="Water"><span>Water</span></label>
+            <label class="tile"><input type="checkbox" name="services" value="Fire"><span>Fire</span></label>
+            <label class="tile"><input type="checkbox" name="services" value="Mold"><span>Mold</span></label>
+            <label class="tile"><input type="checkbox" name="services" value="Contents"><span>Contents</span></label>
+            <label class="tile"><input type="checkbox" name="services" value="Rebuild"><span>Rebuild</span></label>
+          </div>
+          <p class="err">Pick at least one.</p>
+        </fieldset>
+
+        <fieldset class="q">
+          <legend>Your team</legend>
+          <div class="tiles">
+            <label class="tile"><input type="radio" name="team" value="1 to 5"><span>1 to 5</span></label>
+            <label class="tile"><input type="radio" name="team" value="6 to 15"><span>6 to 15</span></label>
+            <label class="tile"><input type="radio" name="team" value="16 to 40"><span>16 to 40</span></label>
+            <label class="tile"><input type="radio" name="team" value="40 or more"><span>40 or more</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q">
+          <legend>People you're hiring right now</legend>
+          <div class="tiles">
+            <label class="tile"><input type="radio" name="hiring" value="0"><span>None</span></label>
+            <label class="tile"><input type="radio" name="hiring" value="1"><span>1</span></label>
+            <label class="tile"><input type="radio" name="hiring" value="2"><span>2</span></label>
+            <label class="tile"><input type="radio" name="hiring" value="3"><span>3 or more</span></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step" data-step="2" hidden>
+        <p class="step-n">Step 2 of 4</p>
+        <h2 tabindex="-1">Your jobs</h2>
+        <p class="why">Your best guess is fine. These numbers stay between you and us.</p>
+
+        <div class="q" data-req="jobs">
+          <label class="lbl" for="jobs">Jobs you run in a normal month</label>
+          <div class="field"><input id="jobs" name="jobs" type="text" inputmode="numeric" autocomplete="off" maxlength="6"><span class="suf">jobs</span></div>
+          <p class="err">Add a rough number.</p>
+        </div>
+
+        <fieldset class="q" data-req="revenue">
+          <legend>A normal month in revenue</legend>
+          <div class="tiles wide">
+            <label class="tile"><input type="radio" name="revenue" value="Under $100K"><span>Under $100K</span></label>
+            <label class="tile"><input type="radio" name="revenue" value="$100K to $250K"><span>$100K to $250K</span></label>
+            <label class="tile"><input type="radio" name="revenue" value="$250K to $500K"><span>$250K to $500K</span></label>
+            <label class="tile"><input type="radio" name="revenue" value="$500K or more"><span>$500K or more</span></label>
+            <label class="tile"><input type="radio" name="revenue" value="Rather not say"><span>Rather not say</span></label>
+          </div>
+          <p class="err">Pick one.</p>
+        </fieldset>
+
+        <div class="q">
+          <span class="lbl">Your average job</span>
+          <div class="pair">
+            <label><small>Mitigation</small><span class="field"><span class="pre">$</span><input name="avg_mit" type="text" inputmode="numeric" autocomplete="off" maxlength="9" aria-label="Average mitigation job in dollars"></span></label>
+            <label><small>Rebuild</small><span class="field"><span class="pre">$</span><input name="avg_rebuild" type="text" inputmode="numeric" autocomplete="off" maxlength="9" aria-label="Average rebuild job in dollars"></span></label>
+          </div>
+        </div>
+
+        <fieldset class="q">
+          <legend>How many of your water jobs become rebuilds you do</legend>
+          <div class="tiles">
+            <label class="tile"><input type="radio" name="capture" value="None"><span>None</span></label>
+            <label class="tile"><input type="radio" name="capture" value="About a quarter"><span>About a quarter</span></label>
+            <label class="tile"><input type="radio" name="capture" value="About half"><span>About half</span></label>
+            <label class="tile"><input type="radio" name="capture" value="Most of them"><span>Most of them</span></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step" data-step="3" hidden>
+        <p class="step-n">Step 3 of 4</p>
+        <h2 tabindex="-1">Your tools and time</h2>
+        <p class="why">This is where most of the hidden cost lives.</p>
+
+        <fieldset class="q">
+          <legend>What you run the business on today</legend>
+          <span class="hint">Pick all that apply.</span>
+          <div class="tiles">
+            <label class="tile"><input type="checkbox" name="tools" value="ClickUp"><span>ClickUp</span></label>
+            <label class="tile"><input type="checkbox" name="tools" value="Sheets or Excel"><span>Sheets or Excel</span></label>
+            <label class="tile"><input type="checkbox" name="tools" value="Xactimate"><span>Xactimate</span></label>
+            <label class="tile"><input type="checkbox" name="tools" value="QuickBooks"><span>QuickBooks</span></label>
+            <label class="tile"><input type="checkbox" name="tools" value="CompanyCam"><span>CompanyCam</span></label>
+            <label class="tile"><input type="checkbox" name="tools" value="DASH"><span>DASH</span></label>
+            <label class="tile"><input type="checkbox" name="tools" value="Albi"><span>Albi</span></label>
+            <label class="tile"><input type="checkbox" name="tools" value="Xcelerate"><span>Xcelerate</span></label>
+            <label class="tile"><input type="checkbox" name="tools" value="Encircle"><span>Encircle</span></label>
+            <label class="tile"><input type="checkbox" name="tools" value="JobNimbus"><span>JobNimbus</span></label>
+            <label class="tile"><input type="checkbox" name="tools" value="GoHighLevel"><span>GoHighLevel</span></label>
+            <label class="tile"><input type="checkbox" name="tools" value="Paper and texts"><span>Paper and texts</span></label>
+            <label class="tile"><input type="checkbox" name="tools" value="Other"><span>Other</span></label>
+          </div>
+        </fieldset>
+
+        <div class="q">
+          <label class="lbl" for="spend">What it all costs a month</label>
+          <span class="hint">Add up the subscriptions. Leave it blank if you're not sure.</span>
+          <div class="field"><span class="pre">$</span><input id="spend" name="spend" type="text" inputmode="numeric" autocomplete="off" maxlength="8"><span class="suf">a month</span></div>
+        </div>
+
+        <div class="q">
+          <label class="lbl" for="hours">Hours a week your office spends keeping it all updated</label>
+          <div class="field"><input id="hours" name="hours" type="text" inputmode="numeric" autocomplete="off" maxlength="4"><span class="suf">hours</span></div>
+        </div>
+
+        <div class="q">
+          <span class="lbl">Estimates out right now that haven't signed</span>
+          <div class="pair">
+            <label><small>How many</small><span class="field"><input name="est_count" type="text" inputmode="numeric" autocomplete="off" maxlength="5" aria-label="How many unsigned estimates"></span></label>
+            <label><small>Rough total</small><span class="field"><span class="pre">$</span><input name="est_total" type="text" inputmode="numeric" autocomplete="off" maxlength="10" aria-label="Rough total of unsigned estimates in dollars"></span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step" data-step="4" hidden>
+        <p class="step-n">Step 4 of 4</p>
+        <h2 tabindex="-1">Your biggest headache, and where to send this</h2>
+        <p class="why">Your headache decides the first screens in your blueprint.</p>
+
+        <fieldset class="q" data-req="headache">
+          <legend>Your biggest headache right now</legend>
+          <div class="tiles wide">
+            <label class="tile"><input type="radio" name="headache" value="scattered"><span>Jobs and claims live in too many places</span></label>
+            <label class="tile"><input type="radio" name="headache" value="carriers"><span>Carriers and adjusters are slow to pay</span></label>
+            <label class="tile"><input type="radio" name="headache" value="hiring"><span>Hiring and keeping good people</span></label>
+            <label class="tile"><input type="radio" name="headache" value="rebuilds"><span>Rebuild work we don't win</span></label>
+            <label class="tile"><input type="radio" name="headache" value="estimates"><span>Estimates take too long</span></label>
+            <label class="tile"><input type="radio" name="headache" value="contents"><span>Tracking contents and pack-outs</span></label>
+            <label class="tile"><input type="radio" name="headache" value="cost"><span>Our software costs too much</span></label>
+          </div>
+          <p class="err">Pick the one that hurts most.</p>
+        </fieldset>
+
+        <div class="q">
+          <label class="lbl" for="words">In your own words</label>
+          <span class="hint">Optional. One sentence is plenty.</span>
+          <div class="field"><textarea id="words" name="words" maxlength="600"></textarea></div>
+        </div>
+
+        <div class="q" data-req="name">
+          <div class="pair">
+            <label><small>Your name</small><span class="field"><input name="name" type="text" autocomplete="name" maxlength="120"></span></label>
+            <label><small>Company</small><span class="field"><input name="company" type="text" autocomplete="organization" maxlength="160"></span></label>
+          </div>
+          <p class="err">Add your name and company.</p>
+        </div>
+
+        <fieldset class="q">
+          <legend>Your role</legend>
+          <div class="tiles">
+            <label class="tile"><input type="radio" name="role" value="Owner"><span>Owner</span></label>
+            <label class="tile"><input type="radio" name="role" value="General manager"><span>General manager</span></label>
+            <label class="tile"><input type="radio" name="role" value="Office manager"><span>Office manager</span></label>
+          </div>
+        </fieldset>
+
+        <div class="q" data-req="contact">
+          <div class="pair">
+            <label><small>Email</small><span class="field"><input name="email" type="email" autocomplete="email" maxlength="200"></span></label>
+            <label><small>Cell</small><span class="field"><input name="cell" type="tel" autocomplete="tel" maxlength="40"></span></label>
+          </div>
+          <p class="err">Add a working email and cell.</p>
+        </div>
+        <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <p class="fine">Your answers are used to build your blueprint, and Elijah may call or email you about it. They're never shared or sold.</p>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-ghost" type="button" id="back">Back</button>
+        <button class="btn btn-green" type="submit" id="next">Next</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="report" id="report" hidden aria-labelledby="r-title">
+  <div class="wrap">
+    <article class="sheet">
+      <header class="sheet-h">
+        <p class="who" id="r-who"></p>
+        <h1 id="r-title"></h1>
+        <div class="acts">
+          <a class="btn btn-green" id="r-book" href="https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1" target="_blank" rel="noopener">Book my walkthrough</a>
+          <button class="btn btn-ghost" type="button" id="r-print">Save as PDF</button>
+        </div>
+      </header>
+
+      <section class="sec" aria-labelledby="f-h">
+        <h2 id="f-h">What we found</h2>
+        <p class="sub">Every number here comes from your answers.</p>
+        <div class="finds" id="r-finds"></div>
+      </section>
+
+      <section class="sec" aria-labelledby="s-h">
+        <h2 id="s-h">Build these first</h2>
+        <p class="sub" id="r-why"></p>
+        <ol class="screens" id="r-screens"></ol>
+      </section>
+
+      <section class="sec" aria-labelledby="p-h">
+        <h2 id="p-h">Your preview</h2>
+        <p class="sub">The morning screen your team would open, set up for your company.</p>
+        <div class="pv" id="r-pv"></div>
+      </section>
+
+      <section class="sec next" aria-labelledby="n-h">
+        <div>
+          <h2 id="n-h">See it built on your own jobs</h2>
+          <p>Book a walkthrough and Elijah will show you this blueprint running on how your company actually works, then tell you exactly what it would take.</p>
+        </div>
+        <div class="acts">
+          <a class="btn btn-green" id="r-book-2" href="https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1" target="_blank" rel="noopener">Book my walkthrough</a>
+          <a class="btn btn-ghost" id="r-text" href="sms:+15128820814">Text Elijah</a>
+        </div>
+      </section>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">SOVRN Growth, Round Rock, Texas. <a href="tel:+15128820814">(512) 882-0814</a>. <a href="/privacy/">Privacy</a></div>
+</footer>
+
+<script>
+(function(){
+  var SB_URL = "https://ptoeeupkjsmnggxfzlrw.supabase.co/rest/v1/growth_blueprints";
+  var SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB0b2VldXBranNtbmdneGZ6bHJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgzNzc2NDUsImV4cCI6MjEwMzk1MzY0NX0.SgDR2sWg9yYvbcGfLZkm2EMiwbZ3aIjKnpSuGjynvM8";
+  var BOOK = "https://calendly.com/elijah-sovrngrowth/30-minute-intro-call-1";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var esc = function(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); };
+  var form = $("#bp"), steps = $$(".step", form), bars = $$(".bar i", form), cur = 1;
+  var back = $("#back"), next = $("#next");
+
+  function num(v){ var n = Number(String(v || "").replace(/[^0-9.]/g, "")); return isFinite(n) && n > 0 ? n : 0; }
+  function money(n){ return "$" + Math.round(n).toLocaleString("en-US"); }
+  function short(n){ if (n >= 1e6) return "$" + (n / 1e6).toFixed(n >= 1e7 ? 0 : 1).replace(/\.0$/, "") + "M"; if (n >= 1e4) return "$" + Math.round(n / 1e3) + "K"; return money(n); }
+  function val(name){ var el = form.elements[name]; if (!el) return ""; if (el.length !== undefined && !el.tagName){ var c = $$('input[name="' + name + '"]:checked', form); return c.length ? c[0].value : ""; } return (el.value || "").trim(); }
+  function vals(name){ return $$('input[name="' + name + '"]:checked', form).map(function(i){ return i.value; }); }
+
+  function show(n){
+    cur = n;
+    steps.forEach(function(s){ s.hidden = Number(s.getAttribute("data-step")) !== n; });
+    bars.forEach(function(b, i){ b.classList.toggle("on", i < n); });
+    back.style.visibility = n === 1 ? "hidden" : "visible";
+    next.textContent = n === 4 ? "Build my blueprint" : "Next";
+    var h = $('.step[data-step="' + n + '"] h2', form);
+    $("#flow").scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "start"});
+    if (h) setTimeout(function(){ h.focus({preventScroll: true}); }, reduce ? 0 : 250);
+  }
+
+  function mark(q, bad){ if (q) q.classList.toggle("bad", bad); return !bad; }
+  function check(n){
+    var ok = true, step = $('.step[data-step="' + n + '"]', form);
+    $$(".q[data-req]", step).forEach(function(q){
+      var k = q.getAttribute("data-req"), good = true;
+      if (k === "kind") good = !!val("kind") && (val("kind") !== "Franchise" || !!val("brand"));
+      else if (k === "services") good = vals("services").length > 0;
+      else if (k === "jobs") good = num(val("jobs")) > 0;
+      else if (k === "revenue") good = !!val("revenue");
+      else if (k === "headache") good = !!val("headache");
+      else if (k === "name") good = !!val("name") && !!val("company");
+      else if (k === "contact") good = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email")) && String(val("cell")).replace(/\D/g, "").length >= 10;
+      if (!mark(q, !good)) ok = false;
+    });
+    if (!ok){ var first = $(".q.bad", step); if (first) first.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "center"}); }
+    return ok;
+  }
+  form.addEventListener("change", function(e){
+    var q = e.target.closest(".q.bad"); if (q) q.classList.remove("bad");
+    if (e.target.name === "kind"){ var f = val("kind") === "Franchise"; $("#brand-wrap").hidden = !f; if (f) $('input[name="brand"]').focus(); }
+  });
+  form.addEventListener("input", function(e){ var q = e.target.closest(".q.bad"); if (q) q.classList.remove("bad"); });
+
+  $("#start").addEventListener("click", function(){ $("#flow").hidden = false; show(1); });
+  back.addEventListener("click", function(){ if (cur > 1) show(cur - 1); });
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if (!check(cur)) return;
+    if (cur < 4){ show(cur + 1); return; }
+    finish();
+  });
+
+  var SCREENS = {
+    scattered: [["Overview", "Every job, claim and crew on one screen the moment you open it."], ["Jobs and claims board", "Each job's stage, its carrier and adjuster, and who it's waiting on."], ["Switch-over", "Your current boards and sheets brought in, so nobody retypes anything."]],
+    carriers: [["Money", "What's owed, what's late, and how long each carrier takes to pay you."], ["Follow-ups, already written", "When a claim sits too long, the follow-up to the adjuster is drafted and waiting."], ["Morning brief", "What needs you today, each item with a button that does it."]],
+    hiring: [["HR desk", "Applicants, ride-alongs and certifications in one place."], ["Onboarding", "Every new hire's checklist, from paperwork to their first job."], ["On-call load", "Who's carried the most nights, so nobody burns out quietly."]],
+    rebuilds: [["Rebuilds not offered", "Every finished dry-out without a rebuild offer, with the estimate started."], ["Estimates from the job file", "Photos, readings and the sketch go in, and a draft comes out for your estimator."], ["Partner page", "Plumbers and agents send you a loss in 30 seconds, and you see who sends the most."]],
+    estimates: [["Estimate desk", "Photos, readings, the sketch and the protocol go in, and a draft estimate comes out."], ["Line items in Xactimate order", "Ready to key in, with the reason for every line."], ["Supplements tracked to paid", "What was asked for, what was approved and what's still open."]],
+    contents: [["Contents tracker", "Every item from pack-out to pack-back, with its spot in the warehouse."], ["Items tied to the claim", "Each item matched to its claim and adjuster, ready for billing."], ["Homeowner updates", "A private page per job your team can send in one tap."]],
+    cost: [["Switch-over", "Your tools and sheets brought in, so you can stop paying for the ones you replace."], ["Overview", "One screen in place of the apps that don't talk to each other."], ["Ask your system", "Plain-English answers from your own records, like what's stuck with a carrier."]]
+  };
+  var WHY = {
+    scattered: "You said your jobs and claims live in too many places, so we'd start by putting them on one screen.",
+    carriers: "You said carriers and adjusters are slow to pay, so we'd start with the money.",
+    hiring: "You said hiring and keeping good people is the headache, so we'd start with the HR desk.",
+    rebuilds: "You said rebuild work slips away, so we'd start with the rebuilds you aren't offering yet.",
+    estimates: "You said estimates take too long, so we'd start with the estimate desk.",
+    contents: "You said contents and pack-outs are hard to track, so we'd start there.",
+    cost: "You said your software costs too much, so we'd start by replacing what you pay for."
+  };
+  var TODAY = {
+    scattered: ["Every open job by stage, on one screen", "Claims waiting on an adjuster, flagged", "Tomorrow's crews, set"],
+    carriers: ["Follow-up drafted for your oldest open claim", "Invoices ready to send", "Which carrier pays slowest this month"],
+    hiring: ["Ride-along booked with your best applicant", "A new hire's onboarding checklist", "Certifications renewing soon"],
+    rebuilds: ["Rebuild not offered yet: drying finished", "Estimate drafted from the job file", "A partner sent you a new loss"],
+    estimates: ["Draft estimate ready for your review", "Photos and readings matched to the sketch", "Supplement waiting on approval"],
+    contents: ["Pack-out inventory tied to the claim", "Pack-back on the schedule", "Every item's spot in the warehouse"],
+    cost: ["One screen in place of your tools", "Ask it what's stuck with a carrier", "What needs you today, each with a button"]
+  };
+
+  function compute(){
+    var a = {
+      kind: val("kind"), brand: val("brand"), services: vals("services"), team: val("team"), hiring: num(val("hiring")),
+      jobs: num(val("jobs")), revenue: val("revenue"), avg_mit: num(val("avg_mit")), avg_rebuild: num(val("avg_rebuild")), capture: val("capture"),
+      tools: vals("tools"), spend: num(val("spend")), hours: num(val("hours")), est_count: num(val("est_count")), est_total: num(val("est_total")),
+      headache: val("headache"), words: val("words"), role: val("role")
+    };
+    var r = {
+      tools_3yr: a.spend * 36,
+      office_year: a.hours * 35 * 52,
+      rebuild_one_year: a.avg_rebuild * 12,
+      unsigned_total: a.est_total
+    };
+    return {a: a, r: r};
+  }
+
+  function render(d, who){
+    var a = d.a, r = d.r, first = who.name.split(/\s+/)[0] || who.name;
+    var date = new Date().toLocaleDateString("en-US", {month: "long", day: "numeric", year: "numeric"});
+    $("#r-who").textContent = "Prepared for " + first + " on " + date;
+    $("#r-title").textContent = "Blueprint for " + who.company;
+
+    var finds = [];
+    if (r.tools_3yr > 0){
+      var t = "You pay about <b>" + money(a.spend) + " a month</b> for the tools you run on.";
+      if (a.hiring > 0) t += " You're hiring " + (a.hiring >= 3 ? "3 or more" : a.hiring) + ", and if any of these charge per person, that number grows with every hire.";
+      finds.push(["What your tools cost", short(r.tools_3yr), "over three years", t]);
+    }
+    if (r.unsigned_total > 0 || r.rebuild_one_year > 0){
+      var big = r.unsigned_total > 0 ? short(r.unsigned_total) : short(r.rebuild_one_year);
+      var sm = r.unsigned_total > 0 ? "in unsigned estimates right now" : "a year from one more rebuild a month";
+      var p = [];
+      if (r.unsigned_total > 0 && a.est_count > 0) p.push("That's " + a.est_count + " estimate" + (a.est_count === 1 ? "" : "s") + " waiting on a yes.");
+      if (r.rebuild_one_year > 0 && r.unsigned_total > 0) p.push("One more rebuild a month at your " + money(a.avg_rebuild) + " average adds <b>" + money(r.rebuild_one_year) + " a year</b>.");
+      if (a.capture) p.push("You said " + a.capture.toLowerCase() + " of your water jobs become rebuilds you do.");
+      finds.push(["Money sitting in your jobs", big, sm, p.join(" ")]);
+    } else if (a.capture){
+      finds.push(["Rebuilds you're winning", a.capture, "of your water jobs", "Add your average rebuild in a walkthrough and we'll show what one more a month is worth."]);
+    }
+    if (r.office_year > 0){
+      finds.push(["Office time", short(r.office_year), "a year", "Your office spends about <b>" + a.hours + " hours a week</b> keeping tools and sheets in step. At $35 an hour, that's what it costs you."]);
+    }
+    if (!finds.length){
+      finds.push(["Your jobs", a.jobs + " a month", "on your team's plate", "Bring your tool costs and estimates to the walkthrough and we'll fill in the rest of the numbers with you."]);
+    }
+    $("#r-finds").innerHTML = finds.map(function(f){ return '<div class="find"><h3>' + esc(f[0]) + '</h3><span class="big num">' + esc(f[1]) + '<small>' + esc(f[2]) + '</small></span><p>' + f[3] + '</p></div>'; }).join("");
+
+    var key = SCREENS[a.headache] ? a.headache : "scattered";
+    $("#r-why").textContent = WHY[key];
+    $("#r-screens").innerHTML = SCREENS[key].map(function(s){ return "<li><div><b>" + esc(s[0]) + "</b><span>" + esc(s[1]) + "</span></div></li>"; }).join("");
+
+    var kpis = [["Jobs a month", String(a.jobs)]];
+    kpis.push(r.unsigned_total > 0 ? ["Unsigned estimates", short(r.unsigned_total)] : ["Unsigned estimates", a.est_count ? String(a.est_count) : "Tracked"]);
+    kpis.push(a.hiring > 0 ? ["Openings", a.hiring >= 3 ? "3+" : String(a.hiring)] : ["Team", a.team || "Your crew"]);
+    kpis.push(a.hours > 0 ? ["Office hours a week", String(a.hours)] : ["Tools replaced", a.tools.length ? String(a.tools.length) : "Yours"]);
+    var greet = (new Date().getHours() < 12 ? "Good morning, " : new Date().getHours() < 17 ? "Good afternoon, " : "Good evening, ") + first;
+    $("#r-pv").innerHTML = '<div class="pv-h"><h3>' + esc(greet) + '</h3><small>' + esc(who.company) + ', ' + esc(new Date().toLocaleDateString("en-US", {weekday: "long", month: "long", day: "numeric"})) + '</small></div>' +
+      '<div class="kpis">' + kpis.map(function(k){ return '<div class="kpi"><small>' + esc(k[0]) + '</small><b class="num">' + esc(k[1]) + '</b></div>'; }).join("") + '</div>' +
+      '<div class="today"><h4>Needs you today</h4><ul>' + TODAY[key].map(function(t){ return "<li><i></i>" + esc(t) + "</li>"; }).join("") + "</ul></div>";
+
+    var q = "?name=" + encodeURIComponent(who.name) + "&email=" + encodeURIComponent(who.email) + "&a1=" + encodeURIComponent("Blueprint for " + who.company);
+    $("#r-book").href = BOOK + q; $("#r-book-2").href = BOOK + q;
+    $("#r-text").href = "sms:+15128820814?&body=" + encodeURIComponent("Hi Elijah, it's " + first + " at " + who.company + ". I just did the blueprint and want to see it on our jobs.");
+  }
+
+  function save(d, who){
+    if (val("website")) return;
+    var body = JSON.stringify({
+      name: who.name, company: who.company, role: d.a.role || null, email: who.email, cell: who.cell,
+      answers: d.a, results: d.r,
+      source: (location.search || "").slice(0, 150) + (document.referrer ? " ref:" + document.referrer.slice(0, 120) : ""),
+      user_agent: (navigator.userAgent || "").slice(0, 380)
+    });
+    var tries = 0;
+    (function send(){
+      tries++;
+      fetch(SB_URL, {method: "POST", headers: {"apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY, "Content-Type": "application/json", "Prefer": "return=minimal"}, body: body, keepalive: true})
+        .then(function(res){ if (!res.ok && tries < 3) setTimeout(send, 1500 * tries); })
+        .catch(function(){ if (tries < 3) setTimeout(send, 1500 * tries); });
+    })();
+  }
+
+  function finish(){
+    next.disabled = true;
+    var who = {name: val("name"), company: val("company"), email: val("email"), cell: val("cell")};
+    var d = compute();
+    render(d, who);
+    save(d, who);
+    $("#intro").hidden = true; $("#flow").hidden = true; $("#report").hidden = false;
+    window.scrollTo({top: 0, behavior: reduce ? "auto" : "smooth"});
+    var t = $("#r-title"); t.setAttribute("tabindex", "-1"); t.focus({preventScroll: true});
+  }
+  $("#r-print").addEventListener("click", function(){ window.print(); });
+})();
+</script>
+</body>
+</html>
