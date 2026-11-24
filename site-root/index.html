@@ -1525,9 +1525,11 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
 .need-chip[aria-pressed="true"]{border-color:rgba(59,232,160,.6);background:rgba(59,232,160,.14);color:#D8FFEE}
 .need-chip:focus-visible{outline:2px solid var(--green);outline-offset:3px}
 @media (max-width:720px){.need-chip{min-height:36px;padding:6px 11px;font-size:13.5px}.need-chips{gap:7px}}
-.pills{position:relative;margin:120px auto 0;text-align:center}
-.pills > :not(.rain){position:relative;z-index:1}
-.pills-h{display:grid;gap:6px;font-size:clamp(30px,3.6vw,46px);font-weight:820;letter-spacing:-.025em;line-height:1.05;color:var(--ink);text-wrap:balance}
+.pills{position:relative;margin:40px auto 0;padding:88px 0 36px;text-align:center;--rain-c:#3BE8A0;--rain-head:#E9FFF5}
+.pills-in{position:relative;z-index:1}
+.pills-h{margin:0 auto;max-width:14em;font-size:clamp(40px,6.4vw,84px);font-weight:820;letter-spacing:-.035em;line-height:1.02;color:var(--ink)}
+.pills-h span{display:block}
+.pills-sub{margin:18px auto 0;font-size:clamp(18px,1.6vw,22px);color:var(--muted)}
 .pills-row{display:flex;justify-content:center;gap:clamp(24px,8vw,120px);margin-top:30px}
 .choice{display:grid;justify-items:center;gap:22px;padding:22px 12px 10px;border:0;border-radius:18px;background:none;color:var(--muted);font:inherit;font-size:17px;font-weight:700;cursor:pointer;transition:color .2s ease}
 .choice:hover{color:var(--ink)}
@@ -1548,15 +1550,78 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
 .choice.nudge .cap{animation:pill-pop .9s cubic-bezier(.34,1.56,.64,1)}
 .choice.yes .cap{animation:pill-pop .6s cubic-bezier(.34,1.56,.64,1)}
 @keyframes pill-pop{0%{scale:1}40%{scale:1.22}100%{scale:1}}
-.pills-say{min-height:1.6em;margin:18px auto 0;max-width:32em;font-size:18px;color:var(--ink)}
+/* Two ways tonight goes: the whole stage turns to midnight or to morning */
+.pills-sky{position:absolute;top:-40px;bottom:-40px;left:50%;width:100vw;transform:translateX(-50%);overflow:hidden;pointer-events:none;z-index:0;
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent)}
+.pills-sky i{position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
+.sky-night{background:radial-gradient(60% 55% at 50% 42%,rgba(255,46,76,.26),transparent 70%),radial-gradient(120% 80% at 50% 100%,rgba(110,0,18,.6),transparent 70%),linear-gradient(180deg,#0A0306,#120407)}
+.sky-dawn{background:radial-gradient(70% 46% at 50% 108%,rgba(255,214,120,.78),rgba(255,160,72,.32) 42%,transparent 72%),radial-gradient(110% 70% at 50% 100%,rgba(255,150,70,.22),transparent 70%),radial-gradient(55% 45% at 84% 16%,rgba(59,232,160,.16),transparent 70%),linear-gradient(180deg,#070910,#1B140C)}
+.is-night .sky-night,.is-dawn .sky-dawn{opacity:1}
+.is-dawn .sky-dawn{animation:dawn-rise 1.8s cubic-bezier(.22,1,.36,1)}
+@keyframes dawn-rise{from{transform:translateY(16%)}to{transform:none}}
+.pills.is-night{--rain-c:#FF4D5E;--rain-head:#FFE1E5}
+.pills.is-dawn{--rain-c:#FFC85C;--rain-head:#FFF6DD}
+.pills.shake .pills-in{animation:p-shake .5s cubic-bezier(.36,.07,.19,.97)}
+@keyframes p-shake{10%,90%{translate:-1px 0}20%,80%{translate:2px 0}30%,50%,70%{translate:-4px 0}40%,60%{translate:4px 0}}
+.choice[aria-pressed="true"] .cap{scale:1.12}
+.is-night .choice-red,.is-dawn .choice-blue{opacity:.5}
+.is-night .choice-red:hover,.is-dawn .choice-blue:hover{opacity:1}
+.choice{transition:color .2s ease,opacity .3s ease}
+
+.scene{display:none;max-width:860px;margin:40px auto 0}
+.is-night .scene,.is-dawn .scene{display:block;animation:scene-in .5s ease both}
+@keyframes scene-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.pills:not(.is-night) .for-night,.pills:not(.is-dawn) .for-dawn{display:none}
+.scene-clock{display:inline-flex;align-items:center;gap:8px;margin:0;padding:6px 14px 6px 10px;border-radius:999px;border:1px solid;font-size:15px;font-weight:750;font-variant-numeric:tabular-nums}
+.scene-clock .ic{width:17px;height:17px}
+.is-night .scene-clock{color:#FFB3BC;border-color:rgba(255,77,94,.45);background:rgba(255,46,76,.12)}
+.is-dawn .scene-clock{color:#FFE2A8;border-color:rgba(255,200,92,.45);background:rgba(255,200,92,.12)}
+.scene-h{margin:16px auto 0;max-width:18em;font-size:clamp(30px,3.8vw,50px);font-weight:820;letter-spacing:-.03em;line-height:1.05;color:var(--ink);text-wrap:balance}
+.scene-sub{margin:12px auto 0;max-width:34em;font-size:18px;color:var(--muted)}
+.scene-cards{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:30px 0 0;padding:0;text-align:left;perspective:1200px}
+.sc-n{position:relative;display:grid;transition:rotate .6s ease calc(var(--i) * 140ms),translate .6s ease calc(var(--i) * 140ms)}
+.sc-n > div{grid-area:1/1;display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px;align-items:center;padding:12px 14px;border-radius:16px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .7s cubic-bezier(.22,1,.36,1) calc(var(--i) * 140ms)}
+.sc-bad{background:linear-gradient(180deg,rgba(255,46,76,.16),rgba(255,46,76,.06));border:1px solid rgba(255,77,94,.38);box-shadow:0 18px 40px -24px rgba(255,46,76,.7)}
+.sc-good{background:linear-gradient(180deg,rgba(59,232,160,.15),rgba(59,232,160,.05));border:1px solid rgba(59,232,160,.38);box-shadow:0 18px 40px -24px rgba(59,232,160,.55);transform:rotateX(180deg)}
+.is-dawn .sc-bad{transform:rotateX(-180deg)}
+.is-dawn .sc-good{transform:none}
+.sc-i{display:grid;place-items:center;width:38px;height:38px;border-radius:11px}
+.sc-i .ic{width:19px;height:19px}
+.sc-bad .sc-i{color:#FF8A96;background:rgba(255,77,94,.16)}
+.sc-good .sc-i{color:#3BE8A0;background:rgba(59,232,160,.16)}
+.sc-t{display:grid;min-width:0}
+.sc-t b{font-size:15px;font-weight:750;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sc-t small{font-size:14px;line-height:1.35;color:#C9D1DC}
+.is-night .sc-n{rotate:var(--rot);translate:var(--dx) 0;animation:sc-in .45s ease both calc(var(--i) * 90ms),sc-buzz .4s ease calc(var(--i) * 170ms + .7s) 2}
+.is-dawn .sc-n{rotate:0deg;translate:0 0;animation:sc-in .45s ease both calc(var(--i) * 90ms)}
+@keyframes sc-in{from{opacity:0}to{opacity:1}}
+@keyframes sc-buzz{0%,100%{translate:var(--dx) 0}25%{translate:calc(var(--dx) - 4px) 0}75%{translate:calc(var(--dx) + 4px) 0}}
+.scene-act{margin-top:28px}
+.scene-next{min-height:48px;padding:10px 20px;border-radius:999px;border:1px solid rgba(255,140,150,.45);background:rgba(255,46,76,.1);color:#FFE1E5;font:inherit;font-size:16px;font-weight:700;cursor:pointer;transition:background-color .2s ease,border-color .2s ease}
+.scene-next:hover{background:rgba(255,46,76,.18);border-color:rgba(255,160,170,.7)}
+.scene-next:focus-visible{outline:2px solid #FF8A96;outline-offset:3px}
+@media (max-width:720px){
+  .pills{margin-top:24px;padding:64px 0 24px}
+  .pills-h{font-size:clamp(36px,10.4vw,44px)}
+  .pills-sub{font-size:17px}
+  .scene{margin-top:30px}
+  .scene-h{font-size:clamp(27px,7.4vw,34px)}
+  .scene-sub{font-size:16.5px}
+  .scene-cards{grid-template-columns:minmax(0,1fr);gap:10px}
+  .sc-n > div{padding:10px 12px;grid-template-columns:34px minmax(0,1fr);gap:10px}
+  .sc-i{width:34px;height:34px}
+  .scene-go{width:100%}
+}
+
 /* Green rain down both edges of the choice: money and numbers, never across the words */
 .rain{position:absolute;top:-56px;bottom:-40px;left:50%;width:100vw;transform:translateX(-50%);overflow:hidden;pointer-events:none;z-index:0;
   -webkit-mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 78%,transparent)}
-.rain i{position:absolute;top:0;left:var(--x);font-style:normal;font-size:var(--fs,14px);line-height:1.15;font-weight:700;letter-spacing:.5px;color:#3BE8A0;
+.rain i{position:absolute;top:0;left:var(--x);font-style:normal;font-size:var(--fs,14px);line-height:1.15;font-weight:700;letter-spacing:.5px;color:var(--rain-c);transition:color .8s ease;
   writing-mode:vertical-rl;text-orientation:upright;font-variant-numeric:tabular-nums;opacity:var(--o,.6);
   -webkit-mask-image:linear-gradient(to bottom,transparent,#000 85%);mask-image:linear-gradient(to bottom,transparent,#000 85%);
   transform:translateY(-110%);animation:rain-fall var(--t,6s) linear var(--dl,0s) infinite;animation-play-state:paused;will-change:transform}
-.rain i b{color:#E9FFF5;text-shadow:0 0 10px #3BE8A0,0 0 18px rgba(59,232,160,.8)}
+.rain i b{color:var(--rain-head);text-shadow:0 0 10px var(--rain-c),0 0 18px var(--rain-c);transition:color .8s ease,text-shadow .8s ease}
 .rain.on i{animation-play-state:running}
 @keyframes rain-fall{from{transform:translateY(-110%)}to{transform:translateY(var(--fall,520px))}}
 @media (max-width:720px){
@@ -1570,6 +1635,8 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
 @media (prefers-reduced-motion: reduce){
   .cap,.choice.nope .cap,.choice.nudge .cap,.choice.yes .cap{animation:none}
   .rain{display:none}
+  .pills.shake .pills-in,.is-night .scene,.is-dawn .scene,.is-night .sc-n,.is-dawn .sc-n,.is-dawn .sky-dawn{animation:none}
+  .sc-n,.sc-n > div,.pills-sky i{transition:none}
   .anim-q .qc-end.play .btn{animation:none}
 }
 </style>
@@ -2451,13 +2518,51 @@ Dana Ortiz</textarea>
 <section aria-labelledby="final-h">
   <div class="wrap">
     <div class="pills" id="pills">
+      <div class="pills-sky" aria-hidden="true"><i class="sky-night"></i><i class="sky-dawn"></i></div>
       <div class="rain" id="rain" aria-hidden="true"></div>
-      <p class="pills-h"><span>Two ways tonight goes.</span></p>
-      <div class="pills-row">
-        <button class="choice choice-blue" type="button"><span class="cap" aria-hidden="true"></span><span class="choice-l">Chase adjusters at 8 PM</span></button>
-        <button class="choice choice-red" type="button"><span class="cap" aria-hidden="true"></span><span class="choice-l">Get home for dinner</span></button>
+      <div class="pills-in">
+        <h2 class="pills-h"><span>Your shop never sleeps.</span> <span>You should.</span></h2>
+        <p class="pills-sub">Two ways tonight goes. Pick one.</p>
+        <div class="pills-row">
+          <button class="choice choice-blue" type="button" aria-pressed="false" aria-controls="scene"><span class="cap" aria-hidden="true"></span><span class="choice-l">Chase adjusters at midnight</span></button>
+          <button class="choice choice-red" type="button" aria-pressed="false" aria-controls="scene"><span class="cap" aria-hidden="true"></span><span class="choice-l">Scale while you sleep</span></button>
+        </div>
+        <div class="scene" id="scene" aria-live="polite">
+          <p class="scene-clock"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span id="scene-time">8:00 PM</span></p>
+          <h3 class="scene-h"><span class="for-night">Still chasing.</span><span class="for-dawn">Your company scales. You catch up on sleep.</span></h3>
+          <p class="scene-sub"><span class="for-night">Chasing adjusters at midnight while your family sleeps without you.</span><span class="for-dawn">Wake up to paid claims and a shop that ran all night without you.</span></p>
+          <ul class="scene-cards">
+            <li class="sc-n" style="--i:0;--rot:-2.6deg;--dx:-6px">
+              <div class="sc-bad"><span class="sc-i"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span><span class="sc-t"><b>State Farm</b><small>Still under review. Day 23.</small></span></div>
+              <div class="sc-good" aria-hidden="true"><span class="sc-i"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="sc-t"><b>State Farm</b><small>Follow-up sent. Adjuster replied.</small></span></div>
+            </li>
+            <li class="sc-n" style="--i:1;--rot:1.8deg;--dx:4px">
+              <div class="sc-bad"><span class="sc-i"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span><span class="sc-t"><b>Lisa Ortega</b><small>2 missed calls</small></span></div>
+              <div class="sc-good" aria-hidden="true"><span class="sc-i"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="sc-t"><b>Lisa Ortega</b><small>Got her live job link. No calls needed.</small></span></div>
+            </li>
+            <li class="sc-n" style="--i:2;--rot:-1.4deg;--dx:-3px">
+              <div class="sc-bad"><span class="sc-i"><svg class="ic" aria-hidden="true"><use href="#i-doc"/></svg></span><span class="sc-t"><b>Ruiz, bedroom 2</b><small>Estimate not started. Photos in 3 places.</small></span></div>
+              <div class="sc-good" aria-hidden="true"><span class="sc-i"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="sc-t"><b>Ruiz, bedroom 2</b><small>Estimate drafted. Ready for a 10-minute review.</small></span></div>
+            </li>
+            <li class="sc-n" style="--i:3;--rot:2.4deg;--dx:7px">
+              <div class="sc-bad"><span class="sc-i"><svg class="ic" aria-hidden="true"><use href="#i-sheet"/></svg></span><span class="sc-t"><b>Jobs_FINAL_v4.xlsx</b><small>Unsaved changes</small></span></div>
+              <div class="sc-good" aria-hidden="true"><span class="sc-i"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="sc-t"><b>Job board</b><small>Updated itself overnight.</small></span></div>
+            </li>
+            <li class="sc-n" style="--i:4;--rot:-2deg;--dx:-5px">
+              <div class="sc-bad"><span class="sc-i"><svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg></span><span class="sc-t"><b>Marcus</b><small>“Can't make it tomorrow. Who's covering Ruiz?”</small></span></div>
+              <div class="sc-good" aria-hidden="true"><span class="sc-i"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="sc-t"><b>Crew board</b><small>Dee picked up Ruiz. Covered.</small></span></div>
+            </li>
+            <li class="sc-n" style="--i:5;--rot:1.2deg;--dx:3px">
+              <div class="sc-bad"><span class="sc-i"><svg class="ic" aria-hidden="true"><use href="#i-dollar"/></svg></span><span class="sc-t"><b>Invoice 1182</b><small>64 days late.</small></span></div>
+              <div class="sc-good" aria-hidden="true"><span class="sc-i"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="sc-t"><b>Invoice 1182</b><small>Paid: $3,260.</small></span></div>
+            </li>
+          </ul>
+          <div class="scene-act">
+            <button class="scene-next for-night" type="button">Okay. Show me the other one.</button>
+            <a class="btn btn-green scene-go for-dawn" href="#need">Build my version</a>
+          </div>
+        </div>
       </div>
-      <p class="pills-say" id="pills-say" aria-live="polite"></p>
     </div>
     <div class="final glass edge">
       <div class="glow"></div>
@@ -3282,27 +3387,69 @@ Dana Ortiz</textarea>
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ setMode(); queue(); });
   })();
 
-  /* The choice is yours: blue keeps things as they are, red goes straight to the note box */
+  /* Two ways tonight goes: blue plays midnight, red fast-forwards to a calm morning, and the same six problems flip to handled */
   (function(){
-    var wrap = document.getElementById("pills");
-    if (!wrap) return;
-    var say = document.getElementById("pills-say"), blue = wrap.querySelector(".choice-blue"), red = wrap.querySelector(".choice-red"), ta = document.getElementById("need-t");
-    function bump(el, cls){
-      el.classList.remove("nope", "nudge", "yes"); void el.offsetWidth; el.classList.add(cls);
-      setTimeout(function(){ el.classList.remove(cls); }, 1000);
+    var box = document.getElementById("pills");
+    if (!box) return;
+    var blue = box.querySelector(".choice-blue"), red = box.querySelector(".choice-red");
+    var scene = document.getElementById("scene"), timeEl = document.getElementById("scene-time");
+    var next = box.querySelector(".scene-next"), go = box.querySelector(".scene-go"), ta = document.getElementById("need-t");
+    var faces = Array.prototype.slice.call(box.querySelectorAll(".sc-bad, .sc-good"));
+    var mode = "none", tick = null;
+    function fmt(m){ m = ((m % 1440) + 1440) % 1440; var h = Math.floor(m / 60), mm = m % 60; return (h % 12 || 12) + ":" + (mm < 10 ? "0" : "") + mm + (h < 12 ? " AM" : " PM"); }
+    function clock(from, to){
+      if (tick) cancelAnimationFrame(tick);
+      if (reduce){ timeEl.textContent = fmt(to); return; }
+      var t0 = null;
+      function step(ts){
+        if (t0 === null) t0 = ts;
+        var k = Math.min(1, (ts - t0) / 1300), e = 1 - Math.pow(1 - k, 3);
+        timeEl.textContent = fmt(Math.round(from + (to - from) * e));
+        if (k < 1) tick = requestAnimationFrame(step);
+      }
+      tick = requestAnimationFrame(step);
     }
-    blue.addEventListener("click", function(){
-      say.textContent = "Fair. Tell the adjusters we said hi.";
-      bump(blue, "nope"); bump(red, "nudge");
-    });
-    red.addEventListener("click", function(){
-      say.textContent = "Good call. Tell me what's keeping you late.";
-      bump(red, "yes");
-      if (!ta) return;
+    function rain(rate){
+      var r = document.getElementById("rain");
+      if (!r) return;
+      requestAnimationFrame(function(){
+        r.style.setProperty("--fall", (r.offsetHeight + 40) + "px");
+        if (r.getAnimations) r.getAnimations({subtree: true}).forEach(function(a){ a.playbackRate = rate; });
+      });
+    }
+    function show(){
       setTimeout(function(){
-        ta.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "center"});
-        ta.focus({preventScroll: true});
-      }, reduce ? 0 : 500);
+        var r = scene.getBoundingClientRect(), vh = window.innerHeight;
+        if (r.top >= 0 && r.bottom <= vh) return;
+        scene.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: scene.offsetHeight > vh * 0.85 ? "start" : "center"});
+      }, 80);
+    }
+    function set(m){
+      var prev = mode;
+      mode = m;
+      box.classList.toggle("is-night", m === "night");
+      box.classList.toggle("is-dawn", m === "dawn");
+      blue.setAttribute("aria-pressed", m === "night" ? "true" : "false");
+      red.setAttribute("aria-pressed", m === "dawn" ? "true" : "false");
+      faces.forEach(function(f){ f.setAttribute("aria-hidden", (m === "night") === f.classList.contains("sc-bad") ? "false" : "true"); });
+      if (m === "night"){
+        clock(20 * 60, 23 * 60 + 47);
+        rain(1.9);
+        if (!reduce){ box.classList.remove("shake"); void box.offsetWidth; box.classList.add("shake"); }
+      } else {
+        clock(prev === "night" ? 23 * 60 + 47 : 22 * 60, 30 * 60 + 30);
+        rain(0.55);
+      }
+      show();
+    }
+    blue.addEventListener("click", function(){ set("night"); });
+    red.addEventListener("click", function(){ set("dawn"); });
+    if (next) next.addEventListener("click", function(){ set("dawn"); });
+    if (go) go.addEventListener("click", function(e){
+      if (!ta) return;
+      e.preventDefault();
+      ta.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "center"});
+      setTimeout(function(){ ta.focus({preventScroll: true}); }, reduce ? 0 : 450);
     });
   })();
 
