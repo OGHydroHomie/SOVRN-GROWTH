@@ -302,8 +302,6 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-0.025em;line-height:1.03;te
 .qa summary::after{content:"";width:11px;height:11px;flex:none;border-right:2px solid var(--dim);border-bottom:2px solid var(--dim);transform:rotate(45deg) translate(-3px,-3px);transition:transform .2s ease}
 .qa details[open] summary::after{transform:rotate(-135deg) translate(-3px,-3px);border-color:var(--green)}
 .qa details p{padding:0 0 24px;color:var(--muted);max-width:40em}
-.short{margin-top:28px;font-size:16px;color:var(--dim);max-width:44em}
-.short b{color:var(--muted)}
 
 /* Final call to action */
 .final{position:relative;overflow:hidden;border-radius:30px;padding:96px 64px;margin:120px 0 96px;text-align:center;isolation:isolate}
@@ -1517,8 +1515,9 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
 }
 
 /* ===== The choice is yours ===== */
-.pills{margin:120px auto 0;text-align:center}
-.pills-h{font-size:clamp(30px,3.6vw,46px);font-weight:820;letter-spacing:-.025em;line-height:1.05;color:var(--ink)}
+.pills{position:relative;margin:120px auto 0;text-align:center}
+.pills > :not(.rain){position:relative;z-index:1}
+.pills-h{display:grid;gap:6px;font-size:clamp(30px,3.6vw,46px);font-weight:820;letter-spacing:-.025em;line-height:1.05;color:var(--ink);text-wrap:balance}
 .pills-row{display:flex;justify-content:center;gap:clamp(24px,8vw,120px);margin-top:30px}
 .choice{display:grid;justify-items:center;gap:22px;padding:22px 12px 10px;border:0;border-radius:18px;background:none;color:var(--muted);font:inherit;font-size:17px;font-weight:700;cursor:pointer;transition:color .2s ease}
 .choice:hover{color:var(--ink)}
@@ -1541,6 +1540,16 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
 @keyframes pill-pop{0%{scale:1}40%{scale:1.22}100%{scale:1}}
 .pills-say{min-height:1.6em;margin:18px auto 0;max-width:32em;font-size:18px;color:var(--ink)}
 .pills + .final{margin-top:44px}
+/* Green rain down both edges of the choice: money and numbers, never across the words */
+.rain{position:absolute;top:-56px;bottom:-40px;left:50%;width:100vw;transform:translateX(-50%);overflow:hidden;pointer-events:none;z-index:0;
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 78%,transparent)}
+.rain i{position:absolute;top:0;left:var(--x);font-style:normal;font-size:var(--fs,14px);line-height:1.15;font-weight:700;letter-spacing:.5px;color:#3BE8A0;
+  writing-mode:vertical-rl;text-orientation:upright;font-variant-numeric:tabular-nums;opacity:var(--o,.6);
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 85%);mask-image:linear-gradient(to bottom,transparent,#000 85%);
+  transform:translateY(-110%);animation:rain-fall var(--t,6s) linear var(--dl,0s) infinite;animation-play-state:paused;will-change:transform}
+.rain i b{color:#E9FFF5;text-shadow:0 0 10px #3BE8A0,0 0 18px rgba(59,232,160,.8)}
+.rain.on i{animation-play-state:running}
+@keyframes rain-fall{from{transform:translateY(-110%)}to{transform:translateY(var(--fall,520px))}}
 @media (max-width:720px){
   .pills{margin-top:88px}
   .pills-row{gap:12px}
@@ -1551,6 +1560,7 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
 
 @media (prefers-reduced-motion: reduce){
   .cap,.choice.nope .cap,.choice.nudge .cap,.choice.yes .cap{animation:none}
+  .rain{display:none}
   .anim-q .qc-end.play .btn{animation:none}
 }
 </style>
@@ -2425,15 +2435,13 @@ Dana Ortiz</textarea>
       </div>
     </div>
   </div>
-  <div class="wrap">
-    <p class="short"><b>In short:</b> SOVRN Growth builds custom software for water, fire and mold restoration companies, including operations dashboards, estimate desks and claims follow-up. Each build is a one-time fee, quoted on a 15-minute call, and the company owns what we build. Based in the Austin area.</p>
-  </div>
 </section>
 
 <section aria-labelledby="final-h">
   <div class="wrap">
     <div class="pills" id="pills">
-      <p class="pills-h">The choice is yours.</p>
+      <div class="rain" id="rain" aria-hidden="true"></div>
+      <p class="pills-h"><span>Bottom line: at least 5x, guaranteed.</span><span>The choice is yours.</span></p>
       <div class="pills-row">
         <button class="choice choice-blue" type="button"><span class="cap" aria-hidden="true"></span><span class="choice-l">Keep doing it all yourself</span></button>
         <button class="choice choice-red" type="button"><span class="cap" aria-hidden="true"></span><span class="choice-l">Make more money</span></button>
@@ -3242,6 +3250,57 @@ Dana Ortiz</textarea>
         ta.focus({preventScroll: true});
       }, reduce ? 0 : 500);
     });
+  })();
+
+  /* Green rain down the sides of the choice. Columns stay in the margins, glyphs flicker, and it only runs on screen. */
+  (function(){
+    var rain = document.getElementById("rain"), box = document.getElementById("pills");
+    if (!rain || !box || reduce) return;
+    var G = "$0123456789$x%+$";
+    function glyph(){ return G.charAt(Math.floor(Math.random() * G.length)); }
+    var cols = [], timer = null;
+    function build(){
+      rain.innerHTML = ""; cols = [];
+      var vw = window.innerWidth, phone = vw <= 720, per = phone ? 3 : 7;
+      var band = phone ? 42 : Math.max(36, (vw - box.offsetWidth) / 2 - 14);
+      rain.style.setProperty("--fall", (rain.offsetHeight + 40) + "px");
+      for (var side = 0; side < 2; side++){
+        for (var k = 0; k < per; k++){
+          var len = 9 + Math.floor(Math.random() * 10), txt = "";
+          for (var j = 0; j < len - 1; j++) txt += glyph();
+          var i = document.createElement("i");
+          var x = 3 + (band - 16) * ((k + Math.random() * 0.8) / per);
+          i.style.setProperty("--x", (side ? vw - x - 14 : x).toFixed(0) + "px");
+          i.style.setProperty("--fs", (phone ? 11 : 12 + Math.floor(Math.random() * 4)) + "px");
+          i.style.setProperty("--o", (0.28 + Math.random() * 0.42).toFixed(2));
+          i.style.setProperty("--t", (4.5 + Math.random() * 5).toFixed(2) + "s");
+          i.style.setProperty("--dl", (-Math.random() * 9).toFixed(2) + "s");
+          i.textContent = txt;
+          var head = document.createElement("b"); head.textContent = glyph(); i.appendChild(head);
+          rain.appendChild(i); cols.push(i);
+        }
+      }
+    }
+    function flicker(){
+      for (var n = 0; n < 4; n++){
+        var c = cols[Math.floor(Math.random() * cols.length)];
+        if (!c || !c.firstChild || c.firstChild.nodeType !== 3) continue;
+        var t = c.firstChild.nodeValue, at = Math.floor(Math.random() * t.length);
+        c.firstChild.nodeValue = t.slice(0, at) + glyph() + t.slice(at + 1);
+        if (c.lastChild) c.lastChild.textContent = glyph();
+      }
+    }
+    build();
+    var w = window.innerWidth;
+    window.addEventListener("resize", function(){ if (Math.abs(window.innerWidth - w) > 40){ w = window.innerWidth; build(); } });
+    if (!("IntersectionObserver" in window)){ rain.classList.add("on"); timer = setInterval(flicker, 140); return; }
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        rain.classList.toggle("on", e.isIntersecting);
+        if (e.isIntersecting && !timer) timer = setInterval(flicker, 140);
+        if (!e.isIntersecting && timer){ clearInterval(timer); timer = null; }
+      });
+    }, {rootMargin: "80px 0px"}).observe(box);
   })();
 
   /* A little nudge in the browser tab when someone wanders off */
