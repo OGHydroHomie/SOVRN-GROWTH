@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | SOVRN Growth</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="This page is water-damaged. We're drying it out.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05080E;--ink:#EEF2F7;--muted:#A0AAB8;--dim:#6E7887;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);--green:#3BE8A0;--green-ink:#03140B;--blue:#6E9BFF;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.nf{position:relative;min-height:100%;display:grid;place-items:center;padding:96px 16px 56px;overflow:hidden;isolation:isolate}
+.nf::before{content:"";position:absolute;left:50%;top:38%;width:min(900px,120vw);height:520px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(110,155,255,.22),rgba(59,232,160,.08) 60%,transparent);filter:blur(30px);z-index:-1}
+.mark{position:absolute;top:22px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-size:19px;font-weight:500;font-stretch:112%;white-space:nowrap}
+.mark b{font-weight:850}
+.mark i{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 210deg,#3BE8A0,#2DD4BF,#6E9BFF,#3BE8A0);box-shadow:0 0 16px rgba(59,232,160,.55)}
+.box{max-width:620px;text-align:center}
+.meter{position:relative;width:min(300px,78vw);margin:0 auto}
+.meter svg{display:block;width:100%;overflow:visible}
+.meter .tr{fill:none;stroke:rgba(255,255,255,.08);stroke-width:14;stroke-linecap:round}
+.meter .fl{fill:none;stroke:url(#wet);stroke-width:14;stroke-linecap:round;stroke-dasharray:100;transition:stroke-dashoffset 1.2s cubic-bezier(.3,.7,.2,1)}
+.read{position:absolute;left:0;right:0;bottom:6px;text-align:center}
+.read b{display:block;font-size:52px;line-height:1;font-weight:850;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.read span{display:block;margin-top:6px;font-size:14px;font-weight:700;color:var(--muted)}
+.drip{position:absolute;left:50%;top:-58px;width:12px;height:16px;margin-left:-6px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:linear-gradient(180deg,#9DBBFF,#6E9BFF);opacity:0;animation:drip 2.6s cubic-bezier(.55,0,1,.45) infinite}
+@keyframes drip{0%{transform:translateY(0) scale(.6);opacity:0}12%{opacity:1;transform:translateY(0) scale(1)}70%{transform:translateY(64px) scale(1);opacity:1}72%,100%{transform:translateY(64px) scale(1.6,.2);opacity:0}}
+h1{margin:34px 0 0;font-size:clamp(36px,6vw,60px);line-height:1.03;font-weight:820;letter-spacing:-.03em;text-wrap:balance}
+p{margin:16px auto 0;max-width:30em;font-size:20px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:15px 26px;border-radius:14px;font:inherit;font-size:17px;font-weight:750;text-decoration:none;white-space:nowrap;transition:filter .2s ease,transform .2s ease,border-color .2s ease}
+.btn-green{color:var(--green-ink);background:linear-gradient(180deg,#6BF5BD 0%,#35E19A 55%,#22CF88 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 0 0 1px rgba(107,245,189,.55),0 12px 34px -10px rgba(59,232,160,.75)}
+.btn-green:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn-ghost{color:var(--ink);background:rgba(255,255,255,.04);border:1px solid var(--line-2)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.32)}
+a:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:10px}
+@media (max-width:520px){.btn{width:100%}.read b{font-size:44px}p{font-size:18px}}
+@media (prefers-reduced-motion: reduce){.drip{animation:none}.meter .fl{transition:none}}
+</style>
+</head>
+<body>
+<main class="nf">
+  <a class="mark" href="/" aria-label="SOVRN Growth home"><i aria-hidden="true"></i><span><b>SOVRN</b> Growth</span></a>
+  <div class="box">
+    <div class="meter" role="img" aria-label="A moisture meter reading that slowly drops as the page dries">
+      <i class="drip" aria-hidden="true"></i>
+      <svg viewBox="0 0 200 112" aria-hidden="true">
+        <defs><linearGradient id="wet" x1="0" x2="1"><stop offset="0" stop-color="#3BE8A0"/><stop offset="1" stop-color="#6E9BFF"/></linearGradient></defs>
+        <path class="tr" d="M16 104 A84 84 0 0 1 184 104"/>
+        <path class="fl" id="fl" pathLength="100" d="M16 104 A84 84 0 0 1 184 104" style="stroke-dashoffset:13"/>
+      </svg>
+      <div class="read"><b id="rd">87%</b><span>Moisture</span></div>
+    </div>
+    <h1>This page is water-damaged.</h1>
+    <p id="msg">We're drying it out. The rest of the site is bone dry.</p>
+    <div class="row">
+      <a class="btn btn-green" href="/">Back to dry land</a>
+      <a class="btn btn-ghost" href="tel:+15128820814">Call (512) 882-0814</a>
+    </div>
+  </div>
+</main>
+<script>
+(function(){
+  var rd = document.getElementById("rd"), fl = document.getElementById("fl");
+  if (!rd || !fl || (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+  var v = 87;
+  var t = setInterval(function(){
+    v -= v > 40 ? 3 : 1;
+    if (v <= 12){ v = 12; clearInterval(t); rd.textContent = "Dry"; var m = document.getElementById("msg"); if (m) m.textContent = "All dry. Still not a real page, though."; }
+    else rd.textContent = v + "%";
+    fl.style.strokeDashoffset = String(100 - v);
+  }, 900);
+})();
+</script>
+</body>
+</html>

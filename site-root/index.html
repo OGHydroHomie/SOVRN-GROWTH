@@ -20,11 +20,14 @@
 {"@context":"https://schema.org","@graph":[
 {"@type":"ProfessionalService","@id":"https://www.sovrngrowth.com/#org","name":"SOVRN Growth","url":"https://www.sovrngrowth.com/","telephone":"+1-512-882-0814","email":"elijah@sovrngrowth.com","areaServed":{"@type":"State","name":"Texas"},"address":{"@type":"PostalAddress","streetAddress":"110 N Interstate 35, Suite 315-1083","addressLocality":"Round Rock","addressRegion":"TX","postalCode":"78681","addressCountry":"US"},"founder":{"@type":"Person","name":"Elijah Pitts"},"description":"Custom software for restoration companies: operations dashboards, estimate drafts, after-hours dispatch and other tools, built around how each shop works and owned by the company.","makesOffer":[{"@type":"Offer","name":"Operations dashboard","description":"One place for jobs, claims, carriers, crews, equipment and hiring, replacing project boards and spreadsheets."},{"@type":"Offer","name":"Estimate drafts","description":"Mold and water estimates drafted from inspection photos, the sketch and the written protocol, reviewed by the company's team."},{"@type":"Offer","name":"After-hours dispatch","description":"A line that answers in the company's name, captures the loss, address and insurance, and puts the job on the on-call tech's phone."},{"@type":"Offer","name":"Custom build","description":"A tool built around how a restoration shop already works, scoped and quoted before work starts."}]},
 {"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"How much does a build cost?","acceptedAnswer":{"@type":"Answer","text":"It's a one-time fee, quoted on a 15-minute call once we see how your shop works. You see the full number, and any monthly running cost, in writing before you pay. Every build is scoped to return at least 5x its cost. We agree on the number with you before we start, and if it doesn't get there within 12 months, we keep building at no charge until it does."}},
-{"@type":"Question","name":"Do you replace Xactimate?","acceptedAnswer":{"@type":"Answer","text":"No. Most carriers expect estimates in Xactimate, so we build around it. Our tools draft and organize the work, and your team still sends the estimate from Xactimate."}},
-{"@type":"Question","name":"What software can you replace?","acceptedAnswer":{"@type":"Answer","text":"Project boards like ClickUp, the spreadsheets that hold your jobs together, and add-on apps that don't talk to each other. On the call we'll tell you what's worth replacing and what isn't."}},
-{"@type":"Question","name":"Who owns it?","acceptedAnswer":{"@type":"Answer","text":"You do. It runs on your accounts and your data stays yours. If you'd rather we host it, we can, and you can move it to your own accounts any time."}},
-{"@type":"Question","name":"How long does a build take?","acceptedAnswer":{"@type":"Answer","text":"Once it's scoped, most builds are live within 48 to 72 hours. After-hours dispatch takes about 7 business days. You get the timeline in writing before work starts."}}
+{"@type":"Question","name":"Okay, what's the damage?","acceptedAnswer":{"@type":"Answer","text":"One-time fee, quoted on the call, in writing before you pay."}},
+{"@type":"Question","name":"No, seriously. Is it worth it?","acceptedAnswer":{"@type":"Answer","text":"We start with whatever's costing you the most money or holding back the most growth. Every build is scoped to return at least 5x what you pay, and if it doesn't get there within 12 months, we keep building for free until it does."}},
+{"@type":"Question","name":"Do I have to break up with Xactimate?","acceptedAnswer":{"@type":"Answer","text":"No. Carriers expect it, so we build around it. Your team still sends every estimate from Xactimate."}},
+{"@type":"Question","name":"Can we finally kill the spreadsheet?","acceptedAnswer":{"@type":"Answer","text":"Yes. The ClickUp board and the apps that don't talk to each other can go too. On the call, we'll tell you what's worth replacing and what isn't."}},
+{"@type":"Question","name":"48 to 72 hours? Come on.","acceptedAnswer":{"@type":"Answer","text":"Once it's scoped, most builds are live in 48 to 72 hours, backed by the 5x guarantee. We know how that sounds. You get the timeline in writing before we start."}},
+{"@type":"Question","name":"My crew barely uses the app we have. Now another one?","acceptedAnswer":{"@type":"Answer","text":"This one saves them phone calls. Your crew sends each homeowner a link to a live page for their job. Every update they post shows up there, and you see all of it too. Fewer “any update?” calls for everyone."}},
+{"@type":"Question","name":"What if you get hit by a bus?","acceptedAnswer":{"@type":"Answer","text":"You still own everything. Running costs are out in the open, and we can host it for you or move it to your own accounts any time."}},
+{"@type":"Question","name":"How does this grow my business?","acceptedAnswer":{"@type":"Answer","text":"Imagine reviews coming in on autopilot. Imagine your shop in the top spot when homeowners search. Imagine being the company AI recommends. Imagine a personal audit of what's costing you the most, fixed in 72 hours. Now stop imagining and book a 15-minute call."}}
 ]}
 ]}
 </script>
@@ -1419,6 +1422,137 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
   .w-orb,.w-tab.on .w-tab-ic,.world .sc-bell,.world .sc-dot,.world .sc-wave i,.world .sc-dots i,.world .rd-sweep,.world .rd-core,.w-rot.tick .w-rot-ic{animation:none!important}
   .w-tab,.w-tab-ic,.w-bi{transition:none}
 }
+/* ===== Questions: a deck of cards you flick through as you scroll ===== */
+.qsec .q-in{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:start}
+.q-side h2{font-size:clamp(32px,4.2vw,54px)}
+.q-lede{margin-top:14px;font-size:20px;color:var(--muted)}
+.q-call{margin-top:22px;font-size:17px;color:var(--muted)}
+.q-call a{color:var(--green);text-underline-offset:3px}
+.q-prog{display:none;gap:6px;max-width:240px;margin-top:26px}
+.q-prog i{position:relative;flex:1;height:4px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
+.q-prog i::after{content:"";position:absolute;inset:0;background:var(--green);transform-origin:left;transform:scaleX(var(--f,0))}
+.q-all{display:none;align-items:center;min-height:40px;margin-top:20px;padding:8px 16px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.04);color:var(--ink);font:inherit;font-size:15px;font-weight:650;cursor:pointer;transition:border-color .2s ease,background-color .2s ease}
+.q-all:hover{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.07)}
+.q-pin .q-all,.q-chosen .q-all{display:inline-flex}
+
+.q-deck{display:grid;gap:16px}
+.qcard{--c:#3BE8A0;--r:0deg;position:relative;overflow:hidden;padding:30px 30px 32px;border-radius:26px;
+  background:radial-gradient(120% 90% at 100% 0%,color-mix(in srgb,var(--c) 15%,transparent),transparent 55%),linear-gradient(180deg,#121A26,#0B1119);
+  border:1px solid rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 34px 70px -34px rgba(0,0,0,.9)}
+.qcard::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--c),color-mix(in srgb,var(--c) 25%,transparent))}
+.qc-ic{display:grid;place-items:center;width:48px;height:48px;border-radius:15px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,transparent);border:1px solid color-mix(in srgb,var(--c) 38%,transparent);transform:rotate(-7deg)}
+.qc-ic .ic{width:24px;height:24px}
+.qcard h3{margin-top:20px;max-width:15em;font-size:clamp(28px,2.7vw,40px);line-height:1.06;font-weight:820;letter-spacing:-.025em;color:var(--ink)}
+.qcard p{margin-top:14px;max-width:34em;font-size:18.5px;line-height:1.55;color:var(--muted)}
+.qc-stamp{position:absolute;top:24px;right:24px;display:grid;place-items:center;width:84px;height:84px;border-radius:50%;border:2.5px solid var(--c);color:var(--c);font-size:32px;font-weight:900;letter-spacing:-.03em;transform:rotate(12deg);box-shadow:inset 0 0 0 5px color-mix(in srgb,var(--c) 16%,transparent);opacity:.92}
+.qc-end{background:radial-gradient(90% 80% at 85% 8%,rgba(59,232,160,.22),transparent 60%),radial-gradient(70% 70% at 0% 100%,rgba(45,212,191,.13),transparent 70%),linear-gradient(180deg,#0F1F1A,#09130F);border-color:rgba(59,232,160,.28)}
+.qc-imagine{list-style:none;display:grid;gap:10px;margin:18px 0 0;padding:0}
+.qc-imagine li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;align-items:start;font-size:18px;line-height:1.45;color:#D3DBE6}
+.qc-imagine .ic{width:20px;height:20px;margin-top:2px;color:var(--c)}
+.qcard .qc-stop{margin-top:20px;font-size:24px;font-weight:800;letter-spacing:-.015em;color:var(--ink)}
+.qc-end h3{max-width:none}
+.qc-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:20px}
+.qc-cta .qc-stop{margin:0}
+.qc-end .btn{margin-top:0}
+.qc-wm{display:none}
+.q-pin .qc-wm{display:block;position:absolute;right:-34px;bottom:-46px;width:250px;height:250px;color:var(--c);opacity:.075;transform:rotate(-14deg);fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.q-pin .qc-end h3{font-size:clamp(28px,2.4vw,34px)}
+.q-pin .qc-imagine{gap:8px}
+.q-pin .qc-imagine li{font-size:17px}
+
+/* The last card plays its lines in, then the ask */
+.anim-q .qc-end .qc-imagine li{transition:opacity .45s ease,transform .55s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--k) * 360ms + 150ms)}
+.anim-q .qc-end:not(.play) .qc-imagine li{opacity:0;transform:translateX(-10px)}
+.anim-q .qc-end .qc-stop{transition:opacity .35s ease 1.75s,transform .5s cubic-bezier(.34,1.56,.64,1) 1.75s}
+.anim-q .qc-end:not(.play) .qc-stop{opacity:0;transform:scale(.92)}
+.anim-q .qc-end .btn{transition:opacity .35s ease 2.1s,transform .45s cubic-bezier(.22,1,.36,1) 2.1s,box-shadow .2s ease,filter .2s ease}
+.anim-q .qc-end:not(.play) .btn{opacity:0;transform:translateY(8px)}
+.anim-q .qc-end.play .btn{animation:q-glow 1.6s ease 2.5s 1}
+@keyframes q-glow{0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 0 0 1px rgba(107,245,189,.55),0 12px 34px -10px rgba(59,232,160,.75),0 0 70px -12px rgba(59,232,160,.6)}50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 0 0 1px rgba(107,245,189,.9),0 16px 44px -8px rgba(59,232,160,1),0 0 110px -6px rgba(59,232,160,.9)}}
+
+/* Deck mode: the section holds and the top card flicks away as you scroll */
+.q-pin .q-track{position:relative;height:calc((100vh - var(--top-h)) + var(--qn,7) * 50vh)}
+.q-pin .q-stage{position:sticky;top:var(--top-h);height:calc(100vh - var(--top-h));overflow:hidden}
+.q-pin .q-in{height:100%;align-items:center;padding-top:20px;padding-bottom:20px}
+.q-pin .q-prog{display:flex}
+.q-pin .q-deck{position:relative;display:block;height:var(--qh,480px)}
+.q-pin .qcard{position:absolute;left:0;right:0;top:0;height:var(--qch,auto);transform-origin:50% 100%;will-change:transform,opacity}
+
+/* List mode on wide screens: the heading stays put while the cards scroll */
+@media (min-width:961px){
+  .qsec:not(.q-pin) .q-side{position:sticky;top:calc(var(--top-h) + 32px)}
+}
+@media (max-width:960px){
+  .qsec .q-in{grid-template-columns:minmax(0,1fr);gap:28px}
+  .q-pin .q-in{gap:16px;align-content:center}
+  .q-pin .q-lede,.q-pin .q-call{display:none}
+  .q-pin .q-side{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px}
+  .q-pin .q-side h2{font-size:clamp(30px,8vw,40px)}
+  .q-pin .q-prog{order:3;flex-basis:100%;max-width:none;margin-top:0}
+  .q-pin .q-all{margin-top:0}
+}
+@media (max-width:720px){
+  .qcard{padding:24px 22px 26px;border-radius:22px}
+  .qcard h3{font-size:clamp(25px,7vw,31px);max-width:none}
+  .qcard p{font-size:16.5px}
+  .qc-imagine li{font-size:16.5px}
+  .qcard .qc-stop{font-size:21px}
+  .qc-stamp{top:18px;right:18px;width:64px;height:64px;font-size:24px}
+  .qc-end .btn{width:100%}
+  .q-pin .q-in{padding-top:10px;padding-bottom:10px;gap:12px}
+  .q-pin .q-side h2{font-size:30px}
+  .q-pin .q-all{min-height:36px;padding:6px 14px;font-size:14px}
+  .q-pin .qcard{padding:20px 20px 22px}
+  .q-pin .qc-ic{width:40px;height:40px;border-radius:13px}
+  .q-pin .qc-ic .ic{width:21px;height:21px}
+  .q-pin .qcard h3{margin-top:14px}
+  .q-pin .qcard p{margin-top:10px}
+  .q-pin .qc-end h3{font-size:clamp(24px,6.6vw,28px)}
+  .q-pin .qc-imagine{margin-top:12px;gap:7px}
+  .q-pin .qc-imagine li{grid-template-columns:18px minmax(0,1fr);gap:9px;font-size:15.5px;line-height:1.4}
+  .q-pin .qc-imagine .ic{width:17px;height:17px}
+  .q-pin .qcard .qc-stop{font-size:19px}
+  .q-pin .qc-cta{margin-top:12px;gap:10px}
+  .q-pin .qc-wm{width:170px;height:170px;right:-24px;bottom:-30px}
+}
+
+/* ===== The choice is yours ===== */
+.pills{margin:120px auto 0;text-align:center}
+.pills-h{font-size:clamp(30px,3.6vw,46px);font-weight:820;letter-spacing:-.025em;line-height:1.05;color:var(--ink)}
+.pills-row{display:flex;justify-content:center;gap:clamp(24px,8vw,120px);margin-top:30px}
+.choice{display:grid;justify-items:center;gap:22px;padding:22px 12px 10px;border:0;border-radius:18px;background:none;color:var(--muted);font:inherit;font-size:17px;font-weight:700;cursor:pointer;transition:color .2s ease}
+.choice:hover{color:var(--ink)}
+.choice:focus-visible{outline:2px solid var(--green);outline-offset:4px}
+.choice-l{display:block;max-width:12em;line-height:1.3}
+.cap{position:relative;display:block;width:104px;height:42px;border-radius:999px;rotate:var(--tilt);
+  background:linear-gradient(90deg,var(--p1) 0 50%,var(--p2) 50% 100%);
+  box-shadow:inset 0 -7px 12px rgba(0,0,0,.35),inset 0 5px 9px rgba(255,255,255,.35),0 18px 34px -12px var(--glow),0 0 50px -14px var(--glow);
+  animation:pill-bob 3.4s ease-in-out infinite;transition:box-shadow .25s ease}
+.cap::after{content:"";position:absolute;left:12%;top:16%;width:42%;height:24%;border-radius:999px;background:rgba(255,255,255,.6);filter:blur(1.5px)}
+.choice-blue{--p1:#2F6BFF;--p2:#8DB2FF;--glow:rgba(47,107,255,.75);--tilt:-20deg}
+.choice-red{--p1:#FF2E4C;--p2:#FF8C95;--glow:rgba(255,46,76,.8);--tilt:20deg}
+.choice-red .cap{animation-delay:-1.7s}
+.choice:hover .cap{box-shadow:inset 0 -7px 12px rgba(0,0,0,.35),inset 0 5px 9px rgba(255,255,255,.35),0 22px 40px -10px var(--glow),0 0 74px -8px var(--glow)}
+@keyframes pill-bob{0%,100%{translate:0 0}50%{translate:0 -7px}}
+.choice.nope .cap{animation:pill-nope .5s ease}
+@keyframes pill-nope{0%,100%{translate:0 0}20%{translate:-9px 0}40%{translate:8px 0}60%{translate:-5px 0}80%{translate:3px 0}}
+.choice.nudge .cap{animation:pill-pop .9s cubic-bezier(.34,1.56,.64,1)}
+.choice.yes .cap{animation:pill-pop .6s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pill-pop{0%{scale:1}40%{scale:1.22}100%{scale:1}}
+.pills-say{min-height:1.6em;margin:18px auto 0;max-width:32em;font-size:18px;color:var(--ink)}
+.pills + .final{margin-top:44px}
+@media (max-width:720px){
+  .pills{margin-top:88px}
+  .pills-row{gap:12px}
+  .choice{padding:20px 4px 8px;font-size:15px}
+  .choice-l{max-width:9em}
+  .cap{width:88px;height:36px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .cap,.choice.nope .cap,.choice.nudge .cap,.choice.yes .cap{animation:none}
+  .anim-q .qc-end.play .btn{animation:none}
+}
 </style>
 </head>
 <body id="top">
@@ -1457,6 +1591,8 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
   <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3.5" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v2.5"/></symbol>
   <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
   <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3.5L5.5 13.5H11l-1 7 7.5-10H12z"/></symbol>
+  <symbol id="i-heartbreak" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.5-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.5 12 20 12 20z"/><path d="M12 7l-1.6 3.4 2.8 1.6-1.8 3.6"/></symbol>
+  <symbol id="i-bus" viewBox="0 0 24 24"><rect x="4.5" y="3.5" width="15" height="14" rx="2.5"/><path d="M4.5 11h15M8 17.5V20M16 17.5V20M8.2 14.3h.01M15.8 14.3h.01"/></symbol>
   </defs>
 </svg>
 
@@ -2221,33 +2357,89 @@ Dana Ortiz</textarea>
         <p class="founder-name">Elijah Pitts</p>
         <p class="founder-role">Founder, SOVRN Growth. Austin, Texas</p>
       </div>
-      <p class="founder-text">I spent years in the rooms where AWS cloud projects get decided, across the table from owners and executives in sales, marketing, operations and IT. One lesson stuck: every business has one bottleneck that costs more than all the others. More jobs, faster estimates, a crew that runs without you. We find yours in 15 minutes, and I build the fix.</p>
+      <p class="founder-text">I spent years in the rooms where big cloud projects get decided, across the table from teams at McKinsey, Bain &amp; Company, Google and AWS. One lesson stuck: every business has one bottleneck that costs more than all the others. More jobs, faster estimates, a crew that runs without you. We find yours in 15 minutes, and I build the fix.</p>
     </div>
   </div>
 </section>
 
-<section class="sec" id="questions" aria-labelledby="q-h">
-  <div class="wrap faq">
-    <div class="sec-h">
-      <h2 id="q-h">Questions</h2>
-      <p>Anything else, call <a class="num" href="tel:+15128820814">(512) 882-0814</a>.</p>
-    </div>
-    <div>
-      <div class="qa">
-        <details><summary>How much does a build cost?</summary><p>It's a one-time fee, quoted on a 15-minute call once we see how your shop works. You see the full number, and any monthly running cost, in writing before you pay. Every build is scoped to return at least 5x its cost. We agree on the number with you before we start, and if it doesn't get there within 12 months, we keep building at no charge until it does.</p></details>
-        <details><summary>Do you replace Xactimate?</summary><p>No. Most carriers expect estimates in Xactimate, so we build around it. Our tools draft and organize the work, and your team still sends the estimate from Xactimate.</p></details>
-        <details><summary>What software can you replace?</summary><p>Project boards like ClickUp, the spreadsheets that hold your jobs together, and add-on apps that don't talk to each other. On the call we'll tell you what's worth replacing and what isn't.</p></details>
-        <details><summary>Who owns it?</summary><p>You do. It runs on your accounts and your data stays yours. If you'd rather we host it, we can, and you can move it to your own accounts any time.</p></details>
-        <details><summary>How long does a build take?</summary><p>Once it's scoped, most builds are live within 48 to 72 hours. After-hours dispatch takes about 7 business days. You get the timeline in writing before work starts.</p></details>
-        <details><summary>Is the after-hours line a person?</summary><p>No. It's a voice agent set up with your company's name, service area and questions. If a caller wants a person, it takes their number and alerts your on-call tech. If someone is in danger, it tells them to hang up and call 911.</p></details>
+<section class="sec qsec" id="questions" aria-labelledby="q-h">
+  <div class="q-track" id="q-track">
+    <div class="q-stage" id="q-stage">
+      <div class="wrap q-in">
+        <div class="q-side">
+          <h2 id="q-h">Questions</h2>
+          <p class="q-lede">The ones owners actually ask.</p>
+          <div class="q-prog" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="q-call">Anything else, call <a class="num" href="tel:+15128820814">(512) 882-0814</a>.</p>
+          <button class="q-all" type="button" aria-pressed="false">Show all questions</button>
+        </div>
+        <div class="q-deck" id="q-deck">
+          <article class="qcard" style="--c:#3BE8A0;--r:-2.4deg" aria-labelledby="qc1">
+            <span class="qc-ic" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-dollar"/></svg></span><svg class="qc-wm" aria-hidden="true"><use href="#i-dollar"/></svg>
+            <h3 id="qc1">Okay, what&#39;s the damage?</h3>
+            <p>One-time fee, quoted on the call, in writing before you pay.</p>
+          </article>
+          <article class="qcard" style="--c:#F5C451;--r:1.9deg" aria-labelledby="qc2">
+            <span class="qc-ic" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-target"/></svg></span><svg class="qc-wm" aria-hidden="true"><use href="#i-target"/></svg>
+            <span class="qc-stamp" aria-hidden="true">5x</span>
+            <h3 id="qc2">No, seriously. Is it worth it?</h3>
+            <p>We start with whatever&#39;s costing you the most money or holding back the most growth. Every build is scoped to return at least 5x what you pay, and if it doesn&#39;t get there within 12 months, we keep building for free until it does.</p>
+          </article>
+          <article class="qcard" style="--c:#B79CFF;--r:-1.4deg" aria-labelledby="qc3">
+            <span class="qc-ic" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-heartbreak"/></svg></span><svg class="qc-wm" aria-hidden="true"><use href="#i-heartbreak"/></svg>
+            <h3 id="qc3">Do I have to break up with Xactimate?</h3>
+            <p>No. Carriers expect it, so we build around it. Your team still sends every estimate from Xactimate.</p>
+          </article>
+          <article class="qcard" style="--c:#FFB547;--r:2.6deg" aria-labelledby="qc4">
+            <span class="qc-ic" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-sheet"/></svg></span><svg class="qc-wm" aria-hidden="true"><use href="#i-sheet"/></svg>
+            <h3 id="qc4">Can we finally kill the spreadsheet?</h3>
+            <p>Yes. The ClickUp board and the apps that don&#39;t talk to each other can go too. On the call, we&#39;ll tell you what&#39;s worth replacing and what isn&#39;t.</p>
+          </article>
+          <article class="qcard" style="--c:#2DD4BF;--r:-2deg" aria-labelledby="qc5">
+            <span class="qc-ic" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-bolt"/></svg></span><svg class="qc-wm" aria-hidden="true"><use href="#i-bolt"/></svg>
+            <h3 id="qc5">48 to 72 hours? Come on.</h3>
+            <p>Once it&#39;s scoped, most builds are live in 48 to 72 hours, backed by the 5x guarantee. We know how that sounds. You get the timeline in writing before we start.</p>
+          </article>
+          <article class="qcard" style="--c:#6E9BFF;--r:1.5deg" aria-labelledby="qc6">
+            <span class="qc-ic" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-link"/></svg></span><svg class="qc-wm" aria-hidden="true"><use href="#i-link"/></svg>
+            <h3 id="qc6">My crew barely uses the app we have. Now another one?</h3>
+            <p>This one saves them phone calls. Your crew sends each homeowner a link to a live page for their job. Every update they post shows up there, and you see all of it too. Fewer “any update?” calls for everyone.</p>
+          </article>
+          <article class="qcard" style="--c:#FF7A59;--r:-2.6deg" aria-labelledby="qc7">
+            <span class="qc-ic" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-bus"/></svg></span><svg class="qc-wm" aria-hidden="true"><use href="#i-bus"/></svg>
+            <h3 id="qc7">What if you get hit by a bus?</h3>
+            <p>You still own everything. Running costs are out in the open, and we can host it for you or move it to your own accounts any time.</p>
+          </article>
+          <article class="qcard qc-end" style="--c:#3BE8A0;--r:1.2deg" aria-labelledby="qc8">
+            <span class="qc-ic" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-trend"/></svg></span>
+            <h3 id="qc8">How does this grow my business?</h3>
+            <ul class="qc-imagine">
+              <li style="--k:0"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><span>Imagine reviews coming in on autopilot.</span></li>
+              <li style="--k:1"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><span>Imagine your shop in the top spot when homeowners search.</span></li>
+              <li style="--k:2"><svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg><span>Imagine being the company AI recommends.</span></li>
+              <li style="--k:3"><svg class="ic" aria-hidden="true"><use href="#i-bolt"/></svg><span>Imagine a personal audit of what&#39;s costing you the most, fixed in 72 hours.</span></li>
+            </ul>
+            <div class="qc-cta"><p class="qc-stop">Now stop imagining.</p><a class="btn btn-green" href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20I%27d%20like%20to%20book%20a%2015-minute%20call.%20Biggest%20headache%20right%20now%3A%20">Book a 15-minute call</a></div>
+          </article>
+        </div>
       </div>
-      <p class="short"><b>In short:</b> SOVRN Growth builds custom software for water, fire and mold restoration companies, including operations dashboards, estimate drafts and after-hours dispatch. Each build is a one-time fee, quoted on a 15-minute call, and the company owns what we build. Based in the Austin area.</p>
     </div>
+  </div>
+  <div class="wrap">
+    <p class="short"><b>In short:</b> SOVRN Growth builds custom software for water, fire and mold restoration companies, including operations dashboards, estimate desks and claims follow-up. Each build is a one-time fee, quoted on a 15-minute call, and the company owns what we build. Based in the Austin area.</p>
   </div>
 </section>
 
 <section aria-labelledby="final-h">
   <div class="wrap">
+    <div class="pills" id="pills">
+      <p class="pills-h">The choice is yours.</p>
+      <div class="pills-row">
+        <button class="choice choice-blue" type="button"><span class="cap" aria-hidden="true"></span><span class="choice-l">Keep doing it all yourself</span></button>
+        <button class="choice choice-red" type="button"><span class="cap" aria-hidden="true"></span><span class="choice-l">Make more money</span></button>
+      </div>
+      <p class="pills-say" id="pills-say" aria-live="polite"></p>
+    </div>
     <div class="final glass edge">
       <div class="glow"></div>
       <h2 id="final-h">Tell me what you need built, or give me a call.</h2>
@@ -2931,6 +3123,131 @@ Dana Ortiz</textarea>
       es.forEach(function(e){ if (e.isIntersecting){ own.classList.add("seen"); o.disconnect(); } });
     }, {threshold: 0.35});
     o.observe(sg);
+  })();
+
+  /* Questions: a deck you flick through as you scroll. It stays a plain list with reduced motion,
+     when the tallest card can't fit on screen, or when someone asks to see them all. */
+  (function(){
+    var sec = document.getElementById("questions"), track = document.getElementById("q-track"), stage = document.getElementById("q-stage"), deck = document.getElementById("q-deck");
+    if (!sec || !track || !stage || !deck) return;
+    var cards = Array.prototype.slice.call(deck.querySelectorAll(".qcard"));
+    var n = cards.length;
+    if (n < 2) return;
+    var bars = Array.prototype.slice.call(sec.querySelectorAll(".q-prog i"));
+    var side = sec.querySelector(".q-side"), wIn = stage.querySelector(".q-in"), allBtn = sec.querySelector(".q-all");
+    var endCard = deck.querySelector(".qc-end"), endLink = endCard ? endCard.querySelector("a") : null;
+    var tilt = cards.map(function(c){ return parseFloat(c.style.getPropertyValue("--r")) || 0; });
+    var mq = window.matchMedia ? window.matchMedia("(min-height: 560px)") : null;
+    var pinned = null, chosen = false, queued = false, io = null, step = 16, narrow = false;
+    if (!reduce) sec.classList.add("anim-q");
+    sec.style.setProperty("--qn", String(n - 1));
+
+    function ss(e0, e1, x){ var t = Math.max(0, Math.min(1, (x - e0) / (e1 - e0))); return t * t * (3 - 2 * t); }
+    function playEnd(){ if (endCard) endCard.classList.add("play"); }
+    function size(){
+      deck.style.removeProperty("--qch");
+      var max = 0;
+      cards.forEach(function(c){ max = Math.max(max, c.offsetHeight); });
+      step = window.innerWidth <= 720 ? 12 : 16;
+      narrow = window.innerWidth <= 960;
+      deck.style.setProperty("--qch", max + "px");
+      deck.style.setProperty("--qh", (max + step * 2 + 4) + "px");
+    }
+    function fits(){
+      var cs = getComputedStyle(wIn), one = cs.gridTemplateColumns.split(" ").length < 2;
+      var pad = (parseFloat(cs.paddingTop) || 0) + (parseFloat(cs.paddingBottom) || 0), gap = parseFloat(cs.rowGap) || 0;
+      var need = (one ? side.offsetHeight + gap + deck.offsetHeight : Math.max(side.offsetHeight, deck.offsetHeight)) + pad;
+      return need <= stage.clientHeight + 1;
+    }
+    function update(){
+      queued = false;
+      if (!pinned) return;
+      var r = track.getBoundingClientRect(), total = track.offsetHeight - stage.offsetHeight;
+      var p = total > 0 ? Math.max(0, Math.min(1, -r.top / total)) : 0;
+      var raw = p * (n - 1), seg = Math.min(n - 2, Math.floor(raw));
+      var pos = raw >= n - 1 ? n - 1 : seg + ss(0.3, 0.8, raw - seg);
+      cards.forEach(function(c, i){
+        var d = i - pos, x = 0, y = 0, lift = 0, rot = 0, sc = 1, o = 1;
+        var tx = narrow ? 118 : 24, ty = narrow ? -10 : -130, tr = narrow ? 20 : 16;
+        if (d <= -1){ x = tx; y = ty; rot = tr; o = 0; }
+        else if (d < 0){ var u = -d, e = u * u; x = tx * e; y = ty * e; rot = tr * u; o = 1 - ss(0.45, 1, u); }
+        else { var k = Math.min(d, 3); lift = k * step; rot = tilt[i] * Math.min(1, d); sc = 1 - k * 0.045; o = Math.max(0, Math.min(1, 3 - d)); }
+        c.style.transform = "translate3d(" + x.toFixed(2) + "%," + y.toFixed(2) + "%,0) translateY(" + lift.toFixed(1) + "px) rotate(" + rot.toFixed(2) + "deg) scale(" + sc.toFixed(3) + ")";
+        c.style.opacity = o.toFixed(3);
+        c.style.visibility = o < 0.01 ? "hidden" : "visible";
+        c.style.zIndex = String(n - i);
+      });
+      bars.forEach(function(b, i){ b.style.setProperty("--f", Math.max(0, Math.min(1, pos + 1 - i)).toFixed(3)); });
+      if (pos > n - 1.6) playEnd();
+      if (endLink) endLink.tabIndex = n - 1 - pos < 0.5 ? 0 : -1;
+    }
+    function queue(){ if (!queued){ queued = true; requestAnimationFrame(update); } }
+    function listMode(){
+      cards.forEach(function(c){ c.style.transform = ""; c.style.opacity = ""; c.style.visibility = ""; c.style.zIndex = ""; });
+      deck.style.removeProperty("--qch"); deck.style.removeProperty("--qh");
+      if (endLink) endLink.removeAttribute("tabindex");
+      if (!endCard || endCard.classList.contains("play")) return;
+      if (reduce || !("IntersectionObserver" in window)){ playEnd(); return; }
+      io = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if (e.isIntersecting){ playEnd(); if (io){ io.disconnect(); io = null; } } });
+      }, {threshold: 0.35});
+      io.observe(endCard);
+    }
+    function setMode(){
+      var pin = !reduce && !chosen && (!mq || mq.matches);
+      if (pin){ sec.classList.add("q-pin"); size(); pin = fits(); }
+      if (pin === pinned){ sec.classList.toggle("q-pin", pin); if (pin) update(); return; }
+      pinned = pin;
+      sec.classList.toggle("q-pin", pin);
+      if (io){ io.disconnect(); io = null; }
+      if (pin) update(); else listMode();
+    }
+    if (allBtn) allBtn.addEventListener("click", function(){
+      chosen = !chosen;
+      sec.classList.toggle("q-chosen", chosen);
+      allBtn.textContent = chosen ? "Back to the deck" : "Show all questions";
+      allBtn.setAttribute("aria-pressed", chosen ? "true" : "false");
+      setMode();
+      var topH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--top-h")) || 68;
+      var html = document.documentElement, prev = html.style.scrollBehavior;
+      html.style.scrollBehavior = "auto";
+      window.scrollTo(0, Math.round(sec.getBoundingClientRect().top + window.pageYOffset - topH));
+      html.style.scrollBehavior = prev;
+    });
+    window.addEventListener("scroll", queue, {passive: true});
+    window.addEventListener("resize", function(){ setMode(); queue(); });
+    setMode();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ setMode(); queue(); });
+  })();
+
+  /* The choice is yours: blue keeps things as they are, red goes straight to the note box */
+  (function(){
+    var wrap = document.getElementById("pills");
+    if (!wrap) return;
+    var say = document.getElementById("pills-say"), blue = wrap.querySelector(".choice-blue"), red = wrap.querySelector(".choice-red"), ta = document.getElementById("need-t");
+    function bump(el, cls){
+      el.classList.remove("nope", "nudge", "yes"); void el.offsetWidth; el.classList.add(cls);
+      setTimeout(function(){ el.classList.remove(cls); }, 1000);
+    }
+    blue.addEventListener("click", function(){
+      say.textContent = "Fair. The Sunday-night paperwork will be right where you left it.";
+      bump(blue, "nope"); bump(red, "nudge");
+    });
+    red.addEventListener("click", function(){
+      say.textContent = "Good choice. Tell me what's slowing you down.";
+      bump(red, "yes");
+      if (!ta) return;
+      setTimeout(function(){
+        ta.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "center"});
+        ta.focus({preventScroll: true});
+      }, reduce ? 0 : 500);
+    });
+  })();
+
+  /* A little nudge in the browser tab when someone wanders off */
+  (function(){
+    var base = document.title;
+    document.addEventListener("visibilitychange", function(){ document.title = document.hidden ? "Psst. The paperwork's waiting." : base; });
   })();
 
   /* The hero plays once: numbers count up, the chart draws, stuck jobs light up, the call lands, the answer types. */
