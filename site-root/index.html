@@ -24,7 +24,7 @@
 {"@type":"Question","name":"Do you replace Xactimate?","acceptedAnswer":{"@type":"Answer","text":"No. Most carriers expect estimates in Xactimate, so we build around it. Our tools draft and organize the work, and your team still sends the estimate from Xactimate."}},
 {"@type":"Question","name":"What software can you replace?","acceptedAnswer":{"@type":"Answer","text":"Project boards like ClickUp, the spreadsheets that hold your jobs together, and add-on apps that don't talk to each other. On the call we'll tell you what's worth replacing and what isn't."}},
 {"@type":"Question","name":"Who owns it?","acceptedAnswer":{"@type":"Answer","text":"You do. It runs on your accounts and your data stays yours. If you'd rather we host it, we can, and you can move it to your own accounts any time."}},
-{"@type":"Question","name":"How long does a build take?","acceptedAnswer":{"@type":"Answer","text":"After-hours dispatch goes live in about 7 business days. Custom builds are scoped on the call, and you get the timeline in writing before work starts."}}
+{"@type":"Question","name":"How long does a build take?","acceptedAnswer":{"@type":"Answer","text":"Once it's scoped, most builds are live within 48 to 72 hours. After-hours dispatch takes about 7 business days. You get the timeline in writing before work starts."}}
 ]}
 ]}
 </script>
@@ -909,6 +909,140 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
   .f-note{--x:59%;--y:44%;--w:144px}
   .f-sheet .fr-h b{font-size:13px}
 }
+
+/* ===== Motion pass: hero flow, build catalog, how-it-works rail, final ask ===== */
+
+/* Hero: the three places a job lives today stream into one desk */
+.src{position:relative;max-width:1040px;margin:60px auto 0;padding:0 var(--gutter)}
+.src-row{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.src-card{display:flex;align-items:center;gap:13px;padding:14px 16px;border-radius:16px;text-align:left;
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--line-2);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06);transition:border-color .5s ease,box-shadow .5s ease}
+.src-ic{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.04);
+  border:1px solid var(--line);color:var(--muted);transition:color .5s ease,border-color .5s ease,background-color .5s ease}
+.src-ic .ic{width:20px;height:20px}
+.src-card b{display:block;font-size:15.5px;font-weight:700;line-height:1.2;letter-spacing:-.005em}
+.src-card small{display:block;margin-top:3px;font-size:13px;font-weight:600;color:var(--dim)}
+.src-card .sm{display:none}
+.src-card.sent{border-color:rgba(59,232,160,.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 26px -12px rgba(59,232,160,.7)}
+.src-card.sent .src-ic{color:var(--green);border-color:rgba(59,232,160,.34);background:rgba(59,232,160,.08)}
+.src-wires{display:block;width:100%;height:92px;overflow:visible}
+.src-wires path{fill:none;stroke-width:1.5;stroke-linecap:round}
+.w-base path{stroke:rgba(255,255,255,.13)}
+.w-lit path{stroke:var(--green);opacity:.6}
+.src-wires .pk{fill:#C8FFE6}
+.src.seq .src-card{opacity:0;transform:translateY(10px)}
+.src.seq.go .src-card{opacity:1;transform:none;transition:opacity .45s ease-out,transform .6s cubic-bezier(.22,1,.36,1),border-color .5s ease,box-shadow .5s ease}
+.src.seq.go .src-card:nth-child(2){transition-delay:.08s,.08s,0s,0s}
+.src.seq.go .src-card:nth-child(3){transition-delay:.16s,.16s,0s,0s}
+.src.seq .w-lit path{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600)}
+.src.seq.wired .w-lit path{stroke-dashoffset:0;transition:stroke-dashoffset .75s cubic-bezier(.3,.7,.2,1)}
+.src + .hero-vis{margin-top:0}
+.port{position:absolute;left:50%;top:-6px;z-index:4;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 0 4px rgba(59,232,160,.18),0 0 18px rgba(59,232,160,.8)}
+.port.hit{animation:port-hit .6s cubic-bezier(.22,1,.36,1)}
+@keyframes port-hit{
+  0%{box-shadow:0 0 0 4px rgba(59,232,160,.18),0 0 18px rgba(59,232,160,.8)}
+  40%{box-shadow:0 0 0 13px rgba(59,232,160,.1),0 0 40px rgba(59,232,160,1)}
+  100%{box-shadow:0 0 0 4px rgba(59,232,160,.18),0 0 18px rgba(59,232,160,.8)}
+}
+
+/* The draft estimate that lands on the desk */
+@media (min-width:1101px){.f-est{top:-30px;left:-2%;width:268px}}
+.card3 .view .view-note{margin-top:14px;padding:12px 0 0;font-size:13.5px;line-height:1.4}
+.testline .num{white-space:nowrap}
+.est-lines{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:7px}
+.est-lines li{display:flex;justify-content:space-between;gap:14px;font-size:13px;color:#C9D3E1}
+.est-lines b{font-weight:650;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.seq .f-est .est-lines li{opacity:0;transform:translateY(4px)}
+.seq .f-est.in .est-lines li{opacity:1;transform:none;transition:opacity .3s ease-out,transform .4s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--i) * 170ms + 260ms)}
+.seq .f-est .f-done{opacity:0}
+.seq .f-est.in .f-done{opacity:1;transition:opacity .35s ease-out .86s}
+
+/* What we build: tabs by area */
+.sec-h.cat-h{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;max-width:none}
+.cat-h > div{max-width:46em}
+.own-tag{flex:none;max-width:300px;margin:0;padding:16px 18px;border-radius:16px;border:1px solid rgba(59,232,160,.3);
+  background:rgba(59,232,160,.06);color:var(--muted);font-size:15.5px;line-height:1.45}
+.sec-h .own-tag{margin-top:0;font-size:15.5px}
+.own-tag b{display:block;margin-bottom:3px;color:var(--green);font-size:19px;font-weight:750;letter-spacing:-.01em}
+.cat-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.cat-tabs[hidden]{display:none}
+.cat-tab{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:10px 20px;border-radius:999px;border:1px solid var(--line-2);
+  background:rgba(255,255,255,.03);color:var(--muted);font:inherit;font-size:16.5px;font-weight:650;cursor:pointer;
+  transition:color .2s ease,background-color .2s ease,border-color .2s ease,box-shadow .2s ease}
+.cat-tab .ic{width:18px;height:18px}
+.cat-tab:hover{color:var(--ink);border-color:rgba(255,255,255,.3)}
+.cat-tab[aria-selected="true"]{color:var(--green-ink);background:var(--green);border-color:transparent;
+  box-shadow:0 0 0 1px rgba(107,245,189,.5),0 10px 30px -12px rgba(59,232,160,.8)}
+.cat-tab:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.cat-panel.trio{margin-top:24px}
+.cat-panel:focus-visible{outline:2px solid var(--green);outline-offset:6px;border-radius:22px}
+.cat-panel[hidden]{display:none}
+.cat-panel.enter{animation:cat-in .42s cubic-bezier(.22,1,.36,1)}
+@keyframes cat-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.est-mini{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.est-mini li{display:flex;justify-content:space-between;gap:12px;padding-top:10px;border-top:1px solid var(--line)}
+.est-mini li:first-child{padding-top:0;border-top:0}
+.est-mini b{font-weight:650;font-variant-numeric:tabular-nums;white-space:nowrap}
+.chat-q{margin-left:auto;max-width:88%;padding:10px 14px;border-radius:14px 14px 4px 14px;background:rgba(110,155,255,.14);border:1px solid rgba(110,155,255,.26);font-weight:600}
+.chat-a{margin-top:12px;max-width:94%;padding:12px 14px;border-radius:14px 14px 14px 4px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:#C9D3E1}
+.chat-a b{color:var(--ink);font-weight:650}
+
+/* How it works: a rail that fills as you scroll */
+.how-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:72px;align-items:start}
+.how-grid .sec-h{position:sticky;top:calc(var(--top-h) + 56px)}
+.rail{position:relative;list-style:none;margin:0;padding:0}
+.rail::before,.rail::after{content:"";position:absolute;left:23px;width:2px;top:var(--t,24px);border-radius:2px}
+.rail::before{height:var(--h,calc(100% - 48px));background:repeating-linear-gradient(180deg,rgba(255,255,255,.2) 0 5px,transparent 5px 11px)}
+.rail::after{height:calc(var(--h,0px) * var(--p,0));background:linear-gradient(180deg,var(--green),var(--teal));box-shadow:0 0 14px rgba(59,232,160,.55)}
+.rail:not(.live)::after{height:var(--h,calc(100% - 48px))}
+.rail li{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:26px;padding-bottom:56px}
+.rail li:last-child{padding-bottom:0}
+.rail .node{position:relative;z-index:1;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#0A0F18;
+  border:1px solid var(--line-2);color:var(--dim);font-weight:750;font-size:17px;font-variant-numeric:tabular-nums;
+  transition:color .35s ease,background-color .35s ease,border-color .35s ease,box-shadow .35s ease}
+.rail h3{margin-top:9px;font-size:clamp(22px,2.2vw,28px);color:var(--muted);transition:color .35s ease}
+.rail p{margin-top:10px;font-size:18px;color:var(--muted);max-width:30em}
+.rail li.on .node,.rail:not(.live) .node{color:var(--green-ink);background:var(--green);border-color:transparent;box-shadow:0 0 0 6px rgba(59,232,160,.12),0 0 30px rgba(59,232,160,.55)}
+.rail li.on h3,.rail:not(.live) h3{color:var(--ink)}
+
+/* Final ask */
+.need{position:relative;z-index:1;max-width:600px;margin:34px auto 0;text-align:left}
+.need label{display:block;margin-bottom:10px;font-weight:700;font-size:16px}
+.need textarea{display:block;width:100%;min-height:128px;resize:vertical;padding:14px 16px;border-radius:14px;border:1px solid var(--line-2);
+  background:rgba(5,8,14,.65);color:var(--ink);font:inherit;font-size:17px;line-height:1.5}
+.need textarea::placeholder{color:var(--dim)}
+.need textarea:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.need .cta-row{justify-content:flex-start;margin-top:16px}
+.final .need-alt{margin:14px 0 0;max-width:none;font-size:15.5px;color:var(--muted);text-align:left}
+
+@media (max-width:960px){
+  .sec-h.cat-h{flex-direction:column;align-items:flex-start}
+  .own-tag{max-width:none}
+  .how-grid{grid-template-columns:minmax(0,1fr);gap:44px}
+  .how-grid .sec-h{position:static}
+}
+@media (max-width:720px){
+  .src{margin-top:44px}
+  .src-row{gap:8px}
+  .src-card{flex-direction:column;justify-content:center;gap:8px;padding:12px 6px;text-align:center}
+  .src-card .lg{display:none}
+  .src-card .sm{display:inline}
+  .src-card b{font-size:14px}
+  .src-card small{font-size:12px}
+  .src-ic{width:36px;height:36px}
+  .src-wires{height:60px}
+  .cat-tabs{gap:8px}
+  .cat-tab{flex:1 1 calc(50% - 8px);justify-content:center;padding:10px 14px;font-size:15.5px}
+  .rail li{gap:18px;padding-bottom:42px}
+  .rail p{font-size:17px}
+  .need .cta-row .btn{width:100%}
+}
+@media (prefers-reduced-motion: reduce){
+  .src-card,.src-ic,.cat-tab,.rail .node,.rail h3{transition:none}
+  .port.hit,.cat-panel.enter{animation:none}
+}
 </style>
 </head>
 <body id="top">
@@ -934,6 +1068,12 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
   <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="1.8"/><path d="M4.5 7.5l7.5 5.5 7.5-5.5"/></symbol>
   <symbol id="i-sheet" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.8"/><path d="M4 9.5h16M4 14.5h16M10 4v16"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7H8l1.4-2h5.2L16 7h2.5A1.5 1.5 0 0 1 20 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5z"/><circle cx="12" cy="12.8" r="3.4"/></symbol>
+  <symbol id="i-plan" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M4 12.5h7.5V20M11.5 12.5V4M15.5 12.5H20"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><rect x="3.5" y="6.5" width="12" height="11" rx="2"/><path d="M15.5 10.5l5-3v9l-5-3z"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M4 16.5l5-5 4 4 7-7"/><path d="M15 8.5h5v5"/></symbol>
+  <symbol id="i-dollar" viewBox="0 0 24 24"><path d="M12 3.5v17"/><path d="M16.5 7.6c-.8-1.5-2.4-2.3-4.5-2.3-2.6 0-4.3 1.3-4.3 3.2 0 4.6 9 2.4 9 7 0 2-1.9 3.4-4.7 3.4-2.3 0-4-.9-4.9-2.6"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3.5l1.9 5.4 5.4 1.9-5.4 1.9L11 18.1l-1.9-5.4-5.4-1.9 5.4-1.9z"/><path d="M18.5 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
   </defs>
 </svg>
 
@@ -960,8 +1100,19 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
     </div>
   </div>
 
+  <div class="src" id="src">
+    <p class="vh">Today a job lives in three places: inspection photos in DASH, the sketch in Xactimate and the walkthrough video on someone's phone. We pull all three into one desk.</p>
+    <div class="src-row" aria-hidden="true">
+      <div class="src-card"><span class="src-ic"><svg class="ic"><use href="#i-camera"/></svg></span><span><b><span class="lg">Inspection photos</span><span class="sm">Photos</span></b><small>in DASH</small></span></div>
+      <div class="src-card"><span class="src-ic"><svg class="ic"><use href="#i-plan"/></svg></span><span><b>Sketch</b><small>in Xactimate</small></span></div>
+      <div class="src-card"><span class="src-ic"><svg class="ic"><use href="#i-video"/></svg></span><span><b><span class="lg">Walkthrough video</span><span class="sm">Video</span></b><small>on a phone</small></span></div>
+    </div>
+    <svg class="src-wires" id="src-wires" aria-hidden="true" focusable="false"><g class="w-base"><path/><path/><path/></g><g class="w-lit"><path/><path/><path/></g><g class="w-pk"></g></svg>
+  </div>
+
   <div class="hero-vis" id="hero-vis">
     <div class="glow"></div>
+    <span class="port" aria-hidden="true"></span>
     <figure class="frame" aria-label="A working operations dashboard for a restoration company. Use its menu to switch views, or ask it a question.">
       <div class="frame-in"><div class="dash" id="dash">
         <div class="d">
@@ -1356,6 +1507,15 @@ Dana Ortiz</textarea>
     </div>
 
     <div class="floats">
+      <div class="float f-est" aria-hidden="true">
+        <div class="f-head"><svg class="ic"><use href="#i-doc"/></svg>Draft estimate<small>Bedroom 2</small></div>
+        <ul class="est-lines">
+          <li style="--i:0"><span>Containment, 6 mil poly</span><b>142 SF</b></li>
+          <li style="--i:1"><span>HEPA vacuum, walls</span><b>384 SF</b></li>
+          <li style="--i:2"><span>Antimicrobial, framing</span><b>96 SF</b></li>
+        </ul>
+        <div class="f-done"><svg class="ic"><use href="#i-check"/></svg>Ready for a 10-minute review</div>
+      </div>
       <div class="float f-call" aria-hidden="true">
         <div class="f-head"><svg class="ic"><use href="#i-phone"/></svg>New call<small>2:14 AM</small></div>
         <p class="f-quote">&ldquo;Water's coming through the kitchen ceiling.&rdquo;</p>
@@ -1431,25 +1591,35 @@ Dana Ortiz</textarea>
 
 <section class="sec" id="build" aria-labelledby="build-h">
   <div class="wrap">
-    <div class="sec-h">
-      <h2 id="build-h">What we build</h2>
-      <p>Every shop runs differently. These are the builds we start from, shaped to how yours works.</p>
+    <div class="sec-h cat-h">
+      <div>
+        <h2 id="build-h">What we build</h2>
+        <p>Every shop runs differently. These are the builds we start from, shaped to how yours works.</p>
+      </div>
+      <p class="own-tag"><b>You own it.</b>The code and the data live in your accounts. No seats, no renewals.</p>
     </div>
-    <div class="trio">
-      <article class="card3 glass">
-        <div class="view" aria-hidden="true">
-          <div class="view-h"><span>Owed to you, by age</span><b class="num">$184,300</b></div>
-          <div class="aging">
-            <div class="ag-row" style="--w:100%;--c:#3BE8A0"><span>0 to 30 days</span><div class="bar"><i></i></div><b>$72,400</b></div>
-            <div class="ag-row" style="--w:70%;--c:#2DD4BF"><span>31 to 60</span><div class="bar"><i></i></div><b>$50,700</b></div>
-            <div class="ag-row" style="--w:54%;--c:#FFB547"><span>61 to 90</span><div class="bar"><i></i></div><b>$38,900</b></div>
-            <div class="ag-row" style="--w:31%;--c:#FF5D73"><span>Over 90</span><div class="bar"><i></i></div><b>$22,300</b></div>
-          </div>
-        </div>
-        <h3>Run the shop</h3>
-        <p>Every job, claim, crew and invoice on one screen. Replaces ClickUp, the spreadsheets and the apps that don't talk to each other.</p>
-      </article>
+    <div class="cat-tabs" role="tablist" aria-label="Builds by area" hidden>
+      <button class="cat-tab" type="button" role="tab" id="tab-rev" aria-controls="cat-rev" aria-selected="true"><svg class="ic" aria-hidden="true"><use href="#i-trend"/></svg>Revenue</button>
+      <button class="cat-tab" type="button" role="tab" id="tab-hr" aria-controls="cat-hr" aria-selected="false" tabindex="-1"><svg class="ic" aria-hidden="true"><use href="#i-userplus"/></svg>HR</button>
+      <button class="cat-tab" type="button" role="tab" id="tab-fin" aria-controls="cat-fin" aria-selected="false" tabindex="-1"><svg class="ic" aria-hidden="true"><use href="#i-dollar"/></svg>Finance</button>
+      <button class="cat-tab" type="button" role="tab" id="tab-aeo" aria-controls="cat-aeo" aria-selected="false" tabindex="-1"><svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg>AEO</button>
+    </div>
+    <div class="cat-panel trio" id="cat-rev" role="tabpanel" aria-labelledby="tab-rev" tabindex="0">
       <article class="card3 glass edge">
+        <div class="view" aria-hidden="true">
+          <div class="view-h"><span>Draft estimate, Bedroom 2</span><b class="num">22 lines</b></div>
+          <ul class="est-mini">
+            <li><span>Containment, 6 mil poly</span><b>142 SF</b></li>
+            <li><span>HEPA vacuum, walls</span><b>384 SF</b></li>
+            <li><span>Antimicrobial, framing</span><b>96 SF</b></li>
+            <li><span>Air scrubber, 3 days</span><b>3 EA</b></li>
+          </ul>
+          <p class="view-note">Drafted from 31 photos, the sketch and the protocol</p>
+        </div>
+        <h3>Estimate desk</h3>
+        <p>Mold and water estimates drafted from your photos, sketch and protocol. Your estimator reviews it in about 10 minutes and sends it from Xactimate.</p>
+      </article>
+      <article class="card3 glass">
         <div class="view" aria-hidden="true">
           <div class="call-row"><span class="t">2:14 AM</span><div><b>New call</b><q>Water's coming through the kitchen ceiling.</q></div></div>
           <div class="call-row"><span class="t">2:16 AM</span><div><b>Job captured</b><span class="chips"><i>Water, upstairs bath</i><i>State Farm</i></span></div></div>
@@ -1463,15 +1633,129 @@ Dana Ortiz</textarea>
         <div class="view" aria-hidden="true">
           <ul class="feed">
             <li style="--c:#6E9BFF"><i></i><div><b>New loss from Keller Plumbing</b><small>Sent from your partner page, with photos</small></div></li>
-            <li style="--c:#3BE8A0"><i></i><div><b>Review requests ready</b><small>4 jobs finished this week</small></div></li>
+            <li style="--c:#3BE8A0"><i></i><div><b>Referral from a property manager</b><small>3 units, supply line leak, photos attached</small></div></li>
             <li style="--c:#FFB547"><i></i><div><b>Rebuild estimate drafted</b><small>Chen, ready when drying wraps</small></div></li>
           </ul>
         </div>
         <h3>Bring in work</h3>
-        <p>A page where plumbers and agents send you losses, review requests after every finished job, and rebuild estimates that go out before the homeowner shops around.</p>
+        <p>A page where plumbers and agents send you losses, and rebuild estimates that go out before the homeowner shops around.</p>
       </article>
     </div>
-    <p class="else"><b>Something else.</b> Hiring, paperwork, reporting: if it eats your week, we scope it on a 15-minute call and quote it before work starts. <a href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20I%27d%20like%20to%20talk%20about%20a%20custom%20build.%20Biggest%20headache%20right%20now%3A%20">Tell us what it is</a></p>
+    <div class="cat-panel trio" id="cat-hr" role="tabpanel" aria-labelledby="tab-hr" tabindex="0">
+      <article class="card3 glass edge">
+        <div class="view" aria-hidden="true">
+          <div class="view-h"><span>Hiring, water techs</span><b class="num">7 open</b></div>
+          <ul class="feed">
+            <li style="--c:#3BE8A0"><i></i><div><b>Jordan R. applied</b><small>WRT certified, 4 years, ride-along Thursday</small></div></li>
+            <li style="--c:#2DD4BF"><i></i><div><b>Dee W. passed the ride-along</b><small>Offer drafted, waiting on your OK</small></div></li>
+            <li style="--c:#FFB547"><i></i><div><b>Luis P. hasn't heard back</b><small>Applied 6 days ago, follow-up queued</small></div></li>
+          </ul>
+        </div>
+        <h3>Hiring board</h3>
+        <p>Applicants, ride-alongs and offers in one list, so a good tech doesn't sit in a text thread for a week.</p>
+      </article>
+      <article class="card3 glass">
+        <div class="view" aria-hidden="true">
+          <div class="view-h"><span>On call this week</span><b class="num">3 crews</b></div>
+          <ul class="feed">
+            <li style="--c:#3BE8A0"><i></i><div><b>Tonight: Marcus</b><small>Backup: Dee, truck 2</small></div></li>
+            <li style="--c:#6E9BFF"><i></i><div><b>Saturday swap approved</b><small>Luis covers for Dee, crew notified</small></div></li>
+            <li style="--c:#2DD4BF"><i></i><div><b>Crew 1 at the Ruiz job</b><small>Day 3 of drying, readings due at 2 PM</small></div></li>
+          </ul>
+        </div>
+        <h3>On-call and crew board</h3>
+        <p>Who's on call, who's on which job and who swapped shifts, on one board your crew checks from their phone.</p>
+      </article>
+      <article class="card3 glass">
+        <div class="view" aria-hidden="true">
+          <div class="view-h"><span>Certifications</span><b class="num">12 techs</b></div>
+          <div class="aging">
+            <div class="ag-row" style="--w:100%;--c:#3BE8A0"><span>Current</span><div class="bar"><i></i></div><b>9</b></div>
+            <div class="ag-row" style="--w:24%;--c:#FFB547"><span>Due soon</span><div class="bar"><i></i></div><b>2</b></div>
+            <div class="ag-row" style="--w:12%;--c:#FF5D73"><span>Lapsed</span><div class="bar"><i></i></div><b>1</b></div>
+          </div>
+          <p class="view-note">Reminders go out 60 days before an IICRC renewal</p>
+        </div>
+        <h3>Certifications</h3>
+        <p>IICRC and other certifications tracked for every tech, with a heads-up long before one lapses.</p>
+      </article>
+    </div>
+    <div class="cat-panel trio" id="cat-fin" role="tabpanel" aria-labelledby="tab-fin" tabindex="0">
+      <article class="card3 glass edge">
+        <div class="view" aria-hidden="true">
+          <div class="view-h"><span>Owed to you, by age</span><b class="num">$184,300</b></div>
+          <div class="aging">
+            <div class="ag-row" style="--w:100%;--c:#3BE8A0"><span>0 to 30 days</span><div class="bar"><i></i></div><b>$72,400</b></div>
+            <div class="ag-row" style="--w:70%;--c:#2DD4BF"><span>31 to 60</span><div class="bar"><i></i></div><b>$50,700</b></div>
+            <div class="ag-row" style="--w:54%;--c:#FFB547"><span>61 to 90</span><div class="bar"><i></i></div><b>$38,900</b></div>
+            <div class="ag-row" style="--w:31%;--c:#FF5D73"><span>Over 90</span><div class="bar"><i></i></div><b>$22,300</b></div>
+          </div>
+        </div>
+        <h3>Run the shop</h3>
+        <p>Every job, claim, crew and invoice on one screen. Replaces ClickUp, the spreadsheets and the apps that don't talk to each other.</p>
+      </article>
+      <article class="card3 glass">
+        <div class="view" aria-hidden="true">
+          <div class="view-h"><span>Claims waiting on carriers</span><b class="num">$61,800</b></div>
+          <ul class="feed">
+            <li style="--c:#FF5D73"><i></i><div><b>Ruiz, State Farm, 47 days</b><small>Follow-up to the adjuster drafted</small></div></li>
+            <li style="--c:#FFB547"><i></i><div><b>Chen, Allstate, 33 days</b><small>Supplement sent, reply due Friday</small></div></li>
+            <li style="--c:#3BE8A0"><i></i><div><b>Patel, USAA, paid today</b><small>$8,420 posted to QuickBooks</small></div></li>
+          </ul>
+        </div>
+        <h3>Claims chaser</h3>
+        <p>Days open on every claim, with the adjuster follow-up drafted and waiting for your OK.</p>
+      </article>
+      <article class="card3 glass">
+        <div class="view" aria-hidden="true">
+          <div class="view-h"><span>Job cost, Chen water loss</span><b class="num">38% margin</b></div>
+          <div class="aging">
+            <div class="ag-row" style="--w:74%;--c:#6E9BFF"><span>Labor</span><div class="bar"><i></i></div><b>$3,120</b></div>
+            <div class="ag-row" style="--w:34%;--c:#2DD4BF"><span>Equipment</span><div class="bar"><i></i></div><b>$1,450</b></div>
+            <div class="ag-row" style="--w:20%;--c:#FFB547"><span>Materials</span><div class="bar"><i></i></div><b>$840</b></div>
+          </div>
+          <p class="view-note">Invoice $8,720, synced from QuickBooks</p>
+        </div>
+        <h3>Job costing</h3>
+        <p>Labor, equipment and materials against every job, so you see the margin before the job closes.</p>
+      </article>
+    </div>
+    <div class="cat-panel trio" id="cat-aeo" role="tabpanel" aria-labelledby="tab-aeo" tabindex="0">
+      <article class="card3 glass edge">
+        <div class="view" aria-hidden="true">
+          <div class="chat-q">Who can handle a burst pipe in Round Rock tonight?</div>
+          <div class="chat-a"><b>Three companies answer 24/7 near you.</b> The closest has 312 Google reviews and can be there within the hour.</div>
+          <p class="view-note">The answer a homeowner gets. We work to make it yours.</p>
+        </div>
+        <h3>Found in AI answers</h3>
+        <p>Your pages and profiles shaped so ChatGPT, Gemini and Claude recommend you when a homeowner asks who to call.</p>
+      </article>
+      <article class="card3 glass">
+        <div class="view" aria-hidden="true">
+          <div class="view-h"><span>Google reviews</span><b class="num">4.9 from 312</b></div>
+          <ul class="feed">
+            <li style="--c:#3BE8A0"><i></i><div><b>Review request sent</b><small>Chen job closed today</small></div></li>
+            <li style="--c:#2DD4BF"><i></i><div><b>New 5-star review</b><small>Reply drafted in your voice</small></div></li>
+            <li style="--c:#6E9BFF"><i></i><div><b>A review mentions mold</b><small>Quoted on your mold remediation page</small></div></li>
+          </ul>
+        </div>
+        <h3>Reviews that work for you</h3>
+        <p>A review request after every finished job, and replies written in your voice for you to approve.</p>
+      </article>
+      <article class="card3 glass">
+        <div class="view" aria-hidden="true">
+          <div class="view-h"><span>Service-area pages</span><b class="num">14 live</b></div>
+          <ul class="feed">
+            <li style="--c:#3BE8A0"><i></i><div><b>Water damage, Cedar Park</b><small>Live, with your hours and response time</small></div></li>
+            <li style="--c:#3BE8A0"><i></i><div><b>Mold remediation, Round Rock</b><small>Live, with your photos and reviews</small></div></li>
+            <li style="--c:#FFB547"><i></i><div><b>Fire damage, Georgetown</b><small>Drafted, waiting on your OK</small></div></li>
+          </ul>
+        </div>
+        <h3>Service-area pages</h3>
+        <p>A page for every city and service you cover, written so search engines and AI assistants match you to local jobs.</p>
+      </article>
+    </div>
+    <p class="else"><b>Something else.</b> Paperwork, reporting, anything that eats your week: we scope it on a 15-minute call, and once it's scoped, most builds are live within 48 to 72 hours. <a href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20I%27d%20like%20to%20talk%20about%20a%20custom%20build.%20Biggest%20headache%20right%20now%3A%20">Tell us what it is</a></p>
   </div>
 </section>
 
@@ -1511,16 +1795,16 @@ Dana Ortiz</textarea>
 </section>
 
 <section class="sec" id="how" aria-labelledby="how-h">
-  <div class="wrap">
+  <div class="wrap how-grid">
     <div class="sec-h">
       <h2 id="how-h">How it works</h2>
       <p>From the first call to a tool your team uses every day.</p>
     </div>
-    <ol class="steps">
-      <li><h3>A 15-minute call</h3><p>You tell us what eats your week. We tell you what we'd build and what it costs.</p></li>
-      <li><h3>A working version</h3><p>We build it on your own data and walk your team through it.</p></li>
-      <li><h3>Installed on your accounts</h3><p>Your logins, your data. Your team tests it before you rely on it.</p></li>
-      <li><h3>30 days of support</h3><p>Fixes and changes for the first month. After that, it's yours.</p></li>
+    <ol class="rail" id="rail">
+      <li><span class="node" aria-hidden="true">1</span><div><h3>A 15-minute call</h3><p>You tell us what's costing you the most. We tell you what we'd build first.</p></div></li>
+      <li><span class="node" aria-hidden="true">2</span><div><h3>Scoped on your real jobs</h3><p>We walk through your own jobs with you and agree on exactly what it does before anything gets built.</p></div></li>
+      <li><span class="node" aria-hidden="true">3</span><div><h3>Live in 48 to 72 hours</h3><p>Once it's scoped, most builds are live within 48 to 72 hours, on your accounts and your logins.</p></div></li>
+      <li><span class="node" aria-hidden="true">4</span><div><h3>30 to 60 days of support</h3><p>Fixes and changes while your team settles in. After that, it's yours.</p></div></li>
     </ol>
   </div>
 </section>
@@ -1532,7 +1816,7 @@ Dana Ortiz</textarea>
         <p class="founder-name">Elijah Pitts</p>
         <p class="founder-role">Founder, SOVRN Growth. Austin, Texas</p>
       </div>
-      <p class="founder-text">I scope every build myself, install it with your team, and stay on for 30 days after it goes live. If something isn't worth building, I'll tell you on the first call.</p>
+      <p class="founder-text">I scope every build myself, install it with your team, and stay on for 30 to 60 days after it goes live. If something isn't worth building, I'll tell you on the first call.</p>
     </div>
   </div>
 </section>
@@ -1549,7 +1833,7 @@ Dana Ortiz</textarea>
         <details><summary>Do you replace Xactimate?</summary><p>No. Most carriers expect estimates in Xactimate, so we build around it. Our tools draft and organize the work, and your team still sends the estimate from Xactimate.</p></details>
         <details><summary>What software can you replace?</summary><p>Project boards like ClickUp, the spreadsheets that hold your jobs together, and add-on apps that don't talk to each other. On the call we'll tell you what's worth replacing and what isn't.</p></details>
         <details><summary>Who owns it?</summary><p>You do. It runs on your accounts and your data stays yours. If you'd rather we host it, we can, and you can move it to your own accounts any time.</p></details>
-        <details><summary>How long does a build take?</summary><p>After-hours dispatch goes live in about 7 business days. Custom builds are scoped on the call, and you get the timeline in writing before work starts.</p></details>
+        <details><summary>How long does a build take?</summary><p>Once it's scoped, most builds are live within 48 to 72 hours. After-hours dispatch takes about 7 business days. You get the timeline in writing before work starts.</p></details>
         <details><summary>Is the after-hours line a person?</summary><p>No. It's a voice agent set up with your company's name, service area and questions. If a caller wants a person, it takes their number and alerts your on-call tech. If someone is in danger, it tells them to hang up and call 911.</p></details>
       </div>
       <p class="short"><b>In short:</b> SOVRN Growth builds custom software for water, fire and mold restoration companies, including operations dashboards, estimate drafts and after-hours dispatch. Each build is a one-time fee, quoted on a 15-minute call, and the company owns what we build. Based in the Austin area.</p>
@@ -1561,12 +1845,17 @@ Dana Ortiz</textarea>
   <div class="wrap">
     <div class="final glass edge">
       <div class="glow"></div>
-      <h2 id="final-h">Tell us what's eating your week.</h2>
-      <p>Fifteen minutes on the phone. If there's something worth building, we'll tell you what it is and what it costs. If there isn't, we'll say so.</p>
-      <div class="cta-row">
-        <a class="btn btn-green" href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20I%27d%20like%20to%20book%20a%2015-minute%20call.%20Biggest%20headache%20right%20now%3A%20">Book a 15-minute call</a>
-        <a class="btn btn-ghost" href="tel:+15128820814">Call <span class="num">(512) 882-0814</span></a>
-      </div>
+      <h2 id="final-h">Tell me what you need built, or give me a call.</h2>
+      <p>I read every one myself. If there's something worth building, I'll tell you what it is. If there isn't, I'll say so.</p>
+      <form class="need" id="need" action="mailto:elijah@sovrngrowth.com?subject=What%20I%20need%20built" method="post" enctype="text/plain">
+        <label for="need-t">What do you need built?</label>
+        <textarea id="need-t" name="need" rows="4" required placeholder="Mold estimates take my estimator a full afternoon, and the photos never match the sketch."></textarea>
+        <div class="cta-row">
+          <button class="btn btn-green" type="submit">Send it to Elijah</button>
+          <a class="btn btn-ghost" href="tel:+15128820814">Call <span class="num">(512) 882-0814</span></a>
+        </div>
+        <p class="need-alt" id="need-alt">It opens a text or an email with your note in it, ready to send.</p>
+      </form>
     </div>
   </div>
 </section>
@@ -1862,6 +2151,177 @@ Dana Ortiz</textarea>
     }
   }
 
+  /* What we build: tabs by area. Without script, every area shows. */
+  (function(){
+    var list = document.querySelector(".cat-tabs");
+    if (!list) return;
+    var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+    var panels = tabs.map(function(t){ return document.getElementById(t.getAttribute("aria-controls")); });
+    if (panels.some(function(p){ return !p; })) return;
+    function pick(i, how){
+      tabs.forEach(function(t, j){
+        var on = i === j;
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+        panels[j].hidden = !on;
+        if (on && how && !reduce){ panels[j].classList.remove("enter"); void panels[j].offsetWidth; panels[j].classList.add("enter"); }
+      });
+      if (how === "key") tabs[i].focus();
+    }
+    list.hidden = false;
+    pick(0, null);
+    tabs.forEach(function(t, i){
+      t.addEventListener("click", function(){ pick(i, "click"); });
+      t.addEventListener("keydown", function(e){
+        var n = tabs.length, j = null;
+        if (e.key === "ArrowRight") j = (i + 1) % n;
+        else if (e.key === "ArrowLeft") j = (i - 1 + n) % n;
+        else if (e.key === "Home") j = 0;
+        else if (e.key === "End") j = n - 1;
+        if (j !== null){ e.preventDefault(); pick(j, "key"); }
+      });
+    });
+  })();
+
+  /* How it works: the green line fills as you scroll, and each step lights when the line reaches it. */
+  (function(){
+    var rail = document.getElementById("rail");
+    if (!rail) return;
+    var steps = Array.prototype.slice.call(rail.querySelectorAll("li"));
+    var first = steps[0] && steps[0].querySelector(".node"), last = steps[steps.length - 1] && steps[steps.length - 1].querySelector(".node");
+    if (!first || !last) return;
+    function measure(){
+      var r = rail.getBoundingClientRect(), a = first.getBoundingClientRect(), b = last.getBoundingClientRect();
+      var top = a.top + a.height / 2 - r.top, len = (b.top + b.height / 2) - (a.top + a.height / 2);
+      rail.style.setProperty("--t", top.toFixed(1) + "px");
+      rail.style.setProperty("--h", Math.max(0, len).toFixed(1) + "px");
+      return {r:r, top:top, len:len};
+    }
+    measure();
+    if (reduce){ return; }
+    rail.classList.add("live");
+    var queued = false;
+    function update(){
+      queued = false;
+      var m = measure(), line = window.innerHeight * 0.62;
+      var p = m.len > 0 ? (line - (m.r.top + m.top)) / m.len : 0;
+      p = Math.max(0, Math.min(1, p));
+      rail.style.setProperty("--p", p.toFixed(4));
+      steps.forEach(function(s){
+        var n = s.querySelector(".node").getBoundingClientRect();
+        s.classList.toggle("on", n.top + n.height / 2 <= line + 1);
+      });
+    }
+    function queue(){ if (!queued){ queued = true; requestAnimationFrame(update); } }
+    window.addEventListener("scroll", queue, {passive:true});
+    window.addEventListener("resize", queue);
+    update();
+  })();
+
+  /* Final ask: the note goes into a text on a phone, or an email on a computer. */
+  (function(){
+    var form = document.getElementById("need"), ta = document.getElementById("need-t");
+    if (!form || !ta) return;
+    var btn = form.querySelector('button[type="submit"]'), alt = document.getElementById("need-alt");
+    var touch = !!(window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
+    function note(){ return "Hi Elijah, here's what I need built: " + ta.value.trim(); }
+    function sms(){ return "sms:+15128820814?&body=" + encodeURIComponent(note()); }
+    function mail(){ return "mailto:elijah@sovrngrowth.com?subject=" + encodeURIComponent("What I need built") + "&body=" + encodeURIComponent(note()); }
+    if (btn) btn.textContent = touch ? "Text it to Elijah" : "Email it to Elijah";
+    if (alt){
+      alt.textContent = "";
+      alt.appendChild(document.createTextNode(touch ? "Rather email? " : "On your phone? "));
+      var a = document.createElement("a");
+      a.href = "#need";
+      a.textContent = touch ? "Email it instead" : "Text it instead";
+      a.addEventListener("click", function(e){
+        e.preventDefault();
+        if (!ta.value.trim()){ ta.focus(); return; }
+        window.location.href = touch ? mail() : sms();
+      });
+      alt.appendChild(a);
+      alt.appendChild(document.createTextNode("."));
+    }
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      if (!ta.value.trim()){ ta.focus(); return; }
+      window.location.href = touch ? sms() : mail();
+    });
+  })();
+
+  /* Hero: photos, the sketch and the video stream into one desk, then the desk comes alive. */
+  var flow = null;
+  (function(){
+    var box = document.getElementById("src"), wires = document.getElementById("src-wires");
+    if (!box || !wires || !wires.getBoundingClientRect) return;
+    var NS = "http://www.w3.org/2000/svg";
+    var cards = Array.prototype.slice.call(box.querySelectorAll(".src-card"));
+    var base = Array.prototype.slice.call(wires.querySelectorAll(".w-base path"));
+    var lit = Array.prototype.slice.call(wires.querySelectorAll(".w-lit path"));
+    var dots = wires.querySelector(".w-pk"), port = document.querySelector(".port");
+    if (cards.length !== 3 || base.length !== 3 || lit.length !== 3 || !dots) return;
+    function lay(){
+      var r = wires.getBoundingClientRect(), w = r.width, h = r.height;
+      if (!w || !h) return;
+      wires.setAttribute("viewBox", "0 0 " + w.toFixed(1) + " " + h.toFixed(1));
+      var x1 = w / 2;
+      cards.forEach(function(c, i){
+        var cr = c.getBoundingClientRect(), x0 = cr.left + cr.width / 2 - r.left;
+        var d = "M" + x0.toFixed(1) + " 0C" + x0.toFixed(1) + " " + (h * 0.62).toFixed(1) + " " + x1.toFixed(1) + " " + (h * 0.38).toFixed(1) + " " + x1.toFixed(1) + " " + h.toFixed(1);
+        base[i].setAttribute("d", d);
+        lit[i].setAttribute("d", d);
+        if (lit[i].getTotalLength) lit[i].style.setProperty("--len", Math.ceil(lit[i].getTotalLength() + 2));
+      });
+    }
+    lay();
+    if ("ResizeObserver" in window){ new ResizeObserver(lay).observe(box); } else { window.addEventListener("resize", lay); }
+    if (reduce){
+      box.classList.add("seq", "go", "wired");
+      cards.forEach(function(c){ c.classList.add("sent"); });
+      return;
+    }
+    box.classList.add("seq");
+    flow = function(done){
+      box.classList.add("go");
+      setTimeout(function(){ box.classList.add("wired"); }, 380);
+      var travel = 820, packets = [], t0 = null, started = false;
+      lit.forEach(function(p, i){
+        for (var k = 0; k < 2; k++){
+          var c = document.createElementNS(NS, "circle");
+          c.setAttribute("r", "3");
+          c.setAttribute("class", "pk");
+          c.setAttribute("opacity", "0");
+          dots.appendChild(c);
+          packets.push({el:c, p:p, i:i, at:680 + i * 110 + k * 260});
+        }
+      });
+      function arrive(){
+        if (port){ port.classList.remove("hit"); void port.offsetWidth; port.classList.add("hit"); }
+        if (!started){ started = true; done(); }
+      }
+      function step(ts){
+        if (t0 === null) t0 = ts;
+        var t = ts - t0, live = false;
+        packets.forEach(function(pk){
+          if (pk.done) return;
+          var k = (t - pk.at) / travel;
+          if (k < 0){ live = true; return; }
+          if (!pk.left){ pk.left = true; cards[pk.i].classList.add("sent"); }
+          if (k >= 1){ pk.done = true; if (pk.el.parentNode) pk.el.parentNode.removeChild(pk.el); arrive(); return; }
+          live = true;
+          var e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+          var pt = pk.p.getPointAtLength(pk.p.getTotalLength() * e);
+          pk.el.setAttribute("cx", pt.x.toFixed(1));
+          pk.el.setAttribute("cy", pt.y.toFixed(1));
+          pk.el.setAttribute("opacity", k < 0.1 ? (k / 0.1).toFixed(2) : (k > 0.9 ? ((1 - k) / 0.1).toFixed(2) : "1"));
+        });
+        if (live) requestAnimationFrame(step);
+        else if (!started){ started = true; done(); }
+      }
+      requestAnimationFrame(step);
+    };
+  })();
+
   /* The hero plays once: numbers count up, the chart draws, stuck jobs light up, the call lands, the answer types. */
   var vis = document.getElementById("hero-vis");
   if (!vis || reduce) return;
@@ -1883,7 +2343,8 @@ Dana Ortiz</textarea>
   }
   function light(i){ if (i < items.length){ items[i].classList.add("lit"); setTimeout(function(){ light(i + 1); }, 220); } else show(0); }
   function show(i){ if (i < floats.length){ floats[i].classList.add("in"); setTimeout(function(){ show(i + 1); }, 550); } else if (!touched) typeAsk(full); }
-  setTimeout(function(){ vis.classList.add("drawn"); requestAnimationFrame(frame); }, 400);
+  var startDash = function(){ vis.classList.add("drawn"); requestAnimationFrame(frame); };
+  setTimeout(function(){ if (flow) flow(startDash); else startDash(); }, 350);
 })();
 </script>
 </body>
