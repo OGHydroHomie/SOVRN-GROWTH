@@ -1515,6 +1515,16 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
 }
 
 /* ===== The choice is yours ===== */
+.for-tag{display:inline-flex;align-items:center;gap:9px;margin:0 auto 22px;padding:7px 15px 7px 11px;border-radius:999px;border:1px solid rgba(59,232,160,.35);background:rgba(59,232,160,.08);color:#CFFBE6;font-size:15px;font-weight:650;line-height:1.3}
+.for-tag[hidden]{display:none}
+.for-tag i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+.hero-note{margin:18px auto 0;max-width:34em;font-size:16px;color:var(--muted)}
+.need-chips{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 12px}
+.need-chip{min-height:38px;padding:7px 14px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.04);color:var(--ink);font:inherit;font-size:14.5px;font-weight:650;line-height:1.2;cursor:pointer;transition:border-color .2s ease,background-color .2s ease,color .2s ease}
+.need-chip:hover{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.07)}
+.need-chip[aria-pressed="true"]{border-color:rgba(59,232,160,.6);background:rgba(59,232,160,.14);color:#D8FFEE}
+.need-chip:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+@media (max-width:720px){.need-chip{min-height:36px;padding:6px 11px;font-size:13.5px}.need-chips{gap:7px}}
 .pills{position:relative;margin:120px auto 0;text-align:center}
 .pills > :not(.rain){position:relative;z-index:1}
 .pills-h{display:grid;gap:6px;font-size:clamp(30px,3.6vw,46px);font-weight:820;letter-spacing:-.025em;line-height:1.05;color:var(--ink);text-wrap:balance}
@@ -1620,12 +1630,14 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
 <main>
 <section class="hero" aria-labelledby="hero-h">
   <div class="wrap">
+    <p class="for-tag" id="for-tag" hidden><i aria-hidden="true"></i><span></span></p>
     <h1 id="hero-h">Stop renting software that doesn't fit your shop.</h1>
     <p class="lede">We build the tools restoration companies run on, shaped around how your crew already works. <strong>One-time build. You own it.</strong></p>
     <div class="cta-row">
       <a class="btn btn-green" href="sms:+15128820814?&amp;body=Hi%20Elijah%2C%20I%27d%20like%20to%20book%20a%2015-minute%20call.%20Biggest%20headache%20right%20now%3A%20">Book a 15-minute call</a>
       <a class="btn btn-ghost" href="#build">See what we build</a>
     </div>
+    <p class="hero-note">No pitch deck. We look at one bottleneck in your shop and map the fix.</p>
   </div>
 
   <div class="src" id="src">
@@ -1657,14 +1669,14 @@ tr.hl td:first-child{box-shadow:inset 2px 0 0 var(--green)}
               <button type="button" data-go="reports" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg>Reports</button>
             </nav>
             <div class="d-oncall"><small>On call tonight</small><b>Marcus T.</b></div>
-            <div class="d-me"><span class="av" aria-hidden="true">DO</span><div><b>Dana Ortiz</b><small>Owner</small></div></div>
+            <div class="d-me"><span class="av" aria-hidden="true" data-me-av>DO</span><div><b data-me>Dana Ortiz</b><small data-me-role>Owner</small></div></div>
           </aside>
           <div class="d-main">
             <div class="d-top">
-              <div><h4>Good morning, Dana</h4><small>Today, 7:02 AM</small></div>
+              <div><h4 data-greet>Good morning, Dana</h4><small>Today, 7:02 AM</small></div>
               <button type="button" class="d-search" data-focus-ask><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>Ask about jobs, claims, crews<kbd>&#8984;K</kbd></button>
               <div class="d-mode" role="group" aria-label="Day or night"><button type="button" data-dmode="day" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg>Day</button><button type="button" data-dmode="night" aria-pressed="true"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg>Night</button></div>
-              <span class="av" aria-hidden="true">DO</span>
+              <span class="av" aria-hidden="true" data-me-av>DO</span>
             </div>
 
             <div class="v" data-v="overview">
@@ -1962,7 +1974,7 @@ Dana Ortiz</textarea>
 
     <div class="app" id="app">
       <div class="app-in">
-        <div class="app-top"><div><small>Today, 7:02 AM</small><b>Good morning, Dana</b></div><div class="d-mode sm" role="group" aria-label="Day or night"><button type="button" data-dmode="day" aria-pressed="false" aria-label="Day"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg></button><button type="button" data-dmode="night" aria-pressed="true" aria-label="Night"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></button></div></div>
+        <div class="app-top"><div><small>Today, 7:02 AM</small><b data-greet>Good morning, Dana</b></div><div class="d-mode sm" role="group" aria-label="Day or night"><button type="button" data-dmode="day" aria-pressed="false" aria-label="Day"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg></button><button type="button" data-dmode="night" aria-pressed="true" aria-label="Night"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></button></div></div>
         <div class="app-body">
           <section class="ap" data-p="today" aria-label="Today">
             <div class="app-kpis">
@@ -2092,7 +2104,7 @@ Dana Ortiz</textarea>
         </div>
         <div class="frag f-task" data-to="r-garza" aria-hidden="true">
           <div class="fr-h"><i class="fr-box"></i><b>Follow up with adjuster</b></div>
-          <p>Assigned to Dana</p>
+          <p data-assignee>Assigned to Dana</p>
           <em class="fr-tag">Overdue 9 days</em>
         </div>
         <div class="frag f-note" data-to="r-moore" aria-hidden="true"><p>Call Moore about the invoice</p></div>
@@ -2102,7 +2114,7 @@ Dana Ortiz</textarea>
         </div>
         <div class="br-wrap">
           <div class="brief">
-            <div class="br-h"><div><b>Good morning, Dana</b><small id="br-n" data-clear="All clear. Everything else is moving.">3 need you. 1 handled overnight.</small></div><span class="br-t">7:02 AM</span></div>
+            <div class="br-h"><div><b data-greet>Good morning, Dana</b><small id="br-n" data-clear="All clear. Everything else is moving.">3 need you. 1 handled overnight.</small></div><span class="br-t">7:02 AM</span></div>
             <ul class="br-list">
               <li id="r-garza" style="--c:#FF5D73"><i class="dot"></i><div><b>Garza: State Farm, 19 days</b><small>Follow-up drafted</small></div><button type="button" class="mbtn g" data-brief-send>Send</button></li>
               <li id="r-moore" style="--c:#FFB547"><i class="dot"></i><div><b>Moore invoice ready</b><small>$3,260. Supplement approved 4 days ago</small></div><button type="button" class="mbtn g" data-brief-send>Send</button></li>
@@ -2122,7 +2134,7 @@ Dana Ortiz</textarea>
     <div class="sec-h cat-h">
       <div>
         <h2 id="build-h">What we build</h2>
-        <p>Every shop runs differently. Scroll through the five areas we build for, and picture yours.</p>
+        <p>Most shops start with one bottleneck. Scroll through the five areas and picture where you'd start.</p>
       </div>
       <p class="own-tag"><b>You own it.</b>The code and the data live in your accounts. No seats, no renewals.</p>
     </div>
@@ -2178,7 +2190,7 @@ Dana Ortiz</textarea>
     <article class="world" id="w-hr" data-world="hr" aria-labelledby="w-hr-h">
       <div class="w-copy">
         <p class="w-chip"><svg class="ic" aria-hidden="true"><use href="#i-userplus"/></svg>HR</p>
-        <h3 id="w-hr-h">Never stress about onboarding, training or managing talent.</h3>
+        <h3 id="w-hr-h">Get new techs field-ready without shadowing you for weeks.</h3>
         <p class="w-rot"><span class="w-rot-ic" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="w-rot-t"><span>New techs trained from your own videos</span><span>Every crew knows today's tasks</span><span>Certifications never lapse</span></span></p>
         <p class="w-sub">Record a process once and it becomes training and a checklist for every crew. Stay on top of what matters and delegate like a pro.</p>
         <ul class="w-builds">
@@ -2247,7 +2259,7 @@ Dana Ortiz</textarea>
     <article class="world" id="w-aeo" data-world="aeo" aria-labelledby="w-aeo-h">
       <div class="w-copy">
         <p class="w-chip"><svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg>AEO</p>
-        <h3 id="w-aeo-h">Be the company AI recommends.</h3>
+        <h3 id="w-aeo-h">Be the first name homeowners see when a pipe bursts.</h3>
         <p class="w-rot"><span class="w-rot-ic" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="w-rot-t"><span>Named when homeowners ask AI who to call</span><span>Reviews that sell for you</span><span>Found in every city you serve</span></span></p>
         <p class="w-sub">When a homeowner asks ChatGPT, Gemini or Claude who to call at 2 AM, the answer should be you. We shape your pages, profiles and reviews so it is.</p>
         <ul class="w-builds">
@@ -2440,10 +2452,10 @@ Dana Ortiz</textarea>
   <div class="wrap">
     <div class="pills" id="pills">
       <div class="rain" id="rain" aria-hidden="true"></div>
-      <p class="pills-h"><span>One of these gets you home for dinner.</span><span>The choice is yours.</span></p>
+      <p class="pills-h"><span>Two ways tonight goes.</span></p>
       <div class="pills-row">
-        <button class="choice choice-blue" type="button"><span class="cap" aria-hidden="true"></span><span class="choice-l">Keep doing it all yourself</span></button>
-        <button class="choice choice-red" type="button"><span class="cap" aria-hidden="true"></span><span class="choice-l">Make more money</span></button>
+        <button class="choice choice-blue" type="button"><span class="cap" aria-hidden="true"></span><span class="choice-l">Chase adjusters at 8 PM</span></button>
+        <button class="choice choice-red" type="button"><span class="cap" aria-hidden="true"></span><span class="choice-l">Get home for dinner</span></button>
       </div>
       <p class="pills-say" id="pills-say" aria-live="polite"></p>
     </div>
@@ -2453,6 +2465,12 @@ Dana Ortiz</textarea>
       <p>I read every one myself. If there's something worth building, I'll tell you what it is. If there isn't, I'll say so.</p>
       <form class="need" id="need" action="mailto:elijah@sovrngrowth.com?subject=What%20I%20need%20built" method="post" enctype="text/plain">
         <label for="need-t">What do you need built?</label>
+        <div class="need-chips" role="group" aria-label="Tap to add to your note">
+          <button type="button" class="need-chip" aria-pressed="false" data-fill="Estimates take too long. Photos, the sketch and readings live in different places, and writing them up eats our week.">Faster estimates</button>
+          <button type="button" class="need-chip" aria-pressed="false" data-fill="Claims sit with carriers too long, and nobody chases them consistently.">Carrier follow-ups</button>
+          <button type="button" class="need-chip" aria-pressed="false" data-fill="Homeowners keep calling for updates. I want them to see progress on their job without calling us.">Homeowner updates</button>
+          <button type="button" class="need-chip" aria-pressed="false" data-fill="New techs take weeks to get field-ready. I want our processes recorded once and turned into training.">Training techs</button>
+        </div>
         <textarea id="need-t" name="need" rows="4" required placeholder="Mold estimates take my estimator a full afternoon, and the photos never match the sketch."></textarea>
         <div class="cta-row">
           <button class="btn btn-green" type="submit">Send it to Elijah</button>
@@ -2493,6 +2511,43 @@ Dana Ortiz</textarea>
 (function(){
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var each = function(list, fn){ Array.prototype.forEach.call(list, fn); };
+
+  /* Personal links for emails: ?shop=Althouse+Restore&name=Greg puts their name on the demo */
+  (function(){
+    var q;
+    try { q = new URLSearchParams(window.location.search); } catch (e) { return; }
+    function clean(v){ return (v || "").replace(/[^\p{L}\p{N} &'.,\-]/gu, "").replace(/\s+/g, " ").trim().slice(0, 40); }
+    var shop = clean(q.get("shop")), name = clean(q.get("name"));
+    if (!shop && !name) return;
+    var who = name || shop;
+    var ini = who.split(" ").filter(Boolean).slice(0, 2).map(function(w){ return w.charAt(0).toUpperCase(); }).join("");
+    each(document.querySelectorAll("[data-greet]"), function(el){ el.textContent = "Good morning, " + who; });
+    each(document.querySelectorAll("[data-me]"), function(el){ el.textContent = who; });
+    each(document.querySelectorAll("[data-me-role]"), function(el){ el.textContent = name && shop ? shop : "Owner"; });
+    each(document.querySelectorAll("[data-me-av]"), function(el){ el.textContent = ini; });
+    each(document.querySelectorAll("[data-assignee]"), function(el){ el.textContent = "Assigned to " + (name || "you"); });
+    var rt = document.getElementById("rev-t");
+    if (rt){ rt.value = rt.value.replace("Dana Ortiz", name && shop ? name + ", " + shop : who); rt.defaultValue = rt.value; }
+    var tag = document.getElementById("for-tag");
+    if (tag){ tag.querySelector("span").textContent = "A first look for " + (shop || name); tag.hidden = false; }
+  })();
+
+  /* Tap-to-fill: each option adds its sentence to the note, tap again to take it out */
+  (function(){
+    var ta = document.getElementById("need-t");
+    if (!ta) return;
+    each(document.querySelectorAll(".need-chips .need-chip"), function(c){
+      c.addEventListener("click", function(){
+        var line = c.getAttribute("data-fill");
+        var lines = ta.value.split("\n").map(function(l){ return l.trim(); }).filter(Boolean);
+        var at = lines.indexOf(line);
+        if (at >= 0){ lines.splice(at, 1); c.setAttribute("aria-pressed", "false"); }
+        else { lines.push(line); c.setAttribute("aria-pressed", "true"); }
+        ta.value = lines.join("\n");
+        ta.dispatchEvent(new Event("input", {bubbles: true}));
+      });
+    });
+  })();
 
   /* Header picks up a rule once the page scrolls. */
   var bar = document.getElementById("top-bar");
@@ -3237,11 +3292,11 @@ Dana Ortiz</textarea>
       setTimeout(function(){ el.classList.remove(cls); }, 1000);
     }
     blue.addEventListener("click", function(){
-      say.textContent = "Fair. The Sunday-night paperwork will be right where you left it.";
+      say.textContent = "Fair. Tell the adjusters we said hi.";
       bump(blue, "nope"); bump(red, "nudge");
     });
     red.addEventListener("click", function(){
-      say.textContent = "Good choice. Tell me what's slowing you down.";
+      say.textContent = "Good call. Tell me what's keeping you late.";
       bump(red, "yes");
       if (!ta) return;
       setTimeout(function(){
