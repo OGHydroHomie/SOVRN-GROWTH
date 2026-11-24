@@ -304,7 +304,8 @@ h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-0.025em;line-height:1.03;te
 .qa details p{padding:0 0 24px;color:var(--muted);max-width:40em}
 
 /* Final call to action */
-.final{position:relative;overflow:hidden;border-radius:30px;padding:96px 64px;margin:120px 0 96px;text-align:center;isolation:isolate}
+/* clip, not just hidden: a hidden box can still be scrolled by focus or a script, which shoves the heading up under its edge */
+.final{position:relative;overflow:hidden;overflow:clip;border-radius:30px;padding:96px 64px;margin:120px 0 96px;text-align:center;isolation:isolate}
 .final .glow{top:30%;height:120%;opacity:.6}
 .final h2{position:relative;z-index:1;font-size:clamp(36px,5vw,64px);max-width:12em;margin:0 auto}
 .final p{position:relative;z-index:1;margin:20px auto 0;font-size:20px;color:var(--muted);max-width:32em}
@@ -2616,6 +2617,14 @@ Dana Ortiz</textarea>
 (function(){
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var each = function(list, fn){ Array.prototype.forEach.call(list, fn); };
+  /* Scroll the page itself and nothing else. scrollIntoView also scrolls any clipped box around the target,
+     which knocks that box's content out of place. "start" parks the top under the header; anything else centres it below the header. */
+  var headH = function(){ return parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--top-h")) || 68; };
+  var glide = function(y){ window.scrollTo({top: Math.max(0, Math.round(window.pageYOffset + y)), behavior: reduce ? "auto" : "smooth"}); };
+  var bring = function(el, at){
+    var r = el.getBoundingClientRect(), top = headH();
+    glide(at === "start" ? r.top - top - 12 : r.top - (window.innerHeight + top - r.height) / 2);
+  };
 
   /* Personal links for emails: ?shop=Althouse+Restore&name=Greg puts their name on the demo */
   (function(){
@@ -3270,7 +3279,7 @@ Dana Ortiz</textarea>
     }
     tabs.forEach(function(tb, j){
       tb.addEventListener("click", function(){
-        if (!pinned){ worlds[j].scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "start"}); return; }
+        if (!pinned){ bring(worlds[j], "start"); return; }
         var r = track.getBoundingClientRect(), total = track.offsetHeight - stage.offsetHeight;
         window.scrollTo({top: Math.round(window.pageYOffset + r.top + total * ((j + 0.5) / n)), behavior: reduce ? "auto" : "smooth"});
       });
@@ -3419,9 +3428,9 @@ Dana Ortiz</textarea>
     }
     function show(){
       setTimeout(function(){
-        var r = scene.getBoundingClientRect(), vh = window.innerHeight;
-        if (r.top >= 0 && r.bottom <= vh) return;
-        scene.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: scene.offsetHeight > vh * 0.85 ? "start" : "center"});
+        var r = scene.getBoundingClientRect(), vh = window.innerHeight, top = headH();
+        if (r.top >= top && r.bottom <= vh) return;
+        bring(scene, scene.offsetHeight > (vh - top) * 0.85 ? "start" : "center");
       }, 80);
     }
     function set(m){
@@ -3445,11 +3454,27 @@ Dana Ortiz</textarea>
     blue.addEventListener("click", function(){ set("night"); });
     red.addEventListener("click", function(){ set("dawn"); });
     if (next) next.addEventListener("click", function(){ set("dawn"); });
+    /* Land on the note box showing as much of it as fits: the whole box, else from the heading (or the label)
+       down to the send button (or the textarea). The cursor goes in only with a mouse, so a phone keyboard
+       doesn't jump up over the tap-to-fill options. */
     if (go) go.addEventListener("click", function(e){
       if (!ta) return;
       e.preventDefault();
-      ta.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "center"});
-      setTimeout(function(){ ta.focus({preventScroll: true}); }, reduce ? 0 : 450);
+      var fin = ta.closest(".final") || ta, vh = window.innerHeight, top = headH(), room = vh - top - 32;
+      var b = fin.getBoundingClientRect(), y = null;
+      if (b.height <= vh - top) y = b.top - (vh + top - b.height) / 2;
+      else [fin.querySelector("h2"), fin.querySelector(".need label")].some(function(head){
+        if (!head) return false;
+        var t = head.getBoundingClientRect().top;
+        return [fin.querySelector(".need .cta-row"), ta].some(function(end){
+          if (!end || end.getBoundingClientRect().bottom - t > room) return false;
+          y = t - top - 16;
+          return true;
+        });
+      });
+      glide(y === null ? ta.getBoundingClientRect().top - top - 16 : y);
+      if (window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches)
+        setTimeout(function(){ ta.focus({preventScroll: true}); }, reduce ? 0 : 450);
     });
   })();
 
